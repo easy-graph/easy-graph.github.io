@@ -1,3 +1,1 @@
 ## Easy Graph Documentation
-
-
