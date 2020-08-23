@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>easygraph.functions.graph_embedding.node2vec.node2vec &mdash; Easy Graph 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="easygraph.functions.graph_embedding.line.LINE" href="easygraph.functions.graph_embedding.line.LINE.html" />
+    <link rel="prev" title="easygraph.functions.graph_embedding.deepwalk.deepwalk" href="easygraph.functions.graph_embedding.deepwalk.deepwalk.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../path.html">Path</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../graph_embedding.html">Graph Embedding</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.deepwalk">DeepWalk</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.node2vec">Node2Vec</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.functions.graph_embedding.node2vec.node2vec</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.line">LINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.sdne">SDNE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../structural_hole_spanners.html">Structural Hole Spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Easy Graph</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../reference.html">Reference</a> &raquo;</li>
+        
+          <li><a href="../graph_embedding.html">Graph Embedding</a> &raquo;</li>
+        
+      <li>easygraph.functions.graph_embedding.node2vec.node2vec</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/reference/generated/easygraph.functions.graph_embedding.node2vec.node2vec.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="easygraph-functions-graph-embedding-node2vec-node2vec">
+<h1>easygraph.functions.graph_embedding.node2vec.node2vec<a class="headerlink" href="#easygraph-functions-graph-embedding-node2vec-node2vec" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="easygraph.functions.graph_embedding.node2vec.node2vec">
+<code class="sig-prename descclassname">easygraph.functions.graph_embedding.node2vec.</code><code class="sig-name descname">node2vec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">G</span></em>, <em class="sig-param"><span class="n">dimensions</span><span class="o">=</span><span class="default_value">128</span></em>, <em class="sig-param"><span class="n">walk_length</span><span class="o">=</span><span class="default_value">80</span></em>, <em class="sig-param"><span class="n">num_walks</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">q</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">weight_key</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">workers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">skip_gram_params</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/graph_embedding/node2vec.html#node2vec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.node2vec.node2vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graph embedding via Node2Vec.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<a class="reference internal" href="../classes/graph.html#easygraph.Graph" title="easygraph.Graph"><em>easygraph.Graph</em></a><em> or </em><a class="reference internal" href="../classes/digraph.html#easygraph.DiGraph" title="easygraph.DiGraph"><em>easygraph.DiGraph</em></a>) – </p></li>
+<li><p><strong>dimensions</strong> (<em>int</em>) – Embedding dimensions, optinal(default: 128)</p></li>
+<li><p><strong>walk_length</strong> (<em>int</em>) – Number of nodes in each walk, optinal(default: 80)</p></li>
+<li><p><strong>num_walks</strong> (<em>int</em>) – Number of walks per node, optinal(default: 10)</p></li>
+<li><p><strong>p</strong> (<em>float</em>) – The return hyper parameter, optinal(default: 1.0)</p></li>
+<li><p><strong>q</strong> (<em>float</em>) – The inout parameter, optinal(default: 1.0)</p></li>
+<li><p><strong>weight_key</strong> (<em>string</em><em> or </em><em>None</em><em> (</em><em>default: None</em><em>)</em>) – On weighted graphs, this is the key for the weight attribute</p></li>
+<li><p><strong>workers</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optinal</em><em>(</em><em>default : None</em><em>)</em>) – The number of workers generating random walks (default: None). None if not using only one worker.</p></li>
+<li><p><strong>skip_gram_params</strong> (<em>dict</em>) – Parameteres for gensim.models.Word2Vec - do not supply ‘size’, it is taken from the ‘dimensions’ parameter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>embedding_vector</strong> (<em>dict</em>) – The embedding vector of each node</p></li>
+<li><p><strong>most_similar_nodes_of_node</strong> (<em>dict</em>) – The most similar nodes of each node and its similarity</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node2vec</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="n">dimensions</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="c1"># The graph embedding dimensions.</span>
+<span class="gp">... </span>         <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># Walk length of each random walks.</span>
+<span class="gp">... </span>         <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># Number of random walks.</span>
+<span class="gp">... </span>         <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># The `p` possibility in random walk in [1]_</span>
+<span class="gp">... </span>         <span class="n">q</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># The `q` possibility in random walk in [1]_</span>
+<span class="gp">... </span>         <span class="n">weight_key</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="n">skip_gram_params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span> <span class="c1"># The skip_gram parameters in Python package gensim.</span>
+<span class="gp">... </span>         <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">batch_words</span><span class="o">=</span><span class="mi">4</span>
+<span class="gp">... </span>         <span class="p">))</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://arxiv.org/abs/1607.00653">https://arxiv.org/abs/1607.00653</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="easygraph.functions.graph_embedding.line.LINE.html" class="btn btn-neutral float-right" title="easygraph.functions.graph_embedding.line.LINE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="easygraph.functions.graph_embedding.deepwalk.deepwalk.html" class="btn btn-neutral float-left" title="easygraph.functions.graph_embedding.deepwalk.deepwalk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, lizheng
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

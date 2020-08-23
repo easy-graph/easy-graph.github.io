@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Structural Hole Spanners &mdash; Easy Graph 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.structural_holes.HIS.get_structural_holes_HIS" href="generated/easygraph.functions.structural_holes.HIS.get_structural_holes_HIS.html" />
+    <link rel="prev" title="easygraph.functions.graph_embedding.sdne.SDNE" href="generated/easygraph.functions.graph_embedding.sdne.SDNE.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="path.html">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_embedding.html">Graph Embedding</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Structural Hole Spanners</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.structural_holes.HIS">HIS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.HIS.get_structural_holes_HIS.html">easygraph.functions.structural_holes.HIS.get_structural_holes_HIS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.structural_holes.MaxD">MaxD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD.html">easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.structural_holes.AP_Greedy">AP_Greedy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.AP_Greedy.common_greedy.html">easygraph.functions.structural_holes.AP_Greedy.common_greedy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.AP_Greedy.AP_Greedy.html">easygraph.functions.structural_holes.AP_Greedy.AP_Greedy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.structural_holes.HAM">HAM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.HAM.get_structural_holes_HAM.html">easygraph.functions.structural_holes.HAM.get_structural_holes_HAM</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.structural_holes.evaluation">Burt’s Metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.effective_size.html">easygraph.functions.structural_holes.evaluation.effective_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.efficiency.html">easygraph.functions.structural_holes.evaluation.efficiency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.constraint.html">easygraph.functions.structural_holes.evaluation.constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.hierarchy.html">easygraph.functions.structural_holes.evaluation.hierarchy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Easy Graph</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../reference.html">Reference</a> &raquo;</li>
+        
+      <li>Structural Hole Spanners</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/structural_hole_spanners.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="structural-hole-spanners">
+<h1>Structural Hole Spanners<a class="headerlink" href="#structural-hole-spanners" title="Permalink to this headline">¶</a></h1>
+<p>Easy Graph has implemented several most commonly used structural holes spanners detection methods, including HIS, MaxD, HAM, Common_Greedy,  AP_Greedy.
+Burt’s evaluation metric for structural holes, Effective Size, Efficiency, Constraint and Hierarchy, are also included.</p>
+<div class="section" id="module-easygraph.functions.structural_holes.HIS">
+<span id="his"></span><h2>HIS<a class="headerlink" href="#module-easygraph.functions.structural_holes.HIS" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.HIS.get_structural_holes_HIS.html#easygraph.functions.structural_holes.HIS.get_structural_holes_HIS" title="easygraph.functions.structural_holes.HIS.get_structural_holes_HIS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_structural_holes_HIS</span></code></a>(G, C, epsilon[, weight])</p></td>
+<td><p>Structural hole spanners detection via HIS method.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-easygraph.functions.structural_holes.MaxD">
+<span id="maxd"></span><h2>MaxD<a class="headerlink" href="#module-easygraph.functions.structural_holes.MaxD" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD.html#easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD" title="easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_structural_holes_MaxD</span></code></a>(G, k, C)</p></td>
+<td><p>Structural hole spanners detection via MaxD method.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-easygraph.functions.structural_holes.AP_Greedy">
+<span id="ap-greedy"></span><h2>AP_Greedy<a class="headerlink" href="#module-easygraph.functions.structural_holes.AP_Greedy" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.AP_Greedy.common_greedy.html#easygraph.functions.structural_holes.AP_Greedy.common_greedy" title="easygraph.functions.structural_holes.AP_Greedy.common_greedy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">common_greedy</span></code></a>(G, k[, c, weight])</p></td>
+<td><p>Common greedy method for structural hole spanners detection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.AP_Greedy.AP_Greedy.html#easygraph.functions.structural_holes.AP_Greedy.AP_Greedy" title="easygraph.functions.structural_holes.AP_Greedy.AP_Greedy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AP_Greedy</span></code></a>(G, k[, c, weight])</p></td>
+<td><p>AP greedy method for structural hole spanners detection.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-easygraph.functions.structural_holes.HAM">
+<span id="ham"></span><h2>HAM<a class="headerlink" href="#module-easygraph.functions.structural_holes.HAM" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.HAM.get_structural_holes_HAM.html#easygraph.functions.structural_holes.HAM.get_structural_holes_HAM" title="easygraph.functions.structural_holes.HAM.get_structural_holes_HAM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_structural_holes_HAM</span></code></a>(G, k, c, …)</p></td>
+<td><p>Structural hole spanners detection via HAM method.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-easygraph.functions.structural_holes.evaluation">
+<span id="burt-s-metrics"></span><h2>Burt’s Metrics<a class="headerlink" href="#module-easygraph.functions.structural_holes.evaluation" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.effective_size.html#easygraph.functions.structural_holes.evaluation.effective_size" title="easygraph.functions.structural_holes.evaluation.effective_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">effective_size</span></code></a>(G[, nodes, weight])</p></td>
+<td><p>Burt’s metric - Effective Size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.efficiency.html#easygraph.functions.structural_holes.evaluation.efficiency" title="easygraph.functions.structural_holes.evaluation.efficiency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">efficiency</span></code></a>(G[, nodes, weight])</p></td>
+<td><p>Burt’s metric - Efficiency.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.constraint.html#easygraph.functions.structural_holes.evaluation.constraint" title="easygraph.functions.structural_holes.evaluation.constraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraint</span></code></a>(G[, nodes, weight, n_workers])</p></td>
+<td><p>Burt’s metric - Constraint.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.structural_holes.evaluation.hierarchy.html#easygraph.functions.structural_holes.evaluation.hierarchy" title="easygraph.functions.structural_holes.evaluation.hierarchy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hierarchy</span></code></a>(G[, nodes, weight])</p></td>
+<td><p>Returns the hierarchy of nodes in the graph</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/easygraph.functions.structural_holes.HIS.get_structural_holes_HIS.html" class="btn btn-neutral float-right" title="easygraph.functions.structural_holes.HIS.get_structural_holes_HIS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/easygraph.functions.graph_embedding.sdne.SDNE.html" class="btn btn-neutral float-left" title="easygraph.functions.graph_embedding.sdne.SDNE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, lizheng
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

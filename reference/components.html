@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Components &mdash; Easy Graph 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.components.connected.is_connected" href="generated/easygraph.functions.components.connected.is_connected.html" />
+    <link rel="prev" title="Community Detection - Modularity Greedy" href="community/modularity_max_detection.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.components.connected">Connected Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.connected.is_connected.html">easygraph.functions.components.connected.is_connected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.connected.number_connected_components.html">easygraph.functions.components.connected.number_connected_components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.connected.connected_components.html">easygraph.functions.components.connected.connected_components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.connected.connected_component_of_node.html">easygraph.functions.components.connected.connected_component_of_node</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#biconnected-components">Biconnected Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.biconnected.is_biconnected.html">easygraph.functions.components.biconnected.is_biconnected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.biconnected.biconnected_components.html">easygraph.functions.components.biconnected.biconnected_components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.biconnected.generator_biconnected_components_nodes.html">easygraph.functions.components.biconnected.generator_biconnected_components_nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.biconnected.generator_biconnected_components_edges.html">easygraph.functions.components.biconnected.generator_biconnected_components_edges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.biconnected.generator_articulation_points.html">easygraph.functions.components.biconnected.generator_articulation_points</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.components.ego_betweenness">Ego Betweenness</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.components.ego_betweenness.ego_betweenness.html">easygraph.functions.components.ego_betweenness.ego_betweenness</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="path.html">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_embedding.html">Graph Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structural_hole_spanners.html">Structural Hole Spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Easy Graph</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../reference.html">Reference</a> &raquo;</li>
+        
+      <li>Components</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/components.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="components">
+<h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+<p>Easy Graph can help users check whether the graph (undirected) is connected/biconnected or not.
+It can also provide with connected/biconnected components.</p>
+<div class="section" id="module-easygraph.functions.components.connected">
+<span id="connected-components"></span><h2>Connected Components<a class="headerlink" href="#module-easygraph.functions.components.connected" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.components.connected.is_connected.html#easygraph.functions.components.connected.is_connected" title="easygraph.functions.components.connected.is_connected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_connected</span></code></a>(G)</p></td>
+<td><p>Returns whether the graph is connected or not.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.components.connected.number_connected_components.html#easygraph.functions.components.connected.number_connected_components" title="easygraph.functions.components.connected.number_connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_connected_components</span></code></a>(G)</p></td>
+<td><p>Returns the number of connected components.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.components.connected.connected_components.html#easygraph.functions.components.connected.connected_components" title="easygraph.functions.components.connected.connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connected_components</span></code></a>(G)</p></td>
+<td><p>Returns a list of connected components, each of which denotes the edges set of a connected component.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.components.connected.connected_component_of_node.html#easygraph.functions.components.connected.connected_component_of_node" title="easygraph.functions.components.connected.connected_component_of_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connected_component_of_node</span></code></a>(G, node)</p></td>
+<td><p>Returns the connected component that <em>node</em> belongs to.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="biconnected-components">
+<h2>Biconnected Components<a class="headerlink" href="#biconnected-components" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-easygraph.functions.components.biconnected"></span><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.components.biconnected.is_biconnected.html#easygraph.functions.components.biconnected.is_biconnected" title="easygraph.functions.components.biconnected.is_biconnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_biconnected</span></code></a>(G)</p></td>
+<td><p>Returns whether the graph is biconnected or not.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.components.biconnected.biconnected_components.html#easygraph.functions.components.biconnected.biconnected_components" title="easygraph.functions.components.biconnected.biconnected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biconnected_components</span></code></a>(G)</p></td>
+<td><p>Returns a list of biconnected components, each of which denotes the edges set of a biconnected component.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.components.biconnected.generator_biconnected_components_nodes.html#easygraph.functions.components.biconnected.generator_biconnected_components_nodes" title="easygraph.functions.components.biconnected.generator_biconnected_components_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generator_biconnected_components_nodes</span></code></a>(G)</p></td>
+<td><p>Returns a generator of nodes in each biconnected component.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.components.biconnected.generator_biconnected_components_edges.html#easygraph.functions.components.biconnected.generator_biconnected_components_edges" title="easygraph.functions.components.biconnected.generator_biconnected_components_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generator_biconnected_components_edges</span></code></a>(G)</p></td>
+<td><p>Returns a generator of nodes in each biconnected component.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.components.biconnected.generator_articulation_points.html#easygraph.functions.components.biconnected.generator_articulation_points" title="easygraph.functions.components.biconnected.generator_articulation_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generator_articulation_points</span></code></a>(G)</p></td>
+<td><p>Returns a generator of articulation points.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-easygraph.functions.components.ego_betweenness">
+<span id="ego-betweenness"></span><h2>Ego Betweenness<a class="headerlink" href="#module-easygraph.functions.components.ego_betweenness" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.components.ego_betweenness.ego_betweenness.html#easygraph.functions.components.ego_betweenness.ego_betweenness" title="easygraph.functions.components.ego_betweenness.ego_betweenness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ego_betweenness</span></code></a>(G, node)</p></td>
+<td><p>Returns the betweenness centrality of a ego network whose ego is set</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/easygraph.functions.components.connected.is_connected.html" class="btn btn-neutral float-right" title="easygraph.functions.components.connected.is_connected" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="community/modularity_max_detection.html" class="btn btn-neutral float-left" title="Community Detection - Modularity Greedy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, lizheng
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

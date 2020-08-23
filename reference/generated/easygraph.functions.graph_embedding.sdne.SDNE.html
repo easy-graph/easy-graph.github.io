@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>easygraph.functions.graph_embedding.sdne.SDNE &mdash; Easy Graph 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Structural Hole Spanners" href="../structural_hole_spanners.html" />
+    <link rel="prev" title="easygraph.functions.graph_embedding.line.LINE" href="easygraph.functions.graph_embedding.line.LINE.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../path.html">Path</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../graph_embedding.html">Graph Embedding</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.deepwalk">DeepWalk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.node2vec">Node2Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.line">LINE</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../graph_embedding.html#module-easygraph.functions.graph_embedding.sdne">SDNE</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.functions.graph_embedding.sdne.SDNE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../structural_hole_spanners.html">Structural Hole Spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Easy Graph</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../reference.html">Reference</a> &raquo;</li>
+        
+          <li><a href="../graph_embedding.html">Graph Embedding</a> &raquo;</li>
+        
+      <li>easygraph.functions.graph_embedding.sdne.SDNE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/reference/generated/easygraph.functions.graph_embedding.sdne.SDNE.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="easygraph-functions-graph-embedding-sdne-sdne">
+<h1>easygraph.functions.graph_embedding.sdne.SDNE<a class="headerlink" href="#easygraph-functions-graph-embedding-sdne-sdne" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="easygraph.functions.graph_embedding.sdne.SDNE">
+<em class="property">class </em><code class="sig-prename descclassname">easygraph.functions.graph_embedding.sdne.</code><code class="sig-name descname">SDNE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graph</span></em>, <em class="sig-param"><span class="n">hidden_size</span><span class="o">=</span><span class="default_value">[32, 16]</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">1e-06</span></em>, <em class="sig-param"><span class="n">beta</span><span class="o">=</span><span class="default_value">5.0</span></em>, <em class="sig-param"><span class="n">nu1</span><span class="o">=</span><span class="default_value">1e-05</span></em>, <em class="sig-param"><span class="n">nu2</span><span class="o">=</span><span class="default_value">0.0001</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/graph_embedding/sdne.html#SDNE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.sdne.SDNE" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="easygraph.functions.graph_embedding.sdne.SDNE.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graph</span></em>, <em class="sig-param"><span class="n">hidden_size</span><span class="o">=</span><span class="default_value">[32, 16]</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">1e-06</span></em>, <em class="sig-param"><span class="n">beta</span><span class="o">=</span><span class="default_value">5.0</span></em>, <em class="sig-param"><span class="n">nu1</span><span class="o">=</span><span class="default_value">1e-05</span></em>, <em class="sig-param"><span class="n">nu2</span><span class="o">=</span><span class="default_value">0.0001</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/graph_embedding/sdne.html#SDNE.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.sdne.SDNE.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graph embedding via SDNE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="../classes/graph.html#easygraph.Graph" title="easygraph.Graph"><em>easygraph.Graph</em></a><em>, </em><a class="reference internal" href="../classes/digraph.html#easygraph.DiGraph" title="easygraph.DiGraph"><em>easygraph.DiGraph</em></a>) – </p></li>
+<li><p><strong>hidden_size</strong> (<em>list of two elements</em><em>, </em><em>optinal</em><em> (</em><em>default :</em><em> [</em><em>32</em><em>, </em><em>16</em><em>]</em><em>)</em>) – The hidden size.</p></li>
+<li><p><strong>alpla</strong> (<em>float</em><em>, </em><em>optinal</em><em> (</em><em>default : 1e-6</em><em>)</em>) – The alpha value in <a class="footnote-reference brackets" href="#id5" id="id1">1</a>.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optinal</em><em> (</em><em>default : 5.</em><em>)</em>) – The beta value in <a class="footnote-reference brackets" href="#id5" id="id2">1</a>.</p></li>
+<li><p><strong>nu1</strong> (<em>float</em><em>, </em><em>optinal</em><em> (</em><em>default : 1e-5</em><em>)</em>) – The nu1 value in <a class="footnote-reference brackets" href="#id5" id="id3">1</a>.</p></li>
+<li><p><strong>nu2</strong> (<em>float</em><em>, </em><em>optinal</em><em> (</em><em>default : 1e-4</em><em>)</em>) – The nu2 value in <a class="footnote-reference brackets" href="#id5" id="id4">1</a>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">SDNE</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="go">    ...          hidden_size=[256, 128]) # The hidden size in SDNE.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_embeddings</span><span class="p">()</span> <span class="c1"># Returns the graph embedding results.</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>)</span></dt>
+<dd><p>Wang D, Cui P, Zhu W. Structural deep network embedding[C]
+//Proceedings of the 22nd ACM SIGKDD international conference on
+Knowledge Discovery and Data mining. 2016: 1225-1234.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.functions.graph_embedding.sdne.SDNE.__init__" title="easygraph.functions.graph_embedding.sdne.SDNE.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(graph[, hidden_size, alpha, beta, …])</p></td>
+<td><p>Graph embedding via SDNE.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_embeddings</span></code>()</p></td>
+<td><p>Returns the embedding of each node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_model</span></code>([opt])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">train</span></code>([batch_size, epochs, initial_epoch, …])</p></td>
+<td><p>Train SDNE model.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../structural_hole_spanners.html" class="btn btn-neutral float-right" title="Structural Hole Spanners" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="easygraph.functions.graph_embedding.line.LINE.html" class="btn btn-neutral float-left" title="easygraph.functions.graph_embedding.line.LINE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, lizheng
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>easygraph.functions.graph_embedding.line &mdash; Easy Graph 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Easy Graph</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>easygraph.functions.graph_embedding.line</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for easygraph.functions.graph_embedding.line</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.alias</span> <span class="k">import</span> <span class="n">create_alias_table</span><span class="p">,</span> <span class="n">alias_sample</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.index_of_node</span> <span class="k">import</span> <span class="n">get_relation_of_index_and_node</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="k">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers</span> <span class="k">import</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Lambda</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras.models</span> <span class="k">import</span> <span class="n">Model</span>
+
+
+<span class="k">def</span> <span class="nf">line_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">y_true</span><span class="o">*</span><span class="n">y_pred</span><span class="p">)</span>
+    <span class="c1"># Avoid Nan in the result of &#39;K.log&#39;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mf">1e-8</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+
+
+<span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">numNodes</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;second&#39;</span><span class="p">):</span>
+
+    <span class="n">v_i</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="n">v_j</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+
+    <span class="n">first_emb</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">numNodes</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;first_emb&#39;</span><span class="p">)</span>
+    <span class="n">second_emb</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">numNodes</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;second_emb&#39;</span><span class="p">)</span>
+    <span class="n">context_emb</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">numNodes</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;context_emb&#39;</span><span class="p">)</span>
+
+    <span class="n">v_i_emb</span> <span class="o">=</span> <span class="n">first_emb</span><span class="p">(</span><span class="n">v_i</span><span class="p">)</span>
+    <span class="n">v_j_emb</span> <span class="o">=</span> <span class="n">first_emb</span><span class="p">(</span><span class="n">v_j</span><span class="p">)</span>
+
+    <span class="n">v_i_emb_second</span> <span class="o">=</span> <span class="n">second_emb</span><span class="p">(</span><span class="n">v_i</span><span class="p">)</span>
+    <span class="n">v_j_context_emb</span> <span class="o">=</span> <span class="n">context_emb</span><span class="p">(</span><span class="n">v_j</span><span class="p">)</span>
+
+    <span class="n">first</span> <span class="o">=</span> <span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;first_order&#39;</span><span class="p">)([</span><span class="n">v_i_emb</span><span class="p">,</span> <span class="n">v_j_emb</span><span class="p">])</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;second_order&#39;</span><span class="p">)([</span><span class="n">v_i_emb_second</span><span class="p">,</span> <span class="n">v_j_context_emb</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;first&#39;</span><span class="p">:</span>
+        <span class="n">output_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">first</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;second&#39;</span><span class="p">:</span>
+        <span class="n">output_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">second</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">output_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">]</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">v_i</span><span class="p">,</span> <span class="n">v_j</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output_list</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;first&#39;</span><span class="p">:</span> <span class="n">first_emb</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="p">:</span> <span class="n">second_emb</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="LINE"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_embedding.line.LINE.html#easygraph.functions.graph_embedding.line.LINE">[docs]</a><span class="k">class</span> <span class="nc">LINE</span><span class="p">:</span>
+<div class="viewcode-block" id="LINE.__init__"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_embedding.line.LINE.html#easygraph.functions.graph_embedding.line.LINE.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">embedding_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">negative_ratio</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,):</span>
+        <span class="sd">&quot;&quot;&quot;Graph embedding via SDNE.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        graph : easygraph.Graph or easygraph.DiGraph</span>
+
+<span class="sd">        embedding_size : int, optinal (default : 8)</span>
+<span class="sd">        </span>
+<span class="sd">        negative_ratio : int, optinal (default : 5)</span>
+
+<span class="sd">        order : string, optinal (default : &#39;all&#39;)</span>
+<span class="sd">            &#39;first&#39;,&#39;second&#39;,&#39;all&#39;</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; model = LINE(G,</span>
+<span class="sd">        ...              embedding_size=16,</span>
+<span class="sd">        ...              order=&#39;all&#39;) # The order of model LINE. &#39;first&#39;，&#39;second&#39; or &#39;all&#39;.</span>
+<span class="sd">        &gt;&gt;&gt; model.train(batch_size=1024, epochs=1, verbose=2)</span>
+<span class="sd">        &gt;&gt;&gt; embeddings = model.get_embeddings() # Returns the graph embedding results.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+<span class="sd">        .. [1] Tang J, Qu M, Wang M, et al. </span>
+<span class="sd">           Line: Large-scale information network embedding[C]</span>
+<span class="sd">           //Proceedings of the 24th international conference on World Wide Web. 2015: 1067-1077  </span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">order</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;mode must be fisrt,second,or all&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx2node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node2idx</span> <span class="o">=</span> <span class="n">get_relation_of_index_and_node</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_alias</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rep_size</span> <span class="o">=</span> <span class="n">embedding_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_embeddings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">negative_ratio</span> <span class="o">=</span> <span class="n">negative_ratio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_size</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edge_size</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">samples_per_epoch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_size</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">negative_ratio</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gen_sampling_table</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_model</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">reset_training_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">samples_per_epoch</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">times</span>
+
+    <span class="k">def</span> <span class="nf">reset_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dict</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">node_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rep_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">line_loss</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_it</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node2idx</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_gen_sampling_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># create sampling table for vertex</span>
+        <span class="n">power</span> <span class="o">=</span> <span class="mf">0.75</span>
+        <span class="n">numNodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_size</span>
+        <span class="n">node_degree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">numNodes</span><span class="p">)</span>  <span class="c1"># out degree</span>
+        <span class="n">node2idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node2idx</span>
+
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+            <span class="n">node_degree</span><span class="p">[</span><span class="n">node2idx</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+                        <span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+        <span class="n">total_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">node_degree</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">power</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numNodes</span><span class="p">)])</span>
+        <span class="n">norm_prob</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">node_degree</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">power</span><span class="p">))</span> <span class="o">/</span>
+                     <span class="n">total_sum</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numNodes</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_accept</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_alias</span> <span class="o">=</span> <span class="n">create_alias_table</span><span class="p">(</span><span class="n">norm_prob</span><span class="p">)</span>
+
+        <span class="c1"># create sampling table for edge</span>
+        <span class="n">numEdges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+        <span class="n">total_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">])</span>
+        <span class="n">norm_prob</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span>
+                     <span class="n">numEdges</span> <span class="o">/</span> <span class="n">total_sum</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">edge_accept</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_alias</span> <span class="o">=</span> <span class="n">create_alias_table</span><span class="p">(</span><span class="n">norm_prob</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">batch_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node2idx</span><span class="p">):</span>
+
+        <span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">node2idx</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">node2idx</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">]</span>
+
+        <span class="n">data_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+        <span class="n">shuffle_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data_size</span><span class="p">))</span>
+        <span class="c1"># positive or negative mod</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mod_size</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_ratio</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">start_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">end_index</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">start_index</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">data_size</span><span class="p">)</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mod</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+                <span class="n">h</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_index</span><span class="p">,</span> <span class="n">end_index</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_accept</span><span class="p">[</span><span class="n">shuffle_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]:</span>
+                        <span class="n">shuffle_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_alias</span><span class="p">[</span><span class="n">shuffle_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+                    <span class="n">cur_h</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="n">shuffle_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">cur_t</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="n">shuffle_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">h</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_h</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_t</span><span class="p">)</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">))</span><span class="o">*-</span><span class="mi">1</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)):</span>
+
+                    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alias_sample</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">node_accept</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_alias</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)],</span> <span class="p">[</span><span class="n">sign</span><span class="p">,</span> <span class="n">sign</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)],</span> <span class="p">[</span><span class="n">sign</span><span class="p">])</span>
+            <span class="n">mod</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">mod</span> <span class="o">%=</span> <span class="n">mod_size</span>
+            <span class="k">if</span> <span class="n">mod</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">start_index</span> <span class="o">=</span> <span class="n">end_index</span>
+                <span class="n">end_index</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">start_index</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">data_size</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">start_index</span> <span class="o">&gt;=</span> <span class="n">data_size</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">h</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">shuffle_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data_size</span><span class="p">))</span>
+                <span class="n">start_index</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">end_index</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">start_index</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">data_size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the embedding of each node.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        get_embeddings : dict</span>
+<span class="sd">            The graph embedding result of each node.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_embeddings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;first&#39;</span><span class="p">:</span>
+            <span class="n">embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dict</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;second&#39;</span><span class="p">:</span>
+            <span class="n">embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dict</span><span class="p">[</span><span class="s1">&#39;second&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_dict</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span>
+                                   <span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dict</span><span class="p">[</span><span class="s1">&#39;second&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">idx2node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx2node</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">embedding</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">embeddings</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_embeddings</span><span class="p">[</span><span class="n">idx2node</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">embedding</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embeddings</span>
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">initial_epoch</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Train LINE model.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        batch_size : int, optional (default : 1024)</span>
+
+<span class="sd">        epochs : int, optional (default : 2)</span>
+
+<span class="sd">        inital_epoch : int, optional (default : 0)</span>
+
+<span class="sd">        verbose : int, optional (default : 1)</span>
+
+<span class="sd">        times : int, optional (default : 1)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_training_config</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span>
+        <span class="n">hist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_it</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">initial_epoch</span><span class="o">=</span><span class="n">initial_epoch</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">steps_per_epoch</span><span class="p">,</span>
+                                        <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">hist</span></div>
+        
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, lizheng
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
