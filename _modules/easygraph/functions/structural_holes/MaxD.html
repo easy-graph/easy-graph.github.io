@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>easygraph.functions.structural_holes.MaxD &mdash; Easy Graph 0.1 documentation</title>
+  <title>easygraph.functions.structural_holes.MaxD &mdash; EasyGraph 0.1 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
           
 
           
@@ -83,9 +83,11 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../aboutus.html">About Us</a></li>
 </ul>
 
             
@@ -101,7 +103,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">Easy Graph</a>
+          <a href="../../../../index.html">EasyGraph</a>
         
       </nav>
 
@@ -155,6 +157,7 @@
     <span class="s2">&quot;get_structural_holes_MaxD&quot;</span>
 <span class="p">]</span>
 
+
 <span class="k">def</span> <span class="nf">get_community_kernel</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="p">[</span><span class="nb">frozenset</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    To get community kernels with most degrees.</span>
@@ -178,8 +181,8 @@
     <span class="n">kernels</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">C</span><span class="p">)):</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i</span>
-        <span class="n">cnt</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span>
+        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">q</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">p</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)):</span>
@@ -188,7 +191,7 @@
         <span class="n">q</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
         <span class="n">q</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">),</span>
-                           <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)))):</span> <span class="c1"># latter of min for test.</span>
+                           <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)))):</span>  <span class="c1"># latter of min for test.</span>
             <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">kernels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernels</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -200,13 +203,13 @@
     <span class="k">return</span> <span class="n">kernels</span>
 
 
-<div class="viewcode-block" id="get_structural_holes_MaxD"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD.html#easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD">[docs]</a><span class="k">def</span> <span class="nf">get_structural_holes_MaxD</span> <span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="p">[</span><span class="nb">frozenset</span><span class="p">]):</span>
+<div class="viewcode-block" id="get_structural_holes_MaxD"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD.html#easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD">[docs]</a><span class="k">def</span> <span class="nf">get_structural_holes_MaxD</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="p">[</span><span class="nb">frozenset</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;Structural hole spanners detection via MaxD method.</span>
 
 <span class="sd">    Both **HIS** and **MaxD** are methods in [1]_. </span>
 <span class="sd">    The authors developed these two methods to find the structural holes spanners, </span>
 <span class="sd">    based on theory of information diffusion. </span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 
@@ -228,24 +231,31 @@
 <span class="sd">    ...                           k = 5, # To find top five structural holes spanners.</span>
 <span class="sd">    ...                           C = [frozenset([1,2,3]), frozenset([4,5,6])] # Two communities</span>
 <span class="sd">    ...                           )</span>
-<span class="sd">    </span>
+
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] https://www.aminer.cn/structural-hole</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">G_index</span><span class="p">,</span> <span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_index_node_graph</span><span class="p">(</span>
+        <span class="n">begin_index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">C_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cmnt</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
+        <span class="n">cmnt_index</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">cmnt</span><span class="p">:</span>
+            <span class="n">cmnt_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index_of_node</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+        <span class="n">C_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">frozenset</span><span class="p">(</span><span class="n">cmnt_index</span><span class="p">))</span>
 
-
-    <span class="n">kernels</span> <span class="o">=</span> <span class="n">get_community_kernel</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="n">kernels</span> <span class="o">=</span> <span class="n">get_community_kernel</span><span class="p">(</span><span class="n">G_index</span><span class="p">,</span> <span class="n">C_index</span><span class="p">)</span>
     <span class="n">c</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernels</span><span class="p">)</span>
     <span class="n">save</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G_index</span><span class="p">)):</span>
         <span class="n">save</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="n">build_network</span><span class="p">(</span><span class="n">kernels</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
+    <span class="n">build_network</span><span class="p">(</span><span class="n">kernels</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">G_index</span><span class="p">)</span>
 
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G_index</span><span class="p">)</span>
     <span class="n">sflow</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">save</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -268,7 +278,7 @@
             <span class="k">if</span> <span class="n">save</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
                 <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">sflow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span>
+                <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">sflow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">G_index</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span>
         <span class="n">q</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
         <span class="n">q</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
         <span class="n">candidates</span> <span class="o">=</span> <span class="p">[]</span>
@@ -279,7 +289,12 @@
         <span class="n">ans_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">del</span> <span class="n">sflow</span>
     <span class="k">del</span> <span class="n">q</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ans_list</span><span class="p">)):</span>
+        <span class="n">ans_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_of_index</span><span class="p">[</span><span class="n">ans_list</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
     <span class="k">return</span> <span class="n">ans_list</span></div>
+
 
 <span class="k">def</span> <span class="nf">pick_candidates</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">kernels</span><span class="p">,</span> <span class="n">save</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -318,6 +333,7 @@
         <span class="n">save</span><span class="p">[</span><span class="n">best_key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">old_flow</span><span class="o">+</span><span class="n">mcut</span><span class="p">,</span> <span class="n">best_key</span><span class="p">)</span>
 
+
 <span class="n">head</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">point</span> <span class="o">=</span> <span class="p">[]</span>
@@ -335,6 +351,7 @@
 <span class="n">nedge</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">prev_flow</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">oo</span> <span class="o">=</span> <span class="mi">1000000000</span>
+
 
 <span class="k">def</span> <span class="nf">dinic_bfs</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -356,12 +373,13 @@
         <span class="n">k_</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[</span><span class="n">cl</span><span class="p">]</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">head</span><span class="p">[</span><span class="n">k_</span><span class="p">]</span>
         <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">capa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">dsave</span><span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">==</span><span class="kc">True</span> <span class="ow">and</span> <span class="n">dist</span><span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">capa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">dsave</span><span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">dist</span><span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">dist</span><span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">k_</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
                 <span class="n">Q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
             <span class="n">i</span> <span class="o">=</span> <span class="n">nex</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">cl</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">dist</span><span class="p">[</span><span class="n">dest</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+
 
 <span class="k">def</span> <span class="nf">dinic_dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -383,17 +401,18 @@
     <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">capa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">==</span><span class="n">dist</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">capa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="n">dist</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span>
             <span class="n">tmp</span> <span class="o">=</span> <span class="n">dinic_dfs</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">capa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-            <span class="k">if</span> <span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">tmp</span>
-                <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="o">^</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">tmp</span>
+                <span class="n">flow</span><span class="p">[</span><span class="n">i</span> <span class="o">^</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">tmp</span>
                 <span class="n">res</span> <span class="o">+=</span> <span class="n">tmp</span>
                 <span class="n">exp</span> <span class="o">-=</span> <span class="n">tmp</span>
                 <span class="k">if</span> <span class="n">exp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">break</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">nex</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">res</span>
+
 
 <span class="k">def</span> <span class="nf">dinic_flow</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -412,7 +431,8 @@
         <span class="n">result</span> <span class="o">+=</span> <span class="n">dinic_dfs</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">oo</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 
-<span class="k">def</span> <span class="nf">max_flow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">kernels</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">prev_flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+<span class="k">def</span> <span class="nf">max_flow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kernels</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">prev_flow</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Calculate max_flow.</span>
 <span class="sd">    Parameters</span>
@@ -431,7 +451,6 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
         <span class="n">dsave</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-
     <span class="k">if</span> <span class="n">prev_flow</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nedge</span><span class="p">):</span>
             <span class="n">flow</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prev_flow</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -445,6 +464,7 @@
             <span class="n">dsave</span><span class="p">[</span><span class="n">k_</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">dinic_flow</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">ret</span>
+
 
 <span class="k">def</span> <span class="nf">init_MaxD</span><span class="p">(</span><span class="n">_node</span><span class="p">,</span> <span class="n">_src</span><span class="p">,</span> <span class="n">_dest</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -475,6 +495,7 @@
 
     <span class="k">return</span>
 
+
 <span class="k">def</span> <span class="nf">addedge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Add an edge(u,v) with capacity c1 and inverse capacity c2.</span>
@@ -503,8 +524,9 @@
     <span class="n">flow</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">nex</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">head</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
     <span class="n">head</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">nedge</span>
-    <span class="n">nedge</span> <span class="o">+=</span><span class="mi">1</span>
+    <span class="n">nedge</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span>
+
 
 <span class="k">def</span> <span class="nf">build_network</span><span class="p">(</span><span class="n">kernels</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>

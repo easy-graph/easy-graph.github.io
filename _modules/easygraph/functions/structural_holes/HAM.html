@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>easygraph.functions.structural_holes.HAM &mdash; Easy Graph 0.1 documentation</title>
+  <title>easygraph.functions.structural_holes.HAM &mdash; EasyGraph 0.1 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
           
 
           
@@ -83,9 +83,11 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../aboutus.html">About Us</a></li>
 </ul>
 
             
@@ -101,7 +103,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">Easy Graph</a>
+          <a href="../../../../index.html">EasyGraph</a>
         
       </nav>
 
@@ -150,18 +152,20 @@
            <div itemprop="articleBody">
             
   <h1>Source code for easygraph.functions.structural_holes.HAM</h1><div class="highlight"><pre>
-<span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+<span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stat</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;get_structural_holes_HAM&quot;</span>
 <span class="p">]</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sps</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">spl</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span>
-<span class="kn">from</span> <span class="nn">scipy.cluster.vq</span> <span class="k">import</span> <span class="n">kmeans</span><span class="p">,</span> <span class="n">vq</span><span class="p">,</span> <span class="n">kmeans2</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
-<span class="n">eps</span><span class="o">=</span><span class="mf">2.220446049250313e-16</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stat</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">scipy.cluster.vq</span> <span class="kn">import</span> <span class="n">kmeans</span><span class="p">,</span> <span class="n">vq</span><span class="p">,</span> <span class="n">kmeans2</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">2.220446049250313e-16</span>
+
 
 <span class="k">def</span> <span class="nf">sym</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -175,6 +179,7 @@
 <span class="sd">    F : a random orthogonal matrix.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">w</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">spl</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">spl</span><span class="o">.</span><span class="n">sqrtm</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">))))</span>
+
 
 <span class="k">def</span> <span class="nf">avg_entropy</span><span class="p">(</span><span class="n">predicted_labels</span><span class="p">,</span> <span class="n">actual_labels</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -192,22 +197,23 @@
     <span class="n">actual_labels_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">predicted_labels_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">actual_labels</span><span class="p">):</span>
-        <span class="n">actual_labels_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">actual_labels</span><span class="o">==</span><span class="n">label</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">actual_labels_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">actual_labels</span> <span class="o">==</span> <span class="n">label</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">predicted_labels</span><span class="p">):</span>
-        <span class="n">predicted_labels_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">predicted_labels</span><span class="o">==</span><span class="n">label</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">predicted_labels_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">predicted_labels</span> <span class="o">==</span> <span class="n">label</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">avg_value</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">predicted_labels</span><span class="p">)</span>
     <span class="c1"># store entropy for each community</span>
     <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">predicted_labels_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">N_i</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
         <span class="n">p_i</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">label2</span><span class="p">,</span> <span class="n">items2</span>  <span class="ow">in</span> <span class="n">actual_labels_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">label2</span><span class="p">,</span> <span class="n">items2</span> <span class="ow">in</span> <span class="n">actual_labels_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">common</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">items2</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
-            <span class="n">p_ij</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">common</span><span class="p">))</span><span class="o">/</span> <span class="n">N_i</span>
+            <span class="n">p_ij</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">common</span><span class="p">))</span> <span class="o">/</span> <span class="n">N_i</span>
             <span class="n">p_i</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_ij</span><span class="p">)</span>
         <span class="n">entropy_i</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">entropy</span><span class="p">(</span><span class="n">p_i</span><span class="p">)</span>
         <span class="n">avg_value</span> <span class="o">+=</span> <span class="n">entropy_i</span> <span class="o">*</span> <span class="p">(</span><span class="n">N_i</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">avg_value</span>
+
 
 <span class="k">def</span> <span class="nf">load_adj_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -225,13 +231,15 @@
     <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
         <span class="n">listE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">listE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">adj_tuples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">listE</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">adj_tuples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">listE</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">adj_tuples</span><span class="p">))</span>
     <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">))</span>
     <span class="n">max_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">adj_tuples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">adj_tuples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">((</span><span class="n">vals</span><span class="p">,</span> <span class="p">(</span><span class="n">adj_tuples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">adj_tuples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">max_id</span><span class="p">,</span> <span class="n">max_id</span><span class="p">))</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="p">(</span><span class="n">adj_tuples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">adj_tuples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">max_id</span><span class="p">,</span> <span class="n">max_id</span><span class="p">))</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span>
     <span class="k">return</span> <span class="n">sps</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
 
 <span class="k">def</span> <span class="nf">majority_voting</span><span class="p">(</span><span class="n">votes</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -247,16 +255,17 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">C</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">votes</span><span class="p">)</span>
     <span class="n">pairs</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pairs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-<span class="k">def</span> <span class="nf">label_by_neighbors</span><span class="p">(</span><span class="n">AdjMat</span><span class="p">,</span><span class="n">labels</span><span class="p">):</span>
+
+<span class="k">def</span> <span class="nf">label_by_neighbors</span><span class="p">(</span><span class="n">AdjMat</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    classifify SHS using majority voting.</span>
 
@@ -270,21 +279,21 @@
 <span class="sd">    labels : a Ndarray of labeled communities of the nodes.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">assert</span> <span class="p">(</span><span class="n">AdjMat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)),</span> <span class="s2">&quot;dimensions are not equal&quot;</span>
-    <span class="n">unlabeled_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">unlabeled_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">num_unlabeled</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">unlabeled_idx</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">num_unlabeled</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">unlabeled_idx</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">next_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">idxs</span><span class="p">:</span>
-            <span class="n">neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">AdjMat</span><span class="p">[</span><span class="n">idx</span><span class="p">,:]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">AdjMat</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">next_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">majority_voting</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-            <span class="k">else</span> <span class="p">:</span>
+            <span class="k">else</span><span class="p">:</span>
                 <span class="n">neighbor_labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">neighbors</span><span class="p">]</span>
                 <span class="n">next_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">majority_voting</span><span class="p">(</span><span class="n">neighbor_labels</span><span class="p">)</span>
         <span class="n">labels</span><span class="p">[</span><span class="n">idxs</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_labels</span><span class="p">[</span><span class="n">idxs</span><span class="p">]</span>
-        <span class="n">unlabeled_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">unlabeled_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">num_unlabeled</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">unlabeled_idx</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">labels</span>
 
@@ -310,9 +319,16 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    get_structural_holes_HAM : NumPy Ndarray</span>
-<span class="sd">        A Ndarray of top k nodes as structural hole spanners, and a Ndarray of labeled communities of the nodes.</span>
-<span class="sd">    </span>
+<span class="sd">    top_k_nodes : list</span>
+<span class="sd">        The top-k structural hole spanners. </span>
+
+<span class="sd">    SH_score : dict</span>
+<span class="sd">        The structural hole spanners score for each node, given by HAM.</span>
+
+<span class="sd">    cmnt_labels : dict</span>
+<span class="sd">        The communities label of each node.</span>
+
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
@@ -325,9 +341,13 @@
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] https://dl.acm.org/doi/10.1145/2939672.2939807</span>
-<span class="sd">    </span>
+
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">A_mat</span> <span class="o">=</span> <span class="n">load_adj_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="n">G_index</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">node_of_index</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_index_node_graph</span><span class="p">(</span>
+        <span class="n">begin_index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">A_mat</span> <span class="o">=</span> <span class="n">load_adj_matrix</span><span class="p">(</span><span class="n">G_index</span><span class="p">)</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">A_mat</span>  <span class="c1"># adjacency matrix</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># the number of nodes</span>
 
@@ -337,9 +357,12 @@
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seeeed</span><span class="p">)</span>
     <span class="n">topk</span> <span class="o">=</span> <span class="n">k</span>
 
-    <span class="n">invD</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">diags</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">+</span><span class="n">eps</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Inv of degree matrix D^-1</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="p">(</span><span class="n">sps</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">invD</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">))</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>  <span class="c1"># Laplacian matrix L = I - D^-1 * A</span>
-    <span class="n">F</span> <span class="o">=</span> <span class="n">sym</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">)))</span> <span class="c1"># Initialize a random orthogonal matrix F</span>
+    <span class="c1"># Inv of degree matrix D^-1</span>
+    <span class="n">invD</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">diags</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">+</span><span class="n">eps</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># Laplacian matrix L = I - D^-1 * A</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="p">(</span><span class="n">sps</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">invD</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">))</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+    <span class="c1"># Initialize a random orthogonal matrix F</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">sym</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">)))</span>
 
     <span class="c1"># Algorithm 1</span>
     <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
@@ -360,8 +383,6 @@
         <span class="n">SH</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
     <span class="n">SHrank</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">SH</span><span class="p">)</span>  <span class="c1"># index of SH</span>
 
-
-
     <span class="c1"># METRICS BEGIN</span>
 
     <span class="n">to_keep_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">SHrank</span><span class="p">[</span><span class="n">topk</span><span class="p">:])</span>
@@ -375,24 +396,45 @@
     <span class="n">HAM_labels</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">vq</span><span class="p">(</span><span class="n">cluster_matrix</span><span class="p">[</span><span class="n">to_keep_index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">labelbook</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AMI&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">HAM_labels</span><span class="p">,</span> <span class="n">HAM_labels_keep</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">HAM_labels</span><span class="p">,</span>
+                                                           <span class="n">HAM_labels_keep</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
 
     <span class="c1"># classifify SHS using majority voting</span>
     <span class="n">predLabels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ground_truth_labels</span><span class="p">))</span>
     <span class="n">predLabels</span><span class="p">[</span><span class="n">to_keep_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">HAM_labels</span> <span class="o">+</span> <span class="mi">1</span>
 
     <span class="n">HAM_predLabels</span> <span class="o">=</span> <span class="n">label_by_neighbors</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">predLabels</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM_all: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">HAM_predLabels</span><span class="p">,</span> <span class="n">allLabels</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM_all: &#39;</span> <span class="o">+</span>
+          <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">HAM_predLabels</span><span class="p">,</span> <span class="n">allLabels</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NMI&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">HAM_labels</span><span class="p">,</span> <span class="n">HAM_labels_keep</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM_all: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">HAM_predLabels</span><span class="p">,</span> <span class="n">allLabels</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">HAM_labels</span><span class="p">,</span>
+                                                             <span class="n">HAM_labels_keep</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM_all: &#39;</span> <span class="o">+</span>
+          <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">HAM_predLabels</span><span class="p">,</span> <span class="n">allLabels</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entropy&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">avg_entropy</span><span class="p">(</span><span class="n">HAM_labels</span><span class="p">,</span> <span class="n">HAM_labels_keep</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM_all: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">avg_entropy</span><span class="p">(</span><span class="n">HAM_predLabels</span><span class="p">,</span> <span class="n">allLabels</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HAM_all: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">avg_entropy</span><span class="p">(</span><span class="n">HAM_predLabels</span><span class="p">,</span> <span class="n">allLabels</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
 
     <span class="c1"># METRICS END</span>
+
+    <span class="n">SH_score</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">SHrank</span><span class="p">):</span>
+        <span class="n">SH_score</span><span class="p">[</span><span class="n">node_of_index</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rank</span><span class="p">)</span>
+
+    <span class="n">cmnt_labels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">HAM_predLabels</span><span class="p">):</span>
+        <span class="n">cmnt_labels</span><span class="p">[</span><span class="n">node_of_index</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="c1"># top-k SHS</span>
+    <span class="n">top_k_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">SHrank</span><span class="p">,</span> <span class="o">-</span><span class="n">k</span><span class="p">)[</span><span class="o">-</span><span class="n">k</span><span class="p">:]</span>
+    <span class="n">top_k_ind</span> <span class="o">=</span> <span class="n">top_k_ind</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">SHrank</span><span class="p">[</span><span class="n">top_k_ind</span><span class="p">])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">k</span><span class="p">]]</span>
+    <span class="n">top_k_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">top_k_ind</span><span class="p">:</span>
+        <span class="n">top_k_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node_of_index</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">top_k_nodes</span><span class="p">,</span> <span class="n">SH_score</span><span class="p">,</span> <span class="n">cmnt_labels</span></div>
 </pre></div>
 
            </div>

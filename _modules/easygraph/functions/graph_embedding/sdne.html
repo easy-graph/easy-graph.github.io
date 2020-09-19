@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>easygraph.functions.graph_embedding.sdne &mdash; Easy Graph 0.1 documentation</title>
+  <title>easygraph.functions.graph_embedding.sdne &mdash; EasyGraph 0.1 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
           
 
           
@@ -83,9 +83,11 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../aboutus.html">About Us</a></li>
 </ul>
 
             
@@ -101,7 +103,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">Easy Graph</a>
+          <a href="../../../../index.html">EasyGraph</a>
         
       </nav>
 
@@ -151,18 +153,18 @@
             
   <h1>Source code for easygraph.functions.graph_embedding.sdne</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils.alias</span> <span class="k">import</span> <span class="n">create_alias_table</span><span class="p">,</span> <span class="n">alias_sample</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.alias</span> <span class="kn">import</span> <span class="n">create_alias_table</span><span class="p">,</span> <span class="n">alias_sample</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="k">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.callbacks</span> <span class="k">import</span> <span class="n">History</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers</span> <span class="k">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.models</span> <span class="k">import</span> <span class="n">Model</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.regularizers</span> <span class="k">import</span> <span class="n">l1_l2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras.callbacks</span> <span class="kn">import</span> <span class="n">History</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.keras.regularizers</span> <span class="kn">import</span> <span class="n">l1_l2</span>
 
 <span class="k">def</span> <span class="nf">get_relation_of_index_and_node</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
     <span class="n">node2idx</span> <span class="o">=</span> <span class="p">{}</span>
@@ -219,7 +221,7 @@
 
 
 <div class="viewcode-block" id="SDNE"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_embedding.sdne.SDNE.html#easygraph.functions.graph_embedding.sdne.SDNE">[docs]</a><span class="k">class</span> <span class="nc">SDNE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<div class="viewcode-block" id="SDNE.__init__"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_embedding.sdne.SDNE.html#easygraph.functions.graph_embedding.sdne.SDNE.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="n">nu1</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">nu2</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="p">):</span>
+<div class="viewcode-block" id="SDNE.__init__"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_embedding.sdne.SDNE.html#easygraph.functions.graph_embedding.sdne.SDNE.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="n">nu1</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">nu2</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Graph embedding via SDNE.</span>
 
 <span class="sd">        Parameters</span>

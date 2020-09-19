@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial &mdash; Easy Graph 0.1 documentation</title>
+  <title>Tutorial &mdash; EasyGraph 0.1 documentation</title>
   
 
   
@@ -52,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
           
 
           
@@ -86,8 +86,14 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-properties-and-operation-of-graph">Basic Properties and Operation of Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structural-hole-spanners-detection">Structural Hole Spanners Detection</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aboutus.html">About Us</a></li>
 </ul>
 
             
@@ -103,7 +109,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Easy Graph</a>
+          <a href="index.html">EasyGraph</a>
         
       </nav>
 
@@ -155,6 +161,224 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This part offers two brief tutorials of how to do graph analysis with <strong>EasyGraph</strong>.</p>
+<div class="section" id="basic-properties-and-operation-of-graph">
+<h2>Basic Properties and Operation of Graph<a class="headerlink" href="#basic-properties-and-operation-of-graph" title="Permalink to this headline">¶</a></h2>
+<p>Import <strong>EasyGraph</strong>, and start with an undirected graph <cite>G</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Add edge (1,2) and to the graph</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="c1">#Add a single edge</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span>
+<span class="go">[(1, 2, {})]</span>
+</pre></div>
+</div>
+<p>Add a few edges to the graph</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span><span class="c1">#Add edges</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span>
+<span class="go">[(1, 2, {}), (1, 3, {}), (2, 3, {}), (3, 4, {}), (4, 5, {})]</span>
+</pre></div>
+</div>
+<p>Add node (with attributes)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="n">node_attr</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">... </span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span>
+<span class="go">{1: {}, 2: {}, 3: {}, 4: {}, 5: {},</span>
+<span class="go">&#39;hello world&#39;: {},</span>
+<span class="go">&#39;Jack&#39;: {&#39;node_attr&#39;:</span>
+<span class="go">            {&#39;age&#39;: 10,</span>
+<span class="go">            &#39;gender&#39;: &#39;M&#39;}</span>
+<span class="go">        }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Remove nodes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_nodes</span><span class="p">([</span><span class="s1">&#39;hello world&#39;</span><span class="p">,</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span><span class="s1">&#39;Lily&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">])</span><span class="c1">#remove edges</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span>
+<span class="go">{1: {}, 2: {}, 3: {}, 4: {}, 5: {}}</span>
+</pre></div>
+</div>
+<p>Remove edges</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span>
+<span class="go">[(1, 2, {}), (1, 3, {}), (2, 3, {}), (3, 4, {})]</span>
+</pre></div>
+</div>
+<p>Advanced Python properties</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">))</span><span class="c1">#__len__(self)</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span><span class="c1">#__iter__(self)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="c1"># return list(self._adj[node].keys()) __contains__ __getitem__</span>
+<span class="go">{2: {}, 3: {}}</span>
+</pre></div>
+</div>
+<p>Neighbors of node <cite>2</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">1</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>Add weighted edges</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span> <span class="n">edges_attr</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">8</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">12</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span><span class="c1">#add weighted edges</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span>
+<span class="go">[(1, 2, {&#39;weight&#39;: 20}), (1, 3, {&#39;weight&#39;: 15}), (2, 3, {&#39;weight&#39;: 10}), (3, 4, {&#39;weight&#39;: 8}), (4, 5, {&#39;weight&#39;: 12})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span>
+<span class="go">{1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">adj</span>
+<span class="go">{1: {2: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 15}}, 2: {1: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 10}}, 3: {2: {&#39;weight&#39;: 10}, 1: {&#39;weight&#39;: 15}, 4: {&#39;weight&#39;: 8}}, 4: {3: {&#39;weight&#39;: 8}, 5: {&#39;weight&#39;: 12}}, 5: {4: {&#39;weight&#39;: 12}}, 6: {}}</span>
+</pre></div>
+</div>
+<p>Degree and weighted Degree</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+<span class="go">{1: 35, 2: 30, 3: 33, 4: 20, 5: 12, 6: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+<span class="go">{1: 35, 2: 30, 3: 33, 4: 20, 5: 12, 6: 0}</span>
+</pre></div>
+</div>
+<p>Transform each node’s value to its index</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G_index_graph</span><span class="p">,</span> <span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_index_node_graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G_index_graph</span><span class="o">.</span><span class="n">adj</span>
+<span class="go">{0: {1: {&#39;weight&#39;: 20}, 2: {&#39;weight&#39;: 15}}, 1: {0: {&#39;weight&#39;: 20}, 2: {&#39;weight&#39;: 10}}, 2: {0: {&#39;weight&#39;: 15}, 1: {&#39;weight&#39;: 10}, 3: {&#39;weight&#39;: 8}}, 3: {2: {&#39;weight&#39;: 8}, 4: {&#39;weight&#39;: 12}}, 4: {3: {&#39;weight&#39;: 12}}, 5: {}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">index_of_node</span>
+<span class="go">{1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node_of_index</span>
+<span class="go">{0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6}</span>
+</pre></div>
+</div>
+<p>Deep copy of a given graph</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G1</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G1</span><span class="o">.</span><span class="n">adj</span>
+<span class="go">{1: {2: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 15}}, 2: {1: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 10}}, 3: {1: {&#39;weight&#39;: 15}, 2: {&#39;weight&#39;: 10}, 4: {&#39;weight&#39;: 8}}, 4: {3: {&#39;weight&#39;: 8}, 5: {&#39;weight&#39;: 12}}, 5: {4: {&#39;weight&#39;: 12}}, 6: {}}</span>
+</pre></div>
+</div>
+<p>Subgraph of given nodes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G_sub</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes_subgraph</span><span class="p">(</span><span class="n">from_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G_sub</span><span class="o">.</span><span class="n">adj</span>
+<span class="go">{1: {2: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 15}}, 2: {1: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 10}}, 3: {1: {&#39;weight&#39;: 15}, 2: {&#39;weight&#39;: 10}}}</span>
+</pre></div>
+</div>
+<p>Egonetwork graph of given node</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ego_network</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">ego_subgraph</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ego_network</span><span class="o">.</span><span class="n">adj</span>
+<span class="go">{2: {1: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 10}}, 1: {2: {&#39;weight&#39;: 20}, 3: {&#39;weight&#39;: 15}}, 3: {2: {&#39;weight&#39;: 10}, 1: {&#39;weight&#39;: 15}}}</span>
+</pre></div>
+</div>
+<p>Connected components</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">[{6}, {1, 2, 3, 4, 5}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">connected_component_of_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">{1, 2, 3, 4, 5}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="structural-hole-spanners-detection">
+<h2>Structural Hole Spanners Detection<a class="headerlink" href="#structural-hole-spanners-detection" title="Permalink to this headline">¶</a></h2>
+<p>Use MaxD for structural hole spanners detection</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">M</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">get_structural_holes_MaxD</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>                          <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="c1"># To find top five structural holes spanners.</span>
+<span class="gp">... </span>                          <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="nb">frozenset</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">frozenset</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])]</span> <span class="c1"># Two communities</span>
+<span class="gp">... </span>                         <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">M</span>
+<span class="go">[3, 1, 2, 4, 5]</span>
+</pre></div>
+</div>
+<p>Use HAM for structural hole spanners detection</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top_k_nodes</span><span class="p">,</span> <span class="n">SH_score</span><span class="p">,</span> <span class="n">cmnt_labels</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">get_structural_holes_HAM</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="n">ground_truth_labels</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="gp">... </span>                    <span class="p">)</span>
+<span class="go">AMI</span>
+<span class="go">HAM: 1.0</span>
+<span class="go">HAM_all: 0.25126693574443504</span>
+<span class="go">NMI</span>
+<span class="go">HAM: 1.0</span>
+<span class="go">HAM_all: 0.43253806776631243</span>
+<span class="go">Entropy</span>
+<span class="go">HAM: 0.0</span>
+<span class="go">HAM_all: 0.38190850097688767</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top_k_nodes</span>
+<span class="go">[4, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SH_score</span>
+<span class="go">{1: 2, 2: 1, 3: 3, 4: 4, 5: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmnt_labels</span>
+<span class="go">{1: 2, 2: 2, 3: 2, 4: 1, 5: 1}</span>
+</pre></div>
+</div>
+<p>Use Common Greedy for structural hole spanners detection</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">common_greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">c</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">weight</span> <span class="o">=</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span>
+<span class="go">[3, 5, 2]</span>
+</pre></div>
+</div>
+<p>Get a sample graph from Karate Club dataset</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_graph_karateclub</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Calculate Burt’s metrics for structural hole spanners</p>
+<p>Betweenness of node <cite>3</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">ego_betweenness</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">6.5</span>
+</pre></div>
+</div>
+<p>Effective size of all nodes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">effective_size</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">{1: 11.75, 2: 4.333333333333333, 3: 5.8, 4: 0.666666666666667, 5: -0.3333333333333335, 6: 0.5, 7: 0.5, 8: -1.0, 9: 1.0, 10: 0.0, 11: -0.3333333333333335, 12: -1.0, 13: -1.0, 14: 0.5999999999999996, 15: -1.0, 16: -1.0, 17: -1.0, 18: -1.0, 19: -1.0, 20: 0.3333333333333335, 21: -1.0, 22: -1.0, 23: -1.0, 24: 1.4, 25: 0.3333333333333335, 26: 0.3333333333333335, 27: -1.0, 28: 1.5, 29: 0.3333333333333335, 30: 0.0, 31: 0.5, 32: 3.0, 33: 7.833333333333333, 34: 13.235294117647058}</span>
+</pre></div>
+</div>
+<p>Efficiency of all nodes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">efficiency</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">{1: 0.734375, 2: 0.48148148148148145, 3: 0.58, 4: 0.11111111111111116, 5: -0.11111111111111116, 6: 0.125, 7: 0.125, 8: -0.25, 9: 0.2, 10: 0.0, 11: -0.11111111111111116, 12: -1.0, 13: -0.5, 14: 0.11999999999999993, 15: -0.5, 16: -0.5, 17: -0.5, 18: -0.5, 19: -0.5, 20: 0.11111111111111116, 21: -0.5, 22: -0.5, 23: -0.5, 24: 0.27999999999999997, 25: 0.11111111111111116, 26: 0.11111111111111116, 27: -0.5, 28: 0.375, 29: 0.11111111111111116, 30: 0.0, 31: 0.125, 32: 0.5, 33: 0.6527777777777778, 34: 0.7785467128027681}</span>
+</pre></div>
+</div>
+<p>Constraint of all nodes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">constraint</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">{1: 0.15542329764660495, 2: 0.27953510802469134, 3: 0.18517663966049389, 4: 0.39665964720507535, 5: 0.5294174382716048, 6: 0.4774848090277778, 7: 0.4774848090277778, 8: 0.4427115885416667, 9: 0.3036007136678201, 10: 0.5, 11: 0.5294174382716048, 12: 1.0, 13: 0.6225043402777779, 14: 0.32333541666666676, 15: 0.5736795943867743, 16: 0.5736795943867743, 17: 0.78125, 18: 0.590868537808642, 19: 0.5736795943867743, 20: 0.37371935013717417, 21: 0.5736795943867743, 22: 0.590868537808642, 23: 0.5736795943867743, 24: 0.30582372164552096, 25: 0.4598765432098765, 26: 0.4598765432098765, 27: 0.6709018166089966, 28: 0.2850692041522491, 29: 0.3869131530607885, 30: 0.44940900134563627, 31: 0.3460064638600538, 32: 0.24457540369088812, 33: 0.2492233622751933, 34: 0.15641868512110732}</span>
+</pre></div>
+</div>
+<p>Hierarchy of all nodes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">hierarchy</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">{1: 0.08754463683694338, 2: 0.1544986992144599, 3: 0.04535921163684897, 4: 0.061067624090107915, 5: 0.07134469342227538, 6: 0.035305086439308436, 7: 0.03530508643930843, 8: 0.0011300905133206085, 9: 0.012305615918292673, 10: 0.0, 11: 0.07134469342227538, 13: 0.006282226820057121, 14: 0.01352163842686084, 15: 0.00037766424272729984, 16: 0.00037766424272729984, 17: 0.0, 18: 0.0014421896477064891, 19: 0.00037766424272729984, 20: 0.0033488184456886283, 21: 0.00037766424272729984, 22: 0.0014421896477064891, 23: 0.00037766424272729984, 24: 0.036897065903971515, 25: 0.024311482691998648, 26: 0.024311482691998648, 27: 0.01960343310353982, 28: 0.0086202479405721, 29: 0.007513545360870802, 30: 0.06689992156538088, 31: 0.01286931837997609, 32: 0.020491542893317758, 33: 0.3259402254099858, 34: 0.2416086531756689}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 

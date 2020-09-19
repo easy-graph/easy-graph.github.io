@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>easygraph.functions.path.path &mdash; Easy Graph 0.1 documentation</title>
+  <title>easygraph.functions.path.path &mdash; EasyGraph 0.1 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
           
 
           
@@ -83,9 +83,11 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../aboutus.html">About Us</a></li>
 </ul>
 
             
@@ -101,7 +103,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">Easy Graph</a>
+          <a href="../../../../index.html">EasyGraph</a>
         
       </nav>
 
@@ -175,7 +177,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    Returns the length of paths from node 1 to remaining nodes</span>
 
-<span class="sd">    &gt;&gt;&gt; eg.Dijkstra(G,node=1)</span>
+<span class="sd">    &gt;&gt;&gt; Dijkstra(G,node=1)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">adj</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -184,7 +186,7 @@
     <span class="n">temp_key</span> <span class="o">=</span> <span class="n">adj</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">temp_key</span><span class="p">:</span>
-            <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+            <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span> 
         <span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
@@ -192,14 +194,15 @@
     <span class="n">visited</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span> 
         <span class="nb">min</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span> 
+        <span class="n">k</span> <span class="o">=</span> <span class="n">node</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">and</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nb">min</span><span class="p">:</span>
                 <span class="n">k</span> <span class="o">=</span> <span class="n">j</span>
                 <span class="nb">min</span> <span class="o">=</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
         <span class="n">visited</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">adj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">min</span> <span class="o">+</span> <span class="n">adj</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-                <span class="n">result_dict</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span> <span class="o">+</span> <span class="n">adj</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">adj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">min</span> <span class="o">+</span> <span class="n">adj</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">result_dict</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span> <span class="o">+</span> <span class="n">adj</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result_dict</span></div>
 
 
@@ -220,7 +223,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    Returns the length of paths from all nodes to remaining nodes</span>
 
-<span class="sd">    &gt;&gt;&gt; eg.Floyd(G)</span>
+<span class="sd">    &gt;&gt;&gt; Floyd(G)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">adj</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -231,7 +234,7 @@
         <span class="n">temp_key</span> <span class="o">=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">temp_key</span><span class="p">:</span>
-                <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+                <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span> 
             <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">:</span>
@@ -261,7 +264,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    Returns the edges that make up the minimum spanning tree</span>
 
-<span class="sd">    &gt;&gt;&gt; eg.Prim(G)</span>
+<span class="sd">    &gt;&gt;&gt; Prim(G)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">adj</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -281,10 +284,10 @@
         <span class="n">min_weight</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">selected</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">candidate</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">min_weight</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">min_weight</span><span class="p">:</span>
                     <span class="n">start</span><span class="o">=</span><span class="n">i</span>
                     <span class="n">end</span><span class="o">=</span><span class="n">j</span>
-                    <span class="n">min_weight</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+                    <span class="n">min_weight</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">start</span><span class="o">!=</span><span class="kc">None</span> <span class="ow">and</span> <span class="n">end</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
             <span class="n">result_dict</span><span class="p">[</span><span class="n">start</span><span class="p">][</span><span class="n">end</span><span class="p">]</span><span class="o">=</span><span class="n">min_weight</span>
             <span class="n">selected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
@@ -311,7 +314,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    Returns the edges that make up the minimum spanning tree</span>
 
-<span class="sd">    &gt;&gt;&gt; eg.Kruskal(G)</span>
+<span class="sd">    &gt;&gt;&gt; Kruskal(G)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">adj</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -321,7 +324,7 @@
         <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="n">weight</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+            <span class="n">weight</span><span class="o">=</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">weight</span><span class="p">])</span>
     <span class="n">edge_list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
     <span class="n">group</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">]</span>

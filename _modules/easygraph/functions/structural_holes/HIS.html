@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>easygraph.functions.structural_holes.HIS &mdash; Easy Graph 0.1 documentation</title>
+  <title>easygraph.functions.structural_holes.HIS &mdash; EasyGraph 0.1 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
           
 
           
@@ -83,9 +83,11 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../aboutus.html">About Us</a></li>
 </ul>
 
             
@@ -101,7 +103,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">Easy Graph</a>
+          <a href="../../../../index.html">EasyGraph</a>
         
       </nav>
 
@@ -150,7 +152,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for easygraph.functions.structural_holes.HIS</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">combinations</span>
+<span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -158,7 +160,7 @@
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="get_structural_holes_HIS"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.HIS.get_structural_holes_HIS.html#easygraph.functions.structural_holes.HIS.get_structural_holes_HIS">[docs]</a><span class="k">def</span> <span class="nf">get_structural_holes_HIS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="p">[</span><span class="nb">frozenset</span><span class="p">],</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="get_structural_holes_HIS"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.HIS.get_structural_holes_HIS.html#easygraph.functions.structural_holes.HIS.get_structural_holes_HIS">[docs]</a><span class="k">def</span> <span class="nf">get_structural_holes_HIS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="p">[</span><span class="nb">frozenset</span><span class="p">],</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Structural hole spanners detection via HIS method.</span>
 
 <span class="sd">    Both **HIS** and **MaxD** are methods in [1]_. </span>
@@ -203,7 +205,7 @@
 <span class="sd">    ...                          epsilon = 0.01,</span>
 <span class="sd">    ...                          weight = &#39;weight&#39;</span>
 <span class="sd">    ...                          )</span>
-<span class="sd">    </span>
+
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -297,7 +299,6 @@
             <span class="n">deltas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="nb">abs</span><span class="p">(</span><span class="n">I</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">cmnt_index</span><span class="p">]</span> <span class="o">-</span> <span class="n">I_new</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">cmnt_index</span><span class="p">]))</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">deltas</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span>
-    
 </pre></div>
 
            </div>

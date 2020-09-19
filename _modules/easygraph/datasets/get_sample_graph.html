@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>easygraph.datasets.get_sample_graph &mdash; Easy Graph 0.1 documentation</title>
+  <title>easygraph.datasets.get_sample_graph &mdash; EasyGraph 0.1 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Easy Graph
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
           
 
           
@@ -83,9 +83,11 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../aboutus.html">About Us</a></li>
 </ul>
 
             
@@ -101,7 +103,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">Easy Graph</a>
+          <a href="../../../index.html">EasyGraph</a>
         
       </nav>
 
@@ -151,6 +153,7 @@
             
   <h1>Source code for easygraph.datasets.get_sample_graph</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">progressbar</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;get_graph_karateclub&#39;</span><span class="p">,</span>
@@ -168,7 +171,7 @@
 <span class="sd">    get_graph_karateclub : easygraph.Graph</span>
 <span class="sd">        The undirected graph instance of karate club from dataset:</span>
 <span class="sd">        http://vlado.fmf.uni-lj.si/pub/networks/data/Ucinet/UciData.htm</span>
-<span class="sd">    </span>
+
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] http://vlado.fmf.uni-lj.si/pub/networks/data/Ucinet/UciData.htm</span>
@@ -230,7 +233,6 @@
     <span class="k">return</span> <span class="n">G</span></div>
 
 
-
 <div class="viewcode-block" id="get_graph_blogcatalog"><a class="viewcode-back" href="../../../reference/datasets.html#easygraph.datasets.get_graph_blogcatalog">[docs]</a><span class="k">def</span> <span class="nf">get_graph_blogcatalog</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Returns the undirected graph of blogcatalog.</span>
 
@@ -245,25 +247,27 @@
 <span class="sd">    .. [1] https://github.com/phanein/deepwalk/blob/master/example_graphs/blogcatalog.mat</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="k">import</span> <span class="n">loadmat</span>
+    <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
+
     <span class="k">def</span> <span class="nf">sparse2graph</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
-        <span class="kn">from</span> <span class="nn">six</span> <span class="k">import</span> <span class="n">iteritems</span>
+        <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+        <span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
 
         <span class="n">G</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">set</span><span class="p">())</span>
         <span class="n">cx</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cx</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">cx</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="n">cx</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
             <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">G</span><span class="p">)}</span>
-    
+
     <span class="n">mat</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;./samples/blogcatalog.mat&#39;</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;network&#39;</span><span class="p">]</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">sparse2graph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
     <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
             <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">G</span></div>
 
 
@@ -279,16 +283,17 @@
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] http://socialnetworks.mpi-sws.mpg.de/data/youtube-links.txt.gz</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span>
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
     <span class="kn">import</span> <span class="nn">gzip</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://socialnetworks.mpi-sws.mpg.de/data/youtube-links.txt.gz&#39;</span>
     <span class="n">zipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/youtube-links.txt.gz&#39;</span>
     <span class="n">unzipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/youtube-links.txt&#39;</span>
 
     <span class="c1"># Download .gz file</span>
-    <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">zipped_data_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading Youtube dataset...&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">zipped_data_path</span><span class="p">,</span> <span class="n">_show_progress</span><span class="p">)</span>
 
     <span class="c1"># Unzip</span>
     <span class="n">unzipped_data</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">zipped_data_path</span><span class="p">)</span>
@@ -315,14 +320,15 @@
 <span class="sd">    .. [1] http://socialnetworks.mpi-sws.mpg.de/data/flickr-links.txt.gz</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span>
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
     <span class="kn">import</span> <span class="nn">gzip</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://socialnetworks.mpi-sws.mpg.de/data/flickr-links.txt.gz&#39;</span>
     <span class="n">zipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/flickr-links.txt.gz&#39;</span>
     <span class="n">unzipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/flickr-links.txt&#39;</span>
 
     <span class="c1"># Download .gz file</span>
-    <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">zipped_data_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading Flickr dataset...&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">zipped_data_path</span><span class="p">,</span> <span class="n">_show_progress</span><span class="p">)</span>
 
     <span class="c1"># Unzip</span>
     <span class="n">unzipped_data</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">zipped_data_path</span><span class="p">)</span>
@@ -333,6 +339,23 @@
     <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from_file</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">unzipped_data_path</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span></div>
+
+
+<span class="n">_pbar</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">_show_progress</span><span class="p">(</span><span class="n">block_num</span><span class="p">,</span> <span class="n">block_size</span><span class="p">,</span> <span class="n">total_size</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_pbar</span>
+    <span class="k">if</span> <span class="n">_pbar</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_pbar</span> <span class="o">=</span> <span class="n">progressbar</span><span class="o">.</span><span class="n">ProgressBar</span><span class="p">(</span><span class="n">maxval</span><span class="o">=</span><span class="n">total_size</span><span class="p">)</span>
+        <span class="n">_pbar</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="n">downloaded</span> <span class="o">=</span> <span class="n">block_num</span> <span class="o">*</span> <span class="n">block_size</span>
+    <span class="k">if</span> <span class="n">downloaded</span> <span class="o">&lt;</span> <span class="n">total_size</span><span class="p">:</span>
+        <span class="n">_pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">downloaded</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_pbar</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+        <span class="n">_pbar</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 
            </div>
