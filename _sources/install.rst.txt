@@ -19,4 +19,4 @@ Installation with ``conda``
 
     $ conda install Python-EasyGraph
 
-Easy Graph's site on PyPI - `Link <https://pypi.org/project/Python-EasyGraph/>`_
+EasyGraph's site on PyPI - `Link <https://pypi.org/project/Python-EasyGraph/>`_

@@ -24,6 +24,7 @@ parallel computing methods to achieve high efficiency.
    reference.rst
    license.rst
    aboutus.rst
+   sourcecode.rst
 
 
 .. Indices and tables
