@@ -222,7 +222,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    get_structural_holes_MaxD : int</span>
+<span class="sd">    get_structural_holes_MaxD : list</span>
 <span class="sd">        Top-`k` structural hole spanners</span>
 
 <span class="sd">    Examples</span>
@@ -239,6 +239,8 @@
 <span class="sd">    .. [1] https://www.aminer.cn/structural-hole</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_init_data</span><span class="p">()</span>
+    
     <span class="n">G_index</span><span class="p">,</span> <span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_index_node_graph</span><span class="p">(</span>
         <span class="n">begin_index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">C_index</span> <span class="o">=</span> <span class="p">[]</span>
@@ -352,6 +354,29 @@
 <span class="n">nedge</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">prev_flow</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">oo</span> <span class="o">=</span> <span class="mi">1000000000</span>
+
+<span class="k">def</span> <span class="nf">_init_data</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">head</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">nex</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">capa</span>
+    <span class="k">global</span> <span class="n">dist</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">dsave</span>
+    <span class="k">global</span> <span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">nedge</span><span class="p">,</span> <span class="n">prev_flow</span><span class="p">,</span> <span class="n">oo</span>
+
+    <span class="n">head</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">point</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">nex</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">capa</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">dist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">work</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">dsave</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">src</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">dest</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">nedge</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">prev_flow</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">oo</span> <span class="o">=</span> <span class="mi">1000000000</span>
 
 
 <span class="k">def</span> <span class="nf">dinic_bfs</span><span class="p">():</span>
