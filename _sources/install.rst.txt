@@ -2,7 +2,7 @@
 Installation
 ============
 
-For users of Windows, MacOSX, and Linux, we recommend using Python's inbuilt 
+For users of Windows, MacOSX, and Linux, we recommend using Python's 
 package management system, `pip <https://pip.pypa.io/en/stable>`_ .
 
 Installation with ``pip``

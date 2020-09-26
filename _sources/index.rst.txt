@@ -6,6 +6,12 @@
 Welcome to EasyGraph !
 ====================================
 
+.. image:: https://img.shields.io/pypi/v/Python-EasyGraph.svg
+  :target: https://pypi.org/project/Python-EasyGraph/
+  
+.. image:: https://img.shields.io/pypi/pyversions/Python-EasyGraph.svg
+   :target: https://pypi.org/project/Python-EasyGraph/
+
 EasyGraph is an open source graph processing library. It is written in Python and supports analysis for undirected graphs and directed graphs. 
 It covers advanced graph processing methods in structural hole spanners detection, graph embedding and several classic methods (subgraph 
 generation, connected component discovery and isomorphic graph generation). 
@@ -23,8 +29,16 @@ parallel computing methods to achieve high efficiency.
    tutorial.rst
    reference.rst
    license.rst
-   aboutus.rst
    sourcecode.rst
+
+   :titlesonly: 
+   
+   aboutus.rst
+
+.. .. toctree::
+..    :titlesonly:
+
+..    aboutus.rst
 
 
 .. Indices and tables
