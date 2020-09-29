@@ -8,7 +8,7 @@ Please feel free to email us at zliek.sh@gmail.com.
 
 **Key Developers**
 
-* Zheng Li (Lead)
+* `Zheng Li <https://icypole.github.io/>`_ (Lead)
 * `Xinlei He <https://willingnesshxl.github.io/xlhe/>`_
 * Yuting Shao
 * Ruichen Li
