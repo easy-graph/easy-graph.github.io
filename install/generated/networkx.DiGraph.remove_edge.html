@@ -156,6 +156,40 @@
             
   <div class="section" id="networkx-digraph-remove-edge">
 <h1>networkx.DiGraph.remove_edge<a class="headerlink" href="#networkx-digraph-remove-edge" title="Permalink to this headline">¶</a></h1>
+<dl class="py method">
+<dt id="networkx.DiGraph.remove_edge">
+<code class="sig-prename descclassname">DiGraph.</code><code class="sig-name descname">remove_edge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/classes/digraph.html#DiGraph.remove_edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.DiGraph.remove_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the edge between u and v.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>nodes</em>) – Remove the edge between nodes u and v.</p></li>
+<li><p><strong>v</strong> (<em>nodes</em>) – Remove the edge between nodes u and v.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NetworkXError</strong> – If there is not an edge between u and v.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="networkx.DiGraph.remove_edges_from.html#networkx.DiGraph.remove_edges_from" title="networkx.DiGraph.remove_edges_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_edges_from()</span></code></a></dt><dd><p>remove a collection of edges</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># or DiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">add_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="p">)</span>  <span class="c1"># unpacks e from an edge tuple</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">})</span>  <span class="c1"># an edge with attribute data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># select first part of edge tuple</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 
 

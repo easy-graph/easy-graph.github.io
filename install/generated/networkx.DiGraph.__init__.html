@@ -156,6 +156,41 @@
             
   <div class="section" id="networkx-digraph-init">
 <h1>networkx.DiGraph.__init__<a class="headerlink" href="#networkx-digraph-init" title="Permalink to this headline">¶</a></h1>
+<dl class="py method">
+<dt id="networkx.DiGraph.__init__">
+<code class="sig-prename descclassname">DiGraph.</code><code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">incoming_graph_data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">attr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/classes/digraph.html#DiGraph.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.DiGraph.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a graph with edges, name, or graph attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>incoming_graph_data</strong> (<em>input graph</em><em> (</em><em>optional</em><em>, </em><em>default: None</em><em>)</em>) – Data to initialize graph.  If None (default) an empty
+graph is created.  The data can be an edge list, or any
+NetworkX graph object.  If the corresponding optional Python
+packages are installed the data can also be a NumPy matrix
+or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p></li>
+<li><p><strong>attr</strong> (<em>keyword arguments</em><em>, </em><em>optional</em><em> (</em><em>default= no attributes</em><em>)</em>) – Attributes to add to graph as key=value pairs.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">convert()</span></code></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my graph&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>  <span class="c1"># list of edges</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Arbitrary graph attribute pairs (key=value) may be assigned</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Friday&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">graph</span>
+<span class="go">{&#39;day&#39;: &#39;Friday&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 
 

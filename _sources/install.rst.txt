@@ -14,9 +14,12 @@ Installation with ``pip``
 which serves millions of people managing package, dependency and environment for
 Python and other languages.
 
-Installation with ``conda``
-::
+To use EasyGraph in conda, you can create a new conda environment, which specifies Python version >=3.6, <3.8
 
-    $ conda install Python-EasyGraph
+Example installation with ``conda``
+::
+    $ conda create -n easygraph python=3.6
+    $ conda activate easygraph
+    $ conda install -c fudanmsn Python-EasyGraph
 
 EasyGraph's site on PyPI - `Link <https://pypi.org/project/Python-EasyGraph/>`_
