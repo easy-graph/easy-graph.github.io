@@ -36,7 +36,9 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD" href="easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD.html" />
+    <link rel="prev" title="Structural Hole Spanners" href="../structural_hole_spanners.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,10 +84,31 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reference.html">Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../path.html">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph_embedding.html">Graph Embedding</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../structural_hole_spanners.html">Structural Hole Spanners</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../structural_hole_spanners.html#module-easygraph.functions.structural_holes.HIS">HIS</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.functions.structural_holes.HIS.get_structural_holes_HIS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../structural_hole_spanners.html#module-easygraph.functions.structural_holes.MaxD">MaxD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../structural_hole_spanners.html#module-easygraph.functions.structural_holes.AP_Greedy">AP_Greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../structural_hole_spanners.html#module-easygraph.functions.structural_holes.HAM">HAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../structural_hole_spanners.html#module-easygraph.functions.structural_holes.evaluation">Burt’s Metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../aboutus.html">About Us</a></li>
@@ -135,6 +158,10 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="../../reference.html">Reference</a> &raquo;</li>
+        
+          <li><a href="../structural_hole_spanners.html">Structural Hole Spanners</a> &raquo;</li>
+        
       <li>easygraph.functions.structural_holes.HIS.get_structural_holes_HIS</li>
     
     
@@ -156,6 +183,53 @@
             
   <div class="section" id="easygraph-functions-structural-holes-his-get-structural-holes-his">
 <h1>easygraph.functions.structural_holes.HIS.get_structural_holes_HIS<a class="headerlink" href="#easygraph-functions-structural-holes-his-get-structural-holes-his" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="easygraph.functions.structural_holes.HIS.get_structural_holes_HIS">
+<code class="sig-prename descclassname">easygraph.functions.structural_holes.HIS.</code><code class="sig-name descname">get_structural_holes_HIS</code><span class="sig-paren">(</span><em class="sig-param">G, C: [&lt;class 'frozenset'&gt;], epsilon=0.0001, weight='weight'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/structural_holes/HIS.html#get_structural_holes_HIS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#easygraph.functions.structural_holes.HIS.get_structural_holes_HIS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structural hole spanners detection via HIS method.</p>
+<p>Both <strong>HIS</strong> and <strong>MaxD</strong> are methods in <a class="footnote-reference brackets" href="#id5" id="id1">1</a>.
+The authors developed these two methods to find the structural holes spanners,
+based on theory of information diffusion.</p>
+<p>Returns the value of <cite>S</cite>, <cite>I</cite>, <cite>H</cite> ,defined in <strong>HIS</strong> of [1], of each node in the graph.
+Note that <cite>H</cite> quantifies the possibility that a node is a structural hole spanner.
+To use <cite>HIS</cite> method, you should provide the community detection result as parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>C</strong> (<em>list of frozenset</em>) – Each frozenset denotes a community of nodes.</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – The threshold value.</p></li>
+<li><p><strong>weight</strong> (<em>string</em><em>, </em><em>optional</em><em> (</em><em>default : 'weight'</em><em>)</em>) – The key for edge weight.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>S</strong> (<em>list of tuple</em>) – The <cite>S</cite> value in <a class="footnote-reference brackets" href="#id5" id="id2">1</a>.</p></li>
+<li><p><strong>I</strong> (<em>float</em>) – The <cite>I</cite> value in <a class="footnote-reference brackets" href="#id5" id="id3">1</a>.</p></li>
+<li><p><strong>H</strong> (<em>float</em>) – The <cite>H</cite> value in <a class="footnote-reference brackets" href="#id5" id="id4">1</a>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">MaxD()</span></code></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structural_holes_HIS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>                         <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="nb">frozenset</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">frozenset</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])],</span> <span class="c1"># Two communities</span>
+<span class="gp">... </span>                         <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+<span class="gp">... </span>                         <span class="n">weight</span> <span class="o">=</span> <span class="s1">&#39;weight&#39;</span>
+<span class="gp">... </span>                         <span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>)</span></dt>
+<dd><p><a class="reference external" href="https://www.aminer.cn/structural-hole">https://www.aminer.cn/structural-hole</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -163,6 +237,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD.html" class="btn btn-neutral float-right" title="easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../structural_hole_spanners.html" class="btn btn-neutral float-left" title="Structural Hole Spanners" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

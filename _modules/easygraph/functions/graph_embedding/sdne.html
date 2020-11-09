@@ -160,12 +160,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.callbacks</span> <span class="kn">import</span> <span class="n">History</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.regularizers</span> <span class="kn">import</span> <span class="n">l1_l2</span>
+
 
 <span class="k">def</span> <span class="nf">get_relation_of_index_and_node</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
     <span class="n">node2idx</span> <span class="o">=</span> <span class="p">{}</span>
@@ -177,7 +172,10 @@
         <span class="n">node_size</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">idx2node</span><span class="p">,</span> <span class="n">node2idx</span>
 
+
 <span class="k">def</span> <span class="nf">l_2nd</span><span class="p">(</span><span class="n">beta</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+
     <span class="k">def</span> <span class="nf">loss_2nd</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
         <span class="n">y_true_numpy</span> <span class="o">=</span> <span class="n">y_true</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
         <span class="n">b_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">y_true</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
@@ -190,6 +188,9 @@
 
 
 <span class="k">def</span> <span class="nf">l_1st</span><span class="p">(</span><span class="n">alpha</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+
     <span class="k">def</span> <span class="nf">loss_1st</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
         <span class="n">L</span> <span class="o">=</span> <span class="n">y_true</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">y_pred</span>
@@ -200,6 +201,10 @@
 
 
 <span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">node_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span> <span class="n">l1</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">l2</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras.regularizers</span> <span class="kn">import</span> <span class="n">l1_l2</span>
+
     <span class="n">A</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">node_size</span><span class="p">,))</span>
     <span class="n">L</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,))</span>
     <span class="n">fc</span> <span class="o">=</span> <span class="n">A</span>
@@ -240,7 +245,7 @@
 
 <span class="sd">        nu1 : float, optinal (default : 1e-5)</span>
 <span class="sd">            The nu1 value in [1]_.</span>
-<span class="sd">            </span>
+
 <span class="sd">        nu2 : float, optinal (default : 1e-4)</span>
 <span class="sd">            The nu2 value in [1]_.</span>
 
@@ -259,7 +264,8 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">idx2node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node2idx</span> <span class="o">=</span> <span class="n">get_relation_of_index_and_node</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx2node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node2idx</span> <span class="o">=</span> <span class="n">get_relation_of_index_and_node</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">node_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
@@ -278,7 +284,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">l1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nu1</span><span class="p">,</span>
                                                   <span class="n">l2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nu2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="p">[</span><span class="n">l_2nd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">),</span> <span class="n">l_1st</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)],</span> <span class="n">run_eagerly</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="p">[</span><span class="n">l_2nd</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">),</span> <span class="n">l_1st</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)],</span> <span class="n">run_eagerly</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_embeddings</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">initial_epoch</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -295,6 +302,8 @@
 <span class="sd">        verbose : int, optional (default : 1)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">tensorflow.python.keras.callbacks</span> <span class="kn">import</span> <span class="n">History</span>
+
         <span class="k">if</span> <span class="n">batch_size</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_size</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">batch_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_size</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;batch_size(</span><span class="si">{0}</span><span class="s1">) &gt; node_size(</span><span class="si">{1}</span><span class="s1">),set batch_size = </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -346,7 +355,8 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_embeddings</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">(),</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">node_size</span><span class="p">)</span>
+        <span class="n">embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">(),</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">node_size</span><span class="p">)</span>
         <span class="n">look_back</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx2node</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">embedding</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">embeddings</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_embeddings</span><span class="p">[</span><span class="n">look_back</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">embedding</span>
@@ -367,7 +377,8 @@
             <span class="n">A_row_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node2idx</span><span class="p">[</span><span class="n">v1</span><span class="p">])</span>
             <span class="n">A_col_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node2idx</span><span class="p">[</span><span class="n">v2</span><span class="p">])</span>
 
-        <span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">((</span><span class="n">A_data</span><span class="p">,</span> <span class="p">(</span><span class="n">A_row_index</span><span class="p">,</span> <span class="n">A_col_index</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">node_size</span><span class="p">,</span> <span class="n">node_size</span><span class="p">))</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">((</span><span class="n">A_data</span><span class="p">,</span> <span class="p">(</span><span class="n">A_row_index</span><span class="p">,</span> <span class="n">A_col_index</span><span class="p">)),</span>
+                          <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">node_size</span><span class="p">,</span> <span class="n">node_size</span><span class="p">))</span>
         <span class="n">A_</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">((</span><span class="n">A_data</span> <span class="o">+</span> <span class="n">A_data</span><span class="p">,</span> <span class="p">(</span><span class="n">A_row_index</span> <span class="o">+</span> <span class="n">A_col_index</span><span class="p">,</span> <span class="n">A_col_index</span> <span class="o">+</span> <span class="n">A_row_index</span><span class="p">)),</span>
                            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">node_size</span><span class="p">,</span> <span class="n">node_size</span><span class="p">))</span>
 

@@ -153,27 +153,28 @@
            <div itemprop="articleBody">
             
   <h1>Source code for easygraph.functions.graph_embedding.line</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils.alias</span> <span class="kn">import</span> <span class="n">create_alias_table</span><span class="p">,</span> <span class="n">alias_sample</span>
+<span></span><span class="kn">from</span> <span class="nn">easygraph.utils.alias</span> <span class="kn">import</span> <span class="n">create_alias_table</span><span class="p">,</span> <span class="n">alias_sample</span>
 <span class="kn">from</span> <span class="nn">easygraph.utils.index_of_node</span> <span class="kn">import</span> <span class="n">get_relation_of_index_and_node</span>
 
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers</span> <span class="kn">import</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Lambda</span>
-<span class="kn">from</span> <span class="nn">tensorflow.python.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
 
 
 <span class="k">def</span> <span class="nf">line_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+
     <span class="n">y</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">y_true</span><span class="o">*</span><span class="n">y_pred</span><span class="p">)</span>
     <span class="c1"># Avoid Nan in the result of &#39;K.log&#39;</span>
-    <span class="k">return</span> <span class="o">-</span><span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mf">1e-8</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
 
 
 <span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">numNodes</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;second&#39;</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers</span> <span class="kn">import</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Lambda</span>
+    <span class="kn">from</span> <span class="nn">tensorflow.python.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
 
     <span class="n">v_i</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
     <span class="n">v_j</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
@@ -214,7 +215,7 @@
 <span class="sd">        graph : easygraph.Graph or easygraph.DiGraph</span>
 
 <span class="sd">        embedding_size : int, optinal (default : 8)</span>
-<span class="sd">        </span>
+
 <span class="sd">        negative_ratio : int, optinal (default : 5)</span>
 
 <span class="sd">        order : string, optinal (default : &#39;all&#39;)</span>
@@ -222,7 +223,7 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        </span>
+
 <span class="sd">        &gt;&gt;&gt; model = LINE(G,</span>
 <span class="sd">        ...              embedding_size=16,</span>
 <span class="sd">        ...              order=&#39;all&#39;) # The order of model LINE. &#39;first&#39;，&#39;second&#39; or &#39;all&#39;.</span>
@@ -392,9 +393,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_training_config</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span>
         <span class="n">hist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_it</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">initial_epoch</span><span class="o">=</span><span class="n">initial_epoch</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">steps_per_epoch</span><span class="p">,</span>
-                                        <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+                              <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">hist</span></div>
-        
 </pre></div>
 
            </div>
