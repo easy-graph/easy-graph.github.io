@@ -1,7 +1,7 @@
 Datasets
 ========
 
-Easy Graph provides API to generate graph instance of several open dataset.
+EasyGraph provides API to generate graph instance of several open dataset.
 
 The graph dataset includes *blogcatalog*, *Flickr*, etc.
 

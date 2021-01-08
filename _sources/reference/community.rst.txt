@@ -1,7 +1,7 @@
 Community
 =========
 
-Easy Graph implemented community detection methods for use.
+EasyGraph implemented community detection methods for use.
 
 .. toctree::
     :maxdepth: 2

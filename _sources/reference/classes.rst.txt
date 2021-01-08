@@ -1,7 +1,7 @@
 Graph Classes
 =============
 
-Easy Graph provides two types of graph classes, `Graph` and `DiGraph`, 
+EasyGraph provides two types of graph classes, `Graph` and `DiGraph`, 
 which is undirected graph and directed graph, respectively.
 
 Both of these graph classes allow for any hashable Python objects as nodes, 

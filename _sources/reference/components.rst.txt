@@ -1,7 +1,7 @@
 Components
 ==========
 
-Easy Graph can help users check whether the graph (undirected) is connected/biconnected or not. 
+EasyGraph can help users check whether the graph (undirected) is connected/biconnected or not. 
 It can also provide with connected/biconnected components.
 
 Connected Components

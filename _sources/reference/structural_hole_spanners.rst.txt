@@ -1,6 +1,6 @@
 Structural Hole Spanners
 ========================
-Easy Graph has implemented several most commonly used structural holes spanners detection methods, including HIS, MaxD, HAM, Common_Greedy,  AP_Greedy. 
+EasyGraph has implemented several most commonly used structural holes spanners detection methods, including HIS, MaxD, HAM, Common_Greedy,  AP_Greedy. 
 Burt's evaluation metric for structural holes, Effective Size, Efficiency, Constraint and Hierarchy, are also included. 
 
 HIS

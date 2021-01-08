@@ -1,6 +1,6 @@
 Drawing
 =======
-Easy Graph provides API to generate the coordinate of each node,
+EasyGraph provides API to generate the coordinate of each node,
 so that users could plot the graph with them.
 
 Random Position

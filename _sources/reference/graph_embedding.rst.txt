@@ -1,6 +1,6 @@
 Graph Embedding
 ===============
-Easy Graph has implemented several methods of graph embedding.
+EasyGraph has implemented several methods of graph embedding.
 
 DeepWalk
 --------
