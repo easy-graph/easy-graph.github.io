@@ -28,6 +28,16 @@ AP_Greedy
     common_greedy
     AP_Greedy
 
+ICC
+---------
+.. automodule:: easygraph.functions.structural_holes.ICC
+.. autosummary::
+    :toctree: generated/
+
+    ICC
+    BICC
+    AP_BICC
+
 HAM
 ---
 .. automodule:: easygraph.functions.structural_holes.HAM
@@ -36,6 +46,25 @@ HAM
 
     get_structural_holes_HAM
 
+
+NOBE
+--------------
+.. automodule:: easygraph.functions.structural_holes.NOBE
+.. autosummary::
+    :toctree: generated/
+
+    NOBE_SH
+    NOBE_GA_SH
+
+
+WeakTie
+--------------
+.. automodule:: easygraph.functions.structural_holes.weakTie
+.. autosummary::
+    :toctree: generated/
+
+    weakTie
+    weakTieLocal
 
 Burt's Metrics
 --------------
