@@ -26,3 +26,20 @@ Kruskal
 
 .. autofunction:: Kruskal
 
+single_source_bfs
+-------
+.. currentmodule:: easygraph.functions.path
+
+.. autofunction:: single_source_bfs
+
+single_source_dijkstra
+-------
+.. currentmodule:: easygraph.functions.path
+
+.. autofunction:: single_source_dijkstra
+
+multi_source_dijkstra
+-------
+.. currentmodule:: easygraph.functions.path
+
+.. autofunction:: multi_source_dijkstra

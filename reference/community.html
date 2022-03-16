@@ -1,69 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Community &mdash; EasyGraph 0.2a4 documentation</title>
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community &mdash; EasyGraph 0.2a35 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/copybutton.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Community Detection - Modularity Greedy" href="community/modularity_max_detection.html" />
+    <link rel="next" title="easygraph.functions.community.modularity.modularity" href="generated/easygraph.functions.community.modularity.modularity.html" />
     <link rel="prev" title="easygraph.DiGraph.to_index_node_graph" href="classes/generated/easygraph.DiGraph.to_index_node_graph.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> EasyGraph
-          
-
-          
+            <a href="../index.html" class="icon icon-home"> EasyGraph
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -71,18 +37,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
@@ -90,7 +45,21 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="classes.html">Graph Classes</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Community</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community/modularity_max_detection.html">Community Detection - Modularity Greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.community.modularity">Modularity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.community.modularity.modularity.html">easygraph.functions.community.modularity.modularity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modularity-max-detection">Modularity_Max_Detection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.community.modularity_max_detection.greedy_modularity_communities.html">easygraph.functions.community.modularity_max_detection.greedy_modularity_communities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.community.LPA">Community Detection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.community.LPA.LPA.html">easygraph.functions.community.LPA.LPA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.community.LPA.SLPA.html">easygraph.functions.community.LPA.SLPA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.community.LPA.HANP.html">easygraph.functions.community.LPA.HANP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.community.LPA.BMLPA.html">easygraph.functions.community.LPA.BMLPA</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="components.html">Components</a></li>
@@ -107,136 +76,116 @@
 <li class="toctree-l1"><a class="reference internal" href="../aboutus.html">About Us</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">EasyGraph</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../reference.html">Reference</a> &raquo;</li>
-        
       <li>Community</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/reference/community.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="community">
-<h1>Community<a class="headerlink" href="#community" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="community">
+<h1>Community<a class="headerlink" href="#community" title="Permalink to this headline"></a></h1>
 <p>EasyGraph implemented community detection methods for use.</p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="community/modularity_max_detection.html">Community Detection - Modularity Greedy</a></li>
-</ul>
-</div>
-</div>
+<section id="module-easygraph.functions.community.modularity">
+<span id="modularity"></span><h2>Modularity<a class="headerlink" href="#module-easygraph.functions.community.modularity" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.community.modularity.modularity.html#easygraph.functions.community.modularity.modularity" title="easygraph.functions.community.modularity.modularity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modularity</span></code></a>(G, communities[, weight])</p></td>
+<td><p>Returns the modularity of the given partition of the graph.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="modularity-max-detection">
+<h2>Modularity_Max_Detection<a class="headerlink" href="#modularity-max-detection" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-easygraph.functions.community.modularity_max_detection"></span><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.community.modularity_max_detection.greedy_modularity_communities.html#easygraph.functions.community.modularity_max_detection.greedy_modularity_communities" title="easygraph.functions.community.modularity_max_detection.greedy_modularity_communities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">greedy_modularity_communities</span></code></a>(G[, weight])</p></td>
+<td><p>Communities detection via greedy modularity method.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-easygraph.functions.community.LPA">
+<span id="community-detection"></span><h2>Community Detection<a class="headerlink" href="#module-easygraph.functions.community.LPA" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.community.LPA.LPA.html#easygraph.functions.community.LPA.LPA" title="easygraph.functions.community.LPA.LPA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LPA</span></code></a>(G)</p></td>
+<td><p>Detect community by label propagation algotithm Return the detected communities.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.community.LPA.SLPA.html#easygraph.functions.community.LPA.SLPA" title="easygraph.functions.community.LPA.SLPA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SLPA</span></code></a>(G, T, r)</p></td>
+<td><p>Detect Overlapping Communities by Speaker-listener Label Propagation Algorithm Return the detected Overlapping communities.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.community.LPA.HANP.html#easygraph.functions.community.LPA.HANP" title="easygraph.functions.community.LPA.HANP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HANP</span></code></a>(G, m, delta[, threshod, hier_open, …])</p></td>
+<td><p>Detect community by Hop attenuation &amp; node preference algotithm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.community.LPA.BMLPA.html#easygraph.functions.community.LPA.BMLPA" title="easygraph.functions.community.LPA.BMLPA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BMLPA</span></code></a>(G, p)</p></td>
+<td><p>Detect community by Balanced Multi-Label Propagation algotithm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="community/modularity_max_detection.html" class="btn btn-neutral float-right" title="Community Detection - Modularity Greedy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="classes/generated/easygraph.DiGraph.to_index_node_graph.html" class="btn btn-neutral float-left" title="easygraph.DiGraph.to_index_node_graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classes/generated/easygraph.DiGraph.to_index_node_graph.html" class="btn btn-neutral float-left" title="easygraph.DiGraph.to_index_node_graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/easygraph.functions.community.modularity.modularity.html" class="btn btn-neutral float-right" title="easygraph.functions.community.modularity.modularity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020-2021, Mobile Systems and Networking Group, Fudan University
-
-    </p>
+    <p>&#169; Copyright 2020-2021, Mobile Systems and Networking Group, Fudan University.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

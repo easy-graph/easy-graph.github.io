@@ -39,3 +39,20 @@ SDNE
 
     SDNE
     
+NOBE
+----
+.. automodule:: easygraph.functions.graph_embedding.NOBE
+
+.. autosummary::
+    :toctree: generated/
+
+    NOBE
+
+NOBE_GA
+----
+.. automodule:: easygraph.functions.graph_embedding.NOBE
+
+.. autosummary::
+    :toctree: generated/
+
+    NOBE_GA

@@ -15,7 +15,7 @@ EasyGraph's site on PyPI - `Link <https://pypi.org/project/Python-EasyGraph/>`_
 which serves millions of people managing package, dependency and environment for
 Python and other languages.
 
-To use EasyGraph in conda, you can create a new conda environment, which specifies Python version >=3.6, <3.8
+To use EasyGraph in conda, you can create a new conda environment, which specifies Python version >=3.6, <3.10
 
 **Example installation with** ``conda``
 ::
