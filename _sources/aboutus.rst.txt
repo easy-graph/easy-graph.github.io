@@ -9,11 +9,13 @@ Please feel free to email us at zliek.sh@gmail.com.
 **Key Developers**
 
 * `Zheng Li <https://icypole.github.io/>`_ (Lead)
+* `Min Gao <https://mgao.mystrikingly.com/>`_ (Lead)
 * `Xinlei He <https://willingnesshxl.github.io/xlhe/>`_
 * Yuting Shao
 * Ruichen Li
 * Yi Sun
 * Zihang Lin
+* Chenhao Cui
 
 **Advisors**
 
