@@ -71,12 +71,13 @@
              
   <h1>Source code for easygraph.functions.community.modularity</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;modularity&quot;</span>
-<span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;modularity&quot;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="modularity"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.community.modularity.modularity.html#easygraph.functions.community.modularity.modularity">[docs]</a><span class="k">def</span> <span class="nf">modularity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">communities</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="modularity"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.community.modularity.modularity.html#easygraph.functions.community.modularity.modularity">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">modularity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">communities</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the modularity of the given partition of the graph.</span>
 <span class="sd">    Modularity is defined in [1]_ as</span>
@@ -97,13 +98,13 @@
 <span class="sd">    communities : list or iterable of set of nodes</span>
 <span class="sd">        These node sets must represent a partition of G&#39;s nodes.</span>
 
-<span class="sd">    weight : string, optinal (default : &#39;weight&#39;)</span>
+<span class="sd">    weight : string, optional (default : &#39;weight&#39;)</span>
 <span class="sd">        The key for edge weight.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ----------</span>
 <span class="sd">    Q : float</span>
-<span class="sd">        The modularity of the paritition.</span>
+<span class="sd">        The modularity of the partition.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -148,7 +149,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2021, Mobile Systems and Networking Group, Fudan University.</p>
+    <p>&#169; Copyright 2020-2022, Mobile Systems and Networking Group, Fudan University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

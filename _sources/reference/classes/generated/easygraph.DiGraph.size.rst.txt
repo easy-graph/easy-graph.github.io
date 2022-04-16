@@ -1,4 +1,4 @@
-easygraph.DiGraph.size
+﻿easygraph.DiGraph.size
 ======================
 
 .. currentmodule:: easygraph

@@ -1,4 +1,4 @@
-easygraph.Graph.add\_node
+﻿easygraph.Graph.add\_node
 =========================
 
 .. currentmodule:: easygraph

@@ -71,18 +71,17 @@
              
   <h1>Source code for easygraph.functions.components.connected</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">easygraph</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="n">only_implemented_for_UnDirected_graph</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;is_connected&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;number_connected_components&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;connected_components&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;is_connected&quot;</span><span class="p">,</span> <span class="s2">&quot;number_connected_components&quot;</span><span class="p">,</span> <span class="s2">&quot;connected_components&quot;</span><span class="p">,</span>
     <span class="s2">&quot;connected_component_of_node&quot;</span>
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="is_connected"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.is_connected.html#easygraph.functions.components.connected.is_connected">[docs]</a><span class="nd">@only_implemented_for_UnDirected_graph</span>
+<div class="viewcode-block" id="is_connected"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.is_connected.html#easygraph.functions.components.connected.is_connected">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="k">def</span> <span class="nf">is_connected</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns whether the graph is connected or not.</span>
 
@@ -105,7 +104,9 @@
     <span class="n">arbitrary_node</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>  <span class="c1"># Pick an arbitrary node to run BFS</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">_plain_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">arbitrary_node</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="number_connected_components"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.number_connected_components.html#easygraph.functions.components.connected.number_connected_components">[docs]</a><span class="nd">@only_implemented_for_UnDirected_graph</span>
+
+<div class="viewcode-block" id="number_connected_components"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.number_connected_components.html#easygraph.functions.components.connected.number_connected_components">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="k">def</span> <span class="nf">number_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the number of connected components.</span>
 
@@ -126,7 +127,8 @@
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">_generator_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="connected_components"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.connected_components.html#easygraph.functions.components.connected.connected_components">[docs]</a><span class="nd">@only_implemented_for_UnDirected_graph</span>
+<div class="viewcode-block" id="connected_components"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.connected_components.html#easygraph.functions.components.connected.connected_components">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="k">def</span> <span class="nf">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a list of connected components, each of which denotes the edges set of a connected component.</span>
 
@@ -158,7 +160,9 @@
             <span class="k">yield</span> <span class="n">component</span>
             <span class="n">seen</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
 
-<div class="viewcode-block" id="connected_component_of_node"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.connected_component_of_node.html#easygraph.functions.components.connected.connected_component_of_node">[docs]</a><span class="nd">@only_implemented_for_UnDirected_graph</span>
+
+<div class="viewcode-block" id="connected_component_of_node"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.components.connected.connected_component_of_node.html#easygraph.functions.components.connected.connected_component_of_node">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="k">def</span> <span class="nf">connected_component_of_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the connected component that *node* belongs to.</span>
 
@@ -208,7 +212,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2021, Mobile Systems and Networking Group, Fudan University.</p>
+    <p>&#169; Copyright 2020-2022, Mobile Systems and Networking Group, Fudan University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

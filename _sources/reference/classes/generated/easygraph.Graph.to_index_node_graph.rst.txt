@@ -1,4 +1,4 @@
-easygraph.Graph.to\_index\_node\_graph
+﻿easygraph.Graph.to\_index\_node\_graph
 ======================================
 
 .. currentmodule:: easygraph

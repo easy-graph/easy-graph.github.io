@@ -1,4 +1,4 @@
-easygraph.DiGraph.predecessors
+﻿easygraph.DiGraph.predecessors
 ==============================
 
 .. currentmodule:: easygraph
