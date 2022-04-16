@@ -1,4 +1,4 @@
-easygraph.DiGraph.all\_neighbors
+﻿easygraph.DiGraph.all\_neighbors
 ================================
 
 .. currentmodule:: easygraph

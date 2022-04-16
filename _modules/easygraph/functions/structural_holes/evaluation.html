@@ -81,12 +81,8 @@
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">pass</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;effective_size&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;efficiency&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;constraint&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;hierarchy&#39;</span>
-<span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;effective_size&#39;</span><span class="p">,</span> <span class="s1">&#39;efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;constraint&#39;</span><span class="p">,</span> <span class="s1">&#39;hierarchy&#39;</span><span class="p">]</span>
+
 
 <span class="k">def</span> <span class="nf">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
@@ -99,8 +95,10 @@
         <span class="n">a_vu</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">a_uv</span> <span class="o">+</span> <span class="n">a_vu</span>
 
+
 <span class="n">sum_nmw_rec</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">max_nmw_rec</span> <span class="o">=</span> <span class="p">{}</span>
+
 
 <span class="k">def</span> <span class="nf">normalized_mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">norm</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">:</span>
@@ -109,20 +107,21 @@
             <span class="c1"># print(&#39;yes&#39;)</span>
             <span class="k">return</span> <span class="n">sum_nmw_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="n">scale</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span>
+                <span class="n">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
             <span class="n">nmw</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">scale</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span>
-            <span class="n">sum_nmw_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">nmw</span>
+            <span class="n">sum_nmw_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">nmw</span>
             <span class="k">return</span> <span class="n">nmw</span>
     <span class="k">elif</span> <span class="n">norm</span> <span class="o">==</span> <span class="nb">max</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">max_nmw_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="n">scale</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span>
+                <span class="n">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
             <span class="n">nmw</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">scale</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span>
-            <span class="n">max_nmw_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">nmw</span>
+            <span class="n">max_nmw_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">nmw</span>
             <span class="k">return</span> <span class="n">nmw</span>
+
 
 <span class="k">def</span> <span class="nf">effective_size_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
@@ -131,9 +130,12 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors_of_node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)])</span>
             <span class="k">continue</span>
-        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-                                <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">neighbors_of_node</span><span class="p">)])</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+            <span class="n">node</span><span class="p">,</span>
+            <span class="nb">sum</span><span class="p">(</span><span class="n">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">neighbors_of_node</span><span class="p">)</span>
+        <span class="p">])</span>
     <span class="k">return</span> <span class="n">ret</span>
+
 
 <span class="k">def</span> <span class="nf">effective_size_borgatti_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
@@ -143,19 +145,23 @@
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)])</span>
             <span class="k">continue</span>
         <span class="n">E</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">ego_subgraph</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span> 
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> 
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">ret</span>
+
 
 <span class="k">def</span> <span class="nf">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">nmw</span> <span class="o">=</span> <span class="n">normalized_mutual_weight</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span> <span class="o">*</span> <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">)))</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+        <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span> <span class="o">*</span> <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">)))</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r</span>
 
-<div class="viewcode-block" id="effective_size"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.effective_size.html#easygraph.functions.structural_holes.evaluation.effective_size">[docs]</a><span class="k">def</span> <span class="nf">effective_size</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="effective_size"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.effective_size.html#easygraph.functions.structural_holes.evaluation.effective_size">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">effective_size</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Burt&#39;s metric - Effective Size.</span>
 
 <span class="sd">    Parameters</span>
@@ -200,7 +206,9 @@
             <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
             <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
             <span class="kn">import</span> <span class="nn">random</span>
-            <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">effective_size_borgatti_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+            <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">effective_size_borgatti_parallel</span><span class="p">,</span>
+                                     <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+                                     <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
             <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
             <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n_workers</span> <span class="o">*</span> <span class="mi">50000</span><span class="p">:</span>
@@ -218,17 +226,20 @@
                     <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
                     <span class="k">continue</span>
                 <span class="n">E</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">ego_subgraph</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-                    <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span>
+                                                                       <span class="mi">1</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> 
+                    <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">else</span><span class="p">:</span>
-        
+
         <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
             <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
             <span class="kn">import</span> <span class="nn">random</span>
-            <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">effective_size_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+            <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">effective_size_parallel</span><span class="p">,</span>
+                                     <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+                                     <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
             <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
             <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n_workers</span> <span class="o">*</span> <span class="mi">30000</span><span class="p">:</span>
@@ -245,11 +256,14 @@
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
                     <span class="k">continue</span>
-                <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-                                        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+                <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                    <span class="n">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">effective_size</span></div>
 
-<div class="viewcode-block" id="efficiency"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.efficiency.html#easygraph.functions.structural_holes.evaluation.efficiency">[docs]</a><span class="k">def</span> <span class="nf">efficiency</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="efficiency"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.efficiency.html#easygraph.functions.structural_holes.evaluation.efficiency">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">efficiency</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Burt&#39;s metric - Efficiency.</span>
 
 <span class="sd">    Parameters</span>
@@ -289,6 +303,7 @@
     <span class="n">efficiency</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">e_size</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
     <span class="k">return</span> <span class="n">efficiency</span></div>
 
+
 <span class="k">def</span> <span class="nf">compute_constraint_of_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
@@ -296,11 +311,17 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors_of_node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)])</span>
             <span class="k">continue</span>
-        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">node</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-                                <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">neighbors_of_node</span><span class="p">)])</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+            <span class="n">node</span><span class="p">,</span>
+            <span class="nb">sum</span><span class="p">(</span>
+                <span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">neighbors_of_node</span><span class="p">)</span>
+        <span class="p">])</span>
     <span class="k">return</span> <span class="n">ret</span>
 
-<div class="viewcode-block" id="constraint"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.constraint.html#easygraph.functions.structural_holes.evaluation.constraint">[docs]</a><span class="k">def</span> <span class="nf">constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="constraint"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.constraint.html#easygraph.functions.structural_holes.evaluation.constraint">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Burt&#39;s metric - Constraint.</span>
 
 <span class="sd">    Parameters</span>
@@ -338,7 +359,10 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">cflag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">cpp_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="n">n_workers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cpp_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+                              <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span>
+                              <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
+                              <span class="n">n_workers</span><span class="o">=</span><span class="n">n_workers</span><span class="p">)</span>
     <span class="n">sum_nmw_rec</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="n">max_nmw_rec</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="n">local_constraint_rec</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -351,15 +375,17 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors_of_v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">constraint_of_v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">constraint_of_v</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-                                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">)</span>
+            <span class="n">constraint_of_v</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">v</span><span class="p">,</span> <span class="n">constraint_of_v</span>
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
         <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
         <span class="kn">import</span> <span class="nn">random</span>
-        <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">compute_constraint_of_nodes</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">compute_constraint_of_nodes</span><span class="p">,</span>
+                                 <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+                                 <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
         <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n_workers</span> <span class="o">*</span> <span class="mi">30000</span><span class="p">:</span>
@@ -377,39 +403,50 @@
     <span class="n">constraint</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">constraint_results</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">constraint</span></div>
 
+
 <span class="n">local_constraint_rec</span> <span class="o">=</span> <span class="p">{}</span>
+
+
 <span class="k">def</span> <span class="nf">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">local_constraint_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="n">nmw</span> <span class="o">=</span> <span class="n">normalized_mutual_weight</span>
         <span class="n">direct</span> <span class="o">=</span> <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-        <span class="n">indirect</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span> <span class="o">*</span> <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">)))</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">direct</span> <span class="o">+</span> <span class="n">indirect</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">indirect</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span> <span class="o">*</span> <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">)))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">direct</span> <span class="o">+</span> <span class="n">indirect</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
         <span class="n">local_constraint_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
         <span class="k">return</span> <span class="n">result</span>
 
+
 <span class="k">def</span> <span class="nf">hierarchy_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
-    
+
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="n">E</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">ego_subgraph</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">C</span><span class="o">=</span><span class="mi">0</span>
-        <span class="n">c</span><span class="o">=</span><span class="p">{}</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">neighbors_of_v</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">:</span>
-            <span class="n">C</span><span class="o">+=</span><span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
-            <span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="o">=</span><span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+            <span class="n">C</span> <span class="o">+=</span> <span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">v</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">)])</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                <span class="n">v</span><span class="p">,</span>
+                <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+                    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">)</span>
+            <span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">ret</span>
 
-<div class="viewcode-block" id="hierarchy"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.hierarchy.html#easygraph.functions.structural_holes.evaluation.hierarchy">[docs]</a><span class="k">def</span> <span class="nf">hierarchy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="hierarchy"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.evaluation.hierarchy.html#easygraph.functions.structural_holes.evaluation.hierarchy">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hierarchy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the hierarchy of nodes in the graph</span>
 
 <span class="sd">    Parameters</span>
@@ -460,19 +497,19 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
             <span class="n">E</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">ego_subgraph</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-            <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-            <span class="n">C</span><span class="o">=</span><span class="mi">0</span>
-            <span class="n">c</span><span class="o">=</span><span class="p">{}</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">C</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">neighbors_of_v</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">:</span>
-                <span class="n">C</span><span class="o">+=</span><span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
-                <span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="o">=</span><span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-                <span class="n">hierarchy</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="o">/</span><span class="n">C</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="o">/</span><span class="n">C</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">)</span>
+                <span class="n">C</span> <span class="o">+=</span> <span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+                <span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">hierarchy</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span>
+                                   <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighbors_of_v</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hierarchy</span><span class="p">:</span>
-                <span class="n">hierarchy</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+                <span class="n">hierarchy</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">hierarchy</span></div>
-
 </pre></div>
 
            </div>
@@ -482,7 +519,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2021, Mobile Systems and Networking Group, Fudan University.</p>
+    <p>&#169; Copyright 2020-2022, Mobile Systems and Networking Group, Fudan University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

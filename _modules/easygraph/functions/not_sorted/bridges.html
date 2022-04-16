@@ -71,15 +71,14 @@
              
   <h1>Source code for easygraph.functions.not_sorted.bridges</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="n">only_implemented_for_UnDirected_graph</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 
-<span class="n">__all__</span><span class="o">=</span><span class="p">[</span>
-    <span class="s2">&quot;bridges&quot;</span><span class="p">,</span> 
-    <span class="s2">&quot;has_bridges&quot;</span>
-<span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bridges&quot;</span><span class="p">,</span> <span class="s2">&quot;has_bridges&quot;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="bridges"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.not_sorted.bridges.html#easygraph.functions.not_sorted.bridges">[docs]</a><span class="nd">@only_implemented_for_UnDirected_graph</span>
+
+<div class="viewcode-block" id="bridges"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.not_sorted.bridges.html#easygraph.functions.not_sorted.bridges">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="k">def</span> <span class="nf">bridges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate all bridges in a graph.</span>
 
@@ -129,11 +128,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">chains</span> <span class="o">=</span> <span class="n">chain_decomposition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
     <span class="n">chain_edges</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">chains</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chain_edges</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chain_edges</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span></div>
 
 
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="k">def</span> <span class="nf">has_bridges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Decide whether a graph has any bridges.</span>
@@ -181,7 +181,9 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
 
+
 <span class="k">def</span> <span class="nf">chain_decomposition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">_dfs_cycle_forest</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -221,16 +223,17 @@
     <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
         <span class="c1"># For each nontree edge going out of node u...</span>
-        <span class="n">edges</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;nontree&#39;</span><span class="p">]</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
-                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;nontree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
         <span class="c1">#edges = ((u, v) for u, v, d in H.out_edges(u, data=&quot;nontree&quot;) if d)</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
             <span class="c1"># Create the cycle or cycle prefix starting with the</span>
             <span class="c1"># nontree edge.</span>
             <span class="n">chain</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_build_chain</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">visited</span><span class="p">))</span>
             <span class="k">yield</span> <span class="n">chain</span>
+
 
 <span class="k">def</span> <span class="nf">dfs_labeled_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">depth_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -273,7 +276,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2021, Mobile Systems and Networking Group, Fudan University.</p>
+    <p>&#169; Copyright 2020-2022, Mobile Systems and Networking Group, Fudan University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

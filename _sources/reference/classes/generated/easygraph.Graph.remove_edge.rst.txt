@@ -1,4 +1,4 @@
-easygraph.Graph.remove\_edge
+﻿easygraph.Graph.remove\_edge
 ============================
 
 .. currentmodule:: easygraph

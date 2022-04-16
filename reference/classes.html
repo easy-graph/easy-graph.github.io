@@ -43,9 +43,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Graph Classes</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#which-graph-class-should-i-use">Which graph class should I use?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="classes/graph.html">Undirected Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="classes/digraph.html">Directed Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/MultiDiGraph.html">MultiDiGraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/MultiGraph.html">MultiGraph</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="community.html">Community</a></li>
@@ -55,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structural_hole_spanners.html">Structural Hole Spanners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readwrite/index.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="centrality.html">Centrality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_generator.html">Graph Generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="not_sorted.html">Not Sorted</a></li>
@@ -92,10 +96,47 @@
              
   <section id="graph-classes">
 <h1>Graph Classes<a class="headerlink" href="#graph-classes" title="Permalink to this headline"></a></h1>
-<p>EasyGraph provides two types of graph classes, <cite>Graph</cite> and <cite>DiGraph</cite>,
-which is undirected graph and directed graph, respectively.</p>
-<p>Both of these graph classes allow for any hashable Python objects as nodes,
-and edges are saved as Python dictionary type with custom key values and data.</p>
+<p>EasyGraph provides four types of graph classes, <cite>Graph</cite>、 <cite>DiGraph</cite>、 <cite>MultiGraph</cite>、 <cite>MultiDiGraph</cite>.</p>
+</section>
+<section id="which-graph-class-should-i-use">
+<h1>Which graph class should I use?<a class="headerlink" href="#which-graph-class-should-i-use" title="Permalink to this headline"></a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Networkx Class</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Self-loops allowed</p></th>
+<th class="head"><p>Parallel edges allowed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Graph</p></td>
+<td><p>undirected</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>DiGraph</p></td>
+<td><p>directed</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>MultiGraph</p></td>
+<td><p>undirected</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>MultiDiGraph</p></td>
+<td><p>directed</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
@@ -107,6 +148,16 @@ and edges are saved as Python dictionary type with custom key values and data.</
 <li class="toctree-l1"><a class="reference internal" href="classes/digraph.html">Directed Graph</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="classes/digraph.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes/digraph.html#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/MultiDiGraph.html">MultiDiGraph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/MultiDiGraph.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes/MultiDiGraph.html#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/MultiGraph.html">MultiGraph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/MultiGraph.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes/MultiGraph.html#methods">Methods</a></li>
 </ul>
 </li>
 </ul>

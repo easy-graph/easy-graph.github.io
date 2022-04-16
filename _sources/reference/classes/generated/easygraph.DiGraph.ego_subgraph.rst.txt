@@ -1,4 +1,4 @@
-easygraph.DiGraph.ego\_subgraph
+﻿easygraph.DiGraph.ego\_subgraph
 ===============================
 
 .. currentmodule:: easygraph

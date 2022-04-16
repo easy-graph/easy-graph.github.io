@@ -1,4 +1,4 @@
-easygraph.Graph.copy
+﻿easygraph.Graph.copy
 ====================
 
 .. currentmodule:: easygraph
