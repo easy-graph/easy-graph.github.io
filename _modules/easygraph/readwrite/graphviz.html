@@ -40,6 +40,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../aboutus.html">About Us</a></li>
@@ -127,8 +128,8 @@
     <span class="n">N</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">graph_attr</span><span class="p">)</span>
 
     <span class="c1"># add nodes, attributes to N.node_attr</span>
-    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">A</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
-        <span class="n">str_attr</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">A</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="n">str_attr</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">attr</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
         <span class="n">N</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="o">**</span><span class="n">str_attr</span><span class="p">)</span>
 
     <span class="c1"># add edges, assign edge data as dictionary of attributes</span>
@@ -189,7 +190,7 @@
                         <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="s2">&quot;edge&quot;</span><span class="p">))</span>
 
     <span class="c1"># add nodes</span>
-    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nodedata</span> <span class="ow">in</span> <span class="n">N</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nodedata</span> <span class="ow">in</span> <span class="n">N</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">A</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
         <span class="c1"># Add node data</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>

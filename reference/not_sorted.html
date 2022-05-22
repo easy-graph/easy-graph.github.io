@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="easygraph.functions.not_sorted.laplacian" href="generated/easygraph.functions.not_sorted.laplacian.html" />
-    <link rel="prev" title="easygraph.functions.graph_generator.RandomNetwork.WS_Random" href="generated/easygraph.functions.graph_generator.RandomNetwork.WS_Random.html" /> 
+    <link rel="next" title="easygraph.functions.not_sorted.laplacian.laplacian" href="generated/easygraph.functions.not_sorted.laplacian.laplacian.html" />
+    <link rel="prev" title="easygraph.functions.graph_generator.classic.complete_graph" href="generated/easygraph.functions.graph_generator.classic.complete_graph.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,6 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="path.html">Path</a></li>
@@ -55,19 +56,23 @@
 <li class="toctree-l2"><a class="reference internal" href="centrality.html">Centrality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_generator.html">Graph Generator</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Not Sorted</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.not_sorted">Laplacian Matrix</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.laplacian.html">easygraph.functions.not_sorted.laplacian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.not_sorted.laplacian">Laplacian Matrix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.laplacian.laplacian.html">easygraph.functions.not_sorted.laplacian.laplacian</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-0">Bridge</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.bridges.html">easygraph.functions.not_sorted.bridges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.not_sorted.bridges">Bridge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.bridges.bridges.html">easygraph.functions.not_sorted.bridges.bridges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.bridges.has_bridges.html">easygraph.functions.not_sorted.bridges.has_bridges</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-1">MST</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.html">easygraph.functions.not_sorted.mst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.not_sorted.mst">MST</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.minimum_spanning_edges.html">easygraph.functions.not_sorted.mst.minimum_spanning_edges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.maximum_spanning_edges.html">easygraph.functions.not_sorted.mst.maximum_spanning_edges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.minimum_spanning_tree.html">easygraph.functions.not_sorted.mst.minimum_spanning_tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.maximum_spanning_tree.html">easygraph.functions.not_sorted.mst.maximum_spanning_tree</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-2">PageRank</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-easygraph.functions.not_sorted">PageRank</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/easygraph.functions.not_sorted.pagerank.html">easygraph.functions.not_sorted.pagerank</a></li>
 </ul>
 </li>
@@ -75,6 +80,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aboutus.html">About Us</a></li>
@@ -107,50 +113,62 @@
              
   <section id="not-sorted">
 <h1>Not Sorted<a class="headerlink" href="#not-sorted" title="Permalink to this headline"></a></h1>
-<section id="module-easygraph.functions.not_sorted">
-<span id="laplacian-matrix"></span><h2>Laplacian Matrix<a class="headerlink" href="#module-easygraph.functions.not_sorted" title="Permalink to this headline"></a></h2>
+<section id="module-easygraph.functions.not_sorted.laplacian">
+<span id="laplacian-matrix"></span><h2>Laplacian Matrix<a class="headerlink" href="#module-easygraph.functions.not_sorted.laplacian" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.laplacian.html#easygraph.functions.not_sorted.laplacian" title="easygraph.functions.not_sorted.laplacian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laplacian</span></code></a>(G[, n_workers])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.laplacian.laplacian.html#easygraph.functions.not_sorted.laplacian.laplacian" title="easygraph.functions.not_sorted.laplacian.laplacian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laplacian</span></code></a>(G[, n_workers])</p></td>
 <td><p>Returns the laplacian centrality of each node in the weighted graph</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="module-0">
-<span id="bridge"></span><h2>Bridge<a class="headerlink" href="#module-0" title="Permalink to this headline"></a></h2>
+<section id="module-easygraph.functions.not_sorted.bridges">
+<span id="bridge"></span><h2>Bridge<a class="headerlink" href="#module-easygraph.functions.not_sorted.bridges" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.bridges.html#easygraph.functions.not_sorted.bridges" title="easygraph.functions.not_sorted.bridges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bridges</span></code></a>(G[, root])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.bridges.bridges.html#easygraph.functions.not_sorted.bridges.bridges" title="easygraph.functions.not_sorted.bridges.bridges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bridges</span></code></a>(G[, root])</p></td>
 <td><p>Generate all bridges in a graph.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.bridges.has_bridges.html#easygraph.functions.not_sorted.bridges.has_bridges" title="easygraph.functions.not_sorted.bridges.has_bridges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_bridges</span></code></a>(G[, root])</p></td>
+<td><p>Decide whether a graph has any bridges.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
-<section id="module-1">
-<span id="mst"></span><h2>MST<a class="headerlink" href="#module-1" title="Permalink to this headline"></a></h2>
+<section id="module-easygraph.functions.not_sorted.mst">
+<span id="mst"></span><h2>MST<a class="headerlink" href="#module-easygraph.functions.not_sorted.mst" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.html#module-easygraph.functions.not_sorted.mst" title="easygraph.functions.not_sorted.mst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mst</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.minimum_spanning_edges.html#easygraph.functions.not_sorted.mst.minimum_spanning_edges" title="easygraph.functions.not_sorted.mst.minimum_spanning_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum_spanning_edges</span></code></a>(G[, algorithm, …])</p></td>
+<td><p>Generate edges in a minimum spanning forest of an undirected weighted graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.maximum_spanning_edges.html#easygraph.functions.not_sorted.mst.maximum_spanning_edges" title="easygraph.functions.not_sorted.mst.maximum_spanning_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum_spanning_edges</span></code></a>(G[, algorithm, …])</p></td>
+<td><p>Generate edges in a maximum spanning forest of an undirected weighted graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.minimum_spanning_tree.html#easygraph.functions.not_sorted.mst.minimum_spanning_tree" title="easygraph.functions.not_sorted.mst.minimum_spanning_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum_spanning_tree</span></code></a>(G[, weight, …])</p></td>
+<td><p>Returns a minimum spanning tree or forest on an undirected graph <cite>G</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.functions.not_sorted.mst.maximum_spanning_tree.html#easygraph.functions.not_sorted.mst.maximum_spanning_tree" title="easygraph.functions.not_sorted.mst.maximum_spanning_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum_spanning_tree</span></code></a>(G[, weight, …])</p></td>
+<td><p>Returns a maximum spanning tree or forest on an undirected graph <cite>G</cite>.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="module-2">
-<span id="pagerank"></span><h2>PageRank<a class="headerlink" href="#module-2" title="Permalink to this headline"></a></h2>
+<section id="module-easygraph.functions.not_sorted">
+<span id="pagerank"></span><h2>PageRank<a class="headerlink" href="#module-easygraph.functions.not_sorted" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -169,8 +187,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="generated/easygraph.functions.graph_generator.RandomNetwork.WS_Random.html" class="btn btn-neutral float-left" title="easygraph.functions.graph_generator.RandomNetwork.WS_Random" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="generated/easygraph.functions.not_sorted.laplacian.html" class="btn btn-neutral float-right" title="easygraph.functions.not_sorted.laplacian" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generated/easygraph.functions.graph_generator.classic.complete_graph.html" class="btn btn-neutral float-left" title="easygraph.functions.graph_generator.classic.complete_graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/easygraph.functions.not_sorted.laplacian.laplacian.html" class="btn btn-neutral float-right" title="easygraph.functions.not_sorted.laplacian.laplacian" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

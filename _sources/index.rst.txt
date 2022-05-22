@@ -31,6 +31,7 @@ parallel computing methods to achieve high efficiency.
    install.rst
    tutorial.rst
    reference.rst
+   videos.rst
    license.rst
    sourcecode.rst
 
