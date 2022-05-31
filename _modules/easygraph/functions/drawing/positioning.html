@@ -6,6 +6,7 @@
   <title>easygraph.functions.drawing.positioning &mdash; EasyGraph 0.2a35 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -74,10 +75,15 @@
 <span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;random_position&quot;</span><span class="p">,</span> <span class="s2">&quot;circular_position&quot;</span><span class="p">,</span> <span class="s2">&quot;shell_position&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;rescale_position&quot;</span><span class="p">,</span> <span class="s2">&quot;kamada_kawai_layout&quot;</span>
+    <span class="s2">&quot;random_position&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;circular_position&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;shell_position&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rescale_position&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kamada_kawai_layout&quot;</span>
 <span class="p">]</span>
+
 
 
 <div class="viewcode-block" id="random_position"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.positioning.random_position.html#easygraph.functions.drawing.positioning.random_position">[docs]</a><span class="k">def</span> <span class="nf">random_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -94,7 +100,7 @@
 <span class="sd">    dim : int, optional (default : 2)</span>
 <span class="sd">        Dimension of layout</span>
 
-<span class="sd">    random_seed : int or None, optional (default : None)</span>
+<span class="sd">    random_seed : int or None, optinal (default : None)</span>
 <span class="sd">        Seed for RandomState instance</span>
 
 <span class="sd">    Returns</span>
@@ -106,7 +112,7 @@
 
     <span class="n">center</span> <span class="o">=</span> <span class="n">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
 
-    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">random_seed</span><span class="p">)</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">random_seed</span><span class="p">)</span>    
     <span class="n">pos</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span> <span class="o">+</span> <span class="n">center</span>
     <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="n">pos</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
@@ -137,6 +143,7 @@
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
     <span class="n">center</span> <span class="o">=</span> <span class="n">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="p">{}</span>
@@ -208,14 +215,14 @@
         <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)])</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">rescale_position</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span>
-                                   <span class="n">scale</span><span class="o">=</span><span class="n">scale</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">nlist</span><span class="p">))</span> <span class="o">+</span> <span class="n">center</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">rescale_position</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">nlist</span><span class="p">))</span> <span class="o">+</span> <span class="n">center</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">scale</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">+</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
         <span class="n">npos</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
         <span class="n">radius</span> <span class="o">+=</span> <span class="mf">1.0</span>
 
     <span class="k">return</span> <span class="n">npos</span></div>
+
 
 
 <span class="k">def</span> <span class="nf">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
@@ -232,7 +239,7 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">center</span><span class="p">)</span> <span class="o">!=</span> <span class="n">dim</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;length of center coordinates must match dimension of layout&quot;</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-
+        
     <span class="k">return</span> <span class="n">center</span>
 
 
@@ -264,14 +271,9 @@
             <span class="n">pos</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scale</span> <span class="o">/</span> <span class="n">lim</span>
     <span class="k">return</span> <span class="n">pos</span></div>
 
-
-<div class="viewcode-block" id="kamada_kawai_layout"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.positioning.kamada_kawai_layout.html#easygraph.functions.drawing.positioning.kamada_kawai_layout">[docs]</a><span class="k">def</span> <span class="nf">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
-                        <span class="n">dist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                        <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                        <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span>
-                        <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                        <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                        <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="viewcode-block" id="kamada_kawai_layout"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.positioning.kamada_kawai_layout.html#easygraph.functions.drawing.positioning.kamada_kawai_layout">[docs]</a><span class="k">def</span> <span class="nf">kamada_kawai_layout</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Position nodes using Kamada-Kawai path-length cost-function.</span>
 
 <span class="sd">    Parameters</span>
@@ -330,7 +332,7 @@
 
     <span class="k">if</span> <span class="n">pos</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">random_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">random_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">circular_position</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -362,8 +364,7 @@
     <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
 
     <span class="n">meanwt</span> <span class="o">=</span> <span class="mf">1e-3</span>
-    <span class="n">costargs</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">dist_mtx</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dist_mtx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">meanwt</span><span class="p">,</span>
-                <span class="n">dim</span><span class="p">)</span>
+    <span class="n">costargs</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">dist_mtx</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dist_mtx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">meanwt</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
 
     <span class="n">optresult</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span>
         <span class="n">_kamada_kawai_costfn</span><span class="p">,</span>
@@ -383,19 +384,19 @@
 
     <span class="n">delta</span> <span class="o">=</span> <span class="n">pos_arr</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">pos_arr</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
     <span class="n">nodesep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">direction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ijk,ij-&gt;ijk&quot;</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span>
-                          <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">nodesep</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nNodes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">))</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ijk,ij-&gt;ijk&quot;</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">nodesep</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nNodes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">))</span>
 
     <span class="n">offset</span> <span class="o">=</span> <span class="n">nodesep</span> <span class="o">*</span> <span class="n">invdist</span> <span class="o">-</span> <span class="mf">1.0</span>
     <span class="n">offset</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">diag_indices</span><span class="p">(</span><span class="n">nNodes</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="n">cost</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">offset</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">offset</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ij,ij,ijk-&gt;ik&quot;</span><span class="p">,</span> <span class="n">invdist</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span>
-        <span class="s2">&quot;ij,ij,ijk-&gt;jk&quot;</span><span class="p">,</span> <span class="n">invdist</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+        <span class="s2">&quot;ij,ij,ijk-&gt;jk&quot;</span><span class="p">,</span> <span class="n">invdist</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">direction</span>
+    <span class="p">)</span>
 
     <span class="c1"># Additional parabolic term to encourage mean position to be near origin:</span>
     <span class="n">sumpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pos_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">cost</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">meanweight</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sumpos</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">cost</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">meanweight</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sumpos</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">grad</span> <span class="o">+=</span> <span class="n">meanweight</span> <span class="o">*</span> <span class="n">sumpos</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">grad</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
