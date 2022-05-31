@@ -6,6 +6,7 @@
   <title>easygraph.functions.structural_holes.weakTie &mdash; EasyGraph 0.2a35 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -72,7 +73,6 @@
              
   <h1>Source code for easygraph.functions.structural_holes.weakTie</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;weakTie&quot;</span><span class="p">,</span>
@@ -167,8 +167,7 @@
                     <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
                     <span class="k">if</span> <span class="n">lowlink</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="n">preorder</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
                         <span class="n">scc</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">}</span>
-                        <span class="k">while</span> <span class="n">scc_queue</span> <span class="ow">and</span> <span class="n">preorder</span><span class="p">[</span>
-                                <span class="n">scc_queue</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="n">preorder</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+                        <span class="k">while</span> <span class="n">scc_queue</span> <span class="ow">and</span> <span class="n">preorder</span><span class="p">[</span><span class="n">scc_queue</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="n">preorder</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
                             <span class="n">k</span> <span class="o">=</span> <span class="n">scc_queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
                             <span class="n">scc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
                         <span class="n">scc_found</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scc</span><span class="p">)</span>
@@ -202,8 +201,7 @@
     <span class="k">return</span> <span class="n">score_dict</span>
 
 
-<div class="viewcode-block" id="weakTie"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.weakTie.weakTie.html#easygraph.functions.structural_holes.weakTie.weakTie">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">weakTie</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<div class="viewcode-block" id="weakTie"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.structural_holes.weakTie.weakTie.html#easygraph.functions.structural_holes.weakTie.weakTie">[docs]</a><span class="k">def</span> <span class="nf">weakTie</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return top-k nodes with highest scores which were computed by WeakTie method.</span>
 
 <span class="sd">    Parameters</span>
@@ -248,7 +246,6 @@
     <span class="k">return</span> <span class="n">SHS_list</span><span class="p">,</span> <span class="n">score_dict</span></div>
 
 
-<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_updateScore</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
     <span class="n">score_u</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_strongly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
@@ -319,8 +316,7 @@
             <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_strongly_connected_components</span><span class="p">(</span><span class="n">G_w</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">node_u</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
                     <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-                    <span class="n">closeness_c_w</span> <span class="o">=</span> <span class="n">_computeCloseness</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">node_w</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span>
-                                                      <span class="n">length</span><span class="p">)</span>
+                    <span class="n">closeness_c_w</span> <span class="o">=</span> <span class="n">_computeCloseness</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">node_w</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">closeness_c_w</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                         <span class="n">score_w</span> <span class="o">-=</span> <span class="n">closeness_c_w</span>
         <span class="n">score_dict</span><span class="p">[</span><span class="n">node_w</span><span class="p">]</span> <span class="o">=</span> <span class="n">score_w</span>
@@ -380,7 +376,6 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;updated score:&quot;</span><span class="p">,</span> <span class="n">score_dict</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;top-k nodes:&quot;</span><span class="p">,</span> <span class="n">SHS_list</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">SHS_list</span></div>
-
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>

@@ -6,6 +6,7 @@
   <title>easygraph.functions.drawing.plot &mdash; EasyGraph 0.2a35 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -71,20 +72,21 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.drawing.plot</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span> 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;plot_Followers&quot;</span><span class="p">,</span> <span class="s2">&quot;plot_Connected_Communities&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;plot_Betweenness_Centrality&quot;</span><span class="p">,</span> <span class="s2">&quot;plot_Neighborhood_Followers&quot;</span>
+<span class="n">__all__</span><span class="o">=</span><span class="p">[</span>
+    <span class="s2">&quot;plot_Followers&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;plot_Connected_Communities&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;plot_Betweenness_Centrality&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;plot_Neighborhood_Followers&quot;</span>
 <span class="p">]</span>
 
-
 <span class="c1"># Number of Followers</span>
-<div class="viewcode-block" id="plot_Followers"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Followers.html#easygraph.functions.drawing.plot.plot_Followers">[docs]</a><span class="k">def</span> <span class="nf">plot_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Followers"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Followers.html#easygraph.functions.drawing.plot.plot_Followers">[docs]</a><span class="k">def</span> <span class="nf">plot_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">SHS</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Number of Followers&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -101,35 +103,34 @@
 <span class="sd">    plt : CDF curves</span>
 <span class="sd">        the CDF curves of &quot;Number of Followers&quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">OU</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">OU</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
-    <span class="n">sample1</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">sample2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">degree</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+    <span class="n">sample1</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">sample2</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">degree</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">OU</span><span class="p">:</span>
             <span class="n">sample1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">degree</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="k">elif</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">sample2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">degree</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
+    <span class="n">X1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
-    <span class="n">Y1</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-    <span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
+    <span class="n">Y1</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
+    <span class="n">X2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample2</span><span class="p">)</span>
-    <span class="n">Y2</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
+    <span class="n">Y2</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="s1">&#39;b--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Number of Followers&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Followers&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Distribution Function&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-
 <span class="c1"># Number of Connected Communities</span>
-<div class="viewcode-block" id="plot_Connected_Communities"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Connected_Communities.html#easygraph.functions.drawing.plot.plot_Connected_Communities">[docs]</a><span class="k">def</span> <span class="nf">plot_Connected_Communities</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Connected_Communities"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Connected_Communities.html#easygraph.functions.drawing.plot.plot_Connected_Communities">[docs]</a><span class="k">def</span> <span class="nf">plot_Connected_Communities</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">SHS</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Number of Connected Communities&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -146,24 +147,24 @@
 <span class="sd">    plt : CDF curves</span>
 <span class="sd">        the CDF curves of &quot;Number of Connected Communities&quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">OU</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">OU</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">sample1</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">sample2</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">cmts</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">LPA</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">sample1</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">sample2</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">cmts</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">LPA</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">OU</span><span class="p">:</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="n">neighbors</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">=</span><span class="nb">set</span><span class="p">()</span>
+        <span class="n">neighbors</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">cmts</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">cmts</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
                     <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
         <span class="n">sample1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="n">neighbors</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">=</span><span class="nb">set</span><span class="p">()</span>
+        <span class="n">neighbors</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">cmts</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">cmts</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
@@ -172,23 +173,22 @@
     <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cmts</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample2</span><span class="p">)</span>
-    <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
+    <span class="n">X1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
-    <span class="n">Y1</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-    <span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
+    <span class="n">Y1</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
+    <span class="n">X2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample2</span><span class="p">)</span>
-    <span class="n">Y2</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
+    <span class="n">Y2</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="s1">&#39;b--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Number of Connected Communities&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Connected Communities&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Distribution Function&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-
 <span class="c1"># Betweenness Centrality</span>
-<div class="viewcode-block" id="plot_Betweenness_Centrality"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Betweenness_Centrality.html#easygraph.functions.drawing.plot.plot_Betweenness_Centrality">[docs]</a><span class="k">def</span> <span class="nf">plot_Betweenness_Centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Betweenness_Centrality"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Betweenness_Centrality.html#easygraph.functions.drawing.plot.plot_Betweenness_Centrality">[docs]</a><span class="k">def</span> <span class="nf">plot_Betweenness_Centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">SHS</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Betweenness Centralitys&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -205,35 +205,34 @@
 <span class="sd">    plt : CDF curves</span>
 <span class="sd">        the CDF curves of &quot;Betweenness Centrality&quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">OU</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">OU</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">bc</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">sample1</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">sample2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">bc</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">sample1</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">sample2</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bc</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">OU</span><span class="p">:</span>
             <span class="n">sample1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="k">elif</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">sample2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
+    <span class="n">X1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
-    <span class="n">Y1</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-    <span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
+    <span class="n">Y1</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
+    <span class="n">X2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample2</span><span class="p">)</span>
-    <span class="n">Y2</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
+    <span class="n">Y2</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="s1">&#39;b--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Betweenness Centrality&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Betweenness Centrality&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Distribution Function&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-
 <span class="c1"># Arg. Number of Followers of the Neighborhood Users</span>
-<div class="viewcode-block" id="plot_Neighborhood_Followers"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Neighborhood_Followers.html#easygraph.functions.drawing.plot.plot_Neighborhood_Followers">[docs]</a><span class="k">def</span> <span class="nf">plot_Neighborhood_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Neighborhood_Followers"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.drawing.plot.plot_Neighborhood_Followers.html#easygraph.functions.drawing.plot.plot_Neighborhood_Followers">[docs]</a><span class="k">def</span> <span class="nf">plot_Neighborhood_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">SHS</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Arg. Number of Followers of the Neighborhood Users&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -251,40 +250,41 @@
 <span class="sd">        the CDF curves of &quot;Arg. Number of Followers of the Neighborhood Users</span>
 <span class="sd">        &quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">OU</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">OU</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">sample1</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">sample2</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+    <span class="n">sample1</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">sample2</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">degree</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">OU</span><span class="p">:</span>
-        <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
+        <span class="nb">sum</span><span class="o">=</span><span class="mi">0</span>
         <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">i</span><span class="p">):</span>
-            <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">degree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
-        <span class="n">sample1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span> <span class="o">/</span> <span class="n">num</span><span class="p">)</span>
+            <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span>
+            <span class="nb">sum</span><span class="o">=</span><span class="nb">sum</span><span class="o">+</span><span class="n">degree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
+        <span class="n">sample1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="o">/</span><span class="n">num</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
-        <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
+        <span class="nb">sum</span><span class="o">=</span><span class="mi">0</span>
         <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">i</span><span class="p">):</span>
-            <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">degree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
-        <span class="n">sample2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span> <span class="o">/</span> <span class="n">num</span><span class="p">)</span>
-    <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
+            <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span>
+            <span class="nb">sum</span><span class="o">=</span><span class="nb">sum</span><span class="o">+</span><span class="n">degree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
+        <span class="n">sample2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="o">/</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">X1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
-    <span class="n">Y1</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-    <span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
+    <span class="n">Y1</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
+    <span class="n">X2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample2</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample2</span><span class="p">)</span>
-    <span class="n">Y2</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
+    <span class="n">Y2</span><span class="o">=</span><span class="n">ecdf</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="s1">&#39;b--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ordinary User&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;SH Spanner&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Arg. Number of Followers of the Neighborhood Users&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Arg. Number of Followers of the Neighborhood Users&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Distribution Function&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+    
 </pre></div>
 
            </div>

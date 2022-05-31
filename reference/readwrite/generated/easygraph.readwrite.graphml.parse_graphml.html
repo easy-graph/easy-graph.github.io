@@ -7,6 +7,7 @@
   <title>easygraph.readwrite.graphml.parse_graphml &mdash; EasyGraph 0.2a35 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,9 +19,7 @@
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="graphviz" href="../graphviz.html" />
-    <link rel="prev" title="easygraph.readwrite.graphml.generate_graphml" href="easygraph.readwrite.graphml.generate_graphml.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,39 +38,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../reference.html">Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../classes.html">Graph Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../community.html">Community</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../components.html">Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../path.html">Path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../graph_embedding.html">Graph Embedding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../structural_hole_spanners.html">Structural Hole Spanners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../drawing.html">Drawing</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Reading and writing graphs</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../gexf.html">GEXF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../gml.html">GML</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../graphml.html">GraphML</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../graphml.html#id1">GraphML</a></li>
-<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.graphml.read_graphml.html">easygraph.readwrite.graphml.read_graphml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.graphml.write_graphml.html">easygraph.readwrite.graphml.write_graphml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.graphml.generate_graphml.html">easygraph.readwrite.graphml.generate_graphml</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.readwrite.graphml.parse_graphml</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../graphviz.html">graphviz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ucinet.html">Ucinet</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../centrality.html">Centrality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../graph_generator.html">Graph Generator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../not_sorted.html">Not Sorted</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
@@ -92,9 +62,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../reference.html">Reference</a> &raquo;</li>
-          <li><a href="../index.html">Reading and writing graphs</a> &raquo;</li>
-          <li><a href="../graphml.html">GraphML</a> &raquo;</li>
       <li>easygraph.readwrite.graphml.parse_graphml</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/reference/readwrite/generated/easygraph.readwrite.graphml.parse_graphml.rst.txt" rel="nofollow"> View page source</a>
@@ -107,70 +74,12 @@
              
   <section id="easygraph-readwrite-graphml-parse-graphml">
 <h1>easygraph.readwrite.graphml.parse_graphml<a class="headerlink" href="#easygraph-readwrite-graphml-parse-graphml" title="Permalink to this headline"></a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.readwrite.graphml.parse_graphml">
-<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">parse_graphml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">graphml_string</span></em>, <em class="sig-param"><span class="pre">node_type=&lt;class</span> <span class="pre">'str'&gt;</span></em>, <em class="sig-param"><span class="pre">edge_key_type=&lt;class</span> <span class="pre">'int'&gt;</span></em>, <em class="sig-param"><span class="pre">force_multigraph=False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/easygraph/readwrite/graphml.html#parse_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.parse_graphml" title="Permalink to this definition"></a></dt>
-<dd><p>Read graph in GraphML format from string.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>graphml_string</strong> (<em>string</em>) – String containing graphml information
-(e.g., contents of a graphml file).</p></li>
-<li><p><strong>node_type</strong> (<em>Python type</em><em> (</em><em>default: str</em><em>)</em>) – Convert node ids to this type</p></li>
-<li><p><strong>edge_key_type</strong> (<em>Python type</em><em> (</em><em>default: int</em><em>)</em>) – Convert graphml edge ids to this type. Multigraphs use id as edge key.
-Non-multigraphs add to edge attribute dict with name “id”.</p></li>
-<li><p><strong>force_multigraph</strong> (<em>bool</em><em> (</em><em>default: False</em><em>)</em>) – If True, return a multigraph with edge keys. If False (the default)
-return a multigraph when multiedges are in the graph.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>graph</strong> – If no parallel edges are found a Graph or DiGraph is returned.
-Otherwise a MultiGraph or MultiDiGraph is returned.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>EasyGraph graph</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">linefeed</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># linefeed =</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">linefeed</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">generate_graphml</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">parse_graphml</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="rubric">Notes</p>
-<p>Default node and edge attributes are not propagated to each node and edge.
-They can be obtained from <cite>G.graph</cite> and applied to node and edge attributes
-if desired using something like this:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">default_color</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;node_default&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>  
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  
-<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;color&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_color</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">default_color</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;edge_default&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>  
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  
-<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;color&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_color</span>
-</pre></div>
-</div>
-<p>This implementation does not support mixed graphs (directed and unidirected
-edges together), hypergraphs, nested graphs, or ports.</p>
-<p>For multigraphs the GraphML edge “id” will be used as the edge
-key.  If not specified then they “key” attribute will be used.  If
-there is no “key” attribute a default EasyGraph multigraph edge key
-will be provided.</p>
-</dd></dl>
-
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="easygraph.readwrite.graphml.generate_graphml.html" class="btn btn-neutral float-left" title="easygraph.readwrite.graphml.generate_graphml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../graphviz.html" class="btn btn-neutral float-right" title="graphviz" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

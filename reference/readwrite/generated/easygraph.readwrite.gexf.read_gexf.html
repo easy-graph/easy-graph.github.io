@@ -7,6 +7,7 @@
   <title>easygraph.readwrite.gexf.read_gexf &mdash; EasyGraph 0.2a35 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,9 +19,7 @@
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="easygraph.readwrite.gexf.write_gexf" href="easygraph.readwrite.gexf.write_gexf.html" />
-    <link rel="prev" title="GEXF" href="../gexf.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,38 +38,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../reference.html">Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../classes.html">Graph Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../community.html">Community</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../components.html">Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../path.html">Path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../graph_embedding.html">Graph Embedding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../structural_hole_spanners.html">Structural Hole Spanners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../drawing.html">Drawing</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Reading and writing graphs</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../gexf.html">GEXF</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.readwrite.gexf.read_gexf</a></li>
-<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.gexf.write_gexf.html">easygraph.readwrite.gexf.write_gexf</a></li>
-<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.gexf.generate_gexf.html">easygraph.readwrite.gexf.generate_gexf</a></li>
-<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.gexf.relabel_gexf_graph.html">easygraph.readwrite.gexf.relabel_gexf_graph</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../gml.html">GML</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../graphml.html">GraphML</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../graphviz.html">graphviz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ucinet.html">Ucinet</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../centrality.html">Centrality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../graph_generator.html">Graph Generator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../not_sorted.html">Not Sorted</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
@@ -91,9 +62,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../reference.html">Reference</a> &raquo;</li>
-          <li><a href="../index.html">Reading and writing graphs</a> &raquo;</li>
-          <li><a href="../gexf.html">GEXF</a> &raquo;</li>
       <li>easygraph.readwrite.gexf.read_gexf</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/reference/readwrite/generated/easygraph.readwrite.gexf.read_gexf.rst.txt" rel="nofollow"> View page source</a>
@@ -106,52 +74,12 @@
              
   <section id="easygraph-readwrite-gexf-read-gexf">
 <h1>easygraph.readwrite.gexf.read_gexf<a class="headerlink" href="#easygraph-readwrite-gexf-read-gexf" title="Permalink to this headline"></a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.readwrite.gexf.read_gexf">
-<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.gexf.</span></span><span class="sig-name descname"><span class="pre">read_gexf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1.2draft'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/easygraph/readwrite/gexf.html#read_gexf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.gexf.read_gexf" title="Permalink to this definition"></a></dt>
-<dd><p>Read graph in GEXF format from path.</p>
-<p>“GEXF (Graph Exchange XML Format) is a language for describing
-complex networks structures, their associated data and dynamics” <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>file</em><em> or </em><em>string</em>) – File or file name to read.
-File names ending in .gz or .bz2 will be decompressed.</p></li>
-<li><p><strong>node_type</strong> (<em>Python type</em><em> (</em><em>default: None</em><em>)</em>) – Convert node ids to this type if not None.</p></li>
-<li><p><strong>relabel</strong> (<em>bool</em><em> (</em><em>default: False</em><em>)</em>) – If True relabel the nodes to use the GEXF node “label” attribute
-instead of the node “id” attribute as the EasyGraph node label.</p></li>
-<li><p><strong>version</strong> (<em>string</em><em> (</em><em>default: 1.2draft</em><em>)</em>) – </p></li>
-<li><p><strong>of GEFX File Format</strong><strong> (</strong><strong>see http</strong> (<em>Version</em>) – Supported values: “1.1draft”, “1.2draft”</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>graph</strong> – If no parallel edges are found a Graph or DiGraph is returned.
-Otherwise a MultiGraph or MultiDiGraph is returned.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>EasyGraph graph</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>This implementation does not support mixed graphs (directed and undirected
-edges together).</p>
-<p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>GEXF File Format, <a class="reference external" href="http://gexf.net/">http://gexf.net/</a></p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../gexf.html" class="btn btn-neutral float-left" title="GEXF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="easygraph.readwrite.gexf.write_gexf.html" class="btn btn-neutral float-right" title="easygraph.readwrite.gexf.write_gexf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
