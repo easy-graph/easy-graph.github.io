@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.centrality.flowbetweenness.flowbetweenness_centrality &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.functions.centrality.flowbetweenness.flowbetweenness_centrality &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
@@ -113,21 +113,30 @@
 </div></blockquote>
 <p>rac{sigma(s, t|v)}{sigma(s, t)}</p>
 <blockquote>
-<div><p>where $V$ is the set of nodes, $sigma(s, t)$ is the number of
-independent $(s, t)$-paths,  and $sigma(s, t|v)$ is the maximum
-number possible of those paths  passing through some  node $v$
-other than $s, t$. If $s = t$, $sigma(s, t) = 1$, and if $v in {s, t}$,
-$sigma(s, t|v) = 0$ <a href="#id2"><span class="problematic" id="id1">[2]_</span></a>.</p>
-<dl class="simple">
-<dt>G<span class="classifier">graph</span></dt><dd><p>A easygraph directed graph.</p>
-</dd>
-</dl>
-<dl class="simple">
-<dt>nodes<span class="classifier">dictionary</span></dt><dd><p>Dictionary of nodes with independent-path betweenness centrality as the value.</p>
-</dd>
-</dl>
-<p>A flow network is a directed graph where each edge has a capacity and each edge receives a flow.</p>
+<div><p>where V is the set of nodes,</p>
+<div class="math notranslate nohighlight">
+\[\sigma(s, t)\ is\ the\ number\ of\ independent\ (s, t)-paths,\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma(s, t|v)\ is\ the\ maximum\ number\ possible\ of\ those\ paths\ passing\ through\ some\ node\ v\ other\ than\ s, t.\]</div>
+<div class="math notranslate nohighlight">
+\[If\ s\ =\ t,\ \sigma(s, t)\ =\ 1,\ and\ if\ v \in \{s, t\},\ \sigma(s, t|v)\ =\ 0\ [2]_.\]</div>
 </div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>G</strong><span class="classifier">graph</span></dt><dd><p>A easygraph directed graph.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>nodes</strong><span class="classifier">dictionary</span></dt><dd><p>Dictionary of nodes with independent-path betweenness centrality as the value.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>A flow network is a directed graph where each edge has a capacity and each edge receives a flow.</p>
 </dd></dl>
 
 </section>

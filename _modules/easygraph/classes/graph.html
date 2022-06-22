@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.classes.graph &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.classes.graph &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -73,9 +73,14 @@
              
   <h1>Source code for easygraph.classes.graph</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">easygraph.convert</span> <span class="k">as</span> <span class="nn">convert</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.exception</span> <span class="kn">import</span> <span class="n">EasyGraphError</span>
 
 
-<div class="viewcode-block" id="Graph"><a class="viewcode-back" href="../../../reference/classes/graph.html#easygraph.Graph">[docs]</a><span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph"><a class="viewcode-back" href="../../../reference/classes/graph.html#easygraph.Graph">[docs]</a><span class="k">class</span> <span class="nc">Graph</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Base class for undirected graphs.</span>
 <span class="sd">	</span>
@@ -127,11 +132,13 @@
     <span class="n">adjlist_inner_dict_factory</span> <span class="o">=</span> <span class="nb">dict</span>
     <span class="n">edge_attr_dict_factory</span> <span class="o">=</span> <span class="nb">dict</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">graph_attr</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">graph_attr</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_attr_dict_factory</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_dict_factory</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_outer_dict_factory</span><span class="p">()</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">cflag</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">incoming_graph_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">convert</span><span class="o">.</span><span class="n">to_easygraph_graph</span><span class="p">(</span><span class="n">incoming_graph_data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">graph_attr</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -171,6 +178,20 @@
                     <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]))</span>
         <span class="k">del</span> <span class="n">seen</span>
         <span class="k">return</span> <span class="n">edges</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;String identifier of the graph.</span>
+
+<span class="sd">        This graph attribute appears in the attribute dict G.graph</span>
+<span class="sd">        keyed by the string `&quot;name&quot;`. as well as an attribute (technically</span>
+<span class="sd">        a property) `G.name`. This is entirely user controlled.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
 
 <div class="viewcode-block" id="Graph.degree"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.degree.html#easygraph.Graph.degree">[docs]</a>    <span class="k">def</span> <span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the weighted degree of of each node.</span>
@@ -217,6 +238,27 @@
                 <span class="n">degree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">return</span> <span class="n">degree</span></div>
+
+    <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the number of nodes in the graph.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        nnodes : int</span>
+<span class="sd">            The number of nodes in the graph.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        number_of_nodes: identical method</span>
+<span class="sd">        __len__: identical method</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; G = eg.path_graph(3)  # or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="sd">        &gt;&gt;&gt; G.order()</span>
+<span class="sd">        3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Graph.size"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.size.html#easygraph.Graph.size">[docs]</a>    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the number of edges or total of all edge weights.</span>
@@ -308,7 +350,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_one_node</span><span class="p">(</span><span class="n">node_for_adding</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">add_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes_for_adding</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">nodes_attr</span><span class="p">:</span> <span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
+    <span class="k">def</span> <span class="nf">add_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes_for_adding</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">nodes_attr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
         <span class="sd">&quot;&quot;&quot;Add nodes with a list of nodes.</span>
 
 <span class="sd">        Parameters</span>
@@ -349,7 +391,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes_attr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Nodes attributes included in input</span>
             <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes_for_adding</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span>
-                <span class="n">nodes_attr</span><span class="p">),</span> <span class="s2">&quot;Nodes and Attributes lists must have same length.&quot;</span>
+                <span class="n">nodes_attr</span>
+            <span class="p">),</span> <span class="s2">&quot;Nodes and Attributes lists must have same length.&quot;</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># Set empty attribute for each node</span>
             <span class="n">nodes_attr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes_for_adding</span><span class="p">))]</span>
 
@@ -359,6 +402,66 @@
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
                 <span class="k">pass</span>
+
+<div class="viewcode-block" id="Graph.add_nodes_from"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.add_nodes_from.html#easygraph.Graph.add_nodes_from">[docs]</a>    <span class="k">def</span> <span class="nf">add_nodes_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes_for_adding</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add multiple nodes.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        nodes_for_adding : iterable container</span>
+<span class="sd">            A container of nodes (list, dict, set, etc.).</span>
+<span class="sd">            OR</span>
+<span class="sd">            A container of (node, attribute dict) tuples.</span>
+<span class="sd">            Node attributes are updated using the attribute dict.</span>
+<span class="sd">        attr : keyword arguments, optional (default= no attributes)</span>
+<span class="sd">            Update attributes for all nodes in nodes.</span>
+<span class="sd">            Node attributes specified in nodes as a tuple take</span>
+<span class="sd">            precedence over attributes specified via keyword arguments.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        add_node</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; G = eg.Graph()  # or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="sd">        &gt;&gt;&gt; G.add_nodes_from(&quot;Hello&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; K3 = eg.Graph([(0, 1), (1, 2), (2, 0)])</span>
+<span class="sd">        &gt;&gt;&gt; G.add_nodes_from(K3)</span>
+<span class="sd">        &gt;&gt;&gt; sorted(G.nodes(), key=str)</span>
+<span class="sd">        [0, 1, 2, &#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;o&#39;]</span>
+
+<span class="sd">        Use keywords to update specific node attributes for every node.</span>
+
+<span class="sd">        &gt;&gt;&gt; G.add_nodes_from([1, 2], size=10)</span>
+<span class="sd">        &gt;&gt;&gt; G.add_nodes_from([3, 4], weight=0.4)</span>
+
+<span class="sd">        Use (node, attrdict) tuples to update attributes for specific nodes.</span>
+
+<span class="sd">        &gt;&gt;&gt; G.add_nodes_from([(1, dict(size=11)), (2, {&quot;color&quot;: &quot;blue&quot;})])</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[1][&quot;size&quot;]</span>
+<span class="sd">        11</span>
+<span class="sd">        &gt;&gt;&gt; H = eg.Graph()</span>
+<span class="sd">        &gt;&gt;&gt; H.add_nodes_from(G.nodes(data=True))</span>
+<span class="sd">        &gt;&gt;&gt; H.nodes[1][&quot;size&quot;]</span>
+<span class="sd">        11</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodes_for_adding</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">newnode</span> <span class="o">=</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span>
+                <span class="n">newdict</span> <span class="o">=</span> <span class="n">attr</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="n">n</span><span class="p">,</span> <span class="n">ndict</span> <span class="o">=</span> <span class="n">n</span>
+                <span class="n">newnode</span> <span class="o">=</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span>
+                <span class="n">newdict</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">newdict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ndict</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">newnode</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;None cannot be a node&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_attr_dict_factory</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">newdict</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_add_one_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">one_node_for_adding</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">one_node_for_adding</span>
@@ -409,7 +512,7 @@
 <div class="viewcode-block" id="Graph.add_weighted_edge"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.add_weighted_edge.html#easygraph.Graph.add_weighted_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_weighted_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_one_edge</span><span class="p">(</span><span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">})</span></div>
 
-    <span class="k">def</span> <span class="nf">add_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges_for_adding</span><span class="p">,</span> <span class="n">edges_attr</span><span class="p">:</span> <span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
+    <span class="k">def</span> <span class="nf">add_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges_for_adding</span><span class="p">,</span> <span class="n">edges_attr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
         <span class="sd">&quot;&quot;&quot;Add a list of edges.</span>
 
 <span class="sd">        Parameters</span>
@@ -445,7 +548,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges_attr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Edges attributes included in input</span>
             <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges_for_adding</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span>
-                <span class="n">edges_attr</span><span class="p">),</span> <span class="s2">&quot;Edges and Attributes lists must have same length.&quot;</span>
+                <span class="n">edges_attr</span>
+            <span class="p">),</span> <span class="s2">&quot;Edges and Attributes lists must have same length.&quot;</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># Set empty attribute for each edge</span>
             <span class="n">edges_attr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges_for_adding</span><span class="p">))]</span>
 
@@ -453,12 +557,76 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">edge</span> <span class="o">=</span> <span class="n">edges_for_adding</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
                 <span class="n">attr</span> <span class="o">=</span> <span class="n">edges_attr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span>
-                    <span class="n">edge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Edge tuple </span><span class="si">{}</span><span class="s2"> must be 2-tuple.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+                <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Edge tuple </span><span class="si">{}</span><span class="s2"> must be 2-tuple.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">edge</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_add_one_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">attr</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-    
+
+<div class="viewcode-block" id="Graph.add_edges_from"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.add_edges_from.html#easygraph.Graph.add_edges_from">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ebunch_to_add</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add all the edges in ebunch_to_add.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ebunch_to_add : container of edges</span>
+<span class="sd">            Each edge given in the container will be added to the</span>
+<span class="sd">            graph. The edges must be given as 2-tuples (u, v) or</span>
+<span class="sd">            3-tuples (u, v, d) where d is a dictionary containing edge data.</span>
+<span class="sd">        attr : keyword arguments, optional</span>
+<span class="sd">            Edge data (or labels or objects) can be assigned using</span>
+<span class="sd">            keyword arguments.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        add_edge : add a single edge</span>
+<span class="sd">        add_weighted_edges_from : convenient way to add weighted edges</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Adding the same edge twice has no effect but any edge data</span>
+<span class="sd">        will be updated when each duplicate edge is added.</span>
+
+<span class="sd">        Edge attributes specified in an ebunch take precedence over</span>
+<span class="sd">        attributes specified via keyword arguments.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; G = eg.Graph()  # or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="sd">        &gt;&gt;&gt; G.add_edges_from([(0, 1), (1, 2)])  # using a list of edge tuples</span>
+<span class="sd">        &gt;&gt;&gt; e = zip(range(0, 3), range(1, 4))</span>
+<span class="sd">        &gt;&gt;&gt; G.add_edges_from(e)  # Add the path graph 0-1-2-3</span>
+
+<span class="sd">        Associate data to edges</span>
+
+<span class="sd">        &gt;&gt;&gt; G.add_edges_from([(1, 2), (2, 3)], weight=3)</span>
+<span class="sd">        &gt;&gt;&gt; G.add_edges_from([(3, 4), (1, 4)], label=&quot;WN2898&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">ebunch_to_add</span><span class="p">:</span>
+            <span class="n">ne</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ne</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dd</span> <span class="o">=</span> <span class="n">e</span>
+            <span class="k">elif</span> <span class="n">ne</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">e</span>
+                <span class="n">dd</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># doesn&#39;t need edge_attr_dict_factory</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Edge tuple </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> must be a 2-tuple or 3-tuple.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">u</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;None cannot be a node&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_attr_dict_factory</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;None cannot be a node&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_attr_dict_factory</span><span class="p">()</span>
+            <span class="n">datadict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span><span class="p">())</span>
+            <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+            <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span></div>
+
 <div class="viewcode-block" id="Graph.add_edges_from_file"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.add_edges_from_file.html#easygraph.Graph.add_edges_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Added edges from file</span>
 <span class="sd">        For example, txt files,</span>
@@ -473,7 +641,7 @@
 <span class="sd">            The file path.</span>
 
 <span class="sd">        weighted : boolean, optional (default : False)</span>
-<span class="sd">            If the file consists of weight infomation, set `True`.</span>
+<span class="sd">            If the file consists of weight information, set `True`.</span>
 <span class="sd">            The weight key will be set as &#39;weight&#39;.</span>
 
 <span class="sd">        Examples</span>
@@ -549,7 +717,7 @@
             <span class="n">neighbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">node_to_remove</span><span class="p">])</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">node_to_remove</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>  <span class="c1"># Node not exists in self</span>
-            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;No node </span><span class="si">{}</span><span class="s2"> in graph.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node_to_remove</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;No node </span><span class="si">{}</span><span class="s2"> in graph.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node_to_remove</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>  <span class="c1"># Remove edges with other nodes</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">neighbor</span><span class="p">][</span><span class="n">node_to_remove</span><span class="p">]</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">node_to_remove</span><span class="p">]</span>  <span class="c1"># Remove this node</span></div>
@@ -574,8 +742,8 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes_to_remove</span><span class="p">:</span>  <span class="c1"># If not all nodes included in graph, give up removing other nodes</span>
-            <span class="k">assert</span> <span class="p">(</span><span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">),</span> <span class="s2">&quot;Remove Error: No node </span><span class="si">{}</span><span class="s2"> in graph&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">node</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="p">(</span><span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span>
+                    <span class="p">),</span> <span class="s2">&quot;Remove Error: No node </span><span class="si">{}</span><span class="s2"> in graph&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes_to_remove</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
 
@@ -667,13 +835,17 @@
 <div class="viewcode-block" id="Graph.is_directed"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.is_directed.html#easygraph.Graph.is_directed">[docs]</a>    <span class="k">def</span> <span class="nf">is_directed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
+<div class="viewcode-block" id="Graph.is_multigraph"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.is_multigraph.html#easygraph.Graph.is_multigraph">[docs]</a>    <span class="k">def</span> <span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
 <div class="viewcode-block" id="Graph.copy"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.copy.html#easygraph.Graph.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a deep copy of the graph.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        copy : easygraph.Graph</span>
-<span class="sd">            A deep copy of the orginal graph.</span>
+<span class="sd">            A deep copy of the original graph.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -689,7 +861,7 @@
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">edge_data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="n">edge_data</span><span class="p">)</span>
-        
+
         <span class="k">return</span> <span class="n">G</span></div>
 
 <div class="viewcode-block" id="Graph.nodes_subgraph"><a class="viewcode-back" href="../../../reference/classes/generated/easygraph.Graph.nodes_subgraph.html#easygraph.Graph.nodes_subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">nodes_subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
@@ -802,9 +974,25 @@
             <span class="n">node_of_index</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="n">begin_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">edge_data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">index_of_node</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">index_of_node</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="o">**</span><span class="n">edge_data</span><span class="p">)</span> 
-        
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">index_of_node</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">index_of_node</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="o">**</span><span class="n">edge_data</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">G</span><span class="p">,</span> <span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span></div></div>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">cpp_easygraph</span>
+
+    <span class="k">class</span> <span class="nc">GraphC</span><span class="p">(</span><span class="n">cpp_easygraph</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+        <span class="n">cflag</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+    <span class="k">class</span> <span class="nc">GraphC</span><span class="p">():</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">graph_attr</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;Object cannot be instantiated because C extension has not been successfully compiled and installed. Please refer to https://github.com/easy-graph/Easy-Graph/blob/master/README.rst and reinstall easygraph.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span>
 </pre></div>
 
            </div>
