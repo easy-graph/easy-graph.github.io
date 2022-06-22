@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GraphML &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>GraphML &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="graphviz" href="graphviz.html" />
-    <link rel="prev" title="GML" href="gml.html" /> 
+    <link rel="next" title="easygraph.readwrite.graphml.read_graphml" href="generated/easygraph.readwrite.graphml.read_graphml.html" />
+    <link rel="prev" title="easygraph.readwrite.gml.generate_gml" href="generated/easygraph.readwrite.gml.generate_gml.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,7 +56,14 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Reading and writing graphs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="gexf.html">GEXF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gml.html">GML</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">GraphML</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GraphML</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#format">Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.graphml.read_graphml.html">easygraph.readwrite.graphml.read_graphml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.graphml.write_graphml.html">easygraph.readwrite.graphml.write_graphml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.graphml.generate_graphml.html">easygraph.readwrite.graphml.generate_graphml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.graphml.parse_graphml.html">easygraph.readwrite.graphml.parse_graphml</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="graphviz.html">graphviz</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ucinet.html">Ucinet</a></li>
 </ul>
@@ -98,14 +105,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="graphml">
-<h1>GraphML<a class="headerlink" href="#graphml" title="Permalink to this headline"></a></h1>
+  <section id="module-easygraph.readwrite.graphml">
+<span id="graphml"></span><h1>GraphML<a class="headerlink" href="#module-easygraph.readwrite.graphml" title="Permalink to this headline"></a></h1>
+<p>Read and write graphs in GraphML format.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This parser uses the standard xml library present in Python, which is
+insecure - see <span class="xref std std-doc">library/xml</span> for additional information.
+Only parse GraphML files you trust.</p>
+</div>
+<p>This implementation does not support mixed graphs (directed and unidirected
+edges together), hyperedges, nested graphs, or ports.</p>
+<p>“GraphML is a comprehensive and easy-to-use file format for graphs. It
+consists of a language core to describe the structural properties of a
+graph and a flexible extension mechanism to add application-specific
+data. Its main features include support of</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>directed, undirected, and mixed graphs,</p></li>
+<li><p>hypergraphs,</p></li>
+<li><p>hierarchical graphs,</p></li>
+<li><p>graphical representations,</p></li>
+<li><p>references to external data,</p></li>
+<li><p>application-specific attribute data, and</p></li>
+<li><p>light-weight parsers.</p></li>
+</ul>
+</div></blockquote>
+<p>Unlike many other file formats for graphs, GraphML does not use a
+custom syntax. Instead, it is based on XML and hence ideally suited as
+a common denominator for all kinds of services generating, archiving,
+or processing graphs.”</p>
+<p><a class="reference external" href="http://graphml.graphdrawing.org/">http://graphml.graphdrawing.org/</a></p>
+<section id="format">
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline"></a></h2>
+<p>GraphML is an XML format.  See
+<a class="reference external" href="http://graphml.graphdrawing.org/specification.html">http://graphml.graphdrawing.org/specification.html</a> for the specification and
+<a class="reference external" href="http://graphml.graphdrawing.org/primer/graphml-primer.html">http://graphml.graphdrawing.org/primer/graphml-primer.html</a>
+for examples.</p>
+</section>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.readwrite.graphml.read_graphml.html#easygraph.readwrite.graphml.read_graphml" title="easygraph.readwrite.graphml.read_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_graphml</span></code></a>(path[, node_type, …])</p></td>
+<td><p>Read graph in GraphML format from path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.readwrite.graphml.write_graphml.html#easygraph.readwrite.graphml.write_graphml" title="easygraph.readwrite.graphml.write_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_graphml</span></code></a>(G, path[, encoding, …])</p></td>
+<td><p>Write G in GraphML XML format to path</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.readwrite.graphml.generate_graphml.html#easygraph.readwrite.graphml.generate_graphml" title="easygraph.readwrite.graphml.generate_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_graphml</span></code></a>(G[, encoding, prettyprint, …])</p></td>
+<td><p>Generate GraphML lines for G</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.readwrite.graphml.parse_graphml.html#easygraph.readwrite.graphml.parse_graphml" title="easygraph.readwrite.graphml.parse_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_graphml</span></code></a>(graphml_string[, node_type, …])</p></td>
+<td><p>Read graph in GraphML format from string.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -114,8 +169,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="gml.html" class="btn btn-neutral float-left" title="GML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="graphviz.html" class="btn btn-neutral float-right" title="graphviz" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generated/easygraph.readwrite.gml.generate_gml.html" class="btn btn-neutral float-left" title="easygraph.readwrite.gml.generate_gml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/easygraph.readwrite.graphml.read_graphml.html" class="btn btn-neutral float-right" title="easygraph.readwrite.graphml.read_graphml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

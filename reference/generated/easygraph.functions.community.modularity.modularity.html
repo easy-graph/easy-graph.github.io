@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.community.modularity.modularity &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.functions.community.modularity.modularity &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
@@ -54,7 +54,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../community.html#modularity-max-detection">Modularity_Max_Detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../community.html#module-easygraph.functions.community.LPA">Community Detection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../community.html#motif-detection">Motif Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../community.html#module-easygraph.functions.community.motif">Motif Detection</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
@@ -106,40 +106,37 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.functions.community.modularity.modularity">
 <span class="sig-prename descclassname"><span class="pre">easygraph.functions.community.modularity.</span></span><span class="sig-name descname"><span class="pre">modularity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/community/modularity.html#modularity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.community.modularity.modularity" title="Permalink to this definition"></a></dt>
-<dd><blockquote>
-<div><p>Returns the modularity of the given partition of the graph.
-Modularity is defined in <a class="footnote-reference brackets" href="#id2" id="id1">1</a> as</p>
+<dd><p>Returns the modularity of the given partition of the graph.
+Modularity is defined in <a class="reference internal" href="#r80df3c22d0d6-1" id="id1">[1]</a> as</p>
 <div class="math notranslate nohighlight">
-\[Q =\]</div>
-</div></blockquote>
-<p>rac{1}{2m} sum_{ij} left( A_{ij} -
-rac{k_ik_j}{2m}
-ight)</p>
-<blockquote>
-<div><blockquote>
-<div><p>delta(c_i,c_j)</p>
-</div></blockquote>
-<p>where $m$ is the number of edges, $A$ is the adjacency matrix of
-<cite>G</cite>, $k_i$ is the degree of $i$ and $delta(c_i, c_j)$
-is 1 if $i$ and $j$ are in the same community and 0 otherwise.</p>
-<p>G : easygraph.Graph or easygraph.DiGraph</p>
-<dl class="simple">
-<dt>communities<span class="classifier">list or iterable of set of nodes</span></dt><dd><p>These node sets must represent a partition of G’s nodes.</p>
+\[Q = \frac{1}{2m} \sum_{ij} \left( A_{ij} - \frac{k_ik_j}{2m}\right)
+    \delta(c_i,c_j)\]</div>
+<p>where m is the number of edges, A is the adjacency matrix of
+<cite>G</cite>,</p>
+<div class="math notranslate nohighlight">
+\[k_i\ is\ the\ degree\ of\ i\ and\ \delta(c_i, c_j)\ is\ 1\ if\ i\ and\ j\ are\ in\ the\ same\ community\ and\ 0\ otherwise.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<a class="reference internal" href="../classes/graph.html#easygraph.Graph" title="easygraph.Graph"><em>easygraph.Graph</em></a><em> or </em><a class="reference internal" href="../classes/digraph.html#easygraph.DiGraph" title="easygraph.DiGraph"><em>easygraph.DiGraph</em></a>) – </p></li>
+<li><p><strong>communities</strong> (<em>list</em><em> or </em><em>iterable of set of nodes</em>) – These node sets must represent a partition of G’s nodes.</p></li>
+<li><p><strong>weight</strong> (<em>string</em><em>, </em><em>optional</em><em> (</em><em>default : 'weight'</em><em>)</em>) – The key for edge weight.</p></li>
+</ul>
 </dd>
-<dt>weight<span class="classifier">string, optinal (default</span><span class="classifier">‘weight’)</span></dt><dd><p>The key for edge weight.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Q</strong> – The modularity of the partition.</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Q<span class="classifier">float</span></dt><dd><p>The modularity of the paritition.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r80df3c22d0d6-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>M. E. J. Newman <em>Networks: An Introduction</em>, page 224.
 Oxford University Press, 2011.</p>
 </dd>
 </dl>
-</div></blockquote>
 </dd></dl>
 
 </section>

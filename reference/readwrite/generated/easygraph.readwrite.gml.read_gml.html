@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.readwrite.gml.read_gml &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.readwrite.gml.read_gml &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -19,7 +19,9 @@
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="easygraph.readwrite.gml.write_gml" href="easygraph.readwrite.gml.write_gml.html" />
+    <link rel="prev" title="GML" href="../gml.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,10 +40,38 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../path.html">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../graph_embedding.html">Graph Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../structural_hole_spanners.html">Structural Hole Spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../drawing.html">Drawing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Reading and writing graphs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../gexf.html">GEXF</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../gml.html">GML</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.readwrite.gml.read_gml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.gml.write_gml.html">easygraph.readwrite.gml.write_gml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.gml.parse_gml.html">easygraph.readwrite.gml.parse_gml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.gml.generate_gml.html">easygraph.readwrite.gml.generate_gml</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../graphml.html">GraphML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphviz.html">graphviz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ucinet.html">Ucinet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../centrality.html">Centrality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../graph_generator.html">Graph Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
@@ -62,6 +92,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../reference.html">Reference</a> &raquo;</li>
+          <li><a href="../index.html">Reading and writing graphs</a> &raquo;</li>
+          <li><a href="../gml.html">GML</a> &raquo;</li>
       <li>easygraph.readwrite.gml.read_gml</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/reference/readwrite/generated/easygraph.readwrite.gml.read_gml.rst.txt" rel="nofollow"> View page source</a>
@@ -74,12 +107,74 @@
              
   <section id="easygraph-readwrite-gml-read-gml">
 <h1>easygraph.readwrite.gml.read_gml<a class="headerlink" href="#easygraph-readwrite-gml-read-gml" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.gml.read_gml">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.gml.</span></span><span class="sig-name descname"><span class="pre">read_gml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destringizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/easygraph/readwrite/gml.html#read_gml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.gml.read_gml" title="Permalink to this definition"></a></dt>
+<dd><p>Read graph in GML format from <cite>path</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>filename</em><em> or </em><em>filehandle</em>) – The filename or filehandle to read from.</p></li>
+<li><p><strong>label</strong> (<em>string</em><em>, </em><em>optional</em>) – If not None, the parsed nodes will be renamed according to node
+attributes indicated by <cite>label</cite>. Default value: ‘label’.</p></li>
+<li><p><strong>destringizer</strong> (<em>callable</em><em>, </em><em>optional</em>) – A <cite>destringizer</cite> that recovers values stored as strings in GML. If it
+cannot convert a string to a value, a <cite>ValueError</cite> is raised. Default
+value : None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>G</strong> – The parsed graph.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>EasyGraph graph</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>EasyGraphError</strong> – If the input cannot be parsed.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="easygraph.readwrite.gml.write_gml.html#easygraph.readwrite.gml.write_gml" title="easygraph.readwrite.gml.write_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_gml</span></code></a>, <a class="reference internal" href="easygraph.readwrite.gml.parse_gml.html#easygraph.readwrite.gml.parse_gml" title="easygraph.readwrite.gml.parse_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_gml</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_destringizer</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>GML files are stored using a 7-bit ASCII encoding with any extended
+ASCII characters (iso8859-1) appearing as HTML character entities.
+Without specifying a <cite>stringizer</cite>/<cite>destringizer</cite>, the code is capable of
+writing <cite>int</cite>/<cite>float</cite>/<cite>str</cite>/<cite>dict</cite>/<cite>list</cite> data as required by the GML
+specification.  For writing other data types, and for reading data other
+than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<cite>destringizer</cite>.</p>
+<p>For additional documentation on the GML file format, please see the
+<a class="reference external" href="https://web.archive.org/web/20190207140002/http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">GML url</a>.</p>
+<p>See the module docstring <a class="reference internal" href="../gml.html#module-easygraph.readwrite.gml" title="easygraph.readwrite.gml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">easygraph.readwrite.gml</span></code></a> for more details.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_gml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;test.gml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>GML values are interpreted as strings by default:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="s2">&quot;test.gml&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span>
+<span class="go">NodeView((&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;))</span>
+</pre></div>
+</div>
+<p>When a <cite>destringizer</cite> is provided, GML values are converted to the provided type.
+For example, integer nodes can be recovered as shown below:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">J</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="s2">&quot;test.gml&quot;</span><span class="p">,</span> <span class="n">destringizer</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span><span class="o">.</span><span class="n">nodes</span>
+<span class="go">NodeView((0, 1, 2, 3))</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../gml.html" class="btn btn-neutral float-left" title="GML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.readwrite.gml.write_gml.html" class="btn btn-neutral float-right" title="easygraph.readwrite.gml.write_gml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

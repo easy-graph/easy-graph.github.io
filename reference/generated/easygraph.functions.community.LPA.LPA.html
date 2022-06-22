@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.community.LPA.LPA &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.functions.community.LPA.LPA &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
@@ -56,7 +56,7 @@
 <li class="toctree-l4"><a class="reference internal" href="easygraph.functions.community.LPA.BMLPA.html">easygraph.functions.community.LPA.BMLPA</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../community.html#motif-detection">Motif Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../community.html#module-easygraph.functions.community.motif">Motif Detection</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
@@ -108,21 +108,22 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.functions.community.LPA.LPA">
 <span class="sig-prename descclassname"><span class="pre">easygraph.functions.community.LPA.</span></span><span class="sig-name descname"><span class="pre">LPA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/community/LPA.html#LPA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.community.LPA.LPA" title="Permalink to this definition"></a></dt>
-<dd><p>Detect community by label propagation algotithm
+<dd><p>Detect community by label propagation algorithm
 Return the detected communities. But the result is random.
 Each node in the network is initially assigned to its own community. At every iteration,nodes have
 a label that the maximum number of their neighbors have. If there are more than one nodes fit and
 available, choose a label randomly. Finally, nodes having the same labels are grouped together as
 communities. In case two or more disconnected groups of nodes have the same label, we run a simple
-breadth-first search to separate the disconnected communities
-:param G: A easygraph graph
-:type G: graph</p>
+breadth-first search to separate the disconnected communities</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>communities</strong> – key: serial number of community , value: nodes in the community.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dictionary</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>communities</strong> – key: serial number of community , value: nodes in the community.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -130,8 +131,8 @@ breadth-first search to separate the disconnected communities
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dl class="citation">
+<dt class="label" id="ra51b47e394fb-1"><span class="brackets">1</span></dt>
 <dd><p>Usha Nandini Raghavan, Réka Albert, and Soundar Kumara:
 Near linear time algorithm to detect community structures in large-scale networks</p>
 </dd>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.readwrite.graphviz.to_agraph &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.readwrite.graphviz.to_agraph &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -19,7 +19,9 @@
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Ucinet" href="../ucinet.html" />
+    <link rel="prev" title="easygraph.readwrite.graphviz.from_agraph" href="easygraph.readwrite.graphviz.from_agraph.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,10 +40,38 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../path.html">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../graph_embedding.html">Graph Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../structural_hole_spanners.html">Structural Hole Spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../drawing.html">Drawing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Reading and writing graphs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../gexf.html">GEXF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gml.html">GML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphml.html">GraphML</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../graphviz.html">graphviz</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.graphviz.write_dot.html">easygraph.readwrite.graphviz.write_dot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.graphviz.read_dot.html">easygraph.readwrite.graphviz.read_dot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.graphviz.from_agraph.html">easygraph.readwrite.graphviz.from_agraph</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.readwrite.graphviz.to_agraph</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ucinet.html">Ucinet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../centrality.html">Centrality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../graph_generator.html">Graph Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
@@ -62,6 +92,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../reference.html">Reference</a> &raquo;</li>
+          <li><a href="../index.html">Reading and writing graphs</a> &raquo;</li>
+          <li><a href="../graphviz.html">graphviz</a> &raquo;</li>
       <li>easygraph.readwrite.graphviz.to_agraph</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/reference/readwrite/generated/easygraph.readwrite.graphviz.to_agraph.rst.txt" rel="nofollow"> View page source</a>
@@ -74,12 +107,35 @@
              
   <section id="easygraph-readwrite-graphviz-to-agraph">
 <h1>easygraph.readwrite.graphviz.to_agraph<a class="headerlink" href="#easygraph-readwrite-graphviz-to-agraph" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphviz.to_agraph">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphviz.</span></span><span class="sig-name descname"><span class="pre">to_agraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/easygraph/readwrite/graphviz.html#to_agraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphviz.to_agraph" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a pygraphviz graph from a EasyGraph graph N.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>N</strong> (<em>EasyGraph graph</em>) – A graph created with EasyGraph</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">K5</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">to_agraph</span><span class="p">(</span><span class="n">K5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>If N has an dict N.graph_attr an attempt will be made first
+to copy properties attached to the graph (see from_agraph)
+and then updated with the calling arguments if any.</p>
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.readwrite.graphviz.from_agraph.html" class="btn btn-neutral float-left" title="easygraph.readwrite.graphviz.from_agraph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ucinet.html" class="btn btn-neutral float-right" title="Ucinet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

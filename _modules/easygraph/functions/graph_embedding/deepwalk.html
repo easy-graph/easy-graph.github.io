@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.graph_embedding.deepwalk &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.functions.graph_embedding.deepwalk &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -78,13 +78,17 @@
 <span class="kn">from</span> <span class="nn">easygraph.functions.graph_embedding.node2vec</span> <span class="kn">import</span> <span class="n">_get_embedding_result_from_gensim_skipgram_model</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;deepwalk&quot;</span><span class="p">]</span>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;deepwalk&quot;</span>
-<span class="p">]</span>
-
-<div class="viewcode-block" id="deepwalk"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_embedding.deepwalk.deepwalk.html#easygraph.functions.graph_embedding.deepwalk.deepwalk">[docs]</a><span class="k">def</span> <span class="nf">deepwalk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">skip_gram_params</span><span class="p">):</span>
+<div class="viewcode-block" id="deepwalk"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_embedding.deepwalk.deepwalk.html#easygraph.functions.graph_embedding.deepwalk.deepwalk">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">deepwalk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+             <span class="n">dimensions</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+             <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+             <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+             <span class="o">**</span><span class="n">skip_gram_params</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Graph embedding via DeepWalk.</span>
 
 <span class="sd">    Parameters</span>
@@ -92,16 +96,16 @@
 <span class="sd">    G : easygraph.Graph or easygraph.DiGraph</span>
 
 <span class="sd">    dimensions : int</span>
-<span class="sd">        Embedding dimensions, optinal(default: 128)</span>
+<span class="sd">        Embedding dimensions, optional(default: 128)</span>
 
 <span class="sd">    walk_length : int</span>
-<span class="sd">        Number of nodes in each walk, optinal(default: 80)</span>
+<span class="sd">        Number of nodes in each walk, optional(default: 80)</span>
 
 <span class="sd">    num_walks : int</span>
-<span class="sd">        Number of walks per node, optinal(default: 10)</span>
+<span class="sd">        Number of walks per node, optional(default: 10)</span>
 
 <span class="sd">    skip_gram_params : dict</span>
-<span class="sd">        Parameteres for gensim.models.Word2Vec - do not supply `size`, it is taken from the `dimensions` parameter</span>
+<span class="sd">        Parameters for gensim.models.Word2Vec - do not supply `size`, it is taken from the `dimensions` parameter</span>
 
 <span class="sd">    Returns </span>
 <span class="sd">    -------</span>
@@ -132,15 +136,19 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">G_index</span><span class="p">,</span> <span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_index_node_graph</span><span class="p">()</span>
 
-    <span class="n">walks</span> <span class="o">=</span> <span class="n">simulate_walks</span><span class="p">(</span>
-        <span class="n">G_index</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="n">walk_length</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="n">num_walks</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">learn_embeddings</span><span class="p">(</span>
-        <span class="n">walks</span><span class="o">=</span><span class="n">walks</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="n">dimensions</span><span class="p">,</span> <span class="o">**</span><span class="n">skip_gram_params</span><span class="p">)</span>
+    <span class="n">walks</span> <span class="o">=</span> <span class="n">simulate_walks</span><span class="p">(</span><span class="n">G_index</span><span class="p">,</span>
+                           <span class="n">walk_length</span><span class="o">=</span><span class="n">walk_length</span><span class="p">,</span>
+                           <span class="n">num_walks</span><span class="o">=</span><span class="n">num_walks</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">learn_embeddings</span><span class="p">(</span><span class="n">walks</span><span class="o">=</span><span class="n">walks</span><span class="p">,</span>
+                             <span class="n">dimensions</span><span class="o">=</span><span class="n">dimensions</span><span class="p">,</span>
+                             <span class="o">**</span><span class="n">skip_gram_params</span><span class="p">)</span>
 
     <span class="n">embedding_vector</span><span class="p">,</span> <span class="n">most_similar_nodes_of_node</span> <span class="o">=</span> <span class="n">_get_embedding_result_from_gensim_skipgram_model</span><span class="p">(</span>
-        <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">index_of_node</span><span class="o">=</span><span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span><span class="o">=</span><span class="n">node_of_index</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span>
-    <span class="p">)</span>
-    
+        <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+        <span class="n">index_of_node</span><span class="o">=</span><span class="n">index_of_node</span><span class="p">,</span>
+        <span class="n">node_of_index</span><span class="o">=</span><span class="n">node_of_index</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
     <span class="k">del</span> <span class="n">G_index</span>
     <span class="k">return</span> <span class="n">embedding_vector</span><span class="p">,</span> <span class="n">most_similar_nodes_of_node</span></div>
 
@@ -152,11 +160,11 @@
     <span class="k">for</span> <span class="n">walk_iter</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_walks</span><span class="p">)):</span>
         <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-            <span class="n">walks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_deepwalk_walk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
-                                        <span class="n">walk_length</span><span class="o">=</span><span class="n">walk_length</span><span class="p">,</span>
-                                        <span class="n">start_node</span><span class="o">=</span><span class="n">node</span><span class="p">))</span>
+            <span class="n">walks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">_deepwalk_walk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="n">walk_length</span><span class="p">,</span> <span class="n">start_node</span><span class="o">=</span><span class="n">node</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">walks</span>
+
 
 <span class="k">def</span> <span class="nf">_deepwalk_walk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">walk_length</span><span class="p">,</span> <span class="n">start_node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
