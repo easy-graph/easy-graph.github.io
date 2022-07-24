@@ -1,4 +1,4 @@
-easygraph.Graph.degree
+﻿easygraph.Graph.degree
 ======================
 
 .. currentmodule:: easygraph

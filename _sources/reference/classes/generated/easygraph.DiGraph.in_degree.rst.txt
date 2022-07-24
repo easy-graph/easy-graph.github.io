@@ -1,4 +1,4 @@
-easygraph.DiGraph.in\_degree
+﻿easygraph.DiGraph.in\_degree
 ============================
 
 .. currentmodule:: easygraph

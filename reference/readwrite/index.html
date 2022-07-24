@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reading and writing graphs &mdash; EasyGraph 0.2a38 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GEXF" href="gexf.html" />
+    <link rel="prev" title="easygraph.functions.drawing.positioning.kamada_kawai_layout" href="../generated/easygraph.functions.drawing.positioning.kamada_kawai_layout.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> EasyGraph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../path.html">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph_embedding.html">Graph Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../structural_hole_spanners.html">Structural Hole Spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reading and writing graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gexf.html">GEXF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gml.html">GML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphml.html">GraphML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphviz.html">graphviz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ucinet.html">Ucinet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../centrality.html">Centrality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph_generator.html">Graph Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aboutus.html">About Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../reference.html">Reference</a> &raquo;</li>
+      <li>Reading and writing graphs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/readwrite/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reading-and-writing-graphs">
+<h1>Reading and writing graphs<a class="headerlink" href="#reading-and-writing-graphs" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gexf.html">GEXF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gexf.read_gexf.html">easygraph.readwrite.gexf.read_gexf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gexf.write_gexf.html">easygraph.readwrite.gexf.write_gexf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gexf.generate_gexf.html">easygraph.readwrite.gexf.generate_gexf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gexf.relabel_gexf_graph.html">easygraph.readwrite.gexf.relabel_gexf_graph</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gml.html">GML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gml.read_gml.html">easygraph.readwrite.gml.read_gml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gml.write_gml.html">easygraph.readwrite.gml.write_gml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gml.parse_gml.html">easygraph.readwrite.gml.parse_gml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.gml.generate_gml.html">easygraph.readwrite.gml.generate_gml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphml.html">GraphML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphml.html#format">Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphml.read_graphml.html">easygraph.readwrite.graphml.read_graphml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphml.write_graphml.html">easygraph.readwrite.graphml.write_graphml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphml.generate_graphml.html">easygraph.readwrite.graphml.generate_graphml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphml.parse_graphml.html">easygraph.readwrite.graphml.parse_graphml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphviz.html">graphviz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphviz.write_dot.html">easygraph.readwrite.graphviz.write_dot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphviz.read_dot.html">easygraph.readwrite.graphviz.read_dot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphviz.from_agraph.html">easygraph.readwrite.graphviz.from_agraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.graphviz.to_agraph.html">easygraph.readwrite.graphviz.to_agraph</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ucinet.html">Ucinet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.ucinet.generate_ucinet.html">easygraph.readwrite.ucinet.generate_ucinet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.ucinet.read_ucinet.html">easygraph.readwrite.ucinet.read_ucinet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.ucinet.parse_ucinet.html">easygraph.readwrite.ucinet.parse_ucinet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/easygraph.readwrite.ucinet.write_ucinet.html">easygraph.readwrite.ucinet.write_ucinet</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../generated/easygraph.functions.drawing.positioning.kamada_kawai_layout.html" class="btn btn-neutral float-left" title="easygraph.functions.drawing.positioning.kamada_kawai_layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gexf.html" class="btn btn-neutral float-right" title="GEXF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2022, Mobile Systems and Networking Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

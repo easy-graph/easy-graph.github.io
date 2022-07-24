@@ -1,4 +1,4 @@
-easygraph.DiGraph.number\_of\_edges
+﻿easygraph.DiGraph.number\_of\_edges
 ===================================
 
 .. currentmodule:: easygraph

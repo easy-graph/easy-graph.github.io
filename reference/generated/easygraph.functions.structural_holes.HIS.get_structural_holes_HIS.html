@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.structural_holes.HIS.get_structural_holes_HIS &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.functions.structural_holes.HIS.get_structural_holes_HIS &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -44,6 +45,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../path.html">Path</a></li>
@@ -64,11 +66,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readwrite/index.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../centrality.html">Centrality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../graph_generator.html">Graph Generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../not_sorted.html">Not Sorted</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../aboutus.html">About Us</a></li>
@@ -104,9 +108,9 @@
 <h1>easygraph.functions.structural_holes.HIS.get_structural_holes_HIS<a class="headerlink" href="#easygraph-functions-structural-holes-his-get-structural-holes-his" title="Permalink to this headline"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.functions.structural_holes.HIS.get_structural_holes_HIS">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.HIS.</span></span><span class="sig-name descname"><span class="pre">get_structural_holes_HIS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/structural_holes/HIS.html#get_structural_holes_HIS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.HIS.get_structural_holes_HIS" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.HIS.</span></span><span class="sig-name descname"><span class="pre">get_structural_holes_HIS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">frozenset</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/structural_holes/HIS.html#get_structural_holes_HIS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.HIS.get_structural_holes_HIS" title="Permalink to this definition"></a></dt>
 <dd><p>Structural hole spanners detection via HIS method.</p>
-<p>Both <strong>HIS</strong> and <strong>MaxD</strong> are methods in <a class="footnote-reference brackets" href="#id5" id="id1">1</a>.
+<p>Both <strong>HIS</strong> and <strong>MaxD</strong> are methods in <a class="reference internal" href="#rffd2f9c70267-1" id="id1">[1]</a>.
 The authors developed these two methods to find the structural holes spanners,
 based on theory of information diffusion.</p>
 <p>Returns the value of <cite>S</cite>, <cite>I</cite>, <cite>H</cite> ,defined in <strong>HIS</strong> of [1], of each node in the graph.
@@ -122,9 +126,9 @@ To use <cite>HIS</cite> method, you should provide the community detection resul
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>S</strong> (<em>list of tuple</em>) – The <cite>S</cite> value in <a class="footnote-reference brackets" href="#id5" id="id2">1</a>.</p></li>
-<li><p><strong>I</strong> (<em>float</em>) – The <cite>I</cite> value in <a class="footnote-reference brackets" href="#id5" id="id3">1</a>.</p></li>
-<li><p><strong>H</strong> (<em>float</em>) – The <cite>H</cite> value in <a class="footnote-reference brackets" href="#id5" id="id4">1</a>.</p></li>
+<li><p><strong>S</strong> (<em>list of tuple</em>) – The <cite>S</cite> value in <a class="reference internal" href="#rffd2f9c70267-1" id="id2">[1]</a>.</p></li>
+<li><p><strong>I</strong> (<em>float</em>) – The <cite>I</cite> value in <a class="reference internal" href="#rffd2f9c70267-1" id="id3">[1]</a>.</p></li>
+<li><p><strong>H</strong> (<em>float</em>) – The <cite>H</cite> value in <a class="reference internal" href="#rffd2f9c70267-1" id="id4">[1]</a>.</p></li>
 </ul>
 </p>
 </dd>
@@ -142,8 +146,8 @@ To use <cite>HIS</cite> method, you should provide the community detection resul
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>)</span></dt>
+<dl class="citation">
+<dt class="label" id="rffd2f9c70267-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>)</span></dt>
 <dd><p><a class="reference external" href="https://www.aminer.cn/structural-hole">https://www.aminer.cn/structural-hole</a></p>
 </dd>
 </dl>

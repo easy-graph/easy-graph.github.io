@@ -1,4 +1,4 @@
-easygraph.DiGraph.add\_node
+﻿easygraph.DiGraph.add\_node
 ===========================
 
 .. currentmodule:: easygraph

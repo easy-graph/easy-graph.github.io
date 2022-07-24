@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GML &mdash; EasyGraph 0.2a38 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="easygraph.readwrite.gml.read_gml" href="generated/easygraph.readwrite.gml.read_gml.html" />
+    <link rel="prev" title="easygraph.readwrite.gexf.relabel_gexf_graph" href="generated/easygraph.readwrite.gexf.relabel_gexf_graph.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> EasyGraph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../path.html">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph_embedding.html">Graph Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../structural_hole_spanners.html">Structural Hole Spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Reading and writing graphs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="gexf.html">GEXF</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GML</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.gml.read_gml.html">easygraph.readwrite.gml.read_gml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.gml.write_gml.html">easygraph.readwrite.gml.write_gml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.gml.parse_gml.html">easygraph.readwrite.gml.parse_gml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/easygraph.readwrite.gml.generate_gml.html">easygraph.readwrite.gml.generate_gml</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="graphml.html">GraphML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphviz.html">graphviz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ucinet.html">Ucinet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../centrality.html">Centrality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph_generator.html">Graph Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../not_sorted.html">Not Sorted</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aboutus.html">About Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../reference.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">Reading and writing graphs</a> &raquo;</li>
+      <li>GML</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/readwrite/gml.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.readwrite.gml">
+<span id="gml"></span><h1>GML<a class="headerlink" href="#module-easygraph.readwrite.gml" title="Permalink to this headline"></a></h1>
+<p>Read graphs in GML format.</p>
+<p>“GML, the Graph Modelling Language, is our proposal for a portable
+file format for graphs. GML’s key features are portability, simple
+syntax, extensibility and flexibility. A GML file consists of a
+hierarchical key-value lists. Graphs can be annotated with arbitrary
+data structures. The idea for a common file format was born at the
+GD’95; this proposal is the outcome of many discussions. GML is the
+standard file format in the Graphlet graph editor system. It has been
+overtaken and adapted by several other systems for drawing graphs.”</p>
+<p>GML files are stored using a 7-bit ASCII encoding with any extended
+ASCII characters (iso8859-1) appearing as HTML character entities.
+You will need to give some thought into how the exported data should
+interact with different languages and even different Python versions.
+Re-importing from gml is also a concern.</p>
+<p>Without specifying a <cite>stringizer</cite>/<cite>destringizer</cite>, the code is capable of
+writing <cite>int</cite>/<cite>float</cite>/<cite>str</cite>/<cite>dict</cite>/<cite>list</cite> data as required by the GML
+specification.  For writing other data types, and for reading data other
+than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<cite>destringizer</cite>.</p>
+<p>For additional documentation on the GML file format, please see the
+<a class="reference external" href="https://web.archive.org/web/20190207140002/http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">GML website</a>.</p>
+<p>Several example graphs in GML format may be found on Mark Newman’s
+<a class="reference external" href="http://www-personal.umich.edu/~mejn/netdata/">Network data page</a>.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.readwrite.gml.read_gml.html#easygraph.readwrite.gml.read_gml" title="easygraph.readwrite.gml.read_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_gml</span></code></a>(path[, label, destringizer])</p></td>
+<td><p>Read graph in GML format from <cite>path</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.readwrite.gml.write_gml.html#easygraph.readwrite.gml.write_gml" title="easygraph.readwrite.gml.write_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_gml</span></code></a>(G, path[, stringizer])</p></td>
+<td><p>Write a graph <cite>G</cite> in GML format to the file or file handle <cite>path</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.readwrite.gml.parse_gml.html#easygraph.readwrite.gml.parse_gml" title="easygraph.readwrite.gml.parse_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_gml</span></code></a>(lines[, label, destringizer])</p></td>
+<td><p>Parse GML graph from a string or iterable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.readwrite.gml.generate_gml.html#easygraph.readwrite.gml.generate_gml" title="easygraph.readwrite.gml.generate_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_gml</span></code></a>(G[, stringizer])</p></td>
+<td><p>Generate a single entry of the graph <cite>G</cite> in GML format.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="generated/easygraph.readwrite.gexf.relabel_gexf_graph.html" class="btn btn-neutral float-left" title="easygraph.readwrite.gexf.relabel_gexf_graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/easygraph.readwrite.gml.read_gml.html" class="btn btn-neutral float-right" title="easygraph.readwrite.gml.read_gml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2022, Mobile Systems and Networking Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

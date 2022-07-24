@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.centrality.clossness.closeness_centrality &mdash; EasyGraph 0.2a35 documentation</title>
+  <title>easygraph.functions.centrality.clossness.closeness_centrality &mdash; EasyGraph 0.2a38 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -45,6 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classes.html#which-graph-class-should-i-use">Which graph class should I use?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components.html">Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../path.html">Path</a></li>
@@ -52,6 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../structural_hole_spanners.html">Structural Hole Spanners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readwrite/index.html">Reading and writing graphs</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../centrality.html">Centrality</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../centrality.html#betweenness-centrality">Betweenness centrality</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../centrality.html#module-easygraph.functions.centrality.clossness">Clossness centrality</a><ul class="current">
@@ -66,6 +69,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../not_sorted.html">Not Sorted</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../videos.html">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../aboutus.html">About Us</a></li>
@@ -103,28 +107,26 @@
 <dt class="sig sig-object py" id="easygraph.functions.centrality.clossness.closeness_centrality">
 <span class="sig-prename descclassname"><span class="pre">easygraph.functions.centrality.clossness.</span></span><span class="sig-name descname"><span class="pre">closeness_centrality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/functions/centrality/clossness.html#closeness_centrality"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.centrality.clossness.closeness_centrality" title="Permalink to this definition"></a></dt>
 <dd><p>Compute closeness centrality for nodes.</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[C_{WF}(u) =\]</div>
-</div></blockquote>
-<p>rac{n-1}{N-1}
-rac{n - 1}{sum_{v=1}^{n-1} d(v, u)},</p>
-<blockquote>
-<div><p>Notice that the closeness distance function computes the
+<div class="math notranslate nohighlight">
+\[C_{WF}(u) = \frac{n-1}{N-1} \frac{n - 1}{\sum_{v=1}^{n-1} d(v, u)},\]</div>
+<p>Notice that the closeness distance function computes the
 outcoming distance to <cite>u</cite> for directed graphs. To use
 incoming distance, act on <cite>G.reverse()</cite>.</p>
-<dl class="simple">
-<dt>G<span class="classifier">graph</span></dt><dd><p>A easygraph graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p></li>
+<li><p><strong>weight</strong> (<em>None</em><em> or </em><em>string</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – If None, all edge weights are considered equal.
+Otherwise holds the name of the edge attribute used as weight.</p></li>
+</ul>
 </dd>
-<dt>weight<span class="classifier">None or string, optional (default=None)</span></dt><dd><p>If None, all edge weights are considered equal.
-Otherwise holds the name of the edge attribute used as weight.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>nodes</strong> – Dictionary of nodes with closeness centrality as the value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
 </dd>
 </dl>
-<dl class="simple">
-<dt>nodes<span class="classifier">dictionary</span></dt><dd><p>Dictionary of nodes with closeness centrality as the value.</p>
-</dd>
-</dl>
-</div></blockquote>
 </dd></dl>
 
 </section>
