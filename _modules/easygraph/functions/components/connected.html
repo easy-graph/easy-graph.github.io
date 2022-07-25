@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -36,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
@@ -72,13 +73,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.components.connected</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">easygraph</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span></span><span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
+
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;is_connected&quot;</span><span class="p">,</span> <span class="s2">&quot;number_connected_components&quot;</span><span class="p">,</span> <span class="s2">&quot;connected_components&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;connected_component_of_node&quot;</span>
+    <span class="s2">&quot;is_connected&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;number_connected_components&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;connected_components&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;connected_component_of_node&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -183,9 +185,9 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    Returns the connected component of one node `Jack`.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &gt;&gt;&gt; connected_component_of_node(G, node=&#39;Jack&#39;)</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">_plain_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span></div>
 

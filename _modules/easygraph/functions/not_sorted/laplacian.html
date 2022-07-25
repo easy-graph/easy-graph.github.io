@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -36,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
@@ -74,6 +75,7 @@
   <h1>Source code for easygraph.functions.not_sorted.laplacian</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
 
+
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;laplacian&quot;</span><span class="p">]</span>
 
 
@@ -82,10 +84,10 @@
     <span class="sd">&quot;&quot;&quot;Returns the laplacian centrality of each node in the weighted graph</span>
 
 <span class="sd">    Parameters</span>
-<span class="sd">    ---------- </span>
+<span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">        weighted graph</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    CL : dict</span>
@@ -99,22 +101,25 @@
 
 <span class="sd">    Reference</span>
 <span class="sd">    ---------</span>
-<span class="sd">    .. [1] Xingqin Qi, Eddie Fuller, Qin Wu, Yezhou Wu, Cun-Quan Zhang. </span>
-<span class="sd">    &quot;Laplacian centrality: A new centrality measure for weighted networks.&quot; </span>
+<span class="sd">    .. [1] Xingqin Qi, Eddie Fuller, Qin Wu, Yezhou Wu, Cun-Quan Zhang.</span>
+<span class="sd">    &quot;Laplacian centrality: A new centrality measure for weighted networks.&quot;</span>
 <span class="sd">    Information Sciences, Volume 194, Pages 240-253, 2012.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">adj</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span>
     <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
     <span class="n">X</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">W</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">CL</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># use the parallel version for large graph</span>
-        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
-        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
         <span class="kn">import</span> <span class="nn">random</span>
+
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
         <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
 
@@ -134,12 +139,7 @@
             <span class="n">X</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">resX</span><span class="p">)</span>
             <span class="n">W</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">resW</span><span class="p">)</span>
             <span class="n">ELG</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span>
-        <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">laplacian_parallel</span><span class="p">,</span>
-                                 <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
-                                 <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-                                 <span class="n">W</span><span class="o">=</span><span class="n">W</span><span class="p">,</span>
-                                 <span class="n">adj</span><span class="o">=</span><span class="n">adj</span><span class="p">,</span>
-                                 <span class="n">ELG</span><span class="o">=</span><span class="n">ELG</span><span class="p">)</span>
+        <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">laplacian_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="n">W</span><span class="p">,</span> <span class="n">adj</span><span class="o">=</span><span class="n">adj</span><span class="p">,</span> <span class="n">ELG</span><span class="o">=</span><span class="n">ELG</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">Pool</span><span class="p">(</span><span class="n">n_workers</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">imap</span><span class="p">(</span><span class="n">local_function</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
             <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ret</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
@@ -150,19 +150,18 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                    <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                    <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                        <span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">ELG</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">copy</span>
+
             <span class="n">Xi</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">adj</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">adj</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                    <span class="n">Xi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">adj</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">Xi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">adj</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="n">ELGi</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                                                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">ELGi</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">ELG</span><span class="p">:</span>
                 <span class="n">CL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">)(</span><span class="n">ELG</span> <span class="o">-</span> <span class="n">ELGi</span><span class="p">)</span> <span class="o">/</span> <span class="n">ELG</span>
     <span class="k">return</span> <span class="n">CL</span></div>
@@ -175,8 +174,8 @@
         <span class="n">W</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                <span class="n">X</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="n">W</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">X</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">W</span> <span class="o">+=</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="n">i</span><span class="p">,</span> <span class="n">X</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">W</span><span class="p">]])</span>
     <span class="k">return</span> <span class="n">ret</span>
 
@@ -185,10 +184,11 @@
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">copy</span>
+
         <span class="n">Xi</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">adj</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">adj</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                <span class="n">Xi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">adj</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">Xi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">adj</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">ELGi</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">Xi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">ELG</span><span class="p">:</span>
@@ -202,9 +202,10 @@
 
 <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">json</span>
+
     <span class="n">data</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
         <span class="n">json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
 </pre></div>
 

@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -36,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
@@ -72,9 +73,12 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.not_sorted.bridges</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+
 <span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bridges&quot;</span><span class="p">,</span> <span class="s2">&quot;has_bridges&quot;</span><span class="p">]</span>
 
@@ -185,7 +189,6 @@
 
 
 <span class="k">def</span> <span class="nf">chain_decomposition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-
     <span class="k">def</span> <span class="nf">_dfs_cycle_forest</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -227,9 +230,9 @@
         <span class="c1"># For each nontree edge going out of node u...</span>
         <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;nontree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;nontree&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
-        <span class="c1">#edges = ((u, v) for u, v, d in H.out_edges(u, data=&quot;nontree&quot;) if d)</span>
+        <span class="c1"># edges = ((u, v) for u, v, d in H.out_edges(u, data=&quot;nontree&quot;) if d)</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
             <span class="c1"># Create the cycle or cycle prefix starting with the</span>
             <span class="c1"># nontree edge.</span>
