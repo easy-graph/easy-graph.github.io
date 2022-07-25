@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tutorial &mdash; EasyGraph 0.2a38 documentation</title>
@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -39,7 +40,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
@@ -81,10 +82,10 @@
            <div itemprop="articleBody">
              
   <section id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h1>
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading"></a></h1>
 <p>This part offers two brief tutorials of how to do graph analysis with <strong>EasyGraph</strong>.</p>
 <section id="example-using-easygraph-to-analysis-and-draw-structural-hole-spanners-on-karate-club-dataset">
-<h2>Example using EasyGraph to analysis and draw Structural Hole Spanners on karate club dataset<a class="headerlink" href="#example-using-easygraph-to-analysis-and-draw-structural-hole-spanners-on-karate-club-dataset" title="Permalink to this headline"></a></h2>
+<h2>Example using EasyGraph to analysis and draw Structural Hole Spanners on karate club dataset<a class="headerlink" href="#example-using-easygraph-to-analysis-and-draw-structural-hole-spanners-on-karate-club-dataset" title="Permalink to this heading"></a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.datasets</span> <span class="kn">import</span> <span class="n">get_graph_karateclub</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">get_graph_karateclub</span><span class="p">()</span>
@@ -98,7 +99,7 @@
 </div>
 </section>
 <section id="basic-properties-and-operation-of-graph">
-<h2>Basic Properties and Operation of Graph<a class="headerlink" href="#basic-properties-and-operation-of-graph" title="Permalink to this headline"></a></h2>
+<h2>Basic Properties and Operation of Graph<a class="headerlink" href="#basic-properties-and-operation-of-graph" title="Permalink to this heading"></a></h2>
 <p>Import <strong>EasyGraph</strong>, and start with an undirected graph <cite>G</cite></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -239,7 +240,7 @@
 </div>
 </section>
 <section id="detection-of-structural-hole-spanners">
-<h2>Detection of Structural Hole Spanners<a class="headerlink" href="#detection-of-structural-hole-spanners" title="Permalink to this headline"></a></h2>
+<h2>Detection of Structural Hole Spanners<a class="headerlink" href="#detection-of-structural-hole-spanners" title="Permalink to this heading"></a></h2>
 <p>Use MaxD for structural hole spanners detection</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">M</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">get_structural_holes_MaxD</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
 <span class="gp">... </span>                          <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="c1"># To find top five structural holes spanners.</span>
@@ -315,7 +316,7 @@
 </div>
 </section>
 <section id="using-c-code-to-achieve-a-better-performance">
-<h2>Using C++ code to achieve a better performance<a class="headerlink" href="#using-c-code-to-achieve-a-better-performance" title="Permalink to this headline"></a></h2>
+<h2>Using C++ code to achieve a better performance<a class="headerlink" href="#using-c-code-to-achieve-a-better-performance" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>The GraphC class provides the same methods as the Graph class. e.g. <cite>add_node()</cite>, <cite>add_edges()</cite></p></li>
 <li><p>Easygraph also provides three functions implemented by C++

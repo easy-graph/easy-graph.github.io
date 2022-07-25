@@ -14,6 +14,7 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -36,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
@@ -75,9 +76,12 @@
 <span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="kn">import</span> <span class="nn">progressbar</span>
 
+
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;get_graph_karateclub&#39;</span><span class="p">,</span> <span class="s1">&#39;get_graph_blogcatalog&#39;</span><span class="p">,</span> <span class="s1">&#39;get_graph_youtube&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;get_graph_flickr&#39;</span>
+    <span class="s2">&quot;get_graph_karateclub&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_graph_blogcatalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_graph_youtube&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_graph_flickr&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -139,7 +143,7 @@
 <span class="s2">0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 1 0 0 1 0 1 0 1 1 0 0 0 0 0 1 1 1 0 1</span>
 <span class="s2">0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 1 0 0 1 1 1 0 1 1 0 0 1 1 1 1 1 1 1 0&quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">zacharydat</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">zacharydat</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)):</span>
         <span class="n">thisrow</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
         <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">thisrow</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">entry</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -147,7 +151,7 @@
 
     <span class="c1"># Add the name of each member&#39;s club as a node attribute.</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="s1">&#39;club&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Mr. Hi&#39;</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">club1</span> <span class="k">else</span> <span class="s1">&#39;Officer&#39;</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="s2">&quot;club&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mr. Hi&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">club1</span> <span class="k">else</span> <span class="s2">&quot;Officer&quot;</span>
     <span class="k">return</span> <span class="n">G</span></div>
 
 
@@ -169,16 +173,15 @@
 
     <span class="k">def</span> <span class="nf">sparse2graph</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-        <span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
 
         <span class="n">G</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">set</span><span class="p">())</span>
         <span class="n">cx</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cx</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">cx</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="n">cx</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
             <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">G</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 
-    <span class="n">mat</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;./samples/blogcatalog.mat&#39;</span><span class="p">)</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;network&#39;</span><span class="p">]</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s2">&quot;./samples/blogcatalog.mat&quot;</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s2">&quot;network&quot;</span><span class="p">]</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">sparse2graph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
     <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -203,11 +206,13 @@
 <span class="sd">    .. [1] http://socialnetworks.mpi-sws.mpg.de/data/youtube-links.txt.gz</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
     <span class="kn">import</span> <span class="nn">gzip</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://socialnetworks.mpi-sws.mpg.de/data/youtube-links.txt.gz&#39;</span>
-    <span class="n">zipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/youtube-links.txt.gz&#39;</span>
-    <span class="n">unzipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/youtube-links.txt&#39;</span>
+
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://socialnetworks.mpi-sws.mpg.de/data/youtube-links.txt.gz&quot;</span>
+    <span class="n">zipped_data_path</span> <span class="o">=</span> <span class="s2">&quot;./samples/youtube-links.txt.gz&quot;</span>
+    <span class="n">unzipped_data_path</span> <span class="o">=</span> <span class="s2">&quot;./samples/youtube-links.txt&quot;</span>
 
     <span class="c1"># Download .gz file</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading Youtube dataset...&quot;</span><span class="p">)</span>
@@ -215,7 +220,7 @@
 
     <span class="c1"># Unzip</span>
     <span class="n">unzipped_data</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">zipped_data_path</span><span class="p">)</span>
-    <span class="nb">open</span><span class="p">(</span><span class="n">unzipped_data_path</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">unzipped_data</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">unzipped_data_path</span><span class="p">,</span> <span class="s2">&quot;wb+&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">unzipped_data</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="n">unzipped_data</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="c1"># Returns graph</span>
@@ -238,11 +243,13 @@
 <span class="sd">    .. [1] http://socialnetworks.mpi-sws.mpg.de/data/flickr-links.txt.gz</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
     <span class="kn">import</span> <span class="nn">gzip</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://socialnetworks.mpi-sws.mpg.de/data/flickr-links.txt.gz&#39;</span>
-    <span class="n">zipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/flickr-links.txt.gz&#39;</span>
-    <span class="n">unzipped_data_path</span> <span class="o">=</span> <span class="s1">&#39;./samples/flickr-links.txt&#39;</span>
+
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://socialnetworks.mpi-sws.mpg.de/data/flickr-links.txt.gz&quot;</span>
+    <span class="n">zipped_data_path</span> <span class="o">=</span> <span class="s2">&quot;./samples/flickr-links.txt.gz&quot;</span>
+    <span class="n">unzipped_data_path</span> <span class="o">=</span> <span class="s2">&quot;./samples/flickr-links.txt&quot;</span>
 
     <span class="c1"># Download .gz file</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading Flickr dataset...&quot;</span><span class="p">)</span>
@@ -250,7 +257,7 @@
 
     <span class="c1"># Unzip</span>
     <span class="n">unzipped_data</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">zipped_data_path</span><span class="p">)</span>
-    <span class="nb">open</span><span class="p">(</span><span class="n">unzipped_data_path</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">unzipped_data</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">unzipped_data_path</span><span class="p">,</span> <span class="s2">&quot;wb+&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">unzipped_data</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="n">unzipped_data</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="c1"># Returns graph</span>

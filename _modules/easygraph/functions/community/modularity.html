@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -36,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
@@ -73,13 +74,15 @@
              
   <h1>Source code for easygraph.functions.community.modularity</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+
 <span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
+
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;modularity&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="modularity"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.community.modularity.modularity.html#easygraph.functions.community.modularity.modularity">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">modularity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">communities</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">modularity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">communities</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the modularity of the given partition of the graph.</span>
 <span class="sd">    Modularity is defined in [1]_ as</span>
@@ -90,8 +93,8 @@
 <span class="sd">            \delta(c_i,c_j)</span>
 
 <span class="sd">    where m is the number of edges, A is the adjacency matrix of</span>
-<span class="sd">    `G`, </span>
-<span class="sd">    </span>
+<span class="sd">    `G`,</span>
+
 <span class="sd">    .. math::</span>
 
 <span class="sd">        k_i\ is\ the\ degree\ of\ i\ and\ \delta(c_i, c_j)\ is\ 1\ if\ i\ and\ j\ are\ in\ the\ same\ community\ and\ 0\ otherwise.</span>

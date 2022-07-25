@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Undirected Graph &mdash; EasyGraph 0.2a38 documentation</title>
@@ -15,6 +15,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -39,7 +40,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
@@ -102,12 +103,12 @@
            <div itemprop="articleBody">
              
   <section id="undirected-graph">
-<h1>Undirected Graph<a class="headerlink" href="#undirected-graph" title="Permalink to this headline"></a></h1>
+<h1>Undirected Graph<a class="headerlink" href="#undirected-graph" title="Permalink to this heading"></a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="easygraph.Graph">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">easygraph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">graph_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/classes/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.Graph" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">graph_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/easygraph/classes/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.Graph" title="Permalink to this definition"></a></dt>
 <dd><p>Base class for undirected graphs.</p>
 <blockquote>
 <div><p>Nodes are allowed for any hashable Python objects, including int, string, dict, etc.
@@ -160,7 +161,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -169,7 +170,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.add_edge.html#easygraph.Graph.add_edge" title="easygraph.Graph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(u_of_edge, v_of_edge, **edge_attr)</p></td>
 <td><p>Add one edge.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges</span></code>(edges_for_adding[, edges_attr])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges</span></code>(edges_for_adding, edges_attr)</p></td>
 <td><p>Add a list of edges.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.add_edges_from.html#easygraph.Graph.add_edges_from" title="easygraph.Graph.add_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from</span></code></a>(ebunch_to_add, **attr)</p></td>
@@ -181,7 +182,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.add_node.html#easygraph.Graph.add_node" title="easygraph.Graph.add_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code></a>(node_for_adding, **node_attr)</p></td>
 <td><p>Add one node</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code>(nodes_for_adding[, nodes_attr])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code>(nodes_for_adding, nodes_attr)</p></td>
 <td><p>Add nodes with a list of nodes.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.add_nodes_from.html#easygraph.Graph.add_nodes_from" title="easygraph.Graph.add_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_from</span></code></a>(nodes_for_adding, **attr)</p></td>
@@ -194,7 +195,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.Graph.all_neighbors.html#easygraph.Graph.all_neighbors" title="easygraph.Graph.all_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_neighbors</span></code></a>(node)</p></td>
-<td><p>Returns an iterator of a node’s neighbors.</p></td>
+<td><p>Returns an iterator of a node's neighbors.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.copy.html#easygraph.Graph.copy" title="easygraph.Graph.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
 <td><p>Return a deep copy of the graph.</p></td>
@@ -215,7 +216,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <td><p>Returns True if graph is a multigraph, False otherwise.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.neighbors.html#easygraph.Graph.neighbors" title="easygraph.Graph.neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code></a>(node)</p></td>
-<td><p>Returns an iterator of a node’s neighbors.</p></td>
+<td><p>Returns an iterator of a node's neighbors.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_attr_dict_factory</span></code></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
@@ -279,8 +280,8 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 
 </section>
 <section id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
-<table class="longtable docutils align-default">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -301,14 +302,14 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.add_nodes_from.html#easygraph.Graph.add_nodes_from" title="easygraph.Graph.add_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.add_nodes_from</span></code></a>(nodes_for_adding, **attr)</p></td>
 <td><p>Add multiple nodes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.Graph.add_weighted_edge.html#easygraph.Graph.add_weighted_edge" title="easygraph.Graph.add_weighted_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.add_weighted_edge</span></code></a>(u_of_edge, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.Graph.add_weighted_edge.html#easygraph.Graph.add_weighted_edge" title="easygraph.Graph.add_weighted_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.add_weighted_edge</span></code></a>(u_of_edge, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.adj.html#easygraph.Graph.adj" title="easygraph.Graph.adj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.adj</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.Graph.all_neighbors.html#easygraph.Graph.all_neighbors" title="easygraph.Graph.all_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.all_neighbors</span></code></a>(node)</p></td>
-<td><p>Returns an iterator of a node’s neighbors.</p></td>
+<td><p>Returns an iterator of a node's neighbors.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.copy.html#easygraph.Graph.copy" title="easygraph.Graph.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.copy</span></code></a>()</p></td>
 <td><p>Return a deep copy of the graph.</p></td>
@@ -338,7 +339,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <td><p>String identifier of the graph.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/easygraph.Graph.neighbors.html#easygraph.Graph.neighbors" title="easygraph.Graph.neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.neighbors</span></code></a>(node)</p></td>
-<td><p>Returns an iterator of a node’s neighbors.</p></td>
+<td><p>Returns an iterator of a node's neighbors.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/easygraph.Graph.nodes.html#easygraph.Graph.nodes" title="easygraph.Graph.nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.nodes</span></code></a></p></td>
 <td><p></p></td>
