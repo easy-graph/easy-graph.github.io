@@ -14,7 +14,6 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
-        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -37,7 +36,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
@@ -73,17 +72,16 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.graph_generator.RandomNetwork</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">math</span>
+<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">random</span>
-
-<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
-
+<span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;erdos_renyi_M&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;erdos_renyi_P&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;fast_erdos_renyi_P&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;WS_Random&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;erdos_renyi_M&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;erdos_renyi_P&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fast_erdos_renyi_P&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;WS_Random&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -99,7 +97,7 @@
 <span class="sd">    directed : bool, optional (default=False)</span>
 <span class="sd">        If True, this function returns a directed graph.</span>
 <span class="sd">    FilePath : string</span>
-<span class="sd">        The file path of storing the graph G.</span>
+<span class="sd">        The file path of storing the graph G. </span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -192,7 +190,7 @@
 
 <div class="viewcode-block" id="erdos_renyi_P"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_generator.RandomNetwork.erdos_renyi_P.html#easygraph.functions.graph_generator.RandomNetwork.erdos_renyi_P">[docs]</a><span class="k">def</span> <span class="nf">erdos_renyi_P</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">FilePath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Given the number of nodes and the probability of edge creation, return an Erdős-Rényi random graph, and store the graph in a document.</span>
-
+<span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    n : int</span>
@@ -260,7 +258,7 @@
 
 <div class="viewcode-block" id="fast_erdos_renyi_P"><a class="viewcode-back" href="../../../../reference/generated/easygraph.functions.graph_generator.RandomNetwork.fast_erdos_renyi_P.html#easygraph.functions.graph_generator.RandomNetwork.fast_erdos_renyi_P">[docs]</a><span class="k">def</span> <span class="nf">fast_erdos_renyi_P</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">FilePath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Given the number of nodes and the probability of edge creation, return an Erdős-Rényi random graph, and store the graph in a document. Use this function for generating a huge scale graph.</span>
-
+<span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    n : int</span>
@@ -353,7 +351,7 @@
 <span class="sd">    p : float</span>
 <span class="sd">        The probability of rewiring each edge</span>
 <span class="sd">    FilePath : string</span>
-<span class="sd">        The file path of storing the graph G</span>
+<span class="sd">        The file path of storing the graph G </span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -432,17 +430,17 @@
 
 <span class="k">def</span> <span class="nf">writeRandomNetworkToFile</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">adjacent</span><span class="p">,</span> <span class="n">FilePath</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">FilePath</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">FilePath</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">FilePath</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;RandomNetwork.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;RandomNetwork.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
     <span class="n">adjacent</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">adjacent</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">adjacent</span><span class="p">:</span>
         <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 

@@ -14,7 +14,6 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -37,7 +36,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
@@ -92,7 +91,7 @@
 <span class="sd">Re-importing from gml is also a concern.</span>
 
 <span class="sd">Without specifying a `stringizer`/`destringizer`, the code is capable of</span>
-<span class="sd">writing `int`/`float`/`str`/`dict`/`list` data as required by the GML</span>
+<span class="sd">writing `int`/`float`/`str`/`dict`/`list` data as required by the GML </span>
 <span class="sd">specification.  For writing other data types, and for reading data other</span>
 <span class="sd">than `str` you need to explicitly supply a `stringizer`/`destringizer`.</span>
 
@@ -103,24 +102,21 @@
 <span class="sd">`Network data page &lt;http://www-personal.umich.edu/~mejn/netdata/&gt;`_.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-
-<span class="kn">import</span> <span class="nn">html.entities</span> <span class="k">as</span> <span class="nn">htmlentitydefs</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-
+<span class="kn">from</span> <span class="nn">errno</span> <span class="kn">import</span> <span class="n">E2BIG</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="kn">from</span> <span class="nn">ast</span> <span class="kn">import</span> <span class="n">literal_eval</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
+<span class="kn">from</span> <span class="nn">lib2to3.pgen2</span> <span class="kn">import</span> <span class="n">token</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">NamedTuple</span>
 <span class="kn">from</span> <span class="nn">unicodedata</span> <span class="kn">import</span> <span class="n">category</span>
-
 <span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">html.entities</span> <span class="k">as</span> <span class="nn">htmlentitydefs</span>
 
-<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">open_file</span>
 <span class="kn">from</span> <span class="nn">easygraph.utils.exception</span> <span class="kn">import</span> <span class="n">EasyGraphError</span>
-
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">open_file</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;read_gml&quot;</span><span class="p">,</span> <span class="s2">&quot;parse_gml&quot;</span><span class="p">,</span> <span class="s2">&quot;generate_gml&quot;</span><span class="p">,</span> <span class="s2">&quot;write_gml&quot;</span><span class="p">]</span>
 
@@ -192,7 +188,8 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">literal_eval</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">SyntaxError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">orig_rep</span><span class="si">!r}</span><span class="s2"> is not a valid Python literal&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">orig_rep</span><span class="si">!r}</span><span class="s2"> is not a valid Python literal&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rep</span><span class="si">!r}</span><span class="s2"> is not a string&quot;</span><span class="p">)</span>
 
@@ -235,7 +232,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    G : EasyGraph graph</span>
+<span class="sd">    G : graph</span>
 <span class="sd">        The parsed graph.</span>
 
 <span class="sd">    Raises</span>
@@ -249,7 +246,7 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This stores nested GML attributes as dictionaries in the EasyGraph graph,</span>
+<span class="sd">    This stores nested GML attributes as dictionaries in the graph,</span>
 <span class="sd">    node, and edge attribute structures.</span>
 
 <span class="sd">    GML files are stored using a 7-bit ASCII encoding with any extended</span>
@@ -338,7 +335,8 @@
     <span class="k">def</span> <span class="nf">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
         <span class="n">category</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">curr_token</span>
         <span class="n">value</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;EOF&quot;</span>
-        <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;expected </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s2">, found </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">lineno</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pos</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;expected </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s2">, found </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">lineno</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pos</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">consume</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">category</span><span class="p">:</span>
@@ -385,10 +383,8 @@
                                 <span class="k">pass</span>
                         <span class="n">curr_token</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
                     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-                            <span class="s2">&quot;an int, float, string, &#39;[&#39; or string&quot;</span>
-                            <span class="o">+</span> <span class="s2">&quot; convertable ASCII value for node id or label&quot;</span>
-                        <span class="p">)</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;an int, float, string, &#39;[&#39; or string&quot;</span> <span class="o">+</span>
+                               <span class="s2">&quot; convertable ASCII value for node id or label&quot;</span><span class="p">)</span>
                         <span class="n">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;NAN&quot;</span><span class="p">,</span> <span class="s2">&quot;INF&quot;</span><span class="p">}:</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">curr_token</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
@@ -435,7 +431,8 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">dct</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2"> #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> has no </span><span class="si">{</span><span class="n">attr</span><span class="si">!r}</span><span class="s2"> attribute&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+            <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2"> #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> has no </span><span class="si">{</span><span class="n">attr</span><span class="si">!r}</span><span class="s2"> attribute&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
 
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="p">[])</span>
     <span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
@@ -447,7 +444,8 @@
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span>
             <span class="n">node_label</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">node_label</span> <span class="ow">in</span> <span class="n">node_labels</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node label </span><span class="si">{</span><span class="n">node_label</span><span class="si">!r}</span><span class="s2"> is duplicated&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;node label </span><span class="si">{</span><span class="n">node_label</span><span class="si">!r}</span><span class="s2"> is duplicated&quot;</span><span class="p">)</span>
             <span class="n">node_labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node_label</span><span class="p">)</span>
             <span class="n">mapping</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_label</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">node</span><span class="p">)</span>
@@ -486,7 +484,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : EasyGraph graph</span>
+<span class="sd">    G : graph</span>
 <span class="sd">        The graph to be converted to GML.</span>
 
 <span class="sd">    stringizer : callable, optional</span>
@@ -587,12 +585,8 @@
                 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="k">yield from</span> <span class="n">stringize</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="p">(),</span> <span class="n">next_indent</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
-            <span class="k">elif</span> <span class="p">(</span>
-                <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span>
-                <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;label&quot;</span>
-                <span class="ow">and</span> <span class="n">value</span>
-                <span class="ow">and</span> <span class="ow">not</span> <span class="n">in_list</span>
-            <span class="p">):</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;label&quot;</span> <span class="ow">and</span> <span class="n">value</span>
+                  <span class="ow">and</span> <span class="ow">not</span> <span class="n">in_list</span><span class="p">):</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">LIST_START_VALUE</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
                 <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
@@ -670,7 +664,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    G : EasyGraph graph</span>
+<span class="sd">    G : graph</span>
 <span class="sd">        The parsed graph.</span>
 
 <span class="sd">    Raises</span>
@@ -739,7 +733,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : EasyGraph graph</span>
+<span class="sd">    G : graph</span>
 <span class="sd">        The graph to be converted to GML.</span>
 
 <span class="sd">    path : filename or filehandle</span>

@@ -14,7 +14,6 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
-        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -37,7 +36,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
@@ -73,12 +72,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.graph_generator.classic</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">itertools</span>
-
+<span></span><span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">nodes_or_number</span><span class="p">,</span> <span class="n">pairwise</span>
 <span class="kn">from</span> <span class="nn">easygraph.classes</span> <span class="kn">import</span> <span class="n">Graph</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">nodes_or_number</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">pairwise</span>
-
+<span class="kn">import</span> <span class="nn">itertools</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;empty_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;path_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;complete_graph&quot;</span><span class="p">]</span>
 
@@ -88,7 +84,7 @@
     <span class="k">if</span> <span class="n">create_using</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">default</span><span class="p">()</span>
     <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">create_using</span><span class="p">,</span> <span class="s2">&quot;_adj&quot;</span><span class="p">):</span>
-        <span class="c1"># create_using is a EasyGraph style Graph</span>
+        <span class="c1"># create_using is a Graph</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">create_using</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># try create_using as constructor</span>
@@ -119,7 +115,7 @@
 <span class="sd">    n : int or iterable container of nodes</span>
 <span class="sd">        If n is an integer, nodes are from range(n).</span>
 <span class="sd">        If n is a container of nodes, those nodes appear in the graph.</span>
-<span class="sd">    create_using : EasyGraph graph constructor, optional (default=eg.Graph)</span>
+<span class="sd">    create_using : graph constructor, optional (default=eg.Graph)</span>
 <span class="sd">       Graph type to create. If graph instance, then cleared before populated.</span>
 
 <span class="sd">    Examples</span>
