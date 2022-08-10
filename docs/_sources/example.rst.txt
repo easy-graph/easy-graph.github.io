@@ -1,9 +1,9 @@
 Example
 ========
 
-This part offers two brief examples of how to do graph analysis with **EasyGraph**. 
+This part offers three examples on how to do graph analysis with **EasyGraph**. 
 
-Example using EasyGraph to analysis and draw Structural Hole Spanners on karate club dataset
+Using EasyGraph to analysis and draw Structural Hole Spanners on karate club dataset
 -------------------------
 >>> from easygraph.datasets import get_graph_karateclub
 >>> import easygraph as eg
