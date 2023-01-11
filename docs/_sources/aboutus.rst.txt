@@ -6,16 +6,22 @@ We are from the `Mobile Systems and Networking Group <http://fudan-msn.weebly.co
 Our goal is to build a cross-platform library which could be useful for social network analytics.
 Please feel free to email us at zliek.sh@gmail.com.
 
-**Key Developers**
+**Former Core Developers**
 
-* `Zheng Li <https://icypole.github.io/>`_ (Lead)
-* `Min Gao <https://mgao.mystrikingly.com/>`_ (Lead)
+* `Zheng Li <https://icypole.github.io/>`_ (Former Lead)
 * `Xinlei He <https://willingnesshxl.github.io/xlhe/>`_
-* Yuting Shao
-* Ruichen Li
 * Yi Sun
+* Yuting Shao
 * Zihang Lin
+* Ruichen Li
+
+
+**Core Developers**
+
+* `Min Gao <https://mgao.mystrikingly.com/>`_ (Lead)
 * Chenhao Cui
+* `Teddy Xinyuan Chen <https://github.com/tddschn>`_
+* Bodian Ye
 
 **Advisors**
 
