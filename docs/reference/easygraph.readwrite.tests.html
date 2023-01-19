@@ -1,0 +1,1777 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph package" href="easygraph.html" /><link rel="prev" title="easygraph.readwrite package" href="easygraph.readwrite.html" />
+
+    <!-- Generated with Sphinx 5.0.2 and Furo 2022.12.07 -->
+        <title>easygraph.readwrite.tests package - EasyGraph 0.2a40</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">EasyGraph 0.2a40</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">EasyGraph 0.2a40</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Example</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../reference.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.classes.html">easygraph.classes package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.tests.html">easygraph.classes.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.tests.html">easygraph.classes.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.datasets.html">easygraph.datasets package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.functions.basic.html">easygraph.functions.basic package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.basic.tests.html">easygraph.functions.basic.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.basic.tests.html">easygraph.functions.basic.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.functions.community.html">easygraph.functions.community package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.community.tests.html">easygraph.functions.community.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.community.tests.html">easygraph.functions.community.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.functions.html">easygraph.functions package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.functions.basic.html">easygraph.functions.basic package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.basic.tests.html">easygraph.functions.basic.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.functions.community.html">easygraph.functions.community package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.community.tests.html">easygraph.functions.community.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.model.html">easygraph.model package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.nn.html">easygraph.nn package</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.tests.html">easygraph.nn.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.tests.html">easygraph.nn.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.random.html">easygraph.random package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">easygraph.readwrite.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">easygraph.readwrite.tests package</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="easygraph.html">easygraph package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.classes.html">easygraph.classes package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.classes.tests.html">easygraph.classes.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.datasets.html">easygraph.datasets package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.functions.html">easygraph.functions package</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.functions.basic.html">easygraph.functions.basic package</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.basic.tests.html">easygraph.functions.basic.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.functions.community.html">easygraph.functions.community package</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.community.tests.html">easygraph.functions.community.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.model.html">easygraph.model package</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.nn.html">easygraph.nn package</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.nn.tests.html">easygraph.nn.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.random.html">easygraph.random package</a></li>
+<li class="toctree-l3 current has-children"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">easygraph.readwrite.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.tests.html">easygraph.tests package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.utils.html">easygraph.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.tests.html">easygraph.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.utils.html">easygraph.utils package</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="modules.html">easygraph</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current has-children"><a class="reference internal" href="easygraph.html">easygraph package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.classes.html">easygraph.classes package</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.classes.tests.html">easygraph.classes.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.datasets.html">easygraph.datasets package</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.functions.html">easygraph.functions package</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="easygraph.functions.basic.html">easygraph.functions.basic package</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="easygraph.functions.basic.tests.html">easygraph.functions.basic.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="easygraph.functions.community.html">easygraph.functions.community package</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="easygraph.functions.community.tests.html">easygraph.functions.community.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.model.html">easygraph.model package</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.nn.html">easygraph.nn package</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="easygraph.nn.tests.html">easygraph.nn.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.random.html">easygraph.random package</a></li>
+<li class="toctree-l4 current has-children"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+<li class="toctree-l5 current current-page"><a class="current reference internal" href="#">easygraph.readwrite.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.tests.html">easygraph.tests package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.utils.html">easygraph.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aboutus.html">About Us</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="easygraph-readwrite-tests-package">
+<h1>easygraph.readwrite.tests package<a class="headerlink" href="#easygraph-readwrite-tests-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-easygraph.readwrite.tests.test_edgelist">
+<span id="easygraph-readwrite-tests-test-edgelist-module"></span><h2>easygraph.readwrite.tests.test_edgelist module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_edgelist" title="Permalink to this heading"></a></h2>
+<p>Unit tests for edgelists.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">TestEdgelist</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 75%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_edgelist_digraph</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_edgelist_graph</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_edgelist_integers</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_edgelist_multidigraph</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_edgelist_multigraph</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_latin1</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_latin1_issue</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_unicode</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_edgelist_1</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_write_edgelist_2</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_edgelist_3</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_write_edgelist_4</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_digraph">
+<span class="sig-name descname"><span class="pre">test_edgelist_digraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_edgelist_digraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_digraph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_graph">
+<span class="sig-name descname"><span class="pre">test_edgelist_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_edgelist_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_graph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_integers">
+<span class="sig-name descname"><span class="pre">test_edgelist_integers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_edgelist_integers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_integers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_multidigraph">
+<span class="sig-name descname"><span class="pre">test_edgelist_multidigraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_edgelist_multidigraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_multidigraph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_multigraph">
+<span class="sig-name descname"><span class="pre">test_edgelist_multigraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_edgelist_multigraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_edgelist_multigraph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_latin1">
+<span class="sig-name descname"><span class="pre">test_latin1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_latin1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_latin1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_latin1_issue">
+<span class="sig-name descname"><span class="pre">test_latin1_issue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_latin1_issue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_latin1_issue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_unicode">
+<span class="sig-name descname"><span class="pre">test_unicode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_unicode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_unicode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_1">
+<span class="sig-name descname"><span class="pre">test_write_edgelist_1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_write_edgelist_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_2">
+<span class="sig-name descname"><span class="pre">test_write_edgelist_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_write_edgelist_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_3">
+<span class="sig-name descname"><span class="pre">test_write_edgelist_3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_write_edgelist_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_4">
+<span class="sig-name descname"><span class="pre">test_write_edgelist_4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#TestEdgelist.test_write_edgelist_4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.TestEdgelist.test_write_edgelist_4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.example_graph">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">example_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#example_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.example_graph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_comments_None">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_comments_None</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_comments_None"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_comments_None" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_parse_edgelist">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_parse_edgelist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_parse_edgelist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_parse_edgelist" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_parse_edgelist_no_data">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_parse_edgelist_no_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example_graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_parse_edgelist_no_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_parse_edgelist_no_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_parse_edgelist_with_data_dict">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_parse_edgelist_with_data_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example_graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_parse_edgelist_with_data_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_parse_edgelist_with_data_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_parse_edgelist_with_data_list">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_parse_edgelist_with_data_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example_graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_parse_edgelist_with_data_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_parse_edgelist_with_data_list" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_read_edgelist_no_data">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_read_edgelist_no_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_read_edgelist_no_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_read_edgelist_no_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_read_edgelist_with_data">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_read_edgelist_with_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_kwargs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_read_edgelist_with_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_read_edgelist_with_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_edgelist.test_read_weighted_edgelist">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_edgelist.</span></span><span class="sig-name descname"><span class="pre">test_read_weighted_edgelist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_edgelist.html#test_read_weighted_edgelist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_edgelist.test_read_weighted_edgelist" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests.test_gexf">
+<span id="easygraph-readwrite-tests-test-gexf-module"></span><h2>easygraph.readwrite.tests.test_gexf module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_gexf" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_gexf.</span></span><span class="sig-name descname"><span class="pre">TestGEXF</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 81%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_add_parent</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_bool</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_default_attribute</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_directed_edge_in_undirected</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_dynamic_mode</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_edge_id_construct</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_key_raises</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_numpy_type</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_attribute_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_read_simple_directed_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_simple_undirected_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_relabel</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_serialize_ints_to_strings</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_simple_list</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_slice_and_spell</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_specials</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_undirected_edge_in_directed</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_write_read_simple_directed_graphml</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_add_parent">
+<span class="sig-name descname"><span class="pre">test_add_parent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_add_parent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_add_parent" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_bool">
+<span class="sig-name descname"><span class="pre">test_bool</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_bool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_default_attribute">
+<span class="sig-name descname"><span class="pre">test_default_attribute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_default_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_default_attribute" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_directed_edge_in_undirected">
+<span class="sig-name descname"><span class="pre">test_directed_edge_in_undirected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_directed_edge_in_undirected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_directed_edge_in_undirected" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_dynamic_mode">
+<span class="sig-name descname"><span class="pre">test_dynamic_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_dynamic_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_dynamic_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_edge_id_construct">
+<span class="sig-name descname"><span class="pre">test_edge_id_construct</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_edge_id_construct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_edge_id_construct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_key_raises">
+<span class="sig-name descname"><span class="pre">test_key_raises</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_key_raises"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_key_raises" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_numpy_type">
+<span class="sig-name descname"><span class="pre">test_numpy_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_numpy_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_numpy_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_read_attribute_graphml">
+<span class="sig-name descname"><span class="pre">test_read_attribute_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_read_attribute_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_read_attribute_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_read_simple_directed_graphml">
+<span class="sig-name descname"><span class="pre">test_read_simple_directed_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_read_simple_directed_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_read_simple_directed_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_read_simple_undirected_graphml">
+<span class="sig-name descname"><span class="pre">test_read_simple_undirected_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_read_simple_undirected_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_read_simple_undirected_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_relabel">
+<span class="sig-name descname"><span class="pre">test_relabel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_relabel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_relabel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_serialize_ints_to_strings">
+<span class="sig-name descname"><span class="pre">test_serialize_ints_to_strings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_serialize_ints_to_strings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_serialize_ints_to_strings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_simple_list">
+<span class="sig-name descname"><span class="pre">test_simple_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_simple_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_simple_list" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_slice_and_spell">
+<span class="sig-name descname"><span class="pre">test_slice_and_spell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_slice_and_spell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_slice_and_spell" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_specials">
+<span class="sig-name descname"><span class="pre">test_specials</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_specials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_specials" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_undirected_edge_in_directed">
+<span class="sig-name descname"><span class="pre">test_undirected_edge_in_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_undirected_edge_in_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_undirected_edge_in_directed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gexf.TestGEXF.test_write_read_simple_directed_graphml">
+<span class="sig-name descname"><span class="pre">test_write_read_simple_directed_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gexf.html#TestGEXF.test_write_read_simple_directed_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gexf.TestGEXF.test_write_read_simple_directed_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests.test_gml">
+<span id="easygraph-readwrite-tests-test-gml-module"></span><h2>easygraph.readwrite.tests.test_gml module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_gml" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_gml.</span></span><span class="sig-name descname"><span class="pre">TestGraph</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 76%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_data_types</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_escape_unescape</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_exceptions</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_float_label</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_graph_types</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_label_kwarg</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_labels_are_strings</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_name</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_outofrange_integers</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_parse_gml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_parse_gml_cytoscape_bug</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_quotes</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_gml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_relabel_duplicate</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_unicode_node</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_data_types">
+<span class="sig-name descname"><span class="pre">test_data_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_data_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_data_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_escape_unescape">
+<span class="sig-name descname"><span class="pre">test_escape_unescape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_escape_unescape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_escape_unescape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_exceptions">
+<span class="sig-name descname"><span class="pre">test_exceptions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_exceptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_exceptions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_float_label">
+<span class="sig-name descname"><span class="pre">test_float_label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_float_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_float_label" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_graph_types">
+<span class="sig-name descname"><span class="pre">test_graph_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_graph_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_graph_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_label_kwarg">
+<span class="sig-name descname"><span class="pre">test_label_kwarg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_label_kwarg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_label_kwarg" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_labels_are_strings">
+<span class="sig-name descname"><span class="pre">test_labels_are_strings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_labels_are_strings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_labels_are_strings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_name">
+<span class="sig-name descname"><span class="pre">test_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_outofrange_integers">
+<span class="sig-name descname"><span class="pre">test_outofrange_integers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_outofrange_integers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_outofrange_integers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_parse_gml">
+<span class="sig-name descname"><span class="pre">test_parse_gml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_parse_gml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_parse_gml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_parse_gml_cytoscape_bug">
+<span class="sig-name descname"><span class="pre">test_parse_gml_cytoscape_bug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_parse_gml_cytoscape_bug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_parse_gml_cytoscape_bug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_quotes">
+<span class="sig-name descname"><span class="pre">test_quotes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_quotes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_quotes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_read_gml">
+<span class="sig-name descname"><span class="pre">test_read_gml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_read_gml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_read_gml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_relabel_duplicate">
+<span class="sig-name descname"><span class="pre">test_relabel_duplicate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_relabel_duplicate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_relabel_duplicate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestGraph.test_unicode_node">
+<span class="sig-name descname"><span class="pre">test_unicode_node</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestGraph.test_unicode_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestGraph.test_unicode_node" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestPropertyLists">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_gml.</span></span><span class="sig-name descname"><span class="pre">TestPropertyLists</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestPropertyLists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestPropertyLists" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 85%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>test_reading_graph_with_list_property</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_reading_graph_with_single_element_list_property</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_writing_graph_with_multi_element_property_list</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_writing_graph_with_one_element_property_list</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestPropertyLists.test_reading_graph_with_list_property">
+<span class="sig-name descname"><span class="pre">test_reading_graph_with_list_property</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestPropertyLists.test_reading_graph_with_list_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestPropertyLists.test_reading_graph_with_list_property" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestPropertyLists.test_reading_graph_with_single_element_list_property">
+<span class="sig-name descname"><span class="pre">test_reading_graph_with_single_element_list_property</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestPropertyLists.test_reading_graph_with_single_element_list_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestPropertyLists.test_reading_graph_with_single_element_list_property" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestPropertyLists.test_writing_graph_with_multi_element_property_list">
+<span class="sig-name descname"><span class="pre">test_writing_graph_with_multi_element_property_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestPropertyLists.test_writing_graph_with_multi_element_property_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestPropertyLists.test_writing_graph_with_multi_element_property_list" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.TestPropertyLists.test_writing_graph_with_one_element_property_list">
+<span class="sig-name descname"><span class="pre">test_writing_graph_with_one_element_property_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#TestPropertyLists.test_writing_graph_with_one_element_property_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.TestPropertyLists.test_writing_graph_with_one_element_property_list" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_gml.byte_file">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_gml.</span></span><span class="sig-name descname"><span class="pre">byte_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_gml.html#byte_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_gml.byte_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests.test_graphml">
+<span id="easygraph-readwrite-tests-test-graphml-module"></span><h2>easygraph.readwrite.tests.test_graphml module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_graphml" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.BaseGraphML">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_graphml.</span></span><span class="sig-name descname"><span class="pre">BaseGraphML</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#BaseGraphML"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.BaseGraphML" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.BaseGraphML.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#BaseGraphML.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.BaseGraphML.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_graphml.</span></span><span class="sig-name descname"><span class="pre">TestReadGraphML</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#easygraph.readwrite.tests.test_graphml.BaseGraphML" title="easygraph.readwrite.tests.test_graphml.BaseGraphML"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGraphML</span></code></a></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_preserve_multi_edge_data" title="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_preserve_multi_edge_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_preserve_multi_edge_data</span></code></a>()</p></td>
+<td><p>Test that data and keys of edges are preserved on consequent write and reads</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 87%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_bool</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_directed_edge_in_undirected</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_graphml_header_line</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_hyperedge_raise</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_key_raise</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_long_attribute_type</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_multigraph_keys</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_node_default_attribute_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_attribute_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_read_attributes_with_groups</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_simple_directed_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_read_simple_undirected_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_undirected_multigraph_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_read_undirected_multigraph_no_multiedge_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_undirected_multigraph_only_ids_for_multiedges_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_undirected_edge_in_directed</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_yfiles_extension</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_bool">
+<span class="sig-name descname"><span class="pre">test_bool</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_bool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_directed_edge_in_undirected">
+<span class="sig-name descname"><span class="pre">test_directed_edge_in_undirected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_directed_edge_in_undirected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_directed_edge_in_undirected" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_graphml_header_line">
+<span class="sig-name descname"><span class="pre">test_graphml_header_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_graphml_header_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_graphml_header_line" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_hyperedge_raise">
+<span class="sig-name descname"><span class="pre">test_hyperedge_raise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_hyperedge_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_hyperedge_raise" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_key_raise">
+<span class="sig-name descname"><span class="pre">test_key_raise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_key_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_key_raise" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_long_attribute_type">
+<span class="sig-name descname"><span class="pre">test_long_attribute_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_long_attribute_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_long_attribute_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_multigraph_keys">
+<span class="sig-name descname"><span class="pre">test_multigraph_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_multigraph_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_multigraph_keys" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_node_default_attribute_graphml">
+<span class="sig-name descname"><span class="pre">test_node_default_attribute_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_node_default_attribute_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_node_default_attribute_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_preserve_multi_edge_data">
+<span class="sig-name descname"><span class="pre">test_preserve_multi_edge_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_preserve_multi_edge_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_preserve_multi_edge_data" title="Permalink to this definition"></a></dt>
+<dd><p>Test that data and keys of edges are preserved on consequent
+write and reads</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_attribute_graphml">
+<span class="sig-name descname"><span class="pre">test_read_attribute_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_read_attribute_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_attribute_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_attributes_with_groups">
+<span class="sig-name descname"><span class="pre">test_read_attributes_with_groups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_read_attributes_with_groups"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_attributes_with_groups" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_simple_directed_graphml">
+<span class="sig-name descname"><span class="pre">test_read_simple_directed_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_read_simple_directed_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_simple_directed_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_simple_undirected_graphml">
+<span class="sig-name descname"><span class="pre">test_read_simple_undirected_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_read_simple_undirected_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_simple_undirected_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_undirected_multigraph_graphml">
+<span class="sig-name descname"><span class="pre">test_read_undirected_multigraph_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_read_undirected_multigraph_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_undirected_multigraph_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_undirected_multigraph_no_multiedge_graphml">
+<span class="sig-name descname"><span class="pre">test_read_undirected_multigraph_no_multiedge_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_read_undirected_multigraph_no_multiedge_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_undirected_multigraph_no_multiedge_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_undirected_multigraph_only_ids_for_multiedges_graphml">
+<span class="sig-name descname"><span class="pre">test_read_undirected_multigraph_only_ids_for_multiedges_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_read_undirected_multigraph_only_ids_for_multiedges_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_read_undirected_multigraph_only_ids_for_multiedges_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_undirected_edge_in_directed">
+<span class="sig-name descname"><span class="pre">test_undirected_edge_in_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_undirected_edge_in_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_undirected_edge_in_directed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_yfiles_extension">
+<span class="sig-name descname"><span class="pre">test_yfiles_extension</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestReadGraphML.test_yfiles_extension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestReadGraphML.test_yfiles_extension" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_graphml.</span></span><span class="sig-name descname"><span class="pre">TestWriteGraphML</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#easygraph.readwrite.tests.test_graphml.BaseGraphML" title="easygraph.readwrite.tests.test_graphml.BaseGraphML"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGraphML</span></code></a></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_more_multigraph_keys" title="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_more_multigraph_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_more_multigraph_keys</span></code></a>()</p></td>
+<td><p>Writing keys as edge id attributes means keys become strings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.writer" title="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writer</span></code></a>(G, path[, encoding, prettyprint, ...])</p></td>
+<td><p>Write G in GraphML XML format to path</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 85%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_GraphMLWriter_add_graphs</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_default_attribute</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_mixed_int_type_number_attributes</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_mixed_type_attributes</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_multigraph_to_graph</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_multigraph_write_generate_edge_id_from_attribute</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_numpy_float</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_numpy_float32</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_numpy_float64</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_numpy_float64_inference</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_str_number_mixed_type_attributes</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_unicode_attributes</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_unicode_escape</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_write_generate_edge_id_from_attribute</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_interface</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_write_read_attribute_named_key_ids_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_read_attribute_numeric_type_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_write_read_simple_directed_graphml</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_read_simple_no_prettyprint</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_GraphMLWriter_add_graphs">
+<span class="sig-name descname"><span class="pre">test_GraphMLWriter_add_graphs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_GraphMLWriter_add_graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_GraphMLWriter_add_graphs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_default_attribute">
+<span class="sig-name descname"><span class="pre">test_default_attribute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_default_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_default_attribute" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_mixed_int_type_number_attributes">
+<span class="sig-name descname"><span class="pre">test_mixed_int_type_number_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_mixed_int_type_number_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_mixed_int_type_number_attributes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_mixed_type_attributes">
+<span class="sig-name descname"><span class="pre">test_mixed_type_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_mixed_type_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_mixed_type_attributes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_more_multigraph_keys">
+<span class="sig-name descname"><span class="pre">test_more_multigraph_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_more_multigraph_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_more_multigraph_keys" title="Permalink to this definition"></a></dt>
+<dd><p>Writing keys as edge id attributes means keys become strings.
+The original keys are stored as data, so read them back in
+if <cite>str(key) == edge_id</cite>
+This allows the adjacency to remain the same.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_multigraph_to_graph">
+<span class="sig-name descname"><span class="pre">test_multigraph_to_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_multigraph_to_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_multigraph_to_graph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_multigraph_write_generate_edge_id_from_attribute">
+<span class="sig-name descname"><span class="pre">test_multigraph_write_generate_edge_id_from_attribute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_multigraph_write_generate_edge_id_from_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_multigraph_write_generate_edge_id_from_attribute" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float">
+<span class="sig-name descname"><span class="pre">test_numpy_float</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_numpy_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float32">
+<span class="sig-name descname"><span class="pre">test_numpy_float32</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_numpy_float32"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float32" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float64">
+<span class="sig-name descname"><span class="pre">test_numpy_float64</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_numpy_float64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float64" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float64_inference">
+<span class="sig-name descname"><span class="pre">test_numpy_float64_inference</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_numpy_float64_inference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_numpy_float64_inference" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_str_number_mixed_type_attributes">
+<span class="sig-name descname"><span class="pre">test_str_number_mixed_type_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_str_number_mixed_type_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_str_number_mixed_type_attributes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_unicode_attributes">
+<span class="sig-name descname"><span class="pre">test_unicode_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_unicode_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_unicode_attributes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_unicode_escape">
+<span class="sig-name descname"><span class="pre">test_unicode_escape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_unicode_escape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_unicode_escape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_generate_edge_id_from_attribute">
+<span class="sig-name descname"><span class="pre">test_write_generate_edge_id_from_attribute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_write_generate_edge_id_from_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_generate_edge_id_from_attribute" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_interface">
+<span class="sig-name descname"><span class="pre">test_write_interface</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_write_interface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_interface" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_attribute_named_key_ids_graphml">
+<span class="sig-name descname"><span class="pre">test_write_read_attribute_named_key_ids_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_write_read_attribute_named_key_ids_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_attribute_named_key_ids_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_attribute_numeric_type_graphml">
+<span class="sig-name descname"><span class="pre">test_write_read_attribute_numeric_type_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_write_read_attribute_numeric_type_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_attribute_numeric_type_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_simple_directed_graphml">
+<span class="sig-name descname"><span class="pre">test_write_read_simple_directed_graphml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_write_read_simple_directed_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_simple_directed_graphml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_simple_no_prettyprint">
+<span class="sig-name descname"><span class="pre">test_write_read_simple_no_prettyprint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphml.html#TestWriteGraphML.test_write_read_simple_no_prettyprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.test_write_read_simple_no_prettyprint" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphml.TestWriteGraphML.writer">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prettyprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_numeric_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_key_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_id_from_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.readwrite.tests.test_graphml.TestWriteGraphML.writer" title="Permalink to this definition"></a></dt>
+<dd><p>Write G in GraphML XML format to path</p>
+<p>This function uses the LXML framework and should be faster than
+the version using the xml library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p></li>
+<li><p><strong>path</strong> (<em>file</em><em> or </em><em>string</em>) – File or filename to write.
+Filenames ending in .gz or .bz2 will be compressed.</p></li>
+<li><p><strong>encoding</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – Encoding for text data.</p></li>
+<li><p><strong>prettyprint</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use line breaks and indenting in output XML.</p></li>
+<li><p><strong>infer_numeric_types</strong> (<em>boolean</em>) – Determine if numeric types should be generalized.
+For example, if edges have both int and float ‘weight’ attributes,
+we infer in GraphML that both are floats.</p></li>
+<li><p><strong>named_key_ids</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use attr.name as value for key elements’ id attribute.</p></li>
+<li><p><strong>edge_id_from_attribute</strong> (<em>dict key</em><em> (</em><em>optional</em><em>)</em>) – If provided, the graphml edge id is set by looking up the corresponding
+edge data attribute keyed by this parameter. If <cite>None</cite> or the key does not exist in edge data,
+the edge id is set by the edge key if <cite>G</cite> is a MultiGraph, else the edge id is left unset.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_graphml_lxml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;fourpath.graphml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This implementation does not support mixed graphs (directed
+and unidirected edges together) hyperedges, nested graphs, or ports.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests.test_graphviz">
+<span id="easygraph-readwrite-tests-test-graphviz-module"></span><h2>easygraph.readwrite.tests.test_graphviz module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_graphviz" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphviz.TestAGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_graphviz.</span></span><span class="sig-name descname"><span class="pre">TestAGraph</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphviz.html#TestAGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphviz.TestAGraph" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>agraph_checks</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>assert_equal</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>build_graph</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_from_agraph_name</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_undirected</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphviz.TestAGraph.agraph_checks">
+<span class="sig-name descname"><span class="pre">agraph_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphviz.html#TestAGraph.agraph_checks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphviz.TestAGraph.agraph_checks" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphviz.TestAGraph.assert_equal">
+<span class="sig-name descname"><span class="pre">assert_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphviz.html#TestAGraph.assert_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphviz.TestAGraph.assert_equal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphviz.TestAGraph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphviz.html#TestAGraph.build_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphviz.TestAGraph.build_graph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphviz.TestAGraph.test_from_agraph_name">
+<span class="sig-name descname"><span class="pre">test_from_agraph_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphviz.html#TestAGraph.test_from_agraph_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphviz.TestAGraph.test_from_agraph_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_graphviz.TestAGraph.test_undirected">
+<span class="sig-name descname"><span class="pre">test_undirected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_graphviz.html#TestAGraph.test_undirected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_graphviz.TestAGraph.test_undirected" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests.test_pajek">
+<span id="easygraph-readwrite-tests-test-pajek-module"></span><h2>easygraph.readwrite.tests.test_pajek module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_pajek" title="Permalink to this heading"></a></h2>
+<p>Pajek tests</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_pajek.</span></span><span class="sig-name descname"><span class="pre">TestPajek</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 73%" />
+<col style="width: 27%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>teardown_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_ignored_attribute</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_noname</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_parse_pajek</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_parse_pajek_mat</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_parse_pajek_simple</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_read_pajek</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_unicode</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_pajek</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.teardown_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">teardown_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.teardown_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.teardown_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_ignored_attribute">
+<span class="sig-name descname"><span class="pre">test_ignored_attribute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_ignored_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_ignored_attribute" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_noname">
+<span class="sig-name descname"><span class="pre">test_noname</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_noname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_noname" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_parse_pajek">
+<span class="sig-name descname"><span class="pre">test_parse_pajek</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_parse_pajek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_parse_pajek" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_parse_pajek_mat">
+<span class="sig-name descname"><span class="pre">test_parse_pajek_mat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_parse_pajek_mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_parse_pajek_mat" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_parse_pajek_simple">
+<span class="sig-name descname"><span class="pre">test_parse_pajek_simple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_parse_pajek_simple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_parse_pajek_simple" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_read_pajek">
+<span class="sig-name descname"><span class="pre">test_read_pajek</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_read_pajek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_read_pajek" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_unicode">
+<span class="sig-name descname"><span class="pre">test_unicode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_unicode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_unicode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pajek.TestPajek.test_write_pajek">
+<span class="sig-name descname"><span class="pre">test_write_pajek</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pajek.html#TestPajek.test_write_pajek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pajek.TestPajek.test_write_pajek" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests.test_pickle">
+<span id="easygraph-readwrite-tests-test-pickle-module"></span><h2>easygraph.readwrite.tests.test_pickle module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_pickle" title="Permalink to this heading"></a></h2>
+<p>pickle read / write tests</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pickle.TestPickle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_pickle.</span></span><span class="sig-name descname"><span class="pre">TestPickle</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pickle.html#TestPickle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pickle.TestPickle" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 68%" />
+<col style="width: 32%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>teardown_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_read_pickle</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_pickle</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pickle.TestPickle.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pickle.html#TestPickle.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pickle.TestPickle.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pickle.TestPickle.teardown_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">teardown_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pickle.html#TestPickle.teardown_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pickle.TestPickle.teardown_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pickle.TestPickle.test_read_pickle">
+<span class="sig-name descname"><span class="pre">test_read_pickle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pickle.html#TestPickle.test_read_pickle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pickle.TestPickle.test_read_pickle" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_pickle.TestPickle.test_write_pickle">
+<span class="sig-name descname"><span class="pre">test_write_pickle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_pickle.html#TestPickle.test_write_pickle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_pickle.TestPickle.test_write_pickle" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests.test_ucinet">
+<span id="easygraph-readwrite-tests-test-ucinet-module"></span><h2>easygraph.readwrite.tests.test_ucinet module<a class="headerlink" href="#module-easygraph.readwrite.tests.test_ucinet" title="Permalink to this heading"></a></h2>
+<p>UCINET tests</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_ucinet.</span></span><span class="sig-name descname"><span class="pre">TestUcinet</span></span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_labels" title="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_parse_ucinet_labels</span></code></a>()</p></td>
+<td><p>Test parsing of labels : single line (data1), multiple lines (data2), embedded (data3) Labels must be separated by spaces, carriage returns, equal signs or commas.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 79%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_class</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_generate_ucinet</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_parse_ucinet</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_parse_ucinet_edgelist1</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_parse_ucinet_nodelist1</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_parse_ucinet_nodelist1_labels</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>test_read_ucinet</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>test_write_ucinet</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.setup_class">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.setup_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.setup_class" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_generate_ucinet">
+<span class="sig-name descname"><span class="pre">test_generate_ucinet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_generate_ucinet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_generate_ucinet" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet">
+<span class="sig-name descname"><span class="pre">test_parse_ucinet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_parse_ucinet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_edgelist1">
+<span class="sig-name descname"><span class="pre">test_parse_ucinet_edgelist1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_parse_ucinet_edgelist1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_edgelist1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_labels">
+<span class="sig-name descname"><span class="pre">test_parse_ucinet_labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_parse_ucinet_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_labels" title="Permalink to this definition"></a></dt>
+<dd><p>Test parsing of labels : single line (data1), multiple lines (data2), embedded (data3)
+Labels must be separated by spaces, carriage returns, equal signs or commas.
+Labels with embedded spaces are not advisable, but can be entered by
+surrounding the label in quotes (e.g., “Humpty Dumpty”).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_nodelist1">
+<span class="sig-name descname"><span class="pre">test_parse_ucinet_nodelist1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_parse_ucinet_nodelist1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_nodelist1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_nodelist1_labels">
+<span class="sig-name descname"><span class="pre">test_parse_ucinet_nodelist1_labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_parse_ucinet_nodelist1_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_parse_ucinet_nodelist1_labels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_read_ucinet">
+<span class="sig-name descname"><span class="pre">test_read_ucinet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_read_ucinet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_read_ucinet" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.TestUcinet.test_write_ucinet">
+<span class="sig-name descname"><span class="pre">test_write_ucinet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#TestUcinet.test_write_ucinet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.TestUcinet.test_write_ucinet" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.tests.test_ucinet.filterEdges">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.tests.test_ucinet.</span></span><span class="sig-name descname"><span class="pre">filterEdges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/tests/test_ucinet.html#filterEdges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.tests.test_ucinet.filterEdges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-easygraph.readwrite.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.readwrite.tests" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="easygraph.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">easygraph package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="easygraph.readwrite.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">easygraph.readwrite package</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2023, Mobile Systems and Networking Group, Fudan University
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">easygraph.readwrite.tests package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_edgelist">easygraph.readwrite.tests.test_edgelist module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_gexf">easygraph.readwrite.tests.test_gexf module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_gml">easygraph.readwrite.tests.test_gml module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_graphml">easygraph.readwrite.tests.test_graphml module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_graphviz">easygraph.readwrite.tests.test_graphviz module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_pajek">easygraph.readwrite.tests.test_pajek module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_pickle">easygraph.readwrite.tests.test_pickle module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests.test_ucinet">easygraph.readwrite.tests.test_ucinet module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    </body>
+</html>

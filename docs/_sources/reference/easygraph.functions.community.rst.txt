@@ -1,0 +1,53 @@
+easygraph.functions.community package
+=====================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   easygraph.functions.community.tests
+
+Submodules
+----------
+
+easygraph.functions.community.LPA module
+----------------------------------------
+
+.. automodule:: easygraph.functions.community.LPA
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.functions.community.modularity module
+-----------------------------------------------
+
+.. automodule:: easygraph.functions.community.modularity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.functions.community.modularity\_max\_detection module
+---------------------------------------------------------------
+
+.. automodule:: easygraph.functions.community.modularity_max_detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.functions.community.motif module
+------------------------------------------
+
+.. automodule:: easygraph.functions.community.motif
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: easygraph.functions.community
+   :members:
+   :undoc-members:
+   :show-inheritance:
