@@ -15,17 +15,32 @@ methods in the same platform.
     :maxdepth: 2
     :caption: Contents:
 
-
-    reference/classes.rst
-    reference/community.rst
-    reference/components.rst
-    reference/path.rst
-    reference/graph_embedding.rst
-    reference/structural_hole_spanners.rst
-    reference/datasets.rst
-    reference/drawing.rst
-    reference/readwrite/index.rst
-    reference/centrality.rst
-    reference/graph_generator.rst
-    reference/not_sorted.rst
-
+    reference/easygraph.classes.rst
+    reference/easygraph.classes.tests.rst
+    reference/easygraph.datasets.rst
+    reference/easygraph.functions.basic.rst
+    reference/easygraph.functions.basic.tests.rst
+    reference/easygraph.functions.centrality.rst
+    reference/easygraph.functions.community.rst
+    reference/easygraph.functions.community.tests.rst
+    reference/easygraph.functions.components.rst
+    reference/easygraph.functions.drawing.rst
+    reference/easygraph.functions.graph_embedding.rst
+    reference/easygraph.functions.graph_generator.rst
+    reference/easygraph.functions.path.rst
+    reference/easygraph.functions.rst
+    reference/easygraph.functions.structural_holes.rst
+    reference/easygraph.model.hypergraphs.rst
+    reference/easygraph.model.rst
+    reference/easygraph.nn.convs.hypergraphs.rst
+    reference/easygraph.nn.convs.rst
+    reference/easygraph.nn.rst
+    reference/easygraph.nn.tests.rst
+    reference/easygraph.random.rst
+    reference/easygraph.readwrite.json_graph.rst
+    reference/easygraph.readwrite.rst
+    reference/easygraph.readwrite.tests.rst
+    reference/easygraph.rst
+    reference/easygraph.tests.rst
+    reference/easygraph.utils.rst
+    reference/modules.rst
