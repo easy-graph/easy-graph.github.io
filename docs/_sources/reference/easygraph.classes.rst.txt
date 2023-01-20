@@ -1,14 +1,6 @@
 easygraph.classes package
 =========================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   easygraph.classes.tests
-
 Submodules
 ----------
 

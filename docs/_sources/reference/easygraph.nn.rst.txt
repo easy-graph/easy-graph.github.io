@@ -8,7 +8,6 @@ Subpackages
    :maxdepth: 4
 
    easygraph.nn.convs
-   easygraph.nn.tests
 
 Submodules
 ----------

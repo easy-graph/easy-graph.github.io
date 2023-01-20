@@ -8,7 +8,6 @@ Subpackages
    :maxdepth: 4
 
    easygraph.readwrite.json_graph
-   easygraph.readwrite.tests
 
 Submodules
 ----------

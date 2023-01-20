@@ -1,14 +1,6 @@
 easygraph.functions.community package
 =====================================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   easygraph.functions.community.tests
-
 Submodules
 ----------
 

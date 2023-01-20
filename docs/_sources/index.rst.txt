@@ -25,7 +25,7 @@ processing algorithms include structural hole spanners detection (HIS, MaxD, Com
 parallel computing methods to achieve high efficiency. 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
    install.rst

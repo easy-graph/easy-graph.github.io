@@ -1,14 +1,6 @@
 easygraph.functions.basic package
 =================================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   easygraph.functions.basic.tests
-
 Submodules
 ----------
 
