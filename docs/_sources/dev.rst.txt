@@ -5,5 +5,6 @@ Developer Documentation
     :maxdepth: 2
     :caption: Contents:
 
+    contributorGuide.rst
     dev/releasing.rst
     dev/easygraph-doc-source.rst
