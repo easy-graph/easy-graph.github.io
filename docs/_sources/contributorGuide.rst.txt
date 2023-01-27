@@ -1,6 +1,8 @@
 Contributor Guide
 =========================
 
+Author: `Teddy Xinyuan Chen <https://github.com/tddschn>`__
+
 First off, thanks for taking the time to contribute!
 
 The following is a set of guidelines for contributing to EasyGraph on
