@@ -38,6 +38,7 @@ parallel computing methods to achieve high efficiency.
 
    :titlesonly: 
 
+   dev.rst
    aboutus.rst
 
 .. .. toctree::
