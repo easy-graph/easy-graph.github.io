@@ -39,9 +39,11 @@ parallel computing methods to achieve high efficiency.
    :titlesonly: 
 
    dev.rst
+..    :maxdepth: 1
+..    egeps.rst
    aboutus.rst
 
-.. .. toctree::
+.. toctree::
 ..    :titlesonly:
 
 ..    aboutus.rst
