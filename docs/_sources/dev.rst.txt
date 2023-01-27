@@ -6,3 +6,4 @@ Developer Documentation
     :caption: Contents:
 
     dev/releasing.rst
+    dev/easygraph-doc-source.rst
