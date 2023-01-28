@@ -1,7 +1,7 @@
 Contributor Guide
 =========================
 
-Author: `Teddy Xinyuan Chen <https://github.com/tddschn>`__
+.. Author: `Teddy Xinyuan Chen <https://github.com/tddschn>`__
 
 First off, thanks for taking the time to contribute!
 
