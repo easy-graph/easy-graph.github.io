@@ -30,6 +30,7 @@ parallel computing methods to achieve high efficiency.
 
    install.rst
    example.rst
+   hypergraph.rst
    reference.rst
    videos.rst
    contributorGuide.rst

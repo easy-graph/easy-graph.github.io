@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Building and Releasing python-easygraph" href="releasing.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 4.4.0 and Furo 2022.12.07 -->
         <title>Scripts and guides for generating documentation for EasyGraph - EasyGraph 0.2a40</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -162,6 +162,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">Example of Hypergraph</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reference.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/easygraph.datasets.html">easygraph.datasets package</a></li>
@@ -330,7 +331,7 @@
         </div>
         <article role="main">
           <section id="scripts-and-guides-for-generating-documentation-for-easygraph">
-<h1>Scripts and guides for generating documentation for EasyGraph<a class="headerlink" href="#scripts-and-guides-for-generating-documentation-for-easygraph" title="Permalink to this heading"></a></h1>
+<h1>Scripts and guides for generating documentation for EasyGraph<a class="headerlink" href="#scripts-and-guides-for-generating-documentation-for-easygraph" title="Permalink to this headline"></a></h1>
 <!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) --><p>Repository:
 <a class="reference external" href="https://github.com/easy-graph/easygraph-doc-source">easygraph-doc-source</a></p>
 <ul class="simple">
@@ -358,34 +359,34 @@ website</a></p></li>
 </li>
 </ul>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
 <p>Clone these repositories and put them inside the same directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">REPOS</span><span class="o">=(</span><span class="s1">&#39;Easy-Graph&#39;</span><span class="w"> </span><span class="s1">&#39;easy-graph.github.io&#39;</span><span class="w"> </span><span class="s1">&#39;easygraph-doc-source&#39;</span><span class="o">)</span>
-<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPOS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cloning: </span><span class="nv">$i</span><span class="s2">&quot;</span>
-<span class="w">    </span>git<span class="w"> </span>clone<span class="w"> </span><span class="s2">&quot;https://github.com/easy-graph/</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">REPOS</span><span class="o">=(</span><span class="s1">&#39;Easy-Graph&#39;</span> <span class="s1">&#39;easy-graph.github.io&#39;</span> <span class="s1">&#39;easygraph-doc-source&#39;</span><span class="o">)</span>
+<span class="k">for</span> i <span class="k">in</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPOS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Cloning: </span><span class="nv">$i</span><span class="s2">&quot;</span>
+    git clone <span class="s2">&quot;https://github.com/easy-graph/</span><span class="nv">$i</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
 </section>
 <section id="update-rst-files">
-<h2>Update <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#update-rst-files" title="Permalink to this heading"></a></h2>
+<h2>Update <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#update-rst-files" title="Permalink to this headline"></a></h2>
 <section id="edit-manually-created-rst-files">
-<h3>Edit manually created <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#edit-manually-created-rst-files" title="Permalink to this heading"></a></h3>
+<h3>Edit manually created <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#edit-manually-created-rst-files" title="Permalink to this headline"></a></h3>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">easygraph-doc-source/docs_using_sphinx</span></code>, and hand-edit / remove
 / add any <code class="docutils literal notranslate"><span class="pre">rst</span></code> files outside of <code class="docutils literal notranslate"><span class="pre">reference</span></code>.</p>
 </section>
 <section id="generate-rst-files-from-docstrings-as-references">
-<h3>Generate <code class="docutils literal notranslate"><span class="pre">rst</span></code> files from docstrings as references<a class="headerlink" href="#generate-rst-files-from-docstrings-as-references" title="Permalink to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>easygraph-doc-source/docs_using_sphinx
-make<span class="w"> </span>gen-rst
+<h3>Generate <code class="docutils literal notranslate"><span class="pre">rst</span></code> files from docstrings as references<a class="headerlink" href="#generate-rst-files-from-docstrings-as-references" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> easygraph-doc-source/docs_using_sphinx
+make gen-rst
 <span class="c1"># generated rst files in reference dir</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="build-html-from-rst-files">
-<h2>Build HTML from <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#build-html-from-rst-files" title="Permalink to this heading"></a></h2>
+<h2>Build HTML from <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#build-html-from-rst-files" title="Permalink to this headline"></a></h2>
 <!-- 1. Update the `.rst` file in `docs_using_sphinx`
 2. Run terminal, changing work directory to `docs_using_sphinx`
 3. run `python3 -m venv .env` for the virtual environment
@@ -396,13 +397,13 @@ make<span class="w"> </span>gen-rst
 </ul>
 </section>
 <section id="deploy-to-easy-graph-github-io">
-<h2>Deploy to easy-graph.github.io<a class="headerlink" href="#deploy-to-easy-graph-github-io" title="Permalink to this heading"></a></h2>
+<h2>Deploy to easy-graph.github.io<a class="headerlink" href="#deploy-to-easy-graph-github-io" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Sync all the files under <code class="docutils literal notranslate"><span class="pre">./_build/html</span></code> to repository
 <code class="docutils literal notranslate"><span class="pre">easy-graph.github.io</span></code>:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>easygraph-doc-source
-make<span class="w"> </span>sync-doc-pub-repo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> easygraph-doc-source
+make sync-doc-pub-repo
 </pre></div>
 </div>
 <ul class="simple">
@@ -410,9 +411,9 @@ make<span class="w"> </span>sync-doc-pub-repo
 </ul>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline"></a></h2>
 <section id="reference-built-but-not-correctly-displayed-on-the-website">
-<h3>Reference built but not correctly displayed on the website<a class="headerlink" href="#reference-built-but-not-correctly-displayed-on-the-website" title="Permalink to this heading"></a></h3>
+<h3>Reference built but not correctly displayed on the website<a class="headerlink" href="#reference-built-but-not-correctly-displayed-on-the-website" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Check the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> of <code class="docutils literal notranslate"><span class="pre">reference.rst</span></code>, you may need to manually
 update the section to reflect the built references.</p></li>
@@ -495,7 +496,6 @@ update the section to reflect the built references.</p></li>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
