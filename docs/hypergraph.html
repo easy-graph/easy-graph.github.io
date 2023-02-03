@@ -332,15 +332,19 @@
         <article role="main">
           <section id="example-of-hypergraph">
 <h1>Example of Hypergraph<a class="headerlink" href="#example-of-hypergraph" title="Permalink to this headline"></a></h1>
-<p>This part offers three examples on how to do hypergraph analysis with <strong>EasyGraph</strong>.</p>
+<p>This part offers three examples on how to analyze hypergraph with <strong>EasyGraph</strong>.</p>
 <section id="basic-properties-and-operation-of-hypergraph">
 <h2>Basic Properties and Operation of Hypergraph<a class="headerlink" href="#basic-properties-and-operation-of-hypergraph" title="Permalink to this headline"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Each hyperedge in the hypergraph is an unordered set of vertices, which means that <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">2,</span> <span class="pre">1)</span></code>, and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> are all the same hyperedge.</p>
+</div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a hypergraph with three nodes and zero hyperedge.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a hypergraph with three nodes and three hyperedges.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate five shs(Structural Hole Spanners) in G</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># print hyperedges of hypergraph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">e</span>
 <span class="go">([(0, 1, 2), (2, 3), (0, 4)], [1.0, 1.0, 1.0])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># print the incidence matrix of the hypergraph</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">H</span><span class="o">.</span><span class="n">to_dense</span><span class="p">()</span>
@@ -350,10 +354,14 @@
 </div>
 <img alt="_images/hypergraph1.png" src="_images/hypergraph1.png" />
 <p>Add hyperedges and you can find the weight of the last hyperedge is 1.0 and 2.0, if you set the merge_op to mean and sum, respectively.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span> <span class="o">=</span> <span class="n">dhg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the added hyperedges have duplicate hyperedges, those duplicate hyperedges will be automatically merged with specified merge_op.</p>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">e</span>
 <span class="go">([(0, 1, 2), (2, 3), (0, 4)], [1.0, 1.0, 1.0])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span> <span class="o">=</span> <span class="n">dhg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">e</span>
 <span class="go">([(0, 1, 2), (2, 3), (0, 4)], [1.0, 2.0, 1.0])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">add_hyperedges</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
@@ -362,6 +370,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">add_hyperedges</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">e</span>
 <span class="go">([(0, 1, 2), (2, 3), (0, 4)], [2.0, 2.0, 2.0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">remove_hyperedges</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hg</span><span class="o">.</span><span class="n">e</span>
+<span class="go">([(0, 1, 2), (0, 4)], [2.0, 2.0])</span>
 </pre></div>
 </div>
 <p>Use the eg.Hypergraph.from_feature_kNN() function to construct a hypergraph based on the k-nearest neighbors of the features</p>
@@ -413,8 +424,10 @@
 <section id="train-a-hypergraph-model-hgnn-on-cooking200">
 <h2>Train a Hypergraph model, HGNN+ on Cooking200<a class="headerlink" href="#train-a-hypergraph-model-hgnn-on-cooking200" title="Permalink to this headline"></a></h2>
 <p>In the following example, we present a simple example of Auto-ML for vertex classification on hypergraph. More details for how to use the eg.experiments to auto tuning your own model can be found in the tutorial.</p>
-<p><strong>Model:</strong> HGNN+ (dhg.models.HGNNP): HGNN+: General Hypergraph Neural Networks paper (IEEE T-PAMI 2022).</p>
-<p><strong>Dataset:</strong> Cooking 200 (dhg.data.Cooking200): A cooking recipe hypergraph dataset collected from Yummly.com for vertex classification task</p>
+<p><strong>Model:</strong></p>
+<p>HGNN+ (dhg.models.HGNNP): HGNN+: General Hypergraph Neural Networks paper (IEEE T-PAMI 2022).</p>
+<p><strong>Dataset:</strong></p>
+<p>Cooking 200 (dhg.data.Cooking200): A cooking recipe hypergraph dataset collected from Yummly.com for vertex classification task</p>
 <p><strong>Configuration</strong></p>
 <p>Model: HGNN+ (eg.models.HGNNP): HGNN+: General Hypergraph Neural Networks paper (IEEE T-PAMI 2022).</p>
 <p>Dataset: Cooking 200 (dhg.data.Cooking200): A cooking recipe hypergraph dataset collected from Yummly.com for vertex classification task.</p>
