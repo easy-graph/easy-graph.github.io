@@ -1,4 +1,4 @@
-Example
+Examples
 ========
 
 This part offers three examples on how to do graph analysis with **EasyGraph**. 

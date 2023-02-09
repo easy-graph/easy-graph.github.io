@@ -1,7 +1,7 @@
-Example of Hypergraph
+Examples of Hypergraph
 ========
 
-This part offers three examples on how to analyze hypergraph with **EasyGraph**.
+We briefly introduce the fundamental properties, basic operations, and node classification task on hypergraph with **EasyGraph**.
 
 Basic Properties and Operation of Hypergraph
 -------------------------
@@ -12,75 +12,72 @@ Basic Properties and Operation of Hypergraph
 
 >>> import torch
 >>> import easygraph as eg
->>> # Create a hypergraph with three nodes and three hyperedges.
+>>> # Create a hypergraph with five nodes and three hyperedges.
 >>> hg = eg.Hypergraph(5, [(0, 1, 2), (2, 3), (0, 4)])
->>> # print hyperedges of hypergraph
+>>> # print hyperedges with weights of hypergraph.
 >>> hg.e
 ([(0, 1, 2), (2, 3), (0, 4)], [1.0, 1.0, 1.0])
 >>> # print the incidence matrix of the hypergraph
 >>> hg.H.to_dense()
->>> # Draw hypergraph with label of each vertex.
->>> hg.draw(v_label = [0,1,2,3,4])
+tensor([[1., 0., 1.],
+        [1., 0., 0.],
+        [1., 1., 0.],
+        [0., 1., 0.],
+        [0., 0., 1.]])
+>>> # Draw hypergraph with label of each vertex, color of vertexs and edges are set to blue and yellow respectively, line width of each hyperedges depends on its weight.
+>>> hg.draw(v_label = [0,1,2,3,4], v_color = 'b', e_color = 'y', e_line_width = hg.e[1])
 
-.. image:: hypergraph1.png
+.. image:: hypergraph_example1.png
+
 
 
 Add hyperedges and you can find the weight of the last hyperedge is 1.0 and 2.0, if you set the merge_op to mean and sum, respectively.
 
-.. note::
-
-    If the added hyperedges have duplicate hyperedges, those duplicate hyperedges will be automatically merged with specified merge_op.
-
 >>> hg = eg.Hypergraph(5, [(0, 1, 2), (2, 3), (2, 3), (0, 4)], merge_op="mean")
 >>> hg.e
 ([(0, 1, 2), (2, 3), (0, 4)], [1.0, 1.0, 1.0])
->>> hg = eg.Hypergraph(5, [(0, 1, 2), (2, 3), (2, 3), (0, 4)], merge_op="sum")
->>> hg.e
-([(0, 1, 2), (2, 3), (0, 4)], [1.0, 2.0, 1.0])
 >>> hg.add_hyperedges([(0, 2, 1), (0, 4)], merge_op="mean")
 >>> hg.e
-([(0, 1, 2), (2, 3), (0, 4)], [1.0, 2.0, 1.0])
->>> hg.add_hyperedges([(0, 2, 1), (0, 4)], merge_op="sum")
+([(0, 1, 2), (2, 3), (0, 4), (2, 4)], [1.0, 2.0, 1.0, 1.0])
+>>> hg.add_hyperedges([(2, 4)], merge_op="sum")
 >>> hg.e
 ([(0, 1, 2), (2, 3), (0, 4)], [2.0, 2.0, 2.0])
 >>> hg.remove_hyperedges([(2, 3)])
 >>> hg.e
-([(0, 1, 2), (0, 4)], [2.0, 2.0])
+([(0, 1, 2), (0, 4), (2, 4)], [1.0, 1.0, 1.0])
+
+.. note::
+
+    If the added hyperedges have duplicate hyperedges, those duplicate hyperedges will be automatically merged with specified merge_op.
+    If merge_op = 'sum', the weight is the sum of duplicate hyperedges weights.
+    If merge_op = 'mean', the weight is the average of sum of duplicate hyperedges weights.
 
 
-Use the eg.Hypergraph.from_feature_kNN() function to construct a hypergraph based on the k-nearest neighbors of the features
+.. image:: hypergraph_example2.png
+
+Create a hypergraph based on the k-nearest neighbors of the features.
 
 >>> X = torch.tensor([[0.0658, 0.3191, 0.0204, 0.6955],
                       [0.1144, 0.7131, 0.3643, 0.4707],
                       [0.2250, 0.0620, 0.0379, 0.2848],
                       [0.0619, 0.4898, 0.9368, 0.7433],
-                      [0.5380, 0.3119, 0.6462, 0.4311],
-                      [0.2514, 0.9237, 0.8502, 0.7592],
-                      [0.9482, 0.6812, 0.0503, 0.4596],
-                      [0.2652, 0.3859, 0.8645, 0.7619],
-                      [0.4683, 0.8260, 0.9798, 0.2933],
-                      [0.6308, 0.1469, 0.0304, 0.2073]])
+                      [0.5380, 0.3119, 0.6462, 0.4311]])
 >>> hg = eg.Hypergraph.from_feature_kNN(X, k=3)
 >>> hg
-Hypergraph(num_v=10, num_e=9)
+Hypergraph(num_v=5, num_e=4)
 >>> hg.e
-([(0, 1, 2), (0, 1, 5), (0, 2, 9), (3, 5, 7), (4, 7, 8), (4, 6, 9), (3, 4, 7), (4, 5, 8), (2, 6, 9)], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+([(0, 1, 2), (0, 1, 4), (0, 2, 4), (1, 3, 4)], [1.0, 1.0, 1.0, 1.0])
 >>> hg.H.to_dense()
-tensor([[1., 1., 1., 0., 0., 0., 0., 0., 0.],
-        [1., 1., 0., 0., 0., 0., 0., 0., 0.],
-        [1., 0., 1., 0., 0., 0., 0., 0., 1.],
-        [0., 0., 0., 1., 0., 0., 1., 0., 0.],
-        [0., 0., 0., 0., 1., 1., 1., 1., 0.],
-        [0., 1., 0., 1., 0., 0., 0., 1., 0.],
-        [0., 0., 0., 0., 0., 1., 0., 0., 1.],
-        [0., 0., 0., 1., 1., 0., 1., 0., 0.],
-        [0., 0., 0., 0., 1., 0., 0., 1., 0.],
-        [0., 0., 1., 0., 0., 1., 0., 0., 1.]])
+tensor([[1., 1., 1., 0.],
+        [1., 1., 0., 1.],
+        [1., 0., 1., 0.],
+        [0., 0., 0., 1.],
+        [0., 1., 1., 1.]])
 >>> hg.draw(v_label=list(range(0,10)))
 
-.. image:: hypergraph2.png
+.. image:: hypergraph_example3.png
 
-Construct a hypergraph from a graph using the eg.Hypergraph.from_graph() function
+Construct a hypergraph from a graph.
 
 >>> g = eg.Graph()
 >>> g.add_edges([(0, 1), (1, 2), (2, 3), (1, 4)])
@@ -97,21 +94,16 @@ tensor([[1., 0., 0., 0.],
 Train a Hypergraph model, HGNN+ on Cooking200
 -------------------------
 
-In the following example, we present a simple example of Auto-ML for vertex classification on hypergraph. More details for how to use the eg.experiments to auto tuning your own model can be found in the tutorial.
+We present a specifical node classification task on Cora with a hypergraph neural network HGNN++
+
 
 **Model:**
 
-HGNN+ (dhg.models.HGNNP): HGNN+: General Hypergraph Neural Networks paper (IEEE T-PAMI 2022).
+HGNN+ (eg.models.HGNNP): HGNN+: General Hypergraph Neural Networks paper (IEEE T-PAMI 2022).
 
 **Dataset:**
 
-Cooking 200 (dhg.data.Cooking200): A cooking recipe hypergraph dataset collected from Yummly.com for vertex classification task
-
-**Configuration**
-
-Model: HGNN+ (eg.models.HGNNP): HGNN+: General Hypergraph Neural Networks paper (IEEE T-PAMI 2022).
-
-Dataset: Cooking 200 (dhg.data.Cooking200): A cooking recipe hypergraph dataset collected from Yummly.com for vertex classification task.
+Cooking 200 (eg.data.Cooking200): A cooking recipe hypergraph dataset collected from Yummly.com for vertex classification task
 
 **Import Libraries**
 
