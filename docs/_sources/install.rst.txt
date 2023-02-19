@@ -11,17 +11,15 @@ EasyGraph's site on PyPI - `Link <https://pypi.org/project/Python-EasyGraph/>`_
 
     $ pip install Python-EasyGraph
 
-`Conda <https://docs.conda.io/en/latest/>`_ works on Windows, MacOSX, and Linux, 
-which serves millions of people managing package, dependency and environment for
-Python and other languages.
-
-To use EasyGraph in conda, you can create a new conda environment, which specifies Python version >=3.6, <3.10
+The conda package is no longer updated or maintained.
+If you've installed easygraph this way before, please uninstall it with conda and install it with pip.
+If prebuilt easygraph wheels are not supported for your platform (OS / CPU arch, check here), you can build it locally this way:
 
 **Example installation with** ``conda``
 ::
-    $ conda create -n easygraph python=3.6
-    $ conda activate easygraph
-    $ conda install -c fudanmsn Python-EasyGraph
+    $ git clone https://github.com/easy-graph/Easy-Graph && cd Easy-Graph && git checkout pybind11
+    $ pip install pybind11
+    $ python3 setup.py install
 
 .. hint::
     EasyGraph uses `tensorflow 2 <https://www.tensorflow.org/install>`_ for machine 

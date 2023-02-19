@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Example" href="example.html" /><link rel="prev" title="Welcome to EasyGraph !" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Examples" href="example.html" /><link rel="prev" title="Welcome to EasyGraph !" href="index.html" />
 
     <!-- Generated with Sphinx 4.4.0 and Furo 2022.12.07 -->
-        <title>Installation - EasyGraph 0.2a40</title>
+        <title>Installation - EasyGraph 0.2a42</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">EasyGraph 0.2a40</div></a>
+      <a href="index.html"><div class="brand">EasyGraph 0.2a42</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +150,7 @@
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a40</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a42</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -161,8 +161,8 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypergraph.html">Example of Hypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypergraph.html">Examples of Hypergraph</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/easygraph.datasets.html">easygraph.datasets package</a></li>
@@ -241,7 +241,6 @@
 <li class="toctree-l4"><a class="reference internal" href="reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/easygraph.tests.html">easygraph.tests package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/easygraph.utils.html">easygraph.utils package</a></li>
 </ul>
 </li>
@@ -278,7 +277,6 @@
 <li class="toctree-l5"><a class="reference internal" href="reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="reference/easygraph.tests.html">easygraph.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/easygraph.utils.html">easygraph.utils package</a></li>
 </ul>
 </li>
@@ -339,14 +337,13 @@ EasyGraph’s site on PyPI - <a class="reference external" href="https://pypi.or
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install Python-EasyGraph
 </pre></div>
 </div>
-<p><a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a> works on Windows, MacOSX, and Linux,
-which serves millions of people managing package, dependency and environment for
-Python and other languages.</p>
-<p>To use EasyGraph in conda, you can create a new conda environment, which specifies Python version &gt;=3.6, &lt;3.10</p>
+<p>The conda package is no longer updated or maintained.
+If you’ve installed easygraph this way before, please uninstall it with conda and install it with pip.
+If prebuilt easygraph wheels are not supported for your platform (OS / CPU arch, check here), you can build it locally this way:</p>
 <p><strong>Example installation with</strong> <code class="docutils literal notranslate"><span class="pre">conda</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n easygraph python=3.6
-$ conda activate easygraph
-$ conda install -c fudanmsn Python-EasyGraph
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/easy-graph/Easy-Graph &amp;&amp; cd Easy-Graph &amp;&amp; git checkout pybind11
+$ pip install pybind11
+$ python3 setup.py install
 </pre></div>
 </div>
 <div class="admonition hint">
@@ -375,7 +372,7 @@ helpful for GPU settings.</p>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Example</div>
+                <div class="title">Examples</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

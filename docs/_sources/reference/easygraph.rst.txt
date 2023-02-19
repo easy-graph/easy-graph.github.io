@@ -14,7 +14,6 @@ Subpackages
    easygraph.nn
    easygraph.random
    easygraph.readwrite
-   easygraph.tests
    easygraph.utils
 
 Submodules
