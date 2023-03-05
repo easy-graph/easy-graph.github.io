@@ -32,7 +32,7 @@ parallel computing methods to achieve high efficiency.
    example.rst
    hypergraph.rst
    reference.rst
-   tutorial.html
+   tutorial.rst
    videos.rst
    contributorGuide.rst
    license.rst
