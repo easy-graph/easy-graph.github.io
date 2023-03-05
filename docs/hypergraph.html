@@ -449,6 +449,17 @@ If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedg
 <span class="gp">&gt;&gt;&gt; </span><span class="n">set_seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">Cooking200</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
+<span class="go">This is cooking_200 dataset:</span>
+<span class="go">  -&gt;  num_classes</span>
+<span class="go">  -&gt;  num_vertices</span>
+<span class="go">  -&gt;  num_edges</span>
+<span class="go">  -&gt;  edge_list</span>
+<span class="go">  -&gt;  labels</span>
+<span class="go">  -&gt;  train_mask</span>
+<span class="go">  -&gt;  val_mask</span>
+<span class="go">  -&gt;  test_mask</span>
+<span class="go">Please try `data[&#39;name&#39;]` to get the specified data.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dim_features</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;num_vertices&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">num_classes</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;num_classes&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hg_base</span> <span class="o">=</span> <span class="n">Hypergraph</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;num_vertices&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;edge_list&quot;</span><span class="p">])</span>

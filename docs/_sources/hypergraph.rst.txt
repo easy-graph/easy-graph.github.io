@@ -135,6 +135,17 @@ Cooking 200 (eg.data.Cooking200): A cooking recipe hypergraph dataset collected 
 >>> set_seed(2022)
 >>> device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 >>> data = Cooking200()
+>>> data
+This is cooking_200 dataset:
+  ->  num_classes
+  ->  num_vertices
+  ->  num_edges
+  ->  edge_list
+  ->  labels
+  ->  train_mask
+  ->  val_mask
+  ->  test_mask
+Please try `data['name']` to get the specified data.
 >>> dim_features = data["num_vertices"]
 >>> num_classes = data["num_classes"]
 >>> hg_base = Hypergraph(data["num_vertices"], data["edge_list"])
