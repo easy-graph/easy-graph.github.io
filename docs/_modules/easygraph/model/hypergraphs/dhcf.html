@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 4.4.0 and Furo 2022.12.07 -->
         <title>easygraph.model.hypergraphs.dhcf - EasyGraph 0.2a42</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -337,13 +337,13 @@
 
 
 <div class="viewcode-block" id="DHCF"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.dhcf.DHCF">[docs]</a><span class="k">class</span> <span class="nc">DHCF</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The DHCF model proposed in `Dual Channel Hypergraph Collaborative Filtering &lt;https://dl.acm.org/doi/10.1145/3394486.3403253&gt;`_ paper (KDD 2020).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The DHCF model proposed in `Dual Channel Hypergraph Collaborative Filtering &lt;https://dl.acm.org/doi/10.1145/3394486.3403253&gt;`_ paper (KDD 2020).</span>
 
 <span class="sd">    .. note::</span>
 
 <span class="sd">        The user and item embeddings and trainable parameters are initialized with xavier_uniform distribution.</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``num_users`` (``int``): The Number of users.</span>
 <span class="sd">        ``num_items`` (``int``): The Number of items.</span>
 <span class="sd">        ``emb_dim`` (``int``): Embedding dimension.</span>
@@ -372,7 +372,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
 
 <div class="viewcode-block" id="DHCF.reset_parameters"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.dhcf.DHCF.reset_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initialize learnable parameters.&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initialize learnable parameters.&quot;&quot;&quot;</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u_embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i_embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">W_gc</span><span class="p">,</span> <span class="n">W_bi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_gc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_bi</span><span class="p">):</span>
@@ -384,9 +384,9 @@
 <div class="viewcode-block" id="DHCF.forward"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.dhcf.DHCF.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">hg_ui</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">,</span> <span class="n">hg_iu</span><span class="p">:</span> <span class="n">Hypergraph</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            ``hg_ui`` (``eg.Hypergraph``): The hypergraph structure that users as vertices.</span>
 <span class="sd">            ``hg_iu`` (``eg.Hypergraph``): The hypergraph structure that items as vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -457,7 +457,6 @@
 </div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

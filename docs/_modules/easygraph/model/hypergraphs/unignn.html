@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 4.4.0 and Furo 2022.12.07 -->
         <title>easygraph.model.hypergraphs.unignn - EasyGraph 0.2a42</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -346,9 +346,9 @@
 
 
 <div class="viewcode-block" id="UniGCN"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniGCN">[docs]</a><span class="k">class</span> <span class="nc">UniGCN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGCN model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGCN model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``hid_channels`` (``int``): :math:`C_{hid}` is the number of hidden channels.</span>
 <span class="sd">        ``num_classes`` (``int``): The Number of class of the classification task.</span>
@@ -374,9 +374,9 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="UniGCN.forward"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniGCN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="s2">&quot;eg.Hypergraph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Input vertex feature matrix. Size :math:`(N, C_{in})`.</span>
 <span class="sd">            ``hg`` (``eg.Hypergraph``): The hypergraph structure that contains :math:`N` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -386,9 +386,9 @@
 
 
 <div class="viewcode-block" id="UniGAT"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniGAT">[docs]</a><span class="k">class</span> <span class="nc">UniGAT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGAT model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGAT model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``hid_channels`` (``int``): :math:`C_{hid}` is the number of hidden channels.</span>
 <span class="sd">        ``num_classes`` (``int``): The Number of class of the classification task.</span>
@@ -432,9 +432,9 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="UniGAT.forward"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniGAT.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="s2">&quot;eg.Hypergraph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Input vertex feature matrix. Size :math:`(N, C_{in})`.</span>
 <span class="sd">            ``hg`` (``eg.Hypergraph``): The hypergraph structure that contains :math:`N` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -446,9 +446,9 @@
 
 
 <div class="viewcode-block" id="UniSAGE"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniSAGE">[docs]</a><span class="k">class</span> <span class="nc">UniSAGE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniSAGE model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniSAGE model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``hid_channels`` (``int``): :math:`C_{hid}` is the number of hidden channels.</span>
 <span class="sd">        ``num_classes`` (``int``): The Number of class of the classification task.</span>
@@ -474,9 +474,9 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="UniSAGE.forward"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniSAGE.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="s2">&quot;eg.Hypergraph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Input vertex feature matrix. Size :math:`(N, C_{in})`.</span>
 <span class="sd">            ``hg`` (``eg.Hypergraph``): The hypergraph structure that contains :math:`N` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -486,9 +486,9 @@
 
 
 <div class="viewcode-block" id="UniGIN"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniGIN">[docs]</a><span class="k">class</span> <span class="nc">UniGIN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGIN model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGIN model proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``hid_channels`` (``int``): :math:`C_{hid}` is the number of hidden channels.</span>
 <span class="sd">        ``num_classes`` (``int``): The Number of class of the classification task.</span>
@@ -532,9 +532,9 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="UniGIN.forward"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.unignn.UniGIN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="s2">&quot;eg.Hypergraph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Input vertex feature matrix. Size :math:`(N, C_{in})`.</span>
 <span class="sd">            ``hg`` (``eg.Hypergraph``): The hypergraph structure that contains :math:`N` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -576,7 +576,6 @@
 </div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
