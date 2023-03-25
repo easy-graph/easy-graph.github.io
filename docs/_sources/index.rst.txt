@@ -32,13 +32,13 @@ parallel computing methods to achieve high efficiency.
    example.rst
    hypergraph.rst
    reference.rst
+   tutorial.rst
    videos.rst
    tutorial.rst
    contributorGuide.rst
    license.rst
    sourcecode.rst
 
-   :titlesonly: 
 
    dev.rst
 ..    :maxdepth: 1
