@@ -33,6 +33,7 @@ parallel computing methods to achieve high efficiency.
    hypergraph.rst
    reference.rst
    videos.rst
+   tutorial.rst
    contributorGuide.rst
    license.rst
    sourcecode.rst

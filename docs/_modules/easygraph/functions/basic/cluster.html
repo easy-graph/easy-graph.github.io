@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
-    <!-- Generated with Sphinx 4.4.0 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
         <title>easygraph.functions.basic.cluster - EasyGraph 0.2a42</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../../_static/logo.png" alt="Logo"/>
@@ -178,6 +178,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
@@ -217,6 +218,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
@@ -253,6 +255,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
@@ -284,6 +287,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../videos.html">Tutorial Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../sourcecode.html">Source Code</a></li>
@@ -369,7 +373,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_weighted_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, weighted_triangles).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, weighted_triangles).</span>
 
 <span class="sd">    Used for weighted clustering.</span>
 <span class="sd">    Note: this returns the geometric average weight of edges in the triangle.</span>
@@ -486,7 +490,7 @@
 <span class="k">def</span> <span class="nf">_directed_weighted_triangles_and_degree_iter</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return an iterator of</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of</span>
 <span class="sd">    (node, total_degree, reciprocal_degree, directed_weighted_triangles).</span>
 
 <span class="sd">    Used for directed weighted clustering.</span>
@@ -575,7 +579,7 @@
 
 
 <div class="viewcode-block" id="average_clustering"><a class="viewcode-back" href="../../../../reference/easygraph.functions.basic.html#easygraph.functions.basic.cluster.average_clustering">[docs]</a><span class="k">def</span> <span class="nf">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">count_zeros</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the average clustering coefficient for the graph G.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the average clustering coefficient for the graph G.</span>
 
 <span class="sd">    The clustering coefficient for the graph is the average,</span>
 
@@ -660,7 +664,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_directed_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return an iterator of</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of</span>
 <span class="sd">    (node, total_degree, reciprocal_degree, directed_triangles).</span>
 
 <span class="sd">    Used for directed clustering.</span>
@@ -728,7 +732,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, triangles, generalized degree).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, triangles, generalized degree).</span>
 
 <span class="sd">    This double counts triangles so you may want to divide by 2.</span>
 <span class="sd">    See degree(), triangles() and generalized_degree() for definitions</span>
@@ -771,7 +775,7 @@
 
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_clustering&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the clustering coefficient for nodes.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the clustering coefficient for nodes.</span>
 
 <span class="sd">    For unweighted graphs, the clustering of a node :math:`u`</span>
 <span class="sd">    is the fraction of possible triangles through that node that exist,</span>
@@ -918,10 +922,11 @@
       
     </aside>
   </div>
-</div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
+</div><script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     </body>

@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Scripts and guides for generating documentation for EasyGraph" href="easygraph-doc-source.html" /><link rel="prev" title="Developer Documentation" href="../dev.html" />
 
-    <!-- Generated with Sphinx 4.4.0 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
         <title>Building and Releasing python-easygraph - EasyGraph 0.2a42</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -144,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
@@ -179,6 +179,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
@@ -218,6 +219,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
@@ -254,6 +256,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
@@ -285,6 +288,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
@@ -329,7 +333,7 @@
         </div>
         <article role="main">
           <section id="building-and-releasing-python-easygraph">
-<h1>Building and Releasing python-easygraph<a class="headerlink" href="#building-and-releasing-python-easygraph" title="Permalink to this headline"></a></h1>
+<h1>Building and Releasing python-easygraph<a class="headerlink" href="#building-and-releasing-python-easygraph" title="Permalink to this heading"></a></h1>
 <!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) --><ul class="simple">
 <li><p><a class="reference external" href="#building-and-releasing-python-easygraph">Building and Releasing
 python-easygraph</a></p>
@@ -347,28 +351,28 @@ PyPI</a></p></li>
 </li>
 </ul>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
 <section id="install-github-cli">
-<h3>Install GitHub CLI<a class="headerlink" href="#install-github-cli" title="Permalink to this headline"></a></h3>
+<h3>Install GitHub CLI<a class="headerlink" href="#install-github-cli" title="Permalink to this heading"></a></h3>
 <p>Please refer to <a class="reference external" href="https://cli.github.com/manual/installation">GitHub CLI
 documentation</a> for
 installation instructions.</p>
 </section>
 </section>
 <section id="build-and-release-to-pypi">
-<h2>Build and Release to PyPI<a class="headerlink" href="#build-and-release-to-pypi" title="Permalink to this headline"></a></h2>
+<h2>Build and Release to PyPI<a class="headerlink" href="#build-and-release-to-pypi" title="Permalink to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">workflow</span> <span class="n">run</span> <span class="n">release</span><span class="o">-</span><span class="n">cibuildwheel</span><span class="o">.</span><span class="n">yaml</span> <span class="o">-</span><span class="n">F</span> <span class="n">upload</span><span class="o">=</span><span class="n">pypi</span>
 </pre></div>
 </div>
 </section>
 <section id="build-and-release-to-test-pypi">
-<h2>Build and Release to Test PyPI<a class="headerlink" href="#build-and-release-to-test-pypi" title="Permalink to this headline"></a></h2>
+<h2>Build and Release to Test PyPI<a class="headerlink" href="#build-and-release-to-test-pypi" title="Permalink to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">workflow</span> <span class="n">run</span> <span class="n">release</span><span class="o">-</span><span class="n">cibuildwheel</span><span class="o">.</span><span class="n">yaml</span> <span class="o">-</span><span class="n">F</span> <span class="n">upload</span><span class="o">=</span><span class="n">test_pypi</span>
 </pre></div>
 </div>
 </section>
 <section id="build-only">
-<h2>Build only<a class="headerlink" href="#build-only" title="Permalink to this headline"></a></h2>
+<h2>Build only<a class="headerlink" href="#build-only" title="Permalink to this heading"></a></h2>
 <p>Build artifacts will be uploaded to GitHub Actions artifacts available
 for download and inspection.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">workflow</span> <span class="n">run</span> <span class="n">release</span><span class="o">-</span><span class="n">cibuildwheel</span><span class="o">.</span><span class="n">yaml</span> <span class="o">-</span><span class="n">F</span> <span class="n">upload</span><span class="o">=</span><span class="n">none</span>
@@ -451,10 +455,11 @@ for download and inspection.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
     </body>
