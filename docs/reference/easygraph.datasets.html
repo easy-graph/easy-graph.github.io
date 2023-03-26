@@ -1535,8 +1535,110 @@ transformed before every access.</p></li>
 </dd></dl>
 
 </section>
-<section id="easygraph-datasets-karateclub-module">
-<h2>easygraph.datasets.karateclub module<a class="headerlink" href="#easygraph-datasets-karateclub-module" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.datasets.karate">
+<span id="easygraph-datasets-karate-module"></span><h2>easygraph.datasets.karate module<a class="headerlink" href="#module-easygraph.datasets.karate" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.datasets.karate.KarateClubDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.datasets.karate.</span></span><span class="sig-name descname"><span class="pre">KarateClubDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/datasets/karate.html#KarateClubDataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.datasets.karate.KarateClubDataset" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset" title="easygraph.datasets.eg_dataset.EasyGraphDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">EasyGraphDataset</span></code></a></p>
+<p>Karate Club dataset for Node Classification</p>
+<p>Zachary’s karate club is a social network of a university
+karate club, described in the paper “An Information Flow
+Model for Conflict and Fission in Small Groups” by Wayne W. Zachary.
+The network became a popular example of community structure in
+networks after its use by Michelle Girvan and Mark Newman in 2002.
+Official website: <a class="reference external" href="http://konect.cc/networks/ucidata-zachary/">http://konect.cc/networks/ucidata-zachary/</a></p>
+<p>Karate Club dataset statistics:</p>
+<ul class="simple">
+<li><p>Nodes: 34</p></li>
+<li><p>Edges: 156</p></li>
+<li><p>Number of Classes: 2</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A transform that takes in a <code class="xref py py-class docutils literal notranslate"><span class="pre">DGLGraph</span></code> object and returns
+a transformed version. The <code class="xref py py-class docutils literal notranslate"><span class="pre">DGLGraph</span></code> object will be
+transformed before every access.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.datasets.karate.KarateClubDataset.num_classes">
+<span class="sig-name descname"><span class="pre">num_classes</span></span><a class="headerlink" href="#easygraph.datasets.karate.KarateClubDataset.num_classes" title="Permalink to this definition"></a></dt>
+<dd><p>Number of node classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">KarateClubDataset</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num_classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">hash</span></code></dt><dd><p>Hash value for the dataset and the setting.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>Name of the dataset.</p>
+</dd>
+<dt><a class="reference internal" href="#id9" title="easygraph.datasets.karate.KarateClubDataset.num_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_classes</span></code></a></dt><dd><p>Number of classes.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_dir</span></code></dt><dd><p>Raw file directory contains the input data folder.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_path</span></code></dt><dd><p>Directory contains the input data files.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_dir</span></code></dt><dd><p>Directory to save the processed dataset.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_path</span></code></dt><dd><p>Path to save the processed dataset.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">url</span></code></dt><dd><p>Get url to download the raw dataset.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></dt><dd><p>Whether to print information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">download</span></code>()</p></td>
+<td><p>Overwite to realize your own logic of downloading data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_cache</span></code>()</p></td>
+<td><p>Overwrite to realize your own logic of deciding whether there exists a cached dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code>()</p></td>
+<td><p>Overwite to realize your own logic of loading the saved dataset from files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.datasets.karate.KarateClubDataset.process" title="easygraph.datasets.karate.KarateClubDataset.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a>()</p></td>
+<td><p>Overwrite to realize your own logic of processing the input data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code>()</p></td>
+<td><p>Overwite to realize your own logic of saving the processed dataset into files.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="id9">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_classes</span></span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
+<dd><p>Number of classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.datasets.karate.KarateClubDataset.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/datasets/karate.html#KarateClubDataset.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.datasets.karate.KarateClubDataset.process" title="Permalink to this definition"></a></dt>
+<dd><p>Overwrite to realize your own logic of processing the input data.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-easygraph.datasets.ppi">
 <span id="easygraph-datasets-ppi-module"></span><h2>easygraph.datasets.ppi module<a class="headerlink" href="#module-easygraph.datasets.ppi" title="Permalink to this heading"></a></h2>
@@ -1723,8 +1825,8 @@ deciding whether there exists a cached dataset.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id9">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_labels</span></span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_labels</span></span><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1964,7 +2066,15 @@ For torch, it will create a bool tensor
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#easygraph-datasets-karateclub-module">easygraph.datasets.karateclub module</a></li>
+<li><a class="reference internal" href="#module-easygraph.datasets.karate">easygraph.datasets.karate module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.karate.KarateClubDataset"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.karate.KarateClubDataset.num_classes"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset.num_classes</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset.num_classes</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.karate.KarateClubDataset.process"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset.process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.datasets.ppi">easygraph.datasets.ppi module</a><ul>
 <li><a class="reference internal" href="#easygraph.datasets.ppi.LegacyPPIDataset"><code class="docutils literal notranslate"><span class="pre">LegacyPPIDataset</span></code></a></li>
 <li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset"><code class="docutils literal notranslate"><span class="pre">PPIDataset</span></code></a><ul>
@@ -1972,7 +2082,7 @@ For torch, it will create a bool tensor
 <li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.labels"><code class="docutils literal notranslate"><span class="pre">PPIDataset.labels</span></code></a></li>
 <li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.features"><code class="docutils literal notranslate"><span class="pre">PPIDataset.features</span></code></a></li>
 <li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.has_cache"><code class="docutils literal notranslate"><span class="pre">PPIDataset.has_cache()</span></code></a></li>
-<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">PPIDataset.num_labels</span></code></a></li>
+<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">PPIDataset.num_labels</span></code></a></li>
 <li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.process"><code class="docutils literal notranslate"><span class="pre">PPIDataset.process()</span></code></a></li>
 <li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.save"><code class="docutils literal notranslate"><span class="pre">PPIDataset.save()</span></code></a></li>
 </ul>

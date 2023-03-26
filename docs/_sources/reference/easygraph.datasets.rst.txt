@@ -36,10 +36,10 @@ easygraph.datasets.gnn\_benchmark module
    :undoc-members:
    :show-inheritance:
 
-easygraph.datasets.karateclub module
-------------------------------------
+easygraph.datasets.karate module
+--------------------------------
 
-.. automodule:: easygraph.datasets.karateclub
+.. automodule:: easygraph.datasets.karate
    :members:
    :undoc-members:
    :show-inheritance:
