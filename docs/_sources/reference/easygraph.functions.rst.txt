@@ -11,6 +11,7 @@ Subpackages
    easygraph.functions.centrality
    easygraph.functions.community
    easygraph.functions.components
+   easygraph.functions.core
    easygraph.functions.drawing
    easygraph.functions.graph_embedding
    easygraph.functions.graph_generator
