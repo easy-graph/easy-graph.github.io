@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>easygraph.functions.basic.cluster - EasyGraph 0.2a42</title>
+    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
+        <title>easygraph.functions.basic.cluster - EasyGraph 0.2a46</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../index.html"><div class="brand">EasyGraph 0.2a42</div></a>
+      <a href="../../../../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,13 +143,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a42</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -295,6 +295,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -374,7 +375,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_weighted_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, weighted_triangles).</span>
+    <span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, weighted_triangles).</span>
 
 <span class="sd">    Used for weighted clustering.</span>
 <span class="sd">    Note: this returns the geometric average weight of edges in the triangle.</span>
@@ -491,7 +492,7 @@
 <span class="k">def</span> <span class="nf">_directed_weighted_triangles_and_degree_iter</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of</span>
+    <span class="sd">&quot;&quot;&quot;Return an iterator of</span>
 <span class="sd">    (node, total_degree, reciprocal_degree, directed_weighted_triangles).</span>
 
 <span class="sd">    Used for directed weighted clustering.</span>
@@ -580,7 +581,7 @@
 
 
 <div class="viewcode-block" id="average_clustering"><a class="viewcode-back" href="../../../../reference/easygraph.functions.basic.html#easygraph.functions.basic.cluster.average_clustering">[docs]</a><span class="k">def</span> <span class="nf">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">count_zeros</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the average clustering coefficient for the graph G.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the average clustering coefficient for the graph G.</span>
 
 <span class="sd">    The clustering coefficient for the graph is the average,</span>
 
@@ -665,7 +666,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_directed_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of</span>
+    <span class="sd">&quot;&quot;&quot;Return an iterator of</span>
 <span class="sd">    (node, total_degree, reciprocal_degree, directed_triangles).</span>
 
 <span class="sd">    Used for directed clustering.</span>
@@ -733,7 +734,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, triangles, generalized degree).</span>
+    <span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, triangles, generalized degree).</span>
 
 <span class="sd">    This double counts triangles so you may want to divide by 2.</span>
 <span class="sd">    See degree(), triangles() and generalized_degree() for definitions</span>
@@ -776,7 +777,7 @@
 
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_clustering&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the clustering coefficient for nodes.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the clustering coefficient for nodes.</span>
 
 <span class="sd">    For unweighted graphs, the clustering of a node :math:`u`</span>
 <span class="sd">    is the fraction of possible triangles through that node that exist,</span>
@@ -923,11 +924,11 @@
       
     </aside>
   </div>
-</div><script src="../../../../_static/jquery.js"></script>
+</div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     </body>

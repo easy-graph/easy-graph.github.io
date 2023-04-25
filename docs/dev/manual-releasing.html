@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Building and Releasing python-easygraph" href="manual-releasing.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Scripts and guides for generating documentation for EasyGraph" href="easygraph-doc-source.html" /><link rel="prev" title="Building and Releasing python-easygraph" href="releasing.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>Scripts and guides for generating documentation for EasyGraph - EasyGraph 0.2a46</title>
+        <title>(Mostly) Manually Building and Releasing python-easygraph - EasyGraph 0.2a46</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
@@ -296,8 +296,8 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../dev.html">Developer Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Scripts and guides for generating documentation for EasyGraph</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">(Mostly) Manually Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
 </ul>
@@ -334,95 +334,64 @@
           </label>
         </div>
         <article role="main">
-          <section id="scripts-and-guides-for-generating-documentation-for-easygraph">
-<h1>Scripts and guides for generating documentation for EasyGraph<a class="headerlink" href="#scripts-and-guides-for-generating-documentation-for-easygraph" title="Permalink to this heading"></a></h1>
-<!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) --><p>Repository:
-<a class="reference external" href="https://github.com/easy-graph/easygraph-doc-source">easygraph-doc-source</a></p>
+          <section id="mostly-manually-building-and-releasing-python-easygraph">
+<h1>(Mostly) Manually Building and Releasing python-easygraph<a class="headerlink" href="#mostly-manually-building-and-releasing-python-easygraph" title="Permalink to this heading"></a></h1>
+<!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) --><p>We choose to build Linux wheels on GitHub Actions because it’s reliable.
+For other platforms, we build manually on our machines, because we’ve
+yet to find a way to make it work on GitHub Actions.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#scripts-and-guides-for-generating-documentation-for-easygraph">Scripts and guides for generating documentation for
-EasyGraph</a></p>
+<li><p><a class="reference external" href="#mostly-manually-building-and-releasing-python-easygraph">(Mostly) Manually Building and Releasing
+python-easygraph</a></p>
 <ul>
-<li><p><a class="reference external" href="#prerequisites">Prerequisites</a></p></li>
-<li><p><cite>Update ``rst`</cite> files &lt;#update-rst-files&gt;`__</p>
+<li><p><a class="reference external" href="#prerequisites">Prerequisites</a></p>
 <ul>
-<li><p><cite>Edit manually created ``rst`</cite>
-files &lt;#edit-manually-created-rst-files&gt;`__</p></li>
-<li><p><cite>Generate ``rst`</cite> files from docstrings as
-references &lt;#generate-rst-files-from-docstrings-as-references&gt;`__</p></li>
+<li><p><a class="reference external" href="#install-github-cli">Install GitHub CLI</a></p></li>
 </ul>
 </li>
-<li><p><cite>Build HTML from ``rst`</cite> files &lt;#build-html-from-rst-files&gt;`__</p></li>
-<li><p><a class="reference external" href="#deploy-to-easy-graphgithubio">Deploy to easy-graph.github.io</a></p></li>
-<li><p><a class="reference external" href="#troubleshooting">Troubleshooting</a></p>
-<ul>
-<li><p><a class="reference external" href="#reference-built-but-not-correctly-displayed-on-the-website">Reference built but not correctly displayed on the
-website</a></p></li>
-</ul>
-</li>
+<li><p><a class="reference external" href="#build-for-linux-x86_64">Build for Linux x86_64</a></p></li>
+<li><p><a class="reference external" href="#build-for-other-platforms">Build for other platforms</a></p></li>
+<li><p><a class="reference external" href="#put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi">Put all the wheel files and source distribution in a directory
+and upload to
+PyPI</a></p></li>
 </ul>
 </li>
 </ul>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
-<p>Clone these repositories and put them inside the same directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">REPOS</span><span class="o">=(</span><span class="s1">&#39;Easy-Graph&#39;</span> <span class="s1">&#39;easy-graph.github.io&#39;</span> <span class="s1">&#39;easygraph-doc-source&#39;</span><span class="o">)</span>
-<span class="k">for</span> i <span class="k">in</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPOS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> <span class="s2">&quot;Cloning: </span><span class="nv">$i</span><span class="s2">&quot;</span>
-    git clone <span class="s2">&quot;https://github.com/easy-graph/</span><span class="nv">$i</span><span class="s2">&quot;</span>
-<span class="k">done</span>
+<section id="install-github-cli">
+<h3>Install GitHub CLI<a class="headerlink" href="#install-github-cli" title="Permalink to this heading"></a></h3>
+<p>Please refer to <a class="reference external" href="https://cli.github.com/manual/installation">GitHub CLI
+documentation</a> for
+installation instructions.</p>
+</section>
+</section>
+<section id="build-for-linux-x86-64">
+<h2>Build for Linux x86_64<a class="headerlink" href="#build-for-linux-x86-64" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">workflow</span> <span class="n">run</span> <span class="n">release</span><span class="o">-</span><span class="n">cibuildwheel</span><span class="o">.</span><span class="n">yaml</span> <span class="o">-</span><span class="n">F</span> <span class="n">upload</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
+<p>After the workflow finishes, download the artifacts from the workflow
+run page.</p>
+<p>The artifact contains the built wheel file for Linux x86_64.</p>
+<p>Unzip the artifact and remove anything but the <code class="docutils literal notranslate"><span class="pre">.tgz</span></code> source
+distribution and <code class="docutils literal notranslate"><span class="pre">.whl</span></code> wheel files with <code class="docutils literal notranslate"><span class="pre">linux</span></code> in the name (if
+applicable).</p>
 </section>
-<section id="update-rst-files">
-<h2>Update <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#update-rst-files" title="Permalink to this heading"></a></h2>
-<section id="edit-manually-created-rst-files">
-<h3>Edit manually created <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#edit-manually-created-rst-files" title="Permalink to this heading"></a></h3>
-<p>Go to <code class="docutils literal notranslate"><span class="pre">easygraph-doc-source/docs_using_sphinx</span></code>, and hand-edit / remove
-/ add any <code class="docutils literal notranslate"><span class="pre">rst</span></code> files outside of <code class="docutils literal notranslate"><span class="pre">reference</span></code>.</p>
-</section>
-<section id="generate-rst-files-from-docstrings-as-references">
-<h3>Generate <code class="docutils literal notranslate"><span class="pre">rst</span></code> files from docstrings as references<a class="headerlink" href="#generate-rst-files-from-docstrings-as-references" title="Permalink to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> easygraph-doc-source/docs_using_sphinx
-make gen-rst
-<span class="c1"># generated rst files in reference dir</span>
+<section id="build-for-other-platforms">
+<h2>Build for other platforms<a class="headerlink" href="#build-for-other-platforms" title="Permalink to this heading"></a></h2>
+<p>Do it manually on your machines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3.<span class="o">{</span><span class="m">7</span>..10<span class="o">}</span> setup.py build_ext <span class="c1"># expand the command yourself, to python3.10 etc</span>
 </pre></div>
 </div>
+<p>Locate find the built <code class="docutils literal notranslate"><span class="pre">.whl</span></code> files.</p>
 </section>
-</section>
-<section id="build-html-from-rst-files">
-<h2>Build HTML from <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#build-html-from-rst-files" title="Permalink to this heading"></a></h2>
-<!-- 1. Update the `.rst` file in `docs_using_sphinx`
-2. Run terminal, changing work directory to `docs_using_sphinx`
-3. run `python3 -m venv .env` for the virtual environment
-4. run `source .env/bin/activate` to activate
-5. run `pip install -r requirements.txt` to install dependencies --><ul class="simple">
-<li><p>Install dependencies in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p></li>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>. The updated pages locate in <code class="docutils literal notranslate"><span class="pre">./_build/html</span></code>.</p></li>
-</ul>
-</section>
-<section id="deploy-to-easy-graph-github-io">
-<h2>Deploy to easy-graph.github.io<a class="headerlink" href="#deploy-to-easy-graph-github-io" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p>Sync all the files under <code class="docutils literal notranslate"><span class="pre">./_build/html</span></code> to repository
-<code class="docutils literal notranslate"><span class="pre">easy-graph.github.io</span></code>:</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> easygraph-doc-source
-make sync-doc-pub-repo
+<section id="put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi">
+<h2>Put all the wheel files and source distribution in a directory and upload to PyPI<a class="headerlink" href="#put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi" title="Permalink to this heading"></a></h2>
+<p>Put all the wheel files and source distribution built in the previous 2
+steps in a directory <code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;</span></code>, and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">twine</span> <span class="n">upload</span> <span class="o">&lt;</span><span class="n">your_directory</span><span class="o">&gt;/*</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Push the changes of these two repository to their remotes</p></li>
-</ul>
-</section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
-<section id="reference-built-but-not-correctly-displayed-on-the-website">
-<h3>Reference built but not correctly displayed on the website<a class="headerlink" href="#reference-built-but-not-correctly-displayed-on-the-website" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p>Check the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> of <code class="docutils literal notranslate"><span class="pre">reference.rst</span></code>, you may need to manually
-update the section to reflect the built references.</p></li>
-</ul>
-</section>
 </section>
 </section>
 
@@ -431,8 +400,16 @@ update the section to reflect the built references.</p></li>
       <footer>
         
         <div class="related-pages">
-          
-          <a class="prev-page" href="manual-releasing.html">
+          <a class="next-page" href="easygraph-doc-source.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Scripts and guides for generating documentation for EasyGraph</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="releasing.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
@@ -473,19 +450,14 @@ update the section to reflect the built references.</p></li>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Scripts and guides for generating documentation for EasyGraph</a><ul>
-<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference internal" href="#update-rst-files">Update <code class="docutils literal notranslate"><span class="pre">rst</span></code> files</a><ul>
-<li><a class="reference internal" href="#edit-manually-created-rst-files">Edit manually created <code class="docutils literal notranslate"><span class="pre">rst</span></code> files</a></li>
-<li><a class="reference internal" href="#generate-rst-files-from-docstrings-as-references">Generate <code class="docutils literal notranslate"><span class="pre">rst</span></code> files from docstrings as references</a></li>
+<li><a class="reference internal" href="#">(Mostly) Manually Building and Releasing python-easygraph</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#install-github-cli">Install GitHub CLI</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#build-html-from-rst-files">Build HTML from <code class="docutils literal notranslate"><span class="pre">rst</span></code> files</a></li>
-<li><a class="reference internal" href="#deploy-to-easy-graph-github-io">Deploy to easy-graph.github.io</a></li>
-<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
-<li><a class="reference internal" href="#reference-built-but-not-correctly-displayed-on-the-website">Reference built but not correctly displayed on the website</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#build-for-linux-x86-64">Build for Linux x86_64</a></li>
+<li><a class="reference internal" href="#build-for-other-platforms">Build for other platforms</a></li>
+<li><a class="reference internal" href="#put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi">Put all the wheel files and source distribution in a directory and upload to PyPI</a></li>
 </ul>
 </li>
 </ul>

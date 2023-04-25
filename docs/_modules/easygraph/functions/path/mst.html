@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>easygraph.functions.path.mst - EasyGraph 0.2a42</title>
+    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
+        <title>easygraph.functions.path.mst - EasyGraph 0.2a46</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../index.html"><div class="brand">EasyGraph 0.2a42</div></a>
+      <a href="../../../../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,13 +143,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a42</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -295,6 +295,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -350,7 +351,7 @@
 
 
 <span class="k">def</span> <span class="nf">boruvka_mst_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over edges of a Borůvka&#39;s algorithm min/max spanning tree.</span>
+    <span class="sd">&quot;&quot;&quot;Iterate over edges of a Borůvka&#39;s algorithm min/max spanning tree.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -379,7 +380,7 @@
     <span class="n">forest</span> <span class="o">=</span> <span class="n">UnionFind</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">best_edge</span><span class="p">(</span><span class="n">component</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the optimum (minimum or maximum) edge on the edge</span>
+        <span class="sd">&quot;&quot;&quot;Returns the optimum (minimum or maximum) edge on the edge</span>
 <span class="sd">        boundary of the given set of nodes.</span>
 
 <span class="sd">        A return value of ``None`` indicates an empty boundary.</span>
@@ -440,7 +441,7 @@
 
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_kruskal_mst_edges&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">kruskal_mst_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over edges of a Kruskal&#39;s algorithm min/max spanning tree.</span>
+    <span class="sd">&quot;&quot;&quot;Iterate over edges of a Kruskal&#39;s algorithm min/max spanning tree.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -475,7 +476,7 @@
             <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
                     <span class="k">continue</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="k">yield</span> <span class="n">wt</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span>
 
@@ -491,7 +492,7 @@
 
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_prim_mst_edges&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">prim_mst_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over edges of Prim&#39;s algorithm min/max spanning tree.</span>
+    <span class="sd">&quot;&quot;&quot;Iterate over edges of Prim&#39;s algorithm min/max spanning tree.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -531,7 +532,7 @@
             <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
                     <span class="k">continue</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="n">push</span><span class="p">(</span><span class="n">frontier</span><span class="p">,</span> <span class="p">(</span><span class="n">wt</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
         <span class="k">while</span> <span class="n">frontier</span><span class="p">:</span>
@@ -565,7 +566,7 @@
 <span class="k">def</span> <span class="nf">minimum_spanning_edges</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate edges in a minimum spanning forest of an undirected</span>
+    <span class="sd">&quot;&quot;&quot;Generate edges in a minimum spanning forest of an undirected</span>
 <span class="sd">    weighted graph.</span>
 
 <span class="sd">    A minimum spanning tree is a subgraph of the graph (a tree)</span>
@@ -645,7 +646,7 @@
 <span class="k">def</span> <span class="nf">maximum_spanning_edges</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate edges in a maximum spanning forest of an undirected</span>
+    <span class="sd">&quot;&quot;&quot;Generate edges in a maximum spanning forest of an undirected</span>
 <span class="sd">    weighted graph.</span>
 
 <span class="sd">    A maximum spanning tree is a subgraph of the graph (a tree)</span>
@@ -721,7 +722,7 @@
 
 <div class="viewcode-block" id="minimum_spanning_tree"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.mst.minimum_spanning_tree">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">minimum_spanning_tree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a minimum spanning tree or forest on an undirected graph `G`.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a minimum spanning tree or forest on an undirected graph `G`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -779,7 +780,7 @@
 
 <div class="viewcode-block" id="maximum_spanning_tree"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.mst.maximum_spanning_tree">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">maximum_spanning_tree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a maximum spanning tree or forest on an undirected graph `G`.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a maximum spanning tree or forest on an undirected graph `G`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -841,7 +842,7 @@
 
 
 <span class="k">def</span> <span class="nf">edge_boundary</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nbunch1</span><span class="p">,</span> <span class="n">nbunch2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the edge boundary of `nbunch1`.</span>
+    <span class="sd">&quot;&quot;&quot;Returns the edge boundary of `nbunch1`.</span>
 
 <span class="sd">    The *edge boundary* of a set *S* with respect to a set *T* is the</span>
 <span class="sd">    set of edges (*u*, *v*) such that *u* is in *S* and *v* is in *T*.</span>
@@ -915,7 +916,7 @@
 
 
 <span class="k">class</span> <span class="nc">UnionFind</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Union-find data structure.</span>
+    <span class="sd">&quot;&quot;&quot;Union-find data structure.</span>
 
 <span class="sd">    Each unionFind instance X maintains a family of disjoint sets of</span>
 <span class="sd">    hashable objects, supporting the following two methods:</span>
@@ -938,7 +939,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new empty union-find structure.</span>
+        <span class="sd">&quot;&quot;&quot;Create a new empty union-find structure.</span>
 
 <span class="sd">        If *elements* is an iterable, this structure will be initialized</span>
 <span class="sd">        with the discrete partition on the given set of elements.</span>
@@ -953,7 +954,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find and return the name of the set containing the object.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Find and return the name of the set containing the object.&quot;&quot;&quot;</span>
 
         <span class="c1"># check for previously unknown object</span>
         <span class="k">if</span> <span class="nb">object</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
@@ -974,11 +975,11 @@
         <span class="k">return</span> <span class="n">root</span>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate through all items ever found or unioned by this structure.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Iterate through all items ever found or unioned by this structure.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">to_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterates over the sets stored in this structure.</span>
+        <span class="sd">&quot;&quot;&quot;Iterates over the sets stored in this structure.</span>
 
 <span class="sd">        For example::</span>
 
@@ -1006,7 +1007,7 @@
         <span class="k">yield from</span> <span class="n">groups</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">objects</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the sets containing the objects and merge them all.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Find the sets containing the objects and merge them all.&quot;&quot;&quot;</span>
         <span class="c1"># Find the heaviest root according to its weight.</span>
         <span class="n">roots</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="bp">self</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">},</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">r</span><span class="p">]))</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1049,11 +1050,11 @@
       
     </aside>
   </div>
-</div><script src="../../../../_static/jquery.js"></script>
+</div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     </body>

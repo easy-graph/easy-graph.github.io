@@ -20,18 +20,18 @@ easygraph.functions.graph\_embedding.deepwalk module
    :undoc-members:
    :show-inheritance:
 
-easygraph.functions.graph\_embedding.embedding\-citeseer module
----------------------------------------------------------------
-
-.. automodule:: easygraph.functions.graph_embedding.embedding-citeseer
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 easygraph.functions.graph\_embedding.line module
 ------------------------------------------------
 
 .. automodule:: easygraph.functions.graph_embedding.line
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.functions.graph\_embedding.net\_emb\_example\_citeseer module
+-----------------------------------------------------------------------
+
+.. automodule:: easygraph.functions.graph_embedding.net_emb_example_citeseer
    :members:
    :undoc-members:
    :show-inheritance:
