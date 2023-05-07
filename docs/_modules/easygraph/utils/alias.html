@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>easygraph.utils.alias - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>easygraph.utils.alias - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,13 +143,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -288,14 +288,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -333,11 +332,11 @@
         </div>
         <article role="main">
           <h1>Source code for easygraph.utils.alias</h1><div class="highlight"><pre>
-<span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;create_alias_table&quot;</span><span class="p">,</span> <span class="s2">&quot;alias_sample&quot;</span><span class="p">]</span>
+<span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;create_alias_table&quot;</span><span class="p">,</span> <span class="s2">&quot;alias_sample&quot;</span><span class="p">,</span> <span class="s2">&quot;alias_setup&quot;</span><span class="p">,</span> <span class="s2">&quot;alias_draw&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="create_alias_table"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.alias.create_alias_table">[docs]</a><span class="k">def</span> <span class="nf">create_alias_table</span><span class="p">(</span><span class="n">area_ratio</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ---------</span>
 <span class="sd">    area_ratio :</span>
@@ -382,7 +381,7 @@
 
 
 <div class="viewcode-block" id="alias_sample"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.alias.alias_sample">[docs]</a><span class="k">def</span> <span class="nf">alias_sample</span><span class="p">(</span><span class="n">accept</span><span class="p">,</span> <span class="n">alias</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    accept :</span>
@@ -402,6 +401,56 @@
         <span class="k">return</span> <span class="n">i</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">alias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="alias_draw"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.alias.alias_draw">[docs]</a><span class="k">def</span> <span class="nf">alias_draw</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draw sample from a non-uniform discrete distribution using alias sampling.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+
+    <span class="n">kk</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="n">K</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">[</span><span class="n">kk</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">kk</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">J</span><span class="p">[</span><span class="n">kk</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="alias_setup"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.alias.alias_setup">[docs]</a><span class="k">def</span> <span class="nf">alias_setup</span><span class="p">(</span><span class="n">probs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute utility lists for non-uniform sampling from discrete distributions.</span>
+<span class="sd">    Refer to https://hips.seas.harvard.edu/blog/2013/03/03/the-alias-method-efficient-sampling-with-many-discrete-outcomes/</span>
+<span class="sd">    for details</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="n">smaller</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">larger</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">kk</span><span class="p">,</span> <span class="n">prob</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probs</span><span class="p">):</span>
+        <span class="n">q</span><span class="p">[</span><span class="n">kk</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span> <span class="o">*</span> <span class="n">prob</span>
+        <span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="n">kk</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">smaller</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kk</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">larger</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kk</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">smaller</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">larger</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">small</span> <span class="o">=</span> <span class="n">smaller</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">large</span> <span class="o">=</span> <span class="n">larger</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="n">J</span><span class="p">[</span><span class="n">small</span><span class="p">]</span> <span class="o">=</span> <span class="n">large</span>
+        <span class="n">q</span><span class="p">[</span><span class="n">large</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">large</span><span class="p">]</span> <span class="o">+</span> <span class="n">q</span><span class="p">[</span><span class="n">small</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span>
+        <span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="n">large</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">smaller</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">large</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">larger</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">large</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">J</span><span class="p">,</span> <span class="n">q</span></div>
 </pre></div>
         </article>
       </div>
@@ -434,11 +483,11 @@
       
     </aside>
   </div>
-</div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
+</div><script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     </body>

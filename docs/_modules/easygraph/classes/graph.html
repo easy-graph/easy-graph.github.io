@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>easygraph.classes.graph - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>easygraph.classes.graph - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,13 +143,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -288,14 +288,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -349,7 +348,7 @@
 
 
 <div class="viewcode-block" id="Graph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph">[docs]</a><span class="k">class</span> <span class="nc">Graph</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for undirected graphs.</span>
 
 <span class="sd">        Nodes are allowed for any hashable Python objects, including int, string, dict, etc.</span>
@@ -475,7 +474,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;String identifier of the graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String identifier of the graph.</span>
 
 <span class="sd">        This graph attribute appears in the attribute dict G.graph</span>
 <span class="sd">        keyed by the string `&quot;name&quot;`. as well as an attribute (technically</span>
@@ -520,7 +519,7 @@
     <span class="p">):</span>
         <span class="kn">import</span> <span class="nn">torch</span>
 
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct a graph from a hypergraph with methods proposed in `HyperGCN: A New Method of Training Graph Convolutional Networks on Hypergraphs &lt;https://arxiv.org/pdf/1809.02589.pdf&gt;`_ paper .</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct a graph from a hypergraph with methods proposed in `HyperGCN: A New Method of Training Graph Convolutional Networks on Hypergraphs &lt;https://arxiv.org/pdf/1809.02589.pdf&gt;`_ paper .</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``hypergraph`` (``Hypergraph``): The source hypergraph.</span>
@@ -577,7 +576,7 @@
     <span class="k">def</span> <span class="nf">A</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">torch</span>
 
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the adjacency matrix :math:`\mathbf{A}` of the sample graph with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the adjacency matrix :math:`\mathbf{A}` of the sample graph with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -600,7 +599,7 @@
     <span class="p">):</span>
         <span class="kn">import</span> <span class="nn">torch</span>
 
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the nomalized diagnal matrix of vertex degree :math:`\mathbf{D}_v^{-\frac{1}{2}}` with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the nomalized diagnal matrix of vertex degree :math:`\mathbf{D}_v^{-\frac{1}{2}}` with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D_v_neg_1_2&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">D_v</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
@@ -624,7 +623,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">e</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the edge list and weight list in the graph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the edge list and weight list in the graph.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">node2index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node2index</span>
@@ -650,7 +649,7 @@
     <span class="k">def</span> <span class="nf">D_v</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">torch</span>
 
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the diagnal matrix of vertex degree :math:`\mathbf{D}_v` with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the diagnal matrix of vertex degree :math:`\mathbf{D}_v` with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D_v&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_tmp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -663,23 +662,23 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;D_v&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Graph.add_extra_selfloop"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_extra_selfloop">[docs]</a>    <span class="k">def</span> <span class="nf">add_extra_selfloop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add extra selfloops to the graph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add extra selfloops to the graph.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_has_extra_selfloop</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.remove_extra_selfloop"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.remove_extra_selfloop">[docs]</a>    <span class="k">def</span> <span class="nf">remove_extra_selfloop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove extra selfloops from the graph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove extra selfloops from the graph.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_has_extra_selfloop</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.remove_selfloop"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.remove_selfloop">[docs]</a>    <span class="k">def</span> <span class="nf">remove_selfloop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove all selfloops from the graph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove all selfloops from the graph.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_raw_selfloop_dict</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">remove_extra_selfloop</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.nbr_v"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.nbr_v">[docs]</a>    <span class="k">def</span> <span class="nf">nbr_v</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a vertex list of the neighbors of the vertex ``v_idx``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a vertex list of the neighbors of the vertex ``v_idx``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``v_idx`` (``int``): The index of the vertex.</span>
@@ -687,7 +686,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_v</span><span class="p">(</span><span class="n">v_idx</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.N_v"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.N_v">[docs]</a>    <span class="k">def</span> <span class="nf">N_v</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbors of the vertex ``v_idx`` with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbors of the vertex ``v_idx`` with ``torch.Tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``v_idx`` (``int``): The index of the vertex.</span>
@@ -696,7 +695,7 @@
         <span class="k">return</span> <span class="n">sub_v_set</span></div>
 
 <div class="viewcode-block" id="Graph.clone"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Clone the graph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Clone the graph.&quot;&quot;&quot;</span>
         <span class="c1"># _g = Graph(self.num_v, extra_selfloop=self._has_extra_selfloop, device=self.device)</span>
         <span class="c1"># _g=self.__class__()</span>
         <span class="c1"># _g.device=&quot;cpu&quot;</span>
@@ -710,7 +709,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
 
 <div class="viewcode-block" id="Graph.degree"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.degree">[docs]</a>    <span class="k">def</span> <span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the weighted degree of of each node.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the weighted degree of of each node.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -758,7 +757,7 @@
         <span class="k">return</span> <span class="n">degree</span></div>
 
 <div class="viewcode-block" id="Graph.order"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.order">[docs]</a>    <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the number of nodes in the graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of nodes in the graph.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -779,7 +778,7 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Graph.size"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.size">[docs]</a>    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the number of edges or total of all edge weights.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of edges or total of all edge weights.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
@@ -813,7 +812,7 @@
     <span class="c1"># GCN Laplacian smoothing</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">L_GCN</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the GCN Laplacian matrix :math:`\mathcal{L}_{GCN}` of the graph with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the GCN Laplacian matrix :math:`\mathcal{L}_{GCN}` of the graph with ``torch.sparse_coo_tensor`` format. Size :math:`(|\mathcal{V}|, |\mathcal{V}|)`.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathcal{L}_{GCN} = \mathbf{\hat{D}}_v^{-\frac{1}{2}} \mathbf{\hat{A}} \mathbf{\hat{D}}_v^{-\frac{1}{2}}</span>
@@ -831,7 +830,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;L_GCN&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Graph.smoothing_with_GCN"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.smoothing_with_GCN">[docs]</a>    <span class="k">def</span> <span class="nf">smoothing_with_GCN</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">drop_rate</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the smoothed feature matrix with GCN Laplacian matrix :math:`\mathcal{L}_{GCN}`.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the smoothed feature matrix with GCN Laplacian matrix :math:`\mathcal{L}_{GCN}`.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Vertex feature matrix. Size :math:`(|\mathcal{V}|, C)`.</span>
@@ -844,7 +843,7 @@
         <span class="k">return</span> <span class="n">L_GCN</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Graph.number_of_edges"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.number_of_edges">[docs]</a>    <span class="k">def</span> <span class="nf">number_of_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the number of edges between two nodes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of edges between two nodes.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -896,7 +895,7 @@
         <span class="k">return</span> <span class="mi">0</span></div>
 
 <div class="viewcode-block" id="Graph.nbunch_iter"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.nbunch_iter">[docs]</a>    <span class="k">def</span> <span class="nf">nbunch_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns an iterator over nodes contained in nbunch that are</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an iterator over nodes contained in nbunch that are</span>
 <span class="sd">        also in the graph.</span>
 
 <span class="sd">        The nodes in nbunch are checked for membership in the graph</span>
@@ -964,7 +963,7 @@
         <span class="k">return</span> <span class="n">bunch</span></div>
 
 <div class="viewcode-block" id="Graph.neighbors"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.neighbors">[docs]</a>    <span class="k">def</span> <span class="nf">neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns an iterator of a node&#39;s neighbors.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an iterator of a node&#39;s neighbors.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -992,7 +991,7 @@
     <span class="n">all_neighbors</span> <span class="o">=</span> <span class="n">neighbors</span>
 
 <div class="viewcode-block" id="Graph.add_node"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_node">[docs]</a>    <span class="k">def</span> <span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_for_adding</span><span class="p">,</span> <span class="o">**</span><span class="n">node_attr</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add one node</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add one node</span>
 
 <span class="sd">        Add one node, type of which is any hashable Python object, such as int, string, dict, or even Graph itself.</span>
 <span class="sd">        You can add with node attributes using Python dict type.</span>
@@ -1026,7 +1025,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.add_nodes"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">add_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes_for_adding</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">nodes_attr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
-        <span class="sd">&quot;&quot;&quot;Add nodes with a list of nodes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add nodes with a list of nodes.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1080,7 +1079,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.add_nodes_from"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_nodes_from">[docs]</a>    <span class="k">def</span> <span class="nf">add_nodes_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes_for_adding</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add multiple nodes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add multiple nodes.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1153,7 +1152,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Graph.add_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="o">**</span><span class="n">edge_attr</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add one edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add one edge.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1195,7 +1194,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.add_edges"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_edges">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges_for_adding</span><span class="p">,</span> <span class="n">edges_attr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
-        <span class="sd">&quot;&quot;&quot;Add a list of edges.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a list of edges.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1248,7 +1247,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.add_edges_from"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_edges_from">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ebunch_to_add</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add all the edges in ebunch_to_add.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add all the edges in ebunch_to_add.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1312,7 +1311,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">add_weighted_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ebunch_to_add</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add weighted edges in `ebunch_to_add` with specified weight attr</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add weighted edges in `ebunch_to_add` with specified weight attr</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1344,7 +1343,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="p">{</span><span class="n">weight</span><span class="p">:</span> <span class="n">d</span><span class="p">})</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ebunch_to_add</span><span class="p">),</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Graph.add_weighted_edges_from"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_weighted_edges_from">[docs]</a>    <span class="k">def</span> <span class="nf">add_weighted_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ebunch_to_add</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add weighted edges in `ebunch_to_add` with specified weight attr</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add weighted edges in `ebunch_to_add` with specified weight attr</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1376,7 +1375,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="p">{</span><span class="n">weight</span><span class="p">:</span> <span class="n">d</span><span class="p">})</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ebunch_to_add</span><span class="p">),</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Graph.add_edges_from_file"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.add_edges_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Added edges from file</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Added edges from file</span>
 <span class="sd">        For example, txt files,</span>
 
 <span class="sd">        Each line is in form like:</span>
@@ -1431,7 +1430,7 @@
                     <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="Graph.remove_nodes_from"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.remove_nodes_from">[docs]</a>    <span class="k">def</span> <span class="nf">remove_nodes_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove multiple nodes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove multiple nodes.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1483,7 +1482,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Graph.remove_node"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.remove_node">[docs]</a>    <span class="k">def</span> <span class="nf">remove_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_to_remove</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove one node from your graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove one node from your graph.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1512,7 +1511,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.remove_nodes"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.remove_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">remove_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes_to_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove nodes from your graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove nodes from your graph.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1541,7 +1540,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Graph.remove_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.remove_edge">[docs]</a>    <span class="k">def</span> <span class="nf">remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove one edge from your graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove one edge from your graph.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1572,7 +1571,7 @@
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;No edge </span><span class="si">{}</span><span class="s2">-</span><span class="si">{}</span><span class="s2"> in graph.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Graph.remove_edges"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.remove_edges">[docs]</a>    <span class="k">def</span> <span class="nf">remove_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges_to_remove</span><span class="p">:</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Remove a list of edges from your graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove a list of edges from your graph.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1609,7 +1608,7 @@
             <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Graph.number_of_nodes"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.number_of_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">number_of_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the number of nodes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of nodes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1622,11 +1621,11 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Graph.is_multigraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.is_multigraph">[docs]</a>    <span class="k">def</span> <span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Graph.copy"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a deep copy of the graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a deep copy of the graph.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1651,7 +1650,7 @@
         <span class="k">return</span> <span class="n">G</span></div>
 
 <div class="viewcode-block" id="Graph.nodes_subgraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.nodes_subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">nodes_subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a subgraph of some nodes</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a subgraph of some nodes</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1686,7 +1685,7 @@
         <span class="k">return</span> <span class="n">G</span></div>
 
 <div class="viewcode-block" id="Graph.ego_subgraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.ego_subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">ego_subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns an ego network graph of a node.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an ego network graph of a node.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1714,7 +1713,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes_subgraph</span><span class="p">(</span><span class="n">from_nodes</span><span class="o">=</span><span class="n">neighbors_of_center</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Graph.to_index_node_graph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.to_index_node_graph">[docs]</a>    <span class="k">def</span> <span class="nf">to_index_node_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">begin_index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a deep copy of graph, with each node switched to its index.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a deep copy of graph, with each node switched to its index.</span>
 
 <span class="sd">        Considering that the nodes of your graph may be any possible hashable Python object,</span>
 <span class="sd">        you can get an isomorphic graph of the original one, with each node switched to its index.</span>
@@ -1764,7 +1763,7 @@
         <span class="k">return</span> <span class="n">G</span><span class="p">,</span> <span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span></div>
 
 <div class="viewcode-block" id="Graph.to_directed_class"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.to_directed_class">[docs]</a>    <span class="k">def</span> <span class="nf">to_directed_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the class to use for empty directed copies.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the class to use for empty directed copies.</span>
 
 <span class="sd">        If you subclass the base classes, use this to designate</span>
 <span class="sd">        what directed class to use for `to_directed()` copies.</span>
@@ -1772,7 +1771,7 @@
         <span class="k">return</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span></div>
 
 <div class="viewcode-block" id="Graph.to_directed"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.to_directed">[docs]</a>    <span class="k">def</span> <span class="nf">to_directed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a directed representation of the graph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a directed representation of the graph.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1826,7 +1825,7 @@
         <span class="k">return</span> <span class="n">G</span></div>
 
     <span class="k">def</span> <span class="nf">_clear_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Clear the cache.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Clear the cache.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
 
 <div class="viewcode-block" id="Graph.cpp"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.graph.Graph.cpp">[docs]</a>    <span class="k">def</span> <span class="nf">cpp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1888,11 +1887,11 @@
       
     </aside>
   </div>
-</div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
+</div><script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     </body>

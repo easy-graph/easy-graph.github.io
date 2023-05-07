@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph.functions package" href="easygraph.functions.html" /><link rel="prev" title="easygraph.functions.graph_generator package" href="easygraph.functions.graph_generator.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>easygraph.functions.path package - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>easygraph.functions.path package - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,13 +144,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -289,14 +289,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -750,9 +749,29 @@ attribute a default weight of 1 will be used.</p>
             <ul>
 <li><a class="reference internal" href="#">easygraph.functions.path package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.path.bridges">easygraph.functions.path.bridges module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.path.mst">easygraph.functions.path.mst module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.path.path">easygraph.functions.path.path module</a></li>
+<li><a class="reference internal" href="#module-easygraph.functions.path.bridges">easygraph.functions.path.bridges module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.path.bridges.bridges"><code class="docutils literal notranslate"><span class="pre">bridges()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.bridges.has_bridges"><code class="docutils literal notranslate"><span class="pre">has_bridges()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.functions.path.mst">easygraph.functions.path.mst module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.path.mst.maximum_spanning_edges"><code class="docutils literal notranslate"><span class="pre">maximum_spanning_edges()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.mst.maximum_spanning_tree"><code class="docutils literal notranslate"><span class="pre">maximum_spanning_tree()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.mst.minimum_spanning_edges"><code class="docutils literal notranslate"><span class="pre">minimum_spanning_edges()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.mst.minimum_spanning_tree"><code class="docutils literal notranslate"><span class="pre">minimum_spanning_tree()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.functions.path.path">easygraph.functions.path.path module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.path.path.Dijkstra"><code class="docutils literal notranslate"><span class="pre">Dijkstra()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.path.Floyd"><code class="docutils literal notranslate"><span class="pre">Floyd()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.path.Kruskal"><code class="docutils literal notranslate"><span class="pre">Kruskal()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.path.Prim"><code class="docutils literal notranslate"><span class="pre">Prim()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.path.Spfa"><code class="docutils literal notranslate"><span class="pre">Spfa()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.path.multi_source_dijkstra"><code class="docutils literal notranslate"><span class="pre">multi_source_dijkstra()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.path.single_source_bfs"><code class="docutils literal notranslate"><span class="pre">single_source_bfs()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.path.single_source_dijkstra"><code class="docutils literal notranslate"><span class="pre">single_source_dijkstra()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.functions.path">Module contents</a></li>
 </ul>
 </li>
@@ -765,11 +784,11 @@ attribute a default weight of 1 will be used.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
     </body>

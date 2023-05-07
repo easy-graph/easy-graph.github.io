@@ -34,7 +34,6 @@ parallel computing methods to achieve high efficiency.
    reference.rst
    tutorial.rst
    videos.rst
-   tutorial.rst
    contributorGuide.rst
    license.rst
    sourcecode.rst

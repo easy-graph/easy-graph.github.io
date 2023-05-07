@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph.functions.basic package" href="easygraph.functions.basic.html" /><link rel="prev" title="easygraph.classes package" href="easygraph.classes.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>easygraph.datasets package - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>easygraph.datasets package - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,13 +144,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -289,14 +289,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -522,15 +521,15 @@ These isolated nodes are added as zero-vecs into the right position.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">CiteseerGraphDataset</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">num_class</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get node feature</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feat</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get data split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">train_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;train_mask&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">val_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;val_mask&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;test_mask&#39;</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get labels</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
 </pre></div>
@@ -729,15 +728,15 @@ transformed before every access.</p></li>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">CoraGraphDataset</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">num_class</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get node feature</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feat</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get data split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">train_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;train_mask&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">val_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;val_mask&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;test_mask&#39;</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get labels</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
 </pre></div>
@@ -850,15 +849,15 @@ transformed before every access.</p></li>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">PubmedGraphDataset</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">num_class</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_of_class</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get node feature</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feat</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get data split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">train_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;train_mask&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">val_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;val_mask&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_mask</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;test_mask&#39;</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># get labels</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
 </pre></div>
@@ -1769,7 +1768,7 @@ transformed before every access.</p></li>
 <span class="go">....    feat = g.ndata[&#39;feat&#39;]</span>
 <span class="go">....    label = g.ndata[&#39;label&#39;]</span>
 <span class="go">....    # your code here</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1988,13 +1987,116 @@ For torch, it will create a bool tensor
             <ul>
 <li><a class="reference internal" href="#">easygraph.datasets package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-easygraph.datasets.citation_graph">easygraph.datasets.citation_graph module</a></li>
-<li><a class="reference internal" href="#module-easygraph.datasets.eg_dataset">easygraph.datasets.eg_dataset module</a></li>
-<li><a class="reference internal" href="#module-easygraph.datasets.get_sample_graph">easygraph.datasets.get_sample_graph module</a></li>
-<li><a class="reference internal" href="#module-easygraph.datasets.gnn_benchmark">easygraph.datasets.gnn_benchmark module</a></li>
-<li><a class="reference internal" href="#module-easygraph.datasets.karate">easygraph.datasets.karate module</a></li>
-<li><a class="reference internal" href="#module-easygraph.datasets.ppi">easygraph.datasets.ppi module</a></li>
-<li><a class="reference internal" href="#module-easygraph.datasets.utils">easygraph.datasets.utils module</a></li>
+<li><a class="reference internal" href="#module-easygraph.datasets.citation_graph">easygraph.datasets.citation_graph module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CitationGraphDataset"><code class="docutils literal notranslate"><span class="pre">CitationGraphDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CitationGraphDataset.has_cache"><code class="docutils literal notranslate"><span class="pre">CitationGraphDataset.has_cache()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CitationGraphDataset.num_classes"><code class="docutils literal notranslate"><span class="pre">CitationGraphDataset.num_classes</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CitationGraphDataset.num_labels"><code class="docutils literal notranslate"><span class="pre">CitationGraphDataset.num_labels</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CitationGraphDataset.process"><code class="docutils literal notranslate"><span class="pre">CitationGraphDataset.process()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CitationGraphDataset.reverse_edge"><code class="docutils literal notranslate"><span class="pre">CitationGraphDataset.reverse_edge</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CitationGraphDataset.save_name"><code class="docutils literal notranslate"><span class="pre">CitationGraphDataset.save_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CiteseerGraphDataset"><code class="docutils literal notranslate"><span class="pre">CiteseerGraphDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CiteseerGraphDataset.num_classes"><code class="docutils literal notranslate"><span class="pre">CiteseerGraphDataset.num_classes</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CoraBinary"><code class="docutils literal notranslate"><span class="pre">CoraBinary</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CoraBinary.has_cache"><code class="docutils literal notranslate"><span class="pre">CoraBinary.has_cache()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CoraBinary.process"><code class="docutils literal notranslate"><span class="pre">CoraBinary.process()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CoraBinary.save_name"><code class="docutils literal notranslate"><span class="pre">CoraBinary.save_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CoraGraphDataset"><code class="docutils literal notranslate"><span class="pre">CoraGraphDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.CoraGraphDataset.num_classes"><code class="docutils literal notranslate"><span class="pre">CoraGraphDataset.num_classes</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.PubmedGraphDataset"><code class="docutils literal notranslate"><span class="pre">PubmedGraphDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.PubmedGraphDataset.num_classes"><code class="docutils literal notranslate"><span class="pre">PubmedGraphDataset.num_classes</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.load_citeseer"><code class="docutils literal notranslate"><span class="pre">load_citeseer()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.load_cora"><code class="docutils literal notranslate"><span class="pre">load_cora()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.citation_graph.load_pubmed"><code class="docutils literal notranslate"><span class="pre">load_pubmed()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.datasets.eg_dataset">easygraph.datasets.eg_dataset module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphBuiltinDataset"><code class="docutils literal notranslate"><span class="pre">EasyGraphBuiltinDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphBuiltinDataset.download"><code class="docutils literal notranslate"><span class="pre">EasyGraphBuiltinDataset.download()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.url"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.url</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.name"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.name</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.raw_dir"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.raw_dir</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.raw_path"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.raw_path</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.save_dir"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.save_dir</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.save_path"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.save_path</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.verbose"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.verbose</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.hash"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.hash</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.download"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.download()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.has_cache"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.has_cache()</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.hash</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.load"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.load()</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.name</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.process"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.process()</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.raw_dir</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.raw_path</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.eg_dataset.EasyGraphDataset.save"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.save()</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.save_dir</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.save_path</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.url</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">EasyGraphDataset.verbose</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.datasets.get_sample_graph">easygraph.datasets.get_sample_graph module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.get_sample_graph.get_graph_blogcatalog"><code class="docutils literal notranslate"><span class="pre">get_graph_blogcatalog()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.get_sample_graph.get_graph_flickr"><code class="docutils literal notranslate"><span class="pre">get_graph_flickr()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.get_sample_graph.get_graph_karateclub"><code class="docutils literal notranslate"><span class="pre">get_graph_karateclub()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.get_sample_graph.get_graph_youtube"><code class="docutils literal notranslate"><span class="pre">get_graph_youtube()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.datasets.gnn_benchmark">easygraph.datasets.gnn_benchmark module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.gnn_benchmark.AmazonCoBuyComputerDataset"><code class="docutils literal notranslate"><span class="pre">AmazonCoBuyComputerDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.gnn_benchmark.AmazonCoBuyComputerDataset.num_classes"><code class="docutils literal notranslate"><span class="pre">AmazonCoBuyComputerDataset.num_classes</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">AmazonCoBuyComputerDataset.num_classes</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.datasets.karate">easygraph.datasets.karate module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.karate.KarateClubDataset"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.karate.KarateClubDataset.num_classes"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset.num_classes</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset.num_classes</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.karate.KarateClubDataset.process"><code class="docutils literal notranslate"><span class="pre">KarateClubDataset.process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.datasets.ppi">easygraph.datasets.ppi module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.LegacyPPIDataset"><code class="docutils literal notranslate"><span class="pre">LegacyPPIDataset</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset"><code class="docutils literal notranslate"><span class="pre">PPIDataset</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.num_labels"><code class="docutils literal notranslate"><span class="pre">PPIDataset.num_labels</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.labels"><code class="docutils literal notranslate"><span class="pre">PPIDataset.labels</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.features"><code class="docutils literal notranslate"><span class="pre">PPIDataset.features</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.has_cache"><code class="docutils literal notranslate"><span class="pre">PPIDataset.has_cache()</span></code></a></li>
+<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">PPIDataset.num_labels</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.process"><code class="docutils literal notranslate"><span class="pre">PPIDataset.process()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.ppi.PPIDataset.save"><code class="docutils literal notranslate"><span class="pre">PPIDataset.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.datasets.utils">easygraph.datasets.utils module</a><ul>
+<li><a class="reference internal" href="#easygraph.datasets.utils.download"><code class="docutils literal notranslate"><span class="pre">download()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.utils.extract_archive"><code class="docutils literal notranslate"><span class="pre">extract_archive()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.utils.generate_mask_tensor"><code class="docutils literal notranslate"><span class="pre">generate_mask_tensor()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.utils.get_download_dir"><code class="docutils literal notranslate"><span class="pre">get_download_dir()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.datasets.utils.makedirs"><code class="docutils literal notranslate"><span class="pre">makedirs()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.datasets">Module contents</a></li>
 </ul>
 </li>
@@ -2007,11 +2109,11 @@ For torch, it will create a bool tensor
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
     </body>

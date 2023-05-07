@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph package" href="easygraph.html" /><link rel="prev" title="easygraph.readwrite.json_graph package" href="easygraph.readwrite.json_graph.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>easygraph.readwrite package - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>easygraph.readwrite package - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,13 +144,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -289,14 +289,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -342,7 +341,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="easygraph.readwrite.json_graph.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.readwrite.json_graph.html#module-easygraph.readwrite.json_graph.node_link">easygraph.readwrite.json_graph.node_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.readwrite.json_graph.html#module-easygraph.readwrite.json_graph.node_link">easygraph.readwrite.json_graph.node_link module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.readwrite.json_graph.html#easygraph.readwrite.json_graph.node_link.node_link_graph"><code class="docutils literal notranslate"><span class="pre">node_link_graph()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="easygraph.readwrite.json_graph.html#module-easygraph.readwrite.json_graph">Module contents</a></li>
 </ul>
 </li>
@@ -363,7 +365,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>EasyGraph graph</em>) – </p></li>
 <li><p><strong>delimiter</strong> (<em>string</em><em>, </em><em>optional</em>) – Separator for node labels</p></li>
-<li><p><strong>data</strong> (<em>bool</em><em> or </em><em>list of keys</em>) – If False generate no edge data.  If True use a dictionary
+<li><p><strong>data</strong> (<em>bool</em><em> or </em><em>list</em><em> of </em><em>keys</em>) – If False generate no edge data.  If True use a dictionary
 representation of edge data.  If a list of keys use a list of data
 values corresponding to the keys.</p></li>
 </ul>
@@ -431,14 +433,14 @@ values corresponding to the keys.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lines</strong> (<em>list</em><em> or </em><em>iterator of strings</em>) – Input data in edgelist format</p></li>
+<li><p><strong>lines</strong> (<em>list</em><em> or </em><em>iterator</em><em> of </em><em>strings</em>) – Input data in edgelist format</p></li>
 <li><p><strong>comments</strong> (<em>string</em><em>, </em><em>optional</em>) – Marker for comment lines. Default is <cite>‘#’</cite>. To specify that no character
 should be treated as a comment, use <code class="docutils literal notranslate"><span class="pre">comments=None</span></code>.</p></li>
 <li><p><strong>delimiter</strong> (<em>string</em><em>, </em><em>optional</em>) – Separator for node labels. Default is <cite>None</cite>, meaning any whitespace.</p></li>
 <li><p><strong>create_using</strong> (<em>EasyGraph graph constructor</em><em>, </em><em>optional</em><em> (</em><em>default=eg.Graph</em><em>)</em>) – Graph type to create. If graph instance, then cleared before populated.</p></li>
 <li><p><strong>nodetype</strong> (<em>Python type</em><em>, </em><em>optional</em>) – Convert nodes to this type. Default is <cite>None</cite>, meaning no conversion is
 performed.</p></li>
-<li><p><strong>data</strong> (<em>bool</em><em> or </em><em>list of</em><em> (</em><em>label</em><em>,</em><em>type</em><em>) </em><em>tuples</em>) – If <cite>False</cite> generate no edge data or if <cite>True</cite> use a dictionary
+<li><p><strong>data</strong> (<em>bool</em><em> or </em><em>list</em><em> of </em><em>(</em><em>label</em><em>,</em><em>type</em><em>) </em><em>tuples</em>) – If <cite>False</cite> generate no edge data or if <cite>True</cite> use a dictionary
 representation of edge data or a list tuples specifying dictionary
 key names and types for edge data.</p></li>
 </ul>
@@ -499,7 +501,7 @@ no character should be treated as a comment, use <code class="docutils literal n
 <li><p><strong>delimiter</strong> (<em>string</em><em>, </em><em>optional</em>) – The string used to separate values.  The default is whitespace.</p></li>
 <li><p><strong>create_using</strong> (<em>EasyGraph graph constructor</em><em>, </em><em>optional</em><em> (</em><em>default=eg.Graph</em><em>)</em>) – Graph type to create. If graph instance, then cleared before populated.</p></li>
 <li><p><strong>nodetype</strong> (<em>int</em><em>, </em><em>float</em><em>, </em><em>str</em><em>, </em><em>Python type</em><em>, </em><em>optional</em>) – Convert node data from strings to specified type</p></li>
-<li><p><strong>data</strong> (<em>bool</em><em> or </em><em>list of</em><em> (</em><em>label</em><em>,</em><em>type</em><em>) </em><em>tuples</em>) – Tuples specifying dictionary key names and types for edge data</p></li>
+<li><p><strong>data</strong> (<em>bool</em><em> or </em><em>list</em><em> of </em><em>(</em><em>label</em><em>,</em><em>type</em><em>) </em><em>tuples</em>) – Tuples specifying dictionary key names and types for edge data</p></li>
 <li><p><strong>edgetype</strong> (<em>int</em><em>, </em><em>float</em><em>, </em><em>str</em><em>, </em><em>Python type</em><em>, </em><em>optional OBSOLETE</em>) – Convert edge data from strings to specified type and use as ‘weight’</p></li>
 <li><p><strong>encoding</strong> (<em>string</em><em>, </em><em>optional</em>) – Specify which encoding to use when reading file.</p></li>
 </ul>
@@ -681,7 +683,7 @@ complex networks structures, their associated data and dynamics” <a class="ref
 <li><p><strong>prettyprint</strong> (<em>bool</em><em> (</em><em>optional</em><em>, </em><em>default: True</em><em>)</em>) – </p></li>
 <li><p><strong>XML.</strong> (<em>If True use line breaks and indenting in output</em>) – </p></li>
 <li><p><strong>version</strong> (<em>string</em><em> (</em><em>default: 1.2draft</em><em>)</em>) – </p></li>
-<li><p><strong>http</strong> (<em>Version of GEFX File Format</em><em> (</em><em>see</em>) – </p></li>
+<li><p><strong>http</strong> (<em>Version</em><em> of </em><em>GEFX File Format</em><em> (</em><em>see</em>) – </p></li>
 <li><p><strong>values</strong> (<em>Supported</em>) – </p></li>
 </ul>
 </dd>
@@ -726,7 +728,7 @@ File names ending in .gz or .bz2 will be decompressed.</p></li>
 <li><p><strong>relabel</strong> (<em>bool</em><em> (</em><em>default: False</em><em>)</em>) – If True relabel the nodes to use the GEXF node “label” attribute
 instead of the node “id” attribute as the EasyGraph node label.</p></li>
 <li><p><strong>version</strong> (<em>string</em><em> (</em><em>default: 1.2draft</em><em>)</em>) – </p></li>
-<li><p><strong>http</strong> (<em>Version of GEFX File Format</em><em> (</em><em>see</em>) – Supported values: “1.1draft”, “1.2draft”</p></li>
+<li><p><strong>http</strong> (<em>Version</em><em> of </em><em>GEFX File Format</em><em> (</em><em>see</em>) – Supported values: “1.1draft”, “1.2draft”</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -890,7 +892,7 @@ than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<c
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lines</strong> (<em>string</em><em> or </em><em>iterable of strings</em>) – Data in GML format.</p></li>
+<li><p><strong>lines</strong> (<em>string</em><em> or </em><em>iterable</em><em> of </em><em>strings</em>) – Data in GML format.</p></li>
 <li><p><strong>label</strong> (<em>string</em><em>, </em><em>optional</em>) – If not None, the parsed nodes will be renamed according to node
 attributes indicated by <cite>label</cite>. Default value: ‘label’.</p></li>
 <li><p><strong>destringizer</strong> (<em>callable</em><em>, </em><em>optional</em>) – A <cite>destringizer</cite> that recovers values stored as strings in GML. If it
@@ -1076,6 +1078,7 @@ or processing graphs.”</p>
 <a class="reference external" href="http://graphml.graphdrawing.org/specification.html">http://graphml.graphdrawing.org/specification.html</a> for the specification and
 <a class="reference external" href="http://graphml.graphdrawing.org/primer/graphml-primer.html">http://graphml.graphdrawing.org/primer/graphml-primer.html</a>
 for examples.</p>
+</section>
 <dl class="py class">
 <dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLReader">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">GraphMLReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_type=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_key_type=&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_multigraph=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLReader" title="Permalink to this definition"></a></dt>
@@ -1505,7 +1508,6 @@ and unidirected edges together) hyperedges, nested graphs, or ports.</p>
 </dd></dl>
 
 </section>
-</section>
 <section id="module-easygraph.readwrite.graphviz">
 <span id="easygraph-readwrite-graphviz-module"></span><h2>easygraph.readwrite.graphviz module<a class="headerlink" href="#module-easygraph.readwrite.graphviz" title="Permalink to this heading"></a></h2>
 <dl class="py function">
@@ -1592,6 +1594,7 @@ those with self loops and parallel edges.</p>
 <h3>Format<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference external" href="http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/draweps.htm">http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/draweps.htm</a>
 for format information.</p>
+</section>
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.readwrite.pajek.generate_pajek">
 <span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.pajek.</span></span><span class="sig-name descname"><span class="pre">generate_pajek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/pajek.html#generate_pajek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.pajek.generate_pajek" title="Permalink to this definition"></a></dt>
@@ -1687,7 +1690,6 @@ convert those attributes to strings if you want to keep them.</p>
 for format information.</p>
 </dd></dl>
 
-</section>
 </section>
 <section id="module-easygraph.readwrite.pickle">
 <span id="easygraph-readwrite-pickle-module"></span><h2>easygraph.readwrite.pickle module<a class="headerlink" href="#module-easygraph.readwrite.pickle" title="Permalink to this heading"></a></h2>
@@ -1877,20 +1879,87 @@ for full format information. Short version on <a class="reference external" href
 <li><a class="reference internal" href="#">easygraph.readwrite package</a><ul>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.edgelist">easygraph.readwrite.edgelist module</a></li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.gexf">easygraph.readwrite.gexf module</a></li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.gml">easygraph.readwrite.gml module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.edgelist">easygraph.readwrite.edgelist module</a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.edgelist.generate_edgelist"><code class="docutils literal notranslate"><span class="pre">generate_edgelist()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.edgelist.parse_edgelist"><code class="docutils literal notranslate"><span class="pre">parse_edgelist()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.edgelist.read_edgelist"><code class="docutils literal notranslate"><span class="pre">read_edgelist()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.edgelist.read_weighted_edgelist"><code class="docutils literal notranslate"><span class="pre">read_weighted_edgelist()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.edgelist.write_edgelist"><code class="docutils literal notranslate"><span class="pre">write_edgelist()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.edgelist.write_weighted_edgelist"><code class="docutils literal notranslate"><span class="pre">write_weighted_edgelist()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.gexf">easygraph.readwrite.gexf module</a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.gexf.generate_gexf"><code class="docutils literal notranslate"><span class="pre">generate_gexf()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.gexf.read_gexf"><code class="docutils literal notranslate"><span class="pre">read_gexf()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.gexf.relabel_gexf_graph"><code class="docutils literal notranslate"><span class="pre">relabel_gexf_graph()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.gexf.write_gexf"><code class="docutils literal notranslate"><span class="pre">write_gexf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.gml">easygraph.readwrite.gml module</a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.gml.generate_gml"><code class="docutils literal notranslate"><span class="pre">generate_gml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.gml.parse_gml"><code class="docutils literal notranslate"><span class="pre">parse_gml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.gml.read_gml"><code class="docutils literal notranslate"><span class="pre">read_gml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.gml.write_gml"><code class="docutils literal notranslate"><span class="pre">write_gml()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.readwrite.graphml">easygraph.readwrite.graphml module</a><ul>
 <li><a class="reference internal" href="#format">Format</a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader"><code class="docutils literal notranslate"><span class="pre">GraphMLReader</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.add_edge"><code class="docutils literal notranslate"><span class="pre">GraphMLReader.add_edge()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.add_node"><code class="docutils literal notranslate"><span class="pre">GraphMLReader.add_node()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.decode_data_elements"><code class="docutils literal notranslate"><span class="pre">GraphMLReader.decode_data_elements()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.find_graphml_keys"><code class="docutils literal notranslate"><span class="pre">GraphMLReader.find_graphml_keys()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.make_graph"><code class="docutils literal notranslate"><span class="pre">GraphMLReader.make_graph()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.graphviz">easygraph.readwrite.graphviz module</a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter</span></code></a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_attributes"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.add_attributes()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_data"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.add_data()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_edges"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.add_edges()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_graph_element"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.add_graph_element()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_graphs"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.add_graphs()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_nodes"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.add_nodes()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.attr_type"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.attr_type()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.dump"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.dump()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.get_key"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.get_key()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.indent"><code class="docutils literal notranslate"><span class="pre">GraphMLWriter.indent()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.generate_graphml"><code class="docutils literal notranslate"><span class="pre">generate_graphml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.parse_graphml"><code class="docutils literal notranslate"><span class="pre">parse_graphml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.read_graphml"><code class="docutils literal notranslate"><span class="pre">read_graphml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.write_graphml"><code class="docutils literal notranslate"><span class="pre">write_graphml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.write_graphml_lxml"><code class="docutils literal notranslate"><span class="pre">write_graphml_lxml()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphml.write_graphml_xml"><code class="docutils literal notranslate"><span class="pre">write_graphml_xml()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.graphviz">easygraph.readwrite.graphviz module</a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.graphviz.from_agraph"><code class="docutils literal notranslate"><span class="pre">from_agraph()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphviz.read_dot"><code class="docutils literal notranslate"><span class="pre">read_dot()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphviz.to_agraph"><code class="docutils literal notranslate"><span class="pre">to_agraph()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.graphviz.write_dot"><code class="docutils literal notranslate"><span class="pre">write_dot()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.readwrite.pajek">easygraph.readwrite.pajek module</a><ul>
 <li><a class="reference internal" href="#id8">Format</a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.pajek.generate_pajek"><code class="docutils literal notranslate"><span class="pre">generate_pajek()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.pajek.parse_pajek"><code class="docutils literal notranslate"><span class="pre">parse_pajek()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.pajek.read_pajek"><code class="docutils literal notranslate"><span class="pre">read_pajek()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.pajek.write_pajek"><code class="docutils literal notranslate"><span class="pre">write_pajek()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.pickle">easygraph.readwrite.pickle module</a></li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.ucinet">easygraph.readwrite.ucinet module</a></li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.pickle">easygraph.readwrite.pickle module</a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.pickle.read_pickle"><code class="docutils literal notranslate"><span class="pre">read_pickle()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.pickle.write_pickle"><code class="docutils literal notranslate"><span class="pre">write_pickle()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.readwrite.ucinet">easygraph.readwrite.ucinet module</a><ul>
+<li><a class="reference internal" href="#easygraph.readwrite.ucinet.generate_ucinet"><code class="docutils literal notranslate"><span class="pre">generate_ucinet()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.ucinet.parse_ucinet"><code class="docutils literal notranslate"><span class="pre">parse_ucinet()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.ucinet.read_ucinet"><code class="docutils literal notranslate"><span class="pre">read_ucinet()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.readwrite.ucinet.write_ucinet"><code class="docutils literal notranslate"><span class="pre">write_ucinet()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.readwrite">Module contents</a></li>
 </ul>
 </li>
@@ -1903,11 +1972,11 @@ for full format information. Short version on <a class="reference external" href
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
     </body>

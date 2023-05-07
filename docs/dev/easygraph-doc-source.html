@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Building and Releasing python-easygraph" href="manual-releasing.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="(Mostly) Manually Building and Releasing python-easygraph" href="manual-releasing.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>Scripts and guides for generating documentation for EasyGraph - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>Scripts and guides for generating documentation for EasyGraph - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,13 +144,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -289,14 +289,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../dev.html">Developer Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -365,10 +364,10 @@ website</a></p></li>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
 <p>Clone these repositories and put them inside the same directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">REPOS</span><span class="o">=(</span><span class="s1">&#39;Easy-Graph&#39;</span> <span class="s1">&#39;easy-graph.github.io&#39;</span> <span class="s1">&#39;easygraph-doc-source&#39;</span><span class="o">)</span>
-<span class="k">for</span> i <span class="k">in</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPOS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> <span class="s2">&quot;Cloning: </span><span class="nv">$i</span><span class="s2">&quot;</span>
-    git clone <span class="s2">&quot;https://github.com/easy-graph/</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">REPOS</span><span class="o">=(</span><span class="s1">&#39;Easy-Graph&#39;</span><span class="w"> </span><span class="s1">&#39;easy-graph.github.io&#39;</span><span class="w"> </span><span class="s1">&#39;easygraph-doc-source&#39;</span><span class="o">)</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPOS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cloning: </span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="w">    </span>git<span class="w"> </span>clone<span class="w"> </span><span class="s2">&quot;https://github.com/easy-graph/</span><span class="nv">$i</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -382,8 +381,8 @@ website</a></p></li>
 </section>
 <section id="generate-rst-files-from-docstrings-as-references">
 <h3>Generate <code class="docutils literal notranslate"><span class="pre">rst</span></code> files from docstrings as references<a class="headerlink" href="#generate-rst-files-from-docstrings-as-references" title="Permalink to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> easygraph-doc-source/docs_using_sphinx
-make gen-rst
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>easygraph-doc-source/docs_using_sphinx
+make<span class="w"> </span>gen-rst
 <span class="c1"># generated rst files in reference dir</span>
 </pre></div>
 </div>
@@ -406,8 +405,8 @@ make gen-rst
 <li><p>Sync all the files under <code class="docutils literal notranslate"><span class="pre">./_build/html</span></code> to repository
 <code class="docutils literal notranslate"><span class="pre">easy-graph.github.io</span></code>:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> easygraph-doc-source
-make sync-doc-pub-repo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>easygraph-doc-source
+make<span class="w"> </span>sync-doc-pub-repo
 </pre></div>
 </div>
 <ul class="simple">
@@ -439,7 +438,7 @@ update the section to reflect the built references.</p></li>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Building and Releasing python-easygraph</div>
+                <div class="title">(Mostly) Manually Building and Releasing python-easygraph</div>
                 
               </div>
             </a>
@@ -497,11 +496,11 @@ update the section to reflect the built references.</p></li>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
     </body>

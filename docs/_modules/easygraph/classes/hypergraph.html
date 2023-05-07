@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>easygraph.classes.hypergraph - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>easygraph.classes.hypergraph - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,13 +143,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -288,14 +288,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -356,7 +355,7 @@
 
 
 <div class="viewcode-block" id="Hypergraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph">[docs]</a><span class="k">class</span> <span class="nc">Hypergraph</span><span class="p">(</span><span class="n">BaseHypergraph</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The ``Hypergraph`` class is developed for hypergraph structures.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The ``Hypergraph`` class is developed for hypergraph structures.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        ``num_v`` (``int``): The number of vertices in the hypergraph.</span>
@@ -379,16 +378,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">add_hyperedges</span><span class="p">(</span><span class="n">e_list</span><span class="p">,</span> <span class="n">e_weight</span><span class="p">,</span> <span class="n">merge_op</span><span class="o">=</span><span class="n">merge_op</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Print the hypergraph information.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Print the hypergraph information.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hypergraph(num_vertex=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_v</span><span class="si">}</span><span class="s2">, num_hyperedge=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_e</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the state dict of the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the state dict of the hypergraph.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;num_v&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_v</span><span class="p">,</span> <span class="s2">&quot;raw_groups&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_groups</span><span class="p">}</span>
 
 <div class="viewcode-block" id="Hypergraph.save"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Save the DHG&#39;s hypergraph structure a file.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Save the DHG&#39;s hypergraph structure a file.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``file_path`` (``Union[str, Path]``): The file path to store the DHG&#39;s hypergraph structure.</span>
@@ -404,7 +403,7 @@
 
 <div class="viewcode-block" id="Hypergraph.load"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.load">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Load the DHG&#39;s hypergraph structure from a file.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Load the DHG&#39;s hypergraph structure from a file.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``file_path`` (``Union[str, Path]``): The file path to load the DHG&#39;s hypergraph structure.</span>
@@ -433,7 +432,7 @@
         <span class="n">pull_e_strength</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
         <span class="n">pull_center_strength</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draw the hypergraph structure.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draw the hypergraph structure.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``e_style`` (``str``): The style of hyperedges. The available styles are only ``&#39;circle&#39;``. Defaults to ``&#39;circle&#39;``.</span>
@@ -470,11 +469,11 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hypergraph.clear"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Clear all hyperedges and caches from the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Clear all hyperedges and caches from the hypergraph.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Hypergraph.clone"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Hypergraph&quot;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a copy of the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a copy of the hypergraph.&quot;&quot;&quot;</span>
         <span class="n">hg</span> <span class="o">=</span> <span class="n">Hypergraph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_v</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
         <span class="n">hg</span><span class="o">.</span><span class="n">_raw_groups</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_raw_groups</span><span class="p">)</span>
         <span class="n">hg</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>
@@ -482,7 +481,7 @@
         <span class="k">return</span> <span class="n">hg</span></div>
 
 <div class="viewcode-block" id="Hypergraph.to"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Move the hypergraph to the specified device.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Move the hypergraph to the specified device.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``device`` (``torch.device``): The target device.</span>
@@ -493,7 +492,7 @@
     <span class="c1"># some construction functions</span>
 <div class="viewcode-block" id="Hypergraph.from_state_dict"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.from_state_dict">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Load the hypergraph from the state dict.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Load the hypergraph from the state dict.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``state_dict`` (``dict``): The state dict to load the hypergraph.</span>
@@ -506,7 +505,7 @@
     <span class="k">def</span> <span class="nf">_e_list_from_feature_kNN</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">scipy</span>
 
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct hyperedges from the feature matrix. Each hyperedge in the hypergraph is constructed by the central vertex ans its :math:`k-1` neighbor vertices.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct hyperedges from the feature matrix. Each hyperedge in the hypergraph is constructed by the central vertex ans its :math:`k-1` neighbor vertices.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``features`` (``torch.Tensor``): The feature matrix.</span>
@@ -526,7 +525,7 @@
     <span class="k">def</span> <span class="nf">from_feature_kNN</span><span class="p">(</span>
         <span class="n">features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hypergraph from the feature matrix. Each hyperedge in the hypergraph is constructed by the central vertex ans its :math:`k-1` neighbor vertices.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hypergraph from the feature matrix. Each hyperedge in the hypergraph is constructed by the central vertex ans its :math:`k-1` neighbor vertices.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            The constructed hypergraph is a k-uniform hypergraph. If the feature matrix has the size :math:`N \times C`, the number of vertices and hyperedges of the constructed hypergraph are both :math:`N`.</span>
@@ -542,7 +541,7 @@
 
 <div class="viewcode-block" id="Hypergraph.from_graph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.from_graph">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="s2">&quot;Hypergraph&quot;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hypergraph from the graph. Each edge in the graph is treated as a hyperedge in the constructed hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hypergraph from the graph. Each edge in the graph is treated as a hyperedge in the constructed hypergraph.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            The construsted hypergraph is a 2-uniform hypergraph, and has the same number of vertices and edges/hyperedges as the graph.</span>
@@ -561,7 +560,7 @@
         <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">only_kHop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hyperedge list from the graph by k-Hop neighbors. Each hyperedge in the hypergraph is constructed by the central vertex and its :math:`k`-Hop neighbor vertices.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hyperedge list from the graph by k-Hop neighbors. Each hyperedge in the hypergraph is constructed by the central vertex and its :math:`k`-Hop neighbor vertices.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            If the graph have :math:`|\mathcal{V}|` vertices, the constructed hypergraph will have :math:`|\mathcal{V}|` vertices and equal to or less than :math:`|\mathcal{V}|` hyperedges.</span>
@@ -597,7 +596,7 @@
         <span class="n">only_kHop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">),</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Hypergraph&quot;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hypergraph from the graph by k-Hop neighbors. Each hyperedge in the hypergraph is constructed by the central vertex and its :math:`k`-Hop neighbor vertices.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the hypergraph from the graph by k-Hop neighbors. Each hyperedge in the hypergraph is constructed by the central vertex and its :math:`k`-Hop neighbor vertices.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            If the graph have :math:`|\mathcal{V}|` vertices, the constructed hypergraph will have :math:`|\mathcal{V}|` vertices and equal to or less than :math:`|\mathcal{V}|` hyperedges.</span>
@@ -619,7 +618,7 @@
         <span class="n">merge_op</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
         <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges to the hypergraph. If the ``group_name`` is not specified, the hyperedges will be added to the default ``main`` hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges to the hypergraph. If the ``group_name`` is not specified, the hyperedges will be added to the default ``main`` hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``num_v`` (``int``): The number of vertices in the hypergraph.</span>
@@ -656,7 +655,7 @@
 <div class="viewcode-block" id="Hypergraph.add_hyperedges_from_feature_kNN"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_feature_kNN">[docs]</a>    <span class="k">def</span> <span class="nf">add_hyperedges_from_feature_kNN</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges from the feature matrix by k-NN. Each hyperedge is constructed by the central vertex and its :math:`k`-Nearest Neighbor vertices.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges from the feature matrix by k-NN. Each hyperedge is constructed by the central vertex and its :math:`k`-Nearest Neighbor vertices.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``features`` (``torch.Tensor``): The feature matrix.</span>
@@ -671,7 +670,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">add_hyperedges</span><span class="p">(</span><span class="n">e_list</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="n">group_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hypergraph.add_hyperedges_from_graph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph">[docs]</a>    <span class="k">def</span> <span class="nf">add_hyperedges_from_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges from edges in the graph. Each edge in the graph is treated as a hyperedge.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges from edges in the graph. Each edge in the graph is treated as a hyperedge.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``graph`` (``eg.Graph``): The graph to join the hypergraph.</span>
@@ -686,7 +685,7 @@
 <div class="viewcode-block" id="Hypergraph.add_hyperedges_from_graph_kHop"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph_kHop">[docs]</a>    <span class="k">def</span> <span class="nf">add_hyperedges_from_graph_kHop</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">only_kHop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges from vertices and its k-Hop neighbors in the graph. Each hyperedge in the hypergraph is constructed by the central vertex and its :math:`k`-Hop neighbor vertices.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add hyperedges from vertices and its k-Hop neighbors in the graph. Each hyperedge in the hypergraph is constructed by the central vertex and its :math:`k`-Hop neighbor vertices.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            If the graph have :math:`|\mathcal{V}|` vertices, the constructed hypergraph will have :math:`|\mathcal{V}|` vertices and equal to or less than :math:`|\mathcal{V}|` hyperedges.</span>
@@ -708,7 +707,7 @@
         <span class="n">e_list</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]],</span>
         <span class="n">group_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove the specified hyperedges from the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove the specified hyperedges from the hypergraph.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``e_list`` (``Union[List[int], List[List[int]]]``): A list of hyperedges describes how the vertices point to the hyperedges.</span>
@@ -731,7 +730,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">(</span><span class="n">group_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hypergraph.remove_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.remove_group">[docs]</a>    <span class="k">def</span> <span class="nf">remove_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove the specified hyperedge group from the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Remove the specified hyperedge group from the hypergraph.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the hyperedge group to remove.</span>
@@ -740,7 +739,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">(</span><span class="n">group_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hypergraph.drop_hyperedges"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.drop_hyperedges">[docs]</a>    <span class="k">def</span> <span class="nf">drop_hyperedges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Randomly drop hyperedges from the hypergraph. This function will return a new hypergraph with non-dropped hyperedges.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Randomly drop hyperedges from the hypergraph. This function will return a new hypergraph with non-dropped hyperedges.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``drop_rate`` (``float``): The drop rate of hyperedges.</span>
@@ -767,7 +766,7 @@
 <div class="viewcode-block" id="Hypergraph.drop_hyperedges_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.drop_hyperedges_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">drop_hyperedges_of_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Randomly drop hyperedges from the specified hyperedge group. This function will return a new hypergraph with non-dropped hyperedges.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Randomly drop hyperedges from the specified hyperedge group. This function will return a new hypergraph with non-dropped hyperedges.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the hyperedge group.</span>
@@ -799,12 +798,12 @@
     <span class="c1"># properties for representation</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">v</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the list of vertices.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the list of vertices.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">v</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">e</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return all hyperedges and weights in the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return all hyperedges and weights in the hypergraph.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">e_list</span><span class="p">,</span> <span class="n">e_weight</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_names</span><span class="p">:</span>
@@ -815,7 +814,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;e&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.e_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.e_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">e_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return all hyperedges and weights of the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return all hyperedges and weights of the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -833,16 +832,16 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">num_v</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of vertices in the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of vertices in the hypergraph.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">num_v</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">num_e</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of hyperedges in the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of hyperedges in the hypergraph.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">num_e</span>
 
 <div class="viewcode-block" id="Hypergraph.num_e_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.num_e_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">num_e_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of hyperedges of the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of hyperedges of the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -851,11 +850,11 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">deg_v</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each vertex.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each vertex.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">D_v</span><span class="o">.</span><span class="n">_values</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.deg_v_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.deg_v_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">deg_v_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each vertex of the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each vertex of the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -867,11 +866,11 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">deg_e</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each hyperedge.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each hyperedge.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">D_e</span><span class="o">.</span><span class="n">_values</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.deg_e_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.deg_e_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">deg_e_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each hyperedge of the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the degree list of each hyperedge of the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -882,7 +881,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">D_e_of_group</span><span class="p">(</span><span class="n">group_name</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Hypergraph.nbr_e"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.nbr_e">[docs]</a>    <span class="k">def</span> <span class="nf">nbr_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedge list of the specified vertex.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedge list of the specified vertex.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``v_idx`` (``int``): The index of the vertex.</span>
@@ -890,7 +889,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_e</span><span class="p">(</span><span class="n">v_idx</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Hypergraph.nbr_e_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.nbr_e_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">nbr_e_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedge list of the specified vertex of the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedge list of the specified vertex of the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``v_idx`` (``int``): The index of the vertex.</span>
@@ -902,7 +901,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_e_of_group</span><span class="p">(</span><span class="n">v_idx</span><span class="p">,</span> <span class="n">group_name</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Hypergraph.nbr_v"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.nbr_v">[docs]</a>    <span class="k">def</span> <span class="nf">nbr_v</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertex list of the specified hyperedge.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertex list of the specified hyperedge.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``e_idx`` (``int``): The index of the hyperedge.</span>
@@ -910,7 +909,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_v</span><span class="p">(</span><span class="n">e_idx</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Hypergraph.nbr_v_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.nbr_v_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">nbr_v_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertex list of the specified hyperedge of the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertex list of the specified hyperedge of the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``e_idx`` (``int``): The index of the hyperedge.</span>
@@ -923,19 +922,19 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">num_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of hyperedge groups in the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of hyperedge groups in the hypergraph.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">num_groups</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">group_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the names of all hyperedge groups in the hypergraph.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the names of all hyperedge groups in the hypergraph.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">group_names</span>
 
     <span class="c1"># =====================================================================================</span>
     <span class="c1"># properties for deep learning</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vars_for_DL</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a name list of available variables for deep learning in the hypergraph including</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a name list of available variables for deep learning in the hypergraph including</span>
 
 <span class="sd">        Sparse Matrices:</span>
 
@@ -975,12 +974,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">v2e_src</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source vertex index vector :math:`\overrightarrow{v2e}_{src}` of the connections (vertices point to hyperedges) in the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source vertex index vector :math:`\overrightarrow{v2e}_{src}` of the connections (vertices point to hyperedges) in the hypergraph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_T</span><span class="o">.</span><span class="n">_indices</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.v2e_src_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.v2e_src_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">v2e_src_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source vertex index vector :math:`\overrightarrow{v2e}_{src}` of the connections (vertices point to hyperedges) in the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source vertex index vector :math:`\overrightarrow{v2e}_{src}` of the connections (vertices point to hyperedges) in the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -992,12 +991,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">v2e_dst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination hyperedge index vector :math:`\overrightarrow{v2e}_{dst}` of the connections (vertices point to hyperedges) in the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination hyperedge index vector :math:`\overrightarrow{v2e}_{dst}` of the connections (vertices point to hyperedges) in the hypergraph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_T</span><span class="o">.</span><span class="n">_indices</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.v2e_dst_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.v2e_dst_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">v2e_dst_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination hyperedge index vector :math:`\overrightarrow{v2e}_{dst}` of the connections (vertices point to hyperedges) in the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination hyperedge index vector :math:`\overrightarrow{v2e}_{dst}` of the connections (vertices point to hyperedges) in the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1009,12 +1008,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">v2e_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{v2e}_{weight}` of the connections (vertices point to hyperedges) in the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{v2e}_{weight}` of the connections (vertices point to hyperedges) in the hypergraph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_T</span><span class="o">.</span><span class="n">_values</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.v2e_weight_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.v2e_weight_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">v2e_weight_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{v2e}_{weight}` of the connections (vertices point to hyperedges) in the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{v2e}_{weight}` of the connections (vertices point to hyperedges) in the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1026,12 +1025,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">e2v_src</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source hyperedge index vector :math:`\overrightarrow{e2v}_{src}` of the connections (hyperedges point to vertices) in the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source hyperedge index vector :math:`\overrightarrow{e2v}_{src}` of the connections (hyperedges point to vertices) in the hypergraph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="o">.</span><span class="n">_indices</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.e2v_src_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.e2v_src_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">e2v_src_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source hyperedge index vector :math:`\overrightarrow{e2v}_{src}` of the connections (hyperedges point to vertices) in the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the source hyperedge index vector :math:`\overrightarrow{e2v}_{src}` of the connections (hyperedges point to vertices) in the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1043,12 +1042,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">e2v_dst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination vertex index vector :math:`\overrightarrow{e2v}_{dst}` of the connections (hyperedges point to vertices) in the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination vertex index vector :math:`\overrightarrow{e2v}_{dst}` of the connections (hyperedges point to vertices) in the hypergraph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="o">.</span><span class="n">_indices</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.e2v_dst_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.e2v_dst_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">e2v_dst_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination vertex index vector :math:`\overrightarrow{e2v}_{dst}` of the connections (hyperedges point to vertices) in the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the destination vertex index vector :math:`\overrightarrow{e2v}_{dst}` of the connections (hyperedges point to vertices) in the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1060,12 +1059,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">e2v_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{e2v}_{weight}` of the connections (hyperedges point to vertices) in the hypergraph.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{e2v}_{weight}` of the connections (hyperedges point to vertices) in the hypergraph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="o">.</span><span class="n">_values</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Hypergraph.e2v_weight_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.e2v_weight_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">e2v_weight_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{e2v}_{weight}` of the connections (hyperedges point to vertices) in the specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight vector :math:`\overrightarrow{e2v}_{weight}` of the connections (hyperedges point to vertices) in the specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1077,14 +1076,14 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">H</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hypergraph incidence matrix :math:`\mathbf{H}` with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hypergraph incidence matrix :math:`\mathbf{H}` with ``torch.Tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_v2e</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.H_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.H_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">H_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hypergraph incidence matrix :math:`\mathbf{H}` of the specified hyperedge group with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hypergraph incidence matrix :math:`\mathbf{H}` of the specified hyperedge group with ``torch.Tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1098,14 +1097,14 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">H_T</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the transpose of the hypergraph incidence matrix :math:`\mathbf{H}^\top` with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the transpose of the hypergraph incidence matrix :math:`\mathbf{H}^\top` with ``torch.Tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;H_T&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;H_T&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;H_T&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.H_T_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.H_T_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">H_T_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the transpose of the hypergraph incidence matrix :math:`\mathbf{H}^\top` of the specified hyperedge group with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the transpose of the hypergraph incidence matrix :math:`\mathbf{H}^\top` of the specified hyperedge group with ``torch.Tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1119,7 +1118,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">W_e</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight matrix :math:`\mathbf{W}_e` of hyperedges with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight matrix :math:`\mathbf{W}_e` of hyperedges with ``torch.Tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;W_e&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_tmp</span> <span class="o">=</span> <span class="p">[</span>
@@ -1136,7 +1135,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;W_e&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.W_e_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.W_e_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">W_e_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight matrix :math:`\mathbf{W}_e` of hyperedges of the specified hyperedge group with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the weight matrix :math:`\mathbf{W}_e` of hyperedges of the specified hyperedge group with ``torch.Tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1157,7 +1156,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">D_v</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v` with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v` with ``torch.sparse_coo_tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D_v&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_tmp</span> <span class="o">=</span> <span class="p">[</span>
@@ -1173,7 +1172,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;D_v&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.D_v_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.D_v_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">D_v_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1199,7 +1198,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">D_v_neg_1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-1}` with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-1}` with ``torch.sparse_coo_tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D_v_neg_1&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">D_v</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
@@ -1211,7 +1210,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;D_v_neg_1&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.D_v_neg_1_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">D_v_neg_1_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-1}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-1}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1230,7 +1229,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">D_v_neg_1_2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-\frac{1}{2}}` with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-\frac{1}{2}}` with ``torch.sparse_coo_tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D_v_neg_1_2&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">D_v</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
@@ -1242,7 +1241,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;D_v_neg_1_2&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.D_v_neg_1_2_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_2_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">D_v_neg_1_2_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-\frac{1}{2}}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the vertex degree matrix :math:`\mathbf{D}_v^{-\frac{1}{2}}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1261,7 +1260,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">D_e</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e` with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e` with ``torch.sparse_coo_tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D_e&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_tmp</span> <span class="o">=</span> <span class="p">[</span>
@@ -1278,7 +1277,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;D_e&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.D_e_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.D_e_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">D_e_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1304,7 +1303,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">D_e_neg_1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e^{-1}` with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e^{-1}` with ``torch.sparse_coo_tensor`` format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D_e_neg_1&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">D_e</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
@@ -1316,7 +1315,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;D_e_neg_1&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.D_e_neg_1_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.D_e_neg_1_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">D_e_neg_1_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e^{-1}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the hyperedge degree matrix :math:`\mathbf{D}_e^{-1}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The name of the specified hyperedge group.</span>
@@ -1334,7 +1333,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_cache</span><span class="p">[</span><span class="n">group_name</span><span class="p">][</span><span class="s2">&quot;D_e_neg_1&quot;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Hypergraph.N_e"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.N_e">[docs]</a>    <span class="k">def</span> <span class="nf">N_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedges of the specified vertex with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedges of the specified vertex with ``torch.Tensor`` format.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            The ``v_idx`` must be in the range of [0, :attr:`num_v`).</span>
@@ -1350,7 +1349,7 @@
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">_tmp</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hypergraph.N_e_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.N_e_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">N_e_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedges of the specified vertex of the specified hyperedge group with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor hyperedges of the specified vertex of the specified hyperedge group with ``torch.Tensor`` format.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            The ``v_idx`` must be in the range of [0, :attr:`num_v`).</span>
@@ -1367,7 +1366,7 @@
         <span class="k">return</span> <span class="n">e_indices</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Hypergraph.N_v"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.N_v">[docs]</a>    <span class="k">def</span> <span class="nf">N_v</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertices of the specified hyperedge with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertices of the specified hyperedge with ``torch.Tensor`` format.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            The ``e_idx`` must be in the range of [0, :attr:`num_e`).</span>
@@ -1383,7 +1382,7 @@
                 <span class="n">e_idx</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_e_of_group</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hypergraph.N_v_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.N_v_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">N_v_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertices of the specified hyperedge of the specified hyperedge group with ``torch.Tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the neighbor vertices of the specified hyperedge of the specified hyperedge group with ``torch.Tensor`` format.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            The ``e_idx`` must be in the range of [0, :func:`num_e_of_group`).</span>
@@ -1406,7 +1405,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">L_sym</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the symmetric Laplacian matrix :math:`\mathcal{L}_{sym}` of the hypergraph with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the symmetric Laplacian matrix :math:`\mathcal{L}_{sym}` of the hypergraph with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathcal{L}_{sym} = \mathbf{I} - \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}}</span>
@@ -1427,7 +1426,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;L_sym&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.L_sym_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.L_sym_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">L_sym_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the symmetric Laplacian matrix :math:`\mathcal{L}_{sym}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the symmetric Laplacian matrix :math:`\mathcal{L}_{sym}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathcal{L}_{sym} = \mathbf{I} - \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}}</span>
@@ -1455,7 +1454,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">L_rw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the random walk Laplacian matrix :math:`\mathcal{L}_{rw}` of the hypergraph with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the random walk Laplacian matrix :math:`\mathcal{L}_{rw}` of the hypergraph with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathcal{L}_{rw} = \mathbf{I} - \mathbf{D}_v^{-1} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top</span>
@@ -1482,7 +1481,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;L_rw&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.L_rw_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.L_rw_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">L_rw_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the random walk Laplacian matrix :math:`\mathcal{L}_{rw}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the random walk Laplacian matrix :math:`\mathcal{L}_{rw}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathcal{L}_{rw} = \mathbf{I} - \mathbf{D}_v^{-1} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top</span>
@@ -1527,7 +1526,7 @@
     <span class="c1">## HGNN Laplacian smoothing</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">L_HGNN</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}` of the hypergraph with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}` of the hypergraph with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathcal{L}_{HGNN} = \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}}</span>
@@ -1546,7 +1545,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s2">&quot;L_HGNN&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Hypergraph.L_HGNN_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.L_HGNN_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">L_HGNN_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}` of the specified hyperedge group with ``torch.sparse_coo_tensor`` format.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathcal{L}_{HGNN} = \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}}</span>
@@ -1578,7 +1577,7 @@
 <div class="viewcode-block" id="Hypergraph.smoothing_with_HGNN"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN">[docs]</a>    <span class="k">def</span> <span class="nf">smoothing_with_HGNN</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the smoothed feature matrix with the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}`.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the smoothed feature matrix with the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}`.</span>
 
 <span class="sd">            .. math::</span>
 <span class="sd">                \mathbf{X} = \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}} \mathbf{X}</span>
@@ -1598,7 +1597,7 @@
 <div class="viewcode-block" id="Hypergraph.smoothing_with_HGNN_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">smoothing_with_HGNN_of_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the smoothed feature matrix with the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}`.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the smoothed feature matrix with the HGNN Laplacian matrix :math:`\mathcal{L}_{HGNN}`.</span>
 
 <span class="sd">            .. math::</span>
 <span class="sd">                \mathbf{X} = \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}} \mathbf{X}</span>
@@ -1629,7 +1628,7 @@
         <span class="n">v2e_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggretation step of ``vertices to hyperedges``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggretation step of ``vertices to hyperedges``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Vertex feature matrix. Size :math:`(|\mathcal{V}|, C)`.</span>
@@ -1688,7 +1687,7 @@
         <span class="n">v2e_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggregation step of ``vertices to hyperedges`` in specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggregation step of ``vertices to hyperedges`` in specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The specified hyperedge group.</span>
@@ -1750,7 +1749,7 @@
         <span class="k">return</span> <span class="n">X</span></div>
 
 <div class="viewcode-block" id="Hypergraph.v2e_update"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.v2e_update">[docs]</a>    <span class="k">def</span> <span class="nf">v2e_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">e_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``vertices to hyperedges``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``vertices to hyperedges``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Hyperedge feature matrix. Size :math:`(|\mathcal{E}|, C)`.</span>
@@ -1771,7 +1770,7 @@
 <div class="viewcode-block" id="Hypergraph.v2e_update_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.v2e_update_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">v2e_update_of_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">e_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``vertices to hyperedges`` in specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``vertices to hyperedges`` in specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The specified hyperedge group.</span>
@@ -1802,7 +1801,7 @@
         <span class="n">e_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to hyperedges``. The combination of ``v2e_aggregation`` and ``v2e_update``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to hyperedges``. The combination of ``v2e_aggregation`` and ``v2e_update``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Vertex feature matrix. Size :math:`(|\mathcal{V}|, C)`.</span>
@@ -1824,7 +1823,7 @@
         <span class="n">e_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to hyperedges`` in specified hyperedge group. The combination of ``e2v_aggregation_of_group`` and ``e2v_update_of_group``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to hyperedges`` in specified hyperedge group. The combination of ``e2v_aggregation_of_group`` and ``e2v_update_of_group``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The specified hyperedge group.</span>
@@ -1850,7 +1849,7 @@
         <span class="n">e2v_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggregation step of ``hyperedges to vertices``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggregation step of ``hyperedges to vertices``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Hyperedge feature matrix. Size :math:`(|\mathcal{E}|, C)`.</span>
@@ -1909,7 +1908,7 @@
         <span class="n">e2v_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggregation step of ``hyperedges to vertices`` in specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message aggregation step of ``hyperedges to vertices`` in specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The specified hyperedge group.</span>
@@ -1971,7 +1970,7 @@
         <span class="k">return</span> <span class="n">X</span></div>
 
 <div class="viewcode-block" id="Hypergraph.e2v_update"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.e2v_update">[docs]</a>    <span class="k">def</span> <span class="nf">e2v_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``hyperedges to vertices``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``hyperedges to vertices``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Vertex feature matrix. Size :math:`(|\mathcal{V}|, C)`.</span>
@@ -1981,7 +1980,7 @@
         <span class="k">return</span> <span class="n">X</span></div>
 
 <div class="viewcode-block" id="Hypergraph.e2v_update_of_group"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph.e2v_update_of_group">[docs]</a>    <span class="k">def</span> <span class="nf">e2v_update_of_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``hyperedges to vertices`` in specified hyperedge group.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message update step of ``hyperedges to vertices`` in specified hyperedge group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The specified hyperedge group.</span>
@@ -2001,7 +2000,7 @@
         <span class="n">e2v_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``hyperedges to vertices``. The combination of ``e2v_aggregation`` and ``e2v_update``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``hyperedges to vertices``. The combination of ``e2v_aggregation`` and ``e2v_update``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Hyperedge feature matrix. Size :math:`(|\mathcal{E}|, C)`.</span>
@@ -2021,7 +2020,7 @@
         <span class="n">e2v_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``hyperedges to vertices`` in specified hyperedge group. The combination of ``e2v_aggregation_of_group`` and ``e2v_update_of_group``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``hyperedges to vertices`` in specified hyperedge group. The combination of ``e2v_aggregation_of_group`` and ``e2v_update_of_group``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The specified hyperedge group.</span>
@@ -2052,7 +2051,7 @@
         <span class="n">e2v_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">e2v_drop_rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to vertices``. The combination of ``v2e`` and ``e2v``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to vertices``. The combination of ``v2e`` and ``e2v``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Vertex feature matrix. Size :math:`(|\mathcal{V}|, C)`.</span>
@@ -2092,7 +2091,7 @@
         <span class="n">e2v_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">e2v_drop_rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to vertices`` in specified hyperedge group. The combination of ``v2e_of_group`` and ``e2v_of_group``.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Message passing of ``vertices to vertices`` in specified hyperedge group. The combination of ``v2e_of_group`` and ``e2v_of_group``.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ``group_name`` (``str``): The specified hyperedge group.</span>
@@ -2157,11 +2156,11 @@
       
     </aside>
   </div>
-</div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
+</div><script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     </body>

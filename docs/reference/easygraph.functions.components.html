@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph.functions.drawing package" href="easygraph.functions.drawing.html" /><link rel="prev" title="easygraph.functions.community package" href="easygraph.functions.community.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
-        <title>easygraph.functions.components package - EasyGraph 0.2a46</title>
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+        <title>easygraph.functions.components package - EasyGraph 0.2a47</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../index.html"><div class="brand">EasyGraph 0.2a47</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,13 +144,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a47</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -289,14 +289,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/releasing.html">Building and Releasing python-easygraph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -821,10 +820,35 @@ use max instead of sort:</p>
             <ul>
 <li><a class="reference internal" href="#">easygraph.functions.components package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.components.biconnected">easygraph.functions.components.biconnected module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.components.connected">easygraph.functions.components.connected module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.components.strongly_connected">easygraph.functions.components.strongly_connected module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.components.weakly_connected">easygraph.functions.components.weakly_connected module</a></li>
+<li><a class="reference internal" href="#module-easygraph.functions.components.biconnected">easygraph.functions.components.biconnected module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.components.biconnected.biconnected_components"><code class="docutils literal notranslate"><span class="pre">biconnected_components()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.biconnected.generator_articulation_points"><code class="docutils literal notranslate"><span class="pre">generator_articulation_points()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.biconnected.generator_biconnected_components_edges"><code class="docutils literal notranslate"><span class="pre">generator_biconnected_components_edges()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.biconnected.generator_biconnected_components_nodes"><code class="docutils literal notranslate"><span class="pre">generator_biconnected_components_nodes()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.biconnected.is_biconnected"><code class="docutils literal notranslate"><span class="pre">is_biconnected()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.functions.components.connected">easygraph.functions.components.connected module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.components.connected.connected_component_of_node"><code class="docutils literal notranslate"><span class="pre">connected_component_of_node()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.connected.connected_components"><code class="docutils literal notranslate"><span class="pre">connected_components()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.connected.connected_components_directed"><code class="docutils literal notranslate"><span class="pre">connected_components_directed()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.connected.is_connected"><code class="docutils literal notranslate"><span class="pre">is_connected()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.connected.number_connected_components"><code class="docutils literal notranslate"><span class="pre">number_connected_components()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.functions.components.strongly_connected">easygraph.functions.components.strongly_connected module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.components.strongly_connected.condensation"><code class="docutils literal notranslate"><span class="pre">condensation()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.strongly_connected.is_strongly_connected"><code class="docutils literal notranslate"><span class="pre">is_strongly_connected()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.strongly_connected.number_strongly_connected_components"><code class="docutils literal notranslate"><span class="pre">number_strongly_connected_components()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.strongly_connected.strongly_connected_components"><code class="docutils literal notranslate"><span class="pre">strongly_connected_components()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-easygraph.functions.components.weakly_connected">easygraph.functions.components.weakly_connected module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.components.weakly_connected.is_weakly_connected"><code class="docutils literal notranslate"><span class="pre">is_weakly_connected()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.weakly_connected.number_weakly_connected_components"><code class="docutils literal notranslate"><span class="pre">number_weakly_connected_components()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.components.weakly_connected.weakly_connected_components"><code class="docutils literal notranslate"><span class="pre">weakly_connected_components()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.functions.components">Module contents</a></li>
 </ul>
 </li>
@@ -837,11 +861,11 @@ use max instead of sort:</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
     </body>
