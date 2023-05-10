@@ -354,17 +354,11 @@ $ python3 setup.py install
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>EasyGraph uses <a class="reference external" href="https://www.tensorflow.org/install">tensorflow 2</a> for machine
-learning functions. If cuda settings for GPU are not well deployed in your PC, you will
-get similar warning messages as the followings when using tensorflow-based methods
-(e.g. easygraph.functions.graph_embedding.line.LINE):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.453228</span><span class="p">:</span> <span class="n">W</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">stream_executor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">dso_loader</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">59</span><span class="p">]</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">load</span> <span class="n">dynamic</span> <span class="n">library</span> <span class="s1">&#39;cudart64_101.dll&#39;</span><span class="p">;</span> <span class="n">dlerror</span><span class="p">:</span> <span class="n">cudart64_101</span><span class="o">.</span><span class="n">dll</span> <span class="ow">not</span> <span class="n">found</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.456194</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">stream_executor</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="n">cudart_stub</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">29</span><span class="p">]</span> <span class="n">Ignore</span> <span class="n">above</span> <span class="n">cudart</span> <span class="n">dlerror</span> <span class="k">if</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">a</span> <span class="n">GPU</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">on</span> <span class="n">your</span> <span class="n">machine</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>Note that this does not prevent the codes from running normally, because tensorflow will
-leverage CPU in case GPU cannot be used. If you want to use GPU, this <a class="reference external" href="https://www.tensorflow.org/install/gpu">link</a> might be
-helpful for GPU settings.</p>
+<p>EasyGraph uses  1.12.1 &lt;= <a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch</a> &lt; 2.0 for machine
+learning functions.
+Note that this does not prevent your from running non-machine learning functions normally,
+if there is no PyTorch in your environment.
+But you will receive some warnings which remind you some unavailable modules when they  depend on it.</p>
 </div>
 </section>
 
