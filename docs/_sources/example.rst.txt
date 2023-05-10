@@ -237,11 +237,56 @@ Hierarchy of all nodes
 Using C++ code to achieve a better performance
 -------------------------
 
-- The GraphC class provides the same methods as the Graph class. e.g. `add_node()`, `add_edges()`
-- Easygraph also provides three functions implemented by C++
-  - `effective_size()`
-  - `constraint()`
-  - `hierarchy()`
+- The GraphC class provides most key operations as the Graph class. e.g. `add_node()`, `add_edges()`
+- EasyGraph also provides three important network analysis functions implemented by C++
+  - `multi_source_dijkstra()`
+  - `betweenness_centrality()`
+  - `closeness_centrality()`
+  - `k_core()`
+
+
+Basic usage of GraphC
+-------------------------
+
+Import **EasyGraph**, and start with a directed graph `G_c` 
+
+>>> import easygraph as eg
+>>> G_c=eg.DiGraphC()
+
+Add edges [(1,2), (2,4), (4,6), (6,5), (3,5), (1,3)] and to the graph
+
+>>> G_c.add_edges([(1,2), (2,4), (4,6), (6,5), (3,5), (1,3)],[{'weight': 2},{'weight': 1},{'weight': 3},{'weight': 1},{'weight': 4},{'weight': 1},])#Add edges with the corresponding edge weights
+>>> G_c.edges
+[(3, 5, {'weight': 4.0}), (6, 5, {'weight': 1.0}), (4, 6, {'weight': 3.0}), (2, 4, {'weight': 1.0}), (1, 3, {'weight': 1.0}), (1, 2, {'weight': 2.0})]
+
+.. image:: spl_exam.png
+
+Node index 
+
+>>> G_c.node_index # We assign each node a unique id which starts from 0 to n-1 ( n is the number of nodes in your graph)
+{1: 0, 2: 1, 4: 2, 6: 3, 5: 4, 3: 5}
+
+Let's try the multi_source_dijkstra algorithm of source node `1`
+
+>>> eg.multi_source_dijkstra(G_c, sources=[1], weight="weight") # 
+[[0.0, 2.0, 3.0, 6.0, 5.0, 1.0]] # The results are retured by a structure of list of list according to the node index from 0 to n-1, where the values of the sublist refer to the shortest paths from source node `1` to other nodes in the graph
+
+Computation of two centrality metrics: the betweenness centrality and the closeness centrality
+
+>>> eg.betweenness_centrality(G_c)
+[0.0, 2.0, 3.0, 2.0, 0.0, 1.0]
+>>> eg.closeness_centrality(G_c)
+[0.0, 0.10000000149011612, 0.20000000298023224, 0.13846154510974884, 0.2631579041481018, 0.20000000298023224]
+
+The k-core function
+
+>>> eg.k_core(G_c)
+[2, 1, 1, 1, 0, 1]
+
+The PageRank algorithm
+
+>>> eg.pagerank(G_c)
+[0.07353112885883649, 0.10478166923491646, 0.16259530606176315, 0.2117369675241203, 0.3425732590854471, 0.10478166923491646]
 
 **Usage**
 

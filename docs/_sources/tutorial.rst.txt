@@ -268,7 +268,7 @@ Node index
 
 Let's try the multi_source_dijkstra algorithm of source node `1`
 
->>> eg.multi_source_dijkstra(G_c, sources=[1], weight="weight") # 
+>>> eg.multi_source_dijkstra(G_c, sources=[1], weight="weight") 
 [[0.0, 2.0, 3.0, 6.0, 5.0, 1.0]] # The results are retured by a structure of list of list according to the node index from 0 to n-1, where the values of the sublist refer to the shortest paths from source node `1` to other nodes in the graph
 
 Computation of two centrality metrics: the betweenness centrality and the closeness centrality
