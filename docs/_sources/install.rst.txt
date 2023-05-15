@@ -27,7 +27,7 @@ If prebuilt easygraph wheels are not supported for your platform (OS / CPU arch,
     learning functions.
     Note that this does not prevent your from running non-machine learning functions normally,
     if there is no PyTorch in your environment.
-    But you will receive some warnings which remind you some unavailable modules when they  depend on it.
+    But you will receive some warnings which remind you some unavailable modules when they depend on it.
 
     
     
