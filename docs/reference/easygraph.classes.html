@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph.datasets package" href="easygraph.datasets.html" /><link rel="prev" title="Reference" href="../reference.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2022.12.07 -->
-        <title>easygraph.classes package - EasyGraph 0.2a46</title>
+        <title>easygraph.classes package - EasyGraph 0.2a48</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../index.html"><div class="brand">EasyGraph 0.2a48</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +150,7 @@
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a48</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -289,13 +289,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -357,7 +357,7 @@ as <code class="docutils literal notranslate"><span class="pre">e_list_v2e</span
 same shape to <code class="docutils literal notranslate"><span class="pre">e_list_e2v</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all connections. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">Union[float,</span> <span class="pre">List[float]]</span></code>, optional) – A list of weights for hyperedges. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">Union[float,</span> <span class="pre">List[float]]</span></code>, optional) – Weights for vertices. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all vertices. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>, optional) – The deivce to store the hypergraph. Defaults to <code class="docutils literal notranslate"><span class="pre">torch.device('cpu')</span></code>.</p></li>
+<li><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>, optional) – The device to store the hypergraph. Defaults to <code class="docutils literal notranslate"><span class="pre">torch.device('cpu')</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Attributes</dt>
@@ -1145,6 +1145,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 </dd>
 <dt><strong>ndata</strong></dt><dd></dd>
 <dt><strong>node2index</strong></dt><dd></dd>
+<dt><strong>node_index</strong></dt><dd></dd>
 <dt><strong>nodes</strong></dt><dd></dd>
 <dt><strong>pred</strong></dt><dd></dd>
 </dl>
@@ -1239,67 +1240,70 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.node_dict_factory" title="easygraph.classes.directed_graph.DiGraph.node_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_dict_factory</span></code></a></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.nodes_subgraph" title="easygraph.classes.directed_graph.DiGraph.nodes_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code></a>(from_nodes)</p></td>
-<td><p>Returns a subgraph of some nodes</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.number_of_edges" title="easygraph.classes.directed_graph.DiGraph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
-<td><p>Returns the number of edges between two nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.number_of_nodes" title="easygraph.classes.directed_graph.DiGraph.number_of_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code></a>()</p></td>
-<td><p>Returns the number of nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code>()</p></td>
-<td><p>Returns the number of nodes in the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.out_degree" title="easygraph.classes.directed_graph.DiGraph.out_degree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">out_degree</span></code></a>([weight])</p></td>
-<td><p>Returns the weighted out degree of each node.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.predecessors" title="easygraph.classes.directed_graph.DiGraph.predecessors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predecessors</span></code></a>(node)</p></td>
-<td><p>Returns an iterator of a node's neighbors (predecessors).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index_dict</span></code></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_edge" title="easygraph.classes.directed_graph.DiGraph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.nodes_subgraph" title="easygraph.classes.directed_graph.DiGraph.nodes_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code></a>(from_nodes)</p></td>
+<td><p>Returns a subgraph of some nodes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.number_of_edges" title="easygraph.classes.directed_graph.DiGraph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
+<td><p>Returns the number of edges between two nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.number_of_nodes" title="easygraph.classes.directed_graph.DiGraph.number_of_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code></a>()</p></td>
+<td><p>Returns the number of nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code>()</p></td>
+<td><p>Returns the number of nodes in the graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.out_degree" title="easygraph.classes.directed_graph.DiGraph.out_degree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">out_degree</span></code></a>([weight])</p></td>
+<td><p>Returns the weighted out degree of each node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.predecessors" title="easygraph.classes.directed_graph.DiGraph.predecessors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predecessors</span></code></a>(node)</p></td>
+<td><p>Returns an iterator of a node's neighbors (predecessors).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_edge" title="easygraph.classes.directed_graph.DiGraph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v)</p></td>
 <td><p>Remove one edge from your graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_edges" title="easygraph.classes.directed_graph.DiGraph.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code></a>(edges_to_remove)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_edges" title="easygraph.classes.directed_graph.DiGraph.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code></a>(edges_to_remove)</p></td>
 <td><p>Remove a list of edges from your graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_edges_from" title="easygraph.classes.directed_graph.DiGraph.remove_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code></a>(ebunch)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_edges_from" title="easygraph.classes.directed_graph.DiGraph.remove_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code></a>(ebunch)</p></td>
 <td><p>Remove all edges specified in ebunch.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code>()</p></td>
 <td><p>Remove extra selfloops from the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_node" title="easygraph.classes.directed_graph.DiGraph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a>(node_to_remove)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_node" title="easygraph.classes.directed_graph.DiGraph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a>(node_to_remove)</p></td>
 <td><p>Remove one node from your graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_nodes" title="easygraph.classes.directed_graph.DiGraph.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code></a>(nodes_to_remove)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.remove_nodes" title="easygraph.classes.directed_graph.DiGraph.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code></a>(nodes_to_remove)</p></td>
 <td><p>Remove nodes from your graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code>(nodes)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code>(nodes)</p></td>
 <td><p>Remove multiple nodes.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code>()</p></td>
 <td><p>Remove all selfloops from the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.size" title="easygraph.classes.directed_graph.DiGraph.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a>([weight])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.size" title="easygraph.classes.directed_graph.DiGraph.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a>([weight])</p></td>
 <td><p>Returns the number of edges or total of all edge weights.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code>(X[, drop_rate])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code>(X[, drop_rate])</p></td>
 <td><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.successors" title="easygraph.classes.directed_graph.DiGraph.successors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">successors</span></code></a>(node)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.successors" title="easygraph.classes.directed_graph.DiGraph.successors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">successors</span></code></a>(node)</p></td>
 <td><p>Returns an iterator of a node's neighbors (successors).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code>()</p></td>
 <td><p>Returns a directed representation of the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code>()</p></td>
 <td><p>Returns the class to use for empty directed copies.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.to_index_node_graph" title="easygraph.classes.directed_graph.DiGraph.to_index_node_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code></a>([begin_index])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_graph.DiGraph.to_index_node_graph" title="easygraph.classes.directed_graph.DiGraph.to_index_node_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code></a>([begin_index])</p></td>
 <td><p>Returns a deep copy of graph, with each node switched to its index.</p></td>
 </tr>
 </tbody>
@@ -2252,6 +2256,7 @@ as well as node-to-index dictionary.</p>
 <dt><strong>name</strong></dt><dd></dd>
 <dt><strong>node_index</strong></dt><dd></dd>
 <dt><strong>nodes</strong></dt><dd></dd>
+<dt><strong>pred</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -2299,67 +2304,70 @@ as well as node-to-index dictionary.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ego_subgraph</span></code>(self, center)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code>(self, u, y)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_linkgraph</span></code>(self[, weight])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code>(self, node)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code>(self, u, y)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">in_degree</span></code>(self[, weight])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code>(self, node)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code>(self)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">in_degree</span></code>(self[, weight])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code>(self)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code>(self[, nbunch])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code>(self, node)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code>(self[, nbunch])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(self, from_nodes)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code>(self, node)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>(self[, u, v])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(self, from_nodes)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>(self)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>(self[, u, v])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">out_degree</span></code>(self[, weight])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">predecessors</span></code>(self, node)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">out_degree</span></code>(self[, weight])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">py</span></code>(self)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">predecessors</span></code>(self, node)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code>(self, u, v)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">py</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(self, edges_to_remove)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code>(self, u, v)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code>(self, ebunch)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(self, edges_to_remove)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(self, node_to_remove)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code>(self, ebunch)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(self, nodes_to_remove)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(self, node_to_remove)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>(self[, weight])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(self, nodes_to_remove)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">successors</span></code>(self, node)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>(self[, weight])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>(self[, begin_index])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">successors</span></code>(self, node)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>(self[, begin_index])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2401,6 +2409,7 @@ as well as node-to-index dictionary.</p>
 </dd>
 <dt><strong>ndata</strong></dt><dd></dd>
 <dt><strong>node2index</strong></dt><dd></dd>
+<dt><strong>node_index</strong></dt><dd></dd>
 <dt><strong>nodes</strong></dt><dd></dd>
 <dt><a class="reference internal" href="#easygraph.classes.directed_multigraph.MultiDiGraph.out_degree" title="easygraph.classes.directed_multigraph.MultiDiGraph.out_degree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">out_degree</span></code></a></dt><dd><p>Returns the weighted out degree of each node.</p>
 </dd>
@@ -2507,70 +2516,73 @@ as well as node-to-index dictionary.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_dict_factory</span></code></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(from_nodes)</p></td>
-<td><p>Returns a subgraph of some nodes</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>([u, v])</p></td>
-<td><p>Returns the number of edges between two nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>()</p></td>
-<td><p>Returns the number of nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code>()</p></td>
-<td><p>Returns the number of nodes in the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">predecessors</span></code>(node)</p></td>
-<td><p>Returns an iterator of a node's neighbors (predecessors).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index_dict</span></code></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_multigraph.MultiDiGraph.remove_edge" title="easygraph.classes.directed_multigraph.MultiDiGraph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v[, key])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(from_nodes)</p></td>
+<td><p>Returns a subgraph of some nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>([u, v])</p></td>
+<td><p>Returns the number of edges between two nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>()</p></td>
+<td><p>Returns the number of nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code>()</p></td>
+<td><p>Returns the number of nodes in the graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">predecessors</span></code>(node)</p></td>
+<td><p>Returns an iterator of a node's neighbors (predecessors).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_multigraph.MultiDiGraph.remove_edge" title="easygraph.classes.directed_multigraph.MultiDiGraph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v[, key])</p></td>
 <td><p>Remove an edge between u and v.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(edges_to_remove)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(edges_to_remove)</p></td>
 <td><p>Remove a list of edges from your graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code>(ebunch)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code>(ebunch)</p></td>
 <td><p>Remove all edges specified in ebunch.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code>()</p></td>
 <td><p>Remove extra selfloops from the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(node_to_remove)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(node_to_remove)</p></td>
 <td><p>Remove one node from your graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(nodes_to_remove)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(nodes_to_remove)</p></td>
 <td><p>Remove nodes from your graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code>(nodes)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code>(nodes)</p></td>
 <td><p>Remove multiple nodes.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code>()</p></td>
 <td><p>Remove all selfloops from the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_multigraph.MultiDiGraph.reverse" title="easygraph.classes.directed_multigraph.MultiDiGraph.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a>([copy])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_multigraph.MultiDiGraph.reverse" title="easygraph.classes.directed_multigraph.MultiDiGraph.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a>([copy])</p></td>
 <td><p>Returns the reverse of the graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>([weight])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>([weight])</p></td>
 <td><p>Returns the number of edges or total of all edge weights.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code>(X[, drop_rate])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code>(X[, drop_rate])</p></td>
 <td><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">successors</span></code>(node)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">successors</span></code>(node)</p></td>
 <td><p>Returns an iterator of a node's neighbors (successors).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code>()</p></td>
 <td><p>Returns a directed representation of the graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code>()</p></td>
 <td><p>Returns the class to use for empty directed copies.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>([begin_index])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>([begin_index])</p></td>
 <td><p>Returns a deep copy of graph, with each node switched to its index.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected" title="easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_undirected</span></code></a>([reciprocal])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected" title="easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_undirected</span></code></a>([reciprocal])</p></td>
 <td><p>Returns an undirected representation of the multidigraph.</p></td>
 </tr>
 </tbody>
@@ -2956,6 +2968,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 </dd>
 <dt><strong>ndata</strong></dt><dd></dd>
 <dt><strong>node2index</strong></dt><dd></dd>
+<dt><strong>node_index</strong></dt><dd></dd>
 <dt><strong>nodes</strong></dt><dd></dd>
 </dl>
 </dd>
@@ -3046,55 +3059,58 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_dict_factory" title="easygraph.classes.graph.Graph.node_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_dict_factory</span></code></a></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nodes_subgraph" title="easygraph.classes.graph.Graph.nodes_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code></a>(from_nodes)</p></td>
-<td><p>Returns a subgraph of some nodes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_edges" title="easygraph.classes.graph.Graph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
-<td><p>Returns the number of edges between two nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_nodes" title="easygraph.classes.graph.Graph.number_of_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code></a>()</p></td>
-<td><p>Returns the number of nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.order" title="easygraph.classes.graph.Graph.order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code></a>()</p></td>
-<td><p>Returns the number of nodes in the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.raw_selfloop_dict" title="easygraph.classes.graph.Graph.raw_selfloop_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_index_dict" title="easygraph.classes.graph.Graph.node_index_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index_dict</span></code></a></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edge" title="easygraph.classes.graph.Graph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nodes_subgraph" title="easygraph.classes.graph.Graph.nodes_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code></a>(from_nodes)</p></td>
+<td><p>Returns a subgraph of some nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_edges" title="easygraph.classes.graph.Graph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
+<td><p>Returns the number of edges between two nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_nodes" title="easygraph.classes.graph.Graph.number_of_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code></a>()</p></td>
+<td><p>Returns the number of nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.order" title="easygraph.classes.graph.Graph.order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code></a>()</p></td>
+<td><p>Returns the number of nodes in the graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.raw_selfloop_dict" title="easygraph.classes.graph.Graph.raw_selfloop_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edge" title="easygraph.classes.graph.Graph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v)</p></td>
 <td><p>Remove one edge from your graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edges" title="easygraph.classes.graph.Graph.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code></a>(edges_to_remove)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edges" title="easygraph.classes.graph.Graph.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code></a>(edges_to_remove)</p></td>
 <td><p>Remove a list of edges from your graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_extra_selfloop" title="easygraph.classes.graph.Graph.remove_extra_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_extra_selfloop" title="easygraph.classes.graph.Graph.remove_extra_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code></a>()</p></td>
 <td><p>Remove extra selfloops from the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_node" title="easygraph.classes.graph.Graph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a>(node_to_remove)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_node" title="easygraph.classes.graph.Graph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a>(node_to_remove)</p></td>
 <td><p>Remove one node from your graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes" title="easygraph.classes.graph.Graph.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code></a>(nodes_to_remove)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes" title="easygraph.classes.graph.Graph.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code></a>(nodes_to_remove)</p></td>
 <td><p>Remove nodes from your graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes_from" title="easygraph.classes.graph.Graph.remove_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code></a>(nodes)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes_from" title="easygraph.classes.graph.Graph.remove_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code></a>(nodes)</p></td>
 <td><p>Remove multiple nodes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_selfloop" title="easygraph.classes.graph.Graph.remove_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_selfloop" title="easygraph.classes.graph.Graph.remove_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code></a>()</p></td>
 <td><p>Remove all selfloops from the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.size" title="easygraph.classes.graph.Graph.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a>([weight])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.size" title="easygraph.classes.graph.Graph.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a>([weight])</p></td>
 <td><p>Returns the number of edges or total of all edge weights.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.smoothing_with_GCN" title="easygraph.classes.graph.Graph.smoothing_with_GCN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code></a>(X[, drop_rate])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.smoothing_with_GCN" title="easygraph.classes.graph.Graph.smoothing_with_GCN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code></a>(X[, drop_rate])</p></td>
 <td><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed" title="easygraph.classes.graph.Graph.to_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed" title="easygraph.classes.graph.Graph.to_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code></a>()</p></td>
 <td><p>Returns a directed representation of the graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed_class" title="easygraph.classes.graph.Graph.to_directed_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed_class" title="easygraph.classes.graph.Graph.to_directed_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code></a>()</p></td>
 <td><p>Returns the class to use for empty directed copies.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_index_node_graph" title="easygraph.classes.graph.Graph.to_index_node_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code></a>([begin_index])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_index_node_graph" title="easygraph.classes.graph.Graph.to_index_node_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code></a>([begin_index])</p></td>
 <td><p>Returns a deep copy of graph, with each node switched to its index.</p></td>
 </tr>
 </tbody>
@@ -3760,6 +3776,17 @@ nbunch is not hashable, a <code class="xref py py-exc docutils literal notransla
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_index</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_index_dict">
+<span class="sig-name descname"><span class="pre">node_index_dict</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index_dict" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nodes">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.nodes" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -4201,52 +4228,55 @@ as well as node-to-index dictionary.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ego_subgraph</span></code>(self, center)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code>(self, u, y)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_linkgraph</span></code>(self[, weight])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code>(self, node)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code>(self, u, y)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code>(self)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code>(self, node)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code>(self)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code>(self[, nbunch])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code>(self, node)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code>(self[, nbunch])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(self, from_nodes)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code>(self, node)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>(self[, u, v])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(self, from_nodes)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>(self)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>(self[, u, v])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">py</span></code>(self)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code>(self, u, v)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">py</span></code>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(self, edges_to_remove)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code>(self, u, v)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(self, node_to_remove)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(self, edges_to_remove)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(self, nodes_to_remove)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(self, node_to_remove)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>(self[, weight])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(self, nodes_to_remove)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>(self[, begin_index])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>(self[, weight])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>(self[, begin_index])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -4282,7 +4312,7 @@ as well as node-to-index dictionary.</p>
 <li><p><strong>e_list</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[int],</span> <span class="pre">List[List[int]]]</span></code>, optional) – A list of hyperedges describes how the vertices point to the hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">Union[float,</span> <span class="pre">List[float]]</span></code>, optional) – A list of weights for hyperedges. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>merge_op</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The operation to merge those conflicting hyperedges in the same hyperedge group, which can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> or <code class="docutils literal notranslate"><span class="pre">'max'</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>.</p></li>
-<li><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>, optional) – The deivce to store the hypergraph. Defaults to <code class="docutils literal notranslate"><span class="pre">torch.device('cpu')</span></code>.</p></li>
+<li><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>, optional) – The device to store the hypergraph. Defaults to <code class="docutils literal notranslate"><span class="pre">torch.device('cpu')</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Attributes</dt>
@@ -5704,6 +5734,7 @@ remove those hyperedges from all hyperedge groups. Defaults to the <code class="
 </dd>
 <dt><strong>ndata</strong></dt><dd></dd>
 <dt><strong>node2index</strong></dt><dd></dd>
+<dt><strong>node_index</strong></dt><dd></dd>
 <dt><strong>nodes</strong></dt><dd></dd>
 </dl>
 </dd>
@@ -5806,58 +5837,61 @@ remove those hyperedges from all hyperedge groups. Defaults to the <code class="
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_dict_factory</span></code></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(from_nodes)</p></td>
-<td><p>Returns a subgraph of some nodes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.number_of_edges" title="easygraph.classes.multigraph.MultiGraph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
-<td><p>Returns the number of edges between two nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>()</p></td>
-<td><p>Returns the number of nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code>()</p></td>
-<td><p>Returns the number of nodes in the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index_dict</span></code></p></td>
 <td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.remove_edge" title="easygraph.classes.multigraph.MultiGraph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v[, key])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(from_nodes)</p></td>
+<td><p>Returns a subgraph of some nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.number_of_edges" title="easygraph.classes.multigraph.MultiGraph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
+<td><p>Returns the number of edges between two nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>()</p></td>
+<td><p>Returns the number of nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code>()</p></td>
+<td><p>Returns the number of nodes in the graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.remove_edge" title="easygraph.classes.multigraph.MultiGraph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v[, key])</p></td>
 <td><p>Remove an edge between u and v.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(edges_to_remove)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(edges_to_remove)</p></td>
 <td><p>Remove a list of edges from your graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.remove_edges_from" title="easygraph.classes.multigraph.MultiGraph.remove_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code></a>(ebunch)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.remove_edges_from" title="easygraph.classes.multigraph.MultiGraph.remove_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code></a>(ebunch)</p></td>
 <td><p>Remove all edges specified in ebunch.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code>()</p></td>
 <td><p>Remove extra selfloops from the graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(node_to_remove)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(node_to_remove)</p></td>
 <td><p>Remove one node from your graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(nodes_to_remove)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(nodes_to_remove)</p></td>
 <td><p>Remove nodes from your graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code>(nodes)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code>(nodes)</p></td>
 <td><p>Remove multiple nodes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code>()</p></td>
 <td><p>Remove all selfloops from the graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>([weight])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>([weight])</p></td>
 <td><p>Returns the number of edges or total of all edge weights.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code>(X[, drop_rate])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code>(X[, drop_rate])</p></td>
 <td><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.to_directed" title="easygraph.classes.multigraph.MultiGraph.to_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.multigraph.MultiGraph.to_directed" title="easygraph.classes.multigraph.MultiGraph.to_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code></a>()</p></td>
 <td><p>Returns a directed representation of the graph.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code>()</p></td>
 <td><p>Returns the class to use for empty directed copies.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>([begin_index])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>([begin_index])</p></td>
 <td><p>Returns a deep copy of graph, with each node switched to its index.</p></td>
 </tr>
 </tbody>
@@ -6476,8 +6510,25 @@ the nodes (in order) and added to the graph.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.classes.operation.density">
-<span class="sig-prename descclassname"><span class="pre">easygraph.classes.operation.</span></span><span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.classes.operation.density" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">easygraph.classes.operation.</span></span><span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/operation.html#density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.operation.density" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the density of a graph.</p>
+<p>The density for undirected graphs is</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[d = \frac{2m}{n(n-1)},\]</div>
+</div>
+<p>and for directed graphs is</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[d = \frac{m}{n(n-1)},\]</div>
+</div>
+<p>where <cite>n</cite> is the number of nodes and <cite>m</cite>  is the number of edges in <cite>G</cite>.</p>
+<p class="rubric">Notes</p>
+<p>The density is 0 for a graph without edges and 1 for a complete graph.
+The density of multigraphs can be higher than 1.</p>
+<p>Self loops are counted in the total number of edges so graphs with self
+loops can have density higher than 1.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.classes.operation.number_of_selfloops">

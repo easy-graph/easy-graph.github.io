@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2022.12.07 -->
-        <title>easygraph.datasets.eg_dataset - EasyGraph 0.2a46</title>
+        <title>easygraph.datasets.eg_dataset - EasyGraph 0.2a48</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a46</div></a>
+      <a href="../../../index.html"><div class="brand">EasyGraph 0.2a48</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,7 +149,7 @@
     <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 0.2a46</span>
+  <span class="sidebar-brand-text">EasyGraph 0.2a48</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -288,13 +288,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../videos.html">Tutorial Videos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
 </ul>
 </li>
@@ -364,7 +364,7 @@
 <span class="sd">      5. Call ``load()`` to load the processed dataset from disk.</span>
 <span class="sd">      6. Done.</span>
 
-<span class="sd">    Users can overwite these functions with their</span>
+<span class="sd">    Users can overwrite these functions with their</span>
 <span class="sd">    own data processing logic.</span>
 
 <span class="sd">    Parameters</span>
@@ -450,7 +450,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_load</span><span class="p">()</span>
 
 <div class="viewcode-block" id="EasyGraphDataset.download"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.eg_dataset.EasyGraphDataset.download">[docs]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Overwite to realize your own logic of downloading data.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Overwrite to realize your own logic of downloading data.</span>
 
 <span class="sd">        It is recommended to download the to the :obj:`self.raw_dir`</span>
 <span class="sd">        folder. Can be ignored if the dataset is</span>
@@ -459,7 +459,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="EasyGraphDataset.save"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.eg_dataset.EasyGraphDataset.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Overwite to realize your own logic of</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Overwrite to realize your own logic of</span>
 <span class="sd">        saving the processed dataset into files.</span>
 
 <span class="sd">        It is recommended to use ``dgl.data.utils.save_graphs``</span>
@@ -470,7 +470,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="EasyGraphDataset.load"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.eg_dataset.EasyGraphDataset.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Overwite to realize your own logic of</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Overwrite to realize your own logic of</span>
 <span class="sd">        loading the saved dataset from files.</span>
 
 <span class="sd">        It is recommended to use ``dgl.data.utils.load_graphs``</span>
@@ -513,7 +513,7 @@
 <span class="sd">        If cache exists:</span>
 
 <span class="sd">          - Load the dataset from saved dgl graph and information files.</span>
-<span class="sd">          - If loadin process fails, re-download and process the dataset.</span>
+<span class="sd">          - If loading process fails, re-download and process the dataset.</span>
 
 <span class="sd">        else:</span>
 
