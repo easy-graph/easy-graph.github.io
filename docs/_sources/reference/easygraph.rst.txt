@@ -12,7 +12,7 @@ Subpackages
    easygraph.functions
    easygraph.model
    easygraph.nn
-   easygraph.random
+   easygraph.randomhypergraph
    easygraph.readwrite
    easygraph.utils
 
