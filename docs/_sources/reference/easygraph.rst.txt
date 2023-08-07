@@ -8,11 +8,14 @@ Subpackages
    :maxdepth: 4
 
    easygraph.classes
+   easygraph.datapipe
    easygraph.datasets
+   easygraph.experiments
    easygraph.functions
+   easygraph.ml_metrics
    easygraph.model
    easygraph.nn
-   easygraph.random
+   easygraph.randomhypergraph
    easygraph.readwrite
    easygraph.utils
 
@@ -23,6 +26,14 @@ easygraph.convert module
 ------------------------
 
 .. automodule:: easygraph.convert
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.exception module
+--------------------------
+
+.. automodule:: easygraph.exception
    :members:
    :undoc-members:
    :show-inheritance:

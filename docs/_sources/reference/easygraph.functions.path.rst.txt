@@ -12,6 +12,14 @@ easygraph.functions.path.bridges module
    :undoc-members:
    :show-inheritance:
 
+easygraph.functions.path.diameter module
+----------------------------------------
+
+.. automodule:: easygraph.functions.path.diameter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.functions.path.mst module
 -----------------------------------
 

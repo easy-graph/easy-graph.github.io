@@ -15,6 +15,7 @@ Subpackages
    easygraph.functions.drawing
    easygraph.functions.graph_embedding
    easygraph.functions.graph_generator
+   easygraph.functions.hypergraph
    easygraph.functions.path
    easygraph.functions.structural_holes
 

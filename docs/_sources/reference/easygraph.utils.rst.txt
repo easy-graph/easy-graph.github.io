@@ -36,6 +36,14 @@ easygraph.utils.decorators module
    :undoc-members:
    :show-inheritance:
 
+easygraph.utils.download module
+-------------------------------
+
+.. automodule:: easygraph.utils.download
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.utils.exception module
 --------------------------------
 
@@ -48,6 +56,14 @@ easygraph.utils.index\_of\_node module
 --------------------------------------
 
 .. automodule:: easygraph.utils.index_of_node
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.utils.logging module
+------------------------------
+
+.. automodule:: easygraph.utils.logging
    :members:
    :undoc-members:
    :show-inheritance:
