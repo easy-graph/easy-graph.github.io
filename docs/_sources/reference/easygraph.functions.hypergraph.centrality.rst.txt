@@ -4,7 +4,6 @@ easygraph.functions.hypergraph.centrality package
 Submodules
 ----------
 
-<<<<<<< HEAD
 easygraph.functions.hypergraph.centrality.cycle\_ratio module
 -------------------------------------------------------------
 
@@ -13,8 +12,6 @@ easygraph.functions.hypergraph.centrality.cycle\_ratio module
    :undoc-members:
    :show-inheritance:
 
-=======
->>>>>>> refs/remotes/origin/main
 easygraph.functions.hypergraph.centrality.degree module
 -------------------------------------------------------
 
