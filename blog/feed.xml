@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://peppasaur.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://peppasaur.github.io/blog/" rel="alternate" type="text/html" /><updated>2023-08-17T23:09:31+08:00</updated><id>https://peppasaur.github.io/blog/feed.xml</id><title type="html">Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Quick Start with Easygraph</title><link href="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/tutorial.html" rel="alternate" type="text/html" title="Quick Start with Easygraph" /><published>2023-08-12T10:18:43+08:00</published><updated>2023-08-12T10:18:43+08:00</updated><id>https://peppasaur.github.io/blog/jekyll/update/2023/08/12/tutorial</id><content type="html" xml:base="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/tutorial.html"><![CDATA[<h2 id="introduction">Introduction：</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://peppasaur.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://peppasaur.github.io/blog/" rel="alternate" type="text/html" /><updated>2023-08-19T15:57:03+08:00</updated><id>https://peppasaur.github.io/blog/feed.xml</id><title type="html">Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Quick Start with Easygraph</title><link href="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/tutorial.html" rel="alternate" type="text/html" title="Quick Start with Easygraph" /><published>2023-08-12T10:18:43+08:00</published><updated>2023-08-12T10:18:43+08:00</updated><id>https://peppasaur.github.io/blog/jekyll/update/2023/08/12/tutorial</id><content type="html" xml:base="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/tutorial.html"><![CDATA[<h2 id="introduction">Introduction：</h2>
 <p>EasyGraph is an open-source toolbox for network analysis based on the Python language, developed by the Network Big Data Laboratory at Fudan University. It is the first open-source library that includes a comprehensive set of methods for detecting structural hole spanners, while also covering network embedding and various traditional network analysis techniques. EasyGraph supports multiple types of network data with excellent compatibility. Additionally, it leverages hybrid programming and parallel computing to enhance the efficiency of most classic network analysis algorithms.</p>
 
 <h2 id="install">Install：</h2>
@@ -32,21 +32,25 @@ eg.plot_Followers(G, shs)
 
 <h2 id="basic-properties-and-operation-of-graph">Basic Properties and Operation of Graph：</h2>
 
-<p>引用Easygraph并创建一个无向图G:</p>
+<p>Import <strong>EasyGraph</strong>, and start with an undirected graph G</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import easygraph as eg
 G=eg.Graph()
 </code></pre></div></div>
-<p>为图添加边(1,2)</p>
+<p>Add edge (1,2) and to the graph</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G.add_edge(1,2)#Add a single edge
 G.edges
 [(1, 2, {})]
 </code></pre></div></div>
-<p>为图添加几条边</p>
+<p>Add a few edges to the graph</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G.add_edges([(2, 3), (1, 3), (3, 4), (4, 5)])#Add edges
 G.edges
 [(1, 2, {}), (1, 3, {}), (2, 3, {}), (3, 4, {}), (4, 5, {})]
 </code></pre></div></div>
-<p>添加带属性的节点</p>
+<p>Add node (with attributes)</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G.add_node('hello world')
 G.add_node('Jack', node_attr={
     'age': 10,
@@ -61,17 +65,20 @@ G.nodes
         }
 }
 </code></pre></div></div>
-<p>删除节点</p>
+<p>Remove nodes</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G.remove_nodes(['hello world','Tom','Lily','a','b'])#remove edges
 G.nodes
 {1: {}, 2: {}, 3: {}, 4: {}, 5: {}}
 </code></pre></div></div>
-<p>删除边</p>
+<p>Remove edges</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G.remove_edge(4,5)
 G.edges
 [(1, 2, {}), (1, 3, {}), (2, 3, {}), (3, 4, {})]
 </code></pre></div></div>
-<p>高级python属性</p>
+<p>Advanced Python properties</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(len(G))#__len__(self)
 5
 for x in G:#__iter__(self)
@@ -84,14 +91,16 @@ for x in G:#__iter__(self)
 print(G[1])# return list(self._adj[node].keys()) __contains__ __getitem__
 {2: {}, 3: {}}
 </code></pre></div></div>
-<p>节点2的邻居</p>
+<p>Neighbors of node 2</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for neighbor in G.neighbors(node=2):
     print(neighbor)
 
 1
 3
 </code></pre></div></div>
-<p>添加带权边</p>
+<p>Add weighted edges</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G.add_edges([(1,2), (2, 3),(1, 3), (3, 4), (4, 5)], edges_attr=[
     {
         'weight': 20
@@ -117,13 +126,15 @@ G.nodes
 G.adj
 {1: {2: {'weight': 20}, 3: {'weight': 15}}, 2: {1: {'weight': 20}, 3: {'weight': 10}}, 3: {2: {'weight': 10}, 1: {'weight': 15}, 4: {'weight': 8}}, 4: {3: {'weight': 8}, 5: {'weight': 12}}, 5: {4: {'weight': 12}}, 6: {}}
 </code></pre></div></div>
-<p>度数和带权度数</p>
+<p>Degree and weighted Degree</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G.degree()
 {1: 35, 2: 30, 3: 33, 4: 20, 5: 12, 6: 0}
 G.degree(weight='weight')
 {1: 35, 2: 30, 3: 33, 4: 20, 5: 12, 6: 0}
 </code></pre></div></div>
-<p>交换每个节点的值和索引</p>
+<p>Transform each node’s value to its index</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G_index_graph, index_of_node, node_of_index = G.to_index_node_graph()
 G_index_graph.adj
 {0: {1: {'weight': 20}, 2: {'weight': 15}}, 1: {0: {'weight': 20}, 2: {'weight': 10}}, 2: {0: {'weight': 15}, 1: {'weight': 10}, 3: {'weight': 8}}, 3: {2: {'weight': 8}, 4: {'weight': 12}}, 4: {3: {'weight': 12}}, 5: {}}
@@ -132,22 +143,26 @@ index_of_node
 node_of_index
 {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6}
 </code></pre></div></div>
-<p>图的深度复制</p>
+<p>Deep copy of a given graph</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G1 = G.copy()
 G1.adj
 {1: {2: {'weight': 20}, 3: {'weight': 15}}, 2: {1: {'weight': 20}, 3: {'weight': 10}}, 3: {1: {'weight': 15}, 2: {'weight': 10}, 4: {'weight': 8}}, 4: {3: {'weight': 8}, 5: {'weight': 12}}, 5: {4: {'weight': 12}}, 6: {}}
 </code></pre></div></div>
-<p>给定节点的子图</p>
+<p>Subgraph of given nodes</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G_sub = G.nodes_subgraph(from_nodes = [1,2,3])
 G_sub.adj
 {1: {2: {'weight': 20}, 3: {'weight': 15}}, 2: {1: {'weight': 20}, 3: {'weight': 10}}, 3: {1: {'weight': 15}, 2: {'weight': 10}}}
 </code></pre></div></div>
-<p>给定节点的邻域图</p>
+<p>Egonetwork graph of given node</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ego_network = G.ego_subgraph(center=1)
 ego_network.adj
 {2: {1: {'weight': 20}, 3: {'weight': 10}}, 1: {2: {'weight': 20}, 3: {'weight': 15}}, 3: {2: {'weight': 10}, 1: {'weight': 15}}}
 </code></pre></div></div>
-<p>连通分量</p>
+<p>Connected components</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.number_connected_components(G)
 2
 eg.connected_components(G)
@@ -156,9 +171,10 @@ eg.connected_component_of_node(G, node=3)
 {1, 2, 3, 4, 5}
 </code></pre></div></div>
 
-<h2 id="结构洞占据者检测">结构洞占据者检测</h2>
+<h2 id="detection-of-structural-hole-spanners">Detection of Structural Hole Spanners</h2>
 
-<p>使用 MaxD 进行结构洞占据者检测</p>
+<p>Use MaxD for structural hole spanners detection</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M=eg.get_structural_holes_MaxD(G,
                           k = 5, # To find top five structural holes spanners.
                           C = [frozenset([1,2,3]), frozenset([4,5,6])] # Two communities
@@ -166,7 +182,8 @@ eg.connected_component_of_node(G, node=3)
 M
 [3, 1, 2, 4, 5]
 </code></pre></div></div>
-<p>使用 HAM 进行结构洞占据者检测</p>
+<p>Use HAM for structural hole spanners detection</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>top_k_nodes, SH_score, cmnt_labels = eg.get_structural_holes_HAM(G,
                         k=2,
                         c=2,
@@ -189,7 +206,8 @@ SH_score
 cmnt_labels
 {1: 2, 2: 2, 3: 2, 4: 1, 5: 1}
 </code></pre></div></div>
-<p>使用 Common Greedy 进行结构洞占据者检测</p>
+<p>Use Common Greedy for structural hole spanners detection</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>T = eg.common_greedy(G,
           k=3,
           c=1.0,
@@ -197,74 +215,51 @@ cmnt_labels
 T
 [3, 5, 2]
 </code></pre></div></div>
-<p>从 Karate Club 数据集获取示例图</p>
+<p>Get a sample graph from Karate Club dataset</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G=eg.datasets.get_graph_karateclub()
 </code></pre></div></div>
-<p>节点 3 的中介中心性</p>
+<p>Calculate Burt’s metrics for structural hole spanners</p>
+
+<p>Betweenness of node 3</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.ego_betweenness(G,3)
 6.5
 </code></pre></div></div>
-<p>所有节点的有效大小</p>
+<p>Effective size of all nodes</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.effective_size(G)
 {1: 11.75, 2: 4.333333333333333, 3: 5.8, 4: 0.666666666666667, 5: -0.3333333333333335, 6: 0.5, 7: 0.5, 8: -1.0, 9: 1.0, 10: 0.0, 11: -0.3333333333333335, 12: -1.0, 13: -1.0, 14: 0.5999999999999996, 15: -1.0, 16: -1.0, 17: -1.0, 18: -1.0, 19: -1.0, 20: 0.3333333333333335, 21: -1.0, 22: -1.0, 23: -1.0, 24: 1.4, 25: 0.3333333333333335, 26: 0.3333333333333335, 27: -1.0, 28: 1.5, 29: 0.3333333333333335, 30: 0.0, 31: 0.5, 32: 3.0, 33: 7.833333333333333, 34: 13.235294117647058}
 </code></pre></div></div>
-<p>所有节点的效率</p>
+<p>Efficiency of all nodes</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.efficiency(G)
 {1: 0.734375, 2: 0.48148148148148145, 3: 0.58, 4: 0.11111111111111116, 5: -0.11111111111111116, 6: 0.125, 7: 0.125, 8: -0.25, 9: 0.2, 10: 0.0, 11: -0.11111111111111116, 12: -1.0, 13: -0.5, 14: 0.11999999999999993, 15: -0.5, 16: -0.5, 17: -0.5, 18: -0.5, 19: -0.5, 20: 0.11111111111111116, 21: -0.5, 22: -0.5, 23: -0.5, 24: 0.27999999999999997, 25: 0.11111111111111116, 26: 0.11111111111111116, 27: -0.5, 28: 0.375, 29: 0.11111111111111116, 30: 0.0, 31: 0.125, 32: 0.5, 33: 0.6527777777777778, 34: 0.7785467128027681}
 </code></pre></div></div>
-<p>所有节点的约束</p>
+<p>Constraint of all nodes</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.constraint(G)
 {1: 0.15542329764660495, 2: 0.27953510802469134, 3: 0.18517663966049389, 4: 0.39665964720507535, 5: 0.5294174382716048, 6: 0.4774848090277778, 7: 0.4774848090277778, 8: 0.4427115885416667, 9: 0.3036007136678201, 10: 0.5, 11: 0.5294174382716048, 12: 1.0, 13: 0.6225043402777779, 14: 0.32333541666666676, 15: 0.5736795943867743, 16: 0.5736795943867743, 17: 0.78125, 18: 0.590868537808642, 19: 0.5736795943867743, 20: 0.37371935013717417, 21: 0.5736795943867743, 22: 0.590868537808642, 23: 0.5736795943867743, 24: 0.30582372164552096, 25: 0.4598765432098765, 26: 0.4598765432098765, 27: 0.6709018166089966, 28: 0.2850692041522491, 29: 0.3869131530607885, 30: 0.44940900134563627, 31: 0.3460064638600538, 32: 0.24457540369088812, 33: 0.2492233622751933, 34: 0.15641868512110732}
 </code></pre></div></div>
-<p>所有节点的层次结构</p>
+<p>Hierarchy of all nodes</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.hierarchy(G)
 {1: 0.08754463683694338, 2: 0.1544986992144599, 3: 0.04535921163684897, 4: 0.061067624090107915, 5: 0.07134469342227538, 6: 0.035305086439308436, 7: 0.03530508643930843, 8: 0.0011300905133206085, 9: 0.012305615918292673, 10: 0.0, 11: 0.07134469342227538, 13: 0.006282226820057121, 14: 0.01352163842686084, 15: 0.00037766424272729984, 16: 0.00037766424272729984, 17: 0.0, 18: 0.0014421896477064891, 19: 0.00037766424272729984, 20: 0.0033488184456886283, 21: 0.00037766424272729984, 22: 0.0014421896477064891, 23: 0.00037766424272729984, 24: 0.036897065903971515, 25: 0.024311482691998648, 26: 0.024311482691998648, 27: 0.01960343310353982, 28: 0.0086202479405721, 29: 0.007513545360870802, 30: 0.06689992156538088, 31: 0.01286931837997609, 32: 0.020491542893317758, 33: 0.3259402254099858, 34: 0.2416086531756689}
 </code></pre></div></div>
 
-<h2 id="使用c代码实现更好的表现">使用c++代码实现更好的表现</h2>
-<p>GraphC类提供了与Graph类拥有的大部分关键操作，如加点，加边等。
-EasyGraph 还通过 C++ 实现了四个重要的网络分析函数：
-1.多源迪杰斯特拉算法
-2.介数中心性
-3.紧密中心性
-4.K-Core</p>
+<h2 id="using-c-code-to-achieve-a-better-performance">Using C++ code to achieve a better performance</h2>
 
-<h2 id="graphc的基本使用">GraphC的基本使用</h2>
-<p>创建一个有向图G</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import easygraph as eg
-G_c=eg.DiGraphC()
-</code></pre></div></div>
-<p>向图中添加边 [(1,2), (2,4), (4,6), (6,5), (3,5), (1,3)]</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G_c.add_edges([(1,2), (2,4), (4,6), (6,5), (3,5), (1,3)],[{'weight': 2},{'weight': 1},{'weight': 3},{'weight': 1},{'weight': 4},{'weight': 1},])#Add edges with the corresponding edge weights
-G_c.edges
-[(3, 5, {'weight': 4.0}), (6, 5, {'weight': 1.0}), (4, 6, {'weight': 3.0}), (2, 4, {'weight': 1.0}), (1, 3, {'weight': 1.0}), (1, 2, {'weight': 2.0})]
-</code></pre></div></div>
-<p>节点索引</p>
+<ul>
+  <li>The GraphC class provides most key operations as the Graph class. e.g. add_node(), add_edges()</li>
+  <li>EasyGraph also provides three important network analysis functions implemented by C++ - multi_source_dijkstra() - betweenness_centrality() - closeness_centrality() - k_core()</li>
+</ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G_c.node_index # 我们为每个节点分配一个唯一的标识，从 0 到 n-1（n 是图中节点的数量）
-{1: 0, 2: 1, 4: 2, 6: 3, 5: 4, 3: 5}
-</code></pre></div></div>
-<p>以节点1为源的多源迪杰斯特拉算法</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.multi_source_dijkstra(G_c, sources=[1], weight="weight")
-[[0.0, 2.0, 3.0, 6.0, 5.0, 1.0]] # The results are retured by a structure of list of list according to the node index from 0 to n-1, where the values of the sublist refer to the shortest paths from source node `1` to other nodes in the graph
-</code></pre></div></div>
-<p>计算两个中心性度量：介数中心性和紧密中心性</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.betweenness_centrality(G_c)
-[0.0, 2.0, 3.0, 2.0, 0.0, 1.0]
-eg.closeness_centrality(G_c)
-[0.0, 0.10000000149011612, 0.20000000298023224, 0.13846154510974884, 0.2631579041481018, 0.20000000298023224]
-</code></pre></div></div>
-<p>k-core 函数</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.k_core(G_c)
-[2, 1, 1, 1, 0, 1]
-</code></pre></div></div>
-<p>PageRank 算法</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg.pagerank(G_c)
-[0.07353112885883649, 0.10478166923491646, 0.16259530606176315, 0.2117369675241203, 0.3425732590854471, 0.10478166923491646]
-</code></pre></div></div>
-<p><em>使用：</em>
-<em>对于类方法，调用和参数传递与 Python 相同。</em>
-<em>对于模块函数，EasyGraph 将根据图的类选择特定的代码进行执行。</em></p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction： EasyGraph is an open-source toolbox for network analysis based on the Python language, developed by the Network Big Data Laboratory at Fudan University. It is the first open-source library that includes a comprehensive set of methods for detecting structural hole spanners, while also covering network embedding and various traditional network analysis techniques. EasyGraph supports multiple types of network data with excellent compatibility. Additionally, it leverages hybrid programming and parallel computing to enhance the efficiency of most classic network analysis algorithms.]]></summary></entry><entry><title type="html">Quick Overview of EasyGraph: A Multifunctional, Cross-Platform, and Effective Library for Interdisciplinary</title><link href="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/rua.html" rel="alternate" type="text/html" title="Quick Overview of EasyGraph: A Multifunctional, Cross-Platform, and Effective Library for Interdisciplinary" /><published>2023-08-12T10:18:43+08:00</published><updated>2023-08-12T10:18:43+08:00</updated><id>https://peppasaur.github.io/blog/jekyll/update/2023/08/12/rua</id><content type="html" xml:base="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/rua.html"><![CDATA[<p>A graph is a primitive representation of relationships between entities, and it allows for a profound and direct understanding of the associations in the world. Typical applications of graph data include social networks, transaction data, knowledge graphs, transportation systems, biotechnology, ect. Social networks are a specific type of networks which are built upon the foundation of networks and guided by certain sociological theories.</p>
+<p><strong>Usage</strong></p>
+
+<ul>
+  <li>For class methods, calling and parameter passing are the same as python.</li>
+  <li>For module function, easygraph will select specific codes to execute according to the class of the graph.*</li>
+</ul>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction： EasyGraph is an open-source toolbox for network analysis based on the Python language, developed by the Network Big Data Laboratory at Fudan University. It is the first open-source library that includes a comprehensive set of methods for detecting structural hole spanners, while also covering network embedding and various traditional network analysis techniques. EasyGraph supports multiple types of network data with excellent compatibility. Additionally, it leverages hybrid programming and parallel computing to enhance the efficiency of most classic network analysis algorithms.]]></summary></entry><entry><title type="html">Quick Overview of EasyGraph: A Multifunctional, Cross-Platform, and Effective Library for Interdisciplinary</title><link href="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/rua.html" rel="alternate" type="text/html" title="Quick Overview of EasyGraph: A Multifunctional, Cross-Platform, and Effective Library for Interdisciplinary" /><published>2023-08-12T10:18:43+08:00</published><updated>2023-08-12T10:18:43+08:00</updated><id>https://peppasaur.github.io/blog/jekyll/update/2023/08/12/rua</id><content type="html" xml:base="https://peppasaur.github.io/blog/jekyll/update/2023/08/12/rua.html"><![CDATA[<p>A graph is a primitive representation of relationships between entities, and it allows for a profound and direct understanding of the associations in the world. Typical applications of graph data include social networks, transaction data, knowledge graphs, transportation systems, biotechnology, ect. Social networks are a specific type of networks which are built upon the foundation of networks and guided by certain sociological theories.</p>
 
 <p>Graph Analysis focuses on analyzing the strength and direction of relationships between entities in graph data, thereby uncovering features and assisting in decision-making.</p>
 
