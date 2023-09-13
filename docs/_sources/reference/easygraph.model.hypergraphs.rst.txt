@@ -12,6 +12,14 @@ easygraph.model.hypergraphs.dhcf module
    :undoc-members:
    :show-inheritance:
 
+easygraph.model.hypergraphs.dhne module
+---------------------------------------
+
+.. automodule:: easygraph.model.hypergraphs.dhne
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.model.hypergraphs.hgnn module
 ---------------------------------------
 

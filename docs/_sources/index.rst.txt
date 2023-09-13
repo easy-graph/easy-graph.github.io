@@ -18,14 +18,14 @@ Welcome to EasyGraph !
 .. image:: https://static.pepy.tech/personalized-badge/python-easygraph?period=total&units=international_system&left_color=brightgreen&right_color=yellowgreen&left_text=Downloads
    :target: https://pypi.org/project/Python-EasyGraph/
 
-EasyGraph is an open source graph processing library. It is written in Python and supports analysis for undirected graphs and directed graphs. 
-It covers advanced graph processing methods in structural hole spanners detection, graph embedding and several classic methods (subgraph 
-generation, connected component discovery and isomorphic graph generation). 
+EasyGraph is an open source network analysis library. It is written in Python and supports analysis for undirected networks and directed networks. 
+It covers advanced network analysis methods in structural hole spanners detection, network embedding and several classic methods (centrality calculation, 
+connected component discovery and finding the shortest paths). 
 
-EasyGraph integrates state-of-the-art graph processing approaches and implements them using Python. EasyGraph covers a series of advanced graph 
-processing algorithms include structural hole spanners detection (HIS, MaxD, Common_Greedy, AP_Greedy and HAM), and graph representation learning 
-(DeepWalk, Node2Vec, LINE and SDNE). Besides, for a number of general graph processing approaches, EasyGraph optimizes the algorithms and introduces 
-parallel computing methods to achieve high efficiency. 
+EasyGraph integrates state-of-the-art network analysis approaches and implements them using Python. EasyGraph covers a series of advanced network analysis
+algorithms include structural hole spanners detection (HIS, MaxD, Common_Greedy, AP_Greedy and HAM), and network representation learning 
+(DeepWalk, Node2Vec, LINE and SDNE). Besides, for a number of general network analysis approaches, EasyGraph optimizes them and introduces 
+parallel computing and Python/C++ hybrid programming techniques to achieve high efficiency. 
 
 .. toctree::
    :maxdepth: 2

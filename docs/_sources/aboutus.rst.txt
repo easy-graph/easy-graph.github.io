@@ -3,7 +3,7 @@ About Us
 
 
 We are from the `DataNET Group <http://fudan-datanet.mysxl.cn/>`_ at Fudan University.
-Our goal is to build a cross-platform library which could be useful for social network analytics.
+Our goal is to build a cross-platform library which could be useful for interdisciplinary network analytics.
 Please feel free to email us at mgao21@m.fudan.edu.cn.
 
 
