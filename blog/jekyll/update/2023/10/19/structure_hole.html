@@ -3,23 +3,23 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>EasyGraph Usage Notes: Computation of Classic Structural Hole Indicators | Blog</title>
+<title>EasyGraph: A Guide to Computing Classic Structural Hole Indicators | Blog</title>
 <meta name="generator" content="Jekyll v4.3.2" />
-<meta property="og:title" content="EasyGraph Usage Notes: Computation of Classic Structural Hole Indicators" />
+<meta property="og:title" content="EasyGraph: A Guide to Computing Classic Structural Hole Indicators" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Introduction： EasyGraph is an open-source toolbox for network analysis based on the Python language, developed by DataNet team at Fudan University. It is the first open-source library that includes a comprehensive set of methods for detecting structural hole spanners, while also covering network embedding and various traditional network analysis techniques. EasyGraph supports multiple types of network data with excellent compatibility. Additionally, it leverages hybrid programming and parallel computing to enhance the efficiency of most classic network analysis algorithms." />
 <meta property="og:description" content="Introduction： EasyGraph is an open-source toolbox for network analysis based on the Python language, developed by DataNet team at Fudan University. It is the first open-source library that includes a comprehensive set of methods for detecting structural hole spanners, while also covering network embedding and various traditional network analysis techniques. EasyGraph supports multiple types of network data with excellent compatibility. Additionally, it leverages hybrid programming and parallel computing to enhance the efficiency of most classic network analysis algorithms." />
-<link rel="canonical" href="http://localhost:4000/blog/jekyll/update/2023/10/19/structure_hole.html" />
-<meta property="og:url" content="http://localhost:4000/blog/jekyll/update/2023/10/19/structure_hole.html" />
+<link rel="canonical" href="https://peppasaur.github.io/blog/jekyll/update/2023/10/19/structure_hole.html" />
+<meta property="og:url" content="https://peppasaur.github.io/blog/jekyll/update/2023/10/19/structure_hole.html" />
 <meta property="og:site_name" content="Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-10-19T10:18:43+08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="EasyGraph Usage Notes: Computation of Classic Structural Hole Indicators" />
+<meta property="twitter:title" content="EasyGraph: A Guide to Computing Classic Structural Hole Indicators" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-10-19T10:18:43+08:00","datePublished":"2023-10-19T10:18:43+08:00","description":"Introduction： EasyGraph is an open-source toolbox for network analysis based on the Python language, developed by DataNet team at Fudan University. It is the first open-source library that includes a comprehensive set of methods for detecting structural hole spanners, while also covering network embedding and various traditional network analysis techniques. EasyGraph supports multiple types of network data with excellent compatibility. Additionally, it leverages hybrid programming and parallel computing to enhance the efficiency of most classic network analysis algorithms.","headline":"EasyGraph Usage Notes: Computation of Classic Structural Hole Indicators","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/jekyll/update/2023/10/19/structure_hole.html"},"url":"http://localhost:4000/blog/jekyll/update/2023/10/19/structure_hole.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-10-19T10:18:43+08:00","datePublished":"2023-10-19T10:18:43+08:00","description":"Introduction： EasyGraph is an open-source toolbox for network analysis based on the Python language, developed by DataNet team at Fudan University. It is the first open-source library that includes a comprehensive set of methods for detecting structural hole spanners, while also covering network embedding and various traditional network analysis techniques. EasyGraph supports multiple types of network data with excellent compatibility. Additionally, it leverages hybrid programming and parallel computing to enhance the efficiency of most classic network analysis algorithms.","headline":"EasyGraph: A Guide to Computing Classic Structural Hole Indicators","mainEntityOfPage":{"@type":"WebPage","@id":"https://peppasaur.github.io/blog/jekyll/update/2023/10/19/structure_hole.html"},"url":"https://peppasaur.github.io/blog/jekyll/update/2023/10/19/structure_hole.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="Blog" /></head>
+<link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://peppasaur.github.io/blog/feed.xml" title="Blog" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Blog</a><nav class="site-nav">
@@ -40,7 +40,7 @@
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">EasyGraph Usage Notes: Computation of Classic Structural Hole Indicators</h1>
+    <h1 class="post-title p-name" itemprop="name headline">EasyGraph: A Guide to Computing Classic Structural Hole Indicators</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="2023-10-19T10:18:43+08:00" itemprop="datePublished">Oct 19, 2023
       </time></p>
@@ -65,8 +65,8 @@ connections of a node.</p>
 
 <p><img src="https://cdn-images-1.medium.com/max/800/1*YWG2j4f22wmdchKCVrwD_g.png" alt="img" /></p>
 
-<p>p(u,w) is the normalized mutual weight of the (directed or undirected) edges
-joining u and w, while m(v,w) is calculated by dividing the normalized mutual weight between v and w by the maximal normalized mutual weight between v and its neighbors.</p>
+<p><em>p(u,w)</em> is the normalized mutual weight of the (directed or undirected) edges
+joining <em>u</em> and <em>w</em>, while <em>m(v,w)</em> is calculated by dividing the normalized mutual weight between <em>v</em> and <em>w</em> by the maximal normalized mutual weight between <em>v</em> and its neighbors.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="nx">easygraph</span><span class="p">.</span><span class="nx">datasets</span> <span class="k">import</span> <span class="nx">get_graph_karateclub</span>
 <span class="k">import</span> <span class="nx">easygraph</span> <span class="k">as</span> <span class="nx">eg</span>
@@ -104,7 +104,7 @@ joining u and w, while m(v,w) is calculated by dividing the normalized mutual we
 </code></pre></div></div>
 <h2 id="hierarchy">hierarchy</h2>
 
-<p>Hierarchy is an indicator that measures the extent to which the aggregate constraint on ego is concentrated in a single contact. while h(i) that equals 1.0 indicates that all the constraint is concentrated in a single contact.</p>
+<p>Hierarchy is an indicator that measures the extent to which the aggregate constraint within the ego network is concentrated in a single contact. while <em>h(i)</em> that equals 1.0 indicates that all the constraint is concentrated in a single contact.</p>
 
 <p><a href="https://github.com/easy-graph/Easy-Graph/blob/8f85a16ae374a8bddf70567321337dab603a65b9/easygraph/functions/structural_holes/evaluation.py#L337">source code</a></p>
 
@@ -112,11 +112,11 @@ joining u and w, while m(v,w) is calculated by dividing the normalized mutual we
 <span class="k">for</span> <span class="nx">node</span><span class="p">,</span><span class="nx">val</span> <span class="k">in</span> <span class="nx">hier</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
 	<span class="nf">print</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span><span class="nx">val</span><span class="p">)</span>
 </code></pre></div></div>
-<p>Effective size, constraint, and hierarchy, these three indicators all imply the presence of structural holes. Below is an example using the Karate Club dataset.</p>
+<p>Here, we test these three metrics including effective size, constraint, and hierarchy to identify structural hole spanners by EasyGraph. Below is an example using the Karate Club dataset.</p>
 
-<p><img src="https://cdn-images-1.medium.com/max/800/0*n6olVLNYSH48Ti5x.png" alt="img" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*MslbvQNcbooZNTlY7cKZFg.png" alt="img" /></p>
 
-<p>In this image, the red color indicates the top 5 nodes with the maximum effective size, the yellow color marks the 5 nodes with the minimum constraint, and the blue color represents the 5 nodes with the minimum hierarchy.</p>
+<p>In this figure, the red color indicates the top 5 nodes with the maximum effective size, the green color marks the 5 nodes with the minimum constraint, and the blue color represents the 5 nodes with the minimum hierarchy.</p>
 
 <p>It can be observed that four out of the top 5 nodes with the maximum effective size overlap with the minimum constraint nodes, highlighting a strong association between these classic indicators and structural holes, providing direction for maximizing information dissemination.</p>
 
