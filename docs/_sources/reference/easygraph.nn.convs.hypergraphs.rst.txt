@@ -12,6 +12,14 @@ easygraph.nn.convs.hypergraphs.dhcf\_conv module
    :undoc-members:
    :show-inheritance:
 
+easygraph.nn.convs.hypergraphs.halfnlh\_conv module
+---------------------------------------------------
+
+.. automodule:: easygraph.nn.convs.hypergraphs.halfnlh_conv
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.nn.convs.hypergraphs.hgnn\_conv module
 ------------------------------------------------
 

@@ -4,7 +4,7 @@ License
 
     BSD 3-Clause License
 
-    Copyright (c) 2020-2022, Mobile Systems and Networking Group, Fudan University
+    Copyright (c) 2020-2024, Mobile Systems and Networking Group, Fudan University
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without

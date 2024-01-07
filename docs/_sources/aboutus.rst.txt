@@ -9,13 +9,13 @@ Please feel free to email us at mgao21@m.fudan.edu.cn.
 
 
 
-**Core Developers**
+**Developers**
 
 * `Min Gao <https://mgao.mystrikingly.com/>`_ (Lead)
 * `Bodian Ye <https://bdye.mysxl.cn/>`_
 * Haoran Qin
 
-**Former Core Developers**
+**Former Developers**
 
 * `Zheng Li <https://icypole.github.io/>`_ (Former Lead)
 * `Xinlei He <https://willingnesshxl.github.io/xlhe/>`_

@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Scripts and guides for generating documentation for EasyGraph" href="easygraph-doc-source.html" /><link rel="prev" title="Building and Releasing python-easygraph" href="releasing.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.05.20 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>(Mostly) Manually Building and Releasing python-easygraph - EasyGraph 1.0</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=547657ed" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -144,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
@@ -262,7 +262,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/easygraph.randomhypergraph.html">easygraph.randomhypergraph package</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../reference/easygraph.readwrite.html">easygraph.readwrite package</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of easygraph.readwrite package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
 </ul>
@@ -316,7 +315,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/easygraph.randomhypergraph.html">easygraph.randomhypergraph package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../reference/easygraph.readwrite.html">easygraph.readwrite package</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><div class="visually-hidden">Toggle navigation of easygraph.readwrite package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
 </ul>
@@ -375,7 +373,7 @@
         </div>
         <article role="main">
           <section id="mostly-manually-building-and-releasing-python-easygraph">
-<h1>(Mostly) Manually Building and Releasing python-easygraph<a class="headerlink" href="#mostly-manually-building-and-releasing-python-easygraph" title="Permalink to this heading"></a></h1>
+<h1>(Mostly) Manually Building and Releasing python-easygraph<a class="headerlink" href="#mostly-manually-building-and-releasing-python-easygraph" title="Link to this heading"></a></h1>
 <!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) --><p>We choose to build Linux wheels on GitHub Actions because it’s reliable.
 For other platforms, we build manually on our machines, because we’ve
 yet to find a way to make it work on GitHub Actions.</p>
@@ -397,16 +395,16 @@ PyPI</a></p></li>
 </li>
 </ul>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
 <section id="install-github-cli">
-<h3>Install GitHub CLI<a class="headerlink" href="#install-github-cli" title="Permalink to this heading"></a></h3>
+<h3>Install GitHub CLI<a class="headerlink" href="#install-github-cli" title="Link to this heading"></a></h3>
 <p>Please refer to <a class="reference external" href="https://cli.github.com/manual/installation">GitHub CLI
 documentation</a> for
 installation instructions.</p>
 </section>
 </section>
 <section id="build-for-linux-x86-64">
-<h2>Build for Linux x86_64<a class="headerlink" href="#build-for-linux-x86-64" title="Permalink to this heading"></a></h2>
+<h2>Build for Linux x86_64<a class="headerlink" href="#build-for-linux-x86-64" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">workflow</span> <span class="n">run</span> <span class="n">release</span><span class="o">-</span><span class="n">cibuildwheel</span><span class="o">.</span><span class="n">yaml</span> <span class="o">-</span><span class="n">F</span> <span class="n">upload</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -418,7 +416,7 @@ distribution and <code class="docutils literal notranslate"><span class="pre">.w
 applicable).</p>
 </section>
 <section id="build-for-other-platforms">
-<h2>Build for other platforms<a class="headerlink" href="#build-for-other-platforms" title="Permalink to this heading"></a></h2>
+<h2>Build for other platforms<a class="headerlink" href="#build-for-other-platforms" title="Link to this heading"></a></h2>
 <p>Do it manually on your machines:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3.<span class="o">{</span><span class="m">7</span>..10<span class="o">}</span><span class="w"> </span>setup.py<span class="w"> </span>build_ext<span class="w"> </span><span class="c1"># expand the command yourself, to python3.10 etc</span>
 </pre></div>
@@ -426,7 +424,7 @@ applicable).</p>
 <p>Locate find the built <code class="docutils literal notranslate"><span class="pre">.whl</span></code> files.</p>
 </section>
 <section id="put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi">
-<h2>Put all the wheel files and source distribution in a directory and upload to PyPI<a class="headerlink" href="#put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi" title="Permalink to this heading"></a></h2>
+<h2>Put all the wheel files and source distribution in a directory and upload to PyPI<a class="headerlink" href="#put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi" title="Link to this heading"></a></h2>
 <p>Put all the wheel files and source distribution built in the previous 2
 steps in a directory <code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;</span></code>, and run</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">twine</span> <span class="n">upload</span> <span class="o">&lt;</span><span class="n">your_directory</span><span class="o">&gt;/*</span>
@@ -509,12 +507,10 @@ steps in a directory <code class="docutils literal notranslate"><span class="pre
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/copybutton.js"></script>
+</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/copybutton.js?v=e333d19b"></script>
     </body>
 </html>

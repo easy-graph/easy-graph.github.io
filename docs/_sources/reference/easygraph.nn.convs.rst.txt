@@ -20,6 +20,14 @@ easygraph.nn.convs.common module
    :undoc-members:
    :show-inheritance:
 
+easygraph.nn.convs.pma module
+-----------------------------
+
+.. automodule:: easygraph.nn.convs.pma
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

@@ -52,6 +52,14 @@ easygraph.model.hypergraphs.hypergcn module
    :undoc-members:
    :show-inheritance:
 
+easygraph.model.hypergraphs.setgnn module
+-----------------------------------------
+
+.. automodule:: easygraph.model.hypergraphs.setgnn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.model.hypergraphs.unignn module
 -----------------------------------------
 

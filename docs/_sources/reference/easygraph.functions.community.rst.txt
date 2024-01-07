@@ -12,6 +12,22 @@ easygraph.functions.community.LPA module
    :undoc-members:
    :show-inheritance:
 
+easygraph.functions.community.ego\_graph module
+-----------------------------------------------
+
+.. automodule:: easygraph.functions.community.ego_graph
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.functions.community.louvain module
+--------------------------------------------
+
+.. automodule:: easygraph.functions.community.louvain
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.functions.community.modularity module
 -----------------------------------------------
 

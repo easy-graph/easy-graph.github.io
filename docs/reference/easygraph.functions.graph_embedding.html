@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph.functions.graph_generator package" href="easygraph.functions.graph_generator.html" /><link rel="prev" title="easygraph.functions.drawing package" href="easygraph.functions.drawing.html" />
 
-    <!-- Generated with Sphinx 5.0.2 and Furo 2023.05.20 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>easygraph.functions.graph_embedding package - EasyGraph 1.0</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=547657ed" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -144,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
@@ -262,7 +262,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.randomhypergraph.html">easygraph.randomhypergraph package</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of easygraph.readwrite package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
 </ul>
@@ -316,7 +315,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="easygraph.randomhypergraph.html">easygraph.randomhypergraph package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><div class="visually-hidden">Toggle navigation of easygraph.readwrite package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
 </ul>
@@ -375,263 +373,30 @@
         </div>
         <article role="main">
           <section id="easygraph-functions-graph-embedding-package">
-<h1>easygraph.functions.graph_embedding package<a class="headerlink" href="#easygraph-functions-graph-embedding-package" title="Permalink to this heading"></a></h1>
+<h1>easygraph.functions.graph_embedding package<a class="headerlink" href="#easygraph-functions-graph-embedding-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.graph_embedding.NOBE">
-<span id="easygraph-functions-graph-embedding-nobe-module"></span><h2>easygraph.functions.graph_embedding.NOBE module<a class="headerlink" href="#module-easygraph.functions.graph_embedding.NOBE" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.NOBE.NOBE">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.graph_embedding.NOBE.</span></span><span class="sig-name descname"><span class="pre">NOBE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/NOBE.html#NOBE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.NOBE.NOBE" title="Permalink to this definition"></a></dt>
-<dd><p>Graph embedding via NOBE[1].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>easygraph.Graph</em>) – An unweighted and undirected graph.</p></li>
-<li><p><strong>K</strong> (<em>int</em>) – Embedding dimension k</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>Y</strong> – list of embedding vectors (y1, y2, · · · , yn)</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">NOBE</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">K</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id1"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://www.researchgate.net/publication/325004496_On_Spectral_Graph_Embedding_A_Non-Backtracking_Perspective_and_Graph_Approximation">https://www.researchgate.net/publication/325004496_On_Spectral_Graph_Embedding_A_Non-Backtracking_Perspective_and_Graph_Approximation</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.NOBE.NOBE_GA">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.graph_embedding.NOBE.</span></span><span class="sig-name descname"><span class="pre">NOBE_GA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/NOBE.html#NOBE_GA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.NOBE.NOBE_GA" title="Permalink to this definition"></a></dt>
-<dd><p>Graph embedding via NOBE-GA[1].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>easygraph.Graph</em>) – An unweighted and undirected graph.</p></li>
-<li><p><strong>K</strong> (<em>int</em>) – Embedding dimension k</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>Y</strong> – list of embedding vectors (y1, y2, · · · , yn)</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">NOBE_GA</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">K</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://www.researchgate.net/publication/325004496_On_Spectral_Graph_Embedding_A_Non-Backtracking_Perspective_and_Graph_Approximation">https://www.researchgate.net/publication/325004496_On_Spectral_Graph_Embedding_A_Non-Backtracking_Perspective_and_Graph_Approximation</a></p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="easygraph-functions-graph-embedding-nobe-module">
+<h2>easygraph.functions.graph_embedding.NOBE module<a class="headerlink" href="#easygraph-functions-graph-embedding-nobe-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.graph_embedding.deepwalk">
-<span id="easygraph-functions-graph-embedding-deepwalk-module"></span><h2>easygraph.functions.graph_embedding.deepwalk module<a class="headerlink" href="#module-easygraph.functions.graph_embedding.deepwalk" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.deepwalk.deepwalk">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.graph_embedding.deepwalk.</span></span><span class="sig-name descname"><span class="pre">deepwalk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">walk_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_walks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">skip_gram_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/deepwalk.html#deepwalk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.deepwalk.deepwalk" title="Permalink to this definition"></a></dt>
-<dd><p>Graph embedding via DeepWalk.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>easygraph.Graph</em><em> or </em><em>easygraph.DiGraph</em>) – </p></li>
-<li><p><strong>dimensions</strong> (<em>int</em>) – Embedding dimensions, optional(default: 128)</p></li>
-<li><p><strong>walk_length</strong> (<em>int</em>) – Number of nodes in each walk, optional(default: 80)</p></li>
-<li><p><strong>num_walks</strong> (<em>int</em>) – Number of walks per node, optional(default: 10)</p></li>
-<li><p><strong>skip_gram_params</strong> (<em>dict</em>) – Parameters for gensim.models.Word2Vec - do not supply <cite>size</cite>, it is taken from the <cite>dimensions</cite> parameter</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>embedding_vector</strong> (<em>dict</em>) – The embedding vector of each node</p></li>
-<li><p><strong>most_similar_nodes_of_node</strong> (<em>dict</em>) – The most similar nodes of each node and its similarity</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deepwalk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">dimensions</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="c1"># The graph embedding dimensions.</span>
-<span class="gp">... </span>         <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># Walk length of each random walks.</span>
-<span class="gp">... </span>         <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># Number of random walks.</span>
-<span class="gp">... </span>         <span class="n">skip_gram_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="c1"># The skip_gram parameters in Python package gensim.</span>
-<span class="gp">... </span>         <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="n">batch_words</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="nb">iter</span><span class="o">=</span><span class="mi">15</span>
-<span class="gp">... </span>         <span class="p">))</span>
-</pre></div>
-</div>
-<p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://arxiv.org/abs/1403.6652">https://arxiv.org/abs/1403.6652</a></p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="easygraph-functions-graph-embedding-deepwalk-module">
+<h2>easygraph.functions.graph_embedding.deepwalk module<a class="headerlink" href="#easygraph-functions-graph-embedding-deepwalk-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.graph_embedding.line">
-<span id="easygraph-functions-graph-embedding-line-module"></span><h2>easygraph.functions.graph_embedding.line module<a class="headerlink" href="#module-easygraph.functions.graph_embedding.line" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.line.LINE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.functions.graph_embedding.line.</span></span><span class="sig-name descname"><span class="pre">LINE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">walk_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">walk_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/line.html#LINE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.line.LINE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>Graph embedding via LINE.
-:param G:
-:type G: easygraph.Graph or easygraph.DiGraph
-:param dimension:
-:type dimension: int
-:param walk_length:
-:type walk_length: int
-:param walk_num:
-:type walk_num: int
-:param negative:
-:type negative: int
-:param batch_size:
-:type batch_size: int
-:param init_alpha:
-:type init_alpha: float
-:param order:
-:type order: int</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>embedding_vector</strong> – The embedding vector of each node</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">LINE</span><span class="p">(</span>
-<span class="gp">... </span>         <span class="n">dimension</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">walk_num</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">negative</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">init_alpha</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">order</span><span class="o">=</span><span class="mi">3</span>  <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">emb</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># g: easygraph.Graph or easygraph.DiGraph</span>
-</pre></div>
-</div>
-<p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span></dt>
-<dd><p>Tang, J., Qu, M., Wang, M., Zhang, M., Yan, J., &amp; Mei, Q. (2015, May). Line: Large-scale information network embedding. In Proceedings of the 24th international conference on world wide web (pp. 1067-1077).</p>
-</dd>
-</dl>
-<p><a class="reference external" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/frp0228-Tang.pdf">https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/frp0228-Tang.pdf</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.line.LINE.add_args">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/line.html#LINE.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.line.LINE.add_args" title="Permalink to this definition"></a></dt>
-<dd><p>Add model-specific arguments to the parser.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.line.LINE.build_model_from_args">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_model_from_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/line.html#LINE.build_model_from_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.line.LINE.build_model_from_args" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.line.LINE.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/line.html#LINE.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.line.LINE.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Defines the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-</div>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.line.LINE.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.functions.graph_embedding.line.LINE.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-functions-graph-embedding-line-module">
+<h2>easygraph.functions.graph_embedding.line module<a class="headerlink" href="#easygraph-functions-graph-embedding-line-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.graph_embedding.net_emb_example_citeseer">
-<span id="easygraph-functions-graph-embedding-net-emb-example-citeseer-module"></span><h2>easygraph.functions.graph_embedding.net_emb_example_citeseer module<a class="headerlink" href="#module-easygraph.functions.graph_embedding.net_emb_example_citeseer" title="Permalink to this heading"></a></h2>
+<section id="easygraph-functions-graph-embedding-net-emb-example-citeseer-module">
+<h2>easygraph.functions.graph_embedding.net_emb_example_citeseer module<a class="headerlink" href="#easygraph-functions-graph-embedding-net-emb-example-citeseer-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.graph_embedding.node2vec">
-<span id="easygraph-functions-graph-embedding-node2vec-module"></span><h2>easygraph.functions.graph_embedding.node2vec module<a class="headerlink" href="#module-easygraph.functions.graph_embedding.node2vec" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.graph_embedding.node2vec.node2vec">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.graph_embedding.node2vec.</span></span><span class="sig-name descname"><span class="pre">node2vec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">walk_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_walks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">skip_gram_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/graph_embedding/node2vec.html#node2vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.graph_embedding.node2vec.node2vec" title="Permalink to this definition"></a></dt>
-<dd><p>Graph embedding via Node2Vec.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>easygraph.Graph</em><em> or </em><em>easygraph.DiGraph</em>) – </p></li>
-<li><p><strong>dimensions</strong> (<em>int</em>) – Embedding dimensions, optional(default: 128)</p></li>
-<li><p><strong>walk_length</strong> (<em>int</em>) – Number of nodes in each walk, optional(default: 80)</p></li>
-<li><p><strong>num_walks</strong> (<em>int</em>) – Number of walks per node, optional(default: 10)</p></li>
-<li><p><strong>p</strong> (<em>float</em>) – The return hyper parameter, optional(default: 1.0)</p></li>
-<li><p><strong>q</strong> (<em>float</em>) – The input parameter, optional(default: 1.0)</p></li>
-<li><p><strong>weight_key</strong> (<em>string</em><em> or </em><em>None</em><em> (</em><em>default: None</em><em>)</em>) – On weighted graphs, this is the key for the weight attribute</p></li>
-<li><p><strong>workers</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em><em>(</em><em>default : None</em><em>)</em>) – The number of workers generating random walks (default: None). None if not using only one worker.</p></li>
-<li><p><strong>skip_gram_params</strong> (<em>dict</em>) – Parameters for gensim.models.Word2Vec - do not supply ‘size’, it is taken from the ‘dimensions’ parameter</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>embedding_vector</strong> (<em>dict</em>) – The embedding vector of each node</p></li>
-<li><p><strong>most_similar_nodes_of_node</strong> (<em>dict</em>) – The most similar nodes of each node and its similarity</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node2vec</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">dimensions</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="c1"># The graph embedding dimensions.</span>
-<span class="gp">... </span>         <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># Walk length of each random walks.</span>
-<span class="gp">... </span>         <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># Number of random walks.</span>
-<span class="gp">... </span>         <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># The `p` possibility in random walk in [1]_</span>
-<span class="gp">... </span>         <span class="n">q</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># The `q` possibility in random walk in [1]_</span>
-<span class="gp">... </span>         <span class="n">weight_key</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">skip_gram_params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span> <span class="c1"># The skip_gram parameters in Python package gensim.</span>
-<span class="gp">... </span>         <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="n">batch_words</span><span class="o">=</span><span class="mi">4</span>
-<span class="gp">... </span>         <span class="p">))</span>
-</pre></div>
-</div>
-<p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://arxiv.org/abs/1607.00653">https://arxiv.org/abs/1607.00653</a></p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="easygraph-functions-graph-embedding-node2vec-module">
+<h2>easygraph.functions.graph_embedding.node2vec module<a class="headerlink" href="#easygraph-functions-graph-embedding-node2vec-module" title="Link to this heading"></a></h2>
 </section>
 <section id="easygraph-functions-graph-embedding-sdne-module">
-<h2>easygraph.functions.graph_embedding.sdne module<a class="headerlink" href="#easygraph-functions-graph-embedding-sdne-module" title="Permalink to this heading"></a></h2>
+<h2>easygraph.functions.graph_embedding.sdne module<a class="headerlink" href="#easygraph-functions-graph-embedding-sdne-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.graph_embedding">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.functions.graph_embedding" title="Permalink to this heading"></a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 </section>
 </section>
 
@@ -692,13 +457,13 @@ registered hooks while the latter silently ignores them.</p>
             <ul>
 <li><a class="reference internal" href="#">easygraph.functions.graph_embedding package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.graph_embedding.NOBE">easygraph.functions.graph_embedding.NOBE module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.graph_embedding.deepwalk">easygraph.functions.graph_embedding.deepwalk module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.graph_embedding.line">easygraph.functions.graph_embedding.line module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.graph_embedding.net_emb_example_citeseer">easygraph.functions.graph_embedding.net_emb_example_citeseer module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.graph_embedding.node2vec">easygraph.functions.graph_embedding.node2vec module</a></li>
+<li><a class="reference internal" href="#easygraph-functions-graph-embedding-nobe-module">easygraph.functions.graph_embedding.NOBE module</a></li>
+<li><a class="reference internal" href="#easygraph-functions-graph-embedding-deepwalk-module">easygraph.functions.graph_embedding.deepwalk module</a></li>
+<li><a class="reference internal" href="#easygraph-functions-graph-embedding-line-module">easygraph.functions.graph_embedding.line module</a></li>
+<li><a class="reference internal" href="#easygraph-functions-graph-embedding-net-emb-example-citeseer-module">easygraph.functions.graph_embedding.net_emb_example_citeseer module</a></li>
+<li><a class="reference internal" href="#easygraph-functions-graph-embedding-node2vec-module">easygraph.functions.graph_embedding.node2vec module</a></li>
 <li><a class="reference internal" href="#easygraph-functions-graph-embedding-sdne-module">easygraph.functions.graph_embedding.sdne module</a></li>
-<li><a class="reference internal" href="#module-easygraph.functions.graph_embedding">Module contents</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -710,12 +475,10 @@ registered hooks while the latter silently ignores them.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/copybutton.js"></script>
+</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/copybutton.js?v=e333d19b"></script>
     </body>
 </html>

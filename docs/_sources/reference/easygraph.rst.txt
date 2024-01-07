@@ -15,7 +15,6 @@ Subpackages
    easygraph.ml_metrics
    easygraph.model
    easygraph.nn
-   easygraph.randomhypergraph
    easygraph.readwrite
    easygraph.utils
 
