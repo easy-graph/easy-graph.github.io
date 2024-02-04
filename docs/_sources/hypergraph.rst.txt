@@ -10,41 +10,50 @@ Basic Properties and Operation of Hypergraph
 
     Each hyperedge in the hypergraph is an unordered set of vertices, which means that ``(0, 1, 2)``, ``(0, 2, 1)``, and ``(2, 1, 0)`` are all the same hyperedge.
 
->>> import torch
->>> import easygraph as eg
->>> # Create a hypergraph with five nodes and three hyperedges.
->>> hg = eg.Hypergraph(5, [(0, 1, 2), (2, 3), (0, 4)])
->>> # print hyperedges with weights of hypergraph.
->>> hg.e
-([(0, 1, 2), (2, 3), (0, 4)], [1.0, 1.0, 1.0])
->>> # print the incidence matrix of the hypergraph
->>> hg.H.to_dense()
-tensor([[1., 0., 1.],
-        [1., 0., 0.],
-        [1., 1., 0.],
-        [0., 1., 0.],
-        [0., 0., 1.]])
->>> # Draw hypergraph with label of each vertex, color of vertexs and edges are set to blue and yellow respectively, line width of each hyperedges depends on its weight.
->>> hg.draw(v_label = [0,1,2,3,4], v_color = 'b', e_color = 'y', e_line_width = hg.e[1])
+.. code-block:: python
+
+    hg = eg.Hypergraph(num_v=5, e_list = [(0, 1, 2), (2, 3), (2, 3), (0, 4)], merge_op="sum")
+    print(hg.incidence_matrix)
+    """
+      (0, 0)        1
+      (0, 2)        1
+      (1, 0)        1
+      (2, 0)        1
+      (2, 1)        1
+      (3, 1)        1
+      (4, 2)        1
+    """
+    print(hg.incidence_matrix.todense())
+    """
+    [[1 0 1]
+     [1 0 0]
+     [1 1 0]
+     [0 1 0]
+     [0 0 1]]
+    """
+    print("hg.e:",hg.e)
+    # ([(0, 1, 2), (2, 3), (0, 4)], [1.0, 2.0, 1.0], [{}, {}, {}])
+    hg.draw(v_label=[0, 1, 2, 3, 4], v_color='#e6928f', e_color='#4e9595', e_line_width=e_line_width)
+
 
 .. image:: hypergraph_example1.png
 
 
+.. code-block:: python
 
-Add hyperedges and you can find the weight of the last hyperedge is 1.0 and 2.0, if you set the merge_op to mean and sum, respectively.
+    # Add hyperedges and you can find the weight of the last hyperedge is 1.0 and 2.0, if you set the merge_op to mean and sum, respectively.
+    hg.add_hyperedges(e_list = [(0, 2, 1), (2, 4)], merge_op="mean")
+    print("hg.e:", hg.e)
+    # ([(0, 1, 2), (2, 3), (0, 4)], [1.0, 2.0, 1.0], [{}, {}, {}])
+    hg.add_hyperedges(e_list = [(2, 4)], merge_op="sum")
+    print("hg.e:", hg.e)
+    # ([(0, 1, 2), (2, 3), (0, 4), (2, 4)], [1.0, 2.0, 1.0, 1.0], [{}, {}, {}, {}])
+    hg.remove_hyperedges(e_list = [(2, 3)])
+    print("hg.e:", hg.e)
+    # ([(0, 1, 2), (0, 4), (2, 4)], [1.0, 1.0, 2.0], [{}, {}, {}])
 
->>> hg = eg.Hypergraph(5, [(0, 1, 2), (2, 3), (2, 3), (0, 4)], merge_op="mean")
->>> hg.e
-([(0, 1, 2), (2, 3), (0, 4)], [1.0, 1.0, 1.0])
->>> hg.add_hyperedges([(0, 2, 1), (0, 4)], merge_op="mean")
->>> hg.e
-([(0, 1, 2), (2, 3), (0, 4), (2, 4)], [1.0, 2.0, 1.0, 1.0])
->>> hg.add_hyperedges([(2, 4)], merge_op="sum")
->>> hg.e
-([(0, 1, 2), (2, 3), (0, 4)], [2.0, 2.0, 2.0])
->>> hg.remove_hyperedges([(2, 3)])
->>> hg.e
-([(0, 1, 2), (0, 4), (2, 4)], [1.0, 1.0, 1.0])
+
+.. image:: hypergraph_example2.png
 
 .. note::
 
@@ -53,49 +62,55 @@ Add hyperedges and you can find the weight of the last hyperedge is 1.0 and 2.0,
     If merge_op = 'mean', the weight is the average of sum of duplicate hyperedges weights.
 
 
-.. image:: hypergraph_example2.png
-
 Create a hypergraph based on the k-nearest neighbors of the features.
 
->>> X = torch.tensor([[0.0658, 0.3191, 0.0204, 0.6955],
+ .. code-block:: python
+
+    X = torch.tensor([[0.0658, 0.3191, 0.0204, 0.6955],
                       [0.1144, 0.7131, 0.3643, 0.4707],
                       [0.2250, 0.0620, 0.0379, 0.2848],
                       [0.0619, 0.4898, 0.9368, 0.7433],
                       [0.5380, 0.3119, 0.6462, 0.4311]])
->>> hg = eg.Hypergraph.from_feature_kNN(X, k=3)
->>> hg
-Hypergraph(num_v=5, num_e=4)
->>> hg.e
-([(0, 1, 2), (0, 1, 4), (0, 2, 4), (1, 3, 4)], [1.0, 1.0, 1.0, 1.0])
->>> hg.H.to_dense()
-tensor([[1., 1., 1., 0.],
-        [1., 1., 0., 1.],
-        [1., 0., 1., 0.],
-        [0., 0., 0., 1.],
-        [0., 1., 1., 1.]])
->>> hg.draw(v_label=list(range(0,10)))
+    hg = eg.Hypergraph.from_feature_kNN(X, k=3)
+    print(f"hg: {hg}")
+    print(f"hg.e: {hg.e}")
+    '''
+    hg: Hypergraph(num_vertex=5, num_hyperedge=4)
+    hg.e: ([(0, 1, 2), (0, 1, 4), (0, 2, 4), (1, 3, 4)], [1.0, 1.0, 1.0, 1.0], [{}, {}, {}, {}])
+    '''
+    print("H:",hg.H.to_dense())
+    '''
+    H: [[1 1 1 0]
+         [1 1 0 1]
+         [1 0 1 0]
+         [0 0 0 1]
+         [0 1 1 1]]
+    '''
+    hg.draw(v_label=[0, 1, 2, 3, 4], v_color='#e6928f', e_color='#4e9595')
 
 .. image:: hypergraph_example3.png
 
 Construct a hypergraph from a graph.
 
->>> g = eg.Graph()
->>> g.add_edges([(0, 1), (1, 2), (2, 3), (1, 4)])
->>> hg = eg.Hypergraph.from_graph(g)
->>> hg.e
-([(0, 1), (1, 2), (1, 4), (2, 3)], [1.0, 1.0, 1.0, 1.0])
->>> hg.H.to_dense()
-tensor([[1., 0., 0., 0.],
-        [1., 1., 1., 0.],
-        [0., 1., 0., 1.],
-        [0., 0., 0., 1.],
-        [0., 0., 1., 0.]])
+.. code-block:: python
 
-Train a hypergraph neural network model, HGNN+ on trivago-clicks dataset
+    g = eg.Graph()
+    g.add_edges([(0, 1), (1, 2), (2, 3), (1, 4)])
+    hg = eg.Hypergraph.from_graph(g)
+    print(f"hg.e:{hg.e}")
+    # ([(0, 1), (1, 2), (1, 4), (2, 3)], [1.0, 1.0, 1.0, 1.0], [{}, {}, {}, {}])
+    print(f"H:{hg.H.to_dense()}")
+    '''
+    H:  [[1 0 0 0]
+         [1 1 1 0]
+         [0 1 0 1]
+         [0 0 0 1]
+         [0 0 1 0]]
+    '''
+Train a hypergraph neural network model, HGNN on trivago-clicks dataset
 -------------------------
 
 We present a specifical node classification task on trivago-clicks dataset with a hypergraph neural network HGNN
-
 
 **Model:**
 
