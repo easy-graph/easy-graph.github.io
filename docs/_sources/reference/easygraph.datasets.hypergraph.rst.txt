@@ -12,10 +12,10 @@ easygraph.datasets.hypergraph.House\_Committees module
    :undoc-members:
    :show-inheritance:
 
-easygraph.datasets.hypergraph.base module
+easygraph.datasets.hypergraph.Yelp module
 -----------------------------------------
 
-.. automodule:: easygraph.datasets.hypergraph.base
+.. automodule:: easygraph.datasets.hypergraph.Yelp
    :members:
    :undoc-members:
    :show-inheritance:
@@ -24,6 +24,14 @@ easygraph.datasets.hypergraph.cat\_edge\_Cooking module
 -------------------------------------------------------
 
 .. automodule:: easygraph.datasets.hypergraph.cat_edge_Cooking
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.datasets.hypergraph.coauthorship module
+-------------------------------------------------
+
+.. automodule:: easygraph.datasets.hypergraph.coauthorship
    :members:
    :undoc-members:
    :show-inheritance:
@@ -44,10 +52,18 @@ easygraph.datasets.hypergraph.contact\_primary\_school module
    :undoc-members:
    :show-inheritance:
 
-easygraph.datasets.hypergraph.load\_dataset module
---------------------------------------------------
+easygraph.datasets.hypergraph.cooking\_200 module
+-------------------------------------------------
 
-.. automodule:: easygraph.datasets.hypergraph.load_dataset
+.. automodule:: easygraph.datasets.hypergraph.cooking_200
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.datasets.hypergraph.hypergraph\_dataset\_base module
+--------------------------------------------------------------
+
+.. automodule:: easygraph.datasets.hypergraph.hypergraph_dataset_base
    :members:
    :undoc-members:
    :show-inheritance:

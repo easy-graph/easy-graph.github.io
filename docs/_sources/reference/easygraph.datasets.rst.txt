@@ -7,55 +7,16 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   easygraph.datasets.dynamic
    easygraph.datasets.hypergraph
 
 Submodules
 ----------
 
-easygraph.datasets.base module
-------------------------------
-
-.. automodule:: easygraph.datasets.base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 easygraph.datasets.citation\_graph module
 -----------------------------------------
 
 .. automodule:: easygraph.datasets.citation_graph
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.cooking\_200 module
---------------------------------------
-
-.. automodule:: easygraph.datasets.cooking_200
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.eg\_dataset module
--------------------------------------
-
-.. automodule:: easygraph.datasets.eg_dataset
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.email\_enron module
---------------------------------------
-
-.. automodule:: easygraph.datasets.email_enron
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.email\_eu module
------------------------------------
-
-.. automodule:: easygraph.datasets.email_eu
    :members:
    :undoc-members:
    :show-inheritance:
@@ -76,10 +37,10 @@ easygraph.datasets.gnn\_benchmark module
    :undoc-members:
    :show-inheritance:
 
-easygraph.datasets.hospital\_lyon module
-----------------------------------------
+easygraph.datasets.graph\_dataset\_base module
+----------------------------------------------
 
-.. automodule:: easygraph.datasets.hospital_lyon
+.. automodule:: easygraph.datasets.graph_dataset_base
    :members:
    :undoc-members:
    :show-inheritance:

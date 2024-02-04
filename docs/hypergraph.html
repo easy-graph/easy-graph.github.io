@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Reference" href="reference.html" /><link rel="prev" title="Examples" href="example.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>Examples of Hypergraph - EasyGraph 1.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
@@ -166,6 +166,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of easygraph.datasets package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/easygraph.datasets.hypergraph.html">easygraph.datasets.hypergraph package</a></li>
 </ul>
 </li>
@@ -222,6 +223,7 @@
 <li class="toctree-l3"><a class="reference internal" href="reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/easygraph.datapipe.html">easygraph.datapipe package</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of easygraph.datasets package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/easygraph.datasets.hypergraph.html">easygraph.datasets.hypergraph package</a></li>
 </ul>
 </li>
@@ -275,6 +277,7 @@
 <li class="toctree-l4"><a class="reference internal" href="reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/easygraph.datapipe.html">easygraph.datapipe package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle navigation of easygraph.datasets package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="reference/easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference/easygraph.datasets.hypergraph.html">easygraph.datasets.hypergraph package</a></li>
 </ul>
 </li>
@@ -458,140 +461,167 @@ If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedg
 </pre></div>
 </div>
 </section>
-<section id="train-a-hypergraph-model-hgnn-on-cooking200">
-<h2>Train a Hypergraph model, HGNN+ on Cooking200<a class="headerlink" href="#train-a-hypergraph-model-hgnn-on-cooking200" title="Link to this heading"></a></h2>
-<p>We present a specifical node classification task on Cora with a hypergraph neural network HGNN++</p>
+<section id="train-a-hypergraph-neural-network-model-hgnn-on-trivago-clicks-dataset">
+<h2>Train a hypergraph neural network model, HGNN+ on trivago-clicks dataset<a class="headerlink" href="#train-a-hypergraph-neural-network-model-hgnn-on-trivago-clicks-dataset" title="Link to this heading"></a></h2>
+<p>We present a specifical node classification task on trivago-clicks dataset with a hypergraph neural network HGNN</p>
 <p><strong>Model:</strong></p>
-<p>HGNN+ (eg.models.HGNNP): HGNN+: General Hypergraph Neural Networks paper (IEEE T-PAMI 2022).</p>
+<p>HGNN (eg.HGNN): Hypergraph Neural Networks</p>
+<p>(Feng, Y., You, H., Zhang, Z., Ji, R., &amp; Gao, Y. (2019). Hypergraph Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 3558-3565. ).</p>
 <p><strong>Dataset:</strong></p>
-<p>Cooking 200 (eg.data.Cooking200): A cooking recipe hypergraph dataset collected from Yummly.com for vertex classification task</p>
+<p>trivago-clicks (eg.trivago_clicks):
+Sets of hotels clicked on in a Web browsing session, where labels are the countries of the accomodation.</p>
 <p><strong>Import Libraries</strong></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph</span> <span class="kn">import</span> <span class="n">Hypergraph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.datasets</span> <span class="kn">import</span> <span class="n">Cooking200</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph</span> <span class="kn">import</span> <span class="n">HGNNP</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph</span> <span class="kn">import</span> <span class="n">set_seed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.experiments</span> <span class="kn">import</span> <span class="n">HypergraphVertexClassificationTask</span> <span class="k">as</span> <span class="n">Task</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.ml_metrics</span> <span class="kn">import</span> <span class="n">HypergraphVertexClassificationEvaluator</span> <span class="k">as</span> <span class="n">Evaluator</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
-<p><strong>Define Functions</strong></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">structure_builder</span><span class="p">(</span><span class="n">trial</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">global</span> <span class="n">hg_base</span><span class="p">,</span> <span class="n">g</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cur_hg</span><span class="p">:</span> <span class="n">Hypergraph</span> <span class="o">=</span> <span class="n">hg_base</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">cur_hg</span>
-<span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">model_builder</span><span class="p">(</span><span class="n">trial</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">HGNNP</span><span class="p">(</span><span class="n">dim_features</span><span class="p">,</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s2">&quot;hidden_dim&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">num_classes</span><span class="p">,</span> <span class="n">use_bn</span><span class="o">=</span><span class="kc">True</span>
+<p><strong>Dataset preparation and model definition</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">():</span>
+<span class="sd">&quot;&quot;&quot;Preprocess for HGNN model training.</span>
+
+<span class="sd">    Preprocess dataset and model</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: dataset and model</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># There is no default feature vector for this dataset. Users can generate their own features.</span>
+<span class="c1"># Here we use random initialisation to generate 100-dimensional node feature vectors</span>
+
+<span class="n">trivago_clicks</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">trivago_clicks</span><span class="p">()</span>
+<span class="n">node_labels</span> <span class="o">=</span> <span class="n">trivago_clicks</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span>
+<span class="n">hyperedges</span> <span class="o">=</span> <span class="n">trivago_clicks</span><span class="p">[</span><span class="s2">&quot;edge_list&quot;</span><span class="p">]</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="n">trivago_clicks</span><span class="p">[</span><span class="s2">&quot;num_classes&quot;</span><span class="p">]</span>
+<span class="n">num_vertices</span> <span class="o">=</span> <span class="n">trivago_clicks</span><span class="p">[</span><span class="s2">&quot;num_vertices&quot;</span><span class="p">]</span>
+<span class="n">input_feature_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">num_features</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">node_features</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">node_labels</span><span class="p">)):</span>
+    <span class="n">node_features</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_features</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Since there is no default split for this dataset, here we split the test set, validation set, and test set in a 50:25:25 fashion</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">train_nodes</span><span class="p">,</span> <span class="n">test_nodes</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_vertices</span><span class="p">)),</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">train_nodes</span><span class="p">,</span> <span class="n">val_nodes</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_nodes</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">train_mask</span> <span class="o">=</span> <span class="n">train_nodes</span>
+<span class="n">val_mask</span> <span class="o">=</span> <span class="n">val_nodes</span>
+<span class="n">test_mask</span> <span class="o">=</span> <span class="n">test_nodes</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">node_features</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">node_labels</span><span class="p">))])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">node_labels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">node_labels</span><span class="p">))])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="n">num_v</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">node_labels</span><span class="p">),</span> <span class="n">e_list</span><span class="o">=</span><span class="n">hyperedges</span><span class="p">)</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train_mask&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_mask</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;val_mask&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val_mask</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;test_mask&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_mask</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;num_classes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_classes</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">HGNN</span><span class="p">(</span><span class="n">in_channels</span> <span class="o">=</span> <span class="n">input_feature_dim</span><span class="p">,</span> <span class="n">hid_channels</span> <span class="o">=</span> <span class="n">hidden_dim</span><span class="p">,</span>
+                     <span class="n">num_classes</span> <span class="o">=</span> <span class="n">num_classes</span><span class="p">)</span>
+
+<span class="k">return</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">model</span>
+</pre></div>
+</div>
+<p><strong>Train, valid, test</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">,</span>
+    <span class="n">criterion</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,):</span>
+
+    <span class="n">features</span><span class="p">,</span> <span class="n">structure</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span>
+    <span class="n">train_mask</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;train_mask&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">structure</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">train_mask</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="n">train_mask</span><span class="p">])</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">loss</span>
+
+<span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">valid</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">features</span><span class="p">,</span> <span class="n">structure</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span>
+    <span class="n">val_mask</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;val_mask&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">structure</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">val_mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">labels</span><span class="p">[</span><span class="n">val_mask</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">correct</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_mask</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">acc</span>
+
+<span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">features</span><span class="p">,</span> <span class="n">structure</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;structure&quot;</span><span class="p">]</span>
+    <span class="n">val_mask</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;test_mask&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">structure</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">val_mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">labels</span><span class="p">[</span><span class="n">val_mask</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">correct</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_mask</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">acc</span>
+</pre></div>
+</div>
+<p><strong>Loss visualization</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_loss_curve</span><span class="p">(</span><span class="n">loss1</span><span class="p">,</span> <span class="n">save_path</span> <span class="o">=</span> <span class="s2">&quot;loss_pic.png&quot;</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EG Training loss&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training Loss Comparison&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">save_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Main</strong></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">work_root</span> <span class="o">=</span> <span class="s2">&quot;/Users/yizhihenpidehou/Desktop/tmp&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">set_seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">Cooking200</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
-<span class="go">This is cooking_200 dataset:</span>
-<span class="go">  -&gt;  num_classes</span>
-<span class="go">  -&gt;  num_vertices</span>
-<span class="go">  -&gt;  num_edges</span>
-<span class="go">  -&gt;  edge_list</span>
-<span class="go">  -&gt;  labels</span>
-<span class="go">  -&gt;  train_mask</span>
-<span class="go">  -&gt;  val_mask</span>
-<span class="go">  -&gt;  test_mask</span>
-<span class="go">Please try `data[&#39;name&#39;]` to get the specified data.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dim_features</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;num_vertices&quot;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">num_classes</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;num_classes&quot;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hg_base</span> <span class="o">=</span> <span class="n">Hypergraph</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;num_vertices&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;edge_list&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">input_data</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">     &quot;features&quot;: torch.eye(data[&quot;num_vertices&quot;]),</span>
-<span class="go">     &quot;labels&quot;: data[&quot;labels&quot;],</span>
-<span class="go">     &quot;train_mask&quot;: data[&quot;train_mask&quot;],</span>
-<span class="go">     &quot;val_mask&quot;: data[&quot;val_mask&quot;],</span>
-<span class="go">     &quot;test_mask&quot;: data[&quot;test_mask&quot;],</span>
-<span class="go">    }</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">([</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="s2">&quot;f1_score&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;f1_score&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;average&quot;</span><span class="p">:</span> <span class="s2">&quot;micro&quot;</span><span class="p">}}])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span>
-<span class="go">    work_root, input_data, model_builder, train_builder, evaluator, device, structure_builder=structure_builder,</span>
-<span class="go">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">task</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;maximize&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">()</span>
+    <span class="n">loss_lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">epoch</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="n">loss_fn</span><span class="p">)</span>
+        <span class="n">loss_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="n">val_acc</span> <span class="o">=</span> <span class="n">valid</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epoch: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, valid accuracy : </span><span class="si">{</span><span class="n">val_acc</span><span class="si">}</span><span class="s2">, loss : </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training finish!&quot;</span><span class="p">)</span>
+    <span class="n">test_acc</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test accuracy:&quot;</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">)</span>
+    <span class="n">draw_loss_curve</span><span class="p">(</span><span class="n">loss_lst</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Outputs</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[I 2023-01-30 17:17:02,268] Logs will be saved to /Users/yizhihenpidehou/Desktop/tmp/2023-01-30--17-17-02/log.txt
-[I 2023-01-30 17:17:02,269] Files in training will be saved in /Users/yizhihenpidehou/Desktop/tmp/2023-01-30--17-17-02
-[I 2023-01-30 17:17:02,269] Random seed is 1675070222
-[I 2023-01-30 17:17:02,270] A new study created in memory with name: no-name-ec259b1d-f2c9-438b-9fc8-7efab4ee2b1b
-/Users/yizhihenpidehou/Desktop/fdu/eg/Easy-Graph/train_gnn.py:27: FutureWarning: suggest_loguniform has been deprecated in v3.0.0. This feature will be removed in v6.0.0. See https://github.com/optuna/optuna/releases/tag/v3.0.0. Use :func:`~optuna.trial.Trial.suggest_float` instead.
-   lr=trial.suggest_loguniform(&quot;lr&quot;, 1e-4, 1e-2),
-/Users/yizhihenpidehou/Desktop/fdu/eg/Easy-Graph/train_gnn.py:28: FutureWarning: suggest_loguniform has been deprecated in v3.0.0. This feature will be removed in v6.0.0. See https://github.com/optuna/optuna/releases/tag/v3.0.0. Use :func:`~optuna.trial.Trial.suggest_float` instead.
-   weight_decay=trial.suggest_loguniform(&quot;weight_decay&quot;, 1e-4, 1e-2),
-[I 2023-01-30 17:17:20,571] Trial 0 finished with value: 0.4699999988079071 and parameters: {&#39;hidden_dim&#39;: 19, &#39;lr&#39;: 0.00011393568005854129, &#39;weight_decay&#39;: 0.000260717506361872}. Best is trial 0 with value: 0.4699999988079071.
-[I 2023-01-30 17:17:36,173] Trial 1 finished with value: 0.48500001430511475 and parameters: {&#39;hidden_dim&#39;: 20, &#39;lr&#39;: 0.0004400638127040677, &#39;weight_decay&#39;: 0.0024733110034356118}. Best is trial 1 with value: 0.48500001430511475.
-[I 2023-01-30 17:17:51,809] Trial 2 finished with value: 0.5049999952316284 and parameters: {&#39;hidden_dim&#39;: 20, &#39;lr&#39;: 0.002990964903897353, &#39;weight_decay&#39;: 0.003064446178951424}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:18:07,705] Trial 3 finished with value: 0.4749999940395355 and parameters: {&#39;hidden_dim&#39;: 14, &#39;lr&#39;: 0.005141482540718165, &#39;weight_decay&#39;: 0.006598448985658328}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:18:23,885] Trial 4 finished with value: 0.4300000071525574 and parameters: {&#39;hidden_dim&#39;: 15, &#39;lr&#39;: 0.0002248879282427639, &#39;weight_decay&#39;: 0.0044752065322836545}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:18:31,593] Trial 5 pruned.
-[I 2023-01-30 17:18:36,038] Trial 6 pruned.
-[I 2023-01-30 17:18:39,870] Trial 7 pruned.
-[I 2023-01-30 17:18:48,675] Trial 8 pruned.
-[I 2023-01-30 17:18:53,612] Trial 9 pruned.
-[I 2023-01-30 17:18:57,210] Trial 10 pruned.
-[I 2023-01-30 17:19:05,217] Trial 11 pruned.
-[I 2023-01-30 17:19:13,432] Trial 12 pruned.
-[I 2023-01-30 17:19:18,591] Trial 13 pruned.
-[I 2023-01-30 17:19:34,381] Trial 14 finished with value: 0.47999998927116394 and parameters: {&#39;hidden_dim&#39;: 20, &#39;lr&#39;: 0.005628442102091454, &#39;weight_decay&#39;: 0.0027947441404729202}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:19:42,771] Trial 15 pruned.
-[I 2023-01-30 17:19:47,172] Trial 16 pruned.
-[I 2023-01-30 17:19:50,671] Trial 17 pruned.
-[I 2023-01-30 17:19:54,735] Trial 18 pruned.
-[I 2023-01-30 17:19:59,581] Trial 19 pruned.
-[I 2023-01-30 17:20:17,514] Trial 20 finished with value: 0.4950000047683716 and parameters: {&#39;hidden_dim&#39;: 18, &#39;lr&#39;: 0.001047739904975789, &#39;weight_decay&#39;: 0.00456408904231232}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:20:22,516] Trial 21 pruned.
-[I 2023-01-30 17:20:28,277] Trial 22 pruned.
-[I 2023-01-30 17:20:32,122] Trial 23 pruned.
-[I 2023-01-30 17:20:36,993] Trial 24 pruned.
-[I 2023-01-30 17:20:42,132] Trial 25 pruned.
-[I 2023-01-30 17:20:56,416] Trial 26 finished with value: 0.4749999940395355 and parameters: {&#39;hidden_dim&#39;: 16, &#39;lr&#39;: 0.005446543934019758, &#39;weight_decay&#39;: 0.0009659159646018803}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:21:01,049] Trial 27 pruned.
-[I 2023-01-30 17:21:05,123] Trial 28 pruned.
-[I 2023-01-30 17:21:08,891] Trial 29 pruned.
-[I 2023-01-30 17:21:23,526] Trial 30 finished with value: 0.5 and parameters: {&#39;hidden_dim&#39;: 16, &#39;lr&#39;: 0.003970445142112136, &#39;weight_decay&#39;: 0.0010214619854412256}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:21:28,012] Trial 31 pruned.
-[I 2023-01-30 17:21:45,132] Trial 32 finished with value: 0.4950000047683716 and parameters: {&#39;hidden_dim&#39;: 17, &#39;lr&#39;: 0.009314593992038237, &#39;weight_decay&#39;: 0.00046271963422662684}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:22:02,096] Trial 33 finished with value: 0.48500001430511475 and parameters: {&#39;hidden_dim&#39;: 17, &#39;lr&#39;: 0.009337061774729634, &#39;weight_decay&#39;: 0.0004076408890486919}. Best is trial 2 with value: 0.5049999952316284.
-[I 2023-01-30 17:22:18,922] Trial 34 finished with value: 0.5149999856948853 and parameters: {&#39;hidden_dim&#39;: 15, &#39;lr&#39;: 0.007286750524788286, &#39;weight_decay&#39;: 0.0002458354082341516}. Best is trial 34 with value: 0.5149999856948853.
-[I 2023-01-30 17:22:26,266] Trial 35 pruned.
-[I 2023-01-30 17:22:31,649] Trial 36 pruned.
-[I 2023-01-30 17:22:45,710] Trial 37 finished with value: 0.4950000047683716 and parameters: {&#39;hidden_dim&#39;: 16, &#39;lr&#39;: 0.0043213824761157175, &#39;weight_decay&#39;: 0.0002711486260724712}. Best is trial 34 with value: 0.5149999856948853.
-[I 2023-01-30 17:22:49,650] Trial 38 pruned.
-[I 2023-01-30 17:23:06,202] Trial 39 finished with value: 0.47999998927116394 and parameters: {&#39;hidden_dim&#39;: 15, &#39;lr&#39;: 0.007639715234791997, &#39;weight_decay&#39;: 0.0005264771015557918}. Best is trial 34 with value: 0.5149999856948853.
-[I 2023-01-30 17:23:10,989] Trial 40 pruned.
-[I 2023-01-30 17:23:15,114] Trial 41 pruned.
-[I 2023-01-30 17:23:22,072] Trial 42 pruned.
-[I 2023-01-30 17:23:39,965] Trial 43 finished with value: 0.4950000047683716 and parameters: {&#39;hidden_dim&#39;: 17, &#39;lr&#39;: 0.00932715468988115, &#39;weight_decay&#39;: 0.0004701066750730449}. Best is trial 34 with value: 0.5149999856948853.
-[I 2023-01-30 17:23:56,860] Trial 44 finished with value: 0.5149999856948853 and parameters: {&#39;hidden_dim&#39;: 16, &#39;lr&#39;: 0.004861316886763922, &#39;weight_decay&#39;: 0.00017801679034748196}. Best is trial 34 with value: 0.5149999856948853.
-[I 2023-01-30 17:24:02,154] Trial 45 pruned.
-[I 2023-01-30 17:24:06,111] Trial 46 pruned.
-[I 2023-01-30 17:24:09,757] Trial 47 pruned.
-[I 2023-01-30 17:24:26,617] Trial 48 finished with value: 0.47999998927116394 and parameters: {&#39;hidden_dim&#39;: 15, &#39;lr&#39;: 0.00996806266543509, &#39;weight_decay&#39;: 0.0005849276525444326}. Best is trial 34 with value: 0.5149999856948853.
-[I 2023-01-30 17:24:32,282] Trial 49 pruned.
-[I 2023-01-30 17:24:32,360] Best trial:
-[I 2023-01-30 17:24:32,361]         Value: 0.515
-[I 2023-01-30 17:24:32,361]         Params:
-[I 2023-01-30 17:24:32,361]                 hidden_dim |-&gt; 15
-[I 2023-01-30 17:24:32,361]                 lr |-&gt; 0.007286750524788286
-[I 2023-01-30 17:24:32,361]                 weight_decay |-&gt; 0.0002458354082341516
-[I 2023-01-30 17:24:32,412] Final test results:
-[I 2023-01-30 17:24:32,412]         accuracy |-&gt; 0.531
-[I 2023-01-30 17:24:32,412]         f1_score |-&gt; 0.395
-[I 2023-01-30 17:24:32,412]         f1_score -&gt; average@micro |-&gt; 0.531
+<p><strong>Output</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">epoch</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.05572879681373306</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">5.096134662628174</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.0624903516626015</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.997525215148926</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.064589829880515</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.898364067077637</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.06554694495044613</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.788722515106201</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.06662755873907808</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.667123794555664</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.06810954336348761</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.536109924316406</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.06971502670659792</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.4008684158325195</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.07159838216678502</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.268074035644531</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.07274074531476736</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.144204139709473</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.07468585013430486</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">4.034796714782715</span>
+<span class="n">Training</span> <span class="n">finish</span><span class="err">!</span>
+<span class="n">test</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.07569758017830265</span>
 </pre></div>
 </div>
+<img alt="_images/loss_pic.png" src="_images/loss_pic.png" />
 </section>
 </section>
 
@@ -624,7 +654,7 @@ If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedg
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2020-2023, DataNET Group, Fudan University
+                Copyright &#169; 2020-2024, DataNET Group, Fudan University
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -652,7 +682,7 @@ If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedg
             <ul>
 <li><a class="reference internal" href="#">Examples of Hypergraph</a><ul>
 <li><a class="reference internal" href="#basic-properties-and-operation-of-hypergraph">Basic Properties and Operation of Hypergraph</a></li>
-<li><a class="reference internal" href="#train-a-hypergraph-model-hgnn-on-cooking200">Train a Hypergraph model, HGNN+ on Cooking200</a></li>
+<li><a class="reference internal" href="#train-a-hypergraph-neural-network-model-hgnn-on-trivago-clicks-dataset">Train a hypergraph neural network model, HGNN+ on trivago-clicks dataset</a></li>
 </ul>
 </li>
 </ul>
@@ -664,7 +694,9 @@ If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedg
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
+</div><script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

@@ -29,6 +29,14 @@ easygraph.functions.hypergraph.hypergraph\_clustering module
    :undoc-members:
    :show-inheritance:
 
+easygraph.functions.hypergraph.hypergraph\_operation module
+-----------------------------------------------------------
+
+.. automodule:: easygraph.functions.hypergraph.hypergraph_operation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

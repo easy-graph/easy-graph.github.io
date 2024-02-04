@@ -20,6 +20,30 @@ easygraph.functions.hypergraph.centrality.degree module
    :undoc-members:
    :show-inheritance:
 
+easygraph.functions.hypergraph.centrality.hypercoreness module
+--------------------------------------------------------------
+
+.. automodule:: easygraph.functions.hypergraph.centrality.hypercoreness
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.functions.hypergraph.centrality.s\_centrality module
+--------------------------------------------------------------
+
+.. automodule:: easygraph.functions.hypergraph.centrality.s_centrality
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+easygraph.functions.hypergraph.centrality.vector\_centrality module
+-------------------------------------------------------------------
+
+.. automodule:: easygraph.functions.hypergraph.centrality.vector_centrality
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
