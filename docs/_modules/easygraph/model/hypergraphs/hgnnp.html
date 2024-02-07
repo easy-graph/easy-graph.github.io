@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
     <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
-        <title>easygraph.model.hypergraphs.hgnnp - EasyGraph 1.0</title>
+        <title>easygraph.model.hypergraphs.hgnnp - EasyGraph 1.1</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../index.html"><div class="brand">EasyGraph 1.0</div></a>
+      <a href="../../../../index.html"><div class="brand">EasyGraph 1.1</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,7 +149,7 @@
     <img class="sidebar-logo" src="../../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 1.0</span>
+  <span class="sidebar-brand-text">EasyGraph 1.1</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -329,7 +329,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../videos.html">Tutorial Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../sourcecode.html">Source Code</a></li>
@@ -383,7 +382,7 @@
 <div class="viewcode-block" id="HGNNP"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.hgnnp.HGNNP">[docs]</a><span class="k">class</span> <span class="nc">HGNNP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The HGNN :sup:`+` model proposed in `HGNN+: General Hypergraph Neural Networks &lt;https://ieeexplore.ieee.org/document/9795251&gt;`_ paper (IEEE T-PAMI 2022).</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``hid_channels`` (``int``): :math:`C_{hid}` is the number of hidden channels.</span>
 <span class="sd">        ``num_classes`` (``int``): The Number of class of the classification task.</span>
@@ -411,7 +410,7 @@
 <div class="viewcode-block" id="HGNNP.forward"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.html#easygraph.model.hypergraphs.hgnnp.HGNNP.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="s2">&quot;eg.Hypergraph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            ``X`` (``torch.Tensor``): Input vertex feature matrix. Size :math:`(N, C_{in})`.</span>
 <span class="sd">            ``hg`` (``eg.Hypergraph``): The hypergraph structure that contains :math:`N` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

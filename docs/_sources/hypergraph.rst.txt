@@ -12,7 +12,7 @@ Basic Properties and Operation of Hypergraph
 
 .. code-block:: python
 
-    hg = eg.Hypergraph(num_v=5, e_list = [(0, 1, 2), (2, 3), (2, 3), (0, 4)], merge_op="sum")
+    hg = eg.Hypergraph(num_v = 5, e_list = [(0, 1, 2), (2, 3), (2, 3), (0, 4)], merge_op="sum")
     print(hg.incidence_matrix)
     """
       (0, 0)        1

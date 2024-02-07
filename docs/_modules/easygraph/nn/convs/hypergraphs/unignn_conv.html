@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
 
     <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
-        <title>easygraph.nn.convs.hypergraphs.unignn_conv - EasyGraph 1.0</title>
+        <title>easygraph.nn.convs.hypergraphs.unignn_conv - EasyGraph 1.1</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../../index.html"><div class="brand">EasyGraph 1.0</div></a>
+      <a href="../../../../../index.html"><div class="brand">EasyGraph 1.1</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,7 +149,7 @@
     <img class="sidebar-logo" src="../../../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 1.0</span>
+  <span class="sidebar-brand-text">EasyGraph 1.1</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -329,7 +329,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../videos.html">Tutorial Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../sourcecode.html">Source Code</a></li>
@@ -400,7 +399,7 @@
 <span class="sd">    .. math::</span>
 <span class="sd">        \mathbf{X}^{\prime} = \sigma \left(  \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \tilde{\mathbf{D}}_e^{-\frac{1}{2}} \cdot \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{X} \mathbf{\Theta} \right) .</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
 <span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
@@ -428,29 +427,39 @@
 <div class="viewcode-block" id="UniGCNConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
-<span class="sd">            hg (``dhg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c1"># import time</span>
+        <span class="c1"># start = time.time()</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+        <span class="c1"># end = time.time()</span>
+        <span class="c1"># print(&quot;eg v2e:&quot;,end-start)</span>
         <span class="c1"># ===============================================</span>
         <span class="c1"># compute the special degree of hyperedges</span>
         <span class="n">_De</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">hg</span><span class="o">.</span><span class="n">num_e</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">hg</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
         <span class="c1"># scatter_reduce() is relay on the torch 1.12.1, which may be updated in the future</span>
+        <span class="c1"># print(&quot;hg.v2e_dst:&quot;,hg.v2e_dst)</span>
+        <span class="c1"># start = time.time()</span>
         <span class="n">_De</span> <span class="o">=</span> <span class="n">_De</span><span class="o">.</span><span class="n">scatter_reduce</span><span class="p">(</span>
-            <span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">hg</span><span class="o">.</span><span class="n">v2e_dst</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">hg</span><span class="o">.</span><span class="n">D_v</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">_values</span><span class="p">()[</span><span class="n">hg</span><span class="o">.</span><span class="n">v2e_src</span><span class="p">],</span> <span class="n">reduce</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">hg</span><span class="o">.</span><span class="n">v2e_dst</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">hg</span><span class="o">.</span><span class="n">D_v</span><span class="o">.</span><span class="n">_values</span><span class="p">()[</span><span class="n">hg</span><span class="o">.</span><span class="n">v2e_src</span><span class="p">],</span> <span class="n">reduce</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
         <span class="p">)</span>
+        <span class="c1"># end = time.time()</span>
+        <span class="c1"># print(&quot;eg scatter:&quot;,end-start)</span>
         <span class="n">_De</span> <span class="o">=</span> <span class="n">_De</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
         <span class="n">_De</span><span class="p">[</span><span class="n">_De</span><span class="o">.</span><span class="n">isinf</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">_De</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Y</span>
         <span class="c1"># ===============================================</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">hg</span><span class="o">.</span><span class="n">D_v_neg_1_2</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">X</span></div></div>
 
 
@@ -468,7 +477,7 @@
 <span class="sd">            \end{aligned}</span>
 <span class="sd">        \right. .</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
 <span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
@@ -501,13 +510,11 @@
 <div class="viewcode-block" id="UniGATConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
-<span class="sd">            hg (``dhg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
         <span class="c1"># ===============================================</span>
         <span class="n">alpha_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atten_e</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
@@ -515,11 +522,15 @@
         <span class="n">e_atten_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atten_dropout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atten_act</span><span class="p">(</span><span class="n">e_atten_score</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
         <span class="c1"># ================================================================================</span>
         <span class="c1"># We suggest to add a clamp on attention weight to avoid Nan error in training.</span>
-        <span class="n">e_atten_score</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="n">e_atten_score</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">e_atten_score</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="c1"># e_atten_score = torch.clamp(e_atten_score, min=0.001, max=5)</span>
         <span class="c1"># ================================================================================</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;softmax_then_sum&quot;</span><span class="p">,</span> <span class="n">e2v_weight</span><span class="o">=</span><span class="n">e_atten_score</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
             <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">X</span></div></div>
 
 
@@ -541,7 +552,7 @@
 <span class="sd">    .. math::</span>
 <span class="sd">        \mathbf{X}^{\prime} = \sigma \left( \left( \mathbf{I} + \mathbf{H} \mathbf{D}_e^{-1} \mathbf{H}^\top \right) \mathbf{X} \mathbf{\Theta} \right) .</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
 <span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
@@ -569,17 +580,18 @@
 <div class="viewcode-block" id="UniSAGEConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
-<span class="sd">            hg (``dhg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">X</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">X</span></div></div>
 
 
@@ -602,7 +614,7 @@
 <span class="sd">    .. math::</span>
 <span class="sd">        \mathbf{X}^{\prime} = \sigma \left( \left( \left( \mathbf{I} + \varepsilon \right) + \mathbf{H} \mathbf{D}_e^{-1} \mathbf{H}^\top \right) \mathbf{X} \mathbf{\Theta} \right) .</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
 <span class="sd">        ``eps`` (``float``): :math:`\varepsilon` is the learnable parameter. Defaults to ``0.0``.</span>
@@ -638,17 +650,18 @@
 <div class="viewcode-block" id="UniGINConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
-<span class="sd">            hg (``dhg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
         <span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">X</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">X</span></div></div>
 </pre></div>
         </article>

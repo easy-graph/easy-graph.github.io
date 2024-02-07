@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
     <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
-        <title>easygraph.nn.convs.common - EasyGraph 1.0</title>
+        <title>easygraph.nn.convs.common - EasyGraph 1.1</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../index.html"><div class="brand">EasyGraph 1.0</div></a>
+      <a href="../../../../index.html"><div class="brand">EasyGraph 1.1</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,7 +149,7 @@
     <img class="sidebar-logo" src="../../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 1.0</span>
+  <span class="sidebar-brand-text">EasyGraph 1.1</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -329,7 +329,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../videos.html">Tutorial Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../sourcecode.html">Source Code</a></li>
@@ -376,12 +375,13 @@
           <h1>Source code for easygraph.nn.convs.common</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
 
 <div class="viewcode-block" id="MultiHeadWrapper"><a class="viewcode-back" href="../../../../reference/easygraph.nn.convs.html#easygraph.nn.convs.common.MultiHeadWrapper">[docs]</a><span class="k">class</span> <span class="nc">MultiHeadWrapper</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;A wrapper to apply multiple heads to a given layer.</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``num_heads`` (``int``): The number of heads.</span>
 <span class="sd">        ``readout`` (``bool``): The readout method. Can be ``&quot;mean&quot;``, ``&quot;max&quot;``, ``&quot;sum&quot;``, or ``&quot;concat&quot;``.</span>
 <span class="sd">        ``layer`` (``nn.Module``): The layer to apply multiple heads.</span>
@@ -417,6 +417,98 @@
                 <span class="k">return</span> <span class="n">outs</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown readout type&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="MLP"><a class="viewcode-back" href="../../../../reference/easygraph.nn.convs.html#easygraph.nn.convs.common.MLP">[docs]</a><span class="k">class</span> <span class="nc">MLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;adapted from https://github.com/CUAI/CorrectAndSmooth/blob/master/gen_models.py</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">in_channels</span><span class="p">,</span>
+        <span class="n">hidden_channels</span><span class="p">,</span>
+        <span class="n">out_channels</span><span class="p">,</span>
+        <span class="n">num_layers</span><span class="p">,</span>
+        <span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">normalization</span><span class="o">=</span><span class="s2">&quot;bn&quot;</span><span class="p">,</span>
+        <span class="n">InputNorm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MLP</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lins</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">InputNorm</span> <span class="o">=</span> <span class="n">InputNorm</span>
+
+        <span class="k">assert</span> <span class="n">normalization</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;bn&quot;</span><span class="p">,</span> <span class="s2">&quot;ln&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">normalization</span> <span class="o">==</span> <span class="s2">&quot;bn&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_layers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># just linear layer i.e. logistic regression</span>
+                <span class="k">if</span> <span class="n">InputNorm</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">InputNorm</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_layers</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">normalization</span> <span class="o">==</span> <span class="s2">&quot;ln&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_layers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># just linear layer i.e. logistic regression</span>
+                <span class="k">if</span> <span class="n">InputNorm</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">in_channels</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">InputNorm</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">in_channels</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_layers</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_layers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># just linear layer i.e. logistic regression</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_layers</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">dropout</span>
+
+<div class="viewcode-block" id="MLP.reset_parameters"><a class="viewcode-back" href="../../../../reference/easygraph.nn.convs.html#easygraph.nn.convs.common.MLP.reset_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">lin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="p">:</span>
+            <span class="n">lin</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">normalization</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">is</span> <span class="s2">&quot;Identity&quot;</span><span class="p">):</span>
+                <span class="n">normalization</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MLP.forward"><a class="viewcode-back" href="../../../../reference/easygraph.nn.convs.html#easygraph.nn.convs.common.MLP.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">lin</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">lin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizations</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lins</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div></div>
 </pre></div>
         </article>
       </div>

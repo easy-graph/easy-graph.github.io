@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
 
     <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
-        <title>easygraph.nn.convs.hypergraphs.hgnn_conv - EasyGraph 1.0</title>
+        <title>easygraph.nn.convs.hypergraphs.hgnn_conv - EasyGraph 1.1</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../../index.html"><div class="brand">EasyGraph 1.0</div></a>
+      <a href="../../../../../index.html"><div class="brand">EasyGraph 1.1</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,7 +149,7 @@
     <img class="sidebar-logo" src="../../../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 1.0</span>
+  <span class="sidebar-brand-text">EasyGraph 1.1</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -329,7 +329,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../videos.html">Tutorial Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../sourcecode.html">Source Code</a></li>
@@ -392,7 +391,7 @@
 <span class="sd">    :math:`\mathbf{W}_e` is a diagonal hyperedge weight matrix, :math:`\mathbf{D}_v` is a diagonal vertex degree matrix,</span>
 <span class="sd">    :math:`\mathbf{D}_e` is a diagonal hyperedge degree matrix, :math:`\mathbf{\Theta}` is the learnable parameters.</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters:</span>
 <span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
 <span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
 <span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
@@ -417,12 +416,27 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">drop</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">drop_rate</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">)</span>
 
+        <span class="c1"># self.Theta1 = nn.Linear(in_size, hidden_dims)</span>
+        <span class="c1"># self.Theta2 = nn.Linear(hidden_dims, out_size)</span>
+        <span class="c1"># self.dropout = nn.Dropout(0.5)</span>
+        <span class="c1">#</span>
+        <span class="c1"># ###########################################################</span>
+        <span class="c1"># # (HIGHLIGHT) Compute the Laplacian with Sparse Matrix API</span>
+        <span class="c1"># ###########################################################</span>
+        <span class="c1"># d_V = H.sum(1)  # node degree</span>
+        <span class="c1"># d_E = H.sum(0)  # edge degree</span>
+        <span class="c1"># n_edges = d_E.shape[0]</span>
+        <span class="c1"># D_V_invsqrt = dglsp.diag(d_V ** -0.5)  # D_V ** (-1/2)</span>
+        <span class="c1"># D_E_inv = dglsp.diag(d_E ** -1)  # D_E ** (-1)</span>
+        <span class="c1"># W = dglsp.identity((n_edges, n_edges))</span>
+        <span class="c1"># self.laplacian = D_V_invsqrt @ H @ W @ D_E_inv @ H.T @ D_V_invsqrt</span>
+
 <div class="viewcode-block" id="HGNNConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Parameters:</span>
 <span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(N, C_{in})`.</span>
-<span class="sd">            hg (``dhg.Hypergraph``): The hypergraph structure that contains :math:`N` vertices.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`N` vertices.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
