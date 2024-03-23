@@ -108,7 +108,7 @@ enhancement suggestion, please `include as many details as
 possible <#how-do-i-submit-an-enhancement-suggestion>`__. Fill in `the
 template <https://github.com/easy-graph/Easy-Graph/blob/master/.github/ISSUE_TEMPLATE/---feature-request.md>`__,
 including the steps that you imagine you would take if the feature
-you’re requesting existed.
+you're requesting existed.
 
 Before submitting an enhancement suggestion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

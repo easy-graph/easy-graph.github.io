@@ -40,6 +40,7 @@ parallel computing and Python/C++ hybrid programming techniques to achieve high 
    contributorGuide.rst
    license.rst
    sourcecode.rst
+   honors.rst
 
 
    dev.rst
