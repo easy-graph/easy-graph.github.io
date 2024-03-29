@@ -188,7 +188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -241,7 +241,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -295,7 +295,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l5 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -332,6 +332,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../honors.html">Honors</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
@@ -511,22 +512,18 @@
     <span class="k">return</span> <span class="n">argmap</span><span class="p">(</span><span class="n">_not_implemented_for</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
 
 
-<span class="kn">import</span> <span class="nn">functools</span>
-
-<span class="kn">import</span> <span class="nn">cpp_easygraph</span>
-
-
 <div class="viewcode-block" id="hybrid"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.hybrid">[docs]</a><span class="k">def</span> <span class="nf">hybrid</span><span class="p">(</span><span class="n">cpp_method_name</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">_hybrid</span><span class="p">(</span><span class="n">py_method</span><span class="p">):</span>
-        <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">py_method</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="n">G</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">cflag</span> <span class="ow">and</span> <span class="n">cpp_method_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">cpp_easygraph</span>
+
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">cpp_method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cpp_easygraph</span><span class="p">,</span> <span class="n">cpp_method_name</span><span class="p">)</span>
                     <span class="k">return</span> <span class="n">cpp_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">. Use python method instead.&quot;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">. use python method instead.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">py_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">method</span>

@@ -8,7 +8,7 @@ Subpackages
    :maxdepth: 4
 
    easygraph.functions.hypergraph.centrality
-   easygraph.functions.hypergraph.hypergraph_generator
+   easygraph.functions.hypergraph.null_model
 
 Submodules
 ----------

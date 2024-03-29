@@ -188,7 +188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -241,7 +241,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -295,7 +295,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l5 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -332,6 +332,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../honors.html">Honors</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
@@ -376,7 +377,6 @@
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
-<span class="kn">import</span> <span class="nn">easygraph</span>
 <span class="kn">import</span> <span class="nn">easygraph.convert</span> <span class="k">as</span> <span class="nn">convert</span>
 
 <span class="kn">from</span> <span class="nn">easygraph.classes.graph</span> <span class="kn">import</span> <span class="n">Graph</span>
@@ -403,7 +403,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    Create an empty directed graph with no nodes and edges.</span>
 
-<span class="sd">    &gt;&gt;&gt; G = eg.DiGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G = eg.Graph()</span>
 
 <span class="sd">    Create a deep copy graph *G2* from existing Graph *G1*.</span>
 
@@ -411,7 +411,7 @@
 
 <span class="sd">    Create an graph with attributes.</span>
 
-<span class="sd">    &gt;&gt;&gt; G = eg.DiGraph(name=&#39;Karate Club&#39;, date=&#39;2020.08.21&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; G = eg.Graph(name=&#39;Karate Club&#39;, date=&#39;2020.08.21&#39;)</span>
 
 <span class="sd">    **Attributes:**</span>
 
@@ -436,7 +436,6 @@
     <span class="n">adjlist_outer_dict_factory</span> <span class="o">=</span> <span class="nb">dict</span>
     <span class="n">adjlist_inner_dict_factory</span> <span class="o">=</span> <span class="nb">dict</span>
     <span class="n">edge_attr_dict_factory</span> <span class="o">=</span> <span class="nb">dict</span>
-    <span class="n">node_index_dict</span> <span class="o">=</span> <span class="nb">dict</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">graph_attr</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_attr_dict_factory</span><span class="p">()</span>
@@ -444,8 +443,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_dict_factory</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_outer_dict_factory</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_outer_dict_factory</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_node_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_index_dict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cflag</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">incoming_graph_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">convert</span><span class="o">.</span><span class="n">to_easygraph_graph</span><span class="p">(</span><span class="n">incoming_graph_data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
@@ -468,39 +465,24 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">node_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_index</span>
-
-    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ndata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ndata</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pred</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Return the pred of each node</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adj</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Return the adjacency matrix</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        return [node for node in self._node]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span>
+        <span class="c1"># return [node for node in self._node]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Return an edge list</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
@@ -519,13 +501,6 @@
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Set graph name</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        s : name</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
 
 <div class="viewcode-block" id="DiGraph.out_degree"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_graph.DiGraph.out_degree">[docs]</a>    <span class="k">def</span> <span class="nf">out_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
@@ -1039,10 +1014,9 @@
     <span class="k">def</span> <span class="nf">_add_one_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">one_node_for_adding</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">one_node_for_adding</span>
         <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_node_index</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
+
             <span class="n">attr_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_attr_dict_factory</span><span class="p">()</span>
             <span class="n">attr_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">node_attr</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># If already exists, there is no complain and still updating the node attribute</span>
@@ -1086,23 +1060,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_one_edge</span><span class="p">(</span><span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="n">edge_attr</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DiGraph.add_weighted_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_graph.DiGraph.add_weighted_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_weighted_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a weighted edge</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        u_of_edge : start node</span>
-
-<span class="sd">        v_of_edge : end node</span>
-
-<span class="sd">        weight : weight value</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
-<span class="sd">        Add a weighted edge</span>
-
-<span class="sd">        &gt;&gt;&gt; G.add_weighted_edge( 1 , 3 , 1.0)</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_one_edge</span><span class="p">(</span><span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">})</span></div>
 
 <div class="viewcode-block" id="DiGraph.add_edges"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_graph.DiGraph.add_edges">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges_for_adding</span><span class="p">,</span> <span class="n">edges_attr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
@@ -1441,33 +1398,9 @@
                 <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="DiGraph.has_node"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_graph.DiGraph.has_node">[docs]</a>    <span class="k">def</span> <span class="nf">has_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns whether a node exists</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        node</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Bool : True (exist) or False (not exists)</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span></div>
 
 <div class="viewcode-block" id="DiGraph.has_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_graph.DiGraph.has_edge">[docs]</a>    <span class="k">def</span> <span class="nf">has_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns whether an edge exists</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        u : start node</span>
-
-<span class="sd">        v: end node</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Bool : True (exist) or False (not exists)</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -1484,7 +1417,6 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DiGraph.is_directed"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_graph.DiGraph.is_directed">[docs]</a>    <span class="k">def</span> <span class="nf">is_directed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if graph is a directed_graph, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="DiGraph.is_multigraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_graph.DiGraph.is_multigraph">[docs]</a>    <span class="k">def</span> <span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

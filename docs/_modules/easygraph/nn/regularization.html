@@ -188,7 +188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -241,7 +241,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -295,7 +295,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
 <li class="toctree-l5 has-children"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
-<li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.hypergraph_generator.html">easygraph.functions.hypergraph.hypergraph_generator package</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
@@ -332,6 +332,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../honors.html">Honors</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
@@ -379,13 +380,10 @@
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;EmbeddingRegularization&quot;</span><span class="p">]</span>
-
-
 <div class="viewcode-block" id="EmbeddingRegularization"><a class="viewcode-back" href="../../../reference/easygraph.nn.html#easygraph.nn.regularization.EmbeddingRegularization">[docs]</a><span class="k">class</span> <span class="nc">EmbeddingRegularization</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Regularization function for embeddings.</span>
 
-<span class="sd">    Parameters:</span>
+<span class="sd">    Args:</span>
 <span class="sd">        ``p`` (``int``): The power to use in the regularization. Defaults to ``2``.</span>
 <span class="sd">        ``weight_decay`` (``float``): The weight of the regularization. Defaults to ``1e-4``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -398,7 +396,7 @@
 <div class="viewcode-block" id="EmbeddingRegularization.forward"><a class="viewcode-back" href="../../../reference/easygraph.nn.html#easygraph.nn.regularization.EmbeddingRegularization.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">embs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]):</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
-<span class="sd">        Parameters:</span>
+<span class="sd">        Args:</span>
 <span class="sd">            ``embs`` (``List[torch.Tensor]``): The input embeddings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span>
