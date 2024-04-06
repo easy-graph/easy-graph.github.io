@@ -1,10 +1,23 @@
-Examples of Hypergraph
+Hypergraph Library
 ========
+
+Overview
++++++++++++++
+
+Hypergraph libray is under the maintenance of EasyGraph. The hypergraph library architecture is shown as follow:
+
+.. image:: function_framework.png
+
+
+Examples
++++++++++++++
 
 We briefly introduce the fundamental properties, basic operations, and node classification task on hypergraph with **EasyGraph**.
 
 Basic Properties and Operation of Hypergraph
 -------------------------
+
+The related source code can refer to - `Link <https://github.com/easy-graph/Easy-Graph/blob/pybind11/easygraph/classes/hypergraph.py>`_
 
 .. important::
 
@@ -107,8 +120,11 @@ Construct a hypergraph from a graph.
          [0 0 0 1]
          [0 0 1 0]]
     '''
+
 Train a hypergraph neural network model, HGNN on trivago-clicks dataset
 -------------------------
+
+The related source code can refer to - `hypergraph model <https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/model>`_ and `hypergraph datasets <https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/datasets/hypergraph>`_
 
 We present a specifical node classification task on trivago-clicks dataset with a hypergraph neural network HGNN
 
