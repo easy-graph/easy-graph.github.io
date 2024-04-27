@@ -68,6 +68,14 @@ easygraph.datasets.hypergraph.hypergraph\_dataset\_base module
    :undoc-members:
    :show-inheritance:
 
+easygraph.datasets.hypergraph.loadDeepSetDatasets module
+--------------------------------------------------------
+
+.. automodule:: easygraph.datasets.hypergraph.loadDeepSetDatasets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.datasets.hypergraph.mathoverflow\_answers module
 ----------------------------------------------------------
 

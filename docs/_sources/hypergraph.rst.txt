@@ -1,4 +1,4 @@
-Hypergraph Library
+EasyGraph-Hypergraph
 ========
 
 Overview
