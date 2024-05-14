@@ -21,7 +21,7 @@ The related source code can refer to - `Link <https://github.com/easy-graph/Easy
 
 .. important::
 
-    Each hyperedge in the hypergraph is an unordered set of vertices, which means that ``(0, 1, 2)``, ``(0, 2, 1)``, and ``(2, 1, 0)`` are all the same hyperedge.
+    The nodes in our eg.Hypergraph numbered from 0 to n - 1 (n is the number of nodes). Meanwhile, each hyperedge in the hypergraph is an unordered set of vertices, which means that ``(0, 1, 2)``, ``(0, 2, 1)``, and ``(2, 1, 0)`` are all the same hyperedge.
 
 .. code-block:: python
 
@@ -292,19 +292,21 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 
 .. code-block:: python
 
-        epoch: 0, valid accuracy : 0.05572879681373306, loss : 5.096134662628174
-        epoch: 1, valid accuracy : 0.0624903516626015, loss : 4.997525215148926
-        epoch: 2, valid accuracy : 0.064589829880515, loss : 4.898364067077637
-        epoch: 3, valid accuracy : 0.06554694495044613, loss : 4.788722515106201
-        epoch: 4, valid accuracy : 0.06662755873907808, loss : 4.667123794555664
-        epoch: 5, valid accuracy : 0.06810954336348761, loss : 4.536109924316406
-        epoch: 6, valid accuracy : 0.06971502670659792, loss : 4.4008684158325195
-        epoch: 7, valid accuracy : 0.07159838216678502, loss : 4.268074035644531
-        epoch: 8, valid accuracy : 0.07274074531476736, loss : 4.144204139709473
-        epoch: 9, valid accuracy : 0.07468585013430486, loss : 4.034796714782715
-        Training finish!
-        test accuracy: 0.07569758017830265
+        epoch: 0, valid accuracy : 0.2997239226983555, loss : 2.3755440711975098
+        epoch: 1, valid accuracy : 0.30524546873124475, loss : 2.3317201137542725
+        epoch: 2, valid accuracy : 0.30806625855239467, loss : 2.2897789478302
+        epoch: 3, valid accuracy : 0.3118473172488297, loss : 2.248279571533203
+        epoch: 4, valid accuracy : 0.31736886328171887, loss : 2.2077314853668213
+        epoch: 5, valid accuracy : 0.32355059416636656, loss : 2.169461727142334
+        ......
+        epoch: 495, valid accuracy : 0.44616492617933023, loss : 1.5331683158874512
+        epoch: 496, valid accuracy : 0.445744808546393, loss : 1.5331355333328247
+        epoch: 497, valid accuracy : 0.44616492617933023, loss : 1.533029317855835
+        epoch: 498, valid accuracy : 0.4456247749369824, loss : 1.5328493118286133
+        epoch: 499, valid accuracy : 0.4461049093746249, loss : 1.5326640605926514
 
+        Training finish
+        test accuracy: 0.4464550979068197
 
 .. image:: loss_pic.png
 

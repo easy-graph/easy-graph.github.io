@@ -390,7 +390,7 @@
 <p>The related source code can refer to - <a class="reference external" href="https://github.com/easy-graph/Easy-Graph/blob/pybind11/easygraph/classes/hypergraph.py">Link</a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Each hyperedge in the hypergraph is an unordered set of vertices, which means that <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">2,</span> <span class="pre">1)</span></code>, and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> are all the same hyperedge.</p>
+<p>The nodes in our eg.Hypergraph numbered from 0 to n - 1 (n is the number of nodes). Meanwhile, each hyperedge in the hypergraph is an unordered set of vertices, which means that <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">2,</span> <span class="pre">1)</span></code>, and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> are all the same hyperedge.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hg</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="n">num_v</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">e_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">hg</span><span class="o">.</span><span class="n">incidence_matrix</span><span class="p">)</span>
@@ -627,18 +627,21 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 </pre></div>
 </div>
 <p><strong>Output</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>epoch: 0, valid accuracy : 0.05572879681373306, loss : 5.096134662628174
-epoch: 1, valid accuracy : 0.0624903516626015, loss : 4.997525215148926
-epoch: 2, valid accuracy : 0.064589829880515, loss : 4.898364067077637
-epoch: 3, valid accuracy : 0.06554694495044613, loss : 4.788722515106201
-epoch: 4, valid accuracy : 0.06662755873907808, loss : 4.667123794555664
-epoch: 5, valid accuracy : 0.06810954336348761, loss : 4.536109924316406
-epoch: 6, valid accuracy : 0.06971502670659792, loss : 4.4008684158325195
-epoch: 7, valid accuracy : 0.07159838216678502, loss : 4.268074035644531
-epoch: 8, valid accuracy : 0.07274074531476736, loss : 4.144204139709473
-epoch: 9, valid accuracy : 0.07468585013430486, loss : 4.034796714782715
-Training finish!
-test accuracy: 0.07569758017830265
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">epoch</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.2997239226983555</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.3755440711975098</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.30524546873124475</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.3317201137542725</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.30806625855239467</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.2897789478302</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.3118473172488297</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.248279571533203</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.31736886328171887</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.2077314853668213</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.32355059416636656</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.169461727142334</span>
+<span class="o">......</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">495</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.44616492617933023</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.5331683158874512</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">496</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.445744808546393</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.5331355333328247</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">497</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.44616492617933023</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.533029317855835</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">498</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.4456247749369824</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.5328493118286133</span>
+<span class="n">epoch</span><span class="p">:</span> <span class="mi">499</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.4461049093746249</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.5326640605926514</span>
+
+<span class="n">Training</span> <span class="n">finish</span>
+<span class="n">test</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.4464550979068197</span>
 </pre></div>
 </div>
 <img alt="_images/loss_pic.png" src="_images/loss_pic.png" />
