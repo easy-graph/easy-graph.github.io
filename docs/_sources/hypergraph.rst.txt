@@ -46,6 +46,7 @@ The related source code can refer to - `Link <https://github.com/easy-graph/Easy
     """
     print("hg.e:",hg.e)
     # ([(0, 1, 2), (2, 3), (0, 4)], [1.0, 2.0, 1.0], [{}, {}, {}])
+    e_line_width = [1, 2, 1]
     hg.draw(v_label=[0, 1, 2, 3, 4], v_color='#e6928f', e_color='#4e9595', e_line_width=e_line_width)
 
 
