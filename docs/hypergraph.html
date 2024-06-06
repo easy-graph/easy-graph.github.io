@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Reference" href="reference.html" /><link rel="prev" title="Examples of Graph Analysis" href="example.html" />
 
     <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
-        <title>EasyGraph-Hypergraph - EasyGraph 1.3</title>
+        <title>EasyGraph-Hypergraph - EasyGraph 1.4</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/my_theme.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">EasyGraph 1.3</div></a>
+      <a href="index.html"><div class="brand">EasyGraph 1.4</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +150,7 @@
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 1.3</span>
+  <span class="sidebar-brand-text">EasyGraph 1.4</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -393,8 +393,9 @@
 <p>The nodes in our eg.Hypergraph numbered from 0 to n - 1 (n is the number of nodes). Meanwhile, each hyperedge in the hypergraph is an unordered set of vertices, which means that <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">2,</span> <span class="pre">1)</span></code>, and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> are all the same hyperedge.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hg</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="n">num_v</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">e_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hg</span><span class="o">.</span><span class="n">incidence_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sparse format:&quot;</span><span class="p">,</span><span class="n">hg</span><span class="o">.</span><span class="n">incidence_matrix</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Sparse format:</span>
 <span class="sd">  (0, 0)        1</span>
 <span class="sd">  (0, 2)        1</span>
 <span class="sd">  (1, 0)        1</span>
@@ -403,8 +404,9 @@
 <span class="sd">  (3, 1)        1</span>
 <span class="sd">  (4, 2)        1</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hg</span><span class="o">.</span><span class="n">incidence_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dense format:&quot;</span><span class="p">,</span><span class="n">hg</span><span class="o">.</span><span class="n">incidence_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Dense format:</span>
 <span class="sd">[[1 0 1]</span>
 <span class="sd"> [1 0 0]</span>
 <span class="sd"> [1 1 0]</span>

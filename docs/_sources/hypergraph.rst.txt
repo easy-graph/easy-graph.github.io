@@ -26,8 +26,9 @@ The related source code can refer to - `Link <https://github.com/easy-graph/Easy
 .. code-block:: python
 
     hg = eg.Hypergraph(num_v = 5, e_list = [(0, 1, 2), (2, 3), (2, 3), (0, 4)], merge_op="sum")
-    print(hg.incidence_matrix)
+    print("Sparse format:",hg.incidence_matrix)
     """
+    Sparse format:
       (0, 0)        1
       (0, 2)        1
       (1, 0)        1
@@ -36,8 +37,9 @@ The related source code can refer to - `Link <https://github.com/easy-graph/Easy
       (3, 1)        1
       (4, 2)        1
     """
-    print(hg.incidence_matrix.todense())
+    print("Dense format:",hg.incidence_matrix.todense())
     """
+    Dense format:
     [[1 0 1]
      [1 0 0]
      [1 1 0]
