@@ -2,10 +2,10 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Reference" href="reference.html" /><link rel="prev" title="Examples of Graph Analysis" href="example.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="EasyGraph API" href="reference.html" /><link rel="prev" title="Examples of Graph Analysis" href="example.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 5.2.0 and Furo 2023.03.27 -->
         <title>EasyGraph-Hypergraph - EasyGraph 1.4</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
@@ -144,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
@@ -163,7 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">EasyGraph-Hypergraph</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">EasyGraph API</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
@@ -379,18 +379,18 @@
 <h1>EasyGraph-Hypergraph<a class="headerlink" href="#easygraph-hypergraph" title="Permalink to this heading"></a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
-<p>Hypergraph libray is under the maintenance of EasyGraph. The hypergraph library architecture is shown as follow:</p>
+<p>The Hypergraph library is maintained by EasyGraph. Its architecture is shown as follows:</p>
 <img alt="_images/function_framework.png" src="_images/function_framework.png" />
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
-<p>We briefly introduce the fundamental properties, basic operations, and node classification task on hypergraph with <strong>EasyGraph</strong>.</p>
-<section id="basic-properties-and-operation-of-hypergraph">
-<h3>Basic Properties and Operation of Hypergraph<a class="headerlink" href="#basic-properties-and-operation-of-hypergraph" title="Permalink to this heading"></a></h3>
-<p>The related source code can refer to - <a class="reference external" href="https://github.com/easy-graph/Easy-Graph/blob/pybind11/easygraph/classes/hypergraph.py">Link</a></p>
+<p>We provide a brief introduction to the fundamental properties, basic operations, and node classification tasks on hypergraph using <strong>EasyGraph</strong>.</p>
+<section id="basic-properties-and-operations-of-hypergraph">
+<h3>Basic Properties and Operations of Hypergraph<a class="headerlink" href="#basic-properties-and-operations-of-hypergraph" title="Permalink to this heading"></a></h3>
+<p>Please refer to the related source code <a class="reference external" href="https://github.com/easy-graph/Easy-Graph/blob/pybind11/easygraph/classes/hypergraph.py">here</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The nodes in our eg.Hypergraph numbered from 0 to n - 1 (n is the number of nodes). Meanwhile, each hyperedge in the hypergraph is an unordered set of vertices, which means that <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">2,</span> <span class="pre">1)</span></code>, and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> are all the same hyperedge.</p>
+<p>The nodes in our eg.Hypergraph are numbered from 0 to n - 1 (where n is the number of nodes). Each hyperedge in the hypergraph is represented as an unordered set of vertices. Therefore, hyperedges such as <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">2,</span> <span class="pre">1)</span></code>, and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> are considered identical.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hg</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="n">num_v</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">e_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">merge_op</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sparse format:&quot;</span><span class="p">,</span><span class="n">hg</span><span class="o">.</span><span class="n">incidence_matrix</span><span class="p">)</span>
@@ -437,7 +437,7 @@
 <p class="admonition-title">Note</p>
 <p>If the added hyperedges have duplicate hyperedges, those duplicate hyperedges will be automatically merged with specified merge_op.
 If merge_op = ‘sum’, the weight is the sum of duplicate hyperedges weights.
-If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedges weights.</p>
+If merge_op = ‘mean’, the weight is the average sum of duplicate hyperedges weights.</p>
 </div>
 <p>Create a hypergraph based on the k-nearest neighbors of the features.</p>
 <blockquote>
@@ -466,7 +466,7 @@ If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedg
 </div>
 </div></blockquote>
 <img alt="_images/hypergraph_example3.png" src="_images/hypergraph_example3.png" />
-<p>Construct a hypergraph from a graph.</p>
+<p>Construct a hypergraph from a graph:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
 <span class="n">hg</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="o">.</span><span class="n">from_graph</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
@@ -483,17 +483,17 @@ If merge_op = ‘mean’, the weight is the average of sum of duplicate hyperedg
 </pre></div>
 </div>
 </section>
-<section id="train-a-hypergraph-neural-network-model-hgnn-on-trivago-clicks-dataset">
-<h3>Train a hypergraph neural network model, HGNN on trivago-clicks dataset<a class="headerlink" href="#train-a-hypergraph-neural-network-model-hgnn-on-trivago-clicks-dataset" title="Permalink to this heading"></a></h3>
-<p>The related source code can refer to - <a class="reference external" href="https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/model">hypergraph model</a> and <a class="reference external" href="https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/datasets/hypergraph">hypergraph datasets</a></p>
-<p>We present a specifical node classification task on trivago-clicks dataset with a hypergraph neural network HGNN</p>
+<section id="train-a-hypergraph-neural-network-hgnn-model-on-the-trivago-clicks-dataset">
+<h3>Train a Hypergraph Neural Network (HGNN) model on the trivago-clicks dataset:<a class="headerlink" href="#train-a-hypergraph-neural-network-hgnn-model-on-the-trivago-clicks-dataset" title="Permalink to this heading"></a></h3>
+<p>The related source code can be found in the following repositories: <a class="reference external" href="https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/model">hypergraph model</a> and <a class="reference external" href="https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/datasets/hypergraph">hypergraph datasets</a>.</p>
+<p>We demonstrate a specific node classification task on the trivago-clicks dataset using a Hypergraph Neural Network (HGNN).</p>
 <p><strong>Model:</strong></p>
-<p>HGNN (eg.HGNN): Hypergraph Neural Networks</p>
+<p>Hypergraph Neural Networks (HGNN)</p>
 <p>(Feng, Y., You, H., Zhang, Z., Ji, R., &amp; Gao, Y. (2019). Hypergraph Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 3558-3565. ).</p>
 <p><strong>Dataset:</strong></p>
 <p>trivago-clicks (eg.trivago_clicks):
-Sets of hotels clicked on in a Web browsing session, where labels are the countries of the accomodation.</p>
-<p><strong>Import Libraries</strong></p>
+Sets of hotels clicked on in a Web browsing session, where labels are the countries of the accommodation.</p>
+<p><strong>Import Libraries:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -502,7 +502,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
-<p><strong>Dataset preparation and model definition</strong></p>
+<p><strong>Dataset preparation and model definition:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">():</span>
 <span class="sd">&quot;&quot;&quot;Preprocess for HGNN model training.</span>
 
@@ -514,7 +514,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 
 
 <span class="c1"># There is no default feature vector for this dataset. Users can generate their own features.</span>
-<span class="c1"># Here we use random initialisation to generate 100-dimensional node feature vectors</span>
+<span class="c1"># Here we use random initialization to generate 100-dimensional node feature vectors</span>
 
 <span class="n">trivago_clicks</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">trivago_clicks</span><span class="p">()</span>
 <span class="n">node_labels</span> <span class="o">=</span> <span class="n">trivago_clicks</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span>
@@ -558,7 +558,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 <span class="k">return</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">model</span>
 </pre></div>
 </div>
-<p><strong>Train, valid, test</strong></p>
+<p><strong>Train, valid, test:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
@@ -594,7 +594,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
     <span class="k">return</span> <span class="n">acc</span>
 </pre></div>
 </div>
-<p><strong>Loss visualization</strong></p>
+<p><strong>Loss visualization:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_loss_curve</span><span class="p">(</span><span class="n">loss1</span><span class="p">,</span> <span class="n">save_path</span> <span class="o">=</span> <span class="s2">&quot;loss_pic.png&quot;</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
     <span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -609,7 +609,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Main</strong></p>
+<p><strong>Main:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">dataset</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">()</span>
     <span class="n">loss_lst</span> <span class="o">=</span> <span class="p">[]</span>
@@ -629,7 +629,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
     <span class="n">draw_loss_curve</span><span class="p">(</span><span class="n">loss_lst</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Output</strong></p>
+<p><strong>Output:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">epoch</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.2997239226983555</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.3755440711975098</span>
 <span class="n">epoch</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.30524546873124475</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.3317201137542725</span>
 <span class="n">epoch</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">valid</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.30806625855239467</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.2897789478302</span>
@@ -662,7 +662,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Reference</div>
+                <div class="title">EasyGraph API</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -710,8 +710,8 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 <li><a class="reference internal" href="#">EasyGraph-Hypergraph</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#examples">Examples</a><ul>
-<li><a class="reference internal" href="#basic-properties-and-operation-of-hypergraph">Basic Properties and Operation of Hypergraph</a></li>
-<li><a class="reference internal" href="#train-a-hypergraph-neural-network-model-hgnn-on-trivago-clicks-dataset">Train a hypergraph neural network model, HGNN on trivago-clicks dataset</a></li>
+<li><a class="reference internal" href="#basic-properties-and-operations-of-hypergraph">Basic Properties and Operations of Hypergraph</a></li>
+<li><a class="reference internal" href="#train-a-hypergraph-neural-network-hgnn-model-on-the-trivago-clicks-dataset">Train a Hypergraph Neural Network (HGNN) model on the trivago-clicks dataset:</a></li>
 </ul>
 </li>
 </ul>
@@ -725,9 +725,10 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
       
     </aside>
   </div>
-</div><script src="_static/jquery.js"></script>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>

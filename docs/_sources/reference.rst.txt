@@ -1,15 +1,18 @@
-Reference
+EasyGraph API
 =========
 
-For now, EasyGraph has implemented graph computation functions, 
-including fundamental methods, for example, connected/biconnected components, 
-community detection, PageRank; as well as advanced methods, for example, 
-structure hole spanners detection, graph embedding. All of these functions 
-are implemented with Python language in EasyGraph, even if the original authors 
-of some graph computing methods are using different language, C and C++, for instance. 
+At this point, EasyGraph has integrated a variety of graph computation functions, 
+including fundamental methods such as connected and biconnected components, community detection, 
+and PageRank, as well as advanced methods like structural hole spanners detection 
+and graph embedding. Despite that some graph computing methods were originally 
+implemented with other languages such as C and C++, all these functionalities 
+are now encapsulated within EasyGraph and implemented using Python.
 
-With the help of EasyGraph, users can easily try and compare different graph computation 
-methods in the same platform.
+
+
+
+EasyGraph enables users to easily experiment with and compare different graph 
+computation methods within the same platform. 
 
 .. toctree::
     :maxdepth: 2

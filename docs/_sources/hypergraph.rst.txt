@@ -4,7 +4,7 @@ EasyGraph-Hypergraph
 Overview
 +++++++++++++
 
-Hypergraph libray is under the maintenance of EasyGraph. The hypergraph library architecture is shown as follow:
+The Hypergraph library is maintained by EasyGraph. Its architecture is shown as follows:
 
 .. image:: function_framework.png
 
@@ -12,16 +12,16 @@ Hypergraph libray is under the maintenance of EasyGraph. The hypergraph library 
 Examples
 +++++++++++++
 
-We briefly introduce the fundamental properties, basic operations, and node classification task on hypergraph with **EasyGraph**.
+We provide a brief introduction to the fundamental properties, basic operations, and node classification tasks on hypergraph using **EasyGraph**.
 
-Basic Properties and Operation of Hypergraph
+Basic Properties and Operations of Hypergraph
 -------------------------
 
-The related source code can refer to - `Link <https://github.com/easy-graph/Easy-Graph/blob/pybind11/easygraph/classes/hypergraph.py>`_
+Please refer to the related source code `here <https://github.com/easy-graph/Easy-Graph/blob/pybind11/easygraph/classes/hypergraph.py>`_.
 
 .. important::
 
-    The nodes in our eg.Hypergraph numbered from 0 to n - 1 (n is the number of nodes). Meanwhile, each hyperedge in the hypergraph is an unordered set of vertices, which means that ``(0, 1, 2)``, ``(0, 2, 1)``, and ``(2, 1, 0)`` are all the same hyperedge.
+    The nodes in our eg.Hypergraph are numbered from 0 to n - 1 (where n is the number of nodes). Each hyperedge in the hypergraph is represented as an unordered set of vertices. Therefore, hyperedges such as ``(0, 1, 2)``, ``(0, 2, 1)``, and ``(2, 1, 0)`` are considered identical.
 
 .. code-block:: python
 
@@ -75,7 +75,7 @@ The related source code can refer to - `Link <https://github.com/easy-graph/Easy
 
     If the added hyperedges have duplicate hyperedges, those duplicate hyperedges will be automatically merged with specified merge_op.
     If merge_op = 'sum', the weight is the sum of duplicate hyperedges weights.
-    If merge_op = 'mean', the weight is the average of sum of duplicate hyperedges weights.
+    If merge_op = 'mean', the weight is the average sum of duplicate hyperedges weights.
 
 
 Create a hypergraph based on the k-nearest neighbors of the features.
@@ -106,7 +106,7 @@ Create a hypergraph based on the k-nearest neighbors of the features.
 
 .. image:: hypergraph_example3.png
 
-Construct a hypergraph from a graph.
+Construct a hypergraph from a graph:
 
 .. code-block:: python
 
@@ -124,16 +124,16 @@ Construct a hypergraph from a graph.
          [0 0 1 0]]
     '''
 
-Train a hypergraph neural network model, HGNN on trivago-clicks dataset
+Train a Hypergraph Neural Network (HGNN) model on the trivago-clicks dataset:
 -------------------------
 
-The related source code can refer to - `hypergraph model <https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/model>`_ and `hypergraph datasets <https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/datasets/hypergraph>`_
+The related source code can be found in the following repositories: `hypergraph model <https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/model>`_ and `hypergraph datasets <https://github.com/easy-graph/Easy-Graph/tree/pybind11/easygraph/datasets/hypergraph>`_.
 
-We present a specifical node classification task on trivago-clicks dataset with a hypergraph neural network HGNN
+We demonstrate a specific node classification task on the trivago-clicks dataset using a Hypergraph Neural Network (HGNN).
 
 **Model:**
 
-HGNN (eg.HGNN): Hypergraph Neural Networks
+Hypergraph Neural Networks (HGNN)
 
 
 (Feng, Y., You, H., Zhang, Z., Ji, R., & Gao, Y. (2019). Hypergraph Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 3558-3565. ).
@@ -141,10 +141,10 @@ HGNN (eg.HGNN): Hypergraph Neural Networks
 **Dataset:**
 
 trivago-clicks (eg.trivago_clicks):
-Sets of hotels clicked on in a Web browsing session, where labels are the countries of the accomodation.
+Sets of hotels clicked on in a Web browsing session, where labels are the countries of the accommodation.
 
 
-**Import Libraries**
+**Import Libraries:**
 
 .. code-block:: python
 
@@ -155,7 +155,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
     from sklearn.model_selection import train_test_split
     import matplotlib.pyplot as plt
 
-**Dataset preparation and model definition**
+**Dataset preparation and model definition:**
 
 .. code-block:: python
 
@@ -170,7 +170,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 
 
     # There is no default feature vector for this dataset. Users can generate their own features.
-    # Here we use random initialisation to generate 100-dimensional node feature vectors
+    # Here we use random initialization to generate 100-dimensional node feature vectors
 
     trivago_clicks = eg.trivago_clicks()
     node_labels = trivago_clicks["labels"]
@@ -213,7 +213,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
 
     return dataset, model
 
-**Train, valid, test**
+**Train, valid, test:**
 
 .. code-block:: python
 
@@ -252,7 +252,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
         return acc
 
 
-**Loss visualization**
+**Loss visualization:**
 
 .. code-block:: python
 
@@ -269,7 +269,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
             plt.savefig(save_path)
         plt.show()
 
-**Main**
+**Main:**
 
 .. code-block:: python
 
@@ -291,7 +291,7 @@ Sets of hotels clicked on in a Web browsing session, where labels are the countr
         print("test accuracy:", test_acc)
         draw_loss_curve(loss_lst)
 
-**Output**
+**Output:**
 
 .. code-block:: python
 

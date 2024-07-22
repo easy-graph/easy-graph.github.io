@@ -5,9 +5,9 @@
 
    <!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) -->
 
-We choose to build Linux wheels on GitHub Actions because it’s reliable.
-For other platforms, we build manually on our machines, because we’ve
-yet to find a way to make it work on GitHub Actions.
+We build Linux wheels on GitHub Actions due to its reliability. 
+For other platforms, we manually build on our local machines, 
+as we haven't yet found a way to automate this process on GitHub Actions.
 
 -  `(Mostly) Manually Building and Releasing
    python-easygraph <#mostly-manually-building-and-releasing-python-easygraph>`__
@@ -39,14 +39,14 @@ Build for Linux x86_64
 
    gh workflow run release-cibuildwheel.yaml -F upload=none
 
-After the workflow finishes, download the artifacts from the workflow
+Once the workflow completes, download the artifacts from the workflow
 run page.
 
 The artifact contains the built wheel file for Linux x86_64.
 
-Unzip the artifact and remove anything but the ``.tgz`` source
-distribution and ``.whl`` wheel files with ``linux`` in the name (if
-applicable).
+Unzip the artifact and retain only the ``.tgz`` source
+distribution and ``.whl`` wheel files with ``linux`` in their names (if
+applicable), discarding anything else.
 
 Build for other platforms
 -------------------------
@@ -62,8 +62,8 @@ Locate find the built ``.whl`` files.
 Put all the wheel files and source distribution in a directory and upload to PyPI
 ---------------------------------------------------------------------------------
 
-Put all the wheel files and source distribution built in the previous 2
-steps in a directory ``<your_directory>``, and run
+Place all the wheel files and source distributions generated in the previous two steps
+in one directory ``<your_directory>`` and run
 
 ::
 

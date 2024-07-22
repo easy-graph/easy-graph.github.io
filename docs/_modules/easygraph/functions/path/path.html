@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
-        <title>easygraph.functions.path.path - EasyGraph 1.1</title>
+    <!-- Generated with Sphinx 5.2.0 and Furo 2023.03.27 -->
+        <title>easygraph.functions.path.path - EasyGraph 1.4</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../index.html"><div class="brand">EasyGraph 1.1</div></a>
+      <a href="../../../../index.html"><div class="brand">EasyGraph 1.4</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,13 +143,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 1.1</span>
+  <span class="sidebar-brand-text">EasyGraph 1.4</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -160,8 +160,8 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">Examples of Hypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyGraph-Hypergraph</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../reference.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -390,9 +390,9 @@
 <span class="p">]</span>
 
 
-<span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_spfa&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Spfa"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Spfa">[docs]</a><span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_spfa&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">Spfa</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Please input GraphC or DiGraphC.&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Please input GraphC or DiGraphC.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Dijkstra"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Dijkstra">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
@@ -420,7 +420,7 @@
     <span class="k">return</span> <span class="n">single_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span></div>
 
 
-<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Floyd"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Floyd">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_Floyd&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">Floyd</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
@@ -462,10 +462,10 @@
                 <span class="n">temp</span> <span class="o">=</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">temp</span><span class="p">:</span>
                     <span class="n">result_dict</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
-    <span class="k">return</span> <span class="n">result_dict</span>
+    <span class="k">return</span> <span class="n">result_dict</span></div>
 
 
-<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Prim"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Prim">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_Prim&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">Prim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
@@ -515,10 +515,10 @@
             <span class="n">candidate</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">break</span>
-    <span class="k">return</span> <span class="n">result_dict</span>
+    <span class="k">return</span> <span class="n">result_dict</span></div>
 
 
-<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Kruskal"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Kruskal">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_Kruskal&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">Kruskal</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
@@ -562,7 +562,7 @@
             <span class="n">result_dict</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
             <span class="n">group</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">group</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
             <span class="n">group</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">return</span> <span class="n">result_dict</span>
+    <span class="k">return</span> <span class="n">result_dict</span></div>
 
 
 <div class="viewcode-block" id="single_source_bfs"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.single_source_bfs">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
@@ -668,9 +668,10 @@
       
     </aside>
   </div>
-</div><script src="../../../../_static/jquery.js"></script>
+</div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>

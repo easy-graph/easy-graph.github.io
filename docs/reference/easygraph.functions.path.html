@@ -2,10 +2,10 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph.functions package" href="easygraph.functions.html" /><link rel="prev" title="easygraph.functions.graph_generator package" href="easygraph.functions.graph_generator.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 5.2.0 and Furo 2023.03.27 -->
         <title>easygraph.functions.path package - EasyGraph 1.4</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
@@ -144,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
@@ -380,8 +380,70 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="easygraph-functions-path-average-shortest-path-length-module">
-<h2>easygraph.functions.path.average_shortest_path_length module<a class="headerlink" href="#easygraph-functions-path-average-shortest-path-length-module" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.functions.path.average_shortest_path_length">
+<span id="easygraph-functions-path-average-shortest-path-length-module"></span><h2>easygraph.functions.path.average_shortest_path_length module<a class="headerlink" href="#module-easygraph.functions.path.average_shortest_path_length" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.path.average_shortest_path_length.average_shortest_path_length">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.average_shortest_path_length.</span></span><span class="sig-name descname"><span class="pre">average_shortest_path_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/average_shortest_path_length.html#average_shortest_path_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.average_shortest_path_length.average_shortest_path_length" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the average shortest path length.</p>
+<p>The average shortest path length is</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}a =\sum_{\substack{s,t \in V \\ s\neq t}} \frac{d(s, t)}{n(n-1)}\end{split}\]</div>
+</div>
+<p>where <cite>V</cite> is the set of nodes in <cite>G</cite>,
+<cite>d(s, t)</cite> is the shortest path from <cite>s</cite> to <cite>t</cite>,
+and <cite>n</cite> is the number of nodes in <cite>G</cite>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.0: </span>An exception is raised for directed graphs that are not strongly
+connected.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>EasyGraph graph</em>) – </p></li>
+<li><p><strong>weight</strong> (<em>None</em><em>, </em><em>string</em><em> or </em><em>function</em><em>, </em><em>optional</em><em> (</em><em>default = None</em><em>)</em>) – If None, every edge has weight/distance/cost 1.
+If a string, use this edge attribute as the edge weight.
+Any edge attribute not present defaults to 1.
+If this is a function, the weight of an edge is the value
+returned by the function. The function must accept exactly
+three positional arguments: the two endpoints of an edge and
+the dictionary of edge attributes for that edge.
+The function must return a number.</p></li>
+<li><p><strong>method</strong> (<em>string</em><em>, </em><em>optional</em><em> (</em><em>default = 'unweighted'</em><em> or </em><em>'dijkstra'</em><em>)</em>) – The algorithm to use to compute the path lengths.
+Supported options are ‘unweighted’, ‘dijkstra’, ‘bellman-ford’,
+‘floyd-warshall’ and ‘floyd-warshall-numpy’.
+Other method values produce a ValueError.
+The default method is ‘unweighted’ if <cite>weight</cite> is None,
+otherwise the default method is ‘dijkstra’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>NetworkXPointlessConcept</strong> – If <cite>G</cite> is the null graph (that is, the graph on zero nodes).</p></li>
+<li><p><strong>NetworkXError</strong> – If <cite>G</cite> is not connected (or not strongly connected, in the case
+    of a directed graph).</p></li>
+<li><p><strong>ValueError</strong> – If <cite>method</cite> is not among the supported options.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">average_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">2.0</span>
+</pre></div>
+</div>
+<p>For disconnected graphs, you can compute the average shortest path
+length for each component</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">eg</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">average_shortest_path_length</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+<span class="go">1.0</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="module-easygraph.functions.path.bridges">
 <span id="easygraph-functions-path-bridges-module"></span><h2>easygraph.functions.path.bridges module<a class="headerlink" href="#module-easygraph.functions.path.bridges" title="Permalink to this heading"></a></h2>
@@ -393,19 +455,19 @@
 connected components of the graph to increase.  Equivalently, a bridge is an
 edge that does not belong to any cycle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>undirected graph</em>) – </p></li>
 <li><p><strong>root</strong> (<em>node</em><em> (</em><em>optional</em><em>)</em>) – A node in the graph <cite>G</cite>. If specified, only the bridges in the
 connected component containing this node will be returned.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dt class="field-even">Yields</dt>
 <dd class="field-even"><p><strong>e</strong> (<em>edge</em>) – An edge in the graph whose removal disconnects the graph (or
 causes the number of connected components to increase).</p>
 </dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>NodeNotFound</strong> – If <cite>root</cite> is not in the graph <cite>G</cite>.</p>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="easygraph.html#easygraph.exception.NodeNotFound" title="easygraph.exception.NodeNotFound"><strong>NodeNotFound</strong></a> – If <cite>root</cite> is not in the graph <cite>G</cite>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -422,12 +484,11 @@ same as the <code class="xref py py-func docutils literal notranslate"><span cla
 $O(m + n)$, where $n$ is the number of nodes in the graph and $m$ is
 the number of edges.</p>
 <p class="rubric">References</p>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id1" role="note">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29#Bridge-Finding_with_Chain_Decompositions">https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29#Bridge-Finding_with_Chain_Decompositions</a></p>
-</aside>
-</aside>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29#Bridge-Finding_with_Chain_Decompositions">https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29#Bridge-Finding_with_Chain_Decompositions</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -437,22 +498,22 @@ the number of edges.</p>
 <p>A <em>bridge</em> in a graph is an edge whose removal causes the number of
 connected components of the graph to increase.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>undirected graph</em>) – </p></li>
 <li><p><strong>root</strong> (<em>node</em><em> (</em><em>optional</em><em>)</em>) – A node in the graph <cite>G</cite>. If specified, only the bridges in the
 connected component containing this node will be considered.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Whether the graph (or the connected component containing <cite>root</cite>)
 has any bridges.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>NodeNotFound</strong> – If <cite>root</cite> is not in the graph <cite>G</cite>.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="easygraph.html#easygraph.exception.NodeNotFound" title="easygraph.exception.NodeNotFound"><strong>NodeNotFound</strong></a> – If <cite>root</cite> is not in the graph <cite>G</cite>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -468,8 +529,72 @@ graph and $m$ is the number of edges.</p>
 </dd></dl>
 
 </section>
-<section id="easygraph-functions-path-diameter-module">
-<h2>easygraph.functions.path.diameter module<a class="headerlink" href="#easygraph-functions-path-diameter-module" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.functions.path.diameter">
+<span id="easygraph-functions-path-diameter-module"></span><h2>easygraph.functions.path.diameter module<a class="headerlink" href="#module-easygraph.functions.path.diameter" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.path.diameter.diameter">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.diameter.</span></span><span class="sig-name descname"><span class="pre">diameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/diameter.html#diameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.diameter.diameter" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the diameter of the graph G.</p>
+<p>The diameter is the maximum eccentricity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>EasyGraph graph</em>) – A graph</p></li>
+<li><p><strong>e</strong> (<em>eccentricity dictionary</em><em>, </em><em>optional</em>) – A precomputed dictionary of eccentricities.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>d</strong> – Diameter of graph</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>integer</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">diameter</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.functions.path.diameter.eccentricity" title="easygraph.functions.path.diameter.eccentricity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eccentricity</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.path.diameter.eccentricity">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.diameter.</span></span><span class="sig-name descname"><span class="pre">eccentricity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/diameter.html#eccentricity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.diameter.eccentricity" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the eccentricity of nodes in G.</p>
+<p>The eccentricity of a node v is the maximum distance from v to
+all other nodes in G.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>EasyGraph graph</em>) – A graph</p></li>
+<li><p><strong>v</strong> (<em>node</em><em>, </em><em>optional</em>) – Return value of specified node</p></li>
+<li><p><strong>sp</strong> (<em>dict</em><em> of </em><em>dicts</em><em>, </em><em>optional</em>) – All pairs shortest path lengths as a dictionary of dictionaries</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ecc</strong> – A dictionary of eccentricity values keyed by node.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">eccentricity</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="go">{1: 2, 2: 3, 3: 2, 4: 2, 5: 3}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">eccentricity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>  <span class="c1"># This returns the eccentrity of node 1 &amp; 5</span>
+<span class="go">{1: 2, 5: 3}</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="module-easygraph.functions.path.mst">
 <span id="easygraph-functions-path-mst-module"></span><h2>easygraph.functions.path.mst module<a class="headerlink" href="#module-easygraph.functions.path.mst" title="Permalink to this heading"></a></h2>
@@ -482,7 +607,7 @@ weighted graph.</p>
 with the maximum possible sum of edge weights.  A spanning forest is a
 union of the spanning trees for each connected component of the graph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>undirected Graph</em>) – An undirected graph. If <cite>G</cite> is connected, then the algorithm finds a
 spanning tree. Otherwise, a spanning forest is found.</p></li>
@@ -494,12 +619,12 @@ choices are ‘kruskal’, ‘prim’, or ‘boruvka’. The default is ‘krusk
 If <cite>ignore_nan is True</cite> then that edge is ignored instead.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>edges</strong> – An iterator over edges in a maximum spanning tree of <cite>G</cite>.
 Edges connecting nodes <cite>u</cite> and <cite>v</cite> are represented as tuples:
 <cite>(u, v, k, d)</cite> or <cite>(u, v, k)</cite> or <cite>(u, v, d)</cite> or <cite>(u, v)</cite></p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>iterator</p>
 </dd>
 </dl>
@@ -537,7 +662,7 @@ attribute a default weight of 1 will be used.</p>
 <span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.mst.</span></span><span class="sig-name descname"><span class="pre">maximum_spanning_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'kruskal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/mst.html#maximum_spanning_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.mst.maximum_spanning_tree" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a maximum spanning tree or forest on an undirected graph <cite>G</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>undirected graph</em>) – An undirected graph. If <cite>G</cite> is connected, then the algorithm finds a
 spanning tree. Otherwise, a spanning forest is found.</p></li>
@@ -549,10 +674,10 @@ choices are ‘kruskal’, ‘prim’, or ‘boruvka’. The default is
 If <cite>ignore_nan is True</cite> then that edge is ignored instead.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>G</strong> – A maximum spanning tree or forest.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>EasyGraph Graph</p>
 </dd>
 </dl>
@@ -582,7 +707,7 @@ weighted graph.</p>
 with the minimum sum of edge weights.  A spanning forest is a
 union of the spanning trees for each connected component of the graph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>undirected Graph</em>) – An undirected graph. If <cite>G</cite> is connected, then the algorithm finds a
 spanning tree. Otherwise, a spanning forest is found.</p></li>
@@ -594,12 +719,12 @@ choices are ‘kruskal’, ‘prim’, or ‘boruvka’. The default is ‘krusk
 If <cite>ignore_nan is True</cite> then that edge is ignored instead.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>edges</strong> – An iterator over edges in a maximum spanning tree of <cite>G</cite>.
 Edges connecting nodes <cite>u</cite> and <cite>v</cite> are represented as tuples:
 <cite>(u, v, k, d)</cite> or <cite>(u, v, k)</cite> or <cite>(u, v, d)</cite> or <cite>(u, v)</cite></p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>iterator</p>
 </dd>
 </dl>
@@ -637,7 +762,7 @@ attribute a default weight of 1 will be used.</p>
 <span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.mst.</span></span><span class="sig-name descname"><span class="pre">minimum_spanning_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'kruskal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/mst.html#minimum_spanning_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.mst.minimum_spanning_tree" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a minimum spanning tree or forest on an undirected graph <cite>G</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>undirected graph</em>) – An undirected graph. If <cite>G</cite> is connected, then the algorithm finds a
 spanning tree. Otherwise, a spanning forest is found.</p></li>
@@ -649,10 +774,10 @@ choices are ‘kruskal’, ‘prim’, or ‘boruvka’. The default is
 If <cite>ignore_nan is True</cite> then that edge is ignored instead.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>G</strong> – A minimum spanning tree or forest.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>EasyGraph Graph</p>
 </dd>
 </dl>
@@ -679,16 +804,16 @@ attribute a default weight of 1 will be used.</p>
 <span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Dijkstra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/path.html#Dijkstra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.path.Dijkstra" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the length of paths from the certain node to remaining nodes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>G</strong> (<em>graph</em>) – weighted graph</p></li>
 <li><p><strong>node</strong> (<em>int</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>result_dict</strong> – the length of paths from the certain node to remaining nodes</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
@@ -701,22 +826,73 @@ attribute a default weight of 1 will be used.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.functions.path.path.Floyd">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Floyd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.functions.path.path.Floyd" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Floyd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/path.html#Floyd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.path.Floyd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of paths from all nodes to remaining nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>graph</em>) – weighted graph</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result_dict</strong> – the length of paths from all nodes to remaining nodes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Returns the length of paths from all nodes to remaining nodes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Floyd</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.functions.path.path.Kruskal">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Kruskal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.functions.path.path.Kruskal" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Kruskal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/path.html#Kruskal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.path.Kruskal" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the edges that make up the minimum spanning tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>graph</em>) – weighted graph</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result_dict</strong> – the edges that make up the minimum spanning tree</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Returns the edges that make up the minimum spanning tree</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Kruskal</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.functions.path.path.Prim">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Prim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.functions.path.path.Prim" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Prim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/path.html#Prim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.path.Prim" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the edges that make up the minimum spanning tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>graph</em>) – weighted graph</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result_dict</strong> – the edges that make up the minimum spanning tree</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Returns the edges that make up the minimum spanning tree</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Prim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="easygraph.functions.path.path.Spfa">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Spfa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.functions.path.path.Spfa" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.path.path.</span></span><span class="sig-name descname"><span class="pre">Spfa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/path/path.html#Spfa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.path.path.Spfa" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -797,13 +973,20 @@ attribute a default weight of 1 will be used.</p>
             <ul>
 <li><a class="reference internal" href="#">easygraph.functions.path package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#easygraph-functions-path-average-shortest-path-length-module">easygraph.functions.path.average_shortest_path_length module</a></li>
+<li><a class="reference internal" href="#module-easygraph.functions.path.average_shortest_path_length">easygraph.functions.path.average_shortest_path_length module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.path.average_shortest_path_length.average_shortest_path_length"><code class="docutils literal notranslate"><span class="pre">average_shortest_path_length()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.functions.path.bridges">easygraph.functions.path.bridges module</a><ul>
 <li><a class="reference internal" href="#easygraph.functions.path.bridges.bridges"><code class="docutils literal notranslate"><span class="pre">bridges()</span></code></a></li>
 <li><a class="reference internal" href="#easygraph.functions.path.bridges.has_bridges"><code class="docutils literal notranslate"><span class="pre">has_bridges()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#easygraph-functions-path-diameter-module">easygraph.functions.path.diameter module</a></li>
+<li><a class="reference internal" href="#module-easygraph.functions.path.diameter">easygraph.functions.path.diameter module</a><ul>
+<li><a class="reference internal" href="#easygraph.functions.path.diameter.diameter"><code class="docutils literal notranslate"><span class="pre">diameter()</span></code></a></li>
+<li><a class="reference internal" href="#easygraph.functions.path.diameter.eccentricity"><code class="docutils literal notranslate"><span class="pre">eccentricity()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-easygraph.functions.path.mst">easygraph.functions.path.mst module</a><ul>
 <li><a class="reference internal" href="#easygraph.functions.path.mst.maximum_spanning_edges"><code class="docutils literal notranslate"><span class="pre">maximum_spanning_edges()</span></code></a></li>
 <li><a class="reference internal" href="#easygraph.functions.path.mst.maximum_spanning_tree"><code class="docutils literal notranslate"><span class="pre">maximum_spanning_tree()</span></code></a></li>
@@ -834,12 +1017,14 @@ attribute a default weight of 1 will be used.</p>
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

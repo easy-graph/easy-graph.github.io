@@ -2,10 +2,10 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="easygraph.readwrite package" href="easygraph.readwrite.html" /><link rel="prev" title="easygraph.nn package" href="easygraph.nn.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 5.2.0 and Furo 2023.03.27 -->
         <title>easygraph.readwrite.json_graph package - EasyGraph 1.4</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
@@ -144,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
@@ -163,7 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyGraph-Hypergraph</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../reference.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../reference.html">EasyGraph API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
@@ -380,68 +380,11 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.readwrite.json_graph.node_link">
-<span id="easygraph-readwrite-json-graph-node-link-module"></span><h2>easygraph.readwrite.json_graph.node_link module<a class="headerlink" href="#module-easygraph.readwrite.json_graph.node_link" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.readwrite.json_graph.node_link.node_link_graph">
-<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.json_graph.node_link.</span></span><span class="sig-name descname"><span class="pre">node_link_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multigraph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/json_graph/node_link.html#node_link_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.json_graph.node_link.node_link_graph" title="Permalink to this definition"></a></dt>
-<dd><p>Returns graph from node-link data format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>dict</em>) – node-link formatted graph data</p></li>
-<li><p><strong>directed</strong> (<em>bool</em>) – If True, and direction not specified in data, return a directed graph.</p></li>
-<li><p><strong>multigraph</strong> (<em>bool</em>) – If True, and multigraph not specified in data, return a multigraph.</p></li>
-<li><p><strong>attrs</strong> (<em>dict</em>) – <p>A dictionary that contains five keys ‘source’, ‘target’, ‘name’,
-‘key’ and ‘link’.  The corresponding values provide the attribute
-names for storing NetworkX-internal graph data.  Default value:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>dict(source=’source’, target=’target’, name=’id’,</dt><dd><p>key=’key’, link=’links’)</p>
-</dd>
-</dl>
-</div></blockquote>
-</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>G</strong> – A EasyGraph graph object</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>EasyGraph graph</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.readwrite</span> <span class="kn">import</span> <span class="n">json_graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">json_graph</span><span class="o">.</span><span class="n">node_link_data</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">json_graph</span><span class="o">.</span><span class="n">node_link_graph</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="rubric">Notes</p>
-<p>Attribute ‘key’ is only used for multigraphs.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_link_data</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">adjacency_data</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">tree_data</span></code></p>
-</div>
-</dd></dl>
-
+<section id="easygraph-readwrite-json-graph-node-link-module">
+<h2>easygraph.readwrite.json_graph.node_link module<a class="headerlink" href="#easygraph-readwrite-json-graph-node-link-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.readwrite.json_graph">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.readwrite.json_graph" title="Permalink to this heading"></a></h2>
-<section id="json-data">
-<h3>JSON data<a class="headerlink" href="#json-data" title="Permalink to this heading"></a></h3>
-<p>Generate and parse JSON serializable data for NetworkX graphs.</p>
-<p>These formats are suitable for use with the d3.js examples <a class="reference external" href="https://d3js.org/">https://d3js.org/</a></p>
-<p>The three formats that you can generate with NetworkX are:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>node-link like in the d3.js example <a class="reference external" href="https://bl.ocks.org/mbostock/4062045">https://bl.ocks.org/mbostock/4062045</a></p></li>
-<li><p>tree like in the d3.js example <a class="reference external" href="https://bl.ocks.org/mbostock/4063550">https://bl.ocks.org/mbostock/4063550</a></p></li>
-<li><p>adjacency like in the d3.js example <a class="reference external" href="https://bost.ocks.org/mike/miserables/">https://bost.ocks.org/mike/miserables/</a></p></li>
-</ul>
-</div></blockquote>
-</section>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
@@ -502,14 +445,8 @@ names for storing NetworkX-internal graph data.  Default value:</p>
             <ul>
 <li><a class="reference internal" href="#">easygraph.readwrite.json_graph package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.json_graph.node_link">easygraph.readwrite.json_graph.node_link module</a><ul>
-<li><a class="reference internal" href="#easygraph.readwrite.json_graph.node_link.node_link_graph"><code class="docutils literal notranslate"><span class="pre">node_link_graph()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-easygraph.readwrite.json_graph">Module contents</a><ul>
-<li><a class="reference internal" href="#json-data">JSON data</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#easygraph-readwrite-json-graph-node-link-module">easygraph.readwrite.json_graph.node_link module</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -521,9 +458,10 @@ names for storing NetworkX-internal graph data.  Default value:</p>
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
