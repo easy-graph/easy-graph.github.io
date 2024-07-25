@@ -1,7 +1,7 @@
 Tutorial
 ========
 
-This part offers two brief tutorials of how to do graph analysis with **EasyGraph**.
+This section provides two brief tutorials on performing graph analysis with **EasyGraph**.
 
 Example using EasyGraph to analysis and draw Structural Hole Spanners on karate club dataset
 -------------------------

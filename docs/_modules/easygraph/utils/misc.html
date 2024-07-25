@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
-        <title>easygraph.utils.misc - EasyGraph 1.1</title>
+    <!-- Generated with Sphinx 5.2.0 and Furo 2023.03.27 -->
+        <title>easygraph.utils.misc - EasyGraph 1.4</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">EasyGraph 1.1</div></a>
+      <a href="../../../index.html"><div class="brand">EasyGraph 1.4</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,13 +143,13 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">EasyGraph 1.1</span>
+  <span class="sidebar-brand-text">EasyGraph 1.4</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -160,8 +160,8 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">Examples of Hypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyGraph-Hypergraph</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../reference/easygraph.classes.html">easygraph.classes package</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -374,7 +374,9 @@
         </div>
         <article role="main">
           <h1>Source code for easygraph.utils.misc</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span></span><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">tee</span>
 
 
@@ -385,6 +387,7 @@
     <span class="s2">&quot;edges_equal&quot;</span><span class="p">,</span>
     <span class="s2">&quot;pairwise&quot;</span><span class="p">,</span>
     <span class="s2">&quot;graphs_equal&quot;</span><span class="p">,</span>
+    <span class="c1"># &quot;arbitrary_element&quot;</span>
 <span class="p">]</span>
 
 
@@ -524,6 +527,75 @@
         <span class="ow">and</span> <span class="n">graph1</span><span class="o">.</span><span class="n">nodes</span> <span class="o">==</span> <span class="n">graph2</span><span class="o">.</span><span class="n">nodes</span>
         <span class="ow">and</span> <span class="n">graph1</span><span class="o">.</span><span class="n">graph</span> <span class="o">==</span> <span class="n">graph2</span><span class="o">.</span><span class="n">graph</span>
     <span class="p">)</span></div>
+
+
+<span class="c1"># def arbitrary_element(iterable):</span>
+<span class="c1">#     &quot;&quot;&quot;Returns an arbitrary element of `iterable` without removing it.</span>
+
+<span class="c1">#     This is most useful for &quot;peeking&quot; at an arbitrary element of a set,</span>
+<span class="c1">#     but can be used for any list, dictionary, etc., as well.</span>
+
+<span class="c1">#     Parameters</span>
+<span class="c1">#     ----------</span>
+<span class="c1">#     iterable : `abc.collections.Iterable` instance</span>
+<span class="c1">#         Any object that implements ``__iter__``, e.g. set, dict, list, tuple,</span>
+<span class="c1">#         etc.</span>
+
+<span class="c1">#     Returns</span>
+<span class="c1">#     -------</span>
+<span class="c1">#     The object that results from ``next(iter(iterable))``</span>
+
+<span class="c1">#     Raises</span>
+<span class="c1">#     ------</span>
+<span class="c1">#     ValueError</span>
+<span class="c1">#         If `iterable` is an iterator (because the current implementation of</span>
+<span class="c1">#         this function would consume an element from the iterator).</span>
+
+<span class="c1">#     Examples</span>
+<span class="c1">#     --------</span>
+<span class="c1">#     Arbitrary elements from common Iterable objects:</span>
+
+<span class="c1">#     &gt;&gt;&gt; eg.utils.arbitrary_element([1, 2, 3])  # list</span>
+<span class="c1">#     1</span>
+<span class="c1">#     &gt;&gt;&gt; eg.utils.arbitrary_element((1, 2, 3))  # tuple</span>
+<span class="c1">#     1</span>
+<span class="c1">#     &gt;&gt;&gt; eg.utils.arbitrary_element({1, 2, 3})  # set</span>
+<span class="c1">#     1</span>
+<span class="c1">#     &gt;&gt;&gt; d = {k: v for k, v in zip([1, 2, 3], [3, 2, 1])}</span>
+<span class="c1">#     &gt;&gt;&gt; eg.utils.arbitrary_element(d)  # dict_keys</span>
+<span class="c1">#     1</span>
+<span class="c1">#     &gt;&gt;&gt; eg.utils.arbitrary_element(d.values())   # dict values</span>
+<span class="c1">#     3</span>
+
+<span class="c1">#     `str` is also an Iterable:</span>
+
+<span class="c1">#     &gt;&gt;&gt; eg.utils.arbitrary_element(&quot;hello&quot;)</span>
+<span class="c1">#     &#39;h&#39;</span>
+
+<span class="c1">#     :exc:`ValueError` is raised if `iterable` is an iterator:</span>
+
+<span class="c1">#     &gt;&gt;&gt; iterator = iter([1, 2, 3])  # Iterator, *not* Iterable</span>
+<span class="c1">#     &gt;&gt;&gt; eg.utils.arbitrary_element(iterator)</span>
+<span class="c1">#     Traceback (most recent call last):</span>
+<span class="c1">#         ...</span>
+<span class="c1">#     ValueError: cannot return an arbitrary item from an iterator</span>
+
+<span class="c1">#     Notes</span>
+<span class="c1">#     -----</span>
+<span class="c1">#     This function does not return a *random* element. If `iterable` is</span>
+<span class="c1">#     ordered, sequential calls will return the same value::</span>
+
+<span class="c1">#         &gt;&gt;&gt; l = [1, 2, 3]</span>
+<span class="c1">#         &gt;&gt;&gt; eg.utils.arbitrary_element(l)</span>
+<span class="c1">#         1</span>
+<span class="c1">#         &gt;&gt;&gt; eg.utils.arbitrary_element(l)</span>
+<span class="c1">#         1</span>
+
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     if isinstance(iterable, Iterator):</span>
+<span class="c1">#         raise ValueError(&quot;cannot return an arbitrary item from an iterator&quot;)</span>
+<span class="c1">#     # Another possible implementation is ``for x in iterable: return x``.</span>
+<span class="c1">#     return next(iter(iterable))</span>
 </pre></div>
         </article>
       </div>
@@ -556,9 +628,10 @@
       
     </aside>
   </div>
-</div><script src="../../../_static/jquery.js"></script>
+</div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>

@@ -29,6 +29,7 @@ Repository:
 Prerequisites
 -------------
 
+It is recommended to have conda/miniconda/anaconda installed on your machine. 
 Clone these repositories and put them inside the same directory:
 
 .. code:: bash
@@ -68,7 +69,7 @@ Build HTML from ``rst`` files
    4. run `source .env/bin/activate` to activate
    5. run `pip install -r requirements.txt` to install dependencies -->
 
--  Install dependencies in ``requirements.txt``.
+-  Install dependencies in ``requirements.txt`` with the following command: ``pip install -r requirements.txt``.
 -  Run ``make html``. The updated pages locate in ``./_build/html``.
 
 Deploy to easy-graph.github.io
@@ -92,3 +93,5 @@ Reference built but not correctly displayed on the website
 
 -  Check the ``toctree`` of ``reference.rst``, you may need to manually
    update the section to reflect the built references.
+-  Make sure the html files you generated are inside ``easygraph-doc-source/docs_using_sphinx/_build/html`` 
+   if you intend to take a look.

@@ -14,6 +14,7 @@ Please feel free to email us at mgao21@m.fudan.edu.cn.
 * `Min Gao <https://mgao.mystrikingly.com/>`_ (Lead)
 * `Bodian Ye <https://bdye.mysxl.cn/>`_
 * Haoran Qin
+* `Kun Cheng <https://www.linkedin.com/in/kun-cheng-080084291/>`_
 
 **Former Developers**
 

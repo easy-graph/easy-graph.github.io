@@ -2,12 +2,13 @@ Contributor Guide
 =========================
 
 .. Author: `Teddy Xinyuan Chen <https://github.com/tddschn>`__
+.. Revised by: `Kun Cheng <https://www.linkedin.com/in/kun-cheng-080084291/>`
 
-First off, thanks for taking the time to contribute!
+Thanks for taking time to contribute!
 
-The following is a set of guidelines for contributing to EasyGraph on
-GitHub. These are mostly guidelines, not rules. Use your best judgement,
-and feel free to propose changes to this document in a pull request.
+The following guidelines are intended to assist you in contributing to EasyGraph on GitHub. 
+These guidelines should serve as suggestions rather than strict requirements. Please use your 
+judgment and feel free to propose changes to this document by submitting a pull request.
 
 Table of contents
 ^^^^^^^^^^^^^^^^^
@@ -28,20 +29,19 @@ Reporting bugs
 ~~~~~~~~~~~~~~
 
 This section guides you through submitting a bug report for EasyGraph.
-Following these guidelines helps maintainers and the community
-understand your report, reproduce the behavior, and find related
+Adhering to these guidelines helps maintainers and the community 
+understand your report, reproduce the behavior, and identify related
 reports.
 
-Before creating bug reports, please check `this
-list <#before-submitting-a-bug-report>`__ to be sure that you need to
-create one. When you are creating a bug report, please include as many
-details as possible. Fill out the `required
+Before creating bug reports, please check the following `list 
+<#before-submitting-a-bug-report>`__ to ensure that a new report is 
+necessary. When you do create a bug report, please include as many details 
+as possible and fill out the `required
 template <https://github.com/easy-graph/Easy-Graph/blob/master/.github/ISSUE_TEMPLATE/---bug-report.md>`__,
-the information it asks helps the maintainers resolve the issue faster.
+as the information requested will assist maintainers in resolving the issue more quickly.
 
-   **Note:** If you find a **Closed** issue that seems like it is the
-   same thing that you’re experiencing, open a new issue and include a
-   link to the original issue in the body of your new one.
+   **Note:** If you find a **Closed** issue that matches the one you encountered, open a new issue 
+   and include a link to the original issue in your report.
 
 Before submitting a bug report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -50,42 +50,33 @@ Before submitting a bug report
 
    <!-- * **Check the [FAQs on the official website](https://python-EasyGraph.org/docs/faq)** for a list of common questions and problems. -->
 
--  **Check that your issue does not already exist in the**\ `issue
+-  **Check that your issue does not already exist in the **\ `issue
    tracker <https://github.com/easy-graph/Easy-Graph/issues>`__.
 
 How do I submit a bug report?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Bugs are tracked on the `official issue
-tracker <https://github.com/easy-graph/Easy-Graph/issues>`__ where you
-can create a new one and provide the following information by filling in
-`the
-template <https://github.com/easy-graph/Easy-Graph/blob/master/.github/ISSUE_TEMPLATE/---bug-report.md>`__.
+tracker <https://github.com/easy-graph/Easy-Graph/issues>`__ where you can create a new issue 
+and provide the following information using the `template <https://github.com/easy-graph/Easy-Graph/blob/master/.github/ISSUE_TEMPLATE/---bug-report.md>`__.
 
 Explain the problem and include additional details to help maintainers
 reproduce the problem:
 
--  **Use a clear and descriptive title** for the issue to identify the
-   problem.
--  **Describe the exact steps which reproduce the problem** in as many
-   details as possible.
--  **Provide specific examples to demonstrate the steps to reproduce the
-   issue**. Include links to files or GitHub projects, or
-   copy-paste-able snippets, which you use in those examples.
--  **Describe the behavior you observed after following the steps** and
-   point out what exactly is the problem with that behavior.
--  **Explain which behavior you expected to see instead and why.**
+-  **Title**: Use a descriptive and specific title that summarizes the problem.
+-  **Steps to Reproduce**: Outline the exact steps that lead to the issue. Include specific examples, links to relevant files or GitHub projects, and code snippets.
+-  **Observed Behavior**: Detail what happens when the steps are followed and explain why this behavior is problematic.
+-  **Expected Behavior**: Describe what you expected to happen instead and justify why this behavior is expected.
 
 Provide more context by answering these questions:
 
--  **Did the problem start happening recently** (e.g. after updating to
-   a new version of EasyGraph) or was this always a problem?
+-  **Did the issue start recently**, such as after 
+   updating to a new version of EasyGraph, or has it always been a problem?
 -  If the problem started happening recently, **can you reproduce the
-   problem in an older version of EasyGraph?** What’s the most recent
-   version in which the problem doesn’t happen?
--  **Can you reliably reproduce the issue?** If not, provide details
-   about how often the problem happens and under which conditions it
-   normally happens.
+   problem in an older version of EasyGraph?** What is the most recent 
+   version in which the problem does not occur?
+-  **Can you reliably reproduce the issue?** If not, provide details about the 
+   frequency of the problem and the conditions under which it typically happens.
 
 Include details about your configuration and environment:
 
@@ -177,15 +168,14 @@ Server <https://discord.gg/ppgcw2wUPg>`__.
 Local development
 ^^^^^^^^^^^^^^^^^
 
-You will need EasyGraph to start contributing on the EasyGraph codebase.
-Refer to the `documentation <https://easy-graph.github.io/>`__ to start
-using EasyGraph.
+To contribute to the EasyGraph codebase, you will need to set up EasyGraph locally. 
+Refer to the official `documentation <https://easy-graph.github.io/>`__ to get 
+started with EasyGraph.
 
    **Note:** Local development of EasyGraph requires Python 3.8 or
    newer.
 
-You will first need to clone the repository using ``git`` and place
-yourself in its directory:
+First, clone the repository using git and navigate to its directory:
 
 .. code:: bash
 
@@ -194,14 +184,14 @@ yourself in its directory:
 
 ..
 
-   **Note:** We recommend that you use a personal
+   **Note:** We recommend using a personal 
    `fork <https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo>`__
-   for this step. If you are new to GitHub collaboration, you can refer
+   for this step. If you are new to GitHub collaboration, please refer
    to the `Forking Projects
    Guide <https://guides.github.com/activities/forking/>`__.
 
-Now, you will need to install the required dependency for EasyGraph and
-be sure that the current tests are passing on your machine:
+Next, install the required dependencies for EasyGraph and ensure 
+that the current tests are passing on your machine:
 
 .. code:: bash
 
@@ -216,31 +206,34 @@ be sure that the current tests are passing on your machine:
    EasyGraph run mypy
    ``` -->
 
-EasyGraph uses the `black <https://github.com/psf/black>`__ coding style
-and you must ensure that your code follows it. If not, the CI will fail
-and your Pull Request will not be merged.
+EasyGraph follows the `black <https://github.com/psf/black>`__ coding style
+and it's essential to ensure that your code adheres to it. Failure to comply 
+will cause the CI to fail, and your Pull Request will not be merged.
+
+
 
 Similarly, the import statements are sorted with
-`isort <https://github.com/timothycrosley/isort>`__ and special care
-must be taken to respect it. If you don’t, the CI will fail as well.
+`isort <https://github.com/timothycrosley/isort>`__, and it's crucial to 
+adhere to this style. Failure to do so will cause the CI to fail.
 
-To make sure that you don’t accidentally commit code that does not
-follow the coding style, you can install a
-`pre-commit <https://pre-commit.com/>`__ hook that will check that
-everything is in order:
+To prevent accidental commits of code that does not adhere to the 
+coding style, you can install a
+`pre-commit <https://pre-commit.com/>`__ hook. This hook checks 
+that everything is in order before committing:
 
 .. code:: bash
 
    pre-commit install
 
-You can also run it anytime using:
+You can also execute it at any time using the following command:
 
 .. code:: bash
 
    pre-commit run --all-files
 
-Your code must always be accompanied by corresponding tests, if tests
-are not present your code will not be merged.
+Your code must always be accompanied by corresponding tests. Code 
+without accompanying tests will not be merged.
+
 
 Run the Tests Locally
 ^^^^^^^^^^^^^^^^^^^^^
@@ -250,14 +243,14 @@ Run the Tests Locally
 -  Use pyenv to install python 3.6 to 3.10, and make sure that
    ``python3.6``, ``python3.7``, …, ``python3.10`` is in your ``$PATH``.
 -  Run ``tox`` to run the tests across python 3.6 to 3.10.
--  To only run tox on python3.9 and 3.10, run ``tox -e py39,py310``.
+-  To run tox only on python3.9 and 3.10, use the command ``tox -e py39,py310``.
 
 Pull requests
 ^^^^^^^^^^^^^
 
 -  Fill in `the required
    template <https://github.com/easy-graph/Easy-Graph/blob/master/.github/PULL_REQUEST_TEMPLATE.md>`__
--  Be sure that your pull request contains tests that cover the changed
+-  Make sure that your pull request contains tests that cover the changed
    or added code.
 -  If your changes warrant a documentation change, the pull request must
    also update the documentation.
@@ -267,10 +260,10 @@ Pull requests
    **Note:** Make sure your branch is
    `rebased <https://docs.github.com/en/free-pro-team@latest/github/using-git/about-git-rebase>`__
    against the latest main branch. A maintainer might ask you to ensure
-   the branch is up-to-date prior to merging your Pull Request if
+   the branch is up-to-date prior to merging your Pull Request if 
    changes have conflicts.
 
-All pull requests, unless otherwise instructed, need to be first
+All pull requests, unless otherwise instructed, must first be 
 accepted into the main branch (``master``).
 
 Issue triage
@@ -293,18 +286,18 @@ Triage steps
 
 1. Attempt to reproduce the issue with the reported EasyGraph version or
    request further clarification from the issue author.
-2. Ensure the issue is not already resolved. You can attempt to
+2. Verify that the issue has not already been resolved. You can attempt to
    reproduce using the latest preview release and/or EasyGraph from the
    main branch.
 3. If the issue cannot be reproduced,
 
-   1. clarify with the issue’s author,
+   1. Seek clarification from the issue’s author,
 
 4. If the issue can be reproduced,
 
    1. comment on the issue confirming so
    2. if possible, identify the root cause of the issue.
-   3. if interested, attempt to fix it via a pull request.
+   3. Consider fixing the issue by submitting a pull request.
 
 .. raw:: html
 
@@ -342,7 +335,7 @@ this branch.
 Release branch
 ^^^^^^^^^^^^^^
 
-When a release is ready, the following are required before a release is
+When a release is ready, the following steps are necessary before the release is
 tagged.
 
 1. A release branch with the prefix ``release-``, eg:
@@ -369,28 +362,26 @@ tagged.
 
 ..
 
-   **Note:** In this case, we prefer a merge commit instead of squash or
-   rebase merge.
+   **Note:** We prefer a merge commit over a squash or rebase merge in this case.
 
 Bug fix branch
 ^^^^^^^^^^^^^^
 
 Once a minor version (eg: ``1.1.0``) is released, a new branch for the
-minor version (eg: ``1.1``) is created for the bug fix releases. Changes
-identified or acknowledged by the EasyGraph team as requiring a bug fix
-can be submitted as a pull requests against this branch.
+minor version (eg: ``1.1``) is created for the bug fix releases. Changes 
+identified or approved by the EasyGraph team as needing a bug fix should 
+be submitted as pull requests to this branch.
 
-At the time of writing only issues meeting the following criteria may be
-accepted into a bug fix branch. Trivial fixes may be accepted on a
-case-by-case basis.
+The following criteria must be met for an issue to be accepted into a 
+bug fix branch (trivial fixes may be considered on a case-by-case basis):
 
-1. The issue breaks a core functionality and/or is a critical
+1. The issue disrupts core functionality and/or is a critical
    regression.
-2. The change set does not introduce a new feature or changes an
+2. The change set does not introduce a new feature or change 
    existing functionality.
 3. A new minor release is not expected within a reasonable time frame.
-4. If the issue affects the next minor/major release, a corresponding
-   fix has been accepted into the main branch.
+4. If the issue affects the upcoming minor/major release, a corresponding
+   fix must be accepted into the main branch.x
 
 ..
 
