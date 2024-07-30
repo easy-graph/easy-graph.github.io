@@ -93,5 +93,3 @@ Reference built but not correctly displayed on the website
 
 -  Check the ``toctree`` of ``reference.rst``, you may need to manually
    update the section to reflect the built references.
--  Make sure the html files you generated are inside ``easygraph-doc-source/docs_using_sphinx/_build/html`` 
-   if you intend to take a look.

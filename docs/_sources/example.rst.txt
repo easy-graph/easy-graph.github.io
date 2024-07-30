@@ -45,9 +45,9 @@ Add a node with attributes:
 >>> G.nodes
 {1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 
 'hello world': {}, 
-'Jack': {'node_attr': 
-            {'age': 10, 
-            'gender': 'M'}
+'Jack': {
+        'age': 10, 
+        'gender': 'M'
         }
 }
 
