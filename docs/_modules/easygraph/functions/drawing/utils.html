@@ -1,0 +1,1081 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>easygraph.functions.drawing.utils - EasyGraph 1.3</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=547657ed" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">EasyGraph 1.3</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">EasyGraph 1.3</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyGraph-Hypergraph</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../reference.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.classes.html">easygraph.classes package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of easygraph.datasets package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.datasets.hypergraph.html">easygraph.datasets.hypergraph package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.basic.html">easygraph.functions.basic package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.functions.html">easygraph.functions package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of easygraph.functions package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.basic.html">easygraph.functions.basic package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of easygraph.functions.hypergraph package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.model.html">easygraph.model package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of easygraph.model package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of easygraph.nn.convs package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.nn.html">easygraph.nn package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of easygraph.nn package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of easygraph.nn.convs package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.readwrite.html">easygraph.readwrite package</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of easygraph.readwrite package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/easygraph.html">easygraph package</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of easygraph package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.classes.html">easygraph.classes package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.datapipe.html">easygraph.datapipe package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of easygraph.datasets package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.datasets.hypergraph.html">easygraph.datasets.hypergraph package</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.experiments.html">easygraph.experiments package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of easygraph.experiments package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.experiments.hypergraphs.html">easygraph.experiments.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.functions.html">easygraph.functions package</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of easygraph.functions package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.basic.html">easygraph.functions.basic package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of easygraph.functions.hypergraph package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.ml_metrics.html">easygraph.ml_metrics package</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of easygraph.ml_metrics package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.ml_metrics.hypergraphs.html">easygraph.ml_metrics.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.model.html">easygraph.model package</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of easygraph.model package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.nn.html">easygraph.nn package</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of easygraph.nn package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of easygraph.nn.convs package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.readwrite.html">easygraph.readwrite package</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of easygraph.readwrite package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/easygraph.utils.html">easygraph.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/easygraph.utils.html">easygraph.utils package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/modules.html">easygraph</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of easygraph</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../reference/easygraph.html">easygraph package</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of easygraph package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.classes.html">easygraph.classes package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.datapipe.html">easygraph.datapipe package</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.datasets.html">easygraph.datasets package</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle navigation of easygraph.datasets package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.datasets.dynamic.html">easygraph.datasets.dynamic package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.datasets.hypergraph.html">easygraph.datasets.hypergraph package</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.experiments.html">easygraph.experiments package</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle navigation of easygraph.experiments package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.experiments.hypergraphs.html">easygraph.experiments.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.functions.html">easygraph.functions package</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle navigation of easygraph.functions package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.basic.html">easygraph.functions.basic package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.centrality.html">easygraph.functions.centrality package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.community.html">easygraph.functions.community package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.components.html">easygraph.functions.components package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.core.html">easygraph.functions.core package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.drawing.html">easygraph.functions.drawing package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_embedding.html">easygraph.functions.graph_embedding package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.graph_generator.html">easygraph.functions.graph_generator package</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of easygraph.functions.hypergraph package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.centrality.html">easygraph.functions.hypergraph.centrality package</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../../reference/easygraph.functions.hypergraph.null_model.html">easygraph.functions.hypergraph.null_model package</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.path.html">easygraph.functions.path package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.ml_metrics.html">easygraph.ml_metrics package</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><div class="visually-hidden">Toggle navigation of easygraph.ml_metrics package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.ml_metrics.hypergraphs.html">easygraph.ml_metrics.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.model.html">easygraph.model package</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><div class="visually-hidden">Toggle navigation of easygraph.model package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.nn.html">easygraph.nn package</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><div class="visually-hidden">Toggle navigation of easygraph.nn package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.html">easygraph.nn.convs package</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><div class="visually-hidden">Toggle navigation of easygraph.nn.convs package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../../reference/easygraph.nn.convs.hypergraphs.html">easygraph.nn.convs.hypergraphs package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../../reference/easygraph.readwrite.html">easygraph.readwrite package</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><div class="visually-hidden">Toggle navigation of easygraph.readwrite package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../reference/easygraph.readwrite.json_graph.html">easygraph.readwrite.json_graph package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../reference/easygraph.utils.html">easygraph.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../honors.html">Honors</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../dev.html">Developer Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle navigation of Developer Documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/releasing.html">Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/manual-releasing.html">(Mostly) Manually Building and Releasing python-easygraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/easygraph-doc-source.html">Scripts and guides for generating documentation for EasyGraph</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for easygraph.functions.drawing.utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.axes</span> <span class="kn">import</span> <span class="n">Axes</span>
+<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
+<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">PatchCollection</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Circle</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">PathPatch</span>
+<span class="kn">from</span> <span class="nn">matplotlib.path</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">ConvexHull</span>
+
+<span class="kn">from</span> <span class="nn">.geometry</span> <span class="kn">import</span> <span class="n">common_tangent_radian</span>
+<span class="kn">from</span> <span class="nn">.geometry</span> <span class="kn">import</span> <span class="n">polar_position</span>
+<span class="kn">from</span> <span class="nn">.geometry</span> <span class="kn">import</span> <span class="n">rad_2_deg</span>
+<span class="kn">from</span> <span class="nn">.geometry</span> <span class="kn">import</span> <span class="n">radian_from_atan</span>
+<span class="kn">from</span> <span class="nn">.geometry</span> <span class="kn">import</span> <span class="n">vlen</span>
+
+
+<span class="c1"># from fa2 import ForceAtlas2</span>
+<span class="c1"># import bezier</span>
+<span class="c1"># import numpy as np</span>
+<span class="c1"># from easygraph import to_networkx</span>
+<span class="c1"># from easygraph.utils.exception import EasyGraphError</span>
+<span class="c1"># import easygraph as eg</span>
+
+
+<div class="viewcode-block" id="safe_div">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.safe_div">[docs]</a>
+<span class="k">def</span> <span class="nf">safe_div</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">jitter_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.000001</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">b</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">inv_b</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">b</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">inv_b</span>
+    <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">res</span><span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">jitter_scale</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+
+<div class="viewcode-block" id="init_pos">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.init_pos">[docs]</a>
+<span class="k">def</span> <span class="nf">init_pos</span><span class="p">(</span><span class="n">num_v</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_v</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">+</span> <span class="n">center</span></div>
+
+
+
+<div class="viewcode-block" id="draw_line_edge">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.draw_line_edge">[docs]</a>
+<span class="k">def</span> <span class="nf">draw_line_edge</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+    <span class="n">v_coor</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">v_size</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">e_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
+    <span class="n">show_arrow</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">e_color</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">e_line_width</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">arrow_head_width</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">[</span><span class="mf">0.015</span> <span class="o">*</span> <span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">e_line_width</span><span class="p">]</span> <span class="k">if</span> <span class="n">show_arrow</span> <span class="k">else</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">e_list</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">eidx</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">e_list</span><span class="p">):</span>
+        <span class="n">start_pos</span> <span class="o">=</span> <span class="n">v_coor</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">end_pos</span> <span class="o">=</span> <span class="n">v_coor</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+        <span class="nb">dir</span> <span class="o">=</span> <span class="n">end_pos</span> <span class="o">-</span> <span class="n">start_pos</span>
+        <span class="nb">dir</span> <span class="o">=</span> <span class="nb">dir</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="nb">dir</span><span class="p">)</span>
+
+        <span class="n">start_pos</span> <span class="o">=</span> <span class="n">start_pos</span> <span class="o">+</span> <span class="nb">dir</span> <span class="o">*</span> <span class="n">v_size</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">end_pos</span> <span class="o">=</span> <span class="n">end_pos</span> <span class="o">-</span> <span class="nb">dir</span> <span class="o">*</span> <span class="n">v_size</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">start_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">start_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">end_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">end_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">y</span><span class="p">,</span>
+            <span class="n">dx</span><span class="p">,</span>
+            <span class="n">dy</span><span class="p">,</span>
+            <span class="n">head_width</span><span class="o">=</span><span class="n">arrow_head_width</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">e_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="n">e_line_width</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+            <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="draw_circle_edge">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.draw_circle_edge">[docs]</a>
+<span class="k">def</span> <span class="nf">draw_circle_edge</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+    <span class="n">v_coor</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+    <span class="n">v_size</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">e_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
+    <span class="n">e_color</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">e_fill_color</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">e_line_width</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">n_v</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_coor</span><span class="p">)</span>
+    <span class="n">line_paths</span><span class="p">,</span> <span class="n">arc_paths</span><span class="p">,</span> <span class="n">vertices</span> <span class="o">=</span> <span class="n">hull_layout</span><span class="p">(</span><span class="n">n_v</span><span class="p">,</span> <span class="n">e_list</span><span class="p">,</span> <span class="n">v_coor</span><span class="p">,</span> <span class="n">v_size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">eidx</span><span class="p">,</span> <span class="n">lines</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">line_paths</span><span class="p">):</span>
+        <span class="n">pathdata</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">start_pos</span><span class="p">,</span> <span class="n">end_pos</span> <span class="o">=</span> <span class="n">line</span>
+            <span class="n">pathdata</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Path</span><span class="o">.</span><span class="n">MOVETO</span><span class="p">,</span> <span class="n">start_pos</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+            <span class="n">pathdata</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Path</span><span class="o">.</span><span class="n">LINETO</span><span class="p">,</span> <span class="n">end_pos</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">pathdata</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">codes</span><span class="p">,</span> <span class="n">verts</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">pathdata</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">codes</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span>
+            <span class="n">PathPatch</span><span class="p">(</span>
+                <span class="n">path</span><span class="p">,</span>
+                <span class="n">linewidth</span><span class="o">=</span><span class="n">e_line_width</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                <span class="n">facecolor</span><span class="o">=</span><span class="n">e_fill_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                <span class="n">edgecolor</span><span class="o">=</span><span class="n">e_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">eidx</span><span class="p">,</span> <span class="n">arcs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">arc_paths</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">arc</span> <span class="ow">in</span> <span class="n">arcs</span><span class="p">:</span>
+            <span class="n">center</span><span class="p">,</span> <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="n">arc</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">patcjes_arc</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+                <span class="mi">2</span> <span class="o">*</span> <span class="n">radius</span><span class="p">,</span>
+                <span class="mi">2</span> <span class="o">*</span> <span class="n">radius</span><span class="p">,</span>
+                <span class="n">theta1</span><span class="o">=</span><span class="n">theta1</span><span class="p">,</span>
+                <span class="n">theta2</span><span class="o">=</span><span class="n">theta2</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">e_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                <span class="n">linewidth</span><span class="o">=</span><span class="n">e_line_width</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                <span class="c1"># edgecolor=e_color[eidx],</span>
+                <span class="n">edgecolor</span><span class="o">=</span><span class="n">e_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                <span class="n">facecolor</span><span class="o">=</span><span class="n">e_fill_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+            <span class="p">)</span>
+
+            <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span>
+                <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+                    <span class="mi">2</span> <span class="o">*</span> <span class="n">radius</span><span class="p">,</span>
+                    <span class="mi">2</span> <span class="o">*</span> <span class="n">radius</span><span class="p">,</span>
+                    <span class="n">theta1</span><span class="o">=</span><span class="n">theta1</span><span class="p">,</span>
+                    <span class="n">theta2</span><span class="o">=</span><span class="n">theta2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">e_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="n">e_line_width</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                    <span class="c1"># edgecolor=e_color[eidx],</span>
+                    <span class="n">edgecolor</span><span class="o">=</span><span class="n">e_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                    <span class="n">facecolor</span><span class="o">=</span><span class="n">e_fill_color</span><span class="p">[</span><span class="n">eidx</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="edge_list_to_incidence_matrix">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.edge_list_to_incidence_matrix">[docs]</a>
+<span class="k">def</span> <span class="nf">edge_list_to_incidence_matrix</span><span class="p">(</span><span class="n">num_v</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">e_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">tuple</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="n">v_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">e_list</span><span class="p">))</span>
+    <span class="n">e_idx</span> <span class="o">=</span> <span class="p">[[</span><span class="n">idx</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">e_list</span><span class="p">)]</span>
+    <span class="n">e_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">e_idx</span><span class="p">))</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_v</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">e_list</span><span class="p">)))</span>
+    <span class="n">H</span><span class="p">[</span><span class="n">v_idx</span><span class="p">,</span> <span class="n">e_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">H</span></div>
+
+
+
+<div class="viewcode-block" id="draw_vertex">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.draw_vertex">[docs]</a>
+<span class="k">def</span> <span class="nf">draw_vertex</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+    <span class="n">v_coor</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+    <span class="n">v_label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+    <span class="n">font_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">font_family</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">v_size</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">v_color</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">edgecolors</span><span class="p">,</span>
+    <span class="n">v_line_width</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">patches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">v_coor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">v_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">v_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+    <span class="k">for</span> <span class="n">coor</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">width</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v_coor</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">v_label</span><span class="p">,</span> <span class="n">v_size</span><span class="p">,</span> <span class="n">v_line_width</span><span class="p">):</span>
+        <span class="n">circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">coor</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="n">circle</span><span class="o">.</span><span class="n">lineWidth</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="c1"># circle.label = label</span>
+        <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">coor</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span> <span class="o">*</span> <span class="n">size</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="n">offset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="n">offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">y</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">,</span>
+                <span class="n">fontfamily</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span>
+                <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">patches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+    <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span> <span class="k">if</span> <span class="n">edgecolors</span> <span class="o">==</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">edgecolors</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">PatchCollection</span><span class="p">(</span><span class="n">patches</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="n">v_color</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="n">edgecolors</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="hull_layout">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.hull_layout">[docs]</a>
+<span class="k">def</span> <span class="nf">hull_layout</span><span class="p">(</span><span class="n">n_v</span><span class="p">,</span> <span class="n">e_list</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">v_size</span><span class="p">,</span> <span class="n">radius_increment</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>
+    <span class="n">line_paths</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">e_list</span><span class="p">)</span>
+    <span class="n">arc_paths</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">e_list</span><span class="p">)</span>
+
+    <span class="n">polygons_vertices_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">vertices_radius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v_size</span><span class="p">)</span>
+    <span class="n">vertices_increased_radius</span> <span class="o">=</span> <span class="n">vertices_radius</span> <span class="o">*</span> <span class="n">radius_increment</span>
+    <span class="n">vertices_radius</span> <span class="o">+=</span> <span class="n">vertices_increased_radius</span>
+
+    <span class="n">e_degree</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">e_list</span><span class="p">]</span>
+    <span class="n">e_idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">e_degree</span><span class="p">))</span>
+
+    <span class="c1"># for edge in e_list:</span>
+    <span class="k">for</span> <span class="n">e_idx</span> <span class="ow">in</span> <span class="n">e_idxs</span><span class="p">:</span>
+        <span class="n">edge</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">e_list</span><span class="p">[</span><span class="n">e_idx</span><span class="p">])</span>
+
+        <span class="n">line_path_for_e</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">arc_path_for_e</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">arc_path_for_e</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">pos</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">vertices_radius</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]]])</span>
+
+            <span class="n">vertices_radius</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">+=</span> <span class="n">vertices_increased_radius</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span>
+
+            <span class="n">line_paths</span><span class="p">[</span><span class="n">e_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_path_for_e</span>
+            <span class="n">arc_paths</span><span class="p">[</span><span class="n">e_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">arc_path_for_e</span>
+            <span class="k">continue</span>
+
+        <span class="n">pos_in_edge</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">vertices_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hull</span> <span class="o">=</span> <span class="n">ConvexHull</span><span class="p">(</span><span class="n">pos_in_edge</span><span class="p">)</span>
+            <span class="n">vertices_index</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">vertices</span>
+
+        <span class="n">n_vertices</span> <span class="o">=</span> <span class="n">vertices_index</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">vertices_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertices_index</span><span class="p">,</span> <span class="n">vertices_index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># close the loop</span>
+
+        <span class="n">thetas</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_vertices</span><span class="p">):</span>
+            <span class="c1"># line</span>
+            <span class="n">i1</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">vertices_index</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">i2</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">vertices_index</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+
+            <span class="n">r1</span> <span class="o">=</span> <span class="n">vertices_radius</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="n">vertices_radius</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span>
+
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span>
+            <span class="n">p2</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span>
+
+            <span class="n">dp</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span>
+            <span class="n">dp_len</span> <span class="o">=</span> <span class="n">vlen</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span>
+
+            <span class="n">beta</span> <span class="o">=</span> <span class="n">radian_from_atan</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">common_tangent_radian</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">dp_len</span><span class="p">)</span>
+
+            <span class="n">theta</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">-</span> <span class="n">alpha</span>
+            <span class="n">start_point</span> <span class="o">=</span> <span class="n">polar_position</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span>
+            <span class="n">end_point</span> <span class="o">=</span> <span class="n">polar_position</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+
+            <span class="n">line_path_for_e</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">))</span>
+            <span class="n">thetas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_vertices</span><span class="p">):</span>
+            <span class="c1"># arcs</span>
+            <span class="n">theta_1</span> <span class="o">=</span> <span class="n">thetas</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">theta_2</span> <span class="o">=</span> <span class="n">thetas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">arc_center</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="n">vertices_index</span><span class="p">[</span><span class="n">i</span><span class="p">]]]</span>
+            <span class="n">radius</span> <span class="o">=</span> <span class="n">vertices_radius</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="n">vertices_index</span><span class="p">[</span><span class="n">i</span><span class="p">]]]</span>
+
+            <span class="n">theta_1</span><span class="p">,</span> <span class="n">theta_2</span> <span class="o">=</span> <span class="n">rad_2_deg</span><span class="p">(</span><span class="n">theta_1</span><span class="p">),</span> <span class="n">rad_2_deg</span><span class="p">(</span><span class="n">theta_2</span><span class="p">)</span>
+            <span class="n">arc_path_for_e</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">arc_center</span><span class="p">,</span> <span class="n">theta_1</span><span class="p">,</span> <span class="n">theta_2</span><span class="p">,</span> <span class="n">radius</span><span class="p">))</span>
+
+        <span class="n">vertices_radius</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">+=</span> <span class="n">vertices_increased_radius</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span>
+
+        <span class="n">polygons_vertices_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertices_index</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+        <span class="c1"># line_paths.append(line_path_for_e)</span>
+        <span class="c1"># arc_paths.append(arc_path_for_e)</span>
+        <span class="n">line_paths</span><span class="p">[</span><span class="n">e_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_path_for_e</span>
+        <span class="n">arc_paths</span><span class="p">[</span><span class="n">e_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">arc_path_for_e</span>
+
+    <span class="k">return</span> <span class="n">line_paths</span><span class="p">,</span> <span class="n">arc_paths</span><span class="p">,</span> <span class="n">polygons_vertices_index</span></div>
+
+
+
+<div class="viewcode-block" id="apply_alpha">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.utils.apply_alpha">[docs]</a>
+<span class="k">def</span> <span class="nf">apply_alpha</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">elem_list</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply an alpha (or list of alphas) to the colors provided.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    colors : color string or array of floats (default=&#39;r&#39;)</span>
+<span class="sd">        Color of element. Can be a single color format string,</span>
+<span class="sd">        or a sequence of colors with the same length as nodelist.</span>
+<span class="sd">        If numeric values are specified they will be mapped to</span>
+<span class="sd">        colors using the cmap and vmin,vmax parameters.  See</span>
+<span class="sd">        matplotlib.scatter for more details.</span>
+
+<span class="sd">    alpha : float or array of floats</span>
+<span class="sd">        Alpha values for elements. This can be a single alpha value, in</span>
+<span class="sd">        which case it will be applied to all the elements of color. Otherwise,</span>
+<span class="sd">        if it is an array, the elements of alpha will be applied to the colors</span>
+<span class="sd">        in order (cycling through alpha multiple times if necessary).</span>
+
+<span class="sd">    elem_list : array of networkx objects</span>
+<span class="sd">        The list of elements which are being colored. These could be nodes,</span>
+<span class="sd">        edges or labels.</span>
+
+<span class="sd">    cmap : matplotlib colormap</span>
+<span class="sd">        Color map for use if colors is a list of floats corresponding to points</span>
+<span class="sd">        on a color mapping.</span>
+
+<span class="sd">    vmin, vmax : float</span>
+<span class="sd">        Minimum and maximum values for normalizing colors if a colormap is used</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    rgba_colors : numpy ndarray</span>
+<span class="sd">        Array containing RGBA format values for each of the node colours.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+    <span class="kn">from</span> <span class="nn">numbers</span> <span class="kn">import</span> <span class="n">Number</span>
+
+    <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.cm</span>  <span class="c1"># call as mpl.cm</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.colors</span>  <span class="c1"># call as mpl.colors</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+    <span class="c1"># If we have been provided with a list of numbers as long as elem_list,</span>
+    <span class="c1"># apply the color mapping.</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">elem_list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Number</span><span class="p">):</span>
+        <span class="n">mapper</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+        <span class="n">mapper</span><span class="o">.</span><span class="n">set_clim</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span>
+        <span class="n">rgba_colors</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="c1"># Otherwise, convert colors to matplotlib&#39;s RGB using the colorConverter</span>
+    <span class="c1"># object.  These are converted to numpy ndarrays to be consistent with the</span>
+    <span class="c1"># to_rgba method of ScalarMappable.</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rgba_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">colorConverter</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">colors</span><span class="p">)])</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">rgba_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">colorConverter</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">]</span>
+            <span class="p">)</span>
+    <span class="c1"># Set the final column of the rgba_colors to have the relevant alpha values</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># If alpha is longer than the number of colors, resize to the number of</span>
+        <span class="c1"># elements.  Also, if rgba_colors.size (the number of elements of</span>
+        <span class="c1"># rgba_colors) is the same as the number of elements, resize the array,</span>
+        <span class="c1"># to avoid it being interpreted as a colormap by scatter()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">rgba_colors</span><span class="p">)</span> <span class="ow">or</span> <span class="n">rgba_colors</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">elem_list</span><span class="p">):</span>
+            <span class="n">rgba_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">rgba_colors</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">elem_list</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="n">rgba_colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rgba_colors</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">rgba_colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rgba_colors</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">rgba_colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">rgba_colors</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">rgba_colors</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">cycle</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">rgba_colors</span><span class="p">)))</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="n">rgba_colors</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha</span>
+    <span class="k">return</span> <span class="n">rgba_colors</span></div>
+
+
+
+<span class="c1"># def draw_easygraph_nodes(</span>
+<span class="c1">#     G,</span>
+<span class="c1">#     pos,</span>
+<span class="c1">#     nodelist=None,</span>
+<span class="c1">#     node_size=300,</span>
+<span class="c1">#     node_color=&quot;#1f78b4&quot;,</span>
+<span class="c1">#     node_shape=&quot;o&quot;,</span>
+<span class="c1">#     alpha=None,</span>
+<span class="c1">#     cmap=None,</span>
+<span class="c1">#     vmin=None,</span>
+<span class="c1">#     vmax=None,</span>
+<span class="c1">#     ax=None,</span>
+<span class="c1">#     linewidths=None,</span>
+<span class="c1">#     edgecolors=None,</span>
+<span class="c1">#     label=None,</span>
+<span class="c1">#     margins=None,</span>
+<span class="c1"># ):</span>
+<span class="c1">#     &quot;&quot;&quot;Draw the nodes of the graph G.</span>
+
+<span class="c1">#     This draws only the nodes of the graph G.</span>
+
+<span class="c1">#     Parameters</span>
+<span class="c1">#     ----------</span>
+<span class="c1">#     G : graph</span>
+<span class="c1">#         A easygraph graph</span>
+
+<span class="c1">#     pos : dictionary</span>
+<span class="c1">#         A dictionary with nodes as keys and positions as values.</span>
+<span class="c1">#         Positions should be sequences of length 2.</span>
+
+<span class="c1">#     ax : Matplotlib Axes object, optional</span>
+<span class="c1">#         Draw the graph in the specified Matplotlib axes.</span>
+
+<span class="c1">#     nodelist : list (default list(G))</span>
+<span class="c1">#         Draw only specified nodes</span>
+
+<span class="c1">#     node_size : scalar or array (default=300)</span>
+<span class="c1">#         Size of nodes.  If an array it must be the same length as nodelist.</span>
+
+<span class="c1">#     node_color : color or array of colors (default=&#39;#1f78b4&#39;)</span>
+<span class="c1">#         Node color. Can be a single color or a sequence of colors with the same</span>
+<span class="c1">#         length as nodelist. Color can be string or rgb (or rgba) tuple of</span>
+<span class="c1">#         floats from 0-1. If numeric values are specified they will be</span>
+<span class="c1">#         mapped to colors using the cmap and vmin,vmax parameters. See</span>
+<span class="c1">#         matplotlib.scatter for more details.</span>
+
+<span class="c1">#     node_shape :  string (default=&#39;o&#39;)</span>
+<span class="c1">#         The shape of the node.  Specification is as matplotlib.scatter</span>
+<span class="c1">#         marker, one of &#39;so^&gt;v&lt;dph8&#39;.</span>
+
+<span class="c1">#     alpha : float or array of floats (default=None)</span>
+<span class="c1">#         The node transparency.  This can be a single alpha value,</span>
+<span class="c1">#         in which case it will be applied to all the nodes of color. Otherwise,</span>
+<span class="c1">#         if it is an array, the elements of alpha will be applied to the colors</span>
+<span class="c1">#         in order (cycling through alpha multiple times if necessary).</span>
+
+<span class="c1">#     cmap : Matplotlib colormap (default=None)</span>
+<span class="c1">#         Colormap for mapping intensities of nodes</span>
+
+<span class="c1">#     vmin,vmax : floats or None (default=None)</span>
+<span class="c1">#         Minimum and maximum for node colormap scaling</span>
+
+<span class="c1">#     linewidths : [None | scalar | sequence] (default=1.0)</span>
+<span class="c1">#         Line width of symbol border</span>
+
+<span class="c1">#     edgecolors : [None | scalar | sequence] (default = node_color)</span>
+<span class="c1">#         Colors of node borders</span>
+
+<span class="c1">#     label : [None | string]</span>
+<span class="c1">#         Label for legend</span>
+
+<span class="c1">#     margins : float or 2-tuple, optional</span>
+<span class="c1">#         Sets the padding for axis autoscaling. Increase margin to prevent</span>
+<span class="c1">#         clipping for nodes that are near the edges of an image. Values should</span>
+<span class="c1">#         be in the range ``[0, 1]``. See :meth:`matplotlib.axes.Axes.margins`</span>
+<span class="c1">#         for details. The default is `None`, which uses the Matplotlib default.</span>
+
+<span class="c1">#     Returns</span>
+<span class="c1">#     -------</span>
+<span class="c1">#     matplotlib.collections.PathCollection</span>
+<span class="c1">#         `PathCollection` of the nodes.</span>
+
+<span class="c1">#     Examples</span>
+<span class="c1">#     --------</span>
+<span class="c1">#     &gt;&gt;&gt; from easygraph.datasets import get_graph_karateclub</span>
+<span class="c1">#     &gt;&gt;&gt; import easygraph as eg</span>
+<span class="c1">#     &gt;&gt;&gt; G = get_graph_karateclub()</span>
+<span class="c1">#     &gt;&gt;&gt; nodes = eg.draw_easygraph_nodes(G, pos=eg.circular_position(G))</span>
+
+
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     from collections.abc import Iterable</span>
+
+<span class="c1">#     import matplotlib as mpl</span>
+<span class="c1">#     import matplotlib.collections  # call as mpl.collections</span>
+<span class="c1">#     import matplotlib.pyplot as plt</span>
+<span class="c1">#     import numpy as np</span>
+
+<span class="c1">#     if ax is None:</span>
+<span class="c1">#         ax = plt.gca()</span>
+
+<span class="c1">#     if nodelist is None:</span>
+<span class="c1">#         nodelist = list(G)</span>
+
+<span class="c1">#     if len(nodelist) == 0:  # empty nodelist, no drawing</span>
+<span class="c1">#         return mpl.collections.PathCollection(None)</span>
+
+<span class="c1">#     try:</span>
+<span class="c1">#         xy = np.asarray([pos[v] for v in nodelist])</span>
+<span class="c1">#     except KeyError as err:</span>
+<span class="c1">#         raise EasyGraphError(f&quot;Node {err} has no position.&quot;) from err</span>
+
+<span class="c1">#     if isinstance(alpha, Iterable):</span>
+<span class="c1">#         node_color = apply_alpha(node_color, alpha, nodelist, cmap, vmin, vmax)</span>
+<span class="c1">#         alpha = None</span>
+
+<span class="c1">#     node_collection = ax.scatter(</span>
+<span class="c1">#         xy[:, 0],</span>
+<span class="c1">#         xy[:, 1],</span>
+<span class="c1">#         s=node_size,</span>
+<span class="c1">#         c=node_color,</span>
+<span class="c1">#         marker=node_shape,</span>
+<span class="c1">#         cmap=cmap,</span>
+<span class="c1">#         vmin=vmin,</span>
+<span class="c1">#         vmax=vmax,</span>
+<span class="c1">#         alpha=alpha,</span>
+<span class="c1">#         linewidths=linewidths,</span>
+<span class="c1">#         edgecolors=edgecolors,</span>
+<span class="c1">#         label=label,</span>
+<span class="c1">#     )</span>
+<span class="c1">#     ax.tick_params(</span>
+<span class="c1">#         axis=&quot;both&quot;,</span>
+<span class="c1">#         which=&quot;both&quot;,</span>
+<span class="c1">#         bottom=False,</span>
+<span class="c1">#         left=False,</span>
+<span class="c1">#         labelbottom=False,</span>
+<span class="c1">#         labelleft=False,</span>
+<span class="c1">#     )</span>
+
+<span class="c1">#     if margins is not None:</span>
+<span class="c1">#         if isinstance(margins, Iterable):</span>
+<span class="c1">#             ax.margins(*margins)</span>
+<span class="c1">#         else:</span>
+<span class="c1">#             ax.margins(margins)</span>
+
+<span class="c1">#     node_collection.set_zorder(2)</span>
+<span class="c1">#     return node_collection</span>
+
+
+<span class="c1"># def draw_curved_edges(G, pos, dist_ratio=0.2, bezier_precision=20, polarity=&#39;random&#39;):</span>
+<span class="c1">#     # Get nodes into np array</span>
+<span class="c1">#     edges = np.array(G.edges())</span>
+<span class="c1">#     l = edges.shape[0]</span>
+
+<span class="c1">#     if polarity == &#39;random&#39;:</span>
+<span class="c1">#         # Random polarity of curve</span>
+<span class="c1">#         rnd = np.where(np.random.randint(2, size=l)==0, -1, 1)</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         # Create a fixed (hashed) polarity column in the case we use fixed polarity</span>
+<span class="c1">#         # This is useful, e.g., for animations</span>
+<span class="c1">#         rnd = np.where(np.mod(np.vectorize(hash)(edges[:,0])+np.vectorize(hash)(edges[:,1]),2)==0,-1,1)</span>
+
+<span class="c1">#     # Coordinates (x,y) of both nodes for each edge</span>
+<span class="c1">#     # e.g., https://stackoverflow.com/questions/16992713/translate-every-element-in-numpy-array-according-to-key</span>
+<span class="c1">#     # Note the np.vectorize method doesn&#39;t work for all node position dictionaries for some reason</span>
+<span class="c1">#     u, inv = np.unique(edges, return_inverse = True)</span>
+<span class="c1">#     coords = np.array([pos[x] for x in u])[inv].reshape([edges.shape[0], 2, edges.shape[1]])</span>
+<span class="c1">#     coords_node1 = coords[:,0,:]</span>
+<span class="c1">#     coords_node2 = coords[:,1,:]</span>
+
+<span class="c1">#     # Swap node1/node2 allocations to make sure the directionality works correctly</span>
+<span class="c1">#     should_swap = coords_node1[:,0] &gt; coords_node2[:,0]</span>
+<span class="c1">#     coords_node1[should_swap], coords_node2[should_swap] = coords_node2[should_swap], coords_node1[should_swap]</span>
+
+<span class="c1">#     # Distance for control points</span>
+<span class="c1">#     dist = dist_ratio * np.sqrt(np.sum((coords_node1-coords_node2)**2, axis=1))</span>
+
+<span class="c1">#     # Gradients of line connecting node &amp; perpendicular</span>
+<span class="c1">#     m1 = (coords_node2[:,1]-coords_node1[:,1])/(coords_node2[:,0]-coords_node1[:,0])</span>
+<span class="c1">#     m2 = -1/m1</span>
+
+<span class="c1">#     # Temporary points along the line which connects two nodes</span>
+<span class="c1">#     # e.g., https://math.stackexchange.com/questions/656500/given-a-point-slope-and-a-distance-along-that-slope-easily-find-a-second-p</span>
+<span class="c1">#     t1 = dist/np.sqrt(1+m1**2)</span>
+<span class="c1">#     v1 = np.array([np.ones(l),m1])</span>
+<span class="c1">#     coords_node1_displace = coords_node1 + (v1*t1).T</span>
+<span class="c1">#     coords_node2_displace = coords_node2 - (v1*t1).T</span>
+
+<span class="c1">#     # Control points, same distance but along perpendicular line</span>
+<span class="c1">#     # rnd gives the &#39;polarity&#39; to determine which side of the line the curve should arc</span>
+<span class="c1">#     t2 = dist/np.sqrt(1+m2**2)</span>
+<span class="c1">#     v2 = np.array([np.ones(len(edges)),m2])</span>
+<span class="c1">#     coords_node1_ctrl = coords_node1_displace + (rnd*v2*t2).T</span>
+<span class="c1">#     coords_node2_ctrl = coords_node2_displace + (rnd*v2*t2).T</span>
+
+<span class="c1">#     # Combine all these four (x,y) columns into a &#39;node matrix&#39;</span>
+<span class="c1">#     node_matrix = np.array([coords_node1, coords_node1_ctrl, coords_node2_ctrl, coords_node2])</span>
+
+<span class="c1">#     # Create the Bezier curves and store them in a list</span>
+<span class="c1">#     curveplots = []</span>
+<span class="c1">#     for i in range(l):</span>
+<span class="c1">#         nodes = node_matrix[:,i,:].T</span>
+<span class="c1">#         curveplots.append(bezier.Curve(nodes, degree=3).evaluate_multi(np.linspace(0,1,bezier_precision)).T)</span>
+<span class="c1">#     # Return an array of these curves</span>
+<span class="c1">#     curves = np.array(curveplots)</span>
+<span class="c1">#     return curves</span>
+
+<span class="c1"># def draw_curved_graph(G, colors, ax):</span>
+<span class="c1">#     #G = to_networkx(G)</span>
+<span class="c1">#     # layout</span>
+<span class="c1">#     pos = eg.spring_layout(G, iterations=50)</span>
+<span class="c1">#     eg.draw_networkx_nodes(G, pos, ax=ax, node_size=200, node_color=colors[0], alpha=0.5)</span>
+
+<span class="c1">#     # 绘制标签</span>
+<span class="c1">#     eg.draw_networkx_labels(G, pos, ax=ax, font_size=8, font_family=&#39;Arial&#39;, font_color=&#39;black&#39;)</span>
+
+<span class="c1">#     # Produce the curves</span>
+<span class="c1">#     curves = draw_curved_edges(G, pos)</span>
+<span class="c1">#     lc = LineCollection(curves, color=colors[1], alpha=0.4)</span>
+
+<span class="c1">#     # 添加连线</span>
+<span class="c1">#     ax.add_collection(lc)</span>
+
+<span class="c1">#     # 设置坐标轴参数</span>
+<span class="c1">#     ax.tick_params(axis=&#39;both&#39;, which=&#39;both&#39;, bottom=False, left=False, labelbottom=False, labelleft=False)</span>
+
+<span class="c1">#     plt.savefig(&#39;Figure.pdf&#39;)</span>
+<span class="c1">#     plt.show()</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024, DataNET Group, Fudan University
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../../_static/documentation_options.js?v=61243dd2"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    </body>
+</html>
