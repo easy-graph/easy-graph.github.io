@@ -60,7 +60,7 @@ Please refer to the related source code `here <https://github.com/easy-graph/Eas
     # Add hyperedges and you can find the weight of the last hyperedge is 1.0 and 2.0, if you set the merge_op to mean and sum, respectively.
     hg.add_hyperedges(e_list = [(0, 2, 1), (2, 4)], merge_op="mean")
     print("hg.e:", hg.e)
-    # ([(0, 1, 2), (2, 3), (0, 4)], [1.0, 2.0, 1.0], [{}, {}, {}])
+    # ([(0, 1, 2), (2, 3), (0, 4), (2, 4)], [1.0, 2.0, 1.0, 1.0], [{}, {}, {}, {}])
     hg.add_hyperedges(e_list = [(2, 4)], merge_op="sum")
     print("hg.e:", hg.e)
     # ([(0, 1, 2), (2, 3), (0, 4), (2, 4)], [1.0, 2.0, 1.0, 1.0], [{}, {}, {}, {}])
