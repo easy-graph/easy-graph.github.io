@@ -1,12 +1,13 @@
-EasyGraph-Hypergraph
+EasyHypergraph
 ========
 
 Overview
 +++++++++++++
 
-The Hypergraph library is maintained by EasyGraph. Its architecture is shown as follows:
+We present a comprehensive, computation-effective, and storage-saving hypergraph library designed not only for in-depth hypergraph analysis but also for the growing field of hypergraph learning. The library, called EasyHypergraph, allows users from multiple disciplines to input hypergraph data, efficiently perform hypergraph analysis or hypergraph learning tasks on large-scale datasets by utilizing computational workflow, and gain insights from higher-order structures. EasyHypergraph’s broad capabilities and computational efficiency empower researchers and practitioners from various fields to effectively harness the potential of higher-order networks, sparking innovative solutions for practical problems.
+Its architecture is shown as follows:
 
-.. image:: function_framework.png
+.. image:: function_dynamic.png
 
 
 Examples
