@@ -29,7 +29,6 @@ Repository:
 Prerequisites
 -------------
 
-It is recommended to have conda/miniconda/anaconda installed on your machine. 
 Clone these repositories and put them inside the same directory:
 
 .. code:: bash
@@ -69,7 +68,7 @@ Build HTML from ``rst`` files
    4. run `source .env/bin/activate` to activate
    5. run `pip install -r requirements.txt` to install dependencies -->
 
--  Install dependencies in ``requirements.txt`` with the following command: ``pip install -r requirements.txt``.
+-  Install dependencies in ``requirements.txt``.
 -  Run ``make html``. The updated pages locate in ``./_build/html``.
 
 Deploy to easy-graph.github.io

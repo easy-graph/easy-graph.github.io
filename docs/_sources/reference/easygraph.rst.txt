@@ -5,7 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    easygraph.classes
    easygraph.datapipe
@@ -17,6 +17,7 @@ Subpackages
    easygraph.nn
    easygraph.readwrite
    easygraph.utils
+
 
 Submodules
 ----------
@@ -37,10 +38,3 @@ easygraph.exception module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: easygraph
-   :members:
-   :undoc-members:
-   :show-inheritance:
