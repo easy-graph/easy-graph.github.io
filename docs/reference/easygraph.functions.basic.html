@@ -19,6 +19,7 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -89,20 +90,262 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="easygraph-functions-basic-avg-degree-module">
-<h2>easygraph.functions.basic.avg_degree module<a class="headerlink" href="#easygraph-functions-basic-avg-degree-module" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.functions.basic.avg_degree">
+<span id="easygraph-functions-basic-avg-degree-module"></span><h2>easygraph.functions.basic.avg_degree module<a class="headerlink" href="#module-easygraph.functions.basic.avg_degree" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.basic.avg_degree.average_degree">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.basic.avg_degree.</span></span><span class="sig-name descname"><span class="pre">average_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/easygraph/functions/basic/avg_degree.html#average_degree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.basic.avg_degree.average_degree" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the average degree of the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>graph</em>) – A EasyGraph graph</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>average degree</strong> – The average degree of the graph.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Self loops are counted twice in the total degree of a node.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">average_degree</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">1.3333333333333333</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
-<section id="easygraph-functions-basic-cluster-module">
-<h2>easygraph.functions.basic.cluster module<a class="headerlink" href="#easygraph-functions-basic-cluster-module" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.functions.basic.cluster">
+<span id="easygraph-functions-basic-cluster-module"></span><h2>easygraph.functions.basic.cluster module<a class="headerlink" href="#module-easygraph.functions.basic.cluster" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.basic.cluster.average_clustering">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.basic.cluster.</span></span><span class="sig-name descname"><span class="pre">average_clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_zeros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/basic/cluster.html#average_clustering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.basic.cluster.average_clustering" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the average clustering coefficient for the graph G.</p>
+<p>The clustering coefficient for the graph is the average,</p>
+<div class="math notranslate nohighlight">
+\[C = \frac{1}{n}\sum_{v \in G} c_v,\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of nodes in <cite>G</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – </p></li>
+<li><p><strong>nodes</strong> (<em>container</em><em> of </em><em>nodes</em><em>, </em><em>optional</em><em> (</em><em>default=all nodes in G</em><em>)</em>) – Compute average clustering for nodes in this container.</p></li>
+<li><p><strong>weight</strong> (<em>string</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – The edge attribute that holds the numerical value used as a weight.
+If None, then each edge has weight 1.</p></li>
+<li><p><strong>count_zeros</strong> (<em>bool</em>) – If False include only the nodes with nonzero clustering in the average.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>avg</strong> – Average clustering</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This is a space saving routine; it might be faster
+to use the clustering function to get a list and then take the average.</p>
+<p>Self loops are ignored.</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p>Generalizations of the clustering coefficient to weighted
+complex networks by J. Saramäki, M. Kivelä, J.-P. Onnela,
+K. Kaski, and J. Kertész, Physical Review E, 75 027105 (2007).
+<a class="reference external" href="http://jponnela.com/web_documents/a9.pdf">http://jponnela.com/web_documents/a9.pdf</a></p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">2</span></dt>
+<dd><p>Marcus Kaiser,  Mean clustering coefficients: the role of isolated
+nodes and leafs on clustering measures for small-world networks.
+<a class="reference external" href="https://arxiv.org/abs/0802.2512">https://arxiv.org/abs/0802.2512</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.basic.cluster.clustering">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.basic.cluster.</span></span><span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/basic/cluster.html#clustering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.basic.cluster.clustering" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the clustering coefficient for nodes.</p>
+<p>For unweighted graphs, the clustering of a node <span class="math notranslate nohighlight">\(u\)</span>
+is the fraction of possible triangles through that node that exist,</p>
+<div class="math notranslate nohighlight">
+\[c_u = \frac{2 T(u)}{deg(u)(deg(u)-1)},\]</div>
+<p>where <span class="math notranslate nohighlight">\(T(u)\)</span> is the number of triangles through node <span class="math notranslate nohighlight">\(u\)</span> and
+<span class="math notranslate nohighlight">\(deg(u)\)</span> is the degree of <span class="math notranslate nohighlight">\(u\)</span>.</p>
+<p>For weighted graphs, there are several ways to define clustering <a href="#id12"><span class="problematic" id="id3">[1]_</span></a>.
+the one used here is defined
+as the geometric average of the subgraph edge weights <a href="#id13"><span class="problematic" id="id4">[2]_</span></a>,</p>
+<div class="math notranslate nohighlight">
+\[c_u = \frac{1}{deg(u)(deg(u)-1))}
+      \sum_{vw} (\hat{w}_{uv} \hat{w}_{uw} \hat{w}_{vw})^{1/3}.\]</div>
+<p>The edge weights <span class="math notranslate nohighlight">\(\hat{w}_{uv}\)</span> are normalized by the maximum weight
+in the network <span class="math notranslate nohighlight">\(\hat{w}_{uv} = w_{uv}/\max(w)\)</span>.</p>
+<p>The value of <span class="math notranslate nohighlight">\(c_u\)</span> is assigned to 0 if <span class="math notranslate nohighlight">\(deg(u) &lt; 2\)</span>.</p>
+<p>Additionally, this weighted definition has been generalized to support negative edge weights <a class="footnote-reference brackets" href="#id9" id="id5">3</a>.</p>
+<p>For directed graphs, the clustering is similarly defined as the fraction
+of all possible directed triangles or geometric average of the subgraph
+edge weights for unweighted and weighted directed graph respectively <a class="footnote-reference brackets" href="#id10" id="id6">4</a>.</p>
+<div class="math notranslate nohighlight">
+\[c_u = \frac{2}{deg^{tot}(u)(deg^{tot}(u)-1) - 2deg^{\leftrightarrow}(u)}
+      T(u),\]</div>
+<p>where <span class="math notranslate nohighlight">\(T(u)\)</span> is the number of directed triangles through node
+<span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(deg^{tot}(u)\)</span> is the sum of in degree and out degree of
+<span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(deg^{\leftrightarrow}(u)\)</span> is the reciprocal degree of
+<span class="math notranslate nohighlight">\(u\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – </p></li>
+<li><p><strong>nodes</strong> (<em>container</em><em> of </em><em>nodes</em><em>, </em><em>optional</em><em> (</em><em>default=all nodes in G</em><em>)</em>) – Compute clustering for nodes in this container.</p></li>
+<li><p><strong>weight</strong> (<em>string</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – The edge attribute that holds the numerical value used as a weight.
+If None, then each edge has weight 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> – Clustering coefficient at specified nodes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float, or dictionary</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="go">{0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0}</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>Self loops are ignored.</p>
+<blockquote>
+<div><dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets">1</span></dt>
+<dd><p>Generalizations of the clustering coefficient to weighted
+complex networks by J. Saramäki, M. Kivelä, J.-P. Onnela,
+K. Kaski, and J. Kertész, Physical Review E, 75 027105 (2007).
+<a class="reference external" href="http://jponnela.com/web_documents/a9.pdf">http://jponnela.com/web_documents/a9.pdf</a></p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">2</span></dt>
+<dd><p>Intensity and coherence of motifs in weighted complex
+networks by J. P. Onnela, J. Saramäki, J. Kertész, and K. Kaski,
+Physical Review E, 71(6), 065103 (2005).</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><p>Generalization of Clustering Coefficients to Signed Correlation Networks
+by G. Costantini and M. Perugini, PloS one, 9(2), e88669 (2014).</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
+<dd><p>Clustering in complex directed networks by G. Fagiolo,
+Physical Review E, 76(2), 026107 (2007).</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
 </section>
-<section id="easygraph-functions-basic-localassort-module">
-<h2>easygraph.functions.basic.localassort module<a class="headerlink" href="#easygraph-functions-basic-localassort-module" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.functions.basic.localassort">
+<span id="easygraph-functions-basic-localassort-module"></span><h2>easygraph.functions.basic.localassort module<a class="headerlink" href="#module-easygraph.functions.basic.localassort" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.basic.localassort.localAssort">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.basic.localassort.</span></span><span class="sig-name descname"><span class="pre">localAssort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edgelist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.1,</span> <span class="pre">0.2,</span> <span class="pre">0.3,</span> <span class="pre">0.4,</span> <span class="pre">0.5,</span> <span class="pre">0.6,</span> <span class="pre">0.7,</span> <span class="pre">0.8,</span> <span class="pre">0.9])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">undir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missingValue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/basic/localassort.html#localAssort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.basic.localassort.localAssort" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the multiscale assortativity.
+You must ensure that the node index and node attribute index start from 0
+:param edgelist: the network represented as an edge list,</p>
+<blockquote>
+<div><p>i.e., a E x 2 array of node pairs</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_attr</strong> (<em>array_like</em>) – n length array of node attribute values</p></li>
+<li><p><strong>pr</strong> (<em>array</em><em>, </em><em>optional</em>) – array of one minus restart probabilities for the random walk in
+calculating the personalised pagerank. The largest of these values
+determines the accuracy of the TotalRank vector max(pr) -&gt; 1 is more
+accurate (default: [0, .1, .2, .3, .4, .5, .6, .7, .8, .9])</p></li>
+<li><p><strong>undir</strong> (<em>bool</em><em>, </em><em>optional</em>) – indicate if network is undirected (default: True)</p></li>
+<li><p><strong>missingValue</strong> (<em>int</em><em>, </em><em>optional</em>) – token to indicate missing attribute values (default: -1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>assortM</strong> (<em>array_like</em>) – n x len(pr) array of local assortativities, each column corresponds to
+a value of the input restart probabilities, pr. Note if only number of
+restart probabilties is greater than one (i.e., len(pr) &gt; 1).</p></li>
+<li><p><strong>assortT</strong> (<em>array_like</em>) – n length array of multiscale assortativities</p></li>
+<li><p><strong>Z</strong> (<em>array_like</em>) – N length array of per-node confidence scores</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>For full details see <a href="#id14"><span class="problematic" id="id11">[1]_</span></a>
+.. [1] Peel, L., Delvenne, J. C., &amp; Lambiotte, R. (2018). “Multiscale</p>
+<blockquote>
+<div><p>mixing patterns in networks.’ PNAS, 115(16), 4057-4062.</p>
+</div></blockquote>
+</dd></dl>
+
 </section>
-<section id="easygraph-functions-basic-predecessor-path-based-module">
-<h2>easygraph.functions.basic.predecessor_path_based module<a class="headerlink" href="#easygraph-functions-basic-predecessor-path-based-module" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.functions.basic.predecessor_path_based">
+<span id="easygraph-functions-basic-predecessor-path-based-module"></span><h2>easygraph.functions.basic.predecessor_path_based module<a class="headerlink" href="#module-easygraph.functions.basic.predecessor_path_based" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.basic.predecessor_path_based.predecessor">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.basic.predecessor_path_based.</span></span><span class="sig-name descname"><span class="pre">predecessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_seen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/basic/predecessor_path_based.html#predecessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.basic.predecessor_path_based.predecessor" title="Permalink to this definition"></a></dt>
+<dd><p>Returns dict of predecessors for the path from source to all nodes in G.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>EasyGraph graph</em>) – </p></li>
+<li><p><strong>source</strong> (<em>node label</em>) – Starting node for path</p></li>
+<li><p><strong>target</strong> (<em>node label</em><em>, </em><em>optional</em>) – Ending node for path. If provided only predecessors between
+source and target are returned</p></li>
+<li><p><strong>cutoff</strong> (<em>integer</em><em>, </em><em>optional</em>) – Depth to stop the search. Only paths of length &lt;= cutoff are returned.</p></li>
+<li><p><strong>return_seen</strong> (<em>bool</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – Whether to return a dictionary, keyed by node, of the level (number of
+hops) to reach the node (as seen during breadth-first-search).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pred</strong> – Dictionary, keyed by node, of predecessors in the shortest path.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>(pred, seen): tuple of dictionaries</dt><dd><p>If <cite>return_seen</cite> argument is set to <cite>True</cite>, then a tuple of dictionaries
+is returned. The first element is the dictionary, keyed by node, of
+predecessors in the shortest path. The second element is the dictionary,
+keyed by node, of the level (number of hops) to reach the node (as seen
+during breadth-first-search).</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">predecessor</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">{0: [], 1: [0], 2: [1], 3: [2]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">predecessor</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">return_seen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">({0: [], 1: [0], 2: [1], 3: [2]}, {0: 0, 1: 1, 2: 2, 3: 3})</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.functions.basic">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.functions.basic" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
