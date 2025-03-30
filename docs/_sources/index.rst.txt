@@ -34,6 +34,7 @@ parallel computing and Python/C++ hybrid programming techniques to achieve high 
    install.rst
    example.rst
    hypergraph.rst
+   eggpu.rst
    reference.rst
    tutorial.rst
    videos.rst
