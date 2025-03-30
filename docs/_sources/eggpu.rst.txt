@@ -15,6 +15,7 @@ EGGPU is engineered with a three-layer architecture:
 * **Computation Layer**: Implemented in CUDA C/C++, this layer primarily executes the GPU-based network analysis functions, including betweenness centrality, k-core centrality, and SSSP.
 
 .. image:: eggpu_architecture.png
+   :align: center
 
 Installation
 +++++++++++++
