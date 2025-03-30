@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>easygraph.nn.convs.hypergraphs package &mdash; EasyGraph 1.4</title>
@@ -12,13 +12,13 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -31,16 +31,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            EasyGraph
-              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> EasyGraph
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,13 +69,13 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
-          <li class="breadcrumb-item"><a href="modules.html">easygraph</a></li>
-          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
-          <li class="breadcrumb-item"><a href="easygraph.nn.html">easygraph.nn package</a></li>
-          <li class="breadcrumb-item"><a href="easygraph.nn.convs.html">easygraph.nn.convs package</a></li>
-      <li class="breadcrumb-item active">easygraph.nn.convs.hypergraphs package</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../reference.html">Reference</a> &raquo;</li>
+          <li><a href="modules.html">easygraph</a> &raquo;</li>
+          <li><a href="easygraph.html">easygraph package</a> &raquo;</li>
+          <li><a href="easygraph.nn.html">easygraph.nn package</a> &raquo;</li>
+          <li><a href="easygraph.nn.convs.html">easygraph.nn.convs package</a> &raquo;</li>
+      <li>easygraph.nn.convs.hypergraphs package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/easygraph.nn.convs.hypergraphs.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,444 +90,32 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.nn.convs.hypergraphs.dhcf_conv">
-<span id="easygraph-nn-convs-hypergraphs-dhcf-conv-module"></span><h2>easygraph.nn.convs.hypergraphs.dhcf_conv module<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs.dhcf_conv" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.dhcf_conv.</span></span><span class="sig-name descname"><span class="pre">JHConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/dhcf_conv.html#JHConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The Jump Hypergraph Convolution layer proposed in <a class="reference external" href="https://dl.acm.org/doi/10.1145/3394486.3403253">Dual Channel Hypergraph Collaborative Filtering</a> paper (KDD 2020).</p>
-<p>Matrix Format:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{X}^{\prime} = \sigma \left( \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1}
-\mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}} \mathbf{X} \mathbf{\Theta} + \mathbf{X} \right).\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/dhcf_conv.html#JHConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((N, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(N\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-nn-convs-hypergraphs-dhcf-conv-module">
+<h2>easygraph.nn.convs.hypergraphs.dhcf_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-dhcf-conv-module" title="Permalink to this heading"></a></h2>
 </section>
 <section id="easygraph-nn-convs-hypergraphs-halfnlh-conv-module">
 <h2>easygraph.nn.convs.hypergraphs.halfnlh_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-halfnlh-conv-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.nn.convs.hypergraphs.hgnn_conv">
-<span id="easygraph-nn-convs-hypergraphs-hgnn-conv-module"></span><h2>easygraph.nn.convs.hypergraphs.hgnn_conv module<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs.hgnn_conv" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.hgnn_conv.</span></span><span class="sig-name descname"><span class="pre">HGNNConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hgnn_conv.html#HGNNConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The HGNN convolution layer proposed in <a class="reference external" href="https://arxiv.org/pdf/1809.09401">Hypergraph Neural Networks</a> paper (AAAI 2019).
-Matrix Format:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{X}^{\prime} = \sigma \left( \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \mathbf{W}_e \mathbf{D}_e^{-1}
-\mathbf{H}^\top \mathbf{D}_v^{-\frac{1}{2}} \mathbf{X} \mathbf{\Theta} \right).\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is the input vertex feature matrix, <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> is the hypergraph incidence matrix,
-<span class="math notranslate nohighlight">\(\mathbf{W}_e\)</span> is a diagonal hyperedge weight matrix, <span class="math notranslate nohighlight">\(\mathbf{D}_v\)</span> is a diagonal vertex degree matrix,
-<span class="math notranslate nohighlight">\(\mathbf{D}_e\)</span> is a diagonal hyperedge degree matrix, <span class="math notranslate nohighlight">\(\mathbf{\Theta}\)</span> is the learnable parameters.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hgnn_conv.html#HGNNConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((N, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(N\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-nn-convs-hypergraphs-hgnn-conv-module">
+<h2>easygraph.nn.convs.hypergraphs.hgnn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hgnn-conv-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.nn.convs.hypergraphs.hgnnp_conv">
-<span id="easygraph-nn-convs-hypergraphs-hgnnp-conv-module"></span><h2>easygraph.nn.convs.hypergraphs.hgnnp_conv module<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs.hgnnp_conv" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.hgnnp_conv.</span></span><span class="sig-name descname"><span class="pre">HGNNPConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hgnnp_conv.html#HGNNPConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The HGNN <sup>+</sup> convolution layer proposed in <a class="reference external" href="https://ieeexplore.ieee.org/document/9795251">HGNN+: General Hypergraph Neural Networks</a> paper (IEEE T-PAMI 2022).</p>
-<p>Sparse Format:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left\{
-    \begin{aligned}
-        m_{\beta}^{t} &amp;=\sum_{\alpha \in \mathcal{N}_{v}(\beta)} M_{v}^{t}\left(x_{\alpha}^{t}\right) \\
-        y_{\beta}^{t} &amp;=U_{e}^{t}\left(w_{\beta}, m_{\beta}^{t}\right) \\
-        m_{\alpha}^{t+1} &amp;=\sum_{\beta \in \mathcal{N}_{e}(\alpha)} M_{e}^{t}\left(x_{\alpha}^{t}, y_{\beta}^{t}\right) \\
-        x_{\alpha}^{t+1} &amp;=U_{v}^{t}\left(x_{\alpha}^{t}, m_{\alpha}^{t+1}\right) \\
-    \end{aligned}
-\right.\end{split}\]</div>
-<p>Matrix Format:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{X}^{\prime} = \sigma \left( \mathbf{D}_v^{-1} \mathbf{H} \mathbf{W}_e
-\mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{X} \mathbf{\Theta} \right).\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hgnnp_conv.html#HGNNPConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(|\mathcal{V}|\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-nn-convs-hypergraphs-hgnnp-conv-module">
+<h2>easygraph.nn.convs.hypergraphs.hgnnp_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hgnnp-conv-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.nn.convs.hypergraphs.hnhn_conv">
-<span id="easygraph-nn-convs-hypergraphs-hnhn-conv-module"></span><h2>easygraph.nn.convs.hypergraphs.hnhn_conv module<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs.hnhn_conv" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.hnhn_conv.</span></span><span class="sig-name descname"><span class="pre">HNHNConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hnhn_conv.html#HNHNConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The HNHN convolution layer proposed in <a class="reference external" href="https://arxiv.org/pdf/2006.12278.pdf">HNHN: Hypergraph Networks with Hyperedge Neurons</a> paper (ICML 2020).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hnhn_conv.html#HNHNConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(|\mathcal{V}|\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-nn-convs-hypergraphs-hnhn-conv-module">
+<h2>easygraph.nn.convs.hypergraphs.hnhn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hnhn-conv-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.nn.convs.hypergraphs.hypergcn_conv">
-<span id="easygraph-nn-convs-hypergraphs-hypergcn-conv-module"></span><h2>easygraph.nn.convs.hypergraphs.hypergcn_conv module<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs.hypergcn_conv" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.hypergcn_conv.</span></span><span class="sig-name descname"><span class="pre">HyperGCNConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mediator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hypergcn_conv.html#HyperGCNConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The HyperGCN convolution layer proposed in <a class="reference external" href="https://papers.nips.cc/paper/2019/file/1efa39bcaec6f3900149160693694536-Paper.pdf">HyperGCN: A New Method of Training Graph Convolutional Networks on Hypergraphs</a> paper (NeurIPS 2019).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>use_mediator</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Whether to use mediator to transform the hyperedges to edges in the graph. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cached_g</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><span class="pre">Graph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/hypergcn_conv.html#HyperGCNConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((N, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(N\)</span> vertices.</p></li>
-<li><p><strong>cached_g</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Graph</span></code>) – The pre-transformed graph structure from the hypergraph structure that contains <span class="math notranslate nohighlight">\(N\)</span> vertices. If not provided, the graph structure will be transformed for each forward time. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-nn-convs-hypergraphs-hwnn-conv-module">
+<h2>easygraph.nn.convs.hypergraphs.hwnn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hwnn-conv-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.nn.convs.hypergraphs.unignn_conv">
-<span id="easygraph-nn-convs-hypergraphs-unignn-conv-module"></span><h2>easygraph.nn.convs.hypergraphs.unignn_conv module<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs.unignn_conv" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.unignn_conv.</span></span><span class="sig-name descname"><span class="pre">UniGATConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atten_neg_slope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniGATConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The UniGAT convolution layer proposed in <a class="reference external" href="https://arxiv.org/pdf/2105.00956.pdf">UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks</a> paper (IJCAI 2021).</p>
-<p>Sparse Format:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left\{
-    \begin{aligned}
-        \alpha_{i e} &amp;=\sigma\left(a^{T}\left[W h_{\{i\}} ; W h_{e}\right]\right) \\
-        \tilde{\alpha}_{i e} &amp;=\frac{\exp \left(\alpha_{i e}\right)}{\sum_{e^{\prime} \in \tilde{E}_{i}} \exp \left(\alpha_{i e^{\prime}}\right)} \\
-        \tilde{x}_{i} &amp;=\sum_{e \in \tilde{E}_{i}} \tilde{\alpha}_{i e} W h_{e}
-    \end{aligned}
-\right. .\end{split}\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The dropout probability. If <code class="docutils literal notranslate"><span class="pre">dropout</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code>, the layer will not drop values. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>atten_neg_slope</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – Hyper-parameter of the <code class="docutils literal notranslate"><span class="pre">LeakyReLU</span></code> activation of edge attention. Defaults to <code class="docutils literal notranslate"><span class="pre">0.2</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniGATConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(|\mathcal{V}|\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.unignn_conv.</span></span><span class="sig-name descname"><span class="pre">UniGCNConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniGCNConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The UniGCN convolution layer proposed in <a class="reference external" href="https://arxiv.org/pdf/2105.00956.pdf">UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks</a> paper (IJCAI 2021).</p>
-<p>Sparse Format:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left\{
-    \begin{aligned}
-    h_{e} &amp;= \frac{1}{|e|} \sum_{j \in e} x_{j} \\
-    \tilde{x}_{i} &amp;= \frac{1}{\sqrt{d_{i}}} \sum_{e \in \tilde{E}_{i}} \frac{1}{\sqrt{\tilde{d}_{e}}} W h_{e}
-    \end{aligned}
-\right. .\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\tilde{d}_{e} = \frac{1}{|e|} \sum_{i \in e} d_{i}\)</span>.</p>
-<p>Matrix Format:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{X}^{\prime} = \sigma \left(  \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \tilde{\mathbf{D}}_e^{-\frac{1}{2}} \cdot \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{X} \mathbf{\Theta} \right) .\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniGCNConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(|\mathcal{V}|\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.unignn_conv.</span></span><span class="sig-name descname"><span class="pre">UniGINConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniGINConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The UniGIN convolution layer proposed in <a class="reference external" href="https://arxiv.org/pdf/2105.00956.pdf">UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks</a> paper (IJCAI 2021).</p>
-<p>Sparse Format:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left\{
-    \begin{aligned}
-    h_{e} &amp;= \frac{1}{|e|} \sum_{j \in e} x_{j} \\
-    \tilde{x}_{i} &amp;= W\left((1+\varepsilon) x_{i}+\sum_{e \in E_{i}} h_{e}\right)
-    \end{aligned}
-\right. .\end{split}\]</div>
-<p>Matrix Format:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{X}^{\prime} = \sigma \left( \left( \left( \mathbf{I} + \varepsilon \right) + \mathbf{H} \mathbf{D}_e^{-1} \mathbf{H}^\top \right) \mathbf{X} \mathbf{\Theta} \right) .\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>eps</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – <span class="math notranslate nohighlight">\(\varepsilon\)</span> is the learnable parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p></li>
-<li><p><strong>train_eps</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will learn the <span class="math notranslate nohighlight">\(\varepsilon\)</span> parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniGINConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(|\mathcal{V}|\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.nn.convs.hypergraphs.unignn_conv.</span></span><span class="sig-name descname"><span class="pre">UniSAGEConv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniSAGEConv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>The UniSAGE convolution layer proposed in <a class="reference external" href="https://arxiv.org/pdf/2105.00956.pdf">UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks</a> paper (IJCAI 2021).</p>
-<p>Sparse Format:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left\{
-    \begin{aligned}
-    h_{e} &amp;= \frac{1}{|e|} \sum_{j \in e} x_{j} \\
-    \tilde{x}_{i} &amp;= W\left(x_{i}+\text { AGGREGATE }\left(\left\{x_{j}\right\}_{j \in \mathcal{N}_{i}}\right)\right)
-    \end{aligned}
-\right. .\end{split}\]</div>
-<p>Matrix Format:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{X}^{\prime} = \sigma \left( \left( \mathbf{I} + \mathbf{H} \mathbf{D}_e^{-1} \mathbf{H}^\top \right) \mathbf{X} \mathbf{\Theta} \right) .\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>in_channels</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – <span class="math notranslate nohighlight">\(C_{in}\)</span> is the number of input channels.</p></li>
-<li><p><strong>out_channels</strong> (<em>int</em>) – <span class="math notranslate nohighlight">\(C_{out}\)</span> is the number of output channels.</p></li>
-<li><p><strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will not learn the bias parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>use_bn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will use batch normalization. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – If set to a positive number, the layer will use dropout. Defaults to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
-<li><p><strong>is_last</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the layer will not apply the final activation and dropout functions. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/nn/convs/hypergraphs/unignn_conv.html#UniSAGEConv.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.forward" title="Permalink to this definition"></a></dt>
-<dd><p>The forward function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Input vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C_{in})\)</span>.</p></li>
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">dhg.Hypergraph</span></code>) – The hypergraph structure that contains <span class="math notranslate nohighlight">\(|\mathcal{V}|\)</span> vertices.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-nn-convs-hypergraphs-hypergcn-conv-module">
+<h2>easygraph.nn.convs.hypergraphs.hypergcn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hypergcn-conv-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.nn.convs.hypergraphs">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs" title="Permalink to this heading"></a></h2>
+<section id="easygraph-nn-convs-hypergraphs-unignn-conv-module">
+<h2>easygraph.nn.convs.hypergraphs.unignn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-unignn-conv-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 

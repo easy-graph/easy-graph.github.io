@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>easygraph.functions.drawing package &mdash; EasyGraph 1.4</title>
@@ -12,9 +12,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/copybutton.js"></script>
@@ -30,16 +31,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            EasyGraph
-              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> EasyGraph
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,12 +69,12 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
-          <li class="breadcrumb-item"><a href="modules.html">easygraph</a></li>
-          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
-          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
-      <li class="breadcrumb-item active">easygraph.functions.drawing package</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../reference.html">Reference</a> &raquo;</li>
+          <li><a href="modules.html">easygraph</a> &raquo;</li>
+          <li><a href="easygraph.html">easygraph package</a> &raquo;</li>
+          <li><a href="easygraph.functions.html">easygraph.functions package</a> &raquo;</li>
+      <li>easygraph.functions.drawing package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/easygraph.functions.drawing.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,477 +89,32 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.defaults">
-<span id="easygraph-functions-drawing-defaults-module"></span><h2>easygraph.functions.drawing.defaults module<a class="headerlink" href="#module-easygraph.functions.drawing.defaults" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_bipartite_size">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_bipartite_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_bipartite_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_bipartite_size" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_bipartite_strength">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_bipartite_strength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_u_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_v_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_u_center_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_v_center_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_bipartite_strength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_bipartite_strength" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_bipartite_style">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_bipartite_style</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'m'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_fill_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'whitesmoke'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_bipartite_style"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_bipartite_style" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_hypergraph_strength">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_hypergraph_strength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_v_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_center_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_hypergraph_strength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_hypergraph_strength" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_hypergraph_style">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_hypergraph_style</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_fill_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'whitesmoke'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_hypergraph_style"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_hypergraph_style" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_size">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_size" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_strength">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_strength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_v_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_center_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_strength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_strength" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.default_style">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">default_style</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_fill_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'whitesmoke'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#default_style"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.default_style" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.fill_color">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">fill_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#fill_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.fill_color" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.fill_sizes">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">fill_sizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_scales</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#fill_sizes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.fill_sizes" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.defaults.fill_strength">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.defaults.</span></span><span class="sig-name descname"><span class="pre">fill_strength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/defaults.html#fill_strength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.defaults.fill_strength" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+<section id="easygraph-functions-drawing-defaults-module">
+<h2>easygraph.functions.drawing.defaults module<a class="headerlink" href="#easygraph-functions-drawing-defaults-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.drawing">
-<span id="easygraph-functions-drawing-drawing-module"></span><h2>easygraph.functions.drawing.drawing module<a class="headerlink" href="#module-easygraph.functions.drawing.drawing" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.drawing.draw_SHS_center">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.drawing.</span></span><span class="sig-name descname"><span class="pre">draw_SHS_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SHS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'side'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/drawing.html#draw_SHS_center"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.drawing.draw_SHS_center" title="Permalink to this definition"></a></dt>
-<dd><p>Draw the graph whose the SH Spanners are in the center, with random layout.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph.</p></li>
-<li><p><strong>SHS</strong> (<em>list</em>) – The SH Spanners in graph G.</p></li>
-<li><p><strong>rate</strong> (<em>float</em>) – The proportion of visible points and edges to the total</p></li>
-<li><p><strong>style</strong> (<em>string</em>) – “side”- the label is next to the dot
-“center”- the label is in the center of the dot</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>graph</strong> – the graph whose the SH Spanners are in the center.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>network</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.drawing.draw_SHS_center_kk">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.drawing.</span></span><span class="sig-name descname"><span class="pre">draw_SHS_center_kk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SHS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'side'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/drawing.html#draw_SHS_center_kk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.drawing.draw_SHS_center_kk" title="Permalink to this definition"></a></dt>
-<dd><p>Draw the graph whose the SH Spanners are in the center, with a Kamada-Kawai force-directed layout.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph.</p></li>
-<li><p><strong>SHS</strong> (<em>list</em>) – The SH Spanners in graph G.</p></li>
-<li><p><strong>rate</strong> (<em>float</em>) – The proportion of visible points and edges to the total</p></li>
-<li><p><strong>style</strong> (<em>string</em>) – “side”- the label is next to the dot
-“center”- the label is in the center of the dot</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>graph</strong> – the graph whose the SH Spanners are in the center.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>network</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.drawing.draw_hypergraph">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.drawing.</span></span><span class="sig-name descname"><span class="pre">draw_hypergraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'circle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_fill_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'whitesmoke'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'sans-serif'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_v_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_center_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/drawing.html#draw_hypergraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.drawing.draw_hypergraph" title="Permalink to this definition"></a></dt>
-<dd><p>Draw the hypergraph structure.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>hg</strong> (<code class="docutils literal notranslate"><span class="pre">eg.Hypergraph</span></code>) – The EasyGraph’s hypergraph object.</p></li>
-<li><p><strong>e_style</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The style of hyperedges. The available styles are only <code class="docutils literal notranslate"><span class="pre">'circle'</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">'circle'</span></code>.</p></li>
-<li><p><strong>v_label</strong> (<code class="docutils literal notranslate"><span class="pre">list</span></code>) – The labels of vertices. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>v_size</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>) – The size of vertices. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>v_color</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>) – The <a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">color</a> of vertices. Defaults to <code class="docutils literal notranslate"><span class="pre">'r'</span></code>.</p></li>
-<li><p><strong>v_line_width</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>) – The line width of vertices. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>e_color</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>) – <p>The <a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">color</a> of hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">'gray'</span></code>.</p>
-</p></li>
-<li><p><strong>e_fill_color</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>) – <p>The fill <a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">color</a> of hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">'whitesmoke'</span></code>.</p>
-</p></li>
-<li><p><strong>e_line_width</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>) – The line width of hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>font_size</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The font size of labels. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>font_family</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The font family of labels. Defaults to <code class="docutils literal notranslate"><span class="pre">'sans-serif'</span></code>.</p></li>
-<li><p><strong>push_v_strength</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The strength of pushing vertices. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>push_e_strength</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The strength of pushing hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>pull_e_strength</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The strength of pulling hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>pull_center_strength</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The strength of pulling vertices to the center. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.drawing.draw_kamada_kawai">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.drawing.</span></span><span class="sig-name descname"><span class="pre">draw_kamada_kawai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'side'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/drawing.html#draw_kamada_kawai"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.drawing.draw_kamada_kawai" title="Permalink to this definition"></a></dt>
-<dd><p>Draw the graph G with a Kamada-Kawai force-directed layout.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p></li>
-<li><p><strong>rate</strong> (<em>float</em>) – The proportion of visible points and edges to the total</p></li>
-<li><p><strong>style</strong> (<em>string</em>) – “side”- the label is next to the dot
-“center”- the label is in the center of the dot</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="easygraph-functions-drawing-drawing-module">
+<h2>easygraph.functions.drawing.drawing module<a class="headerlink" href="#easygraph-functions-drawing-drawing-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.geometry">
-<span id="easygraph-functions-drawing-geometry-module"></span><h2>easygraph.functions.drawing.geometry module<a class="headerlink" href="#module-easygraph.functions.drawing.geometry" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.geometry.common_tangent_radian">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.geometry.</span></span><span class="sig-name descname"><span class="pre">common_tangent_radian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/geometry.html#common_tangent_radian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.geometry.common_tangent_radian" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.geometry.polar_position">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.geometry.</span></span><span class="sig-name descname"><span class="pre">polar_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_point</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/geometry.html#polar_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.geometry.polar_position" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.geometry.rad_2_deg">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.geometry.</span></span><span class="sig-name descname"><span class="pre">rad_2_deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rad</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/geometry.html#rad_2_deg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.geometry.rad_2_deg" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.geometry.radian_from_atan">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.geometry.</span></span><span class="sig-name descname"><span class="pre">radian_from_atan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/geometry.html#radian_from_atan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.geometry.radian_from_atan" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.geometry.vlen">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.geometry.</span></span><span class="sig-name descname"><span class="pre">vlen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/geometry.html#vlen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.geometry.vlen" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+<section id="easygraph-functions-drawing-geometry-module">
+<h2>easygraph.functions.drawing.geometry module<a class="headerlink" href="#easygraph-functions-drawing-geometry-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.layout">
-<span id="easygraph-functions-drawing-layout-module"></span><h2>easygraph.functions.drawing.layout module<a class="headerlink" href="#module-easygraph.functions.drawing.layout" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.layout.force_layout">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.layout.</span></span><span class="sig-name descname"><span class="pre">force_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_v_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">push_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_e_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_center_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/layout.html#force_layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.layout.force_layout" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+<section id="easygraph-functions-drawing-layout-module">
+<h2>easygraph.functions.drawing.layout module<a class="headerlink" href="#easygraph-functions-drawing-layout-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.plot">
-<span id="easygraph-functions-drawing-plot-module"></span><h2>easygraph.functions.drawing.plot module<a class="headerlink" href="#module-easygraph.functions.drawing.plot" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.plot.plot_Betweenness_Centrality">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.plot.</span></span><span class="sig-name descname"><span class="pre">plot_Betweenness_Centrality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SHS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/plot.html#plot_Betweenness_Centrality"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.plot.plot_Betweenness_Centrality" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the CDF curves of “Betweenness Centralitys” of SH spanners and ordinary users in graph G.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph.</p></li>
-<li><p><strong>SHS</strong> (<em>list</em>) – The SH Spanners in graph G.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>plt</strong> – the CDF curves of “Betweenness Centrality” of SH spanners and ordinary users in graph G.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>CDF curves</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.plot.plot_Connected_Communities">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.plot.</span></span><span class="sig-name descname"><span class="pre">plot_Connected_Communities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SHS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/plot.html#plot_Connected_Communities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.plot.plot_Connected_Communities" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the CDF curves of “Number of Connected Communities” of SH spanners and ordinary users in graph G.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph.</p></li>
-<li><p><strong>SHS</strong> (<em>list</em>) – The SH Spanners in graph G.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>plt</strong> – the CDF curves of “Number of Connected Communities” of SH spanners and ordinary users in graph G.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>CDF curves</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.plot.plot_Followers">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.plot.</span></span><span class="sig-name descname"><span class="pre">plot_Followers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SHS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/plot.html#plot_Followers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.plot.plot_Followers" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the CDF curves of “Number of Followers” of SH spanners and ordinary users in graph G.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph.</p></li>
-<li><p><strong>SHS</strong> (<em>list</em>) – The SH Spanners in graph G.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>plt</strong> – the CDF curves of “Number of Followers” of SH spanners and ordinary users in graph G.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>CDF curves</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.plot.plot_Neighborhood_Followers">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.plot.</span></span><span class="sig-name descname"><span class="pre">plot_Neighborhood_Followers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SHS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/plot.html#plot_Neighborhood_Followers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.plot.plot_Neighborhood_Followers" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the CDF curves of “Arg. Number of Followers of the Neighborhood Users” of SH spanners and ordinary users in graph G.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph.</p></li>
-<li><p><strong>SHS</strong> (<em>list</em>) – The SH Spanners in graph G.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>plt</strong> – the CDF curves of “Arg. Number of Followers of the Neighborhood Users
-” of SH spanners and ordinary users in graph G.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>CDF curves</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="easygraph-functions-drawing-plot-module">
+<h2>easygraph.functions.drawing.plot module<a class="headerlink" href="#easygraph-functions-drawing-plot-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.positioning">
-<span id="easygraph-functions-drawing-positioning-module"></span><h2>easygraph.functions.drawing.positioning module<a class="headerlink" href="#module-easygraph.functions.drawing.positioning" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.positioning.circular_position">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.positioning.</span></span><span class="sig-name descname"><span class="pre">circular_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/positioning.html#circular_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.positioning.circular_position" title="Permalink to this definition"></a></dt>
-<dd><p>Position nodes on a circle, the dimension is 2.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>easygraph.Graph</em><em> or </em><em>easygraph.DiGraph</em>) – A position will be assigned to every node in G</p></li>
-<li><p><strong>center</strong> (<em>array-like</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default : None</em><em>)</em>) – Coordinate pair around which to center the layout</p></li>
-<li><p><strong>scale</strong> (<em>number</em><em>, </em><em>optional</em><em> (</em><em>default : 1</em><em>)</em>) – Scale factor for positions</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>pos</strong> – A dictionary of positions keyed by node</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.positioning.kamada_kawai_layout">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.positioning.</span></span><span class="sig-name descname"><span class="pre">kamada_kawai_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/positioning.html#kamada_kawai_layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.positioning.kamada_kawai_layout" title="Permalink to this definition"></a></dt>
-<dd><p>Position nodes using Kamada-Kawai basic-length cost-function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>graph</em><em> or </em><em>list</em><em> of </em><em>nodes</em>) – A position will be assigned to every node in G.</p></li>
-<li><p><strong>dist</strong> (<em>dict</em><em> (</em><em>default=None</em><em>)</em>) – A two-level dictionary of optimal distances between nodes,
-indexed by source and destination node.
-If None, the distance is computed using shortest_path_length().</p></li>
-<li><p><strong>pos</strong> (<em>dict</em><em> or </em><em>None  optional</em><em> (</em><em>default=None</em><em>)</em>) – Initial positions for nodes as a dictionary with node as keys
-and values as a coordinate list or tuple.  If None, then use
-circular_layout() for dim &gt;= 2 and a linear layout for dim == 1.</p></li>
-<li><p><strong>weight</strong> (<em>string</em><em> or </em><em>None   optional</em><em> (</em><em>default='weight'</em><em>)</em>) – The edge attribute that holds the numerical value used for
-the edge weight.  If None, then all edge weights are 1.</p></li>
-<li><p><strong>scale</strong> (<em>number</em><em> (</em><em>default: 1</em><em>)</em>) – Scale factor for positions.</p></li>
-<li><p><strong>center</strong> (<em>array-like</em><em> or </em><em>None</em>) – Coordinate pair around which to center the layout.</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) – Dimension of layout.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>pos</strong> – A dictionary of positions keyed by node</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pos</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.positioning.random_position">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.positioning.</span></span><span class="sig-name descname"><span class="pre">random_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/positioning.html#random_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.positioning.random_position" title="Permalink to this definition"></a></dt>
-<dd><p>Returns random position for each node in graph G.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>easygraph.Graph</em><em> or </em><em>easygraph.DiGraph</em>) – </p></li>
-<li><p><strong>center</strong> (<em>array-like</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default : None</em><em>)</em>) – Coordinate pair around which to center the layout</p></li>
-<li><p><strong>dim</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default : 2</em><em>)</em>) – Dimension of layout</p></li>
-<li><p><strong>random_seed</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default : None</em><em>)</em>) – Seed for RandomState instance</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>pos</strong> – A dictionary of positions keyed by node</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.positioning.rescale_position">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.positioning.</span></span><span class="sig-name descname"><span class="pre">rescale_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/positioning.html#rescale_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.positioning.rescale_position" title="Permalink to this definition"></a></dt>
-<dd><p>Returns scaled position array to (-scale, scale) in all axes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pos</strong> (<em>numpy array</em>) – positions to be scaled. Each row is a position.</p></li>
-<li><p><strong>scale</strong> (<em>number</em><em>, </em><em>optional</em><em> (</em><em>default : 1</em><em>)</em>) – The size of the resulting extent in all directions.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>pos</strong> – scaled positions. Each row is a position.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy array</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.positioning.shell_position">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.positioning.</span></span><span class="sig-name descname"><span class="pre">shell_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/positioning.html#shell_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.positioning.shell_position" title="Permalink to this definition"></a></dt>
-<dd><p>Position nodes in concentric circles, the dimension is 2.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>easygraph.Graph</em><em> or </em><em>easygraph.DiGraph</em>) – </p></li>
-<li><p><strong>nlist</strong> (<em>list</em><em> of </em><em>lists</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default : None</em><em>)</em>) – List of node lists for each shell.</p></li>
-<li><p><strong>scale</strong> (<em>number</em><em>, </em><em>optional</em><em> (</em><em>default : 1</em><em>)</em>) – Scale factor for positions.</p></li>
-<li><p><strong>center</strong> (<em>array-like</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default : None</em><em>)</em>) – Coordinate pair around which to center the layout.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>pos</strong> – A dictionary of positions keyed by node</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>This algorithm currently only works in two dimensions and does not
-try to minimize edge crossings.</p>
-</dd></dl>
-
+<section id="easygraph-functions-drawing-positioning-module">
+<h2>easygraph.functions.drawing.positioning module<a class="headerlink" href="#easygraph-functions-drawing-positioning-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.simulator">
-<span id="easygraph-functions-drawing-simulator-module"></span><h2>easygraph.functions.drawing.simulator module<a class="headerlink" href="#module-easygraph.functions.drawing.simulator" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.simulator.Simulator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.simulator.</span></span><span class="sig-name descname"><span class="pre">Simulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forces</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damping_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.999</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/simulator.html#Simulator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.simulator.Simulator" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.simulator.Simulator.CENTER_GRAVITY">
-<span class="sig-name descname"><span class="pre">CENTER_GRAVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#easygraph.functions.drawing.simulator.Simulator.CENTER_GRAVITY" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.simulator.Simulator.EDGE_REPULSION">
-<span class="sig-name descname"><span class="pre">EDGE_REPULSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#easygraph.functions.drawing.simulator.Simulator.EDGE_REPULSION" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.simulator.Simulator.NODE_ATTRACTION">
-<span class="sig-name descname"><span class="pre">NODE_ATTRACTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#easygraph.functions.drawing.simulator.Simulator.NODE_ATTRACTION" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.simulator.Simulator.NODE_REPULSION">
-<span class="sig-name descname"><span class="pre">NODE_REPULSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#easygraph.functions.drawing.simulator.Simulator.NODE_REPULSION" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.simulator.Simulator.simulate">
-<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">init_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/easygraph/functions/drawing/simulator.html#Simulator.simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.simulator.Simulator.simulate" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="easygraph-functions-drawing-simulator-module">
+<h2>easygraph.functions.drawing.simulator module<a class="headerlink" href="#easygraph-functions-drawing-simulator-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing.utils">
-<span id="easygraph-functions-drawing-utils-module"></span><h2>easygraph.functions.drawing.utils module<a class="headerlink" href="#module-easygraph.functions.drawing.utils" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.utils.draw_circle_edge">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.utils.</span></span><span class="sig-name descname"><span class="pre">draw_circle_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_coor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_fill_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/utils.html#draw_circle_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.utils.draw_circle_edge" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.utils.draw_line_edge">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.utils.</span></span><span class="sig-name descname"><span class="pre">draw_line_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_coor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_arrow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/utils.html#draw_line_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.utils.draw_line_edge" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.utils.draw_vertex">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.utils.</span></span><span class="sig-name descname"><span class="pre">draw_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_coor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/utils.html#draw_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.utils.draw_vertex" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.utils.edge_list_to_incidence_matrix">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.utils.</span></span><span class="sig-name descname"><span class="pre">edge_list_to_incidence_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/easygraph/functions/drawing/utils.html#edge_list_to_incidence_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.utils.edge_list_to_incidence_matrix" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.utils.hull_layout">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.utils.</span></span><span class="sig-name descname"><span class="pre">hull_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_increment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/utils.html#hull_layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.utils.hull_layout" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.utils.init_pos">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.utils.</span></span><span class="sig-name descname"><span class="pre">init_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/utils.html#init_pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.utils.init_pos" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.drawing.utils.safe_div">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.drawing.utils.</span></span><span class="sig-name descname"><span class="pre">safe_div</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jitter_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/drawing/utils.html#safe_div"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.drawing.utils.safe_div" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+<section id="easygraph-functions-drawing-utils-module">
+<h2>easygraph.functions.drawing.utils module<a class="headerlink" href="#easygraph-functions-drawing-utils-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-easygraph.functions.drawing">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.functions.drawing" title="Permalink to this heading"></a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 

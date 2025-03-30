@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Honors &mdash; EasyGraph 1.4</title>
+  <title>EGGPU &mdash; EasyGraph 1.4</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
@@ -21,9 +21,7 @@
         <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Developer Documentation" href="dev.html" />
-    <link rel="prev" title="Source Code" href="sourcecode.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,7 +41,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypergraph.html">EasyHypergraph</a></li>
@@ -52,7 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sourcecode.html">Source Code</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="honors.html">Honors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev.html">Developer Documentation</a></li>
 </ul>
 
@@ -70,9 +68,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Honors</li>
+      <li>EGGPU</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/honors.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/eggpu.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -80,18 +78,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="honors">
-<h1>Honors<a class="headerlink" href="#honors" title="Permalink to this heading"></a></h1>
-<p>Shanghai Open Source Innovation Outstanding Achievement Award (Grand Prize)</p>
+  <section id="eggpu">
+<h1>EGGPU<a class="headerlink" href="#eggpu" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>EGGPU is a GPU-accelerated network analysis library that supports essential functions such as betweenness centrality, k-core centrality, and single-source shortest path. Built on top of the <strong>EasyGraph</strong> library, EGGPU delivers a user-friendly Python API while achieving remarkable speedups for large-scale network analysis.</p>
+<p>EGGPU is engineered with a three-layer architecture:
+- User Interface Layer: Developed in Python, this layer offers intuitive and easy-to-use APIs for end users.
+- Middleware Layer: Constructed in C++, this layer shares memory space with the Computation Layer and serves as the binding agent. It also provides a graph container responsible for graph loading, storage, and format conversion.
+- Computation Layer: Implemented in CUDA C/C++, this layer primarily executes the GPU-based network analysis functions, including betweenness centrality, k-core centrality, and SSSP.
+.. image:: eggpu_architecture.png</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<section id="on-linux">
+<h3>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/easy-graph/Easy-Graph
+<span class="nb">export</span><span class="w"> </span><span class="nv">EASYGRAPH_ENABLE_GPU</span><span class="o">=</span><span class="s2">&quot;TRUE&quot;</span>
+pip<span class="w"> </span>install<span class="w"> </span>./Easy-Graph
+</pre></div>
+</div>
+</section>
+<section id="on-windows">
+<h3>On Windows<a class="headerlink" href="#on-windows" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>% For Windows users who want to enable GPU-based functions,
+% you must execute the commands below in cmd but not PowerShell.
+git clone --recursive https://github.com/easy-graph/Easy-Graph
+set EASYGRAPH_ENABLE_GPU=TRUE
+pip install ./Easy-Graph
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="sourcecode.html" class="btn btn-neutral float-left" title="Source Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dev.html" class="btn btn-neutral float-right" title="Developer Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

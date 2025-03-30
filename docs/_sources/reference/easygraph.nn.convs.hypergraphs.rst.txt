@@ -44,6 +44,14 @@ easygraph.nn.convs.hypergraphs.hnhn\_conv module
    :undoc-members:
    :show-inheritance:
 
+easygraph.nn.convs.hypergraphs.hwnn\_conv module
+------------------------------------------------
+
+.. automodule:: easygraph.nn.convs.hypergraphs.hwnn_conv
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 easygraph.nn.convs.hypergraphs.hypergcn\_conv module
 ----------------------------------------------------
 

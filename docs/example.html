@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Examples of Graph Analysis &mdash; EasyGraph 1.4</title>
@@ -12,9 +12,10 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -30,16 +31,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            EasyGraph
-              <img src="_static/logo.png" class="logo" alt="Logo"/>
+            <a href="index.html" class="icon icon-home"> EasyGraph
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,8 +69,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Examples of Graph Analysis</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Examples of Graph Analysis</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/example.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -88,8 +85,8 @@
 <p>This section provides three examples of how to perform graph analysis with <strong>EasyGraph</strong>.</p>
 <section id="to-analyze-and-draw-structural-hole-spanners-on-the-karate-club-dataset-with-easygraph">
 <h2>To analyze and draw Structural Hole Spanners on the karate club dataset with EasyGraph<a class="headerlink" href="#to-analyze-and-draw-structural-hole-spanners-on-the-karate-club-dataset-with-easygraph" title="Permalink to this heading"></a></h2>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.datasets</span> <span class="kn">import</span> <span class="n">get_graph_karateclub</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_graph_karateclub</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">get_graph_karateclub</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate five shs(Structural Hole Spanners) in G</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shs</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">common_greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -103,7 +100,7 @@
 <section id="fundamentals-of-graph-properties-and-operations">
 <h2>Fundamentals of Graph Properties and Operations<a class="headerlink" href="#fundamentals-of-graph-properties-and-operations" title="Permalink to this heading"></a></h2>
 <p>Import <strong>EasyGraph</strong>, and start with an undirected graph <cite>G</cite>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -331,7 +328,7 @@
 <section id="basics-of-graphc">
 <h2>Basics of GraphC<a class="headerlink" href="#basics-of-graphc" title="Permalink to this heading"></a></h2>
 <p>Import <strong>EasyGraph</strong> and initialize a directed graph <cite>G_c</cite> :</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G_c</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">DiGraphC</span><span class="p">()</span>
 </pre></div>
 </div>
