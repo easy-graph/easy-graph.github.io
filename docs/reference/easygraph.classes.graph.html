@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.classes.graph module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.classes.graphviews module" href="easygraph.classes.graphviews.html" />
+    <link rel="prev" title="easygraph.classes.directed_multigraph module" href="easygraph.classes.directed_multigraph.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.classes.html">easygraph.classes package</a></li>
+      <li class="breadcrumb-item active">easygraph.classes.graph module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.classes.graph.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.classes.graph">
+<span id="easygraph-classes-graph-module"></span><span id="module-easygraph-classes-graph"></span><h1>easygraph.classes.graph module<a class="headerlink" href="#module-easygraph.classes.graph" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_selfloop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">graph_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for undirected graphs.</p>
+<blockquote>
+<div><p>Nodes are allowed for any hashable Python objects, including int, string, dict, etc.
+Edges are stored as Python dict type, with optional key/value attributes.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>graph_attr</strong> (<em>keywords arguments</em><em>, </em><em>optional</em><em> (</em><em>default : None</em><em>)</em>) – Attributes to add to graph as key=value pairs.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DiGraph</span></code></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Create an empty undirected graph with no nodes and edges.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a deep copy graph <em>G2</em> from existing Graph <em>G1</em>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G2</span> <span class="o">=</span> <span class="n">G1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create an graph with attributes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Karate Club&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2020.08.21&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Attributes:</strong></p>
+<p>Returns the adjacency matrix of the graph.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">adj</span>
+</pre></div>
+</div>
+<p>Returns all the nodes with their attributes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span>
+</pre></div>
+</div>
+<p>Returns all the edges with their attributes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.A" title="easygraph.classes.graph.Graph.A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">A</span></code></a></dt><dd><p>Return the adjacency matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> of the sample graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.D_v" title="easygraph.classes.graph.Graph.D_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v</span></code></a></dt><dd><p>Return the diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.D_v_neg_1_2" title="easygraph.classes.graph.Graph.D_v_neg_1_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v_neg_1_2</span></code></a></dt><dd><p>Return the normalized diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-\frac{1}{2}}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.L_GCN" title="easygraph.classes.graph.Graph.L_GCN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_GCN</span></code></a></dt><dd><p>Return the GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span> of the graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.adj" title="easygraph.classes.graph.Graph.adj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adj</span></code></a></dt><dd><p>Return the adjacency matrix</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.e" title="easygraph.classes.graph.Graph.e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e</span></code></a></dt><dd><p>Return the edge list, weight list and property list in the graph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.e_both_side" title="easygraph.classes.graph.Graph.e_both_side"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_both_side</span></code></a></dt><dd><p>Return the list of edges including both directions.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.edges" title="easygraph.classes.graph.Graph.edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code></a></dt><dd><p>Return an edge list</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.index2node" title="easygraph.classes.graph.Graph.index2node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index2node</span></code></a></dt><dd><p>Assign an integer index for each node (start from 0)</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.name" title="easygraph.classes.graph.Graph.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></dt><dd><p>String identifier of the graph.</p>
+</dd>
+<dt><strong>ndata</strong></dt><dd></dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.node_index" title="easygraph.classes.graph.Graph.node_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index</span></code></a></dt><dd><p>Assign an integer index for each node (start from 0)</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.nodes" title="easygraph.classes.graph.Graph.nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes</span></code></a></dt><dd><p>return [node for node in self._node]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edge" title="easygraph.classes.graph.Graph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(u_of_edge, v_of_edge, **edge_attr)</p></td>
+<td><p>Add one edge.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges" title="easygraph.classes.graph.Graph.add_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges</span></code></a>(edges_for_adding[, edges_attr])</p></td>
+<td><p>Add a list of edges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges_from" title="easygraph.classes.graph.Graph.add_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from</span></code></a>(ebunch_to_add, **attr)</p></td>
+<td><p>Add all the edges in ebunch_to_add.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges_from_file" title="easygraph.classes.graph.Graph.add_edges_from_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from_file</span></code></a>(file[, weighted])</p></td>
+<td><p>Added edges from file For example, txt files,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_extra_selfloop" title="easygraph.classes.graph.Graph.add_extra_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_extra_selfloop</span></code></a>()</p></td>
+<td><p>Add extra selfloops to the graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_node" title="easygraph.classes.graph.Graph.add_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code></a>(node_for_adding, **node_attr)</p></td>
+<td><p>Add one node</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_nodes" title="easygraph.classes.graph.Graph.add_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code></a>(nodes_for_adding[, nodes_attr])</p></td>
+<td><p>Add nodes with a list of nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_nodes_from" title="easygraph.classes.graph.Graph.add_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_from</span></code></a>(nodes_for_adding, **attr)</p></td>
+<td><p>Add multiple nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_weighted_edge" title="easygraph.classes.graph.Graph.add_weighted_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edge</span></code></a>(u_of_edge, v_of_edge, weight)</p></td>
+<td><p>Add a weighted edge</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_weighted_edges_from" title="easygraph.classes.graph.Graph.add_weighted_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edges_from</span></code></a>(ebunch_to_add[, weight])</p></td>
+<td><p>Add weighted edges in <cite>ebunch_to_add</cite> with specified weight attr</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.adjlist_inner_dict_factory" title="easygraph.classes.graph.Graph.adjlist_inner_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjlist_inner_dict_factory</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.adjlist_outer_dict_factory" title="easygraph.classes.graph.Graph.adjlist_outer_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjlist_outer_dict_factory</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.all_neighbors" title="easygraph.classes.graph.Graph.all_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_neighbors</span></code></a>(node)</p></td>
+<td><p>Returns an iterator of a node's neighbors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.clone" title="easygraph.classes.graph.Graph.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
+<td><p>Clone the graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.copy" title="easygraph.classes.graph.Graph.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>Return a deep copy of the graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.degree" title="easygraph.classes.graph.Graph.degree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degree</span></code></a>([weight])</p></td>
+<td><p>Returns the weighted degree of of each node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.edge_attr_dict_factory" title="easygraph.classes.graph.Graph.edge_attr_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_attr_dict_factory</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.ego_subgraph" title="easygraph.classes.graph.Graph.ego_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ego_subgraph</span></code></a>(center)</p></td>
+<td><p>Returns an ego network graph of a node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory" title="easygraph.classes.graph.Graph.gnn_data_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gnn_data_dict_factory</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.graph_attr_dict_factory" title="easygraph.classes.graph.Graph.graph_attr_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_attr_dict_factory</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.has_edge" title="easygraph.classes.graph.Graph.has_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code></a>(u, v)</p></td>
+<td><p>Returns whether an edge exists</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.has_node" title="easygraph.classes.graph.Graph.has_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code></a>(node)</p></td>
+<td><p>Returns whether a node exists</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.is_directed" title="easygraph.classes.graph.Graph.is_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code></a>()</p></td>
+<td><p>Returns True if graph is a directed_graph, False otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.is_multigraph" title="easygraph.classes.graph.Graph.is_multigraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code></a>()</p></td>
+<td><p>Returns True if graph is a multigraph, False otherwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nbr_v" title="easygraph.classes.graph.Graph.nbr_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbr_v</span></code></a>(v_idx)</p></td>
+<td><p>Return a vertex list of the neighbors of the vertex <code class="docutils literal notranslate"><span class="pre">v_idx</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nbunch_iter" title="easygraph.classes.graph.Graph.nbunch_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code></a>([nbunch])</p></td>
+<td><p>Returns an iterator over nodes contained in nbunch that are also in the graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.neighbors" title="easygraph.classes.graph.Graph.neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code></a>(node)</p></td>
+<td><p>Returns an iterator of a node's neighbors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_attr_dict_factory" title="easygraph.classes.graph.Graph.node_attr_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_attr_dict_factory</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_dict_factory" title="easygraph.classes.graph.Graph.node_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_dict_factory</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_index_dict" title="easygraph.classes.graph.Graph.node_index_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index_dict</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nodes_subgraph" title="easygraph.classes.graph.Graph.nodes_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code></a>(from_nodes)</p></td>
+<td><p>Returns a subgraph of some nodes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_edges" title="easygraph.classes.graph.Graph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
+<td><p>Returns the number of edges between two nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_nodes" title="easygraph.classes.graph.Graph.number_of_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code></a>()</p></td>
+<td><p>Returns the number of nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.order" title="easygraph.classes.graph.Graph.order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code></a>()</p></td>
+<td><p>Returns the number of nodes in the graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.raw_selfloop_dict" title="easygraph.classes.graph.Graph.raw_selfloop_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edge" title="easygraph.classes.graph.Graph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v)</p></td>
+<td><p>Remove one edge from your graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edges" title="easygraph.classes.graph.Graph.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code></a>(edges_to_remove)</p></td>
+<td><p>Remove a list of edges from your graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_extra_selfloop" title="easygraph.classes.graph.Graph.remove_extra_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code></a>()</p></td>
+<td><p>Remove extra selfloops from the graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_node" title="easygraph.classes.graph.Graph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a>(node_to_remove)</p></td>
+<td><p>Remove one node from your graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes" title="easygraph.classes.graph.Graph.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code></a>(nodes_to_remove)</p></td>
+<td><p>Remove nodes from your graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes_from" title="easygraph.classes.graph.Graph.remove_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code></a>(nodes)</p></td>
+<td><p>Remove multiple nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_selfloop" title="easygraph.classes.graph.Graph.remove_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code></a>()</p></td>
+<td><p>Remove all selfloops from the graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.size" title="easygraph.classes.graph.Graph.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a>([weight])</p></td>
+<td><p>Returns the number of edges or total of all edge weights.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.smoothing_with_GCN" title="easygraph.classes.graph.Graph.smoothing_with_GCN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code></a>(X[, drop_rate])</p></td>
+<td><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed" title="easygraph.classes.graph.Graph.to_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code></a>()</p></td>
+<td><p>Creates and returns a directed graph from self.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed_class" title="easygraph.classes.graph.Graph.to_directed_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code></a>()</p></td>
+<td><p>Returns the class to use for empty directed copies.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_index_node_graph" title="easygraph.classes.graph.Graph.to_index_node_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code></a>([begin_index])</p></td>
+<td><p>Returns a deep copy of graph, with each node switched to its index.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>N_v</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>cpp</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.A">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.A" title="Permalink to this definition"></a></dt>
+<dd><p>Return the adjacency matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> of the sample graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.D_v">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D_v</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.D_v" title="Permalink to this definition"></a></dt>
+<dd><p>Return the diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.D_v_neg_1_2">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D_v_neg_1_2</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.D_v_neg_1_2" title="Permalink to this definition"></a></dt>
+<dd><p>Return the normalized diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-\frac{1}{2}}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.L_GCN">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">L_GCN</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.L_GCN" title="Permalink to this definition"></a></dt>
+<dd><p>Return the GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span> of the graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}_{GCN} = \mathbf{\hat{D}}_v^{-\frac{1}{2}} \mathbf{\hat{A}} \mathbf{\hat{D}}_v^{-\frac{1}{2}}\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.N_v">
+<span class="sig-name descname"><span class="pre">N_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.N_v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.N_v" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">edge_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edge" title="Permalink to this definition"></a></dt>
+<dd><p>Add one edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u_of_edge</strong> (<em>object</em>) – One end of this edge</p></li>
+<li><p><strong>v_of_edge</strong> (<em>object</em>) – The other one end of this edge</p></li>
+<li><p><strong>edge_attr</strong> (<em>keywords arguments</em><em>, </em><em>optional</em>) – The attribute of the edge.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Nodes of this edge will be automatically added to the graph, if they do not exist.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges" title="easygraph.classes.graph.Graph.add_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add edge with attributes, edge weight, for example,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edges">
+<span class="sig-name descname"><span class="pre">add_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges_for_adding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges" title="Permalink to this definition"></a></dt>
+<dd><p>Add a list of edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edges_for_adding</strong> (<em>list</em><em> of </em><em>2-element tuple</em>) – The edges for adding. Each element is a (u, v) tuple, and u, v are
+two ends of the edge.</p></li>
+<li><p><strong>edges_attr</strong> (<em>list</em><em> of </em><em>dict</em><em>, </em><em>optional</em>) – The corresponding attributes for each edge in <em>edges_for_adding</em>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Add a list of edges into <em>G</em></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Add edge with attributes, for example, edge weight,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">edges_attr</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edges_from">
+<span class="sig-name descname"><span class="pre">add_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges_from" title="Permalink to this definition"></a></dt>
+<dd><p>Add all the edges in ebunch_to_add.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ebunch_to_add</strong> (<em>container</em><em> of </em><em>edges</em>) – Each edge given in the container will be added to the
+graph. The edges must be given as 2-tuples (u, v) or
+3-tuples (u, v, d) where d is a dictionary containing edge data.</p></li>
+<li><p><strong>attr</strong> (<em>keyword arguments</em><em>, </em><em>optional</em>) – Edge data (or labels or objects) can be assigned using
+keyword arguments.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edge" title="easygraph.classes.graph.Graph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a></dt><dd><p>add a single edge</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.add_weighted_edges_from" title="easygraph.classes.graph.Graph.add_weighted_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edges_from</span></code></a></dt><dd><p>convenient way to add weighted edges</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Adding the same edge twice has no effect but any edge data
+will be updated when each duplicate edge is added.</p>
+<p>Edge attributes specified in an ebunch take precedence over
+attributes specified via keyword arguments.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>  <span class="c1"># using a list of edge tuples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c1"># Add the path graph 0-1-2-3</span>
+</pre></div>
+</div>
+<p>Associate data to edges</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;WN2898&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edges_from_file">
+<span class="sig-name descname"><span class="pre">add_edges_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges_from_file" title="Permalink to this definition"></a></dt>
+<dd><p>Added edges from file
+For example, txt files,</p>
+<p>Each line is in form like:
+a b 23.0
+which denotes an edge (a, b) with weight 23.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>string</em>) – The file path.</p></li>
+<li><p><strong>weighted</strong> (<em>boolean</em><em>, </em><em>optional</em><em> (</em><em>default : False</em><em>)</em>) – If the file consists of weight information, set <cite>True</cite>.
+The weight key will be set as ‘weight’.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>If <cite>./club_network.txt</cite> is:</p>
+<p>Jack Mary 23.0</p>
+<p>Mary Tom 15.0</p>
+<p>Tom Ben 20.0</p>
+<p>Then add them to <em>G</em></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from_file</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s1">&#39;./club_network.txt&#39;</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_extra_selfloop">
+<span class="sig-name descname"><span class="pre">add_extra_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_extra_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_extra_selfloop" title="Permalink to this definition"></a></dt>
+<dd><p>Add extra selfloops to the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_for_adding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">node_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_node" title="Permalink to this definition"></a></dt>
+<dd><p>Add one node</p>
+<p>Add one node, type of which is any hashable Python object, such as int, string, dict, or even Graph itself.
+You can add with node attributes using Python dict type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_for_adding</strong> (<em>any hashable Python object</em>) – Nodes for adding.</p></li>
+<li><p><strong>node_attr</strong> (<em>keywords arguments</em><em>, </em><em>optional</em>) – The node attributes.
+You can customize them with different key-value pairs.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_nodes" title="easygraph.classes.graph.Graph.add_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_nodes">
+<span class="sig-name descname"><span class="pre">add_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_for_adding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_nodes" title="Permalink to this definition"></a></dt>
+<dd><p>Add nodes with a list of nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes_for_adding</strong> (<em>list</em>) – </p></li>
+<li><p><strong>nodes_attr</strong> (<em>list</em><em> of </em><em>dict</em>) – The corresponding attribute for each of <em>nodes_for_adding</em>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_node" title="easygraph.classes.graph.Graph.add_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Add nodes with a list of nodes.
+You can add with node attributes using a list of Python dict type,
+each of which is the attribute of each node, respectively.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes</span><span class="p">([</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Lily&#39;</span><span class="p">],</span> <span class="n">nodes_attr</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_nodes_from">
+<span class="sig-name descname"><span class="pre">add_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_for_adding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_nodes_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_nodes_from" title="Permalink to this definition"></a></dt>
+<dd><p>Add multiple nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes_for_adding</strong> (<em>iterable container</em>) – A container of nodes (list, dict, set, etc.).
+OR
+A container of (node, attribute dict) tuples.
+Node attributes are updated using the attribute dict.</p></li>
+<li><p><strong>attr</strong> (<em>keyword arguments</em><em>, </em><em>optional</em><em> (</em><em>default= no attributes</em><em>)</em>) – Update attributes for all nodes in nodes.
+Node attributes specified in nodes as a tuple take
+precedence over attributes specified via keyword arguments.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_node" title="easygraph.classes.graph.Graph.add_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">K3</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">K3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="go">[0, 1, 2, &#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;o&#39;]</span>
+</pre></div>
+</div>
+<p>Use keywords to update specific node attributes for every node.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use (node, attrdict) tuples to update attributes for specific nodes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">)),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">})])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;size&quot;</span><span class="p">]</span>
+<span class="go">11</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;size&quot;</span><span class="p">]</span>
+<span class="go">11</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_weighted_edge">
+<span class="sig-name descname"><span class="pre">add_weighted_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_weighted_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_weighted_edge" title="Permalink to this definition"></a></dt>
+<dd><p>Add a weighted edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u_of_edge</strong> (<em>start node</em>) – </p></li>
+<li><p><strong>v_of_edge</strong> (<em>end node</em>) – </p></li>
+<li><p><strong>weight</strong> (<em>weight value</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Add a weighted edge</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edge</span><span class="p">(</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">3</span> <span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_weighted_edges_from">
+<span class="sig-name descname"><span class="pre">add_weighted_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_weighted_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_weighted_edges_from" title="Permalink to this definition"></a></dt>
+<dd><p>Add weighted edges in <cite>ebunch_to_add</cite> with specified weight attr</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ebunch_to_add</strong> (<em>container</em><em> of </em><em>edges</em>) – Each edge given in the list or container will be added
+to the graph. The edges must be given as 3-tuples (u, v, w)
+where w is a number.</p></li>
+<li><p><strong>weight</strong> (<em>string</em><em>, </em><em>optional</em><em> (</em><em>default= 'weight'</em><em>)</em>) – The attribute name for the edge weights to be added.</p></li>
+<li><p><strong>attr</strong> (<em>keyword arguments</em><em>, </em><em>optional</em><em> (</em><em>default= no attributes</em><em>)</em>) – Edge attributes to add/update for all edges.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edge" title="easygraph.classes.graph.Graph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a></dt><dd><p>add a single edge</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges_from" title="easygraph.classes.graph.Graph.add_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from</span></code></a></dt><dd><p>add multiple edges</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Adding the same edge twice for Graph/DiGraph simply updates
+the edge data. For MultiGraph/MultiDiGraph, duplicate edges
+are stored.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.adj">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adj</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adj" title="Permalink to this definition"></a></dt>
+<dd><p>Return the adjacency matrix</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.adjlist_inner_dict_factory">
+<span class="sig-name descname"><span class="pre">adjlist_inner_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adjlist_inner_dict_factory" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.adjlist_outer_dict_factory">
+<span class="sig-name descname"><span class="pre">adjlist_outer_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adjlist_outer_dict_factory" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.all_neighbors">
+<span class="sig-name descname"><span class="pre">all_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.classes.graph.Graph.all_neighbors" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an iterator of a node’s neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> (<em>Hashable</em>) – The target node.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>neighbors</strong> – An iterator of a node’s neighbors.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>iterator</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.clone" title="Permalink to this definition"></a></dt>
+<dd><p>Clone the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Return a deep copy of the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>copy</strong> – A deep copy of the original graph.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>easygraph.Graph</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p><em>G2</em> is a deep copy of <em>G1</em></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G2</span> <span class="o">=</span> <span class="n">G1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.cpp">
+<span class="sig-name descname"><span class="pre">cpp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.cpp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.cpp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.degree">
+<span class="sig-name descname"><span class="pre">degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.degree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.degree" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the weighted degree of of each node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>string</em><em>, </em><em>optional</em><em> (</em><em>default: 'weight'</em><em>)</em>) – Weight key of the original weighted graph.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>degree</strong> – Each node’s (key) weighted degree (value).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If the graph is not weighted, all the weights will be regarded as 1.</p>
+<p class="rubric">Examples</p>
+<p>You can call with no attributes, if ‘weight’ is the weight key:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>if you have customized weight key ‘weight_1’.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight_1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.e">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.graph.Graph.e" title="Permalink to this definition"></a></dt>
+<dd><p>Return the edge list, weight list and property list in the graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.e_both_side">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e_both_side</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.graph.Graph.e_both_side" title="Permalink to this definition"></a></dt>
+<dd><p>Return the list of edges including both directions.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.edge_attr_dict_factory">
+<span class="sig-name descname"><span class="pre">edge_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.edge_attr_dict_factory" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.edges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.edges" title="Permalink to this definition"></a></dt>
+<dd><p>Return an edge list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.ego_subgraph">
+<span class="sig-name descname"><span class="pre">ego_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.ego_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.ego_subgraph" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an ego network graph of a node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>center</strong> (<em>object</em>) – The center node of the ego network graph</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ego_subgraph</strong> – The ego network graph of <em>center</em>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>easygraph.Graph</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Maria&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Maria&#39;</span><span class="p">,</span> <span class="s1">&#39;Andy&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">ego_subgraph</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="s1">&#39;Jack&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.gnn_data_dict_factory">
+<span class="sig-name descname"><span class="pre">gnn_data_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.graph_attr_dict_factory">
+<span class="sig-name descname"><span class="pre">graph_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.graph_attr_dict_factory" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.has_edge">
+<span class="sig-name descname"><span class="pre">has_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.has_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.has_edge" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether an edge exists</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>start node</em>) – </p></li>
+<li><p><strong>v</strong> (<em>end node</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Bool</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True (exist) or False (not exists)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.has_node">
+<span class="sig-name descname"><span class="pre">has_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.has_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.has_node" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether a node exists</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Bool</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True (exist) or False (not exists)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.index2node">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index2node</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.index2node" title="Permalink to this definition"></a></dt>
+<dd><p>Assign an integer index for each node (start from 0)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.is_directed">
+<span class="sig-name descname"><span class="pre">is_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.is_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.is_directed" title="Permalink to this definition"></a></dt>
+<dd><p>Returns True if graph is a directed_graph, False otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.is_multigraph">
+<span class="sig-name descname"><span class="pre">is_multigraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.is_multigraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.is_multigraph" title="Permalink to this definition"></a></dt>
+<dd><p>Returns True if graph is a multigraph, False otherwise.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.name" title="Permalink to this definition"></a></dt>
+<dd><p>String identifier of the graph.</p>
+<p>This graph attribute appears in the attribute dict G.graph
+keyed by the string <cite>“name”</cite>. as well as an attribute (technically
+a property) <cite>G.name</cite>. This is entirely user controlled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nbr_v">
+<span class="sig-name descname"><span class="pre">nbr_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nbr_v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nbr_v" title="Permalink to this definition"></a></dt>
+<dd><p>Return a vertex list of the neighbors of the vertex <code class="docutils literal notranslate"><span class="pre">v_idx</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v_idx</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The index of the vertex.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nbunch_iter">
+<span class="sig-name descname"><span class="pre">nbunch_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbunch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nbunch_iter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nbunch_iter" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an iterator over nodes contained in nbunch that are
+also in the graph.</p>
+<p>The nodes in nbunch are checked for membership in the graph
+and if not are silently ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nbunch</strong> (<em>single node</em><em>, </em><em>container</em><em>, or </em><em>all nodes</em><em> (</em><em>default= all nodes</em><em>)</em>) – The view will only report edges incident to these nodes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>niter</strong> – An iterator over nodes in nbunch that are also in the graph.
+If nbunch is None, iterate over all nodes in the graph.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>iterator</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphError" title="easygraph.exception.EasyGraphError"><strong>EasyGraphError</strong></a> – If nbunch is not a node or sequence of nodes.
+If a node in nbunch is not hashable.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph.__iter__</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>When nbunch is an iterator, the returned iterator yields values
+directly from nbunch, becoming exhausted when nbunch is exhausted.</p>
+<p>To test whether nbunch is a single node, one can use
+“if nbunch in self:”, even after processing with this routine.</p>
+<p>If nbunch is not a node or a (possibly empty) sequence/iterator
+or None, a <code class="xref py py-exc docutils literal notranslate"><span class="pre">EasyGraphError</span></code> is raised.  Also, if any object in
+nbunch is not hashable, a <code class="xref py py-exc docutils literal notranslate"><span class="pre">EasyGraphError</span></code> is raised.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.ndata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndata</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.ndata" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.neighbors">
+<span class="sig-name descname"><span class="pre">neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.neighbors" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an iterator of a node’s neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> (<em>Hashable</em>) – The target node.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>neighbors</strong> – An iterator of a node’s neighbors.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>iterator</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_attr_dict_factory">
+<span class="sig-name descname"><span class="pre">node_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_attr_dict_factory" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_dict_factory">
+<span class="sig-name descname"><span class="pre">node_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_dict_factory" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_index</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index" title="Permalink to this definition"></a></dt>
+<dd><p>Assign an integer index for each node (start from 0)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_index_dict">
+<span class="sig-name descname"><span class="pre">node_index_dict</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index_dict" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nodes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.nodes" title="Permalink to this definition"></a></dt>
+<dd><p>return [node for node in self._node]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nodes_subgraph">
+<span class="sig-name descname"><span class="pre">nodes_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nodes_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nodes_subgraph" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a subgraph of some nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>from_nodes</strong> (<em>list</em><em> of </em><em>object</em>) – The nodes in subgraph.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>nodes_subgraph</strong> – The subgraph consisting of <em>from_nodes</em>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>easygraph.Graph</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G_sub</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes_subgraph</span><span class="p">(</span><span class="n">from_nodes</span><span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.number_of_edges">
+<span class="sig-name descname"><span class="pre">number_of_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.number_of_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.number_of_edges" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of edges between two nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>nodes</em><em>, </em><em>optional</em><em> (</em><em>default=all edges</em><em>)</em>) – If u and v are specified, return the number of edges between
+u and v. Otherwise return the total number of all edges.</p></li>
+<li><p><strong>v</strong> (<em>nodes</em><em>, </em><em>optional</em><em> (</em><em>default=all edges</em><em>)</em>) – If u and v are specified, return the number of edges between
+u and v. Otherwise return the total number of all edges.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>nedges</strong> – The number of edges in the graph.  If nodes <cite>u</cite> and <cite>v</cite> are
+specified return the number of edges between those nodes. If
+the graph is directed, this only returns the number of edges
+from <cite>u</cite> to <cite>v</cite>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.size" title="easygraph.classes.graph.Graph.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>For undirected graphs, this method counts the total number of
+edges in the graph:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>If you specify two nodes, this counts the total number of edges
+joining the two nodes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>For directed graphs, this method can count the total number of
+directed edges from <cite>u</cite> to <cite>v</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.number_of_nodes">
+<span class="sig-name descname"><span class="pre">number_of_nodes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.number_of_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.number_of_nodes" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_of_nodes</strong> – The number of nodes.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.order">
+<span class="sig-name descname"><span class="pre">order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.order" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of nodes in the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nnodes</strong> – The number of nodes in the graph.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_nodes" title="easygraph.classes.graph.Graph.number_of_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code></a></dt><dd><p>identical method</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></dt><dd><p>identical method</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.raw_selfloop_dict">
+<span class="sig-name descname"><span class="pre">raw_selfloop_dict</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.raw_selfloop_dict" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_edge" title="Permalink to this definition"></a></dt>
+<dd><p>Remove one edge from your graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>object</em>) – One end of the edge.</p></li>
+<li><p><strong>v</strong> (<em>object</em>) – The other end of the edge.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edges" title="easygraph.classes.graph.Graph.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Remove edge (1,2) from <em>G</em></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_edges">
+<span class="sig-name descname"><span class="pre">remove_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">edges_to_remove:</span> <span class="pre">[&lt;class</span> <span class="pre">'tuple'&gt;]</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_edges" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a list of edges from your graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>edges_to_remove</strong> (<em>list</em><em> of </em><em>tuple</em>) – The list of edges you want to remove,
+Each element is (u, v) tuple, which denote the two ends of the edge.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edge" title="easygraph.classes.graph.Graph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Remove the edges <em>(‘Jack’, ‘Mary’)</em> and <em>(‘Mary’, ‘Tom’)</em> from <em>G</em></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Mary&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Mary&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_extra_selfloop">
+<span class="sig-name descname"><span class="pre">remove_extra_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_extra_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_extra_selfloop" title="Permalink to this definition"></a></dt>
+<dd><p>Remove extra selfloops from the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_node">
+<span class="sig-name descname"><span class="pre">remove_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_to_remove</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_node" title="Permalink to this definition"></a></dt>
+<dd><p>Remove one node from your graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node_to_remove</strong> (<em>object</em>) – The node you want to remove.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes" title="easygraph.classes.graph.Graph.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Remove node <em>Jack</em> from <em>G</em></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_nodes">
+<span class="sig-name descname"><span class="pre">remove_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_to_remove</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_nodes" title="Permalink to this definition"></a></dt>
+<dd><p>Remove nodes from your graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nodes_to_remove</strong> (<em>list</em><em> of </em><em>object</em>) – The list of nodes you want to remove.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_node" title="easygraph.classes.graph.Graph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Remove node <em>[1, 2, ‘a’, ‘b’]</em> from <em>G</em></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_nodes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_nodes_from">
+<span class="sig-name descname"><span class="pre">remove_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_nodes_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_nodes_from" title="Permalink to this definition"></a></dt>
+<dd><p>Remove multiple nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nodes</strong> (<em>iterable container</em>) – A container of nodes (list, dict, set, etc.).  If a node
+in the container is not in the graph it is silently
+ignored.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_node" title="easygraph.classes.graph.Graph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">[0, 1, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_nodes_from</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_selfloop">
+<span class="sig-name descname"><span class="pre">remove_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_selfloop" title="Permalink to this definition"></a></dt>
+<dd><p>Remove all selfloops from the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.size">
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of edges or total of all edge weights.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>String</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – The weight key. If None, it will calculate the number of
+edges, instead of total of all edge weights.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>size</strong> – The number of edges or total of all edge weights.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int or float, optional (default: None)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Returns the number of edges in G:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns the total of all edge weights in G:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.smoothing_with_GCN">
+<span class="sig-name descname"><span class="pre">smoothing_with_GCN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.smoothing_with_GCN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.smoothing_with_GCN" title="Permalink to this definition"></a></dt>
+<dd><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – Dropout rate. Randomly dropout the connections in adjacency matrix with probability <code class="docutils literal notranslate"><span class="pre">drop_rate</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.to_directed">
+<span class="sig-name descname"><span class="pre">to_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_directed" title="Permalink to this definition"></a></dt>
+<dd><p>Creates and returns a directed graph from self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>G</strong> – A directed graph with identical name and nodes. Each undirected
+edge (u, v, data) in the original graph is replaced by two directed
+edges (u, v, data) and (v, u, data).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph">DiGraph</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function returns a deepcopy of the original graph, including
+all nodes, edges, and graph. As a result, it fully duplicates
+the data and references in the original graph.</p>
+<p>This function differs from D=DiGraph(G) which returns a
+shallow copy.</p>
+<p>For more details on shallow and deep copies, refer to the
+Python <cite>copy</cite> module: <a class="reference external" href="https://docs.python.org/3/library/copy.html">https://docs.python.org/3/library/copy.html</a>.</p>
+<p>Warning: If the original graph is a subclass of <cite>Graph</cite> using
+custom dict-like objects for its data structure, those customizations
+will not be preserved in the <cite>DiGraph</cite> created by this function.</p>
+<p class="rubric">Examples</p>
+<p>Converting an undirected graph to a directed graph:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># or MultiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_directed</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+<span class="go">[(0, 1), (1, 0)]</span>
+</pre></div>
+</div>
+<p>Creating a deep copy of an already directed graph:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>  <span class="c1"># or MultiDiGraph, etc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_directed</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+<span class="go">[(0, 1)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.to_directed_class">
+<span class="sig-name descname"><span class="pre">to_directed_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_directed_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_directed_class" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the class to use for empty directed copies.</p>
+<p>If you subclass the base classes, use this to designate
+what directed class to use for <cite>to_directed()</cite> copies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.to_index_node_graph">
+<span class="sig-name descname"><span class="pre">to_index_node_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">begin_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_index_node_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_index_node_graph" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a deep copy of graph, with each node switched to its index.</p>
+<p>Considering that the nodes of your graph may be any possible hashable Python object,
+you can get an isomorphic graph of the original one, with each node switched to its index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>begin_index</strong> (<em>int</em>) – The begin index of the index graph.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>G</strong> (<em>easygraph.Graph</em>) – Deep copy of graph, with each node switched to its index.</p></li>
+<li><p><strong>index_of_node</strong> (<em>dict</em>) – Index of node</p></li>
+<li><p><strong>node_of_index</strong> (<em>dict</em>) – Node of index</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>The following method returns this isomorphic graph and index-to-node dictionary
+as well as node-to-index dictionary.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Maria&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Maria&#39;</span><span class="p">,</span> <span class="s1">&#39;Andy&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G_index_graph</span><span class="p">,</span> <span class="n">index_of_node</span><span class="p">,</span> <span class="n">node_of_index</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_index_node_graph</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.classes.graph.GraphC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">GraphC</span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#GraphC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.GraphC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adj</strong></dt><dd></dd>
+<dt><strong>edges</strong></dt><dd></dd>
+<dt><strong>graph</strong></dt><dd></dd>
+<dt><strong>name</strong></dt><dd></dd>
+<dt><strong>node_index</strong></dt><dd></dd>
+<dt><strong>nodes</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges</span></code>(self, edges_for_adding[, edges_attr])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from_file</span></code>(self, file[, weighted, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code>(self, nodes_for_adding[, nodes_attr])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_from</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edge</span></code>(self, u_of_edge, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_neighbors</span></code>(self, node)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">degree</span></code>(self[, weight])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ego_subgraph</span></code>(self, center)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_linkgraph</span></code>(self[, weight])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code>(self, u, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code>(self, node)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code>(self[, nbunch])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code>(self, node)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(self, from_nodes)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>(self[, u, v])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">py</span></code>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code>(self, u, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(self, edges_to_remove)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(self, node_to_remove)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(self, nodes_to_remove)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>(self[, weight])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>(self[, begin_index])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="easygraph.classes.graph.GraphC.cflag">
+<span class="sig-name descname"><span class="pre">cflag</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#easygraph.classes.graph.GraphC.cflag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.classes.directed_multigraph.html" class="btn btn-neutral float-left" title="easygraph.classes.directed_multigraph module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.classes.graphviews.html" class="btn btn-neutral float-right" title="easygraph.classes.graphviews module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

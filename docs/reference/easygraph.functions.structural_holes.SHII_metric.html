@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.functions.structural_holes.SHII_metric module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.structural_holes.evaluation module" href="easygraph.functions.structural_holes.evaluation.html" />
+    <link rel="prev" title="easygraph.functions.structural_holes.NOBE module" href="easygraph.functions.structural_holes.NOBE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.structural_holes.SHII_metric module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.functions.structural_holes.SHII_metric.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.functions.structural_holes.SHII_metric">
+<span id="easygraph-functions-structural-holes-shii-metric-module"></span><span id="module-easygraph-functions-structural-holes-shii-metric"></span><h1>easygraph.functions.structural_holes.SHII_metric module<a class="headerlink" href="#module-easygraph.functions.structural_holes.SHII_metric" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.functions.structural_holes.SHII_metric.NodeParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.SHII_metric.</span></span><span class="sig-name descname"><span class="pre">NodeParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inWeight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/structural_holes/SHII_metric.html#NodeParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.SHII_metric.NodeParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.structural_holes.SHII_metric.structural_hole_influence_index">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.SHII_metric.</span></span><span class="sig-name descname"><span class="pre">structural_hole_influence_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G_original</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seedRatio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randSeedIter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">countIterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Directed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/structural_holes/SHII_metric.html#structural_hole_influence_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.SHII_metric.structural_hole_influence_index" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the SHII metric of each seed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G_original</strong> (<em>easygraph.Graph</em><em> or </em><em>easygraph.DiGraph</em>) – </p></li>
+<li><p><strong>S</strong> (<em>list</em><em> of </em><em>int</em>) – A list of nodes which are structural hole spanners.</p></li>
+<li><p><strong>C</strong> (<em>list</em><em> of </em><em>list</em>) – Each list includes the nodes in one community.</p></li>
+<li><p><strong>model</strong> (<em>string</em>) – Propagation Model. Should be IC or LT.</p></li>
+<li><p><strong>variant</strong> (<em>bool</em><em>, </em><em>default is False</em>) – Whether returns variant SHII ml_metrics or not.
+variant SHII = # of the influenced outsider / # of the influenced insiders
+SHII = # of the influenced outsiders / # of the total influenced nodes</p></li>
+<li><p><strong>seedRatio</strong> (<em>float</em><em>, </em><em>default is 0.05</em>) – # of sampled seeds / # of nodes of the community that the given SHS belongs to.</p></li>
+<li><p><strong>randSeedIter</strong> (<em>int</em><em>, </em><em>default is 10</em>) – How many iterations to sample seeds.</p></li>
+<li><p><strong>countIterations</strong> (<em>int default is 100</em>) – Number of monte carlo simulations to be used.</p></li>
+<li><p><strong>Directed</strong> (<em>bool</em><em>, </em><em>default is True</em>) – Whether the graph is directed or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>seed_shii_pair</strong> – the SHII metric of each seed</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p># &gt;&gt;&gt; structural_hole_influence_index(G, [3, 20, 9], Com, ‘LT’, seedRatio=0.1, Directed=False)</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r443424145e99-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/2939672.2939807">https://dl.acm.org/doi/pdf/10.1145/2939672.2939807</a></p>
+</div>
+<div class="citation" id="r443424145e99-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://github.com/LifangHe/KDD16_HAM/tree/master/SHII_metric">https://github.com/LifangHe/KDD16_HAM/tree/master/SHII_metric</a></p>
+</div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.functions.structural_holes.NOBE.html" class="btn btn-neutral float-left" title="easygraph.functions.structural_holes.NOBE module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.functions.structural_holes.evaluation.html" class="btn btn-neutral float-right" title="easygraph.functions.structural_holes.evaluation module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

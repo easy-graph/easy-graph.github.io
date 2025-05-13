@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.functions.components.strongly_connected module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.components.weakly_connected module" href="easygraph.functions.components.weakly_connected.html" />
+    <link rel="prev" title="easygraph.functions.components.connected module" href="easygraph.functions.components.connected.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.components.html">easygraph.functions.components package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.components.strongly_connected module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.functions.components.strongly_connected.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.functions.components.strongly_connected">
+<span id="easygraph-functions-components-strongly-connected-module"></span><span id="module-easygraph-functions-components-strongly-connected"></span><h1>easygraph.functions.components.strongly_connected module<a class="headerlink" href="#module-easygraph.functions.components.strongly_connected" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.components.strongly_connected.condensation">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.components.strongly_connected.</span></span><span class="sig-name descname"><span class="pre">condensation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/components/strongly_connected.html#condensation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.components.strongly_connected.condensation" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the condensation of G.
+The condensation of G is the graph with each of the strongly connected
+components contracted into a single node.
+:param G: A directed graph.
+:type G: easygraph.DiGraph
+:param scc: Strongly connected components. If provided, the elements in</p>
+<blockquote>
+<div><p><cite>scc</cite> must partition the nodes in <cite>G</cite>. If not provided, it will be
+calculated as scc=strongly_connected_components(G).</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>C</strong> – The condensation graph C of G.  The node labels are integers
+corresponding to the index of the component in the list of
+strongly connected components of G.  C has a graph attribute named
+‘mapping’ with a dictionary mapping the original nodes to the
+nodes in C to which they belong.  Each node in C also has a node
+attribute ‘members’ with the set of original nodes in G that
+form the SCC that the node in C represents.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>easygraph.DiGraph</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p># &gt;&gt;&gt; condensation(G)</p>
+<p class="rubric">Notes</p>
+<p>After contracting all strongly connected components to a single node,
+the resulting graph is a directed acyclic graph.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.components.strongly_connected.is_strongly_connected">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.components.strongly_connected.</span></span><span class="sig-name descname"><span class="pre">is_strongly_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/components/strongly_connected.html#is_strongly_connected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.components.strongly_connected.is_strongly_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Test directed graph for strong connectivity.</p>
+<p>A directed graph is strongly connected if and only if every vertex in
+the graph is reachable from every other vertex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>EasyGraph Graph</em>) – A directed graph.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>connected</strong> – True if the graph is strongly connected, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">is_strongly_connected</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">is_strongly_connected</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphNotImplemented" title="easygraph.exception.EasyGraphNotImplemented"><strong>EasyGraphNotImplemented</strong></a> – If G is undirected.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_connected</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">is_biconnected</span></code>, <a class="reference internal" href="#easygraph.functions.components.strongly_connected.strongly_connected_components" title="easygraph.functions.components.strongly_connected.strongly_connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strongly_connected_components</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>For directed graphs only.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.components.strongly_connected.number_strongly_connected_components">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.components.strongly_connected.</span></span><span class="sig-name descname"><span class="pre">number_strongly_connected_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/components/strongly_connected.html#number_strongly_connected_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.components.strongly_connected.number_strongly_connected_components" title="Permalink to this definition"></a></dt>
+<dd><p>Returns number of strongly connected components in graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>Easygraph graph</em>) – A directed graph.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>n</strong> – Number of strongly connected components</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>integer</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>EasygraphNotImplemented</strong> – If G is undirected.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">number_strongly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.functions.components.strongly_connected.strongly_connected_components" title="easygraph.functions.components.strongly_connected.strongly_connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strongly_connected_components</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">number_connected_components</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>For directed graphs only.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.components.strongly_connected.strongly_connected_components">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.components.strongly_connected.</span></span><span class="sig-name descname"><span class="pre">strongly_connected_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/components/strongly_connected.html#strongly_connected_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.components.strongly_connected.strongly_connected_components" title="Permalink to this definition"></a></dt>
+<dd><p>Generate nodes in strongly connected components of graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>EasyGraph Graph</em>) – A directed graph.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>comp</strong> – A generator of sets of nodes, one for each strongly connected
+component of G.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>generator of sets</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphNotImplemented" title="easygraph.exception.EasyGraphNotImplemented"><strong>EasyGraphNotImplemented</strong></a> – If G is undirected.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Generate a sorted list of strongly connected components, largest first.</p>
+<p>If you only want the largest component, it’s more efficient to
+use max instead of sort.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">largest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">connected_components</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Uses Tarjan’s algorithm[Ra4591d013848-1]_ with Nuutila’s modifications[Ra4591d013848-2]_.
+Nonrecursive version of algorithm.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="ra4591d013848-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Depth-first search and linear graph algorithms, R. Tarjan
+SIAM Journal of Computing 1(2):146-160, (1972).</p>
+</div>
+<div class="citation" id="ra4591d013848-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>On finding the strongly connected components in a directed graph.
+E. Nuutila and E. Soisalon-Soinen
+Information Processing Letters 49(1): 9-14, (1994)..</p>
+</div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.functions.components.connected.html" class="btn btn-neutral float-left" title="easygraph.functions.components.connected module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.functions.components.weakly_connected.html" class="btn btn-neutral float-right" title="easygraph.functions.components.weakly_connected module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

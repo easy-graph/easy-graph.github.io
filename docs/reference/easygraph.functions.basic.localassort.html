@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.functions.basic.localassort module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.basic.predecessor_path_based module" href="easygraph.functions.basic.predecessor_path_based.html" />
+    <link rel="prev" title="easygraph.functions.basic.cluster module" href="easygraph.functions.basic.cluster.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.basic.html">easygraph.functions.basic package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.basic.localassort module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.functions.basic.localassort.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.functions.basic.localassort">
+<span id="easygraph-functions-basic-localassort-module"></span><span id="module-easygraph-functions-basic-localassort"></span><h1>easygraph.functions.basic.localassort module<a class="headerlink" href="#module-easygraph.functions.basic.localassort" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.basic.localassort.localAssort">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.basic.localassort.</span></span><span class="sig-name descname"><span class="pre">localAssort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edgelist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.1,</span> <span class="pre">0.2,</span> <span class="pre">0.3,</span> <span class="pre">0.4,</span> <span class="pre">0.5,</span> <span class="pre">0.6,</span> <span class="pre">0.7,</span> <span class="pre">0.8,</span> <span class="pre">0.9])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">undir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missingValue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/basic/localassort.html#localAssort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.basic.localassort.localAssort" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the multiscale assortativity.
+You must ensure that the node index and node attribute index start from 0
+:param edgelist: the network represented as an edge list,</p>
+<blockquote>
+<div><p>i.e., a E x 2 array of node pairs</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_attr</strong> (<em>array_like</em>) – n length array of node attribute values</p></li>
+<li><p><strong>pr</strong> (<em>array</em><em>, </em><em>optional</em>) – array of one minus restart probabilities for the random walk in
+calculating the personalised pagerank. The largest of these values
+determines the accuracy of the TotalRank vector max(pr) -&gt; 1 is more
+accurate (default: [0, .1, .2, .3, .4, .5, .6, .7, .8, .9])</p></li>
+<li><p><strong>undir</strong> (<em>bool</em><em>, </em><em>optional</em>) – indicate if network is undirected (default: True)</p></li>
+<li><p><strong>missingValue</strong> (<em>int</em><em>, </em><em>optional</em>) – token to indicate missing attribute values (default: -1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>assortM</strong> (<em>array_like</em>) – n x len(pr) array of local assortativities, each column corresponds to
+a value of the input restart probabilities, pr. Note if only number of
+restart probabilties is greater than one (i.e., len(pr) &gt; 1).</p></li>
+<li><p><strong>assortT</strong> (<em>array_like</em>) – n length array of multiscale assortativities</p></li>
+<li><p><strong>Z</strong> (<em>array_like</em>) – N length array of per-node confidence scores</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>For full details see <span id="id1">[R14867b7dbf40-1]</span>
+.. [R14867b7dbf40-1] Peel, L., Delvenne, J. C., &amp; Lambiotte, R. (2018). “Multiscale</p>
+<blockquote>
+<div><p>mixing patterns in networks.’ PNAS, 115(16), 4057-4062.</p>
+</div></blockquote>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.functions.basic.cluster.html" class="btn btn-neutral float-left" title="easygraph.functions.basic.cluster module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.functions.basic.predecessor_path_based.html" class="btn btn-neutral float-right" title="easygraph.functions.basic.predecessor_path_based module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

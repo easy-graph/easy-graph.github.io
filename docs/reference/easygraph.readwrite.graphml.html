@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.readwrite.graphml module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.readwrite.graphviz module" href="easygraph.readwrite.graphviz.html" />
+    <link rel="prev" title="easygraph.readwrite.gml module" href="easygraph.readwrite.gml.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.readwrite.html">easygraph.readwrite package</a></li>
+      <li class="breadcrumb-item active">easygraph.readwrite.graphml module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.readwrite.graphml.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.readwrite.graphml">
+<span id="easygraph-readwrite-graphml-module"></span><span id="module-easygraph-readwrite-graphml"></span><h1>easygraph.readwrite.graphml module<a class="headerlink" href="#module-easygraph.readwrite.graphml" title="Permalink to this heading"></a></h1>
+<p>Read and write graphs in GraphML format.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This parser uses the standard xml library present in Python, which is
+insecure - see <span class="xref std std-doc">library/xml</span> for additional information.
+Only parse GraphML files you trust.</p>
+</div>
+<p>This implementation does not support mixed graphs (directed and unidirected
+edges together), hyperedges, nested graphs, or ports.</p>
+<p>“GraphML is a comprehensive and easy-to-use file format for graphs. It
+consists of a language core to describe the structural properties of a
+graph and a flexible extension mechanism to add application-specific
+data. Its main features include support of</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>directed, undirected, and mixed graphs,</p></li>
+<li><p>hypergraphs,</p></li>
+<li><p>hierarchical graphs,</p></li>
+<li><p>graphical representations,</p></li>
+<li><p>references to external data,</p></li>
+<li><p>application-specific attribute data, and</p></li>
+<li><p>light-weight parsers.</p></li>
+</ul>
+</div></blockquote>
+<p>Unlike many other file formats for graphs, GraphML does not use a
+custom syntax. Instead, it is based on XML and hence ideally suited as
+a common denominator for all kinds of services generating, archiving,
+or processing graphs.”</p>
+<p><a class="reference external" href="http://graphml.graphdrawing.org/">http://graphml.graphdrawing.org/</a></p>
+<section id="format">
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this heading"></a></h2>
+<p>GraphML is an XML format.  See
+<a class="reference external" href="http://graphml.graphdrawing.org/specification.html">http://graphml.graphdrawing.org/specification.html</a> for the specification and
+<a class="reference external" href="http://graphml.graphdrawing.org/primer/graphml-primer.html">http://graphml.graphdrawing.org/primer/graphml-primer.html</a>
+for examples.</p>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">GraphMLReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_type=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_key_type=&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_multigraph=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">GraphML</span></code></p>
+<p>Read a GraphML document.  Produces EasyGraph graph objects.</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>([path, string])</p></td>
+<td><p>Call self as a function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.add_edge" title="easygraph.readwrite.graphml.GraphMLReader.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(G, edge_element, graphml_keys)</p></td>
+<td><p>Add an edge to the graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.add_node" title="easygraph.readwrite.graphml.GraphMLReader.add_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code></a>(G, node_xml, graphml_keys, defaults)</p></td>
+<td><p>Add a node to the graph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.decode_data_elements" title="easygraph.readwrite.graphml.GraphMLReader.decode_data_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decode_data_elements</span></code></a>(graphml_keys, obj_xml)</p></td>
+<td><p>Use the key information to decode the data XML if present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLReader.find_graphml_keys" title="easygraph.readwrite.graphml.GraphMLReader.find_graphml_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_graphml_keys</span></code></a>(graph_element)</p></td>
+<td><p>Extracts all the keys and key defaults from the xml.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xml_type</span></code>(key)</p></td>
+<td><p>Wrapper around the xml_type dict that raises a more informative exception message when a user attempts to use data of a type not supported by GraphML.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>construct_types</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>make_graph</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLReader.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphml_keys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLReader.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLReader.add_edge" title="Permalink to this definition"></a></dt>
+<dd><p>Add an edge to the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLReader.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_xml</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphml_keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLReader.add_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLReader.add_node" title="Permalink to this definition"></a></dt>
+<dd><p>Add a node to the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLReader.decode_data_elements">
+<span class="sig-name descname"><span class="pre">decode_data_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graphml_keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_xml</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLReader.decode_data_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLReader.decode_data_elements" title="Permalink to this definition"></a></dt>
+<dd><p>Use the key information to decode the data XML if present.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLReader.find_graphml_keys">
+<span class="sig-name descname"><span class="pre">find_graphml_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_element</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLReader.find_graphml_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLReader.find_graphml_keys" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts all the keys and key defaults from the xml.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLReader.make_graph">
+<span class="sig-name descname"><span class="pre">make_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_xml</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphml_keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLReader.make_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLReader.make_graph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">GraphMLWriter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prettyprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_numeric_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_key_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_id_from_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">GraphML</span></code></p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_attributes" title="easygraph.readwrite.graphml.GraphMLWriter.add_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_attributes</span></code></a>(scope, xml_obj, data, default)</p></td>
+<td><p>Appends attribute data to edges or nodes, and stores type information to be added later.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_data" title="easygraph.readwrite.graphml.GraphMLWriter.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_data</span></code></a>(name, element_type, value[, scope, ...])</p></td>
+<td><p>Make a data element for an edge or a node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_graph_element" title="easygraph.readwrite.graphml.GraphMLWriter.add_graph_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_graph_element</span></code></a>(G)</p></td>
+<td><p>Serialize graph G in GraphML to the stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.add_graphs" title="easygraph.readwrite.graphml.GraphMLWriter.add_graphs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_graphs</span></code></a>(graph_list)</p></td>
+<td><p>Add many graphs to this GraphML document.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.readwrite.graphml.GraphMLWriter.attr_type" title="easygraph.readwrite.graphml.GraphMLWriter.attr_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attr_type</span></code></a>(name, scope, value)</p></td>
+<td><p>Infer the attribute type of data named name.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xml_type</span></code>(key)</p></td>
+<td><p>Wrapper around the xml_type dict that raises a more informative exception message when a user attempts to use data of a type not supported by GraphML.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>add_edges</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>add_nodes</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>construct_types</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>dump</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_key</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>indent</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.add_attributes">
+<span class="sig-name descname"><span class="pre">add_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xml_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.add_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.add_attributes" title="Permalink to this definition"></a></dt>
+<dd><p>Appends attribute data to edges or nodes, and stores type information
+to be added later. See add_graph_element.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.add_data">
+<span class="sig-name descname"><span class="pre">add_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.add_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.add_data" title="Permalink to this definition"></a></dt>
+<dd><p>Make a data element for an edge or a node. Keep a log of the
+type in the keys table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.add_edges">
+<span class="sig-name descname"><span class="pre">add_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_element</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.add_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.add_edges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.add_graph_element">
+<span class="sig-name descname"><span class="pre">add_graph_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.add_graph_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.add_graph_element" title="Permalink to this definition"></a></dt>
+<dd><p>Serialize graph G in GraphML to the stream.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.add_graphs">
+<span class="sig-name descname"><span class="pre">add_graphs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.add_graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.add_graphs" title="Permalink to this definition"></a></dt>
+<dd><p>Add many graphs to this GraphML document.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.add_nodes">
+<span class="sig-name descname"><span class="pre">add_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_element</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.add_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.add_nodes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.attr_type">
+<span class="sig-name descname"><span class="pre">attr_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.attr_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.attr_type" title="Permalink to this definition"></a></dt>
+<dd><p>Infer the attribute type of data named name. Currently this only
+supports inference of numeric types.</p>
+<p>If self.infer_numeric_types is false, type is used. Otherwise, pick the
+most general of types found across all values with name and scope. This
+means edges with data named ‘weight’ are treated separately from nodes
+with data named ‘weight’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.dump">
+<span class="sig-name descname"><span class="pre">dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.dump" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.get_key">
+<span class="sig-name descname"><span class="pre">get_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.get_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.get_key" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.GraphMLWriter.indent">
+<span class="sig-name descname"><span class="pre">indent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#GraphMLWriter.indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.GraphMLWriter.indent" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.generate_graphml">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">generate_graphml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prettyprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_key_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_id_from_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#generate_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.generate_graphml" title="Permalink to this definition"></a></dt>
+<dd><p>Generate GraphML lines for G</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p></li>
+<li><p><strong>encoding</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – Encoding for text data.</p></li>
+<li><p><strong>prettyprint</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use line breaks and indenting in output XML.</p></li>
+<li><p><strong>named_key_ids</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use attr.name as value for key elements’ id attribute.</p></li>
+<li><p><strong>edge_id_from_attribute</strong> (<em>dict key</em><em> (</em><em>optional</em><em>)</em>) – If provided, the graphml edge id is set by looking up the corresponding
+edge data attribute keyed by this parameter. If <cite>None</cite> or the key does not exist in edge data,
+the edge id is set by the edge key if <cite>G</cite> is a MultiGraph, else the edge id is left unset.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linefeed</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># linefeed =</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">linefeed</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">generate_graphml</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">eg</span><span class="o">.</span><span class="n">generate_graphml</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This implementation does not support mixed graphs (directed and unidirected
+edges together) hyperedges, nested graphs, or ports.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.parse_graphml">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">parse_graphml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graphml_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_type=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_key_type=&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_multigraph=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#parse_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.parse_graphml" title="Permalink to this definition"></a></dt>
+<dd><p>Read graph in GraphML format from string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphml_string</strong> (<em>string</em>) – String containing graphml information
+(e.g., contents of a graphml file).</p></li>
+<li><p><strong>node_type</strong> (<em>Python type</em><em> (</em><em>default: str</em><em>)</em>) – Convert node ids to this type</p></li>
+<li><p><strong>edge_key_type</strong> (<em>Python type</em><em> (</em><em>default: int</em><em>)</em>) – Convert graphml edge ids to this type. Multigraphs use id as edge key.
+Non-multigraphs add to edge attribute dict with name “id”.</p></li>
+<li><p><strong>force_multigraph</strong> (<em>bool</em><em> (</em><em>default: False</em><em>)</em>) – If True, return a multigraph with edge keys. If False (the default)
+return a multigraph when multiedges are in the graph.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>graph</strong> – If no parallel edges are found a Graph or DiGraph is returned.
+Otherwise a MultiGraph or MultiDiGraph is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EasyGraph graph</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linefeed</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># linefeed =</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">linefeed</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">generate_graphml</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">parse_graphml</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>Default node and edge attributes are not propagated to each node and edge.
+They can be obtained from <cite>G.graph</cite> and applied to node and edge attributes
+if desired using something like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">default_color</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;node_default&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;color&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_color</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">default_color</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;edge_default&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;color&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_color</span>
+</pre></div>
+</div>
+<p>This implementation does not support mixed graphs (directed and unidirected
+edges together), hypergraphs, nested graphs, or ports.</p>
+<p>For multigraphs the GraphML edge “id” will be used as the edge
+key.  If not specified then they “key” attribute will be used.  If
+there is no “key” attribute a default EasyGraph multigraph edge key
+will be provided.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.read_graphml">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">read_graphml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_type=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_key_type=&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_multigraph=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#read_graphml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.read_graphml" title="Permalink to this definition"></a></dt>
+<dd><p>Read graph in GraphML format from path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>file</em><em> or </em><em>string</em>) – File or filename to write.
+Filenames ending in .gz or .bz2 will be compressed.</p></li>
+<li><p><strong>node_type</strong> (<em>Python type</em><em> (</em><em>default: str</em><em>)</em>) – Convert node ids to this type</p></li>
+<li><p><strong>edge_key_type</strong> (<em>Python type</em><em> (</em><em>default: int</em><em>)</em>) – Convert graphml edge ids to this type. Multigraphs use id as edge key.
+Non-multigraphs add to edge attribute dict with name “id”.</p></li>
+<li><p><strong>force_multigraph</strong> (<em>bool</em><em> (</em><em>default: False</em><em>)</em>) – If True, return a multigraph with edge keys. If False (the default)
+return a multigraph when multiedges are in the graph.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>graph</strong> – If parallel edges are present or <cite>force_multigraph=True</cite> then
+a MultiGraph or MultiDiGraph is returned. Otherwise a Graph/DiGraph.
+The returned graph is directed if the file indicates it should be.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EasyGraph graph</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Default node and edge attributes are not propagated to each node and edge.
+They can be obtained from <cite>G.graph</cite> and applied to node and edge attributes
+if desired using something like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">default_color</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;node_default&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;color&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_color</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">default_color</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;edge_default&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;color&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_color</span>
+</pre></div>
+</div>
+<p>This implementation does not support mixed graphs (directed and unidirected
+edges together), hypergraphs, nested graphs, or ports.</p>
+<p>For multigraphs the GraphML edge “id” will be used as the edge
+key.  If not specified then they “key” attribute will be used.  If
+there is no “key” attribute a default EasyGraph multigraph edge key
+will be provided.</p>
+<p>Files with the yEd “yfiles” extension can be read. The type of the node’s
+shape is preserved in the <cite>shape_type</cite> node attribute.</p>
+<p>yEd compressed files (“file.graphmlz” extension) can be read by renaming
+the file to “file.graphml.gz”.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.write_graphml">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">write_graphml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prettyprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_numeric_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_key_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_id_from_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.readwrite.graphml.write_graphml" title="Permalink to this definition"></a></dt>
+<dd><p>Write G in GraphML XML format to path</p>
+<p>This function uses the LXML framework and should be faster than
+the version using the xml library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p></li>
+<li><p><strong>path</strong> (<em>file</em><em> or </em><em>string</em>) – File or filename to write.
+Filenames ending in .gz or .bz2 will be compressed.</p></li>
+<li><p><strong>encoding</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – Encoding for text data.</p></li>
+<li><p><strong>prettyprint</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use line breaks and indenting in output XML.</p></li>
+<li><p><strong>infer_numeric_types</strong> (<em>boolean</em>) – Determine if numeric types should be generalized.
+For example, if edges have both int and float ‘weight’ attributes,
+we infer in GraphML that both are floats.</p></li>
+<li><p><strong>named_key_ids</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use attr.name as value for key elements’ id attribute.</p></li>
+<li><p><strong>edge_id_from_attribute</strong> (<em>dict key</em><em> (</em><em>optional</em><em>)</em>) – If provided, the graphml edge id is set by looking up the corresponding
+edge data attribute keyed by this parameter. If <cite>None</cite> or the key does not exist in edge data,
+the edge id is set by the edge key if <cite>G</cite> is a MultiGraph, else the edge id is left unset.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_graphml_lxml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;fourpath.graphml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This implementation does not support mixed graphs (directed
+and unidirected edges together) hyperedges, nested graphs, or ports.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.write_graphml_lxml">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">write_graphml_lxml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prettyprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_numeric_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_key_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_id_from_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#write_graphml_lxml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.write_graphml_lxml" title="Permalink to this definition"></a></dt>
+<dd><p>Write G in GraphML XML format to path</p>
+<p>This function uses the LXML framework and should be faster than
+the version using the xml library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p></li>
+<li><p><strong>path</strong> (<em>file</em><em> or </em><em>string</em>) – File or filename to write.
+Filenames ending in .gz or .bz2 will be compressed.</p></li>
+<li><p><strong>encoding</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – Encoding for text data.</p></li>
+<li><p><strong>prettyprint</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use line breaks and indenting in output XML.</p></li>
+<li><p><strong>infer_numeric_types</strong> (<em>boolean</em>) – Determine if numeric types should be generalized.
+For example, if edges have both int and float ‘weight’ attributes,
+we infer in GraphML that both are floats.</p></li>
+<li><p><strong>named_key_ids</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use attr.name as value for key elements’ id attribute.</p></li>
+<li><p><strong>edge_id_from_attribute</strong> (<em>dict key</em><em> (</em><em>optional</em><em>)</em>) – If provided, the graphml edge id is set by looking up the corresponding
+edge data attribute keyed by this parameter. If <cite>None</cite> or the key does not exist in edge data,
+the edge id is set by the edge key if <cite>G</cite> is a MultiGraph, else the edge id is left unset.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_graphml_lxml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;fourpath.graphml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This implementation does not support mixed graphs (directed
+and unidirected edges together) hyperedges, nested graphs, or ports.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.readwrite.graphml.write_graphml_xml">
+<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.graphml.</span></span><span class="sig-name descname"><span class="pre">write_graphml_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prettyprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_numeric_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_key_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_id_from_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/graphml.html#write_graphml_xml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.graphml.write_graphml_xml" title="Permalink to this definition"></a></dt>
+<dd><p>Write G in GraphML XML format to path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – A easygraph graph</p></li>
+<li><p><strong>path</strong> (<em>file</em><em> or </em><em>string</em>) – File or filename to write.
+Filenames ending in .gz or .bz2 will be compressed.</p></li>
+<li><p><strong>encoding</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – Encoding for text data.</p></li>
+<li><p><strong>prettyprint</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use line breaks and indenting in output XML.</p></li>
+<li><p><strong>infer_numeric_types</strong> (<em>boolean</em>) – Determine if numeric types should be generalized.
+For example, if edges have both int and float ‘weight’ attributes,
+we infer in GraphML that both are floats.</p></li>
+<li><p><strong>named_key_ids</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – If True use attr.name as value for key elements’ id attribute.</p></li>
+<li><p><strong>edge_id_from_attribute</strong> (<em>dict key</em><em> (</em><em>optional</em><em>)</em>) – If provided, the graphml edge id is set by looking up the corresponding
+edge data attribute keyed by this parameter. If <cite>None</cite> or the key does not exist in edge data,
+the edge id is set by the edge key if <cite>G</cite> is a MultiGraph, else the edge id is left unset.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_graphml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;test.graphml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This implementation does not support mixed graphs (directed
+and unidirected edges together) hyperedges, nested graphs, or ports.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.readwrite.gml.html" class="btn btn-neutral float-left" title="easygraph.readwrite.gml module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.readwrite.graphviz.html" class="btn btn-neutral float-right" title="easygraph.readwrite.graphviz module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

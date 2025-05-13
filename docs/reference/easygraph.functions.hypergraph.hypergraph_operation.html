@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.functions.hypergraph.hypergraph_operation module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.path package" href="easygraph.functions.path.html" />
+    <link rel="prev" title="easygraph.functions.hypergraph.hypergraph_clustering module" href="easygraph.functions.hypergraph.hypergraph_clustering.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.hypergraph.hypergraph_operation module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.functions.hypergraph.hypergraph_operation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.functions.hypergraph.hypergraph_operation">
+<span id="easygraph-functions-hypergraph-hypergraph-operation-module"></span><span id="module-easygraph-functions-hypergraph-hypergraph-operation"></span><h1>easygraph.functions.hypergraph.hypergraph_operation module<a class="headerlink" href="#module-easygraph.functions.hypergraph.hypergraph_operation" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.hypergraph.hypergraph_operation.hypergraph_density">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.hypergraph_operation.</span></span><span class="sig-name descname"><span class="pre">hypergraph_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_singletons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/hypergraph_operation.html#hypergraph_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.hypergraph_operation.hypergraph_density" title="Permalink to this definition"></a></dt>
+<dd><p>Hypergraph density.</p>
+<p>The density of a hypergraph is the number of existing edges divided by the number of
+possible edges.</p>
+<p>Let <cite>H</cite> have <span class="math notranslate nohighlight">\(n\)</span> nodes and <span class="math notranslate nohighlight">\(m\)</span> hyperedges. Then,</p>
+<ul class="simple">
+<li><p><cite>density(H) =</cite> <span class="math notranslate nohighlight">\(\frac{m}{2^n - 1}\)</span>,</p></li>
+<li><p><cite>density(H, ignore_singletons=True) =</cite> <span class="math notranslate nohighlight">\(\frac{m}{2^n - 1 - n}\)</span>.</p></li>
+</ul>
+<p>Here, <span class="math notranslate nohighlight">\(2^n\)</span> is the total possible number of hyperedges on <cite>H</cite>, from which we
+subtract <span class="math notranslate nohighlight">\(1\)</span> because the empty hyperedge is not considered.  We subtract an
+additional <span class="math notranslate nohighlight">\(n\)</span> when singletons are not considered.</p>
+<p>Now assume <cite>H</cite> has <span class="math notranslate nohighlight">\(a\)</span> edges with order <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(b\)</span> edges with
+order <span class="math notranslate nohighlight">\(2\)</span>.  Then,</p>
+<ul class="simple">
+<li><p><cite>density(H, order=1) =</cite> <span class="math notranslate nohighlight">\(\frac{a}{{n \choose 2}}\)</span>,</p></li>
+<li><p><cite>density(H, order=2) =</cite> <span class="math notranslate nohighlight">\(\frac{b}{{n \choose 3}}\)</span>,</p></li>
+<li><p><cite>density(H, max_order=1) =</cite> <span class="math notranslate nohighlight">\(\frac{a}{{n \choose 1} + {n \choose 2}}\)</span>,</p></li>
+<li><p><cite>density(H, max_order=1, ignore_singletons=True) =</cite> <span class="math notranslate nohighlight">\(\frac{a}{{n \choose 2}}\)</span>,</p></li>
+<li><p><cite>density(H, max_order=2) =</cite> <span class="math notranslate nohighlight">\(\frac{m}{{n \choose 1} + {n \choose 2} + {n \choose 3}}\)</span>,</p></li>
+<li><p><cite>density(H, max_order=2, ignore_singletons=True) =</cite> <span class="math notranslate nohighlight">\(\frac{m}{{n \choose 2} + {n \choose 3}}\)</span>,</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>order</strong> (<em>int</em><em>, </em><em>optional</em>) – If not None, only count edges of the specified order.
+By default, None.</p></li>
+<li><p><strong>max_order</strong> (<em>int</em><em>, </em><em>optional</em>) – If not None, only count edges of order up to this value, inclusive.
+By default, None.</p></li>
+<li><p><strong>ignore_singletons</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to consider singleton edges.  Ignored if <cite>order</cite> is not None and
+different from <span class="math notranslate nohighlight">\(0\)</span>. By default, False.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">incidence_density()</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>If both <cite>order</cite> and <cite>max_order</cite> are not None, <cite>max_order</cite> is ignored.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.functions.hypergraph.hypergraph_clustering.html" class="btn btn-neutral float-left" title="easygraph.functions.hypergraph.hypergraph_clustering module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.functions.path.html" class="btn btn-neutral float-right" title="easygraph.functions.path package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.functions.community.louvain module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.community.modularity module" href="easygraph.functions.community.modularity.html" />
+    <link rel="prev" title="easygraph.functions.community.ego_graph module" href="easygraph.functions.community.ego_graph.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.community.html">easygraph.functions.community package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.community.louvain module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.functions.community.louvain.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.functions.community.louvain">
+<span id="easygraph-functions-community-louvain-module"></span><span id="module-easygraph-functions-community-louvain"></span><h1>easygraph.functions.community.louvain module<a class="headerlink" href="#module-easygraph.functions.community.louvain" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.community.louvain.louvain_communities">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.community.louvain.</span></span><span class="sig-name descname"><span class="pre">louvain_communities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2e-05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/community/louvain.html#louvain_communities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.community.louvain.louvain_communities" title="Permalink to this definition"></a></dt>
+<dd><p>Find the best partition of a graph using the Louvain Community Detection
+Algorithm.</p>
+<p>Louvain Community Detection Algorithm is a simple method to extract the community
+structure of a network. This is a heuristic method based on modularity optimization. <a class="reference internal" href="#r67f95965f231-1" id="id1">[1]</a></p>
+<p>The algorithm works in 2 steps. On the first step it assigns every node to be
+in its own community and then for each node it tries to find the maximum positive
+modularity gain by moving each node to all of its neighbor communities. If no positive
+gain is achieved the node remains in its original community.</p>
+<p>The modularity gain obtained by moving an isolated node $i$ into a community $C$ can
+easily be calculated by the following formula (combining <a class="reference internal" href="#r67f95965f231-1" id="id2">[1]</a> <a class="reference internal" href="#r67f95965f231-2" id="id3">[2]</a> and some algebra):</p>
+<div class="math notranslate nohighlight">
+\[\Delta Q = \frac{k_{i,in}}{2m} - \gamma\frac{ \Sigma_{tot} \cdot k_i}{2m^2}\]</div>
+<p>where $m$ is the size of the graph, $k_{i,in}$ is the sum of the weights of the links
+from $i$ to nodes in $C$, $k_i$ is the sum of the weights of the links incident to node $i$,
+$Sigma_{tot}$ is the sum of the weights of the links incident to nodes in $C$ and $gamma$
+is the resolution parameter.</p>
+<p>For the directed case the modularity gain can be computed using this formula according to <a class="reference internal" href="#r67f95965f231-3" id="id4">[3]</a></p>
+<div class="math notranslate nohighlight">
+\[\Delta Q = \frac{k_{i,in}}{m}
+- \gamma\frac{k_i^{out} \cdot\Sigma_{tot}^{in} + k_i^{in} \cdot \Sigma_{tot}^{out}}{m^2}\]</div>
+<p>where $k_i^{out}$, $k_i^{in}$ are the outer and inner weighted degrees of node $i$ and
+$Sigma_{tot}^{in}$, $Sigma_{tot}^{out}$ are the sum of in-going and out-going links incident
+to nodes in $C$.</p>
+<p>The first phase continues until no individual move can improve the modularity.</p>
+<p>The second phase consists in building a new network whose nodes are now the communities
+found in the first phase. To do so, the weights of the links between the new nodes are given by
+the sum of the weight of the links between nodes in the corresponding two communities. Once this
+phase is complete it is possible to reapply the first phase creating bigger communities with
+increased modularity.</p>
+<p>The above two phases are executed until no modularity gain is achieved (or is less than
+the <cite>threshold</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> – </p></li>
+<li><p><strong>G</strong> (<em>easygraph</em>) – </p></li>
+<li><p><strong>weight</strong> (<em>string</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default=&quot;weight&quot;</em><em>)</em>) – The name of an edge attribute that holds the numerical value
+used as a weight. If None then each edge has weight 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of sets (partition of <cite>G</cite>). Each set represents one community and contains
+all the nodes that constitute it.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The order in which the nodes are considered can affect the final output. In the algorithm
+the ordering happens using a random shuffle.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r67f95965f231-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>Blondel, V.D. et al. Fast unfolding of communities in
+large networks. J. Stat. Mech 10008, 1-12(2008). <a class="reference external" href="https://doi.org/10.1088/1742-5468/2008/10/P10008">https://doi.org/10.1088/1742-5468/2008/10/P10008</a></p>
+</div>
+<div class="citation" id="r67f95965f231-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>Traag, V.A., Waltman, L. &amp; van Eck, N.J. From Louvain to Leiden: guaranteeing
+well-connected communities. Sci Rep 9, 5233 (2019). <a class="reference external" href="https://doi.org/10.1038/s41598-019-41695-z">https://doi.org/10.1038/s41598-019-41695-z</a></p>
+</div>
+<div class="citation" id="r67f95965f231-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>Nicolas Dugu��, Anthony Perez. Directed Louvain : maximizing modularity in directed networks.
+[Research Report] Universit�� d��Orl��ans. 2015. hal-01231784. <a class="reference external" href="https://hal.archives-ouvertes.fr/hal-01231784">https://hal.archives-ouvertes.fr/hal-01231784</a></p>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.functions.community.louvain.louvain_partitions" title="easygraph.functions.community.louvain.louvain_partitions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">louvain_partitions</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.community.louvain.louvain_partitions">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.community.louvain.</span></span><span class="sig-name descname"><span class="pre">louvain_partitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/community/louvain.html#louvain_partitions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.community.louvain.louvain_partitions" title="Permalink to this definition"></a></dt>
+<dd><p>Yields partitions for each level of the Louvain Community Detection Algorithm</p>
+<p>Louvain Community Detection Algorithm is a simple method to extract the community
+structure of a network. This is a heuristic method based on modularity optimization. <a class="reference internal" href="#r0b32c23ac80f-1" id="id5">[1]</a></p>
+<p>The partitions at each level (step of the algorithm) form a dendogram of communities.
+A dendrogram is a diagram representing a tree and each level represents
+a partition of the G graph. The top level contains the smallest communities
+and as you traverse to the bottom of the tree the communities get bigger
+and the overall modularity increases making the partition better.</p>
+<p>Each level is generated by executing the two phases of the Louvain Community
+Detection Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> – </p></li>
+<li><p><strong>G</strong> (<em>easygraph</em>) – </p></li>
+<li><p><strong>weight</strong> (<em>string</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default=&quot;weight&quot;</em><em>)</em>) – The name of an edge attribute that holds the numerical value
+used as a weight. If None then each edge has weight 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>list</em> – A list of sets (partition of <cite>G</cite>). Each set represents one community and contains
+all the nodes that constitute it.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r0b32c23ac80f-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>Blondel, V.D. et al. Fast unfolding of communities in
+large networks. J. Stat. Mech 10008, 1-12(2008)</p>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#easygraph.functions.community.louvain.louvain_communities" title="easygraph.functions.community.louvain.louvain_communities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">louvain_communities</span></code></a></p>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.functions.community.ego_graph.html" class="btn btn-neutral float-left" title="easygraph.functions.community.ego_graph module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.functions.community.modularity.html" class="btn btn-neutral float-right" title="easygraph.functions.community.modularity module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

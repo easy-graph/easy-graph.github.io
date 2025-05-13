@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.convert module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.exception module" href="easygraph.exception.html" />
+    <link rel="prev" title="easygraph.utils.type_change module" href="easygraph.utils.type_change.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+      <li class="breadcrumb-item active">easygraph.convert module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.convert.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.convert">
+<span id="easygraph-convert-module"></span><span id="module-easygraph-convert"></span><h1>easygraph.convert module<a class="headerlink" href="#module-easygraph.convert" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.dict_to_hypergraph">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">dict_to_hypergraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_dynamic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/convert.html#dict_to_hypergraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.dict_to_hypergraph" title="Permalink to this definition"></a></dt>
+<dd><p>A function to read a file in a standardized JSON format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – A dictionary in the hypergraph JSON format</p></li>
+<li><p><strong>max_order</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum order of edges to add to the hypergraph</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The loaded hypergraph</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Hypergraph object</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphError" title="easygraph.exception.EasyGraphError"><strong>EasyGraphError</strong></a> – If the JSON is not in a format that can be loaded.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_json</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.from_dgl">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">from_dgl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><span class="pre">Graph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph"><span class="pre">DiGraph</span></a></span></span><a class="reference internal" href="../_modules/easygraph/convert.html#from_dgl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.from_dgl" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DGL graph to an EasyGraph graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>g</strong> (<em>DGLGraph</em>) – A DGL graph</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError</strong> – If DGL is not installed.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Converted EasyGraph graph</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Union[<a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph">Graph</a>, <a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph">DiGraph</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.from_dict_of_dicts">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">from_dict_of_dicts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multigraph_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/convert.html#from_dict_of_dicts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.from_dict_of_dicts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.from_dict_of_lists">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">from_dict_of_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/convert.html#from_dict_of_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.from_dict_of_lists" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.from_edgelist">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">from_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edgelist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/convert.html#from_edgelist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.from_edgelist" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a graph from a list of edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edgelist</strong> (<em>list</em><em> or </em><em>iterator</em>) – Edge tuples</p></li>
+<li><p><strong>create_using</strong> (<em>EasyGraph graph constructor</em><em>, </em><em>optional</em><em> (</em><em>default=eg.Graph</em><em>)</em>) – Graph type to create. If graph instance, then cleared before populated.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">edgelist</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># single edge (0,1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">from_edgelist</span><span class="p">(</span><span class="n">edgelist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">edgelist</span><span class="p">)</span>  <span class="c1"># use Graph constructor</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.from_networkx">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">from_networkx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">nx.Graph</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">nx.DiGraph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><span class="pre">Graph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph"><span class="pre">DiGraph</span></a></span></span><a class="reference internal" href="../_modules/easygraph/convert.html#from_networkx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.from_networkx" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a NetworkX graph to an EasyGraph graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>g</strong> (<em>Union</em><em>[</em><em>nx.Graph</em><em>, </em><em>nx.DiGraph</em><em>]</em>) – A NetworkX graph</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Converted EasyGraph graph</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[<a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph">Graph</a>, <a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph">DiGraph</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.from_pyg">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">from_pyg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch_geometric.data.Data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_undirected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_self_loops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/easygraph/convert.html#from_pyg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.from_pyg" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a <code class="xref py py-class docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> instance to a
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">easygraph.Graph</span></code> if <code class="xref py py-attr docutils literal notranslate"><span class="pre">to_undirected</span></code> is set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>, or
+a directed <code class="xref py py-obj docutils literal notranslate"><span class="pre">easygraph.DiGraph</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>torch_geometric.data.Data</em>) – The data object.</p></li>
+<li><p><strong>node_attrs</strong> (<em>iterable</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – The node attributes to be
+copied. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>edge_attrs</strong> (<em>iterable</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – The edge attributes to be
+copied. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>graph_attrs</strong> (<em>iterable</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – The graph attributes to be
+copied. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>to_undirected</strong> (<em>bool</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – If set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code> or
+“upper”, will return a <code class="xref py py-obj docutils literal notranslate"><span class="pre">easygraph.Graph</span></code> instead of a
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">easygraph.DiGraph</span></code>. The undirected graph will correspond to
+the upper triangle of the corresponding adjacency matrix.
+Similarly, if set to “lower”, the undirected graph will correspond
+to the lower triangle of the adjacency matrix. (default:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>remove_self_loops</strong> (<em>bool</em><em>, </em><em>optional</em>) – If set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>, will not
+include self loops in the resulting graph. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch_geometric</span> <span class="k">as</span> <span class="nn">pyg</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Data</span>  <span class="c1"># type: ignore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edge_index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">edge_index</span><span class="o">=</span><span class="n">edge_index</span><span class="p">,</span> <span class="n">num_nodes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_pyg</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">&lt;easygraph.classes.digraph.DiGraph at 0x2713fdb40d0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.to_dgl">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">to_dgl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><span class="pre">Graph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph"><span class="pre">DiGraph</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/convert.html#to_dgl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.to_dgl" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an EasyGraph graph to a DGL graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>g</strong> (<em>Union</em><em>[</em><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><em>Graph</em></a><em>, </em><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph"><em>DiGraph</em></a><em>]</em>) – An EasyGraph graph</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError</strong> – If DGL is not installed.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Converted DGL graph</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DGLGraph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.to_easygraph_graph">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">to_easygraph_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multigraph_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/convert.html#to_easygraph_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.to_easygraph_graph" title="Permalink to this definition"></a></dt>
+<dd><p>Make a EasyGraph graph from a known data structure.</p>
+<p>The preferred way to call this is automatically
+from the class constructor</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}}</span>  <span class="c1"># dict-of-dicts single edge (0,1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>instead of the equivalent</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">from_dict_of_dicts</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>object to be converted</em>) – <dl class="simple">
+<dt>Current known types are:</dt><dd><p>any EasyGraph graph
+dict-of-dicts
+dict-of-lists
+container (e.g. set, list, tuple) of edges
+iterator (e.g. itertools.chain) that produces edges
+generator of edges
+Pandas DataFrame (row per edge)
+numpy matrix
+numpy ndarray
+scipy sparse matrix
+pygraphviz agraph</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>create_using</strong> (<em>EasyGraph graph constructor</em><em>, </em><em>optional</em><em> (</em><em>default=eg.Graph</em><em>)</em>) – Graph type to create. If graph instance, then cleared before populated.</p></li>
+<li><p><strong>multigraph_input</strong> (<em>bool</em><em> (</em><em>default False</em><em>)</em>) – If True and  data is a dict_of_dicts,
+try to create a multigraph assuming dict_of_dict_of_lists.
+If data and create_using are both multigraphs then create
+a multigraph from a multigraph.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.to_networkx">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">to_networkx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><span class="pre">Graph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph"><span class="pre">DiGraph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">nx.Graph</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">nx.DiGraph</span></span></span><a class="reference internal" href="../_modules/easygraph/convert.html#to_networkx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.to_networkx" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an EasyGraph to a NetworkX graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>g</strong> (<em>Union</em><em>[</em><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><em>Graph</em></a><em>, </em><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph" title="easygraph.classes.directed_graph.DiGraph"><em>DiGraph</em></a><em>]</em>) – An EasyGraph graph</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError is raised if NetworkX is not installed.</strong> – </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Converted NetworkX graph</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Union[nx.Graph, nx.DiGraph]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.convert.to_pyg">
+<span class="sig-prename descclassname"><span class="pre">easygraph.convert.</span></span><span class="sig-name descname"><span class="pre">to_pyg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_node_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">all</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_edge_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">all</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch_geometric.data.Data</span></span></span><a class="reference internal" href="../_modules/easygraph/convert.html#to_pyg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.convert.to_pyg" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a <code class="xref py py-obj docutils literal notranslate"><span class="pre">easygraph.Graph</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">easygraph.DiGraph</span></code> to a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">torch_geometric.data.Data</span></code> instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>easygraph.Graph</em><em> or </em><em>easygraph.DiGraph</em>) – A easygraph graph.</p></li>
+<li><p><strong>group_node_attrs</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>all</em><em>, </em><em>optional</em>) – The node attributes to
+be concatenated and added to <code class="xref py py-obj docutils literal notranslate"><span class="pre">data.x</span></code>. (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>group_edge_attrs</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>all</em><em>, </em><em>optional</em>) – The edge attributes to
+be concatenated and added to <code class="xref py py-obj docutils literal notranslate"><span class="pre">data.edge_attr</span></code>.
+(default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All <code class="xref py py-attr docutils literal notranslate"><span class="pre">group_node_attrs</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">group_edge_attrs</span></code> values must
+be numeric.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch_geometric</span> <span class="k">as</span> <span class="nn">pyg</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pyg_to_networkx</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convert</span><span class="o">.</span><span class="n">to_networkx</span>  <span class="c1"># type: ignore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">networkx_to_pyg</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convert</span><span class="o">.</span><span class="n">from_networkx</span>  <span class="c1"># type: ignore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Data</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Data</span>  <span class="c1"># type: ignore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edge_index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">edge_index</span><span class="o">=</span><span class="n">edge_index</span><span class="p">,</span> <span class="n">num_nodes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">pyg_to_networkx</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># A `Data` object is returned</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_pyg</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">Data(edge_index=[2, 6], num_nodes=4)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.utils.type_change.html" class="btn btn-neutral float-left" title="easygraph.utils.type_change module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.exception.html" class="btn btn-neutral float-right" title="easygraph.exception module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.classes.base module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.classes.directed_graph module" href="easygraph.classes.directed_graph.html" />
+    <link rel="prev" title="easygraph.classes package" href="easygraph.classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.classes.html">easygraph.classes package</a></li>
+      <li class="breadcrumb-item active">easygraph.classes.base module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.classes.base.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.classes.base">
+<span id="easygraph-classes-base-module"></span><span id="module-easygraph-classes-base"></span><h1>easygraph.classes.base module<a class="headerlink" href="#module-easygraph.classes.base" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.base.</span></span><span class="sig-name descname"><span class="pre">BaseHypergraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_property</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_property</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_selfloop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BaseHypergraph</span></code> class is the base class for all hypergraph structures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_v</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The number of vertices.</p></li>
+<li><p><strong>e_list</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[int],</span> <span class="pre">List[List[int]]],</span> <span class="pre">optional</span></code>) – Edge list. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">Union[float,</span> <span class="pre">List[float]],</span> <span class="pre">optional</span></code>) – A list of weights for edges. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>extra_selfloop</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional) – Whether to add extra self-loop to the graph. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>, optional) – The device to store the graph. Defaults to <code class="docutils literal notranslate"><span class="pre">torch.device('cpu')</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.H" title="easygraph.classes.base.BaseHypergraph.H"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H</span></code></a></dt><dd><p>Return the hypergraph incidence matrix.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.H_e2v" title="easygraph.classes.base.BaseHypergraph.H_e2v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_e2v</span></code></a></dt><dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.H_of_group" title="easygraph.classes.base.BaseHypergraph.H_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_of_group</span></code></a></dt><dd><p>Return the hypergraph incidence matrix in the specified hyperedge group.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.H_v2e" title="easygraph.classes.base.BaseHypergraph.H_v2e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_v2e</span></code></a></dt><dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.R_e2v" title="easygraph.classes.base.BaseHypergraph.R_e2v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_e2v</span></code></a></dt><dd><p>Return the weight matrix of connections (hyperedges point to vertices) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.R_v2e" title="easygraph.classes.base.BaseHypergraph.R_v2e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_v2e</span></code></a></dt><dd><p>Return the weight matrix of connections (vertices point to hyperedges) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.W_e" title="easygraph.classes.base.BaseHypergraph.W_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W_e</span></code></a></dt><dd><p>Return the hyperedge weight matrix of the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.W_v" title="easygraph.classes.base.BaseHypergraph.W_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W_v</span></code></a></dt><dd><p>Return the vertex weight matrix of the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e" title="easygraph.classes.base.BaseHypergraph.e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e</span></code></a></dt><dd><p>Return all hyperedges and weights in the hypergraph.</p>
+</dd>
+<dt><strong>e_property</strong></dt><dd></dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.group_names" title="easygraph.classes.base.BaseHypergraph.group_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_names</span></code></a></dt><dd><p>Return the names of hyperedge groups in the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.num_e" title="easygraph.classes.base.BaseHypergraph.num_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_e</span></code></a></dt><dd><p>Return the number of hyperedges in the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.num_groups" title="easygraph.classes.base.BaseHypergraph.num_groups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_groups</span></code></a></dt><dd><p>Return the number of hyperedge groups in the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.num_v" title="easygraph.classes.base.BaseHypergraph.num_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_v</span></code></a></dt><dd><p>Return the number of vertices in the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.state_dict" title="easygraph.classes.base.BaseHypergraph.state_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_dict</span></code></a></dt><dd><p>Get the state dict of the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v" title="easygraph.classes.base.BaseHypergraph.v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code></a></dt><dd><p>Return the list of vertices.</p>
+</dd>
+<dt><strong>v_property</strong></dt><dd></dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v_weight" title="easygraph.classes.base.BaseHypergraph.v_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_weight</span></code></a></dt><dd><p>Return the vertex weights of the hypergraph.</p>
+</dd>
+<dt><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.vars_for_DL" title="easygraph.classes.base.BaseHypergraph.vars_for_DL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vars_for_DL</span></code></a></dt><dd><p>Return a name list of available variables for deep learning in this type of hypergraph.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.H_e2v_of_group" title="easygraph.classes.base.BaseHypergraph.H_e2v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_e2v_of_group</span></code></a>(group_name)</p></td>
+<td><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.H_v2e_of_group" title="easygraph.classes.base.BaseHypergraph.H_v2e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_v2e_of_group</span></code></a>(group_name)</p></td>
+<td><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.R_e2v_of_group" title="easygraph.classes.base.BaseHypergraph.R_e2v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_e2v_of_group</span></code></a>(group_name)</p></td>
+<td><p>Return the weight matrix of connections (hyperedges point to vertices) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.R_v2e_of_group" title="easygraph.classes.base.BaseHypergraph.R_v2e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_v2e_of_group</span></code></a>(group_name)</p></td>
+<td><p>Return the weight matrix of connections (vertices point to hyperedges) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.W_e_of_group" title="easygraph.classes.base.BaseHypergraph.W_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W_e_of_group</span></code></a>(group_name)</p></td>
+<td><p>Return the hyperedge weight matrix of the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.add_hyperedges" title="easygraph.classes.base.BaseHypergraph.add_hyperedges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_hyperedges</span></code></a>(e_list_v2e, e_list_e2v[, ...])</p></td>
+<td><p>Add hyperedges to the hypergraph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.clear" title="easygraph.classes.base.BaseHypergraph.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p>Remove all hyperedges and caches from the hypergraph.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.clone" title="easygraph.classes.base.BaseHypergraph.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
+<td><p>Return a copy of this type of hypergraph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.draw" title="easygraph.classes.base.BaseHypergraph.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(**kwargs)</p></td>
+<td><p>Draw the structure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.drop_hyperedges" title="easygraph.classes.base.BaseHypergraph.drop_hyperedges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_hyperedges</span></code></a>(drop_rate[, ord])</p></td>
+<td><p>Randomly drop hyperedges from the hypergraph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.drop_hyperedges_of_group" title="easygraph.classes.base.BaseHypergraph.drop_hyperedges_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_hyperedges_of_group</span></code></a>(group_name, drop_rate)</p></td>
+<td><p>Randomly drop hyperedges from the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e2v" title="easygraph.classes.base.BaseHypergraph.e2v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v</span></code></a>(X[, aggr, e2v_weight, v_weight])</p></td>
+<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e2v_aggregation" title="easygraph.classes.base.BaseHypergraph.e2v_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_aggregation</span></code></a>(X[, aggr, e2v_weight])</p></td>
+<td><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e2v_aggregation_of_group" title="easygraph.classes.base.BaseHypergraph.e2v_aggregation_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_aggregation_of_group</span></code></a>(group_name, X[, ...])</p></td>
+<td><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e2v_of_group" title="easygraph.classes.base.BaseHypergraph.e2v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_of_group</span></code></a>(group_name, X[, aggr, ...])</p></td>
+<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e2v_update" title="easygraph.classes.base.BaseHypergraph.e2v_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_update</span></code></a>(X[, v_weight])</p></td>
+<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e2v_update_of_group" title="easygraph.classes.base.BaseHypergraph.e2v_update_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_update_of_group</span></code></a>(group_name, X[, v_weight])</p></td>
+<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.e_of_group" title="easygraph.classes.base.BaseHypergraph.e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_of_group</span></code></a>(group_name)</p></td>
+<td><p>Return all hyperedges and weights in the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.from_state_dict" title="easygraph.classes.base.BaseHypergraph.from_state_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_state_dict</span></code></a>(state_dict)</p></td>
+<td><p>Load the EasyGraph's hypergraph structure from the state dict.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.load" title="easygraph.classes.base.BaseHypergraph.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(file_path)</p></td>
+<td><p>Load the EasyGraph's hypergraph structure from a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.num_e_of_group" title="easygraph.classes.base.BaseHypergraph.num_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_e_of_group</span></code></a>(group_name)</p></td>
+<td><p>Return the number of hyperedges in the specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.remove_hyperedges" title="easygraph.classes.base.BaseHypergraph.remove_hyperedges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_hyperedges</span></code></a>(e_list_v2e, e_list_e2v[, ...])</p></td>
+<td><p>Remove the specified hyperedges from the hypergraph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.save" title="easygraph.classes.base.BaseHypergraph.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(file_path)</p></td>
+<td><p>Save the EasyGraph's hypergraph structure to a file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.smoothing" title="easygraph.classes.base.BaseHypergraph.smoothing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing</span></code></a>(X, L, lamb)</p></td>
+<td><p>Spectral-based smoothing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.to" title="easygraph.classes.base.BaseHypergraph.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></a>([device])</p></td>
+<td><p>Move the hypergraph to the specified device.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2e" title="easygraph.classes.base.BaseHypergraph.v2e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e</span></code></a>(X[, aggr, v2e_weight, e_weight])</p></td>
+<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2e_aggregation" title="easygraph.classes.base.BaseHypergraph.v2e_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_aggregation</span></code></a>(X[, aggr, v2e_weight, drop_rate])</p></td>
+<td><p>Message aggretation step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2e_aggregation_of_group" title="easygraph.classes.base.BaseHypergraph.v2e_aggregation_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_aggregation_of_group</span></code></a>(group_name, X[, ...])</p></td>
+<td><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2e_of_group" title="easygraph.classes.base.BaseHypergraph.v2e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_of_group</span></code></a>(group_name, X[, aggr, ...])</p></td>
+<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2e_update" title="easygraph.classes.base.BaseHypergraph.v2e_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_update</span></code></a>(X[, e_weight])</p></td>
+<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2e_update_of_group" title="easygraph.classes.base.BaseHypergraph.v2e_update_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_update_of_group</span></code></a>(group_name, X[, e_weight])</p></td>
+<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2v" title="easygraph.classes.base.BaseHypergraph.v2v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2v</span></code></a>(X[, aggr, v2e_aggr, v2e_weight, ...])</p></td>
+<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph.v2v_of_group" title="easygraph.classes.base.BaseHypergraph.v2v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2v_of_group</span></code></a>(group_name, X[, aggr, ...])</p></td>
+<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.H">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.H" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hypergraph incidence matrix.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.H_e2v">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H_e2v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.H_e2v" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.H_e2v_of_group">
+<span class="sig-name descname"><span class="pre">H_e2v_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.H_e2v_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.H_e2v_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.H_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H_of_group</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.H_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hypergraph incidence matrix in the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.H_v2e">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H_v2e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.H_v2e" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.H_v2e_of_group">
+<span class="sig-name descname"><span class="pre">H_v2e_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.H_v2e_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.H_v2e_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.R_e2v">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">R_e2v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.R_e2v" title="Permalink to this definition"></a></dt>
+<dd><p>Return the weight matrix of connections (hyperedges point to vertices) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.R_e2v_of_group">
+<span class="sig-name descname"><span class="pre">R_e2v_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.R_e2v_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.R_e2v_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return the weight matrix of connections (hyperedges point to vertices) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.R_v2e">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">R_v2e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.R_v2e" title="Permalink to this definition"></a></dt>
+<dd><p>Return the weight matrix of connections (vertices point to hyperedges) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.R_v2e_of_group">
+<span class="sig-name descname"><span class="pre">R_v2e_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.R_v2e_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.R_v2e_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return the weight matrix of connections (vertices point to hyperedges) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.W_e">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">W_e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.W_e" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hyperedge weight matrix of the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.W_e_of_group">
+<span class="sig-name descname"><span class="pre">W_e_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.W_e_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.W_e_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return the hyperedge weight matrix of the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.W_v">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">W_v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.W_v" title="Permalink to this definition"></a></dt>
+<dd><p>Return the vertex weight matrix of the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.add_hyperedges">
+<span class="sig-name descname"><span class="pre">add_hyperedges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_list_v2e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list_e2v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_list_v2e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_list_e2v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'main'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.add_hyperedges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.add_hyperedges" title="Permalink to this definition"></a></dt>
+<dd><p>Add hyperedges to the hypergraph. If the <code class="docutils literal notranslate"><span class="pre">group_name</span></code> is not specified, the hyperedges will be added to the default <code class="docutils literal notranslate"><span class="pre">main</span></code> hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_v</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The number of vertices in the hypergraph.</p></li>
+<li><p><strong>e_list_v2e</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[int],</span> <span class="pre">List[List[int]]]</span></code>) – A list of hyperedges describes how the vertices point to the hyperedges.</p></li>
+<li><p><strong>e_list_e2v</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[int],</span> <span class="pre">List[List[int]]]</span></code>) – A list of hyperedges describes how the hyperedges point to the vertices.</p></li>
+<li><p><strong>w_list_v2e</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[float],</span> <span class="pre">List[List[float]]]</span></code>, optional) – The weights are attached to the connections from vertices to hyperedges, which has the same shape
+as <code class="docutils literal notranslate"><span class="pre">e_list_v2e</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all connections. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>w_list_e2v</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[float],</span> <span class="pre">List[List[float]]]</span></code>, optional) – The weights are attached to the connections from the hyperedges to the vertices, which has the
+same shape to <code class="docutils literal notranslate"><span class="pre">e_list_e2v</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all connections. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">Union[float,</span> <span class="pre">List[float]]</span></code>, optional) – A list of weights for hyperedges. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>merge_op</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The merge operation for the conflicting hyperedges. The possible values are <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, and <code class="docutils literal notranslate"><span class="pre">min</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">mean</span></code>.</p></li>
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – The target hyperedge group to add these hyperedges. Defaults to the <code class="docutils literal notranslate"><span class="pre">main</span></code> hyperedge group.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Remove all hyperedges and caches from the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.clone">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph" title="easygraph.classes.base.BaseHypergraph"><span class="pre">BaseHypergraph</span></a></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.clone" title="Permalink to this definition"></a></dt>
+<dd><p>Return a copy of this type of hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.draw">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw the structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.drop_hyperedges">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop_hyperedges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.drop_hyperedges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.drop_hyperedges" title="Permalink to this definition"></a></dt>
+<dd><p>Randomly drop hyperedges from the hypergraph. This function will return a new hypergraph with non-dropped hyperedges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The drop rate of hyperedges.</p></li>
+<li><p><strong>ord</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The order of dropping edges. Currently, only <code class="docutils literal notranslate"><span class="pre">'uniform'</span></code> is supported. Defaults to <code class="docutils literal notranslate"><span class="pre">uniform</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.drop_hyperedges_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop_hyperedges_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.drop_hyperedges_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.drop_hyperedges_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Randomly drop hyperedges from the specified hyperedge group. This function will return a new hypergraph with non-dropped hyperedges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the hyperedge group.</p></li>
+<li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – The drop rate of hyperedges.</p></li>
+<li><p><strong>ord</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The order of dropping edges. Currently, only <code class="docutils literal notranslate"><span class="pre">'uniform'</span></code> is supported. Defaults to <code class="docutils literal notranslate"><span class="pre">uniform</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e" title="Permalink to this definition"></a></dt>
+<dd><p>Return all hyperedges and weights in the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e2v">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e2v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.e2v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e2v" title="Permalink to this definition"></a></dt>
+<dd><p>Message passing of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>. The combination of <code class="docutils literal notranslate"><span class="pre">e2v_aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">e2v_update</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Hyperedge feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{E}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>e2v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (hyperedges point to vertices). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The vertex weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e2v_aggregation">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e2v_aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.e2v_aggregation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e2v_aggregation" title="Permalink to this definition"></a></dt>
+<dd><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Hyperedge feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{E}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>e2v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (hyperedges point to vertices). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e2v_aggregation_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e2v_aggregation_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.e2v_aggregation_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e2v_aggregation_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The specified hyperedge group.</p></li>
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Hyperedge feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{E}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>e2v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (hyperedges point to vertices). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e2v_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e2v_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.e2v_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e2v_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Message passing of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group. The combination of <code class="docutils literal notranslate"><span class="pre">e2v_aggregation_of_group</span></code> and <code class="docutils literal notranslate"><span class="pre">e2v_update_of_group</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The specified hyperedge group.</p></li>
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Hyperedge feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{E}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>e2v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (hyperedges point to vertices). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The vertex weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e2v_update">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e2v_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.e2v_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e2v_update" title="Permalink to this definition"></a></dt>
+<dd><p>Message update step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The vertex weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e2v_update_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e2v_update_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.e2v_update_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e2v_update_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Message update step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The specified hyperedge group.</p></li>
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The vertex weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.e_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return all hyperedges and weights in the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.e_property">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e_property</span></span><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.e_property" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.from_state_dict">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_state_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.from_state_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.from_state_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Load the EasyGraph’s hypergraph structure from the state dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state_dict</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) – The state dict to load the EasyGraph’s hypergraph.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.group_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">group_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.group_names" title="Permalink to this definition"></a></dt>
+<dd><p>Return the names of hyperedge groups in the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.load">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.load" title="Permalink to this definition"></a></dt>
+<dd><p>Load the EasyGraph’s hypergraph structure from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The file path to load the DEasyGraph’s hypergraph structure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.num_e">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.num_e" title="Permalink to this definition"></a></dt>
+<dd><p>Return the number of hyperedges in the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.num_e_of_group">
+<span class="sig-name descname"><span class="pre">num_e_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.num_e_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.num_e_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Return the number of hyperedges in the specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.num_groups">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_groups</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.num_groups" title="Permalink to this definition"></a></dt>
+<dd><p>Return the number of hyperedge groups in the hypergraph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.num_v">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.num_v" title="Permalink to this definition"></a></dt>
+<dd><p>Return the number of vertices in the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.remove_hyperedges">
+<span class="sig-name descname"><span class="pre">remove_hyperedges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_list_v2e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list_e2v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.remove_hyperedges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.remove_hyperedges" title="Permalink to this definition"></a></dt>
+<dd><p>Remove the specified hyperedges from the hypergraph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>e_list_v2e</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[int],</span> <span class="pre">List[List[int]]]</span></code>) – A list of hyperedges describes how the vertices point to the hyperedges.</p></li>
+<li><p><strong>e_list_e2v</strong> (<code class="docutils literal notranslate"><span class="pre">Union[List[int],</span> <span class="pre">List[List[int]]]</span></code>) – A list of hyperedges describes how the hyperedges point to the vertices.</p></li>
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – Remove these hyperedges from the specified hyperedge group. If not specified, the function will
+remove those hyperedges from all hyperedge groups. Defaults to the <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.save">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.save" title="Permalink to this definition"></a></dt>
+<dd><p>Save the EasyGraph’s hypergraph structure to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The file_path to store the EasyGraph’s hypergraph structure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.smoothing">
+<span class="sig-name descname"><span class="pre">smoothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lamb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.smoothing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.smoothing" title="Permalink to this definition"></a></dt>
+<dd><p>Spectral-based smoothing.</p>
+<div class="math notranslate nohighlight">
+\[X_{smoothed} = X + \lambda \mathcal{L} X\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – The vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>L</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – The Laplacian matrix with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p></li>
+<li><p><strong>lamb</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – <span class="math notranslate nohighlight">\(\lambda\)</span>, the strength of smoothing.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.state_dict">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state_dict</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.state_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Get the state dict of the hypergraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#easygraph.classes.base.BaseHypergraph" title="easygraph.classes.base.BaseHypergraph"><span class="pre">BaseHypergraph</span></a></span></span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.to" title="Permalink to this definition"></a></dt>
+<dd><p>Move the hypergraph to the specified device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>) – The device to store the hypergraph.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v" title="Permalink to this definition"></a></dt>
+<dd><p>Return the list of vertices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2e">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2e</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2e"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2e" title="Permalink to this definition"></a></dt>
+<dd><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>. The combination of <code class="docutils literal notranslate"><span class="pre">v2e_aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">v2e_update</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>v2e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (vertices point to hyepredges). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The hyperedge weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2e_aggregation">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2e_aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2e_aggregation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2e_aggregation" title="Permalink to this definition"></a></dt>
+<dd><p>Message aggretation step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>v2e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (vertices point to hyepredges). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2e_aggregation_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2e_aggregation_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2e_aggregation_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2e_aggregation_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The specified hyperedge group.</p></li>
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>v2e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (vertices point to hyepredges). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2e_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2e_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2e_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2e_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group. The combination of <code class="docutils literal notranslate"><span class="pre">e2v_aggregation_of_group</span></code> and <code class="docutils literal notranslate"><span class="pre">e2v_update_of_group</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The specified hyperedge group.</p></li>
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>.</p></li>
+<li><p><strong>v2e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (vertices point to hyepredges). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The hyperedge weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2e_update">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2e_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2e_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2e_update" title="Permalink to this definition"></a></dt>
+<dd><p>Message update step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Hyperedge feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{E}|, C)\)</span>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The hyperedge weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2e_update_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2e_update_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2e_update_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2e_update_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Message update step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The specified hyperedge group.</p></li>
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Hyperedge feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{E}|, C)\)</span>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The hyperedge weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2v">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2v" title="Permalink to this definition"></a></dt>
+<dd><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">vertices</span></code>. The combination of <code class="docutils literal notranslate"><span class="pre">v2e</span></code> and <code class="docutils literal notranslate"><span class="pre">e2v</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>. If specified, this <code class="docutils literal notranslate"><span class="pre">aggr</span></code> will be used to both <code class="docutils literal notranslate"><span class="pre">v2e</span></code> and <code class="docutils literal notranslate"><span class="pre">e2v</span></code>.</p></li>
+<li><p><strong>v2e_aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – The aggregation method for hyperedges to vertices. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>. If specified, it will override the <code class="docutils literal notranslate"><span class="pre">aggr</span></code> in <code class="docutils literal notranslate"><span class="pre">e2v</span></code>.</p></li>
+<li><p><strong>v2e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (vertices point to hyepredges). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The hyperedge weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e2v_aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – The aggregation method for vertices to hyperedges. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>. If specified, it will override the <code class="docutils literal notranslate"><span class="pre">aggr</span></code> in <code class="docutils literal notranslate"><span class="pre">v2e</span></code>.</p></li>
+<li><p><strong>e2v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (hyperedges point to vertices). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The vertex weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v2v_of_group">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v2v_of_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_aggr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#BaseHypergraph.v2v_of_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v2v_of_group" title="Permalink to this definition"></a></dt>
+<dd><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group. The combination of <code class="docutils literal notranslate"><span class="pre">v2e_of_group</span></code> and <code class="docutils literal notranslate"><span class="pre">e2v_of_group</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The specified hyperedge group.</p></li>
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – Vertex feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The aggregation method. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>. If specified, this <code class="docutils literal notranslate"><span class="pre">aggr</span></code> will be used to both <code class="docutils literal notranslate"><span class="pre">v2e_of_group</span></code> and <code class="docutils literal notranslate"><span class="pre">e2v_of_group</span></code>.</p></li>
+<li><p><strong>v2e_aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – The aggregation method for hyperedges to vertices. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>. If specified, it will override the <code class="docutils literal notranslate"><span class="pre">aggr</span></code> in <code class="docutils literal notranslate"><span class="pre">e2v_of_group</span></code>.</p></li>
+<li><p><strong>v2e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (vertices point to hyepredges). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The hyperedge weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>e2v_aggr</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – The aggregation method for vertices to hyperedges. Can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> and <code class="docutils literal notranslate"><span class="pre">'softmax_then_sum'</span></code>. If specified, it will override the <code class="docutils literal notranslate"><span class="pre">aggr</span></code> in <code class="docutils literal notranslate"><span class="pre">v2e_of_group</span></code>.</p></li>
+<li><p><strong>e2v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The weight vector attached to connections (hyperedges point to vertices). If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>v_weight</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional) – The vertex weight vector. If not specified, the function will use the weights specified in hypergraph construction. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v_property">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v_property</span></span><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v_property" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.v_weight">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v_weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.v_weight" title="Permalink to this definition"></a></dt>
+<dd><p>Return the vertex weights of the hypergraph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.classes.base.BaseHypergraph.vars_for_DL">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vars_for_DL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.base.BaseHypergraph.vars_for_DL" title="Permalink to this definition"></a></dt>
+<dd><p>Return a name list of available variables for deep learning in this type of hypergraph.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.classes.base.load_structure">
+<span class="sig-prename descclassname"><span class="pre">easygraph.classes.base.</span></span><span class="sig-name descname"><span class="pre">load_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/base.html#load_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.base.load_structure" title="Permalink to this definition"></a></dt>
+<dd><p>Load a EasyGraph’s high-order network structure from a file. The supported structure <code class="docutils literal notranslate"><span class="pre">Hypergraph</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<code class="docutils literal notranslate"><span class="pre">Union[str,</span> <span class="pre">Path]</span></code>) – The file path to load the EasyGraph’s structure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.classes.html" class="btn btn-neutral float-left" title="easygraph.classes package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.classes.directed_graph.html" class="btn btn-neutral float-right" title="easygraph.classes.directed_graph module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

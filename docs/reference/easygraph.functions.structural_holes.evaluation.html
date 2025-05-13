@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.functions.structural_holes.evaluation module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.functions.structural_holes.maxBlock module" href="easygraph.functions.structural_holes.maxBlock.html" />
+    <link rel="prev" title="easygraph.functions.structural_holes.SHII_metric module" href="easygraph.functions.structural_holes.SHII_metric.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.structural_holes.html">easygraph.functions.structural_holes package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.structural_holes.evaluation module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.functions.structural_holes.evaluation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.functions.structural_holes.evaluation">
+<span id="easygraph-functions-structural-holes-evaluation-module"></span><span id="module-easygraph-functions-structural-holes-evaluation"></span><h1>easygraph.functions.structural_holes.evaluation module<a class="headerlink" href="#module-easygraph.functions.structural_holes.evaluation" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.structural_holes.evaluation.constraint">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.evaluation.</span></span><span class="sig-name descname"><span class="pre">constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/structural_holes/evaluation.html#constraint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.evaluation.constraint" title="Permalink to this definition"></a></dt>
+<dd><p>Burt’s metric - Constraint.
+:param G:
+:type G: easygraph.Graph
+:param nodes: The nodes you want to calculate. If <em>None</em>, all nodes in <cite>G</cite> will be calculated.
+:type nodes: list of nodes or None, optional (default : None)
+:param weight: The key for edge weight. If <em>None</em>, <cite>G</cite> will be regarded as unweighted graph.
+:type weight: string or None, optional (default : None)
+:param workers: The number of workers calculating (default: None).</p>
+<blockquote>
+<div><p>None if not using only one worker.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>constraint</strong> – The Constraint of node in <cite>nodes</cite>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="c1"># Compute the Constraint of some nodes. The default is None for all nodes in G.</span>
+<span class="gp">... </span>           <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="c1"># The weight key of the graph. The default is None for unweighted graph.</span>
+<span class="gp">... </span>           <span class="n">n_workers</span><span class="o">=</span><span class="mi">4</span> <span class="c1"># Parallel computing on four workers. The default is None for serial computing.</span>
+<span class="gp">... </span>           <span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rc4d725e23bab-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Burt R S. Structural holes: The social structure of competition[M].
+Harvard university press, 2009.</p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.structural_holes.evaluation.effective_size">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.evaluation.</span></span><span class="sig-name descname"><span class="pre">effective_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/structural_holes/evaluation.html#effective_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.evaluation.effective_size" title="Permalink to this definition"></a></dt>
+<dd><p>Burt’s metric - Effective Size.
+:param G:
+:type G: easygraph.Graph or easygraph.DiGraph
+:param nodes: The nodes you want to calculate. If <em>None</em>, all nodes in <cite>G</cite> will be calculated.
+:type nodes: list of nodes or None, optional (default : None)
+:param weight: The key for edge weight. If <em>None</em>, <cite>G</cite> will be regarded as unweighted graph.
+:type weight: string or None, optional (default : None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>effective_size</strong> – The Effective Size of node in <cite>nodes</cite>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">effective_size</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="c1"># Compute the Effective Size of some nodes. The default is None for all nodes in G.</span>
+<span class="gp">... </span>               <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span> <span class="c1"># The weight key of the graph. The default is None for unweighted graph.</span>
+<span class="gp">... </span>               <span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="raf62db59924e-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Burt R S. Structural holes: The social structure of competition[M].
+Harvard university press, 2009.</p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.structural_holes.evaluation.efficiency">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.evaluation.</span></span><span class="sig-name descname"><span class="pre">efficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/structural_holes/evaluation.html#efficiency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.evaluation.efficiency" title="Permalink to this definition"></a></dt>
+<dd><p>Burt’s metric - Efficiency.
+:param G:
+:type G: easygraph.Graph
+:param nodes: The nodes you want to calculate. If <em>None</em>, all nodes in <cite>G</cite> will be calculated.
+:type nodes: list of nodes or None, optional (default : None)
+:param weight: The key for edge weight. If <em>None</em>, <cite>G</cite> will be regarded as unweighted graph.
+:type weight: string or None, optional (default : None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>efficiency</strong> – The Efficiency of node in <cite>nodes</cite>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">efficiency</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="c1"># Compute the Efficiency of some nodes. The default is None for all nodes in G.</span>
+<span class="gp">... </span>           <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span> <span class="c1"># The weight key of the graph. The default is None for unweighted graph.</span>
+<span class="gp">... </span>           <span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r686a4ca61a8e-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Burt R S. Structural holes: The social structure of competition[M].
+Harvard university press, 2009.</p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="easygraph.functions.structural_holes.evaluation.hierarchy">
+<span class="sig-prename descclassname"><span class="pre">easygraph.functions.structural_holes.evaluation.</span></span><span class="sig-name descname"><span class="pre">hierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/structural_holes/evaluation.html#hierarchy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.structural_holes.evaluation.hierarchy" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the hierarchy of nodes in the graph
+:param G:
+:type G: graph
+:param nodes:
+:type nodes: dict, optional (default: None)
+:param weight:
+:type weight: dict, optional (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hierarchy</strong> – the hierarchy of nodes in the graph</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Returns the hierarchy of nodes in the graph G
+&gt;&gt;&gt; hierarchy(G)
+Reference
+———
+<a class="reference external" href="https://m.book118.com/html/2019/0318/5320024122002021.shtm">https://m.book118.com/html/2019/0318/5320024122002021.shtm</a></p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.functions.structural_holes.SHII_metric.html" class="btn btn-neutral float-left" title="easygraph.functions.structural_holes.SHII_metric module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.functions.structural_holes.maxBlock.html" class="btn btn-neutral float-right" title="easygraph.functions.structural_holes.maxBlock module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

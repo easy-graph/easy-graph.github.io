@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.utils.mapped_queue module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.utils.misc module" href="easygraph.utils.misc.html" />
+    <link rel="prev" title="easygraph.utils.logging module" href="easygraph.utils.logging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.utils.html">easygraph.utils package</a></li>
+      <li class="breadcrumb-item active">easygraph.utils.mapped_queue module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.utils.mapped_queue.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.utils.mapped_queue">
+<span id="easygraph-utils-mapped-queue-module"></span><span id="module-easygraph-utils-mapped-queue"></span><h1>easygraph.utils.mapped_queue module<a class="headerlink" href="#module-easygraph.utils.mapped_queue" title="Permalink to this heading"></a></h1>
+<p>Priority queue class with updatable priorities.
+Codes from NetworkX - <a class="reference external" href="http://networkx.github.io/">http://networkx.github.io/</a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.utils.mapped_queue.MappedQueue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.utils.mapped_queue.</span></span><span class="sig-name descname"><span class="pre">MappedQueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/utils/mapped_queue.html#MappedQueue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.utils.mapped_queue.MappedQueue" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The MappedQueue class implements an efficient minimum heap. The
+smallest element can be popped in O(1) time, new elements can be pushed
+in O(log n) time, and any element can be removed or updated in O(log n)
+time. The queue cannot contain duplicate elements and an attempt to push an
+element already in the queue will have no effect.</p>
+<p>MappedQueue complements the heapq package from the python standard
+library. While MappedQueue is designed for maximum compatibility with
+heapq, it has slightly different functionality.</p>
+<p class="rubric">Examples</p>
+<p>A <cite>MappedQueue</cite> can be created empty or optionally given an array of
+initial elements. Calling <cite>push()</cite> will add an element and calling <cite>pop()</cite>
+will remove and return the smallest element.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">MappedQueue</span><span class="p">([</span><span class="mi">916</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">4609</span><span class="p">,</span> <span class="mi">493</span><span class="p">,</span> <span class="mi">237</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1310</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">h</span><span class="p">))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">[50, 237, 493, 916, 1310, 4609]</span>
+</pre></div>
+</div>
+<p>Elements can also be updated or removed from anywhere in the queue.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">MappedQueue</span><span class="p">([</span><span class="mi">916</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">4609</span><span class="p">,</span> <span class="mi">493</span><span class="p">,</span> <span class="mi">237</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">493</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">237</span><span class="p">,</span> <span class="mi">1117</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">h</span><span class="p">))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">[50, 916, 1117, 4609]</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rb1c842eb63c6-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Cormen, T. H., Leiserson, C. E., Rivest, R. L., &amp; Stein, C. (2001).
+Introduction to algorithms second edition.</p>
+</div>
+<div class="citation" id="rb1c842eb63c6-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Knuth, D. E. (1997). The art of computer programming (Vol. 3).
+Pearson Education.</p>
+</div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.utils.mapped_queue.MappedQueue.pop" title="easygraph.utils.mapped_queue.MappedQueue.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>()</p></td>
+<td><p>Remove and return the smallest element in the queue.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.utils.mapped_queue.MappedQueue.push" title="easygraph.utils.mapped_queue.MappedQueue.push"><code class="xref py py-obj docutils literal notranslate"><span class="pre">push</span></code></a>(elt)</p></td>
+<td><p>Add an element to the queue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.utils.mapped_queue.MappedQueue.remove" title="easygraph.utils.mapped_queue.MappedQueue.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>(elt)</p></td>
+<td><p>Remove an element from the queue.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.utils.mapped_queue.MappedQueue.update" title="easygraph.utils.mapped_queue.MappedQueue.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(elt, new)</p></td>
+<td><p>Replace an element in the queue with a new one.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.utils.mapped_queue.MappedQueue.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/utils/mapped_queue.html#MappedQueue.pop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.utils.mapped_queue.MappedQueue.pop" title="Permalink to this definition"></a></dt>
+<dd><p>Remove and return the smallest element in the queue.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.utils.mapped_queue.MappedQueue.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/utils/mapped_queue.html#MappedQueue.push"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.utils.mapped_queue.MappedQueue.push" title="Permalink to this definition"></a></dt>
+<dd><p>Add an element to the queue.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.utils.mapped_queue.MappedQueue.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/utils/mapped_queue.html#MappedQueue.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.utils.mapped_queue.MappedQueue.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove an element from the queue.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.utils.mapped_queue.MappedQueue.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/utils/mapped_queue.html#MappedQueue.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.utils.mapped_queue.MappedQueue.update" title="Permalink to this definition"></a></dt>
+<dd><p>Replace an element in the queue with a new one.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.utils.logging.html" class="btn btn-neutral float-left" title="easygraph.utils.logging module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.utils.misc.html" class="btn btn-neutral float-right" title="easygraph.utils.misc module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

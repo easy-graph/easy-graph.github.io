@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.datasets.hypergraph.hypergraph_dataset_base module &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="easygraph.datasets.hypergraph.loadDeepSetDatasets module" href="easygraph.datasets.hypergraph.loadDeepSetDatasets.html" />
+    <link rel="prev" title="easygraph.datasets.hypergraph.cooking_200 module" href="easygraph.datasets.hypergraph.cooking_200.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.datasets.html">easygraph.datasets package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.datasets.hypergraph.html">easygraph.datasets.hypergraph package</a></li>
+      <li class="breadcrumb-item active">easygraph.datasets.hypergraph.hypergraph_dataset_base module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/easygraph.datasets.hypergraph.hypergraph_dataset_base.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-easygraph.datasets.hypergraph.hypergraph_dataset_base">
+<span id="easygraph-datasets-hypergraph-hypergraph-dataset-base-module"></span><span id="module-easygraph-datasets-hypergraph-hypergraph-dataset-base"></span><h1>easygraph.datasets.hypergraph.hypergraph_dataset_base module<a class="headerlink" href="#module-easygraph.datasets.hypergraph.hypergraph_dataset_base" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.datasets.hypergraph.hypergraph_dataset_base.</span></span><span class="sig-name descname"><span class="pre">BaseData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/datasets/hypergraph/hypergraph_dataset_base.html#BaseData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Base Class of all datasets.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;upon&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;part1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;md5&#39;</span><span class="p">:</span> <span class="s1">&#39;xxxxx&#39;</span><span class="p">,},</span>
+            <span class="p">{</span><span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;part2.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;md5&#39;</span><span class="p">:</span> <span class="s1">&#39;xxxxx&#39;</span><span class="p">,},</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;loader&#39;</span><span class="p">:</span> <span class="n">loader_function</span><span class="p">,</span>
+        <span class="s1">&#39;preprocess&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">datapipe1</span><span class="p">,</span> <span class="n">datapipe2</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.content" title="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.content"><code class="xref py py-obj docutils literal notranslate"><span class="pre">content</span></code></a></dt><dd><p>Return the content of the dataset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.fetch_files" title="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.fetch_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_files</span></code></a>(files)</p></td>
+<td><p>Download and check the files if they are not exist.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.needs_to_load" title="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.needs_to_load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needs_to_load</span></code></a>(item_name)</p></td>
+<td><p>Return whether the <code class="docutils literal notranslate"><span class="pre">item_name</span></code> of the dataset needs to be loaded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.raw" title="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.raw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw</span></code></a>(key)</p></td>
+<td><p>Return the <code class="docutils literal notranslate"><span class="pre">key</span></code> of the dataset with un-preprocessed format.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.content">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">content</span></span><a class="headerlink" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.content" title="Permalink to this definition"></a></dt>
+<dd><p>Return the content of the dataset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.fetch_files">
+<span class="sig-name descname"><span class="pre">fetch_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/datasets/hypergraph/hypergraph_dataset_base.html#BaseData.fetch_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.fetch_files" title="Permalink to this definition"></a></dt>
+<dd><p>Download and check the files if they are not exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>files</strong> (<code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">str]]</span></code>) – The files to download, each element
+in the list is a dict with at lease two keys: <code class="docutils literal notranslate"><span class="pre">filename</span></code> and <code class="docutils literal notranslate"><span class="pre">md5</span></code>.
+If extra key <code class="docutils literal notranslate"><span class="pre">bk_url</span></code> is provided, it will be used to download the
+file from the backup url.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.needs_to_load">
+<span class="sig-name descname"><span class="pre">needs_to_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/easygraph/datasets/hypergraph/hypergraph_dataset_base.html#BaseData.needs_to_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.needs_to_load" title="Permalink to this definition"></a></dt>
+<dd><p>Return whether the <code class="docutils literal notranslate"><span class="pre">item_name</span></code> of the dataset needs to be loaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the item in the dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.raw">
+<span class="sig-name descname"><span class="pre">raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/easygraph/datasets/hypergraph/hypergraph_dataset_base.html#BaseData.raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.datasets.hypergraph.hypergraph_dataset_base.BaseData.raw" title="Permalink to this definition"></a></dt>
+<dd><p>Return the <code class="docutils literal notranslate"><span class="pre">key</span></code> of the dataset with un-preprocessed format.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easygraph.datasets.hypergraph.cooking_200.html" class="btn btn-neutral float-left" title="easygraph.datasets.hypergraph.cooking_200 module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.datasets.hypergraph.loadDeepSetDatasets.html" class="btn btn-neutral float-right" title="easygraph.datasets.hypergraph.loadDeepSetDatasets module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
