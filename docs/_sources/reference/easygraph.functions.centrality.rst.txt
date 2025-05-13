@@ -1,64 +1,21 @@
+.. _module_easygraph.functions.centrality:
+
 easygraph.functions.centrality package
 ======================================
 
 Submodules
 ----------
 
-easygraph.functions.centrality.betweenness module
--------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.centrality.betweenness
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.centrality.closeness module
------------------------------------------------
-
-.. automodule:: easygraph.functions.centrality.closeness
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.centrality.degree module
---------------------------------------------
-
-.. automodule:: easygraph.functions.centrality.degree
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.centrality.ego\_betweenness module
-------------------------------------------------------
-
-.. automodule:: easygraph.functions.centrality.ego_betweenness
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.centrality.flowbetweenness module
------------------------------------------------------
-
-.. automodule:: easygraph.functions.centrality.flowbetweenness
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.centrality.laplacian module
------------------------------------------------
-
-.. automodule:: easygraph.functions.centrality.laplacian
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.centrality.pagerank module
-----------------------------------------------
-
-.. automodule:: easygraph.functions.centrality.pagerank
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.centrality.betweenness
+   easygraph.functions.centrality.closeness
+   easygraph.functions.centrality.degree
+   easygraph.functions.centrality.ego_betweenness
+   easygraph.functions.centrality.flowbetweenness
+   easygraph.functions.centrality.laplacian
+   easygraph.functions.centrality.pagerank
 
 Module contents
 ---------------

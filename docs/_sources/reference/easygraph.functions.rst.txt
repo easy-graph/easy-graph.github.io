@@ -1,3 +1,5 @@
+.. _module_easygraph.functions:
+
 easygraph.functions package
 ===========================
 
@@ -22,13 +24,10 @@ Subpackages
 Submodules
 ----------
 
-easygraph.functions.isolate module
-----------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.isolate
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.isolate
 
 Module contents
 ---------------

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.ml_metrics.classification &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../ml_metrics.html">easygraph.ml_metrics</a></li>
+      <li class="breadcrumb-item active">easygraph.ml_metrics.classification</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for easygraph.ml_metrics.classification</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">BaseEvaluator</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;available_classification_metrics&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;f1_score&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;confusion_matrix&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;VertexClassificationEvaluator&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="available_classification_metrics"><a class="viewcode-back" href="../../../reference/easygraph.ml_metrics.html#easygraph.ml_metrics.classification.available_classification_metrics">[docs]</a><span class="k">def</span> <span class="nf">available_classification_metrics</span><span class="p">():</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return available ml_metrics for the classification task.</span>
+
+<span class="sd">    The available ml_metrics are: ``accuracy``, ``f1_score``, ``confusion_matrix``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="s2">&quot;f1_score&quot;</span><span class="p">,</span> <span class="s2">&quot;confusion_matrix&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_format_inputs</span><span class="p">(</span><span class="n">y_true</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Format the inputs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ``y_true`` (``torch.LongTensor``): The ground truth labels. Size :math:`(N_{samples}, )`.</span>
+<span class="sd">        ``y_pred`` (``torch.Tensor``): The predicted labels. Size :math:`(N_{samples}, N_{class})` or :math:`(N_{samples}, )`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">y_true</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;y_true must be 1D torch.LongTensor.&quot;</span>
+    <span class="k">assert</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;y_pred must be 1D or 2D torch.Tensor.&quot;</span>
+    <span class="n">y_true</span> <span class="o">=</span> <span class="n">y_true</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">y_true</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;y_true and y_pred must have the same length.&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="accuracy"><a class="viewcode-back" href="../../../reference/easygraph.ml_metrics.html#easygraph.ml_metrics.classification.accuracy">[docs]</a><span class="k">def</span> <span class="nf">accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the accuracy score for the classification task.</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \text{Accuracy} = \frac{1}{N} \sum_{i=1}^{N} \mathcal{I}(y_i, \hat{y}_i),</span>
+
+<span class="sd">    where :math:`\mathcal{I}(\cdot, \cdot)` is the indicator function, which is 1 if the two inputs are equal, and 0 otherwise.</span>
+<span class="sd">    :math:`y_i` and :math:`\hat{y}_i` are the ground truth and predicted labels for the i-th sample.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ``y_true`` (``torch.LongTensor``): The ground truth labels. Size :math:`(N_{samples}, )`.</span>
+<span class="sd">        ``y_pred`` (``torch.Tensor``): The predicted labels. Size :math:`(N_{samples}, N_{class})` or :math:`(N_{samples}, )`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import torch</span>
+<span class="sd">        &gt;&gt;&gt; import easygraph.ml_metrics as dm</span>
+<span class="sd">        &gt;&gt;&gt; y_true = torch.tensor([3, 2, 4])</span>
+<span class="sd">        &gt;&gt;&gt; y_pred = torch.tensor([</span>
+<span class="sd">                [0.2, 0.3, 0.5, 0.4, 0.3],</span>
+<span class="sd">                [0.8, 0.2, 0.3, 0.5, 0.4],</span>
+<span class="sd">                [0.2, 0.4, 0.5, 0.2, 0.8],</span>
+<span class="sd">            ])</span>
+<span class="sd">        &gt;&gt;&gt; dm.classification.accuracy(y_true, y_pred)</span>
+<span class="sd">        0.3333333432674408</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">_format_inputs</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">y_true</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="f1_score"><a class="viewcode-back" href="../../../reference/easygraph.ml_metrics.html#easygraph.ml_metrics.classification.f1_score">[docs]</a><span class="k">def</span> <span class="nf">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">average</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;macro&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the F1 score for the classification task.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ``y_true`` (``torch.LongTensor``): The ground truth labels. Size :math:`(N_{samples}, )`.</span>
+<span class="sd">        ``y_pred`` (``torch.Tensor``): The predicted labels. Size :math:`(N_{samples}, N_{class})` or :math:`(N_{samples}, )`.</span>
+<span class="sd">        ``average`` (``str``): The average method. Must be one of &quot;macro&quot;, &quot;micro&quot;, &quot;weighted&quot;.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import torch</span>
+<span class="sd">        &gt;&gt;&gt; import easygraph.ml_metrics as dm</span>
+<span class="sd">        &gt;&gt;&gt; y_true = torch.tensor([3, 2, 4, 0])</span>
+<span class="sd">        &gt;&gt;&gt; y_pred = torch.tensor([</span>
+<span class="sd">                [0.2, 0.3, 0.5, 0.4, 0.3],</span>
+<span class="sd">                [0.8, 0.2, 0.3, 0.5, 0.4],</span>
+<span class="sd">                [0.2, 0.4, 0.5, 0.2, 0.8],</span>
+<span class="sd">                [0.8, 0.4, 0.5, 0.2, 0.8]</span>
+<span class="sd">            ])</span>
+<span class="sd">        &gt;&gt;&gt; dm.classification.f1_score(y_true, y_pred, &quot;macro&quot;)</span>
+<span class="sd">        0.41666666666666663</span>
+<span class="sd">        &gt;&gt;&gt; dm.classification.f1_score(y_true, y_pred, &quot;micro&quot;)</span>
+<span class="sd">        0.5</span>
+<span class="sd">        &gt;&gt;&gt; dm.classification.f1_score(y_true, y_pred, &quot;weighted&quot;)</span>
+<span class="sd">        0.41666666666666663</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">_format_inputs</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sm</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="n">average</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="confusion_matrix"><a class="viewcode-back" href="../../../reference/easygraph.ml_metrics.html#easygraph.ml_metrics.classification.confusion_matrix">[docs]</a><span class="k">def</span> <span class="nf">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the confusion matrix for the classification task.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ``y_true`` (``torch.LongTensor``): The ground truth labels. Size :math:`(N_{samples}, )`.</span>
+<span class="sd">        ``y_pred`` (``torch.Tensor``): The predicted labels. Size :math:`(N_{samples}, N_{class})` or :math:`(N_{samples}, )`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import torch</span>
+<span class="sd">        &gt;&gt;&gt; import easygraph.ml_metrics as dm</span>
+<span class="sd">        &gt;&gt;&gt; y_true = torch.tensor([3, 2, 4, 0])</span>
+<span class="sd">        &gt;&gt;&gt; y_pred = torch.tensor([</span>
+<span class="sd">                [0.2, 0.3, 0.5, 0.4, 0.3],</span>
+<span class="sd">                [0.8, 0.2, 0.3, 0.5, 0.4],</span>
+<span class="sd">                [0.2, 0.4, 0.5, 0.2, 0.8],</span>
+<span class="sd">                [0.8, 0.4, 0.5, 0.2, 0.8]</span>
+<span class="sd">            ])</span>
+<span class="sd">        &gt;&gt;&gt; dm.classification.confusion_matrix(y_true, y_pred)</span>
+<span class="sd">        array([[1, 0, 0, 0],</span>
+<span class="sd">               [1, 0, 0, 0],</span>
+<span class="sd">               [0, 1, 0, 0],</span>
+<span class="sd">               [0, 0, 0, 1]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">_format_inputs</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sm</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span></div>
+
+
+<span class="c1"># Vertex Classification Evaluator</span>
+<div class="viewcode-block" id="VertexClassificationEvaluator"><a class="viewcode-back" href="../../../reference/easygraph.ml_metrics.html#easygraph.ml_metrics.classification.VertexClassificationEvaluator">[docs]</a><span class="k">class</span> <span class="nc">VertexClassificationEvaluator</span><span class="p">(</span><span class="n">BaseEvaluator</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the metric evaluator for vertex classification task. The supported ml_metrics includes: ``accuracy``, ``f1_score``, ``confusion_matrix``.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ``metric_configs`` (``List[Union[str, Dict[str, dict]]]``): The metric configurations. The key is the metric name and the value is the metric parameters.</span>
+<span class="sd">        ``validate_index`` (``int``): The specified metric index used for validation. Defaults to ``0``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">metric_configs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]]],</span>
+        <span class="n">validate_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;classification&quot;</span><span class="p">,</span> <span class="n">metric_configs</span><span class="p">,</span> <span class="n">validate_index</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VertexClassificationEvaluator.validate"><a class="viewcode-back" href="../../../reference/easygraph.ml_metrics.html#easygraph.ml_metrics.classification.VertexClassificationEvaluator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the result of the evaluation on the specified ``validate_index``-th metric.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``y_true`` (``torch.LongTensor``): The ground truth labels. Size :math:`(N_{samples}, )`.</span>
+<span class="sd">            ``y_pred`` (``torch.Tensor``): The predicted labels. Size :math:`(N_{samples}, N_{class})` or :math:`(N_{samples}, )`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VertexClassificationEvaluator.test"><a class="viewcode-back" href="../../../reference/easygraph.ml_metrics.html#easygraph.ml_metrics.classification.VertexClassificationEvaluator.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return results of the evaluation on all the ml_metrics in ``metric_configs``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``y_true`` (``torch.LongTensor``): The ground truth labels. Size :math:`(N_{samples}, )`.</span>
+<span class="sd">            ``y_pred`` (``torch.Tensor``): The predicted labels. Size :math:`(N_{samples}, N_{class})` or :math:`(N_{samples}, )`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

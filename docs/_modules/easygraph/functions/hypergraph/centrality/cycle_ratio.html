@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.hypergraph.centrality.cycle_ratio &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.hypergraph.centrality.cycle_ratio &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
         <script src="../../../../../_static/jquery.js"></script>
-        <script src="../../../../../_static/underscore.js"></script>
         <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
         <script src="../../../../../_static/doctools.js"></script>
         <script src="../../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.hypergraph.centrality.cycle_ratio</li>
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.hypergraph.centrality.cycle_ratio</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,10 +81,10 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.hypergraph.centrality.cycle_ratio</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span></span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -94,11 +96,7 @@
 <span class="p">]</span>
 
 
-<span class="n">SmallestCycles</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="n">CycleRatio</span> <span class="o">=</span> <span class="p">{}</span>
-
-
-<div class="viewcode-block" id="my_all_shortest_paths"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.my_all_shortest_paths">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">my_all_shortest_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<div class="viewcode-block" id="my_all_shortest_paths"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.my_all_shortest_paths">[docs]</a><span class="k">def</span> <span class="nf">my_all_shortest_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">predecessor</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphNoPath</span><span class="p">(</span>
@@ -129,7 +127,7 @@
             <span class="n">top</span> <span class="o">-=</span> <span class="mi">1</span></div>
 
 
-<div class="viewcode-block" id="getandJudgeSimpleCircle"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.getandJudgeSimpleCircle">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">getandJudgeSimpleCircle</span><span class="p">(</span><span class="n">objectList</span><span class="p">):</span>  <span class="c1">#</span>
+<div class="viewcode-block" id="getandJudgeSimpleCircle"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.getandJudgeSimpleCircle">[docs]</a><span class="k">def</span> <span class="nf">getandJudgeSimpleCircle</span><span class="p">(</span><span class="n">objectList</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>  <span class="c1"># 这里添加 G 作为参数</span>
     <span class="n">numEdge</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">eleArr</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">objectList</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">eleArr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eleArr</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
@@ -140,9 +138,8 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<div class="viewcode-block" id="getSmallestCycles"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.getSmallestCycles">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">getSmallestCycles</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">NodeGirth</span><span class="p">,</span> <span class="n">Coreness</span><span class="p">,</span> <span class="n">DEF_IMPOSSLEN</span><span class="p">):</span>
+<div class="viewcode-block" id="getSmallestCycles"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.getSmallestCycles">[docs]</a><span class="k">def</span> <span class="nf">getSmallestCycles</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">NodeGirth</span><span class="p">,</span> <span class="n">Coreness</span><span class="p">,</span> <span class="n">DEF_IMPOSSLEN</span><span class="p">):</span>
     <span class="n">NodeList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-    <span class="c1"># print(NodeList)</span>
     <span class="n">NodeList</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
     <span class="c1"># setp 1</span>
     <span class="n">curCyc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -161,7 +158,7 @@
                     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span> <span class="n">ix</span><span class="p">):</span>
                         <span class="n">curCyc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span>
                         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span> <span class="n">jx</span><span class="p">):</span>
-                            <span class="n">SmallestCycles</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">curCyc</span><span class="p">))</span>
+                            <span class="k">yield</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">curCyc</span><span class="p">)</span>  <span class="c1"># 这里改为 yield</span>
                             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">curCyc</span><span class="p">:</span>
                                 <span class="n">NodeGirth</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
                         <span class="n">curCyc</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -196,23 +193,21 @@
                         <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">my_all_shortest_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nod</span><span class="p">,</span> <span class="n">nei</span><span class="p">):</span>
                             <span class="n">lenPath</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
                             <span class="n">path</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-                            <span class="n">SmallestCycles</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+                            <span class="k">yield</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># 这里改为 yield</span>
                             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
                                 <span class="k">if</span> <span class="n">NodeGirth</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">lenPath</span><span class="p">:</span>
                                     <span class="n">NodeGirth</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lenPath</span>
-                    <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">nod</span><span class="p">,</span> <span class="n">nei</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">SmallestCycles</span></div>
+                    <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">nod</span><span class="p">,</span> <span class="n">nei</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="StatisticsAndCalculateIndicators"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.StatisticsAndCalculateIndicators">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">StatisticsAndCalculateIndicators</span><span class="p">(</span><span class="n">SmallestCyclesOfNodes</span><span class="p">,</span> <span class="n">CycLenDict</span><span class="p">):</span>  <span class="c1">#</span>
-    <span class="k">global</span> <span class="n">NumSmallCycles</span>
+<div class="viewcode-block" id="StatisticsAndCalculateIndicators"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.StatisticsAndCalculateIndicators">[docs]</a><span class="k">def</span> <span class="nf">StatisticsAndCalculateIndicators</span><span class="p">(</span><span class="n">SmallestCyclesOfNodes</span><span class="p">,</span> <span class="n">CycLenDict</span><span class="p">,</span> <span class="n">SmallestCycles</span><span class="p">):</span>
     <span class="n">NumSmallCycles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">SmallestCycles</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">cyc</span> <span class="ow">in</span> <span class="n">SmallestCycles</span><span class="p">:</span>
         <span class="n">lenCyc</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cyc</span><span class="p">)</span>
         <span class="n">CycLenDict</span><span class="p">[</span><span class="n">lenCyc</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">nod</span> <span class="ow">in</span> <span class="n">cyc</span><span class="p">:</span>
             <span class="n">SmallestCyclesOfNodes</span><span class="p">[</span><span class="n">nod</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cyc</span><span class="p">)</span>
+    <span class="n">CycleRatio</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 这里将 CycleRatio 作为局部变量</span>
     <span class="k">for</span> <span class="n">objNode</span><span class="p">,</span> <span class="n">SmaCycs</span> <span class="ow">in</span> <span class="n">SmallestCyclesOfNodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">SmaCycs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">continue</span>
@@ -234,7 +229,7 @@
     <span class="k">return</span> <span class="n">CycleRatio</span></div>
 
 
-<div class="viewcode-block" id="cycle_ratio_centrality"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.cycle_ratio_centrality">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">cycle_ratio_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<div class="viewcode-block" id="cycle_ratio_centrality"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.cycle_ratio.cycle_ratio_centrality">[docs]</a><span class="k">def</span> <span class="nf">cycle_ratio_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -252,24 +247,21 @@
 <span class="sd">    {1: 4.083333333333333, 2: 4.083333333333333, 3: 2.6666666666666665, 4: 2.6666666666666665, 5: 1.5}</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">CycLenDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">NumNode</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>  <span class="c1"># update</span>
     <span class="n">DEF_IMPOSSLEN</span> <span class="o">=</span> <span class="n">NumNode</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Impossible simple cycle length</span>
     <span class="n">NodeGirth</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">CycLenDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
-    <span class="n">SmallestCyclesOfNodes</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1">#</span>
+    <span class="n">SmallestCyclesOfNodes</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">removeNodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">Coreness</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">),</span> <span class="n">eg</span><span class="o">.</span><span class="n">k_core</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>  <span class="c1">#</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
         <span class="n">SmallestCyclesOfNodes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="n">CycleRatio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">Coreness</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">NodeGirth</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">removeNodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">NodeGirth</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">DEF_IMPOSSLEN</span>
-    <span class="c1"># print(&#39;NodeGirth:&#39;, NodeGirth)</span>
 
     <span class="n">G</span><span class="o">.</span><span class="n">remove_nodes_from</span><span class="p">(</span><span class="n">removeNodes</span><span class="p">)</span>
 
@@ -277,8 +269,10 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">NodeNum</span> <span class="o">+</span> <span class="mi">2</span><span class="p">):</span>
         <span class="n">CycLenDict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="n">getSmallestCycles</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">NodeGirth</span><span class="p">,</span> <span class="n">Coreness</span><span class="p">,</span> <span class="n">DEF_IMPOSSLEN</span><span class="p">)</span>
-    <span class="n">cycle_ratio</span> <span class="o">=</span> <span class="n">StatisticsAndCalculateIndicators</span><span class="p">(</span><span class="n">SmallestCyclesOfNodes</span><span class="p">,</span> <span class="n">CycLenDict</span><span class="p">)</span>
+    <span class="n">SmallestCycles</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">getSmallestCycles</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">NodeGirth</span><span class="p">,</span> <span class="n">Coreness</span><span class="p">,</span> <span class="n">DEF_IMPOSSLEN</span><span class="p">))</span>
+    <span class="n">cycle_ratio</span> <span class="o">=</span> <span class="n">StatisticsAndCalculateIndicators</span><span class="p">(</span>
+        <span class="n">SmallestCyclesOfNodes</span><span class="p">,</span> <span class="n">CycLenDict</span><span class="p">,</span> <span class="n">SmallestCycles</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">cycle_ratio</span></div>
 </pre></div>
 

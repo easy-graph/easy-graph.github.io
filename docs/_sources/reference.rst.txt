@@ -15,8 +15,8 @@ EasyGraph enables users to easily experiment with and compare different graph
 computation methods within the same platform. 
 
 .. toctree::
-    :maxdepth: 2
     :caption: Contents:
+    :maxdepth: 2
 
-    reference/modules.rst
+    reference/easygraph.rst
 

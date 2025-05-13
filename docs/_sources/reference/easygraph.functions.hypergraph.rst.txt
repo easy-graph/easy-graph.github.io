@@ -1,3 +1,5 @@
+.. _module_easygraph.functions.hypergraph:
+
 easygraph.functions.hypergraph package
 ======================================
 
@@ -13,29 +15,12 @@ Subpackages
 Submodules
 ----------
 
-easygraph.functions.hypergraph.assortativity module
----------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.hypergraph.assortativity
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.hypergraph.hypergraph\_clustering module
-------------------------------------------------------------
-
-.. automodule:: easygraph.functions.hypergraph.hypergraph_clustering
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.hypergraph.hypergraph\_operation module
------------------------------------------------------------
-
-.. automodule:: easygraph.functions.hypergraph.hypergraph_operation
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.hypergraph.assortativity
+   easygraph.functions.hypergraph.hypergraph_clustering
+   easygraph.functions.hypergraph.hypergraph_operation
 
 Module contents
 ---------------

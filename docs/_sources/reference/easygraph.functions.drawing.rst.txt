@@ -1,72 +1,22 @@
+.. _module_easygraph.functions.drawing:
+
 easygraph.functions.drawing package
 ===================================
 
 Submodules
 ----------
 
-easygraph.functions.drawing.defaults module
--------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.drawing.defaults
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.drawing.drawing module
-------------------------------------------
-
-.. automodule:: easygraph.functions.drawing.drawing
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.drawing.geometry module
--------------------------------------------
-
-.. automodule:: easygraph.functions.drawing.geometry
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.drawing.layout module
------------------------------------------
-
-.. automodule:: easygraph.functions.drawing.layout
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.drawing.plot module
----------------------------------------
-
-.. automodule:: easygraph.functions.drawing.plot
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.drawing.positioning module
-----------------------------------------------
-
-.. automodule:: easygraph.functions.drawing.positioning
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.drawing.simulator module
---------------------------------------------
-
-.. automodule:: easygraph.functions.drawing.simulator
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.drawing.utils module
-----------------------------------------
-
-.. automodule:: easygraph.functions.drawing.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.drawing.defaults
+   easygraph.functions.drawing.drawing
+   easygraph.functions.drawing.geometry
+   easygraph.functions.drawing.layout
+   easygraph.functions.drawing.plot
+   easygraph.functions.drawing.positioning
+   easygraph.functions.drawing.simulator
+   easygraph.functions.drawing.utils
 
 Module contents
 ---------------

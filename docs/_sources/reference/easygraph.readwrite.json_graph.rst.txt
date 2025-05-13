@@ -1,16 +1,15 @@
+.. _module_easygraph.readwrite.json_graph:
+
 easygraph.readwrite.json\_graph package
 =======================================
 
 Submodules
 ----------
 
-easygraph.readwrite.json\_graph.node\_link module
--------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.readwrite.json_graph.node_link
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.readwrite.json_graph.node_link
 
 Module contents
 ---------------

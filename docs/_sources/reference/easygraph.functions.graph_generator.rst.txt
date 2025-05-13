@@ -1,24 +1,16 @@
+.. _module_easygraph.functions.graph_generator:
+
 easygraph.functions.graph\_generator package
 ============================================
 
 Submodules
 ----------
 
-easygraph.functions.graph\_generator.RandomNetwork module
----------------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.graph_generator.RandomNetwork
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.graph\_generator.classic module
----------------------------------------------------
-
-.. automodule:: easygraph.functions.graph_generator.classic
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.graph_generator.RandomNetwork
+   easygraph.functions.graph_generator.classic
 
 Module contents
 ---------------

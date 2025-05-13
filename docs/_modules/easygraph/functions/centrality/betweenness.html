@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.centrality.betweenness &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.centrality.betweenness &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.centrality.betweenness</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.centrality.betweenness</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,8 +81,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.centrality.betweenness</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span></span><span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -88,7 +90,7 @@
 <span class="p">]</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">betweenness_centrality_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">path_length</span><span class="p">,</span> <span class="n">accumulate</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">betweenness_centrality_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">path_length</span><span class="p">,</span> <span class="n">accumulate</span><span class="p">):</span>
     <span class="n">betweenness</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
@@ -96,9 +98,9 @@
     <span class="k">return</span> <span class="n">betweenness</span>
 
 
-<div class="viewcode-block" id="betweenness_centrality"><a class="viewcode-back" href="../../../../reference/easygraph.functions.centrality.html#easygraph.functions.centrality.betweenness.betweenness_centrality">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="betweenness_centrality"><a class="viewcode-back" href="../../../../reference/easygraph.functions.centrality.betweenness.html#easygraph.functions.centrality.betweenness.betweenness_centrality">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_betweenness_centrality&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">betweenness_centrality</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">betweenness_centrality</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the shortest-basic betweenness centrality for nodes.</span>
@@ -154,7 +156,7 @@
 <span class="sd">    &gt;&gt;&gt; betweenness_centrality(G,weight=&quot;weight&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+    <span class="kn">import</span> <span class="nn">functools</span>
 
     <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">path_length</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">_single_source_dijkstra_path</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
@@ -174,10 +176,10 @@
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1">#  use the parallel version for large graph</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">random</span>
 
-        <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
         <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
@@ -216,7 +218,7 @@
     <span class="k">return</span> <span class="n">ret</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_rescale</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_rescale</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">normalized</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">endpoints</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -239,7 +241,7 @@
     <span class="k">return</span> <span class="n">betweenness</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_single_source_bfs_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_single_source_bfs_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
     <span class="n">S</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">P</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -263,9 +265,9 @@
     <span class="k">return</span> <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_single_source_dijkstra_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">heapq</span><span class="w"> </span><span class="kn">import</span> <span class="n">heappop</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">heapq</span><span class="w"> </span><span class="kn">import</span> <span class="n">heappush</span>
+<span class="k">def</span> <span class="nf">_single_source_dijkstra_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heappop</span>
+    <span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heappush</span>
 
     <span class="n">push</span> <span class="o">=</span> <span class="n">heappush</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">heappop</span>
@@ -276,7 +278,7 @@
     <span class="n">sigma</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
     <span class="n">seen</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
     <span class="n">Q</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">count</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
 
     <span class="n">c</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
     <span class="n">adj</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span>
@@ -301,7 +303,7 @@
     <span class="k">return</span> <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_accumulate_endpoints</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_accumulate_endpoints</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
     <span class="n">betweenness</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">while</span> <span class="n">S</span><span class="p">:</span>
@@ -314,7 +316,7 @@
     <span class="k">return</span> <span class="n">betweenness</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_accumulate_basic</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_accumulate_basic</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">while</span> <span class="n">S</span><span class="p">:</span>
         <span class="n">w</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>

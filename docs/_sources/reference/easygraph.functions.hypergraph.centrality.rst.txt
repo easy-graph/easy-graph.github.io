@@ -1,48 +1,19 @@
+.. _module_easygraph.functions.hypergraph.centrality:
+
 easygraph.functions.hypergraph.centrality package
 =================================================
 
 Submodules
 ----------
 
-easygraph.functions.hypergraph.centrality.cycle\_ratio module
--------------------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.hypergraph.centrality.cycle_ratio
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.hypergraph.centrality.degree module
--------------------------------------------------------
-
-.. automodule:: easygraph.functions.hypergraph.centrality.degree
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.hypergraph.centrality.hypercoreness module
---------------------------------------------------------------
-
-.. automodule:: easygraph.functions.hypergraph.centrality.hypercoreness
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.hypergraph.centrality.s\_centrality module
---------------------------------------------------------------
-
-.. automodule:: easygraph.functions.hypergraph.centrality.s_centrality
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.hypergraph.centrality.vector\_centrality module
--------------------------------------------------------------------
-
-.. automodule:: easygraph.functions.hypergraph.centrality.vector_centrality
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.hypergraph.centrality.cycle_ratio
+   easygraph.functions.hypergraph.centrality.degree
+   easygraph.functions.hypergraph.centrality.hypercoreness
+   easygraph.functions.hypergraph.centrality.s_centrality
+   easygraph.functions.hypergraph.centrality.vector_centrality
 
 Module contents
 ---------------

@@ -1,3 +1,5 @@
+.. _module_easygraph.nn:
+
 easygraph.nn package
 ====================
 
@@ -12,21 +14,11 @@ Subpackages
 Submodules
 ----------
 
-easygraph.nn.loss module
-------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.nn.loss
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.nn.regularization module
-----------------------------------
-
-.. automodule:: easygraph.nn.regularization
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.nn.loss
+   easygraph.nn.regularization
 
 Module contents
 ---------------

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.datapipe.loader &mdash; EasyGraph 1.4</title>
+  <title>easygraph.datapipe.loader &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.datapipe.loader</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.datapipe.loader</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,18 +81,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.datapipe.loader</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pkl</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pickle</span> <span class="k">as</span> <span class="nn">pkl</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 
-<div class="viewcode-block" id="load_from_pickle"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.load_from_pickle">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">load_from_pickle</span><span class="p">(</span>
+<div class="viewcode-block" id="load_from_pickle"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.load_from_pickle">[docs]</a><span class="k">def</span> <span class="nf">load_from_pickle</span><span class="p">(</span>
     <span class="n">file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Load data from a pickle file.</span>
@@ -111,7 +113,7 @@
         <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">}</span></div>
 
 
-<div class="viewcode-block" id="load_from_json"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.load_from_json">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">load_from_json</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="load_from_json"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.load_from_json">[docs]</a><span class="k">def</span> <span class="nf">load_from_json</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Load data from a json file.</span>
 
 <span class="sd">    Args:</span>
@@ -122,7 +124,7 @@
     <span class="k">return</span> <span class="n">data</span></div>
 
 
-<div class="viewcode-block" id="load_from_txt"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.load_from_txt">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">load_from_txt</span><span class="p">(</span>
+<div class="viewcode-block" id="load_from_txt"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.load_from_txt">[docs]</a><span class="k">def</span> <span class="nf">load_from_txt</span><span class="p">(</span>
     <span class="n">file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">dtype</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
     <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;,| |</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
@@ -152,7 +154,7 @@
     <span class="k">return</span> <span class="n">data</span></div>
 
 
-<div class="viewcode-block" id="ret_cast_fun"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.ret_cast_fun">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">ret_cast_fun</span><span class="p">(</span><span class="n">dtype</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]):</span>
+<div class="viewcode-block" id="ret_cast_fun"><a class="viewcode-back" href="../../../reference/easygraph.datapipe.html#easygraph.datapipe.loader.ret_cast_fun">[docs]</a><span class="k">def</span> <span class="nf">ret_cast_fun</span><span class="p">(</span><span class="n">dtype</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the cast function of the data type. The supported data types are: ``int``, ``float``, ``str``.</span>
 
 <span class="sd">    Args:</span>

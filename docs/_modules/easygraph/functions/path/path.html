@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.path.path &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.path.path &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.path.path</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.path.path</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,8 +81,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.path.path</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span></span><span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -96,12 +98,12 @@
 
 
 <div class="viewcode-block" id="Spfa"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Spfa">[docs]</a><span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_spfa&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">Spfa</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">Spfa</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
     <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Please input GraphC or DiGraphC.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Dijkstra"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Dijkstra">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">Dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">Dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the length of paths from the certain node to remaining nodes</span>
 
 <span class="sd">    Parameters</span>
@@ -128,7 +130,7 @@
 <div class="viewcode-block" id="Floyd"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Floyd">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_Floyd&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">Floyd</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">Floyd</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the length of paths from all nodes to remaining nodes</span>
 
 <span class="sd">    Parameters</span>
@@ -173,7 +175,7 @@
 <div class="viewcode-block" id="Prim"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Prim">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_Prim&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">Prim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">Prim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the edges that make up the minimum spanning tree</span>
 
 <span class="sd">    Parameters</span>
@@ -226,7 +228,7 @@
 <div class="viewcode-block" id="Kruskal"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.Kruskal">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_Kruskal&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">Kruskal</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">Kruskal</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the edges that make up the minimum spanning tree</span>
 
 <span class="sd">    Parameters</span>
@@ -271,12 +273,12 @@
 
 
 <div class="viewcode-block" id="single_source_bfs"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.single_source_bfs">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">single_source_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">single_source_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">nextlevel</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_single_source_bfs</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="p">,</span> <span class="n">nextlevel</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">))</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_single_source_bfs</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">firstlevel</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_single_source_bfs</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">firstlevel</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">nextlevel</span> <span class="o">=</span> <span class="n">firstlevel</span>
@@ -296,16 +298,16 @@
 
 
 <div class="viewcode-block" id="single_source_dijkstra"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.single_source_dijkstra">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">single_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">heapq</span><span class="w"> </span><span class="kn">import</span> <span class="n">heappop</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">heapq</span><span class="w"> </span><span class="kn">import</span> <span class="n">heappush</span>
+<span class="k">def</span> <span class="nf">single_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heappop</span>
+    <span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heappush</span>
 
     <span class="n">push</span> <span class="o">=</span> <span class="n">heappush</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">heappop</span>
     <span class="n">adj</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">count</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
 
     <span class="n">c</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
     <span class="n">Q</span> <span class="o">=</span> <span class="p">[]</span>
@@ -334,7 +336,7 @@
 
 <div class="viewcode-block" id="multi_source_dijkstra"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.html#easygraph.functions.path.path.multi_source_dijkstra">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_dijkstra_multisource&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">multi_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">multi_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">source</span><span class="p">:</span> <span class="n">single_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span>
     <span class="p">}</span></div>

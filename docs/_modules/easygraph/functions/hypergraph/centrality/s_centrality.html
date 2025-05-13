@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.hypergraph.centrality.s_centrality &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.hypergraph.centrality.s_centrality &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
         <script src="../../../../../_static/jquery.js"></script>
-        <script src="../../../../../_static/underscore.js"></script>
         <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
         <script src="../../../../../_static/doctools.js"></script>
         <script src="../../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.hypergraph.centrality.s_centrality</li>
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.hypergraph.centrality.s_centrality</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,13 +81,13 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.hypergraph.centrality.s_centrality</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s_betweenness&quot;</span><span class="p">,</span> <span class="s2">&quot;s_closeness&quot;</span><span class="p">,</span> <span class="s2">&quot;s_eccentricity&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="s_betweenness"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_betweenness">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">s_betweenness</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="s_betweenness"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_betweenness">[docs]</a><span class="k">def</span> <span class="nf">s_betweenness</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the betweenness centrality for each edge in the hypergraph.</span>
 
 <span class="sd">    Computes the betweenness centrality for each edge in the hypergraph.</span>
@@ -106,12 +108,12 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">linegraph</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">get_linegraph</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">linegraph</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">get_linegraph</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">linegraph</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="n">n_workers</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">results</span></div>
 
 
-<div class="viewcode-block" id="s_closeness"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_closeness">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">s_closeness</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="s_closeness"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_closeness">[docs]</a><span class="k">def</span> <span class="nf">s_closeness</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the closeness centrality for each edge in the hypergraph.</span>
 
@@ -124,12 +126,12 @@
 <span class="sd">    -------</span>
 <span class="sd">    dict. The closeness centrality for each edge in the hypergraph. The keys are the edges and the values are the closeness centrality.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">linegraph</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">get_linegraph</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">linegraph</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">get_linegraph</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">linegraph</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="n">n_workers</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">results</span></div>
 
 
-<div class="viewcode-block" id="s_eccentricity"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_eccentricity">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">s_eccentricity</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="s_eccentricity"><a class="viewcode-back" href="../../../../../reference/easygraph.functions.hypergraph.centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_eccentricity">[docs]</a><span class="k">def</span> <span class="nf">s_eccentricity</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The length of the longest shortest path from a vertex $u$ to every other vertex in</span>
 <span class="sd">    the s-linegraph.</span>

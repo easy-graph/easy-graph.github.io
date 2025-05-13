@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.core package &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.core package &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
@@ -12,18 +12,17 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="easygraph.functions.drawing package" href="easygraph.functions.drawing.html" />
-    <link rel="prev" title="easygraph.functions.components package" href="easygraph.functions.components.html" /> 
+    <link rel="next" title="easygraph.functions.core.k_core module" href="easygraph.functions.core.k_core.html" />
+    <link rel="prev" title="easygraph.functions.components.weakly_connected module" href="easygraph.functions.components.weakly_connected.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,24 +30,27 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../index.html" class="icon icon-home"> EasyGraph
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../eggpu.html">EGGPU</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -70,12 +72,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../reference.html">Reference</a> &raquo;</li>
-          <li><a href="modules.html">easygraph</a> &raquo;</li>
-          <li><a href="easygraph.html">easygraph package</a> &raquo;</li>
-          <li><a href="easygraph.functions.html">easygraph.functions package</a> &raquo;</li>
-      <li>easygraph.functions.core package</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.core package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/easygraph.functions.core.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,34 +87,17 @@
            <div itemprop="articleBody">
              
   <section id="easygraph-functions-core-package">
-<h1>easygraph.functions.core package<a class="headerlink" href="#easygraph-functions-core-package" title="Permalink to this heading"></a></h1>
+<span id="module-easygraph-functions-core"></span><h1>easygraph.functions.core package<a class="headerlink" href="#easygraph-functions-core-package" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-easygraph.functions.core.k_core">
-<span id="easygraph-functions-core-k-core-module"></span><h2>easygraph.functions.core.k_core module<a class="headerlink" href="#module-easygraph.functions.core.k_core" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.core.k_core.k_core">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.core.k_core.</span></span><span class="sig-name descname"><span class="pre">k_core</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.classes.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><span class="pre">Graph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="easygraph.classes.html#easygraph.classes.graph.Graph" title="easygraph.classes.graph.Graph"><span class="pre">Graph</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/functions/core/k_core.html#k_core"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.core.k_core.k_core" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the k-core of G.</p>
-<p>A k-core is a maximal subgraph that contains nodes of degree k or more.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>EasyGraph graph</em>) – A graph or directed graph</p></li>
-<li><p><strong>k</strong> (<em>int</em><em>, </em><em>optional</em>) – The order of the core.  If not specified return the main core.</p></li>
-<li><p><strong>return_graph</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return the k-core as a graph.  If False, return a list of nodes.</p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.core.k_core.html">easygraph.functions.core.k_core module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.core.k_core.html#easygraph.functions.core.k_core.k_core"><code class="docutils literal notranslate"><span class="pre">k_core()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>G</strong> – The k-core subgraph</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>EasyGraph graph, if return_graph is True, else a list of nodes</p>
-</dd>
-</dl>
-</dd></dl>
-
+</li>
+</ul>
+</div>
 </section>
 <section id="module-easygraph.functions.core">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.functions.core" title="Permalink to this heading"></a></h2>
@@ -124,8 +108,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="easygraph.functions.components.html" class="btn btn-neutral float-left" title="easygraph.functions.components package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="easygraph.functions.drawing.html" class="btn btn-neutral float-right" title="easygraph.functions.drawing package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="easygraph.functions.components.weakly_connected.html" class="btn btn-neutral float-left" title="easygraph.functions.components.weakly_connected module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.functions.core.k_core.html" class="btn btn-neutral float-right" title="easygraph.functions.core.k_core module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

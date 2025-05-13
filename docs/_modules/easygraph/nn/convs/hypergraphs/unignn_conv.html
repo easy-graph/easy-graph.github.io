@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.nn.convs.hypergraphs.unignn_conv &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.nn.convs.hypergraphs.unignn_conv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for easygraph.nn.convs.hypergraphs.unignn_conv</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="kn">from</span> <span class="nn">easygraph.classes</span> <span class="kn">import</span> <span class="n">Hypergraph</span>
+
+
+<div class="viewcode-block" id="UniGCNConv"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv">[docs]</a><span class="k">class</span> <span class="nc">UniGCNConv</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGCN convolution layer proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+
+<span class="sd">    Sparse Format:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \left\{</span>
+<span class="sd">            \begin{aligned}</span>
+<span class="sd">            h_{e} &amp;= \frac{1}{|e|} \sum_{j \in e} x_{j} \\</span>
+<span class="sd">            \tilde{x}_{i} &amp;= \frac{1}{\sqrt{d_{i}}} \sum_{e \in \tilde{E}_{i}} \frac{1}{\sqrt{\tilde{d}_{e}}} W h_{e}</span>
+<span class="sd">            \end{aligned}</span>
+<span class="sd">        \right. .</span>
+
+<span class="sd">    where :math:`\tilde{d}_{e} = \frac{1}{|e|} \sum_{i \in e} d_{i}`.</span>
+
+<span class="sd">    Matrix Format:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \mathbf{X}^{\prime} = \sigma \left(  \mathbf{D}_v^{-\frac{1}{2}} \mathbf{H} \tilde{\mathbf{D}}_e^{-\frac{1}{2}} \cdot \mathbf{D}_e^{-1} \mathbf{H}^\top \mathbf{X} \mathbf{\Theta} \right) .</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
+<span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
+<span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
+<span class="sd">        ``use_bn`` (``bool``): If set to ``True``, the layer will use batch normalization. Defaults to ``False``.</span>
+<span class="sd">        ``drop_rate`` (``float``): If set to a positive number, the layer will use dropout. Defaults to ``0.5``.</span>
+<span class="sd">        ``is_last`` (``bool``): If set to ``True``, the layer will not apply the final activation and dropout functions. Defaults to ``False``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">use_bn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">is_last</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span> <span class="o">=</span> <span class="n">is_last</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span> <span class="k">if</span> <span class="n">use_bn</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">drop_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UniGCNConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+        <span class="c1"># compute the special degree of hyperedges</span>
+        <span class="c1"># _De = torch.zeros(hg.num_e, device=hg.device)</span>
+        <span class="n">_De</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">hg</span><span class="o">.</span><span class="n">num_e</span><span class="p">)</span>
+        <span class="n">_Dv</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">D_v</span><span class="o">.</span><span class="n">_values</span><span class="p">()[</span><span class="n">hg</span><span class="o">.</span><span class="n">v2e_src</span><span class="p">]</span>
+        <span class="n">_De</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">_De</span><span class="o">.</span><span class="n">scatter_reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">hg</span><span class="o">.</span><span class="n">v2e_dst</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">_Dv</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+            <span class="o">/</span> <span class="n">_De</span><span class="o">.</span><span class="n">scatter_reduce</span><span class="p">(</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">hg</span><span class="o">.</span><span class="n">v2e_dst</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="p">(</span><span class="n">_Dv</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">reduce</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+
+        <span class="n">_De</span><span class="p">[</span><span class="n">_De</span><span class="o">.</span><span class="n">isinf</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">_De</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Y</span>
+        <span class="c1"># ===============================================</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">hg</span><span class="o">.</span><span class="n">D_v_neg_1_2</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span></div></div>
+
+
+<div class="viewcode-block" id="UniGATConv"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv">[docs]</a><span class="k">class</span> <span class="nc">UniGATConv</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGAT convolution layer proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+
+<span class="sd">    Sparse Format:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \left\{</span>
+<span class="sd">            \begin{aligned}</span>
+<span class="sd">                \alpha_{i e} &amp;=\sigma\left(a^{T}\left[W h_{\{i\}} ; W h_{e}\right]\right) \\</span>
+<span class="sd">                \tilde{\alpha}_{i e} &amp;=\frac{\exp \left(\alpha_{i e}\right)}{\sum_{e^{\prime} \in \tilde{E}_{i}} \exp \left(\alpha_{i e^{\prime}}\right)} \\</span>
+<span class="sd">                \tilde{x}_{i} &amp;=\sum_{e \in \tilde{E}_{i}} \tilde{\alpha}_{i e} W h_{e}</span>
+<span class="sd">            \end{aligned}</span>
+<span class="sd">        \right. .</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
+<span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
+<span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
+<span class="sd">        ``use_bn`` (``bool``): If set to ``True``, the layer will use batch normalization. Defaults to ``False``.</span>
+<span class="sd">        ``drop_rate`` (``float``): The dropout probability. If ``dropout &lt;= 0``, the layer will not drop values. Defaults to ``0.5``.</span>
+<span class="sd">        ``atten_neg_slope`` (``float``): Hyper-parameter of the ``LeakyReLU`` activation of edge attention. Defaults to ``0.2``.</span>
+<span class="sd">        ``is_last`` (``bool``): If set to ``True``, the layer will not apply the final activation and dropout functions. Defaults to ``False``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">use_bn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">atten_neg_slope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">is_last</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span> <span class="o">=</span> <span class="n">is_last</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span> <span class="k">if</span> <span class="n">use_bn</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atten_dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">drop_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atten_act</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">atten_neg_slope</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ELU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atten_e</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atten_dst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UniGATConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+        <span class="c1"># ===============================================</span>
+        <span class="c1"># alpha_e = self.atten_e(Y)</span>
+        <span class="c1"># e_atten_score = alpha_e[hg.e2v_src]</span>
+        <span class="c1"># e_atten_score = self.atten_dropout(self.atten_act(e_atten_score).squeeze())</span>
+
+        <span class="n">e_atten_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atten_dropout</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">atten_act</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atten_e</span><span class="p">(</span><span class="n">Y</span><span class="p">)[</span><span class="n">hg</span><span class="o">.</span><span class="n">e2v_src</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="c1"># ================================================================================</span>
+        <span class="c1"># We suggest to add a clamp on attention weight to avoid Nan error in training.</span>
+        <span class="n">e_atten_score</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="c1"># ================================================================================</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;softmax_then_sum&quot;</span><span class="p">,</span> <span class="n">e2v_weight</span><span class="o">=</span><span class="n">e_atten_score</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span></div></div>
+
+
+<div class="viewcode-block" id="UniSAGEConv"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv">[docs]</a><span class="k">class</span> <span class="nc">UniSAGEConv</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniSAGE convolution layer proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+
+<span class="sd">    Sparse Format:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \left\{</span>
+<span class="sd">            \begin{aligned}</span>
+<span class="sd">            h_{e} &amp;= \frac{1}{|e|} \sum_{j \in e} x_{j} \\</span>
+<span class="sd">            \tilde{x}_{i} &amp;= W\left(x_{i}+\text { AGGREGATE }\left(\left\{x_{j}\right\}_{j \in \mathcal{N}_{i}}\right)\right)</span>
+<span class="sd">            \end{aligned}</span>
+<span class="sd">        \right. .</span>
+
+<span class="sd">    Matrix Format:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \mathbf{X}^{\prime} = \sigma \left( \left( \mathbf{I} + \mathbf{H} \mathbf{D}_e^{-1} \mathbf{H}^\top \right) \mathbf{X} \mathbf{\Theta} \right) .</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
+<span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
+<span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
+<span class="sd">        ``use_bn`` (``bool``): If set to ``True``, the layer will use batch normalization. Defaults to ``False``.</span>
+<span class="sd">        ``drop_rate`` (``float``): If set to a positive number, the layer will use dropout. Defaults to ``0.5``.</span>
+<span class="sd">        ``is_last`` (``bool``): If set to ``True``, the layer will not apply the final activation and dropout functions. Defaults to ``False``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">use_bn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">is_last</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span> <span class="o">=</span> <span class="n">is_last</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span> <span class="k">if</span> <span class="n">use_bn</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">drop_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UniSAGEConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">X</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span></div></div>
+
+
+<div class="viewcode-block" id="UniGINConv"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv">[docs]</a><span class="k">class</span> <span class="nc">UniGINConv</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The UniGIN convolution layer proposed in `UniGNN: a Unified Framework for Graph and Hypergraph Neural Networks &lt;https://arxiv.org/pdf/2105.00956.pdf&gt;`_ paper (IJCAI 2021).</span>
+
+<span class="sd">    Sparse Format:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \left\{</span>
+<span class="sd">            \begin{aligned}</span>
+<span class="sd">            h_{e} &amp;= \frac{1}{|e|} \sum_{j \in e} x_{j} \\</span>
+<span class="sd">            \tilde{x}_{i} &amp;= W\left((1+\varepsilon) x_{i}+\sum_{e \in E_{i}} h_{e}\right)</span>
+<span class="sd">            \end{aligned}</span>
+<span class="sd">        \right. .</span>
+
+<span class="sd">    Matrix Format:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \mathbf{X}^{\prime} = \sigma \left( \left( \left( \mathbf{I} + \varepsilon \right) + \mathbf{H} \mathbf{D}_e^{-1} \mathbf{H}^\top \right) \mathbf{X} \mathbf{\Theta} \right) .</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ``in_channels`` (``int``): :math:`C_{in}` is the number of input channels.</span>
+<span class="sd">        ``out_channels`` (int): :math:`C_{out}` is the number of output channels.</span>
+<span class="sd">        ``eps`` (``float``): :math:`\varepsilon` is the learnable parameter. Defaults to ``0.0``.</span>
+<span class="sd">        ``train_eps`` (``bool``): If set to ``True``, the layer will learn the :math:`\varepsilon` parameter. Defaults to ``False``.</span>
+<span class="sd">        ``bias`` (``bool``): If set to ``False``, the layer will not learn the bias parameter. Defaults to ``True``.</span>
+<span class="sd">        ``use_bn`` (``bool``): If set to ``True``, the layer will use batch normalization. Defaults to ``False``.</span>
+<span class="sd">        ``drop_rate`` (``float``): If set to a positive number, the layer will use dropout. Defaults to ``0.5``.</span>
+<span class="sd">        ``is_last`` (``bool``): If set to ``True``, the layer will not apply the final activation and dropout functions. Defaults to ``False``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">train_eps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">use_bn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">drop_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">is_last</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span> <span class="o">=</span> <span class="n">is_last</span>
+        <span class="k">if</span> <span class="n">train_eps</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">eps</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span> <span class="k">if</span> <span class="n">use_bn</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">drop_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UniGINConv.forward"><a class="viewcode-back" href="../../../../../reference/easygraph.nn.convs.hypergraphs.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="n">Hypergraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            X (``torch.Tensor``): Input vertex feature matrix. Size :math:`(|\mathcal{V}|, C_{in})`.</span>
+<span class="sd">            hg (``eg.Hypergraph``): The hypergraph structure that contains :math:`|\mathcal{V}|` vertices.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">hg</span><span class="o">.</span><span class="n">v2e</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">hg</span><span class="o">.</span><span class="n">e2v</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">aggr</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">X</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_last</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,80 +1,23 @@
+.. _module_easygraph.model.hypergraphs:
+
 easygraph.model.hypergraphs package
 ===================================
 
 Submodules
 ----------
 
-easygraph.model.hypergraphs.dhcf module
----------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.model.hypergraphs.dhcf
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.dhne module
----------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.dhne
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.hgnn module
----------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.hgnn
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.hgnnp module
-----------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.hgnnp
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.hnhn module
----------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.hnhn
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.hwnn module
----------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.hwnn
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.hypergcn module
--------------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.hypergcn
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.setgnn module
------------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.setgnn
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.model.hypergraphs.unignn module
------------------------------------------
-
-.. automodule:: easygraph.model.hypergraphs.unignn
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.model.hypergraphs.dhcf
+   easygraph.model.hypergraphs.dhne
+   easygraph.model.hypergraphs.hgnn
+   easygraph.model.hypergraphs.hgnnp
+   easygraph.model.hypergraphs.hnhn
+   easygraph.model.hypergraphs.hwnn
+   easygraph.model.hypergraphs.hypergcn
+   easygraph.model.hypergraphs.setgnn
+   easygraph.model.hypergraphs.unignn
 
 Module contents
 ---------------

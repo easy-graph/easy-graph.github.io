@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.basic.cluster &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.basic.cluster &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.basic.cluster</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.basic.cluster</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,26 +81,26 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.basic.cluster</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">hybrid</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">not_implemented_for</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">split</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">split_len</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="n">hybrid</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.misc</span> <span class="kn">import</span> <span class="n">split</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.misc</span> <span class="kn">import</span> <span class="n">split_len</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;average_clustering&quot;</span><span class="p">,</span> <span class="s2">&quot;clustering&quot;</span><span class="p">]</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_local_weighted_triangles_and_degree_iter_parallel</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">_local_weighted_triangles_and_degree_iter_parallel</span><span class="p">(</span>
     <span class="n">nodes_nbrs</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">max_weight</span>
 <span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_weight</span>
 
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
@@ -120,7 +122,7 @@
 
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">_weighted_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_weighted_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, weighted_triangles).</span>
 
 <span class="sd">    Used for weighted clustering.</span>
@@ -139,14 +141,14 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">G</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_weight</span>
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">random</span>
 
-        <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
         <span class="n">_local_weighted_triangles_and_degree_iter_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
             <span class="n">_local_weighted_triangles_and_degree_iter_parallel</span><span class="p">,</span>
@@ -183,12 +185,12 @@
             <span class="k">yield</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">inbrs</span><span class="p">),</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">weighted_triangles</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_local_directed_weighted_triangles_and_degree_parallel</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">_local_directed_weighted_triangles_and_degree_parallel</span><span class="p">(</span>
     <span class="n">nodes_nbrs</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">max_weight</span>
 <span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_weight</span>
 
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">succs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
@@ -235,7 +237,7 @@
 
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">_directed_weighted_triangles_and_degree_iter</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">_directed_weighted_triangles_and_degree_iter</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of</span>
@@ -254,14 +256,14 @@
 
     <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">G</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_weight</span>
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">random</span>
 
-        <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
         <span class="n">_local_directed_weighted_triangles_and_degree_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
             <span class="n">_local_directed_weighted_triangles_and_degree_parallel</span><span class="p">,</span>
@@ -326,7 +328,7 @@
             <span class="k">yield</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dtotal</span><span class="p">,</span> <span class="n">dbidirectional</span><span class="p">,</span> <span class="n">directed_triangles</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="average_clustering"><a class="viewcode-back" href="../../../../reference/easygraph.functions.basic.html#easygraph.functions.basic.cluster.average_clustering">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">count_zeros</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="average_clustering"><a class="viewcode-back" href="../../../../reference/easygraph.functions.basic.html#easygraph.functions.basic.cluster.average_clustering">[docs]</a><span class="k">def</span> <span class="nf">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">count_zeros</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the average clustering coefficient for the graph G.</span>
 
 <span class="sd">    The clustering coefficient for the graph is the average,</span>
@@ -385,7 +387,7 @@
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_local_directed_triangles_and_degree_iter_parallel</span><span class="p">(</span><span class="n">nodes_nbrs</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_local_directed_triangles_and_degree_iter_parallel</span><span class="p">(</span><span class="n">nodes_nbrs</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">succs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
         <span class="n">ipreds</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span> <span class="o">-</span> <span class="p">{</span><span class="n">i</span><span class="p">}</span>
@@ -411,7 +413,7 @@
 
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">_directed_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_directed_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of</span>
 <span class="sd">    (node, total_degree, reciprocal_degree, directed_triangles).</span>
 
@@ -423,10 +425,10 @@
     <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">G</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">random</span>
 
-        <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
         <span class="n">_local_directed_triangles_and_degree_iter_parallel_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
             <span class="n">_local_directed_triangles_and_degree_iter_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span>
@@ -468,7 +470,7 @@
             <span class="k">yield</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dtotal</span><span class="p">,</span> <span class="n">dbidirectional</span><span class="p">,</span> <span class="n">directed_triangles</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_local_triangles_and_degree_iter_function_parallel</span><span class="p">(</span><span class="n">nodes_nbrs</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_local_triangles_and_degree_iter_function_parallel</span><span class="p">(</span><span class="n">nodes_nbrs</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">v_nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
         <span class="n">vs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">v_nbrs</span><span class="p">)</span> <span class="o">-</span> <span class="p">{</span><span class="n">v</span><span class="p">}</span>
@@ -479,7 +481,7 @@
 
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_triangles_and_degree_iter</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of (node, degree, triangles, generalized degree).</span>
 
 <span class="sd">    This double counts triangles so you may want to divide by 2.</span>
@@ -493,10 +495,10 @@
         <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">G</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">random</span>
 
-        <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
         <span class="n">_local_triangles_and_degree_iter_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
             <span class="n">_local_triangles_and_degree_iter_function_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span>
@@ -522,7 +524,7 @@
 
 
 <div class="viewcode-block" id="clustering"><a class="viewcode-back" href="../../../../reference/easygraph.functions.basic.html#easygraph.functions.basic.cluster.clustering">[docs]</a><span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_clustering&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the clustering coefficient for nodes.</span>
 
 <span class="sd">    For unweighted graphs, the clustering of a node :math:`u`</span>

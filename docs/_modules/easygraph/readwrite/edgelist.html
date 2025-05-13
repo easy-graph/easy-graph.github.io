@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.readwrite.edgelist &mdash; EasyGraph 1.4</title>
+  <title>easygraph.readwrite.edgelist &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.readwrite.edgelist</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.readwrite.edgelist</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,9 +81,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.readwrite.edgelist</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">open_file</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">open_file</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -94,7 +96,7 @@
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="parse_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.parse_edgelist">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">parse_edgelist</span><span class="p">(</span>
+<div class="viewcode-block" id="parse_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.parse_edgelist">[docs]</a><span class="k">def</span> <span class="nf">parse_edgelist</span><span class="p">(</span>
     <span class="n">lines</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodetype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse lines of an edge list representation of a graph.</span>
@@ -156,7 +158,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    read_weighted_edgelist</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">ast</span><span class="w"> </span><span class="kn">import</span> <span class="n">literal_eval</span>
+    <span class="kn">from</span> <span class="nn">ast</span> <span class="kn">import</span> <span class="n">literal_eval</span>
 
     <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
@@ -180,7 +182,7 @@
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;Failed to convert nodes </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> to type </span><span class="si">{</span><span class="n">nodetype</span><span class="si">}</span><span class="s2">.&quot;</span>
-                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="c1"># no data or data type specified</span>
@@ -196,7 +198,7 @@
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;Failed to convert edge data (</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">) to dictionary.&quot;</span>
-                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># convert edge data to dictionary with specified keys and type</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -211,13 +213,13 @@
                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;Failed to convert </span><span class="si">{</span><span class="n">edge_key</span><span class="si">}</span><span class="s2"> data </span><span class="si">{</span><span class="n">edge_value</span><span class="si">}</span><span class="s2"> &quot;</span>
                         <span class="sa">f</span><span class="s2">&quot;to type </span><span class="si">{</span><span class="n">edge_type</span><span class="si">}</span><span class="s2">.&quot;</span>
-                    <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                    <span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
                 <span class="n">edgedata</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">edge_key</span><span class="p">:</span> <span class="n">edge_value</span><span class="p">})</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="n">edgedata</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span></div>
 
 
-<div class="viewcode-block" id="generate_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.generate_edgelist">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">generate_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="generate_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.generate_edgelist">[docs]</a><span class="k">def</span> <span class="nf">generate_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a single line of the graph G in edge list format.</span>
 
 <span class="sd">    Parameters</span>
@@ -305,7 +307,7 @@
 
 
 <div class="viewcode-block" id="write_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.write_edgelist">[docs]</a><span class="nd">@open_file</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">write_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">write_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write graph as a list of edges.</span>
 
 <span class="sd">    Parameters</span>
@@ -355,7 +357,7 @@
 
 
 <div class="viewcode-block" id="read_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.read_edgelist">[docs]</a><span class="nd">@open_file</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">read_edgelist</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">read_edgelist</span><span class="p">(</span>
     <span class="n">path</span><span class="p">,</span>
     <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span>
     <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -441,7 +443,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="write_weighted_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.write_weighted_edgelist">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">write_weighted_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="write_weighted_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.write_weighted_edgelist">[docs]</a><span class="k">def</span> <span class="nf">write_weighted_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write graph G as a list of edges with numeric weights.</span>
 
 <span class="sd">    Parameters</span>
@@ -481,7 +483,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="read_weighted_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.read_weighted_edgelist">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">read_weighted_edgelist</span><span class="p">(</span>
+<div class="viewcode-block" id="read_weighted_edgelist"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.html#easygraph.readwrite.edgelist.read_weighted_edgelist">[docs]</a><span class="k">def</span> <span class="nf">read_weighted_edgelist</span><span class="p">(</span>
     <span class="n">path</span><span class="p">,</span>
     <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span>
     <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>

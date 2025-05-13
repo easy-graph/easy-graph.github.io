@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.structural_holes.MaxD &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.structural_holes.MaxD &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.structural_holes.MaxD</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.structural_holes.MaxD</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,16 +81,16 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.structural_holes.MaxD</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;get_structural_holes_MaxD&quot;</span><span class="p">]</span>
 
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_community_kernel</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">frozenset</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_community_kernel</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">frozenset</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    To get community kernels with most degrees.</span>
 <span class="sd">    Parameters</span>
@@ -134,7 +136,7 @@
     <span class="k">return</span> <span class="n">kernels</span>
 
 
-<div class="viewcode-block" id="get_structural_holes_MaxD"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">get_structural_holes_MaxD</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">frozenset</span><span class="p">]):</span>
+<div class="viewcode-block" id="get_structural_holes_MaxD"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.MaxD.get_structural_holes_MaxD">[docs]</a><span class="k">def</span> <span class="nf">get_structural_holes_MaxD</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">frozenset</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Structural hole spanners detection via MaxD method.</span>
 
 <span class="sd">    Both **HIS** and **MaxD** are methods in [1]_.</span>
@@ -228,7 +230,7 @@
     <span class="k">return</span> <span class="n">ans_list</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">pick_candidates</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">kernels</span><span class="p">,</span> <span class="n">save</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">pick_candidates</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">kernels</span><span class="p">,</span> <span class="n">save</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    detect candidates.</span>
 <span class="sd">    Parameters</span>
@@ -285,7 +287,7 @@
 <span class="n">oo</span> <span class="o">=</span> <span class="mi">1000000000</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_init_data</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">_init_data</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">head</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">nex</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">capa</span>
     <span class="k">global</span> <span class="n">dist</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">dsave</span>
     <span class="k">global</span> <span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">nedge</span><span class="p">,</span> <span class="n">prev_flow</span><span class="p">,</span> <span class="n">oo</span>
@@ -309,7 +311,7 @@
     <span class="n">oo</span> <span class="o">=</span> <span class="mi">1000000000</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">dinic_bfs</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">dinic_bfs</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    using BFS to find augmenting basic.</span>
 
@@ -337,7 +339,7 @@
     <span class="k">return</span> <span class="n">dist</span><span class="p">[</span><span class="n">dest</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">dinic_dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">dinic_dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    using DFS to calc the augmenting basic and refresh network.</span>
 <span class="sd">    Parameters</span>
@@ -370,7 +372,7 @@
     <span class="k">return</span> <span class="n">res</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">dinic_flow</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">dinic_flow</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Dinic algorithm to calc max_flow.</span>
 
@@ -388,7 +390,7 @@
     <span class="k">return</span> <span class="n">result</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">max_flow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kernels</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">prev_flow</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">max_flow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kernels</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">prev_flow</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate max_flow.</span>
 <span class="sd">    Parameters</span>
@@ -422,7 +424,7 @@
     <span class="k">return</span> <span class="n">ret</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">init_MaxD</span><span class="p">(</span><span class="n">_node</span><span class="p">,</span> <span class="n">_src</span><span class="p">,</span> <span class="n">_dest</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">init_MaxD</span><span class="p">(</span><span class="n">_node</span><span class="p">,</span> <span class="n">_src</span><span class="p">,</span> <span class="n">_dest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize a network.</span>
 <span class="sd">    Parameters</span>
@@ -452,7 +454,7 @@
     <span class="k">return</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">addedge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">addedge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add an edge(u,v) with capacity c1 and inverse capacity c2.</span>
 <span class="sd">    Parameters</span>
@@ -484,7 +486,7 @@
     <span class="k">return</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">build_network</span><span class="p">(</span><span class="n">kernels</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_network</span><span class="p">(</span><span class="n">kernels</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    build a network.</span>
 <span class="sd">    Parameters</span>

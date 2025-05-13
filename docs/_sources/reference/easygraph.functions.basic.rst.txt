@@ -1,40 +1,18 @@
+.. _module_easygraph.functions.basic:
+
 easygraph.functions.basic package
 =================================
 
 Submodules
 ----------
 
-easygraph.functions.basic.avg\_degree module
---------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.basic.avg_degree
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.basic.cluster module
-----------------------------------------
-
-.. automodule:: easygraph.functions.basic.cluster
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.basic.localassort module
---------------------------------------------
-
-.. automodule:: easygraph.functions.basic.localassort
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.functions.basic.predecessor\_path\_based module
----------------------------------------------------------
-
-.. automodule:: easygraph.functions.basic.predecessor_path_based
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.basic.avg_degree
+   easygraph.functions.basic.cluster
+   easygraph.functions.basic.localassort
+   easygraph.functions.basic.predecessor_path_based
 
 Module contents
 ---------------

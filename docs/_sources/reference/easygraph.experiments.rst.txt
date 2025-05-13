@@ -1,3 +1,5 @@
+.. _module_easygraph.experiments:
+
 easygraph.experiments package
 =============================
 
@@ -12,21 +14,11 @@ Subpackages
 Submodules
 ----------
 
-easygraph.experiments.base module
----------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.experiments.base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.experiments.vertex\_classification module
----------------------------------------------------
-
-.. automodule:: easygraph.experiments.vertex_classification
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.experiments.base
+   easygraph.experiments.vertex_classification
 
 Module contents
 ---------------

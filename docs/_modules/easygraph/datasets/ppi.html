@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.datasets.ppi &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.datasets.ppi</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for easygraph.datasets.ppi</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; PPIDataset for inductive learning. &quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">easygraph.classes.directed_graph</span> <span class="kn">import</span> <span class="n">DiGraph</span>
+
+<span class="kn">from</span> <span class="nn">..readwrite</span> <span class="kn">import</span> <span class="n">json_graph</span>
+<span class="kn">from</span> <span class="nn">.graph_dataset_base</span> <span class="kn">import</span> <span class="n">EasyGraphBuiltinDataset</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">_get_dgl_url</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">data_type_dict</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">tensor</span>
+
+
+<div class="viewcode-block" id="PPIDataset"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.ppi.PPIDataset">[docs]</a><span class="k">class</span> <span class="nc">PPIDataset</span><span class="p">(</span><span class="n">EasyGraphBuiltinDataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Protein-Protein Interaction dataset for inductive node classification</span>
+
+<span class="sd">    A toy Protein-Protein Interaction network dataset. The dataset contains</span>
+<span class="sd">    24 graphs. The average number of nodes per graph is 2372. Each node has</span>
+<span class="sd">    50 features and 121 labels. 20 graphs for training, 2 for validation</span>
+<span class="sd">    and 2 for testing.</span>
+
+<span class="sd">    Reference: `&lt;http://snap.stanford.edu/graphsage/&gt;`_</span>
+
+<span class="sd">    Statistics:</span>
+
+<span class="sd">    - Train examples: 20</span>
+<span class="sd">    - Valid examples: 2</span>
+<span class="sd">    - Test examples: 2</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mode : str</span>
+<span class="sd">        Must be one of (&#39;train&#39;, &#39;valid&#39;, &#39;test&#39;).</span>
+<span class="sd">        Default: &#39;train&#39;</span>
+<span class="sd">    raw_dir : str</span>
+<span class="sd">        Raw file directory to download/contains the input data directory.</span>
+<span class="sd">        Default: ~/.eg/</span>
+<span class="sd">    force_reload : bool</span>
+<span class="sd">        Whether to reload the dataset.</span>
+<span class="sd">        Default: False</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Whether to print out progress information.</span>
+<span class="sd">        Default: True.</span>
+<span class="sd">    transform : callable, optional</span>
+<span class="sd">        A transform that takes in a :class:`~eg.DGLGraph` object and returns</span>
+<span class="sd">        a transformed version. The :class:`~eg.DGLGraph` object will be</span>
+<span class="sd">        transformed before every access.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    num_labels : int</span>
+<span class="sd">        Number of labels for each node</span>
+<span class="sd">    labels : Tensor</span>
+<span class="sd">        Node labels</span>
+<span class="sd">    features : Tensor</span>
+<span class="sd">        Node features</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; dataset = PPIDataset(mode=&#39;valid&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; num_labels = dataset.num_labels</span>
+<span class="sd">    &gt;&gt;&gt; for g in dataset:</span>
+<span class="sd">    ....    feat = g.ndata[&#39;feat&#39;]</span>
+<span class="sd">    ....    label = g.ndata[&#39;label&#39;]</span>
+<span class="sd">    ....    # your code here</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+        <span class="n">raw_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">force_reload</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">assert</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="n">_url</span> <span class="o">=</span> <span class="n">_get_dgl_url</span><span class="p">(</span><span class="s2">&quot;dataset/ppi.zip&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PPIDataset</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ppi&quot;</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">_url</span><span class="p">,</span>
+            <span class="n">raw_dir</span><span class="o">=</span><span class="n">raw_dir</span><span class="p">,</span>
+            <span class="n">force_reload</span><span class="o">=</span><span class="n">force_reload</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="PPIDataset.process"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.ppi.PPIDataset.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">graph_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;ppi&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_graph.json&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">label_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;ppi&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_labels.npy&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">feat_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;ppi&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_feats.npy&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">graph_id_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;ppi&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_graph_id.npy&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">g_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">graph_file</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">label_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_feats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">feat_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">(</span><span class="n">json_graph</span><span class="o">.</span><span class="n">node_link_graph</span><span class="p">(</span><span class="n">g_data</span><span class="p">))</span>
+        <span class="n">graph_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">graph_id_file</span><span class="p">)</span>
+
+        <span class="c1"># lo, hi means the range of graph ids for different portion of the dataset,</span>
+        <span class="c1"># 20 graphs for training, 2 for validation and 2 for testing.</span>
+        <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span>
+            <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">23</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span>
+            <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span>
+
+        <span class="n">graph_masks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graphs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">g_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">):</span>
+            <span class="n">g_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">graph_id</span> <span class="o">==</span> <span class="n">g_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">graph_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g_mask</span><span class="p">)</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes_subgraph</span><span class="p">(</span><span class="n">g_mask</span><span class="p">)</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_feats</span><span class="p">[</span><span class="n">g_mask</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">data_type_dict</span><span class="p">()[</span><span class="s2">&quot;float32&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="n">g_mask</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">data_type_dict</span><span class="p">()[</span><span class="s2">&quot;float32&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PPIDataset.has_cache"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.ppi.PPIDataset.has_cache">[docs]</a>    <span class="k">def</span> <span class="nf">has_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">graph_list_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_eg_graph_list.bin&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">g_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_eg_graph.bin&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">))</span>
+        <span class="n">info_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_info.pkl&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">graph_list_path</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">g_path</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">info_path</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="PPIDataset.save"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.ppi.PPIDataset.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">graph_list_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_eg_graph_list.bin&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">g_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_eg_graph.bin&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">))</span>
+        <span class="n">info_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_info.pkl&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">))</span></div>
+        <span class="c1"># save_graphs(graph_list_path, self.graphs)</span>
+        <span class="c1"># save_graphs(g_path, self.graph)</span>
+        <span class="c1"># save_info(info_path, {&#39;labels&#39;: self._labels, &#39;feats&#39;: self._feats})</span>
+
+    <span class="c1"># def load(self):</span>
+    <span class="c1">#     graph_list_path = os.path.join(self.save_path, &#39;{}_eg_graph_list.bin&#39;.format(self.mode))</span>
+    <span class="c1">#     g_path = os.path.join(self.save_path, &#39;{}_eg_graph.bin&#39;.format(self.mode))</span>
+    <span class="c1">#     info_path = os.path.join(self.save_path, &#39;{}_info.pkl&#39;.format(self.mode))</span>
+    <span class="c1">#     self.graphs = load_graphs(graph_list_path)[0]</span>
+    <span class="c1">#     g, _ = load_graphs(g_path)</span>
+    <span class="c1">#     self.graph = g[0]</span>
+    <span class="c1">#     info = load_info(info_path)</span>
+    <span class="c1">#     self._labels = info[&#39;labels&#39;]</span>
+    <span class="c1">#     self._feats = info[&#39;feats&#39;]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">121</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return number of samples in this dataset.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graphs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the item^th sample.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------</span>
+<span class="sd">        item : int</span>
+<span class="sd">            The sample index.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`eg.Graph`</span>
+<span class="sd">            graph structure, node features and node labels.</span>
+
+<span class="sd">            - ``ndata[&#39;feat&#39;]``: node features</span>
+<span class="sd">            - ``ndata[&#39;label&#39;]``: node labels</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphs</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graphs</span><span class="p">[</span><span class="n">item</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="LegacyPPIDataset"><a class="viewcode-back" href="../../../reference/easygraph.datasets.html#easygraph.datasets.ppi.LegacyPPIDataset">[docs]</a><span class="k">class</span> <span class="nc">LegacyPPIDataset</span><span class="p">(</span><span class="n">PPIDataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Legacy version of PPI Dataset&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the item^th sample.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------</span>
+<span class="sd">        idx : int</span>
+<span class="sd">            The sample index.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        (eg.DGLGraph, Tensor, Tensor)</span>
+<span class="sd">            The graph, features and its label.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphs</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graphs</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">],</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

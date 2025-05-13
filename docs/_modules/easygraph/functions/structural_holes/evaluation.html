@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.structural_holes.evaluation &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.structural_holes.evaluation &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.structural_holes.evaluation</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.structural_holes.evaluation</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,15 +81,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.structural_holes.evaluation</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;effective_size&quot;</span><span class="p">,</span> <span class="s2">&quot;efficiency&quot;</span><span class="p">,</span> <span class="s2">&quot;constraint&quot;</span><span class="p">,</span> <span class="s2">&quot;hierarchy&quot;</span><span class="p">]</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">a_uv</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -103,7 +105,7 @@
 <span class="n">max_nmw_rec</span> <span class="o">=</span> <span class="p">{}</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">normalized_mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">normalized_mutual_weight</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">norm</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">sum_nmw_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span>
@@ -126,7 +128,7 @@
             <span class="k">return</span> <span class="n">nmw</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">effective_size_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">effective_size_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="n">neighbors_of_node</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
@@ -139,7 +141,7 @@
     <span class="k">return</span> <span class="n">ret</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">effective_size_borgatti_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">effective_size_borgatti_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="c1"># Effective size is not defined for isolated nodes</span>
@@ -152,7 +154,7 @@
     <span class="k">return</span> <span class="n">ret</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">nmw</span> <span class="o">=</span> <span class="n">normalized_mutual_weight</span>
     <span class="n">r</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
         <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span> <span class="o">*</span> <span class="n">nmw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
@@ -161,9 +163,9 @@
     <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r</span>
 
 
-<div class="viewcode-block" id="effective_size"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.evaluation.effective_size">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_effective_size&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">effective_size</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">effective_size</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Burt&#39;s metric - Effective Size.</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -195,10 +197,10 @@
     <span class="c1"># Use Borgatti&#39;s simplified formula for unweighted and undirected graphs</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span> <span class="ow">and</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+            <span class="kn">import</span> <span class="nn">random</span>
 
-            <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-            <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+            <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+            <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
             <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
                 <span class="n">effective_size_borgatti_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span>
@@ -224,10 +226,10 @@
                 <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+            <span class="kn">import</span> <span class="nn">random</span>
 
-            <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-            <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+            <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+            <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
             <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">effective_size_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
             <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
@@ -243,18 +245,17 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
                 <span class="c1"># Effective size is not defined for isolated nodes</span>
-                <span class="c1"># Check both in-degree and out-degree for directed graphs</span>
-                <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
                 <span class="n">effective_size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
                     <span class="n">redundancy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
                 <span class="p">)</span>
-    <span class="k">return</span> <span class="n">effective_size</span></div>
+    <span class="k">return</span> <span class="n">effective_size</span>
 
 
 <div class="viewcode-block" id="efficiency"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.evaluation.efficiency">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">efficiency</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">efficiency</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Burt&#39;s metric - Efficiency.</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -284,7 +285,7 @@
     <span class="k">return</span> <span class="n">efficiency</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">compute_constraint_of_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">compute_constraint_of_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="n">neighbors_of_node</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
@@ -297,9 +298,9 @@
     <span class="k">return</span> <span class="n">ret</span>
 
 
-<div class="viewcode-block" id="constraint"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.evaluation.constraint">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_constraint&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Burt&#39;s metric - Constraint.</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -334,7 +335,7 @@
         <span class="n">nodes</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span>
     <span class="n">constraint</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">compute_constraint_of_v</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">compute_constraint_of_v</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
         <span class="n">neighbors_of_v</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">all_neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors_of_v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">constraint_of_v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
@@ -345,10 +346,10 @@
         <span class="k">return</span> <span class="n">v</span><span class="p">,</span> <span class="n">constraint_of_v</span>
 
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">random</span>
 
-        <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
         <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">compute_constraint_of_nodes</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
@@ -366,13 +367,13 @@
             <span class="n">constraint_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compute_constraint_of_v</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 
     <span class="n">constraint</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">constraint_results</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">constraint</span></div>
+    <span class="k">return</span> <span class="n">constraint</span>
 
 
 <span class="n">local_constraint_rec</span> <span class="o">=</span> <span class="p">{}</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">local_constraint</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">local_constraint_rec</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -387,7 +388,7 @@
         <span class="k">return</span> <span class="n">result</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">hierarchy_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">hierarchy_parallel</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="n">E</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">ego_subgraph</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -414,9 +415,9 @@
     <span class="k">return</span> <span class="n">ret</span>
 
 
-<div class="viewcode-block" id="hierarchy"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.evaluation.hierarchy">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_hierarchy&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">hierarchy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">hierarchy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the hierarchy of nodes in the graph</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -442,10 +443,10 @@
         <span class="n">nodes</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span>
     <span class="n">hierarchy</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="n">n_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">random</span>
 
-        <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+        <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
         <span class="n">local_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">hierarchy_parallel</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
@@ -475,7 +476,7 @@
                 <span class="p">)</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hierarchy</span><span class="p">:</span>
                 <span class="n">hierarchy</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">hierarchy</span></div>
+    <span class="k">return</span> <span class="n">hierarchy</span>
 </pre></div>
 
            </div>

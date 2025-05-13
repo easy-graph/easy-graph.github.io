@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.classes.directed_multigraph &mdash; EasyGraph 1.4</title>
+  <title>easygraph.classes.directed_multigraph &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.classes.directed_multigraph</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.classes.directed_multigraph</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,25 +81,25 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.classes.directed_multigraph</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">easygraph.convert</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">convert</span>
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">easygraph.convert</span> <span class="k">as</span> <span class="nn">convert</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.classes.directed_graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiGraph</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.classes.multigraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiGraph</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">EasyGraphError</span>
+<span class="kn">from</span> <span class="nn">easygraph.classes.directed_graph</span> <span class="kn">import</span> <span class="n">DiGraph</span>
+<span class="kn">from</span> <span class="nn">easygraph.classes.multigraph</span> <span class="kn">import</span> <span class="n">MultiGraph</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.exception</span> <span class="kn">import</span> <span class="n">EasyGraphError</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MultiDiGraph&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="MultiDiGraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">MultiDiGraph</span><span class="p">(</span><span class="n">MultiGraph</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph">[docs]</a><span class="k">class</span> <span class="nc">MultiDiGraph</span><span class="p">(</span><span class="n">MultiGraph</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">):</span>
     <span class="n">edge_key_dict_factory</span> <span class="o">=</span> <span class="nb">dict</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize a graph with edges, name, or graph attributes.</span>
 
 <span class="sd">        Parameters</span>
@@ -161,7 +163,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">DiGraph</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MultiDiGraph.add_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.add_edge">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_for_edge</span><span class="p">,</span> <span class="n">v_for_edge</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.add_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.add_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_for_edge</span><span class="p">,</span> <span class="n">v_for_edge</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an edge between u and v.</span>
 
 <span class="sd">        The nodes u and v will be automatically added if they are</span>
@@ -226,14 +228,8 @@
 <span class="sd">        &gt;&gt;&gt; ekey = G.add_edge(1, 2)</span>
 <span class="sd">        &gt;&gt;&gt; G[1][2][0].update({0: 5})</span>
 <span class="sd">        &gt;&gt;&gt; G.edges[1, 2, 0].update({0: 5})</span>
-
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">u_for_edge</span><span class="p">,</span> <span class="n">v_for_edge</span>
-        <span class="k">if</span> <span class="s2">&quot;attr&quot;</span> <span class="ow">in</span> <span class="n">attr</span><span class="p">:</span>
-            <span class="n">temp</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;attr&quot;</span><span class="p">)</span>
-            <span class="n">attr</span> <span class="o">=</span> <span class="n">temp</span> <span class="k">if</span> <span class="n">temp</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}</span>
         <span class="c1"># add nodes</span>
         <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">u</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -264,7 +260,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">keydict</span>
         <span class="k">return</span> <span class="n">key</span></div>
 
-<div class="viewcode-block" id="MultiDiGraph.remove_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.remove_edge">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.remove_edge"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.remove_edge">[docs]</a>    <span class="k">def</span> <span class="nf">remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove an edge between u and v.</span>
 
 <span class="sd">        Parameters</span>
@@ -305,7 +301,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The edge </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> is not in the graph.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+            <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The edge </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> is not in the graph.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
         <span class="c1"># remove the edge with specified data</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
@@ -314,14 +310,14 @@
                 <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The edge </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> with key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> is not in the graph.&quot;</span>
-                <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># remove the key entries if last edge</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span></div>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">kd</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -332,7 +328,7 @@
     <span class="n">out_edges</span> <span class="o">=</span> <span class="n">edges</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">in_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">in_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">kd</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -341,10 +337,10 @@
         <span class="k">return</span> <span class="n">edges</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
         <span class="n">degree</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
                 <span class="n">succs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="k">for</span> <span class="n">keys</span> <span class="ow">in</span> <span class="n">succs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span>
@@ -352,7 +348,7 @@
                 <span class="p">)</span>
                 <span class="n">degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">deg</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
                 <span class="n">succs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
@@ -367,15 +363,15 @@
                 <span class="n">degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">deg</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">in_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">in_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
         <span class="n">degree</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
                 <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="k">for</span> <span class="n">keys</span> <span class="ow">in</span> <span class="n">preds</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
                 <span class="n">degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">deg</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
                 <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
                     <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -385,15 +381,15 @@
                 <span class="n">degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">deg</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">out_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">out_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
         <span class="n">degree</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
                 <span class="n">succs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="k">for</span> <span class="n">keys</span> <span class="ow">in</span> <span class="n">succs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
                 <span class="n">degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">deg</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
                 <span class="n">succs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
                     <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -402,15 +398,15 @@
                 <span class="p">)</span>
                 <span class="n">degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">deg</span>
 
-<div class="viewcode-block" id="MultiDiGraph.is_multigraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.is_multigraph">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.is_multigraph"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.is_multigraph">[docs]</a>    <span class="k">def</span> <span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="MultiDiGraph.is_directed"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.is_directed">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">is_directed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.is_directed"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.is_directed">[docs]</a>    <span class="k">def</span> <span class="nf">is_directed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if graph is directed, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="MultiDiGraph.to_undirected"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_undirected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reciprocal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.to_undirected"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected">[docs]</a>    <span class="k">def</span> <span class="nf">to_undirected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reciprocal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an undirected representation of the multidigraph.</span>
 
 <span class="sd">        Parameters</span>
@@ -479,7 +475,7 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">G</span></div>
 
-<div class="viewcode-block" id="MultiDiGraph.reverse"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.reverse">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.reverse"><a class="viewcode-back" href="../../../reference/easygraph.classes.html#easygraph.classes.directed_multigraph.MultiDiGraph.reverse">[docs]</a>    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the reverse of the graph.</span>
 
 <span class="sd">        The reverse is a graph with the same nodes and edges</span>
@@ -496,7 +492,10 @@
             <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>
             <span class="n">H</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">))</span>
             <span class="n">H</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="p">)</span>
             <span class="k">return</span> <span class="n">H</span>
         <span class="k">return</span> <span class="n">eg</span><span class="o">.</span><span class="n">graphviews</span><span class="o">.</span><span class="n">reverse_view</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
 </pre></div>

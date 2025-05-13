@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.nn.convs.hypergraphs package &mdash; EasyGraph 1.4</title>
+  <title>easygraph.nn.convs.hypergraphs package &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
@@ -12,17 +12,16 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="easygraph.readwrite package" href="easygraph.readwrite.html" />
+    <link rel="next" title="easygraph.nn.convs.hypergraphs.dhcf_conv module" href="easygraph.nn.convs.hypergraphs.dhcf_conv.html" />
     <link rel="prev" title="easygraph.nn.convs package" href="easygraph.nn.convs.html" /> 
 </head>
 
@@ -31,24 +30,27 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../index.html" class="icon icon-home"> EasyGraph
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../eggpu.html">EGGPU</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -70,13 +72,12 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../reference.html">Reference</a> &raquo;</li>
-          <li><a href="modules.html">easygraph</a> &raquo;</li>
-          <li><a href="easygraph.html">easygraph package</a> &raquo;</li>
-          <li><a href="easygraph.nn.html">easygraph.nn package</a> &raquo;</li>
-          <li><a href="easygraph.nn.convs.html">easygraph.nn.convs package</a> &raquo;</li>
-      <li>easygraph.nn.convs.hypergraphs package</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.nn.html">easygraph.nn package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.nn.convs.html">easygraph.nn.convs package</a></li>
+      <li class="breadcrumb-item active">easygraph.nn.convs.hypergraphs package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/easygraph.nn.convs.hypergraphs.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,36 +88,89 @@
            <div itemprop="articleBody">
              
   <section id="easygraph-nn-convs-hypergraphs-package">
-<h1>easygraph.nn.convs.hypergraphs package<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-package" title="Permalink to this heading"></a></h1>
+<span id="module-easygraph-nn-convs-hypergraphs"></span><h1>easygraph.nn.convs.hypergraphs package<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-package" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.dhcf_conv.html">easygraph.nn.convs.hypergraphs.dhcf_conv module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.dhcf_conv.html#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv"><code class="docutils literal notranslate"><span class="pre">JHConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.dhcf_conv.html#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.forward"><code class="docutils literal notranslate"><span class="pre">JHConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.dhcf_conv.html#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.training"><code class="docutils literal notranslate"><span class="pre">JHConv.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.halfnlh_conv.html">easygraph.nn.convs.hypergraphs.halfnlh_conv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnn_conv.html">easygraph.nn.convs.hypergraphs.hgnn_conv module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnn_conv.html#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv"><code class="docutils literal notranslate"><span class="pre">HGNNConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnn_conv.html#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.forward"><code class="docutils literal notranslate"><span class="pre">HGNNConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnn_conv.html#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.training"><code class="docutils literal notranslate"><span class="pre">HGNNConv.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnnp_conv.html">easygraph.nn.convs.hypergraphs.hgnnp_conv module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnnp_conv.html#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv"><code class="docutils literal notranslate"><span class="pre">HGNNPConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnnp_conv.html#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.forward"><code class="docutils literal notranslate"><span class="pre">HGNNPConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hgnnp_conv.html#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.training"><code class="docutils literal notranslate"><span class="pre">HGNNPConv.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hnhn_conv.html">easygraph.nn.convs.hypergraphs.hnhn_conv module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hnhn_conv.html#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv"><code class="docutils literal notranslate"><span class="pre">HNHNConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hnhn_conv.html#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.forward"><code class="docutils literal notranslate"><span class="pre">HNHNConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hnhn_conv.html#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.training"><code class="docutils literal notranslate"><span class="pre">HNHNConv.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hwnn_conv.html">easygraph.nn.convs.hypergraphs.hwnn_conv module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hwnn_conv.html#easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv"><code class="docutils literal notranslate"><span class="pre">HWNNConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hwnn_conv.html#easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv.forward"><code class="docutils literal notranslate"><span class="pre">HWNNConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hwnn_conv.html#easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv.init_parameters"><code class="docutils literal notranslate"><span class="pre">HWNNConv.init_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hwnn_conv.html#easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv.training"><code class="docutils literal notranslate"><span class="pre">HWNNConv.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hypergcn_conv.html">easygraph.nn.convs.hypergraphs.hypergcn_conv module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hypergcn_conv.html#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv"><code class="docutils literal notranslate"><span class="pre">HyperGCNConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hypergcn_conv.html#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.forward"><code class="docutils literal notranslate"><span class="pre">HyperGCNConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.hypergcn_conv.html#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.training"><code class="docutils literal notranslate"><span class="pre">HyperGCNConv.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html">easygraph.nn.convs.hypergraphs.unignn_conv module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv"><code class="docutils literal notranslate"><span class="pre">UniGATConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.forward"><code class="docutils literal notranslate"><span class="pre">UniGATConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.training"><code class="docutils literal notranslate"><span class="pre">UniGATConv.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv"><code class="docutils literal notranslate"><span class="pre">UniGCNConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.forward"><code class="docutils literal notranslate"><span class="pre">UniGCNConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.training"><code class="docutils literal notranslate"><span class="pre">UniGCNConv.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv"><code class="docutils literal notranslate"><span class="pre">UniGINConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.forward"><code class="docutils literal notranslate"><span class="pre">UniGINConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.training"><code class="docutils literal notranslate"><span class="pre">UniGINConv.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv"><code class="docutils literal notranslate"><span class="pre">UniSAGEConv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.forward"><code class="docutils literal notranslate"><span class="pre">UniSAGEConv.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.training"><code class="docutils literal notranslate"><span class="pre">UniSAGEConv.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
-<section id="easygraph-nn-convs-hypergraphs-dhcf-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.dhcf_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-dhcf-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="easygraph-nn-convs-hypergraphs-halfnlh-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.halfnlh_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-halfnlh-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="easygraph-nn-convs-hypergraphs-hgnn-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.hgnn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hgnn-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="easygraph-nn-convs-hypergraphs-hgnnp-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.hgnnp_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hgnnp-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="easygraph-nn-convs-hypergraphs-hnhn-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.hnhn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hnhn-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="easygraph-nn-convs-hypergraphs-hwnn-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.hwnn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hwnn-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="easygraph-nn-convs-hypergraphs-hypergcn-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.hypergcn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-hypergcn-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="easygraph-nn-convs-hypergraphs-unignn-conv-module">
-<h2>easygraph.nn.convs.hypergraphs.unignn_conv module<a class="headerlink" href="#easygraph-nn-convs-hypergraphs-unignn-conv-module" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="module-easygraph.nn.convs.hypergraphs">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.nn.convs.hypergraphs" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
@@ -125,7 +179,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="easygraph.nn.convs.html" class="btn btn-neutral float-left" title="easygraph.nn.convs package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="easygraph.readwrite.html" class="btn btn-neutral float-right" title="easygraph.readwrite package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="easygraph.nn.convs.hypergraphs.dhcf_conv.html" class="btn btn-neutral float-right" title="easygraph.nn.convs.hypergraphs.dhcf_conv module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

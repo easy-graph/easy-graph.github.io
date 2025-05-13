@@ -1,3 +1,5 @@
+.. _module_easygraph:
+
 easygraph package
 =================
 
@@ -21,21 +23,11 @@ Subpackages
 Submodules
 ----------
 
-easygraph.convert module
-------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.convert
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.exception module
---------------------------
-
-.. automodule:: easygraph.exception
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.convert
+   easygraph.exception
 
 Module contents
 ---------------

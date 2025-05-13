@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.convert &mdash; EasyGraph 1.4</title>
+  <title>easygraph.convert &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.convert</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.convert</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,31 +81,29 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.convert</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span></span><span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Collection</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generator</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Collection</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Generator</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">EasyGraphError</span>
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">dgl</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">torch_geometric</span>
+    <span class="kn">import</span> <span class="nn">dgl</span>
+    <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+    <span class="kn">import</span> <span class="nn">torch_geometric</span>
 
-    <span class="kn">from</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiGraph</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">Graph</span>
+    <span class="kn">from</span> <span class="nn">easygraph</span> <span class="kn">import</span> <span class="n">DiGraph</span>
+    <span class="kn">from</span> <span class="nn">easygraph</span> <span class="kn">import</span> <span class="n">Graph</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;from_dict_of_dicts&quot;</span><span class="p">,</span>
@@ -116,11 +116,10 @@
     <span class="s2">&quot;to_networkx&quot;</span><span class="p">,</span>
     <span class="s2">&quot;to_dgl&quot;</span><span class="p">,</span>
     <span class="s2">&quot;to_pyg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dict_to_hypergraph&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="to_easygraph_graph"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_easygraph_graph">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">to_easygraph_graph</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="to_easygraph_graph"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_easygraph_graph">[docs]</a><span class="k">def</span> <span class="nf">to_easygraph_graph</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a EasyGraph graph from a known data structure.</span>
 
 <span class="sd">    The preferred way to call this is automatically</span>
@@ -179,14 +178,14 @@
                 <span class="n">result</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">result</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Input is not a correct EasyGraph graph.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+            <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Input is not a correct EasyGraph graph.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
 
     <span class="c1"># pygraphviz  agraph</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;is_strict&quot;</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">eg</span><span class="o">.</span><span class="n">from_pyGraphviz_agraph</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Input is not a correct pygraphviz graph.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+            <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Input is not a correct pygraphviz graph.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
 
     <span class="c1"># dict of dicts/lists</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
@@ -202,11 +201,11 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">from_dict_of_lists</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input is not known type.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input is not known type.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
 
     <span class="c1"># Pandas DataFrame</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+        <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
@@ -214,7 +213,7 @@
                     <span class="k">return</span> <span class="n">eg</span><span class="o">.</span><span class="n">from_pandas_adjacency</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                     <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Input is not a correct Pandas DataFrame adjacency matrix.&quot;</span>
-                    <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                    <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">eg</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span>
@@ -222,13 +221,13 @@
                     <span class="p">)</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                     <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Input is not a correct Pandas DataFrame adjacency edge-list.&quot;</span>
-                    <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                    <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;pandas not found, skipping conversion test.&quot;</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
 
     <span class="c1"># numpy matrix or ndarray</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
@@ -236,7 +235,7 @@
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span>
                     <span class="s2">&quot;Input is not a correct numpy matrix or array.&quot;</span>
-                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;numpy not found, skipping conversion test.&quot;</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
 
@@ -248,7 +247,7 @@
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span>
                     <span class="s2">&quot;Input is not a correct scipy sparse matrix type.&quot;</span>
-                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;scipy not found, skipping conversion test.&quot;</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
 
@@ -260,12 +259,12 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">from_edgelist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Input is not a valid edge list&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+            <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Input is not a valid edge list&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
 
     <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Input is not a known data type for conversion.&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="from_dict_of_lists"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_dict_of_lists">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">from_dict_of_lists</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="from_dict_of_lists"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_dict_of_lists">[docs]</a><span class="k">def</span> <span class="nf">from_dict_of_lists</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
@@ -285,7 +284,7 @@
     <span class="k">return</span> <span class="n">G</span></div>
 
 
-<div class="viewcode-block" id="from_dict_of_dicts"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_dict_of_dicts">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">from_dict_of_dicts</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="from_dict_of_dicts"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_dict_of_dicts">[docs]</a><span class="k">def</span> <span class="nf">from_dict_of_dicts</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
     <span class="c1"># does dict d represent a MultiGraph or MultiDiGraph?</span>
@@ -344,7 +343,7 @@
     <span class="k">return</span> <span class="n">G</span></div>
 
 
-<div class="viewcode-block" id="from_edgelist"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_edgelist">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">from_edgelist</span><span class="p">(</span><span class="n">edgelist</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="from_edgelist"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_edgelist">[docs]</a><span class="k">def</span> <span class="nf">from_edgelist</span><span class="p">(</span><span class="n">edgelist</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a graph from a list of edges.</span>
 
 <span class="sd">    Parameters</span>
@@ -370,7 +369,7 @@
     <span class="k">return</span> <span class="n">G</span></div>
 
 
-<div class="viewcode-block" id="to_networkx"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_networkx">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">to_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Union[nx.Graph, nx.DiGraph]&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="to_networkx"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_networkx">[docs]</a><span class="k">def</span> <span class="nf">to_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Union[nx.Graph, nx.DiGraph]&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an EasyGraph to a NetworkX graph.</span>
 
 <span class="sd">    Args:</span>
@@ -384,7 +383,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># if load_func_name in di_load_functions_name:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+        <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;NetworkX not found. Please install it.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
@@ -405,7 +404,7 @@
     <span class="k">return</span> <span class="n">G</span></div>
 
 
-<div class="viewcode-block" id="from_networkx"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_networkx">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">from_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="s2">&quot;Union[nx.Graph, nx.DiGraph]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="from_networkx"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_networkx">[docs]</a><span class="k">def</span> <span class="nf">from_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="s2">&quot;Union[nx.Graph, nx.DiGraph]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a NetworkX graph to an EasyGraph graph.</span>
 
 <span class="sd">    Args:</span>
@@ -427,7 +426,7 @@
     <span class="n">G</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
 
     <span class="n">nodes_with_edges</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
         <span class="n">nodes_with_edges</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
         <span class="n">nodes_with_edges</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
@@ -436,7 +435,7 @@
     <span class="k">return</span> <span class="n">G</span></div>
 
 
-<div class="viewcode-block" id="to_dgl"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_dgl">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">to_dgl</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="to_dgl"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_dgl">[docs]</a><span class="k">def</span> <span class="nf">to_dgl</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an EasyGraph graph to a DGL graph.</span>
 
 <span class="sd">    Args:</span>
@@ -449,7 +448,7 @@
 <span class="sd">        DGLGraph: Converted DGL graph</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">dgl</span>
+        <span class="kn">import</span> <span class="nn">dgl</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;DGL not found. Please install it.&quot;</span><span class="p">)</span>
     <span class="n">g_nx</span> <span class="o">=</span> <span class="n">to_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
@@ -457,7 +456,7 @@
     <span class="k">return</span> <span class="n">g_dgl</span></div>
 
 
-<div class="viewcode-block" id="from_dgl"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_dgl">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">from_dgl</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="from_dgl"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_dgl">[docs]</a><span class="k">def</span> <span class="nf">from_dgl</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Union[Graph, DiGraph]&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a DGL graph to an EasyGraph graph.</span>
 
 <span class="sd">    Args:</span>
@@ -470,7 +469,7 @@
 <span class="sd">        Union[Graph, DiGraph]: Converted EasyGraph graph</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">dgl</span>
+        <span class="kn">import</span> <span class="nn">dgl</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;DGL not found. Please install it.&quot;</span><span class="p">)</span>
     <span class="n">g_nx</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">to_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
@@ -478,7 +477,7 @@
     <span class="k">return</span> <span class="n">g_eg</span></div>
 
 
-<div class="viewcode-block" id="to_pyg"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_pyg">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">to_pyg</span><span class="p">(</span>
+<div class="viewcode-block" id="to_pyg"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.to_pyg">[docs]</a><span class="k">def</span> <span class="nf">to_pyg</span><span class="p">(</span>
     <span class="n">G</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="n">group_node_attrs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">all</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
     <span class="n">group_edge_attrs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">all</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
@@ -517,7 +516,7 @@
 <span class="sd">        Data(edge_index=[2, 6], num_nodes=4)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">torch_geometric</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyg</span>
+        <span class="kn">import</span> <span class="nn">torch_geometric</span> <span class="k">as</span> <span class="nn">pyg</span>
 
         <span class="n">pyg_to_networkx</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convert</span><span class="o">.</span><span class="n">to_networkx</span>  <span class="c1"># type: ignore</span>
         <span class="n">networkx_to_pyg</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convert</span><span class="o">.</span><span class="n">from_networkx</span>  <span class="c1"># type: ignore</span>
@@ -529,7 +528,7 @@
     <span class="k">return</span> <span class="n">g_pyg</span></div>
 
 
-<div class="viewcode-block" id="from_pyg"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_pyg">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">from_pyg</span><span class="p">(</span>
+<div class="viewcode-block" id="from_pyg"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.from_pyg">[docs]</a><span class="k">def</span> <span class="nf">from_pyg</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;torch_geometric.data.Data&quot;</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
     <span class="n">node_attrs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">edge_attrs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -575,7 +574,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">torch_geometric</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyg</span>
+        <span class="kn">import</span> <span class="nn">torch_geometric</span> <span class="k">as</span> <span class="nn">pyg</span>
 
         <span class="n">pyg_to_networkx</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convert</span><span class="o">.</span><span class="n">to_networkx</span>  <span class="c1"># type: ignore</span>
         <span class="n">networkx_to_pyg</span> <span class="o">=</span> <span class="n">pyg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convert</span><span class="o">.</span><span class="n">from_networkx</span>  <span class="c1"># type: ignore</span>
@@ -586,90 +585,6 @@
     <span class="p">)</span>
     <span class="n">g_eg</span> <span class="o">=</span> <span class="n">from_networkx</span><span class="p">(</span><span class="n">g_nx</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">g_eg</span></div>
-
-
-<div class="viewcode-block" id="dict_to_hypergraph"><a class="viewcode-back" href="../../reference/easygraph.html#easygraph.convert.dict_to_hypergraph">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">dict_to_hypergraph</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">max_order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_dynamic</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A function to read a file in a standardized JSON format.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    data: dict</span>
-<span class="sd">        A dictionary in the hypergraph JSON format</span>
-<span class="sd">    max_order: int, optional</span>
-<span class="sd">        Maximum order of edges to add to the hypergraph</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    A Hypergraph object</span>
-<span class="sd">        The loaded hypergraph</span>
-
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    EasyGraphError</span>
-<span class="sd">        If the JSON is not in a format that can be loaded.</span>
-
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    read_json</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">timestamp_lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="n">node_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;node-data&quot;</span><span class="p">]</span>
-    <span class="n">node_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_data</span><span class="p">)</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="n">num_v</span><span class="o">=</span><span class="n">node_num</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># print(len(data[&quot;node-data&quot;]))</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">dd</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;node-data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">v_property</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">dd</span>
-    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Failed to import node attributes.&quot;</span><span class="p">)</span>
-
-    <span class="c1"># try:</span>
-    <span class="c1"># import time</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">edge_flag_dict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">e_property_dict</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;edge-data&quot;</span><span class="p">]</span>
-    <span class="n">edge_id</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;edge-dict&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="c1"># print(&quot;id:&quot;,id)</span>
-        <span class="k">if</span> <span class="n">max_order</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">continue</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Failed to convert the edge with ID </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2"> to type int.&quot;</span>
-            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">edge</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">edge</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edge_flag_dict</span><span class="p">:</span>
-                <span class="n">edge_flag_dict</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">edge</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
-                <span class="n">rows</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
-                <span class="n">cols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="n">edge_id</span><span class="p">])</span>
-                <span class="n">edge_id</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert nodes to type int.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-
-        <span class="k">if</span> <span class="n">is_dynamic</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_hyperedges</span><span class="p">(</span>
-                <span class="n">e_list</span><span class="o">=</span><span class="n">edge</span><span class="p">,</span>
-                <span class="n">e_property</span><span class="o">=</span><span class="n">e_property_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)],</span>
-                <span class="n">group_name</span><span class="o">=</span><span class="n">e_property_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)][</span><span class="s2">&quot;timestamp&quot;</span><span class="p">],</span>
-            <span class="p">)</span>
-
-            <span class="n">timestamp_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e_property_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)][</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_hyperedges</span><span class="p">(</span><span class="n">e_list</span><span class="o">=</span><span class="n">edge</span><span class="p">,</span> <span class="n">e_property</span><span class="o">=</span><span class="n">e_property_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)])</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">_rows</span> <span class="o">=</span> <span class="n">rows</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">_cols</span> <span class="o">=</span> <span class="n">cols</span>
-    <span class="k">return</span> <span class="n">G</span><span class="p">,</span> <span class="n">timestamp_lst</span></div>
 </pre></div>
 
            </div>

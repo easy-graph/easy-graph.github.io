@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.drawing.geometry &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.drawing.geometry &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.drawing.geometry</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.drawing.geometry</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,12 +81,12 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.drawing.geometry</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
 
 
-<div class="viewcode-block" id="radian_from_atan"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.radian_from_atan">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">radian_from_atan</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="viewcode-block" id="radian_from_atan"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.radian_from_atan">[docs]</a><span class="k">def</span> <span class="nf">radian_from_atan</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -100,27 +102,25 @@
         <span class="k">return</span> <span class="n">r</span> <span class="o">+</span> <span class="n">pi</span></div>
 
 
-<div class="viewcode-block" id="vlen"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.vlen">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">vlen</span><span class="p">(</span><span class="n">vector</span><span class="p">):</span>
+<div class="viewcode-block" id="vlen"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.vlen">[docs]</a><span class="k">def</span> <span class="nf">vlen</span><span class="p">(</span><span class="n">vector</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="common_tangent_radian"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.common_tangent_radian">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">common_tangent_radian</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">r2</span> <span class="o">-</span> <span class="n">r1</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alpha:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+<div class="viewcode-block" id="common_tangent_radian"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.common_tangent_radian">[docs]</a><span class="k">def</span> <span class="nf">common_tangent_radian</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r2</span> <span class="o">-</span> <span class="n">r1</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span>
     <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span> <span class="k">if</span> <span class="n">r1</span> <span class="o">&gt;</span> <span class="n">r2</span> <span class="k">else</span> <span class="n">pi</span> <span class="o">-</span> <span class="n">alpha</span>
     <span class="k">return</span> <span class="n">alpha</span></div>
 
 
-<div class="viewcode-block" id="polar_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.polar_position">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">polar_position</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">start_point</span><span class="p">):</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="viewcode-block" id="polar_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.polar_position">[docs]</a><span class="k">def</span> <span class="nf">polar_position</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">start_point</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span> <span class="o">+</span> <span class="n">start_point</span></div>
 
 
-<div class="viewcode-block" id="rad_2_deg"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.rad_2_deg">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">rad_2_deg</span><span class="p">(</span><span class="n">rad</span><span class="p">):</span>
+<div class="viewcode-block" id="rad_2_deg"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.geometry.rad_2_deg">[docs]</a><span class="k">def</span> <span class="nf">rad_2_deg</span><span class="p">(</span><span class="n">rad</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">rad</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="n">pi</span></div>
 </pre></div>
 

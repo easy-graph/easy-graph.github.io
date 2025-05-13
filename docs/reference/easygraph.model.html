@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.model package &mdash; EasyGraph 1.4</title>
+  <title>easygraph.model package &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
@@ -12,10 +12,9 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/copybutton.js"></script>
@@ -23,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="easygraph.model.hypergraphs package" href="easygraph.model.hypergraphs.html" />
-    <link rel="prev" title="easygraph.ml_metrics.hypergraphs package" href="easygraph.ml_metrics.hypergraphs.html" /> 
+    <link rel="prev" title="easygraph.ml_metrics.classification module" href="easygraph.ml_metrics.classification.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,24 +30,27 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../index.html" class="icon icon-home"> EasyGraph
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../eggpu.html">EGGPU</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -70,11 +72,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../reference.html">Reference</a> &raquo;</li>
-          <li><a href="modules.html">easygraph</a> &raquo;</li>
-          <li><a href="easygraph.html">easygraph package</a> &raquo;</li>
-      <li>easygraph.model package</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+      <li class="breadcrumb-item active">easygraph.model package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/easygraph.model.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,22 +86,42 @@
            <div itemprop="articleBody">
              
   <section id="easygraph-model-package">
-<h1>easygraph.model package<a class="headerlink" href="#easygraph-model-package" title="Permalink to this heading"></a></h1>
+<span id="module-easygraph-model"></span><h1>easygraph.model package<a class="headerlink" href="#easygraph-model-package" title="Permalink to this heading"></a></h1>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="easygraph.model.hypergraphs.html">easygraph.model.hypergraphs package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-dhcf-module">easygraph.model.hypergraphs.dhcf module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-dhne-module">easygraph.model.hypergraphs.dhne module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-hgnn-module">easygraph.model.hypergraphs.hgnn module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-hgnnp-module">easygraph.model.hypergraphs.hgnnp module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-hnhn-module">easygraph.model.hypergraphs.hnhn module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-hwnn-module">easygraph.model.hypergraphs.hwnn module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-hypergcn-module">easygraph.model.hypergraphs.hypergcn module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-setgnn-module">easygraph.model.hypergraphs.setgnn module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#easygraph-model-hypergraphs-unignn-module">easygraph.model.hypergraphs.unignn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.dhcf.html">easygraph.model.hypergraphs.dhcf module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.model.hypergraphs.dhcf.html#easygraph.model.hypergraphs.dhcf.DHCF"><code class="docutils literal notranslate"><span class="pre">DHCF</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.dhne.html">easygraph.model.hypergraphs.dhne module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.hgnn.html">easygraph.model.hypergraphs.hgnn module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.model.hypergraphs.hgnn.html#easygraph.model.hypergraphs.hgnn.HGNN"><code class="docutils literal notranslate"><span class="pre">HGNN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.hgnnp.html">easygraph.model.hypergraphs.hgnnp module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP"><code class="docutils literal notranslate"><span class="pre">HGNNP</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.hnhn.html">easygraph.model.hypergraphs.hnhn module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.model.hypergraphs.hnhn.html#easygraph.model.hypergraphs.hnhn.HNHN"><code class="docutils literal notranslate"><span class="pre">HNHN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.hwnn.html">easygraph.model.hypergraphs.hwnn module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.model.hypergraphs.hwnn.html#easygraph.model.hypergraphs.hwnn.HWNN"><code class="docutils literal notranslate"><span class="pre">HWNN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.hypergcn.html">easygraph.model.hypergraphs.hypergcn module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="easygraph.model.hypergraphs.hypergcn.html#easygraph.model.hypergraphs.hypergcn.HyperGCN"><code class="docutils literal notranslate"><span class="pre">HyperGCN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.setgnn.html">easygraph.model.hypergraphs.setgnn module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="easygraph.model.hypergraphs.unignn.html">easygraph.model.hypergraphs.unignn module</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="easygraph.model.hypergraphs.html#module-contents">Module contents</a></li>
 </ul>
 </li>
@@ -116,7 +137,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="easygraph.ml_metrics.hypergraphs.html" class="btn btn-neutral float-left" title="easygraph.ml_metrics.hypergraphs package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easygraph.ml_metrics.classification.html" class="btn btn-neutral float-left" title="easygraph.ml_metrics.classification module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="easygraph.model.hypergraphs.html" class="btn btn-neutral float-right" title="easygraph.model.hypergraphs package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

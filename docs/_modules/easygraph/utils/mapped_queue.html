@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.utils.mapped_queue &mdash; EasyGraph 1.4</title>
+  <title>easygraph.utils.mapped_queue &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.utils.mapped_queue</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.utils.mapped_queue</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -85,13 +87,13 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">heapq</span>
+<span class="kn">import</span> <span class="nn">heapq</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MappedQueue&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="MappedQueue"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">MappedQueue</span><span class="p">:</span>
+<div class="viewcode-block" id="MappedQueue"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue">[docs]</a><span class="k">class</span> <span class="nc">MappedQueue</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The MappedQueue class implements an efficient minimum heap. The</span>
 <span class="sd">    smallest element can be popped in O(1) time, new elements can be pushed</span>
@@ -134,23 +136,23 @@
 <span class="sd">       Pearson Education.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Priority queue class with updatable priorities.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_heapify</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_heapify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_heapify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Restore heap invariant and recalculate map.&quot;&quot;&quot;</span>
         <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">elt</span><span class="p">:</span> <span class="n">pos</span> <span class="k">for</span> <span class="n">pos</span><span class="p">,</span> <span class="n">elt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)}</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Heap contains duplicate elements&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MappedQueue.push"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.push">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">):</span>
+<div class="viewcode-block" id="MappedQueue.push"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.push">[docs]</a>    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an element to the queue.&quot;&quot;&quot;</span>
         <span class="c1"># If element is already in queue, do nothing</span>
         <span class="k">if</span> <span class="n">elt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span>
@@ -163,7 +165,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_siftdown</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="MappedQueue.pop"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.pop">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MappedQueue.pop"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.pop">[docs]</a>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove and return the smallest element in the queue.&quot;&quot;&quot;</span>
         <span class="c1"># Remove smallest element</span>
         <span class="n">elt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -182,7 +184,7 @@
         <span class="c1"># Return smallest element</span>
         <span class="k">return</span> <span class="n">elt</span></div>
 
-<div class="viewcode-block" id="MappedQueue.update"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.update">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+<div class="viewcode-block" id="MappedQueue.update"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace an element in the queue with a new one.&quot;&quot;&quot;</span>
         <span class="c1"># Replace</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">elt</span><span class="p">]</span>
@@ -193,7 +195,7 @@
         <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siftup</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_siftdown</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MappedQueue.remove"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.remove">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">):</span>
+<div class="viewcode-block" id="MappedQueue.remove"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.mapped_queue.MappedQueue.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove an element from the queue.&quot;&quot;&quot;</span>
         <span class="c1"># Find and remove element</span>
         <span class="k">try</span><span class="p">:</span>
@@ -214,7 +216,7 @@
         <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siftup</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_siftdown</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span></div>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_siftup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_siftup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Move element at pos down to a leaf by repeatedly moving the smaller</span>
 <span class="sd">        child up.&quot;&quot;&quot;</span>
         <span class="n">h</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span>
@@ -246,7 +248,7 @@
             <span class="n">left_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">pos</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_siftdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_siftdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Restore invariant by repeatedly replacing out-of-place element with</span>
 <span class="sd">        its parent.&quot;&quot;&quot;</span>
         <span class="n">h</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span>

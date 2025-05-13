@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.hypergraph.centrality package &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.hypergraph.centrality package &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
@@ -12,18 +12,16 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="easygraph.functions.hypergraph.null_model package" href="easygraph.functions.hypergraph.null_model.html" />
+    <link rel="next" title="easygraph.functions.hypergraph.centrality.cycle_ratio module" href="easygraph.functions.hypergraph.centrality.cycle_ratio.html" />
     <link rel="prev" title="easygraph.functions.hypergraph package" href="easygraph.functions.hypergraph.html" /> 
 </head>
 
@@ -32,24 +30,27 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../index.html" class="icon icon-home"> EasyGraph
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../eggpu.html">EGGPU</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -71,13 +72,12 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../reference.html">Reference</a> &raquo;</li>
-          <li><a href="modules.html">easygraph</a> &raquo;</li>
-          <li><a href="easygraph.html">easygraph package</a> &raquo;</li>
-          <li><a href="easygraph.functions.html">easygraph.functions package</a> &raquo;</li>
-          <li><a href="easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a> &raquo;</li>
-      <li>easygraph.functions.hypergraph.centrality package</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.html">easygraph.functions package</a></li>
+          <li class="breadcrumb-item"><a href="easygraph.functions.hypergraph.html">easygraph.functions.hypergraph package</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.hypergraph.centrality package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/easygraph.functions.hypergraph.centrality.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -88,213 +88,40 @@
            <div itemprop="articleBody">
              
   <section id="easygraph-functions-hypergraph-centrality-package">
-<h1>easygraph.functions.hypergraph.centrality package<a class="headerlink" href="#easygraph-functions-hypergraph-centrality-package" title="Permalink to this heading"></a></h1>
+<span id="module-easygraph-functions-hypergraph-centrality"></span><h1>easygraph.functions.hypergraph.centrality package<a class="headerlink" href="#easygraph-functions-hypergraph-centrality-package" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-easygraph.functions.hypergraph.centrality.cycle_ratio">
-<span id="easygraph-functions-hypergraph-centrality-cycle-ratio-module"></span><h2>easygraph.functions.hypergraph.centrality.cycle_ratio module<a class="headerlink" href="#module-easygraph.functions.hypergraph.centrality.cycle_ratio" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.cycle_ratio.StatisticsAndCalculateIndicators">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.cycle_ratio.</span></span><span class="sig-name descname"><span class="pre">StatisticsAndCalculateIndicators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SmallestCyclesOfNodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CycLenDict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/cycle_ratio.html#StatisticsAndCalculateIndicators"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.cycle_ratio.StatisticsAndCalculateIndicators" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.cycle_ratio.cycle_ratio_centrality">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.cycle_ratio.</span></span><span class="sig-name descname"><span class="pre">cycle_ratio_centrality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/cycle_ratio.html#cycle_ratio_centrality"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.cycle_ratio.cycle_ratio_centrality" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>G</strong> (<em>eg.Graph</em>) – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>cycle ratio centrality of each node in G</strong></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cycle_ratio_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="go">{1: 4.083333333333333, 2: 4.083333333333333, 3: 2.6666666666666665, 4: 2.6666666666666665, 5: 1.5}</span>
-</pre></div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.cycle_ratio.html">easygraph.functions.hypergraph.centrality.cycle_ratio module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.cycle_ratio.html#easygraph.functions.hypergraph.centrality.cycle_ratio.StatisticsAndCalculateIndicators"><code class="docutils literal notranslate"><span class="pre">StatisticsAndCalculateIndicators()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.cycle_ratio.html#easygraph.functions.hypergraph.centrality.cycle_ratio.cycle_ratio_centrality"><code class="docutils literal notranslate"><span class="pre">cycle_ratio_centrality()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.cycle_ratio.html#easygraph.functions.hypergraph.centrality.cycle_ratio.getSmallestCycles"><code class="docutils literal notranslate"><span class="pre">getSmallestCycles()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.cycle_ratio.html#easygraph.functions.hypergraph.centrality.cycle_ratio.getandJudgeSimpleCircle"><code class="docutils literal notranslate"><span class="pre">getandJudgeSimpleCircle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.cycle_ratio.html#easygraph.functions.hypergraph.centrality.cycle_ratio.my_all_shortest_paths"><code class="docutils literal notranslate"><span class="pre">my_all_shortest_paths()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.degree.html">easygraph.functions.hypergraph.centrality.degree module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.degree.html#easygraph.functions.hypergraph.centrality.degree.hyepergraph_degree_centrality"><code class="docutils literal notranslate"><span class="pre">hyepergraph_degree_centrality()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.hypercoreness.html">easygraph.functions.hypergraph.centrality.hypercoreness module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.hypercoreness.html#easygraph.functions.hypergraph.centrality.hypercoreness.frequency_based_hypercoreness"><code class="docutils literal notranslate"><span class="pre">frequency_based_hypercoreness()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.hypercoreness.html#easygraph.functions.hypergraph.centrality.hypercoreness.size_independent_hypercoreness"><code class="docutils literal notranslate"><span class="pre">size_independent_hypercoreness()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.s_centrality.html">easygraph.functions.hypergraph.centrality.s_centrality module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.s_centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_betweenness"><code class="docutils literal notranslate"><span class="pre">s_betweenness()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.s_centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_closeness"><code class="docutils literal notranslate"><span class="pre">s_closeness()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.s_centrality.html#easygraph.functions.hypergraph.centrality.s_centrality.s_eccentricity"><code class="docutils literal notranslate"><span class="pre">s_eccentricity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.vector_centrality.html">easygraph.functions.hypergraph.centrality.vector_centrality module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easygraph.functions.hypergraph.centrality.vector_centrality.html#easygraph.functions.hypergraph.centrality.vector_centrality.vector_centrality"><code class="docutils literal notranslate"><span class="pre">vector_centrality()</span></code></a></li>
+</ul>
+</li>
+</ul>
 </div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.cycle_ratio.getSmallestCycles">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.cycle_ratio.</span></span><span class="sig-name descname"><span class="pre">getSmallestCycles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NodeGirth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Coreness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DEF_IMPOSSLEN</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/cycle_ratio.html#getSmallestCycles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.cycle_ratio.getSmallestCycles" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.cycle_ratio.getandJudgeSimpleCircle">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.cycle_ratio.</span></span><span class="sig-name descname"><span class="pre">getandJudgeSimpleCircle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objectList</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/cycle_ratio.html#getandJudgeSimpleCircle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.cycle_ratio.getandJudgeSimpleCircle" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.cycle_ratio.my_all_shortest_paths">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.cycle_ratio.</span></span><span class="sig-name descname"><span class="pre">my_all_shortest_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/cycle_ratio.html#my_all_shortest_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.cycle_ratio.my_all_shortest_paths" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="module-easygraph.functions.hypergraph.centrality.degree">
-<span id="easygraph-functions-hypergraph-centrality-degree-module"></span><h2>easygraph.functions.hypergraph.centrality.degree module<a class="headerlink" href="#module-easygraph.functions.hypergraph.centrality.degree" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.degree.hyepergraph_degree_centrality">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.degree.</span></span><span class="sig-name descname"><span class="pre">hyepergraph_degree_centrality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/degree.html#hyepergraph_degree_centrality"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.degree.hyepergraph_degree_centrality" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>G</strong> (<em>eg.Hypergraph</em>) – The target hypergraph</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>degree centrality of each node in G</strong></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-easygraph.functions.hypergraph.centrality.hypercoreness">
-<span id="easygraph-functions-hypergraph-centrality-hypercoreness-module"></span><h2>easygraph.functions.hypergraph.centrality.hypercoreness module<a class="headerlink" href="#module-easygraph.functions.hypergraph.centrality.hypercoreness" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.hypercoreness.frequency_based_hypercoreness">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.hypercoreness.</span></span><span class="sig-name descname"><span class="pre">frequency_based_hypercoreness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/hypercoreness.html#frequency_based_hypercoreness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.hypercoreness.frequency_based_hypercoreness" title="Permalink to this definition"></a></dt>
-<dd><p>The frequency-based hypercoreness of nodes in hypergraph.</p>
-<blockquote>
-<div><p>h : easygraph.Hypergraph</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>dict</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Centrality, where keys are node IDs and values are lists of centralities.</p>
-</dd>
-</dl>
-<p class="rubric">References</p>
-<p>Mancastroppa, M., Iacopini, I., Petri, G. et al. Hyper-cores promote localization and efficient seeding in higher-order processes. Nat Commun 14, 6223 (2023). <a class="reference external" href="https://doi.org/10.1038/s41467-023-41887-2">https://doi.org/10.1038/s41467-023-41887-2</a></p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.hypercoreness.size_independent_hypercoreness">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.hypercoreness.</span></span><span class="sig-name descname"><span class="pre">size_independent_hypercoreness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/hypercoreness.html#size_independent_hypercoreness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.hypercoreness.size_independent_hypercoreness" title="Permalink to this definition"></a></dt>
-<dd><p>The size_independent_hypercoreness of nodes in hypergraph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>h</strong> (<em>eg.Hypergraph.</em>) – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Centrality, where keys are node IDs and values are lists of centralities.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">References</p>
-<p>Mancastroppa, M., Iacopini, I., Petri, G. et al. Hyper-cores promote localization and efficient seeding in higher-order processes. Nat Commun 14, 6223 (2023). <a class="reference external" href="https://doi.org/10.1038/s41467-023-41887-2">https://doi.org/10.1038/s41467-023-41887-2</a>.</p>
-</dd></dl>
-
-</section>
-<section id="module-easygraph.functions.hypergraph.centrality.s_centrality">
-<span id="easygraph-functions-hypergraph-centrality-s-centrality-module"></span><h2>easygraph.functions.hypergraph.centrality.s_centrality module<a class="headerlink" href="#module-easygraph.functions.hypergraph.centrality.s_centrality" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.s_centrality.s_betweenness">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.s_centrality.</span></span><span class="sig-name descname"><span class="pre">s_betweenness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/s_centrality.html#s_betweenness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.s_centrality.s_betweenness" title="Permalink to this definition"></a></dt>
-<dd><p>Computes the betweenness centrality for each edge in the hypergraph.</p>
-<p>Computes the betweenness centrality for each edge in the hypergraph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>H</strong> (<em>eg.Hypergraph.</em>) – The hypergraph to compute</p></li>
-<li><p><strong>s</strong> (<em>int</em><em>, </em><em>optional.</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>dict</em></p></li>
-<li><p><em>The keys are the edges and the values are the betweenness centrality.</em></p></li>
-<li><p><em>The betweenness centrality for each edge in the hypergraph.</em></p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.s_centrality.s_closeness">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.s_centrality.</span></span><span class="sig-name descname"><span class="pre">s_closeness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/s_centrality.html#s_closeness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.s_centrality.s_closeness" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the closeness centrality for each edge in the hypergraph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>H</strong> (<em>eg.Hypergraph.</em>) – </p></li>
-<li><p><strong>s</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict. The closeness centrality for each edge in the hypergraph. The keys are the edges and the values are the closeness centrality.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.s_centrality.s_eccentricity">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.s_centrality.</span></span><span class="sig-name descname"><span class="pre">s_eccentricity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/s_centrality.html#s_eccentricity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.s_centrality.s_eccentricity" title="Permalink to this definition"></a></dt>
-<dd><p>The length of the longest shortest path from a vertex $u$ to every other vertex in
-the s-linegraph.
-$V$ = set of vertices in the s-linegraph
-$d$ = shortest path distance</p>
-<div class="math notranslate nohighlight">
-\[\text{s-ecc}(u) = \text{max}\{d(u,v): v \in V\}\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>H</strong> (<em>eg.Hypergraph</em>) – </p></li>
-<li><p><strong>s</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
-<li><p><strong>edges</strong> (<em>bool</em><em>, </em><em>optional</em>) – Indicates if method should compute edge linegraph (default) or node linegraph.</p></li>
-<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) – Identifier of node or edge of interest for computing centrality</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>returns the s-eccentricity value of the edges(nodes).
-If source=None a dictionary of values for each s-edge in H is returned.
-If source then a single value is returned.
-If the s-linegraph is disconnected, np.inf is returned.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict or float</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-easygraph.functions.hypergraph.centrality.vector_centrality">
-<span id="easygraph-functions-hypergraph-centrality-vector-centrality-module"></span><h2>easygraph.functions.hypergraph.centrality.vector_centrality module<a class="headerlink" href="#module-easygraph.functions.hypergraph.centrality.vector_centrality" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.functions.hypergraph.centrality.vector_centrality.vector_centrality">
-<span class="sig-prename descclassname"><span class="pre">easygraph.functions.hypergraph.centrality.vector_centrality.</span></span><span class="sig-name descname"><span class="pre">vector_centrality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/functions/hypergraph/centrality/vector_centrality.html#vector_centrality"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.functions.hypergraph.centrality.vector_centrality.vector_centrality" title="Permalink to this definition"></a></dt>
-<dd><p>The vector centrality of nodes in the line graph of the hypergraph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>H</strong> (<em>eg.Hypergraph</em>) – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Centrality, where keys are node IDs and values are lists of centralities.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">References</p>
-<p>“Vector centrality in hypergraphs”, K. Kovalenko, M. Romance, E. Vasilyeva,
-D. Aleja, R. Criado, D. Musatov, A.M. Raigorodskii, J. Flores, I. Samoylenko,
-K. Alfaro-Bittner, M. Perc, S. Boccaletti,
-<a class="reference external" href="https://doi.org/10.1016/j.chaos.2022.112397">https://doi.org/10.1016/j.chaos.2022.112397</a></p>
-</dd></dl>
-
 </section>
 <section id="module-easygraph.functions.hypergraph.centrality">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.functions.hypergraph.centrality" title="Permalink to this heading"></a></h2>
@@ -306,7 +133,7 @@ K. Alfaro-Bittner, M. Perc, S. Boccaletti,
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="easygraph.functions.hypergraph.html" class="btn btn-neutral float-left" title="easygraph.functions.hypergraph package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="easygraph.functions.hypergraph.null_model.html" class="btn btn-neutral float-right" title="easygraph.functions.hypergraph.null_model package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="easygraph.functions.hypergraph.centrality.cycle_ratio.html" class="btn btn-neutral float-right" title="easygraph.functions.hypergraph.centrality.cycle_ratio module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,3 +1,5 @@
+.. _module_easygraph.datasets:
+
 easygraph.datasets package
 ==========================
 
@@ -13,61 +15,16 @@ Subpackages
 Submodules
 ----------
 
-easygraph.datasets.citation\_graph module
------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.datasets.citation_graph
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.get\_sample\_graph module
---------------------------------------------
-
-.. automodule:: easygraph.datasets.get_sample_graph
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.gnn\_benchmark module
-----------------------------------------
-
-.. automodule:: easygraph.datasets.gnn_benchmark
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.graph\_dataset\_base module
-----------------------------------------------
-
-.. automodule:: easygraph.datasets.graph_dataset_base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.karate module
---------------------------------
-
-.. automodule:: easygraph.datasets.karate
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.ppi module
------------------------------
-
-.. automodule:: easygraph.datasets.ppi
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datasets.utils module
--------------------------------
-
-.. automodule:: easygraph.datasets.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.datasets.citation_graph
+   easygraph.datasets.get_sample_graph
+   easygraph.datasets.gnn_benchmark
+   easygraph.datasets.graph_dataset_base
+   easygraph.datasets.karate
+   easygraph.datasets.ppi
+   easygraph.datasets.utils
 
 Module contents
 ---------------

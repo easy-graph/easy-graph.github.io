@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.utils.decorators &mdash; EasyGraph 1.4</title>
+  <title>easygraph.utils.decorators &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.utils.decorators</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.utils.decorators</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,20 +81,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.utils.decorators</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bz2</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">collections</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">gzip</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span></span><span class="kn">import</span> <span class="nn">bz2</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">splitext</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">splitext</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">EasyGraphError</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.exception</span> <span class="kn">import</span> <span class="n">EasyGraphError</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -106,7 +108,7 @@
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="retry_method_with_fix"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.retry_method_with_fix">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">retry_method_with_fix</span><span class="p">(</span><span class="n">fix_method</span><span class="p">):</span>
+<div class="viewcode-block" id="retry_method_with_fix"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.retry_method_with_fix">[docs]</a><span class="k">def</span> <span class="nf">retry_method_with_fix</span><span class="p">(</span><span class="n">fix_method</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator that executes a fix method before retrying again when the decorated method</span>
 <span class="sd">    fails once with any exception.</span>
 
@@ -124,9 +126,9 @@
 <span class="sd">        ignored.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_creator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_creator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="c1"># pylint: disable=W0703,bare-except</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -139,17 +141,17 @@
     <span class="k">return</span> <span class="n">_creator</span></div>
 
 
-<div class="viewcode-block" id="only_implemented_for_UnDirected_graph"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.only_implemented_for_UnDirected_graph">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">only_implemented_for_UnDirected_graph</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="viewcode-block" id="only_implemented_for_UnDirected_graph"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.only_implemented_for_UnDirected_graph">[docs]</a><span class="k">def</span> <span class="nf">only_implemented_for_UnDirected_graph</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="c1"># print(&quot;--------{:&lt;40}: Only Implemented For UnDirected Graph--------&quot;.format(func.__name__))</span>
     <span class="k">return</span> <span class="n">func</span></div>
 
 
-<div class="viewcode-block" id="only_implemented_for_Directed_graph"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.only_implemented_for_Directed_graph">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">only_implemented_for_Directed_graph</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="viewcode-block" id="only_implemented_for_Directed_graph"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.only_implemented_for_Directed_graph">[docs]</a><span class="k">def</span> <span class="nf">only_implemented_for_Directed_graph</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="c1"># print(&quot;--------{:&lt;40}: Only Implemented For Directed Graph--------&quot;.format(func.__name__))</span>
     <span class="k">return</span> <span class="n">func</span></div>
 
 
-<div class="viewcode-block" id="not_implemented_for"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.not_implemented_for">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">not_implemented_for</span><span class="p">(</span><span class="o">*</span><span class="n">graph_types</span><span class="p">):</span>
+<div class="viewcode-block" id="not_implemented_for"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.not_implemented_for">[docs]</a><span class="k">def</span> <span class="nf">not_implemented_for</span><span class="p">(</span><span class="o">*</span><span class="n">graph_types</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to mark algorithms as not implemented</span>
 
 <span class="sd">    Parameters</span>
@@ -206,7 +208,7 @@
     <span class="n">mval</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;multigraph&quot;</span> <span class="ow">in</span> <span class="n">graph_types</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="s2">&quot;graph&quot;</span> <span class="ow">in</span> <span class="n">graph_types</span><span class="p">)</span> <span class="ow">and</span> <span class="kc">None</span>
     <span class="n">errmsg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;not implemented for </span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">graph_types</span><span class="p">)</span><span class="si">}</span><span class="s2"> type&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_not_implemented_for</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_not_implemented_for</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">mval</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">mval</span> <span class="o">==</span> <span class="n">g</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span>
             <span class="n">dval</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dval</span> <span class="o">==</span> <span class="n">g</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span>
         <span class="p">):</span>
@@ -217,15 +219,15 @@
     <span class="k">return</span> <span class="n">argmap</span><span class="p">(</span><span class="n">_not_implemented_for</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
 
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">functools</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">cpp_easygraph</span>
+<span class="kn">import</span> <span class="nn">cpp_easygraph</span>
 
 
-<div class="viewcode-block" id="hybrid"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.hybrid">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">hybrid</span><span class="p">(</span><span class="n">cpp_method_name</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_hybrid</span><span class="p">(</span><span class="n">py_method</span><span class="p">):</span>
+<div class="viewcode-block" id="hybrid"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.hybrid">[docs]</a><span class="k">def</span> <span class="nf">hybrid</span><span class="p">(</span><span class="n">cpp_method_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_hybrid</span><span class="p">(</span><span class="n">py_method</span><span class="p">):</span>
         <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">py_method</span><span class="p">)</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="n">G</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">cflag</span> <span class="ow">and</span> <span class="n">cpp_method_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
@@ -250,7 +252,7 @@
 <span class="n">_dispatch_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">open</span><span class="p">,</span> <span class="o">**</span><span class="n">fopeners</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
 
-<div class="viewcode-block" id="open_file"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.open_file">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">open_file</span><span class="p">(</span><span class="n">path_arg</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="open_file"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.open_file">[docs]</a><span class="k">def</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">path_arg</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to ensure clean opening and closing of files.</span>
 
 <span class="sd">    Parameters</span>
@@ -322,7 +324,7 @@
 <span class="sd">    When we exit the function, fobj will be closed, if it should be, by the decorator.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_open_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_open_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="c1"># Now we have the path_arg. There are two types of input to consider:</span>
         <span class="c1">#   1) string representing a path that should be opened</span>
         <span class="c1">#   2) an already opened file object</span>
@@ -342,7 +344,7 @@
     <span class="k">return</span> <span class="n">argmap</span><span class="p">(</span><span class="n">_open_file</span><span class="p">,</span> <span class="n">path_arg</span><span class="p">,</span> <span class="n">try_finally</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 
-<span class="k">class</span><span class="w"> </span><span class="nc">argmap</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">argmap</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator to apply a map to arguments before calling the function</span>
 
 <span class="sd">    This class provides a decorator that maps (transforms) arguments of the function</span>
@@ -643,13 +645,13 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">try_finally</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">try_finally</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_func</span> <span class="o">=</span> <span class="n">func</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_args</span> <span class="o">=</span> <span class="n">args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_finally</span> <span class="o">=</span> <span class="n">try_finally</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_lazy_compile</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_lazy_compile</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compile the source of a wrapped function</span>
 
 <span class="sd">        Assemble and compile the decorated function, and intrusively replace its</span>
@@ -689,7 +691,7 @@
         <span class="n">func</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">real_func</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">func</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a lazily decorated wrapper of f.</span>
 
 <span class="sd">        The decorated function will be compiled when it is called for the first time,</span>
@@ -712,12 +714,12 @@
 
         <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isgeneratorfunction</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
 
-            <span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">__wrapper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">__wrapper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="k">yield from</span> <span class="n">argmap</span><span class="o">.</span><span class="n">_lazy_compile</span><span class="p">(</span><span class="n">__wrapper</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
 
-            <span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">__wrapper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">__wrapper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">argmap</span><span class="o">.</span><span class="n">_lazy_compile</span><span class="p">(</span><span class="n">__wrapper</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="c1"># standard function-wrapping stuff</span>
@@ -753,7 +755,7 @@
     <span class="n">__count</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_count</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_count</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Maintain a globally-unique identifier for function names and &quot;file&quot; names</span>
 
 <span class="sd">        Note that this counter is a class method reporting a class variable</span>
@@ -776,7 +778,7 @@
     <span class="n">_bad_chars</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[^a-zA-Z0-9_]&quot;</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mangle the name of a function to be unique but somewhat human-readable</span>
 
 <span class="sd">        The names are unique within a Python session and set using `_count`.</span>
@@ -795,7 +797,7 @@
         <span class="n">fname</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_bad_chars</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;argmap_</span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_count</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">compile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">compile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compile the decorated function.</span>
 
 <span class="sd">        Called once for a given decorated function -- collects the code from all</span>
@@ -843,7 +845,7 @@
         <span class="n">func</span><span class="o">.</span><span class="n">_code</span> <span class="o">=</span> <span class="n">code</span>
         <span class="k">return</span> <span class="n">func</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">assemble</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">assemble</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Collects components of the source for the decorated function wrapping f.</span>
 
 <span class="sd">        If `f` has multiple argmap decorators, we recursively assemble the stack of</span>
@@ -932,7 +934,7 @@
         <span class="c1"># any case.</span>
         <span class="n">applied</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="k">nonlocal</span> <span class="n">mutable_args</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">)</span>
@@ -986,7 +988,7 @@
         <span class="k">return</span> <span class="n">sig</span><span class="p">,</span> <span class="n">wrapped_name</span><span class="p">,</span> <span class="n">functions</span><span class="p">,</span> <span class="n">mapblock</span><span class="p">,</span> <span class="n">finallys</span><span class="p">,</span> <span class="n">mutable_args</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">signature</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">signature</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct a Signature object describing `f`</span>
 
 <span class="sd">        Compute a Signature so that we can write a function wrapping f with</span>
@@ -1091,7 +1093,7 @@
     <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_flatten</span><span class="p">(</span><span class="n">nestlist</span><span class="p">,</span> <span class="n">visited</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_flatten</span><span class="p">(</span><span class="n">nestlist</span><span class="p">,</span> <span class="n">visited</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;flattens a recursive list of lists that doesn&#39;t have cyclic references</span>
 
 <span class="sd">        Parameters</span>
@@ -1121,7 +1123,7 @@
     <span class="n">_tabs</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">64</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_indent</span><span class="p">(</span><span class="o">*</span><span class="n">lines</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_indent</span><span class="p">(</span><span class="o">*</span><span class="n">lines</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Indent list of code lines to make executable Python code</span>
 
 <span class="sd">        Indents a tree-recursive list of strings, following the rule that one</span>
@@ -1161,7 +1163,7 @@
             <span class="n">depth</span> <span class="o">+=</span> <span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="nodes_or_number"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.nodes_or_number">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">nodes_or_number</span><span class="p">(</span><span class="n">which_args</span><span class="p">):</span>
+<div class="viewcode-block" id="nodes_or_number"><a class="viewcode-back" href="../../../reference/easygraph.utils.html#easygraph.utils.decorators.nodes_or_number">[docs]</a><span class="k">def</span> <span class="nf">nodes_or_number</span><span class="p">(</span><span class="n">which_args</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to allow number of nodes or container of nodes.</span>
 
 <span class="sd">    With this decorator, the specified argument can be either a number or a container</span>
@@ -1207,7 +1209,7 @@
 <span class="sd">           # n is converted to a list of nodes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_nodes_or_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_nodes_or_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>

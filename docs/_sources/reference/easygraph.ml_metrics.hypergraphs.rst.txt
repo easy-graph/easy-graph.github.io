@@ -1,16 +1,15 @@
+.. _module_easygraph.ml_metrics.hypergraphs:
+
 easygraph.ml\_metrics.hypergraphs package
 =========================================
 
 Submodules
 ----------
 
-easygraph.ml\_metrics.hypergraphs.hypergraph module
----------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.ml_metrics.hypergraphs.hypergraph
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.ml_metrics.hypergraphs.hypergraph
 
 Module contents
 ---------------

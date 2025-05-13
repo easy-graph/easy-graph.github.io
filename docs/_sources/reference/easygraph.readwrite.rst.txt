@@ -1,3 +1,5 @@
+.. _module_easygraph.readwrite:
+
 easygraph.readwrite package
 ===========================
 
@@ -12,69 +14,17 @@ Subpackages
 Submodules
 ----------
 
-easygraph.readwrite.edgelist module
------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.readwrite.edgelist
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.readwrite.gexf module
--------------------------------
-
-.. automodule:: easygraph.readwrite.gexf
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.readwrite.gml module
-------------------------------
-
-.. automodule:: easygraph.readwrite.gml
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.readwrite.graphml module
-----------------------------------
-
-.. automodule:: easygraph.readwrite.graphml
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.readwrite.graphviz module
------------------------------------
-
-.. automodule:: easygraph.readwrite.graphviz
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.readwrite.pajek module
---------------------------------
-
-.. automodule:: easygraph.readwrite.pajek
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.readwrite.pickle module
----------------------------------
-
-.. automodule:: easygraph.readwrite.pickle
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.readwrite.ucinet module
----------------------------------
-
-.. automodule:: easygraph.readwrite.ucinet
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.readwrite.edgelist
+   easygraph.readwrite.gexf
+   easygraph.readwrite.gml
+   easygraph.readwrite.graphml
+   easygraph.readwrite.graphviz
+   easygraph.readwrite.pajek
+   easygraph.readwrite.pickle
+   easygraph.readwrite.ucinet
 
 Module contents
 ---------------

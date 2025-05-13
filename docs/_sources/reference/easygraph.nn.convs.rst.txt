@@ -1,3 +1,5 @@
+.. _module_easygraph.nn.convs:
+
 easygraph.nn.convs package
 ==========================
 
@@ -12,21 +14,11 @@ Subpackages
 Submodules
 ----------
 
-easygraph.nn.convs.common module
---------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.nn.convs.common
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.nn.convs.pma module
------------------------------
-
-.. automodule:: easygraph.nn.convs.pma
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.nn.convs.common
+   easygraph.nn.convs.pma
 
 Module contents
 ---------------

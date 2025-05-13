@@ -1,3 +1,5 @@
+.. _module_easygraph.model:
+
 easygraph.model package
 =======================
 

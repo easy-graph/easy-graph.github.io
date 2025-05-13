@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.functions.graph_embedding.line &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.graph_embedding.line</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for easygraph.functions.graph_embedding.line</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">alias_draw</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">alias_setup</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+
+<span class="c1"># from easygraph.functions.graph_embedding import *</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LINE"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.html#easygraph.functions.graph_embedding.line.LINE">[docs]</a><span class="k">class</span> <span class="nc">LINE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Graph embedding via LINE.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : easygraph.Graph or easygraph.DiGraph</span>
+<span class="sd">    dimension: int</span>
+<span class="sd">    walk_length: int</span>
+
+<span class="sd">    walk_num: int</span>
+
+<span class="sd">    negative: int</span>
+<span class="sd">    batch_size: int</span>
+
+<span class="sd">    init_alpha: float</span>
+<span class="sd">    order: int</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    embedding_vector : dict</span>
+<span class="sd">        The embedding vector of each node</span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; model = LINE(</span>
+<span class="sd">    ...          dimension=128,</span>
+<span class="sd">    ...          walk_length=80,</span>
+<span class="sd">    ...          walk_num=20,</span>
+<span class="sd">    ...          negative=5,</span>
+<span class="sd">    ...          batch_size=128,</span>
+<span class="sd">    ...          init_alpha=0.025,</span>
+<span class="sd">    ...          order=3  )</span>
+<span class="sd">    &gt;&gt;&gt; model.train()</span>
+<span class="sd">    &gt;&gt;&gt; emb = model(g, return_dict=True) # g: easygraph.Graph or easygraph.DiGraph</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    .. [1] Tang, J., Qu, M., Wang, M., Zhang, M., Yan, J., &amp; Mei, Q. (2015, May). Line: Large-scale information network embedding. In Proceedings of the 24th international conference on world wide web (pp. 1067-1077).</span>
+
+<span class="sd">    https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/frp0228-Tang.pdf</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LINE.add_args"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.html#easygraph.functions.graph_embedding.line.LINE.add_args">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add model-specific arguments to the parser.&quot;&quot;&quot;</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--walk-length&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Length of walk per source. Default is 80.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--walk-num&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of walks per source. Default is 20.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--negative&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of negative node in sampling. Default is 5.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--batch-size&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Batch size in SGD training process. Default is 1000.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--alpha&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Initial learning rate of SGD. Default is 0.025.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--order&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Order of proximity in LINE. Default is 3 for 1+2.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--hidden-size&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LINE.build_model_from_args"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.html#easygraph.functions.graph_embedding.line.LINE.build_model_from_args">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">build_model_from_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">walk_length</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">walk_num</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">negative</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">order</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dimension</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+        <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+        <span class="n">walk_num</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">negative</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+        <span class="n">init_alpha</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LINE</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span> <span class="o">=</span> <span class="n">dimension</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">walk_length</span> <span class="o">=</span> <span class="n">walk_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">walk_num</span> <span class="o">=</span> <span class="n">walk_num</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">negative</span> <span class="o">=</span> <span class="n">negative</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_alpha</span> <span class="o">=</span> <span class="n">init_alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+
+<div class="viewcode-block" id="LINE.forward"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.html#easygraph.functions.graph_embedding.line.LINE.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1"># run LINE algorithm, 1-order, 2-order or 3(1-order + 2-order)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="o">=</span> <span class="n">g</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_directed</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_node</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_edge</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_sampling_edge</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">walk_length</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">walk_num</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_node</span>
+
+        <span class="n">node2id</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">node</span><span class="p">,</span> <span class="n">vid</span><span class="p">)</span> <span class="k">for</span> <span class="n">vid</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="n">node2id</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">node2id</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mf">1.0</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges_prob</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges_prob</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges_table</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges_prob</span> <span class="o">=</span> <span class="n">alias_setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges_prob</span><span class="p">)</span>
+
+        <span class="n">degree_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_node</span><span class="p">)</span>
+        <span class="n">degree_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">node2id</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="c1"># for u,v in g.edges:</span>
+
+        <span class="c1">#     degree_weight[node2id[u]] += 1.0</span>
+        <span class="c1">#     if not self.is_directed:</span>
+        <span class="c1">#         degree_weight[node2id[v]] += 1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">degree_weight</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_prob</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node_prob</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_table</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_prob</span> <span class="o">=</span> <span class="n">alias_setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node_prob</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dimension</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;train line with 1-order&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_train_line</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">embedding1</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span><span class="p">,</span> <span class="s2">&quot;l2&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;train line with 2-order&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb_context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_train_line</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">embedding2</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span><span class="p">,</span> <span class="s2">&quot;l2&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">embeddings</span> <span class="o">=</span> <span class="n">embedding1</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">embeddings</span> <span class="o">=</span> <span class="n">embedding2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;concatenate two embedding...&quot;</span><span class="p">)</span>
+            <span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">embedding1</span><span class="p">,</span> <span class="n">embedding2</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">return_dict</span><span class="p">:</span>
+            <span class="n">features_matrix</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">vid</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
+                <span class="n">features_matrix</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">embeddings</span><span class="p">[</span><span class="n">vid</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">features_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">g</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">nx_nodes</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+            <span class="n">features_matrix</span><span class="p">[</span><span class="n">nx_nodes</span><span class="p">]</span> <span class="o">=</span> <span class="n">embeddings</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">features_matrix</span></div>
+
+    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec_u</span><span class="p">,</span> <span class="n">vec_v</span><span class="p">,</span> <span class="n">vec_error</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="c1"># update vetex embedding and vec_error</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">vec_u</span> <span class="o">*</span> <span class="n">vec_v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">label</span> <span class="o">-</span> <span class="n">f</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">vec_error</span> <span class="o">+=</span> <span class="n">g</span> <span class="o">*</span> <span class="n">vec_v</span>
+        <span class="n">vec_v</span> <span class="o">+=</span> <span class="n">g</span> <span class="o">*</span> <span class="n">vec_u</span>
+
+    <span class="k">def</span> <span class="nf">_train_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="c1"># train Line model with order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_alpha</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">num_batch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_sampling_edge</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">epoch_iter</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_batch</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">epoch_iter</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">b</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">epoch_iter</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span>
+                    <span class="c1">#    f&quot;Progress: {b * 1.0 / num_batch * 100:.4f}, alpha: {self.alpha:.6f}, time: {time.time() - t0:.4f}&quot;</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_alpha</span> <span class="o">*</span> <span class="nb">max</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">num_batch</span><span class="p">),</span> <span class="mf">0.0001</span><span class="p">)</span>
+            <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">batch_size</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+                <span class="n">edge_id</span> <span class="o">=</span> <span class="n">alias_draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges_table</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges_prob</span><span class="p">)</span>
+                <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">edge_id</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_directed</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+                    <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">edge_id</span><span class="p">]</span>
+
+            <span class="n">vec_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">))</span>
+            <span class="n">label</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)]),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)])</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+                        <span class="n">target</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">alias_draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node_table</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_prob</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">vec_error</span><span class="p">,</span> <span class="n">label</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb_context</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">vec_error</span><span class="p">,</span> <span class="n">label</span>
+                    <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb_vertex</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="n">vec_error</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">CiteseerGraphDataset</span><span class="p">(</span>
+        <span class="n">force_reload</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>  <span class="c1"># Download CiteseerGraphDataset contained in EasyGraph</span>
+    <span class="n">num_classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+    <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+        <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">g1</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="n">g1</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+    <span class="c1"># print(g.edges)</span>
+    <span class="c1"># print(g.__dir__())</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LINE</span><span class="p">(</span>
+        <span class="n">dimension</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+        <span class="n">walk_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+        <span class="n">walk_num</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">negative</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+        <span class="n">init_alpha</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">keylist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
+        <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="n">keylist</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="n">keylist</span><span class="p">[</span><span class="mi">1</span><span class="p">]]),</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">keylist</span><span class="p">)):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">tmp</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="n">keylist</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">&quot;line.emb&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">tmp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">line_emb</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp</span><span class="p">)):</span>
+        <span class="n">line_emb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">line_emb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">line_emb</span><span class="p">)</span>
+
+<span class="c1"># tsne = TSNE(n_components=2)</span>
+<span class="c1"># z = tsne.fit_transform(line_emb)</span>
+<span class="c1"># z_data = np.vstack((z.T, labels)).T</span>
+<span class="c1"># df_tsne = pd.DataFrame(z_data, columns=[&#39;Dim1&#39;, &#39;Dim2&#39;, &#39;class&#39;])</span>
+<span class="c1"># df_tsne[&#39;class&#39;] = df_tsne[&#39;class&#39;].astype(int)</span>
+<span class="c1"># df_tsne.head()</span>
+<span class="c1">#</span>
+<span class="c1"># plt.figure(figsize=(8, 8))</span>
+<span class="c1"># sns.scatterplot(data=df_tsne, hue=&#39;class&#39;, x=&#39;Dim1&#39;, y=&#39;Dim2&#39;, palette=[&#39;green&#39;,&#39;orange&#39;,&#39;brown&#39;,&#39;red&#39;, &#39;blue&#39;,&#39;black&#39;])</span>
+<span class="c1"># plt.savefig(&#39;torch_line_citeseer.pdf&#39;, bbox_inches=&#39;tight&#39;)</span>
+<span class="c1"># plt.show()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

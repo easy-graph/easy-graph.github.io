@@ -1,16 +1,15 @@
+.. _module_easygraph.functions.core:
+
 easygraph.functions.core package
 ================================
 
 Submodules
 ----------
 
-easygraph.functions.core.k\_core module
----------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.functions.core.k_core
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.functions.core.k_core
 
 Module contents
 ---------------

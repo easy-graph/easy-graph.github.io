@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.drawing.positioning &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.drawing.positioning &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.drawing.positioning</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.drawing.positioning</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,9 +81,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.drawing.positioning</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">EasyGraphError</span>
+<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -90,15 +90,10 @@
     <span class="s2">&quot;shell_position&quot;</span><span class="p">,</span>
     <span class="s2">&quot;rescale_position&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kamada_kawai_layout&quot;</span><span class="p">,</span>
-    <span class="c1"># &quot;spring_layout&quot;,</span>
-    <span class="c1"># &quot;fruchterman_reingold_layout&quot;,</span>
-    <span class="c1"># &quot;_process_params&quot;,</span>
-    <span class="c1"># &quot;_fruchterman_reingold&quot;,</span>
-    <span class="c1"># &quot;_sparse_fruchterman_reingold&quot;,</span>
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="random_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.random_position">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">random_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="random_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.random_position">[docs]</a><span class="k">def</span> <span class="nf">random_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns random position for each node in graph G.</span>
 
@@ -120,7 +115,7 @@
 <span class="sd">    pos : dict</span>
 <span class="sd">        A dictionary of positions keyed by node</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
     <span class="n">center</span> <span class="o">=</span> <span class="n">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
 
@@ -132,7 +127,7 @@
     <span class="k">return</span> <span class="n">pos</span></div>
 
 
-<div class="viewcode-block" id="circular_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.circular_position">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">circular_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="circular_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.circular_position">[docs]</a><span class="k">def</span> <span class="nf">circular_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Position nodes on a circle, the dimension is 2.</span>
 
@@ -152,7 +147,7 @@
 <span class="sd">    pos : dict</span>
 <span class="sd">        A dictionary of positions keyed by node</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
     <span class="n">center</span> <span class="o">=</span> <span class="n">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
@@ -170,7 +165,7 @@
     <span class="k">return</span> <span class="n">pos</span></div>
 
 
-<div class="viewcode-block" id="shell_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.shell_position">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">shell_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nlist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="shell_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.shell_position">[docs]</a><span class="k">def</span> <span class="nf">shell_position</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nlist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Position nodes in concentric circles, the dimension is 2.</span>
 
@@ -199,7 +194,7 @@
 <span class="sd">    try to minimize edge crossings.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
     <span class="n">center</span> <span class="o">=</span> <span class="n">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
@@ -235,8 +230,8 @@
     <span class="k">return</span> <span class="n">npos</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span> <span class="nf">_get_center</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
     <span class="k">if</span> <span class="n">center</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
@@ -253,7 +248,7 @@
     <span class="k">return</span> <span class="n">center</span>
 
 
-<div class="viewcode-block" id="rescale_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.rescale_position">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">rescale_position</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="rescale_position"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.rescale_position">[docs]</a><span class="k">def</span> <span class="nf">rescale_position</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns scaled position array to (-scale, scale) in all axes.</span>
 
@@ -271,9 +266,6 @@
 <span class="sd">        scaled positions. Each row is a position.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Find max length over all dimensions</span>
-    <span class="k">assert</span> <span class="p">(</span>
-        <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span>
-    <span class="p">),</span> <span class="s2">&quot;One-dimensional ndarray is not available for rescaling.&quot;</span>
     <span class="n">lim</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># max coordinate for all axes</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
         <span class="n">pos</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">pos</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -285,7 +277,7 @@
     <span class="k">return</span> <span class="n">pos</span></div>
 
 
-<div class="viewcode-block" id="kamada_kawai_layout"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.kamada_kawai_layout">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">kamada_kawai_layout</span><span class="p">(</span>
+<div class="viewcode-block" id="kamada_kawai_layout"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.positioning.kamada_kawai_layout">[docs]</a><span class="k">def</span> <span class="nf">kamada_kawai_layout</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Position nodes using Kamada-Kawai basic-length cost-function.</span>
@@ -327,7 +319,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; pos = eg.kamada_kawai_layout(G)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
     <span class="n">nNodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nNodes</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -370,14 +362,14 @@
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_kamada_kawai_solve</span><span class="p">(</span><span class="n">dist_mtx</span><span class="p">,</span> <span class="n">pos_arr</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_kamada_kawai_solve</span><span class="p">(</span><span class="n">dist_mtx</span><span class="p">,</span> <span class="n">pos_arr</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
     <span class="c1"># Anneal node locations based on the Kamada-Kawai cost-function,</span>
     <span class="c1"># using the supplied matrix of preferred inter-node distances,</span>
     <span class="c1"># and starting locations.</span>
 
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+    <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
 
     <span class="n">meanwt</span> <span class="o">=</span> <span class="mf">1e-3</span>
     <span class="n">costargs</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">dist_mtx</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dist_mtx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">meanwt</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
@@ -393,7 +385,7 @@
     <span class="k">return</span> <span class="n">optresult</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_kamada_kawai_costfn</span><span class="p">(</span><span class="n">pos_vec</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">invdist</span><span class="p">,</span> <span class="n">meanweight</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_kamada_kawai_costfn</span><span class="p">(</span><span class="n">pos_vec</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">invdist</span><span class="p">,</span> <span class="n">meanweight</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
     <span class="c1"># Cost-function and gradient for Kamada-Kawai layout algorithm</span>
     <span class="n">nNodes</span> <span class="o">=</span> <span class="n">invdist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">pos_arr</span> <span class="o">=</span> <span class="n">pos_vec</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">nNodes</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
@@ -416,315 +408,6 @@
     <span class="n">grad</span> <span class="o">+=</span> <span class="n">meanweight</span> <span class="o">*</span> <span class="n">sumpos</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">grad</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
-
-
-<span class="c1"># @np_random_state(10)</span>
-<span class="c1"># def spring_layout(</span>
-<span class="c1">#     G,</span>
-<span class="c1">#     k=None,</span>
-<span class="c1">#     pos=None,</span>
-<span class="c1">#     fixed=None,</span>
-<span class="c1">#     iterations=50,</span>
-<span class="c1">#     threshold=1e-4,</span>
-<span class="c1">#     weight=&quot;weight&quot;,</span>
-<span class="c1">#     scale=1,</span>
-<span class="c1">#     center=None,</span>
-<span class="c1">#     dim=2,</span>
-<span class="c1">#     seed=None,</span>
-<span class="c1"># ):</span>
-<span class="c1">#     &quot;&quot;&quot;Position nodes using Fruchterman-Reingold force-directed algorithm.</span>
-<span class="c1">#</span>
-<span class="c1">#     The algorithm simulates a force-directed representation of the network</span>
-<span class="c1">#     treating edges as springs holding nodes close, while treating nodes</span>
-<span class="c1">#     as repelling objects, sometimes called an anti-gravity force.</span>
-<span class="c1">#     Simulation continues until the positions are close to an equilibrium.</span>
-<span class="c1">#</span>
-<span class="c1">#     There are some hard-coded values: minimal distance between</span>
-<span class="c1">#     nodes (0.01) and &quot;temperature&quot; of 0.1 to ensure nodes don&#39;t fly away.</span>
-<span class="c1">#     During the simulation, `k` helps determine the distance between nodes,</span>
-<span class="c1">#     though `scale` and `center` determine the size and place after</span>
-<span class="c1">#     rescaling occurs at the end of the simulation.</span>
-<span class="c1">#</span>
-<span class="c1">#     Fixing some nodes doesn&#39;t allow them to move in the simulation.</span>
-<span class="c1">#     It also turns off the rescaling feature at the simulation&#39;s end.</span>
-<span class="c1">#     In addition, setting `scale` to `None` turns off rescaling.</span>
-<span class="c1">#</span>
-<span class="c1">#     Parameters</span>
-<span class="c1">#     ----------</span>
-<span class="c1">#     G : EasyGraph graph or list of nodes</span>
-<span class="c1">#         A position will be assigned to every node in G.</span>
-<span class="c1">#</span>
-<span class="c1">#     k : float (default=None)</span>
-<span class="c1">#         Optimal distance between nodes.  If None the distance is set to</span>
-<span class="c1">#         1/sqrt(n) where n is the number of nodes.  Increase this value</span>
-<span class="c1">#         to move nodes farther apart.</span>
-<span class="c1">#</span>
-<span class="c1">#     pos : dict or None  optional (default=None)</span>
-<span class="c1">#         Initial positions for nodes as a dictionary with node as keys</span>
-<span class="c1">#         and values as a coordinate list or tuple.  If None, then use</span>
-<span class="c1">#         random initial positions.</span>
-<span class="c1">#</span>
-<span class="c1">#     fixed : list or None  optional (default=None)</span>
-<span class="c1">#         Nodes to keep fixed at initial position.</span>
-<span class="c1">#         Nodes not in ``G.nodes`` are ignored.</span>
-<span class="c1">#         ValueError raised if `fixed` specified and `pos` not.</span>
-<span class="c1">#</span>
-<span class="c1">#     iterations : int  optional (default=50)</span>
-<span class="c1">#         Maximum number of iterations taken</span>
-<span class="c1">#</span>
-<span class="c1">#     threshold: float optional (default = 1e-4)</span>
-<span class="c1">#         Threshold for relative error in node position changes.</span>
-<span class="c1">#         The iteration stops if the error is below this threshold.</span>
-<span class="c1">#</span>
-<span class="c1">#     weight : string or None   optional (default=&#39;weight&#39;)</span>
-<span class="c1">#         The edge attribute that holds the numerical value used for</span>
-<span class="c1">#         the edge weight.  Larger means a stronger attractive force.</span>
-<span class="c1">#         If None, then all edge weights are 1.</span>
-<span class="c1">#</span>
-<span class="c1">#     scale : number or None (default: 1)</span>
-<span class="c1">#         Scale factor for positions. Not used unless `fixed is None`.</span>
-<span class="c1">#         If scale is None, no rescaling is performed.</span>
-<span class="c1">#</span>
-<span class="c1">#     center : array-like or None</span>
-<span class="c1">#         Coordinate pair around which to center the layout.</span>
-<span class="c1">#         Not used unless `fixed is None`.</span>
-<span class="c1">#</span>
-<span class="c1">#     dim : int</span>
-<span class="c1">#         Dimension of layout.</span>
-<span class="c1">#</span>
-<span class="c1">#     seed : int, RandomState instance or None  optional (default=None)</span>
-<span class="c1">#         Set the random state for deterministic node layouts.</span>
-<span class="c1">#         If int, `seed` is the seed used by the random number generator,</span>
-<span class="c1">#         if numpy.random.RandomState instance, `seed` is the random</span>
-<span class="c1">#         number generator,</span>
-<span class="c1">#         if None, the random number generator is the RandomState instance used</span>
-<span class="c1">#         by numpy.random.</span>
-<span class="c1">#</span>
-<span class="c1">#     Returns</span>
-<span class="c1">#     -------</span>
-<span class="c1">#     pos : dict</span>
-<span class="c1">#         A dictionary of positions keyed by node</span>
-<span class="c1">#</span>
-<span class="c1">#     Examples</span>
-<span class="c1">#     --------</span>
-<span class="c1">#     &gt;&gt;&gt; G = eg.path_graph(4)</span>
-<span class="c1">#     &gt;&gt;&gt; pos = eg.spring_layout(G)</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     import numpy as np</span>
-<span class="c1">#</span>
-<span class="c1">#     G, center = _process_params(G, center, dim)</span>
-<span class="c1">#</span>
-<span class="c1">#     if fixed is not None:</span>
-<span class="c1">#         if pos is None:</span>
-<span class="c1">#             raise ValueError(&quot;nodes are fixed without positions given&quot;)</span>
-<span class="c1">#         for node in fixed:</span>
-<span class="c1">#             if node not in pos:</span>
-<span class="c1">#                 raise ValueError(&quot;nodes are fixed without positions given&quot;)</span>
-<span class="c1">#         nfixed = {node: i for i, node in enumerate(G)}</span>
-<span class="c1">#         fixed = np.asarray([nfixed[node] for node in fixed if node in nfixed])</span>
-<span class="c1">#</span>
-<span class="c1">#     if pos is not None:</span>
-<span class="c1">#         # Determine size of existing domain to adjust initial positions</span>
-<span class="c1">#         dom_size = max(coord for pos_tup in pos.values() for coord in pos_tup)</span>
-<span class="c1">#         if dom_size == 0:</span>
-<span class="c1">#             dom_size = 1</span>
-<span class="c1">#         pos_arr = seed.rand(len(G), dim) * dom_size + center</span>
-<span class="c1">#</span>
-<span class="c1">#         for i, n in enumerate(G):</span>
-<span class="c1">#             if n in pos:</span>
-<span class="c1">#                 pos_arr[i] = np.asarray(pos[n])</span>
-<span class="c1">#     else:</span>
-<span class="c1">#         pos_arr = None</span>
-<span class="c1">#         dom_size = 1</span>
-<span class="c1">#</span>
-<span class="c1">#     if len(G) == 0:</span>
-<span class="c1">#         return {}</span>
-<span class="c1">#     if len(G) == 1:</span>
-<span class="c1">#         return {eg.utils.arbitrary_element(G.nodes()): center}</span>
-<span class="c1">#</span>
-<span class="c1">#     try:</span>
-<span class="c1">#         # Sparse matrix</span>
-<span class="c1">#         if len(G) &lt; 500:  # sparse solver for large graphs</span>
-<span class="c1">#             raise ValueError</span>
-<span class="c1">#         A = eg.to_scipy_sparse_array(G, weight=weight, dtype=&quot;f&quot;)</span>
-<span class="c1">#         if k is None and fixed is not None:</span>
-<span class="c1">#             # We must adjust k by domain size for layouts not near 1x1</span>
-<span class="c1">#             nnodes, _ = A.shape</span>
-<span class="c1">#             k = dom_size / np.sqrt(nnodes)</span>
-<span class="c1">#         pos = _sparse_fruchterman_reingold(</span>
-<span class="c1">#             A, k, pos_arr, fixed, iterations, threshold, dim, seed</span>
-<span class="c1">#         )</span>
-<span class="c1">#     except ValueError:</span>
-<span class="c1">#         A = eg.to_numpy_array(G, weight=weight)</span>
-<span class="c1">#         if k is None and fixed is not None:</span>
-<span class="c1">#             # We must adjust k by domain size for layouts not near 1x1</span>
-<span class="c1">#             nnodes, _ = A.shape</span>
-<span class="c1">#             k = dom_size / np.sqrt(nnodes)</span>
-<span class="c1">#         pos = _fruchterman_reingold(</span>
-<span class="c1">#             A, k, pos_arr, fixed, iterations, threshold, dim, seed</span>
-<span class="c1">#         )</span>
-<span class="c1">#     if fixed is None and scale is not None:</span>
-<span class="c1">#         pos = rescale_position(pos, scale=scale) + center</span>
-<span class="c1">#     pos = dict(zip(G, pos))</span>
-<span class="c1">#     return pos</span>
-<span class="c1">#</span>
-<span class="c1"># fruchterman_reingold_layout = spring_layout</span>
-<span class="c1">#</span>
-<span class="c1"># def _process_params(G, center, dim):</span>
-<span class="c1">#     # Some boilerplate code.</span>
-<span class="c1">#     import numpy as np</span>
-<span class="c1">#</span>
-<span class="c1">#     if not isinstance(G, eg.Graph):</span>
-<span class="c1">#         empty_graph = eg.Graph()</span>
-<span class="c1">#         empty_graph.add_nodes_from(G)</span>
-<span class="c1">#         G = empty_graph</span>
-<span class="c1">#</span>
-<span class="c1">#     if center is None:</span>
-<span class="c1">#         center = np.zeros(dim)</span>
-<span class="c1">#     else:</span>
-<span class="c1">#         center = np.asarray(center)</span>
-<span class="c1">#</span>
-<span class="c1">#     if len(center) != dim:</span>
-<span class="c1">#         msg = &quot;length of center coordinates must match dimension of layout&quot;</span>
-<span class="c1">#         raise ValueError(msg)</span>
-<span class="c1">#</span>
-<span class="c1">#     return G, center</span>
-<span class="c1">#</span>
-<span class="c1"># @np_random_state(7)</span>
-<span class="c1"># def _fruchterman_reingold(</span>
-<span class="c1">#     A, k=None, pos=None, fixed=None, iterations=50, threshold=1e-4, dim=2, seed=None</span>
-<span class="c1"># ):</span>
-<span class="c1">#     # Position nodes in adjacency matrix A using Fruchterman-Reingold</span>
-<span class="c1">#     # Entry point for NetworkX graph is fruchterman_reingold_layout()</span>
-<span class="c1">#     import numpy as np</span>
-<span class="c1">#</span>
-<span class="c1">#     try:</span>
-<span class="c1">#         nnodes, _ = A.shape</span>
-<span class="c1">#     except AttributeError as err:</span>
-<span class="c1">#         msg = &quot;fruchterman_reingold() takes an adjacency matrix as input&quot;</span>
-<span class="c1">#         raise EasyGraphError(msg) from err</span>
-<span class="c1">#</span>
-<span class="c1">#     if pos is None:</span>
-<span class="c1">#         # random initial positions</span>
-<span class="c1">#         pos = np.asarray(seed.rand(nnodes, dim), dtype=A.dtype)</span>
-<span class="c1">#     else:</span>
-<span class="c1">#         # make sure positions are of same type as matrix</span>
-<span class="c1">#         pos = pos.astype(A.dtype)</span>
-<span class="c1">#</span>
-<span class="c1">#     # optimal distance between nodes</span>
-<span class="c1">#     if k is None:</span>
-<span class="c1">#         k = np.sqrt(1.0 / nnodes)</span>
-<span class="c1">#     # the initial &quot;temperature&quot;  is about .1 of domain area (=1x1)</span>
-<span class="c1">#     # this is the largest step allowed in the dynamics.</span>
-<span class="c1">#     # We need to calculate this in case our fixed positions force our domain</span>
-<span class="c1">#     # to be much bigger than 1x1</span>
-<span class="c1">#     t = max(max(pos.T[0]) - min(pos.T[0]), max(pos.T[1]) - min(pos.T[1])) * 0.1</span>
-<span class="c1">#     # simple cooling scheme.</span>
-<span class="c1">#     # linearly step down by dt on each iteration so last iteration is size dt.</span>
-<span class="c1">#     dt = t / (iterations + 1)</span>
-<span class="c1">#     delta = np.zeros((pos.shape[0], pos.shape[0], pos.shape[1]), dtype=A.dtype)</span>
-<span class="c1">#     # the inscrutable (but fast) version</span>
-<span class="c1">#     # this is still O(V^2)</span>
-<span class="c1">#     # could use multilevel methods to speed this up significantly</span>
-<span class="c1">#     for iteration in range(iterations):</span>
-<span class="c1">#         # matrix of difference between points</span>
-<span class="c1">#         delta = pos[:, np.newaxis, :] - pos[np.newaxis, :, :]</span>
-<span class="c1">#         # distance between points</span>
-<span class="c1">#         distance = np.linalg.norm(delta, axis=-1)</span>
-<span class="c1">#         # enforce minimum distance of 0.01</span>
-<span class="c1">#         np.clip(distance, 0.01, None, out=distance)</span>
-<span class="c1">#         # displacement &quot;force&quot;</span>
-<span class="c1">#         displacement = np.einsum(</span>
-<span class="c1">#             &quot;ijk,ij-&gt;ik&quot;, delta, (k * k / distance**2 - A * distance / k)</span>
-<span class="c1">#         )</span>
-<span class="c1">#         # update positions</span>
-<span class="c1">#         length = np.linalg.norm(displacement, axis=-1)</span>
-<span class="c1">#         length = np.where(length &lt; 0.01, 0.1, length)</span>
-<span class="c1">#         delta_pos = np.einsum(&quot;ij,i-&gt;ij&quot;, displacement, t / length)</span>
-<span class="c1">#         if fixed is not None:</span>
-<span class="c1">#             # don&#39;t change positions of fixed nodes</span>
-<span class="c1">#             delta_pos[fixed] = 0.0</span>
-<span class="c1">#         pos += delta_pos</span>
-<span class="c1">#         # cool temperature</span>
-<span class="c1">#         t -= dt</span>
-<span class="c1">#         if (np.linalg.norm(delta_pos) / nnodes) &lt; threshold:</span>
-<span class="c1">#             break</span>
-<span class="c1">#     return pos</span>
-<span class="c1">#</span>
-<span class="c1"># @np_random_state(7)</span>
-<span class="c1"># def _sparse_fruchterman_reingold(</span>
-<span class="c1">#     A, k=None, pos=None, fixed=None, iterations=50, threshold=1e-4, dim=2, seed=None</span>
-<span class="c1"># ):</span>
-<span class="c1">#     # Position nodes in adjacency matrix A using Fruchterman-Reingold</span>
-<span class="c1">#     # Entry point for NetworkX graph is fruchterman_reingold_layout()</span>
-<span class="c1">#     # Sparse version</span>
-<span class="c1">#     import numpy as np</span>
-<span class="c1">#     import scipy as sp</span>
-<span class="c1">#     import scipy.sparse  # call as sp.sparse</span>
-<span class="c1">#</span>
-<span class="c1">#     try:</span>
-<span class="c1">#         nnodes, _ = A.shape</span>
-<span class="c1">#     except AttributeError as err:</span>
-<span class="c1">#         msg = &quot;fruchterman_reingold() takes an adjacency matrix as input&quot;</span>
-<span class="c1">#         raise EasyGraphError(msg) from err</span>
-<span class="c1">#     # make sure we have a LIst of Lists representation</span>
-<span class="c1">#     try:</span>
-<span class="c1">#         A = A.tolil()</span>
-<span class="c1">#     except AttributeError:</span>
-<span class="c1">#         A = (sp.sparse.coo_array(A)).tolil()</span>
-<span class="c1">#</span>
-<span class="c1">#     if pos is None:</span>
-<span class="c1">#         # random initial positions</span>
-<span class="c1">#         pos = np.asarray(seed.rand(nnodes, dim), dtype=A.dtype)</span>
-<span class="c1">#     else:</span>
-<span class="c1">#         # make sure positions are of same type as matrix</span>
-<span class="c1">#         pos = pos.astype(A.dtype)</span>
-<span class="c1">#</span>
-<span class="c1">#     # no fixed nodes</span>
-<span class="c1">#     if fixed is None:</span>
-<span class="c1">#         fixed = []</span>
-<span class="c1">#</span>
-<span class="c1">#     # optimal distance between nodes</span>
-<span class="c1">#     if k is None:</span>
-<span class="c1">#         k = np.sqrt(1.0 / nnodes)</span>
-<span class="c1">#     # the initial &quot;temperature&quot;  is about .1 of domain area (=1x1)</span>
-<span class="c1">#     # this is the largest step allowed in the dynamics.</span>
-<span class="c1">#     t = max(max(pos.T[0]) - min(pos.T[0]), max(pos.T[1]) - min(pos.T[1])) * 0.1</span>
-<span class="c1">#     # simple cooling scheme.</span>
-<span class="c1">#     # linearly step down by dt on each iteration so last iteration is size dt.</span>
-<span class="c1">#     dt = t / (iterations + 1)</span>
-<span class="c1">#</span>
-<span class="c1">#     displacement = np.zeros((dim, nnodes))</span>
-<span class="c1">#     for iteration in range(iterations):</span>
-<span class="c1">#         displacement *= 0</span>
-<span class="c1">#         # loop over rows</span>
-<span class="c1">#         for i in range(A.shape[0]):</span>
-<span class="c1">#             if i in fixed:</span>
-<span class="c1">#                 continue</span>
-<span class="c1">#             # difference between this row&#39;s node position and all others</span>
-<span class="c1">#             delta = (pos[i] - pos).T</span>
-<span class="c1">#             # distance between points</span>
-<span class="c1">#             distance = np.sqrt((delta**2).sum(axis=0))</span>
-<span class="c1">#             # enforce minimum distance of 0.01</span>
-<span class="c1">#             distance = np.where(distance &lt; 0.01, 0.01, distance)</span>
-<span class="c1">#             # the adjacency matrix row</span>
-<span class="c1">#             Ai = A.getrowview(i).toarray()  # TODO: revisit w/ sparse 1D container</span>
-<span class="c1">#             # displacement &quot;force&quot;</span>
-<span class="c1">#             displacement[:, i] += (</span>
-<span class="c1">#                 delta * (k * k / distance**2 - Ai * distance / k)</span>
-<span class="c1">#             ).sum(axis=1)</span>
-<span class="c1">#         # update positions</span>
-<span class="c1">#         length = np.sqrt((displacement**2).sum(axis=0))</span>
-<span class="c1">#         length = np.where(length &lt; 0.01, 0.1, length)</span>
-<span class="c1">#         delta_pos = (displacement * t / length).T</span>
-<span class="c1">#         pos += delta_pos</span>
-<span class="c1">#         # cool temperature</span>
-<span class="c1">#         t -= dt</span>
-<span class="c1">#         if (np.linalg.norm(delta_pos) / nnodes) &lt; threshold:</span>
-<span class="c1">#             break</span>
-<span class="c1">#     return pos</span>
 </pre></div>
 
            </div>

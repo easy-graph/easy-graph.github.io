@@ -1,16 +1,15 @@
+.. _module_easygraph.experiments.hypergraphs:
+
 easygraph.experiments.hypergraphs package
 =========================================
 
 Submodules
 ----------
 
-easygraph.experiments.hypergraphs.hypergraph module
----------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.experiments.hypergraphs.hypergraph
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.experiments.hypergraphs.hypergraph
 
 Module contents
 ---------------

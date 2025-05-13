@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.drawing.plot &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.drawing.plot &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.drawing.plot</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.drawing.plot</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,7 +81,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.drawing.plot</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -91,7 +93,7 @@
 
 
 <span class="c1"># Number of Followers</span>
-<div class="viewcode-block" id="plot_Followers"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Followers">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">plot_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Followers"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Followers">[docs]</a><span class="k">def</span> <span class="nf">plot_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Number of Followers&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -108,13 +110,10 @@
 <span class="sd">    plt : CDF curves</span>
 <span class="sd">        the CDF curves of &quot;Number of Followers&quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">SHS</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">nodes</span>
-    <span class="p">),</span> <span class="s2">&quot;The number of SHS must be less than the number of nodes in the graph.&quot;</span>
     <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
@@ -143,7 +142,7 @@
 
 
 <span class="c1"># Number of Connected Communities</span>
-<div class="viewcode-block" id="plot_Connected_Communities"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Connected_Communities">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">plot_Connected_Communities</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Connected_Communities"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Connected_Communities">[docs]</a><span class="k">def</span> <span class="nf">plot_Connected_Communities</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Number of Connected Communities&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -160,9 +159,9 @@
 <span class="sd">    plt : CDF curves</span>
 <span class="sd">        the CDF curves of &quot;Number of Connected Communities&quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 
     <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
@@ -206,7 +205,7 @@
 
 
 <span class="c1"># Betweenness Centrality</span>
-<div class="viewcode-block" id="plot_Betweenness_Centrality"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Betweenness_Centrality">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">plot_Betweenness_Centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Betweenness_Centrality"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Betweenness_Centrality">[docs]</a><span class="k">def</span> <span class="nf">plot_Betweenness_Centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Betweenness Centralitys&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -223,22 +222,21 @@
 <span class="sd">    plt : CDF curves</span>
 <span class="sd">        the CDF curves of &quot;Betweenness Centrality&quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 
     <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">OU</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">bc</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">bc</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span> <span class="n">bc</span><span class="p">))</span>
     <span class="n">sample1</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">sample2</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bc</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">OU</span><span class="p">:</span>
             <span class="n">sample1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SHS</span><span class="p">:</span>
             <span class="n">sample2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span>
     <span class="n">ecdf</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">ECDF</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
@@ -256,7 +254,7 @@
 
 
 <span class="c1"># Arg. Number of Followers of the Neighborhood Users</span>
-<div class="viewcode-block" id="plot_Neighborhood_Followers"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Neighborhood_Followers">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">plot_Neighborhood_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_Neighborhood_Followers"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.html#easygraph.functions.drawing.plot.plot_Neighborhood_Followers">[docs]</a><span class="k">def</span> <span class="nf">plot_Neighborhood_Followers</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">SHS</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the CDF curves of &quot;Arg. Number of Followers of the Neighborhood Users&quot; of SH spanners and ordinary users in graph G.</span>
 
@@ -274,9 +272,9 @@
 <span class="sd">        the CDF curves of &quot;Arg. Number of Followers of the Neighborhood Users</span>
 <span class="sd">        &quot; of SH spanners and ordinary users in graph G.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 
     <span class="n">OU</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>

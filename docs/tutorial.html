@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tutorial &mdash; EasyGraph 1.4</title>
+  <title>Tutorial &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
@@ -12,10 +12,9 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -23,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Contributor Guide" href="contributorGuide.html" />
-    <link rel="prev" title="easygraph.utils package" href="reference/easygraph.utils.html" /> 
+    <link rel="prev" title="Reference" href="reference.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,12 +30,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="index.html" class="icon icon-home"> EasyGraph
-            <img src="_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            EasyGraph
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -47,7 +50,6 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributorGuide.html">Contributor Guide</a></li>
@@ -70,8 +72,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Tutorial</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tutorial</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,8 +88,8 @@
 <p>This section provides two brief tutorials on performing graph analysis with <strong>EasyGraph</strong>.</p>
 <section id="example-using-easygraph-to-analysis-and-draw-structural-hole-spanners-on-karate-club-dataset">
 <h2>Example using EasyGraph to analysis and draw Structural Hole Spanners on karate club dataset<a class="headerlink" href="#example-using-easygraph-to-analysis-and-draw-structural-hole-spanners-on-karate-club-dataset" title="Permalink to this heading"></a></h2>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_graph_karateclub</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.datasets</span> <span class="kn">import</span> <span class="n">get_graph_karateclub</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">get_graph_karateclub</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate five shs(Structural Hole Spanners) in G</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shs</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">common_greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -101,7 +103,7 @@
 <section id="basic-properties-and-operation-of-graph">
 <h2>Basic Properties and Operation of Graph<a class="headerlink" href="#basic-properties-and-operation-of-graph" title="Permalink to this heading"></a></h2>
 <p>Import <strong>EasyGraph</strong>, and start with an undirected graph <cite>G</cite></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -329,7 +331,7 @@
 <section id="basic-usage-of-graphc">
 <h2>Basic usage of GraphC<a class="headerlink" href="#basic-usage-of-graphc" title="Permalink to this heading"></a></h2>
 <p>Import <strong>EasyGraph</strong>, and start with a directed graph <cite>G_c</cite></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G_c</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">DiGraphC</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -379,7 +381,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="reference/easygraph.utils.html" class="btn btn-neutral float-left" title="easygraph.utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reference.html" class="btn btn-neutral float-left" title="Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="contributorGuide.html" class="btn btn-neutral float-right" title="Contributor Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

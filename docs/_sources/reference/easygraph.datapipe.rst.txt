@@ -1,32 +1,17 @@
+.. _module_easygraph.datapipe:
+
 easygraph.datapipe package
 ==========================
 
 Submodules
 ----------
 
-easygraph.datapipe.common module
---------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.datapipe.common
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datapipe.loader module
---------------------------------
-
-.. automodule:: easygraph.datapipe.loader
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.datapipe.normalize module
------------------------------------
-
-.. automodule:: easygraph.datapipe.normalize
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.datapipe.common
+   easygraph.datapipe.loader
+   easygraph.datapipe.normalize
 
 Module contents
 ---------------

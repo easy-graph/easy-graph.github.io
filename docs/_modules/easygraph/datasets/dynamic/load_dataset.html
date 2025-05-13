@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.datasets.dynamic.load_dataset &mdash; EasyGraph 1.4</title>
+  <title>easygraph.datasets.dynamic.load_dataset &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.datasets.dynamic.load_dataset</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.datasets.dynamic.load_dataset</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,15 +81,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.datasets.dynamic.load_dataset</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.convert</span><span class="w"> </span><span class="kn">import</span> <span class="n">dict_to_hypergraph</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">EasyGraphError</span>
+<span class="kn">from</span> <span class="nn">easygraph.convert</span> <span class="kn">import</span> <span class="n">dict_to_hypergraph</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.exception</span> <span class="kn">import</span> <span class="n">EasyGraphError</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -97,7 +99,7 @@
 <span class="n">dataset_index_url</span> <span class="o">=</span> <span class="s2">&quot;https://gitlab.com/easy-graph/easygraph-data/-/raw/main/dataset_index.json?inline=false&quot;</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">request_json_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">request_json_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
@@ -109,7 +111,7 @@
         <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: HTTP response </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_request_from_eg_data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_request_from_eg_data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Request a dataset from eg-data.</span>
 
 <span class="sd">    Parameters</span>
@@ -145,7 +147,7 @@
     <span class="k">return</span> <span class="n">request_json_from_url</span><span class="p">(</span><span class="n">index_data</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
 
 
-<div class="viewcode-block" id="load_dynamic_hypergraph_dataset"><a class="viewcode-back" href="../../../../reference/easygraph.datasets.dynamic.html#easygraph.datasets.dynamic.load_dataset.load_dynamic_hypergraph_dataset">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">load_dynamic_hypergraph_dataset</span><span class="p">(</span>
+<div class="viewcode-block" id="load_dynamic_hypergraph_dataset"><a class="viewcode-back" href="../../../../reference/easygraph.datasets.dynamic.html#easygraph.datasets.dynamic.load_dataset.load_dynamic_hypergraph_dataset">[docs]</a><span class="k">def</span> <span class="nf">load_dynamic_hypergraph_dataset</span><span class="p">(</span>
     <span class="n">dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">local_read</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>

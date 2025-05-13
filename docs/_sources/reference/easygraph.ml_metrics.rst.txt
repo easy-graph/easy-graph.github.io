@@ -1,3 +1,5 @@
+.. _module_easygraph.ml_metrics:
+
 easygraph.ml\_metrics package
 =============================
 
@@ -12,21 +14,11 @@ Subpackages
 Submodules
 ----------
 
-easygraph.ml\_metrics.base module
----------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: easygraph.ml_metrics.base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-easygraph.ml\_metrics.classification module
--------------------------------------------
-
-.. automodule:: easygraph.ml_metrics.classification
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   easygraph.ml_metrics.base
+   easygraph.ml_metrics.classification
 
 Module contents
 ---------------

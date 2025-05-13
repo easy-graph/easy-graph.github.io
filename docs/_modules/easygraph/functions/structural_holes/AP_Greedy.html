@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.functions.structural_holes.AP_Greedy &mdash; EasyGraph 1.4</title>
+  <title>easygraph.functions.structural_holes.AP_Greedy &mdash; EasyGraph 1.4.1</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/my_theme.css" type="text/css" />
@@ -11,10 +11,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
@@ -28,12 +27,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../../index.html" class="icon icon-home"> EasyGraph
-            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
@@ -67,9 +69,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-      <li>easygraph.functions.structural_holes.AP_Greedy</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.functions.structural_holes.AP_Greedy</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,14 +81,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for easygraph.functions.structural_holes.AP_Greedy</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.functions.components.biconnected</span><span class="w"> </span><span class="kn">import</span> <span class="n">generator_articulation_points</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.functions.components.connected</span><span class="w"> </span><span class="kn">import</span> <span class="n">connected_components</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">easygraph.functions.components.biconnected</span> <span class="kn">import</span> <span class="n">generator_articulation_points</span>
+<span class="kn">from</span> <span class="nn">easygraph.functions.components.connected</span> <span class="kn">import</span> <span class="n">connected_components</span>
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;common_greedy&quot;</span><span class="p">,</span> <span class="s2">&quot;AP_Greedy&quot;</span><span class="p">]</span>
@@ -94,7 +96,7 @@
 
 <div class="viewcode-block" id="common_greedy"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.AP_Greedy.common_greedy">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">common_greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">common_greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Common greedy method for structural hole spanners detection.</span>
 
 <span class="sd">    Returns top k nodes as structural hole spanners,</span>
@@ -169,7 +171,7 @@
     <span class="k">return</span> <span class="n">v_sns</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">sort_nodes_by_degree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">sort_nodes_by_degree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
     <span class="n">sorted_nodes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">degree</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
         <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
@@ -178,7 +180,7 @@
     <span class="k">return</span> <span class="n">sorted_nodes</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">procedure1</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">procedure1</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Procedure 1 of https://dl.acm.org/profile/81484650642</span>
 
@@ -217,11 +219,11 @@
     <span class="k">return</span> <span class="n">upper_bound</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_spanning_tree_of_component</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_get_spanning_tree_of_component</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="n">spanning_tree</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_plain_dfs</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_plain_dfs</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">edge_data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
                 <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -237,11 +239,11 @@
     <span class="k">return</span> <span class="n">spanning_tree</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_num_subtree_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_get_num_subtree_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
     <span class="n">num_subtree_nodes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_plain_dfs</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_plain_dfs</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
         <span class="n">num_nodes</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">edge_data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
@@ -257,7 +259,7 @@
     <span class="k">return</span> <span class="n">num_subtree_nodes</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">procedure2</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">procedure2</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Procedure 2 of https://dl.acm.org/profile/81484650642</span>
 
@@ -284,10 +286,10 @@
     <span class="k">return</span> <span class="n">C</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_sum_all_shortest_paths_of_component</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_get_sum_all_shortest_paths_of_component</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="c1"># TODO: Using randomized algorithm in http://de.arxiv.org/pdf/1503.08528</span>
     <span class="c1">#       instead of bfs method.</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_plain_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_plain_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
         <span class="n">seen</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">}</span>
         <span class="n">nextlevel</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">}</span>
         <span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
@@ -314,7 +316,7 @@
 
 <div class="viewcode-block" id="AP_Greedy"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.html#easygraph.functions.structural_holes.AP_Greedy.AP_Greedy">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="nd">@only_implemented_for_UnDirected_graph</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">AP_Greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">AP_Greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;AP greedy method for structural hole spanners detection.</span>
 
 <span class="sd">    Returns top k nodes as structural hole spanners,</span>
@@ -393,7 +395,7 @@
     <span class="k">return</span> <span class="n">v_sns</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_lower_bound_of_ap_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_get_lower_bound_of_ap_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the articulation points and lower bound for each of them.</span>
 <span class="sd">    Procedure 3 of https://dl.acm.org/profile/81484650642</span>
@@ -444,7 +446,7 @@
     <span class="k">return</span> <span class="n">v_ap</span><span class="p">,</span> <span class="n">lower_bound</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_upper_bound_of_non_ap_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ap</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_get_upper_bound_of_non_ap_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ap</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the upper bound value for each non-articulation points.</span>
 <span class="sd">    Eq.(14) of https://dl.acm.org/profile/81484650642</span>
