@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easygraph.experiments.hypergraphs.hypergraph &mdash; EasyGraph 1.4.1</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=547657ed" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=17704a4c"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EasyGraph
+              <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples of Graph Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hypergraph.html">EasyHypergraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eggpu.html">EGGPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributorGuide.html">Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sourcecode.html">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../honors.html">Honors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev.html">Developer Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">EasyGraph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">easygraph.experiments.hypergraphs.hypergraph</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for easygraph.experiments.hypergraphs.hypergraph</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">optuna</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="kn">from</span> <span class="nn">easygraph.ml_metrics</span> <span class="kn">import</span> <span class="n">BaseEvaluator</span>
+
+<span class="kn">from</span> <span class="nn">..vertex_classification</span> <span class="kn">import</span> <span class="n">VertexClassificationTask</span>
+
+
+<div class="viewcode-block" id="HypergraphVertexClassificationTask"><a class="viewcode-back" href="../../../../reference/easygraph.experiments.hypergraphs.hypergraph.html#easygraph.experiments.hypergraphs.hypergraph.HypergraphVertexClassificationTask">[docs]</a><span class="k">class</span> <span class="nc">HypergraphVertexClassificationTask</span><span class="p">(</span><span class="n">VertexClassificationTask</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The auto-experiment class for the vertex classification task on hypergraph.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ``work_root`` (``Optional[Union[str, Path]]``): User&#39;s work root to store all studies.</span>
+<span class="sd">        ``data`` (``dict``): The dictionary to store input data that used in the experiment.</span>
+<span class="sd">        ``model_builder`` (``Callable``): The function to build a model with a fixed parameter ``trial``.</span>
+<span class="sd">        ``train_builder`` (``Callable``): The function to build a training configuration with two fixed parameters ``trial`` and ``model``.</span>
+<span class="sd">        ``evaluator`` (``easygraph.ml_metrics.BaseEvaluator``): The DHG evaluator object to evaluate performance of the model in the experiment.</span>
+<span class="sd">        ``device`` (``torch.device``): The target device to run the experiment.</span>
+<span class="sd">        ``structure_builder`` (``Optional[Callable]``): The function to build a structure with a fixed parameter ``trial``. The structure should be ``easygraph.Hypergraph``.</span>
+<span class="sd">        ``study_name`` (``Optional[str]``): The name of this study. If set to ``None``, the study name will be generated automatically according to current time. Defaults to ``None``.</span>
+<span class="sd">        ``overwrite`` (``bool``): The flag that whether to overwrite the existing study. Different studies are identified by the ``study_name``. Defaults to ``True``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">work_root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]],</span>
+        <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">model_builder</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+        <span class="n">train_builder</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+        <span class="n">evaluator</span><span class="p">:</span> <span class="n">BaseEvaluator</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">structure_builder</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">study_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="p">,</span>
+            <span class="n">data</span><span class="p">,</span>
+            <span class="n">model_builder</span><span class="p">,</span>
+            <span class="n">train_builder</span><span class="p">,</span>
+            <span class="n">evaluator</span><span class="p">,</span>
+            <span class="n">device</span><span class="p">,</span>
+            <span class="n">structure_builder</span><span class="o">=</span><span class="n">structure_builder</span><span class="p">,</span>
+            <span class="n">study_name</span><span class="o">=</span><span class="n">study_name</span><span class="p">,</span>
+            <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="HypergraphVertexClassificationTask.to"><a class="viewcode-back" href="../../../../reference/easygraph.experiments.hypergraphs.hypergraph.html#easygraph.experiments.hypergraphs.hypergraph.HypergraphVertexClassificationTask.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Move the input data to the target device.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``device`` (``torch.device``): The specified target device to store the input data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">vars_for_DL</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a name list for available variables for deep learning in the vertex classification on hypergraph. The name list includes ``features``, ``structure``, ``labels``, ``train_mask``, ``val_mask``, and ``test_mask``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">vars_for_DL</span>
+
+<div class="viewcode-block" id="HypergraphVertexClassificationTask.experiment"><a class="viewcode-back" href="../../../../reference/easygraph.experiments.hypergraphs.hypergraph.html#easygraph.experiments.hypergraphs.hypergraph.HypergraphVertexClassificationTask.experiment">[docs]</a>    <span class="k">def</span> <span class="nf">experiment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">Trial</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Run the experiment for a given trial.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``trial`` (``optuna.Trial``): The ``optuna.Trial`` object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">experiment</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HypergraphVertexClassificationTask.run"><a class="viewcode-back" href="../../../../reference/easygraph.experiments.hypergraphs.hypergraph.html#easygraph.experiments.hypergraphs.hypergraph.HypergraphVertexClassificationTask.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_epoch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;maximize&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Run experiments with automatically hyper-parameter tuning.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``max_epoch`` (``int``): The maximum number of epochs to train for each experiment.</span>
+<span class="sd">            ``num_trials`` (``int``): The number of trials to run. Defaults to ``1``.</span>
+<span class="sd">            ``direction`` (``str``): The direction to optimize. Defaults to ``&quot;maximize&quot;``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">max_epoch</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HypergraphVertexClassificationTask.train"><a class="viewcode-back" href="../../../../reference/easygraph.experiments.hypergraphs.hypergraph.html#easygraph.experiments.hypergraphs.hypergraph.HypergraphVertexClassificationTask.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+        <span class="n">optimizer</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">,</span>
+        <span class="n">criterion</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Train model for one epoch.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``data`` (``dict``): The input data.</span>
+<span class="sd">            ``model`` (``nn.Module``): The model.</span>
+<span class="sd">            ``optimizer`` (``torch.optim.Optimizer``): The model optimizer.</span>
+<span class="sd">            ``criterion`` (``nn.Module``): The loss function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HypergraphVertexClassificationTask.validate"><a class="viewcode-back" href="../../../../reference/easygraph.experiments.hypergraphs.hypergraph.html#easygraph.experiments.hypergraphs.hypergraph.HypergraphVertexClassificationTask.validate">[docs]</a>    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Validate the model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``data`` (``dict``): The input data.</span>
+<span class="sd">            ``model`` (``nn.Module``): The model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HypergraphVertexClassificationTask.test"><a class="viewcode-back" href="../../../../reference/easygraph.experiments.hypergraphs.hypergraph.html#easygraph.experiments.hypergraphs.hypergraph.HypergraphVertexClassificationTask.test">[docs]</a>    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Test the model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ``data`` (``dict``, optional): The input data if set to ``None``, the specified ``data`` in the intialization of the experiments will be used. Defaults to ``None``.</span>
+<span class="sd">            ``model`` (``nn.Module``, optional): The model if set to ``None``, the trained best model will be used. Defaults to ``None``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+   
+  <div class="footer">
+    <a href="https://github.com//easy-graph/Easy-Graph/">
+      <i class="fa fa-github"></i> 查看此页源码
+    </a>
+  </div>
+
+
+</body>
+</html>

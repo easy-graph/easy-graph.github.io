@@ -18,5 +18,5 @@ computation methods within the same platform.
     :caption: Contents:
     :maxdepth: 2
 
-    reference/easygraph.rst
+    Documentation <reference/modules.rst>
 

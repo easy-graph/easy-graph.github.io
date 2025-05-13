@@ -1,97 +1,532 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easygraph.classes.graph module &mdash; EasyGraph 1.4.1</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/my_theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>easygraph.classes.graph module &#8212; EasyGraph 1.4.1</title>
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../_static/js/theme.js"></script>
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=17704a4c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/copybutton.js?v=e333d19b"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/easygraph.classes.graph';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="easygraph.classes.graphviews module" href="easygraph.classes.graphviews.html" />
-    <link rel="prev" title="easygraph.classes.directed_multigraph module" href="easygraph.classes.directed_multigraph.html" /> 
-</head>
+    <link rel="prev" title="easygraph.classes.directed_multigraph module" href="easygraph.classes.directed_multigraph.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: white" >
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            EasyGraph
-              <img src="../_static/logo.png" class="logo" alt="Logo"/>
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples of Graph Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hypergraph.html">EasyHypergraph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributorGuide.html">Contributor Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sourcecode.html">Source Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honors.html">Honors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev.html">Developer Documentation</a></li>
-</ul>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-        </div>
-      </div>
-    </nav>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">EasyGraph</a>
-      </nav>
+  
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
-          <li class="breadcrumb-item"><a href="easygraph.html">easygraph package</a></li>
-          <li class="breadcrumb-item"><a href="easygraph.classes.html">easygraph.classes package</a></li>
-      <li class="breadcrumb-item active">easygraph.classes.graph module</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/reference/easygraph.classes.graph.rst.txt" rel="nofollow"> View page source</a>
-      </li>
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
   </ul>
-  <hr/>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="reference internal" href="easygraph.classes.html">easygraph.classes package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.datapipe.html">easygraph.datapipe package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.datasets.html">easygraph.datasets package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.experiments.html">easygraph.experiments package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.html">easygraph.functions package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.ml_metrics.html">easygraph.ml_metrics package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.model.html">easygraph.model package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.html">easygraph.nn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.utils.html">easygraph.utils package</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="easygraph.convert.html">easygraph.convert module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.exception.html">easygraph.exception module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="easygraph.classes.html" class="nav-link">easygraph.classes package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">easygraph.cl...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="module-easygraph.classes.graph">
-<span id="easygraph-classes-graph-module"></span><span id="module-easygraph-classes-graph"></span><h1>easygraph.classes.graph module<a class="headerlink" href="#module-easygraph.classes.graph" title="Permalink to this heading"></a></h1>
+<span id="easygraph-classes-graph-module"></span><span id="module-easygraph-classes-graph"></span><h1>easygraph.classes.graph module<a class="headerlink" href="#module-easygraph.classes.graph" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_selfloop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">graph_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_selfloop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">graph_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Base class for undirected graphs.</p>
 <blockquote>
@@ -165,7 +600,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edge" title="easygraph.classes.graph.Graph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(u_of_edge, v_of_edge, **edge_attr)</p></td>
 <td><p>Add one edge.</p></td>
@@ -310,7 +745,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>N_v</strong></p></td>
 <td></td>
@@ -322,25 +757,25 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.A">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.A" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.A" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the adjacency matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> of the sample graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.D_v">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D_v</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.D_v" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D_v</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.D_v" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.D_v_neg_1_2">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D_v_neg_1_2</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.D_v_neg_1_2" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D_v_neg_1_2</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.D_v_neg_1_2" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the normalized diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-\frac{1}{2}}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.L_GCN">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">L_GCN</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.L_GCN" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">L_GCN</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.L_GCN" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span> of the graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, |\mathcal{V}|)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}_{GCN} = \mathbf{\hat{D}}_v^{-\frac{1}{2}} \mathbf{\hat{A}} \mathbf{\hat{D}}_v^{-\frac{1}{2}}\]</div>
@@ -348,12 +783,12 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.N_v">
-<span class="sig-name descname"><span class="pre">N_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.N_v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.N_v" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">N_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.N_v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.N_v" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edge">
-<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">edge_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edge" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">edge_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edge" title="Permalink to this definition">#</a></dt>
 <dd><p>Add one edge.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -385,7 +820,7 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edges">
-<span class="sig-name descname"><span class="pre">add_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges_for_adding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges_for_adding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges" title="Permalink to this definition">#</a></dt>
 <dd><p>Add a list of edges.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -420,7 +855,7 @@ two ends of the edge.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edges_from">
-<span class="sig-name descname"><span class="pre">add_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges_from" title="Permalink to this definition">#</a></dt>
 <dd><p>Add all the edges in ebunch_to_add.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -463,7 +898,7 @@ attributes specified via keyword arguments.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_edges_from_file">
-<span class="sig-name descname"><span class="pre">add_edges_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges_from_file" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_edges_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_edges_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_edges_from_file" title="Permalink to this definition">#</a></dt>
 <dd><p>Added edges from file
 For example, txt files,</p>
 <p>Each line is in form like:
@@ -491,13 +926,13 @@ The weight key will be set as ‘weight’.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_extra_selfloop">
-<span class="sig-name descname"><span class="pre">add_extra_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_extra_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_extra_selfloop" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_extra_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_extra_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_extra_selfloop" title="Permalink to this definition">#</a></dt>
 <dd><p>Add extra selfloops to the graph.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_node">
-<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_for_adding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">node_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_node" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_for_adding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">node_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_node" title="Permalink to this definition">#</a></dt>
 <dd><p>Add one node</p>
 <p>Add one node, type of which is any hashable Python object, such as int, string, dict, or even Graph itself.
 You can add with node attributes using Python dict type.</p>
@@ -530,7 +965,7 @@ You can customize them with different key-value pairs.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_nodes">
-<span class="sig-name descname"><span class="pre">add_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_for_adding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_nodes" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_for_adding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_nodes" title="Permalink to this definition">#</a></dt>
 <dd><p>Add nodes with a list of nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -572,7 +1007,7 @@ each of which is the attribute of each node, respectively.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_nodes_from">
-<span class="sig-name descname"><span class="pre">add_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_for_adding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_nodes_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_nodes_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_for_adding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_nodes_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_nodes_from" title="Permalink to this definition">#</a></dt>
 <dd><p>Add multiple nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -619,7 +1054,7 @@ precedence over attributes specified via keyword arguments.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_weighted_edge">
-<span class="sig-name descname"><span class="pre">add_weighted_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_weighted_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_weighted_edge" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_weighted_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_weighted_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_weighted_edge" title="Permalink to this definition">#</a></dt>
 <dd><p>Add a weighted edge</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -639,7 +1074,7 @@ precedence over attributes specified via keyword arguments.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.add_weighted_edges_from">
-<span class="sig-name descname"><span class="pre">add_weighted_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_weighted_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_weighted_edges_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_weighted_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.add_weighted_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.add_weighted_edges_from" title="Permalink to this definition">#</a></dt>
 <dd><p>Add weighted edges in <cite>ebunch_to_add</cite> with specified weight attr</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -674,25 +1109,25 @@ are stored.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.adj">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adj</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adj" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adj</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adj" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the adjacency matrix</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.adjlist_inner_dict_factory">
-<span class="sig-name descname"><span class="pre">adjlist_inner_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adjlist_inner_dict_factory" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">adjlist_inner_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adjlist_inner_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.adjlist_outer_dict_factory">
-<span class="sig-name descname"><span class="pre">adjlist_outer_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adjlist_outer_dict_factory" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">adjlist_outer_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.adjlist_outer_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.all_neighbors">
-<span class="sig-name descname"><span class="pre">all_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.classes.graph.Graph.all_neighbors" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">all_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#easygraph.classes.graph.Graph.all_neighbors" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an iterator of a node’s neighbors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -716,13 +1151,13 @@ are stored.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.clone">
-<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.clone" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.clone" title="Permalink to this definition">#</a></dt>
 <dd><p>Clone the graph.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.copy" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.copy" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a deep copy of the graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -741,12 +1176,12 @@ are stored.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.cpp">
-<span class="sig-name descname"><span class="pre">cpp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.cpp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.cpp" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">cpp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.cpp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.cpp" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.degree">
-<span class="sig-name descname"><span class="pre">degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.degree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.degree" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.degree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.degree" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the weighted degree of of each node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -774,31 +1209,31 @@ are stored.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.e">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.graph.Graph.e" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.graph.Graph.e" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the edge list, weight list and property list in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.e_both_side">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e_both_side</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.graph.Graph.e_both_side" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">e_both_side</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#easygraph.classes.graph.Graph.e_both_side" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the list of edges including both directions.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.edge_attr_dict_factory">
-<span class="sig-name descname"><span class="pre">edge_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.edge_attr_dict_factory" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">edge_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.edge_attr_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.edges">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.edges" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.edges" title="Permalink to this definition">#</a></dt>
 <dd><p>Return an edge list</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.ego_subgraph">
-<span class="sig-name descname"><span class="pre">ego_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.ego_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.ego_subgraph" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ego_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.ego_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.ego_subgraph" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an ego network graph of a node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -825,19 +1260,19 @@ are stored.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.gnn_data_dict_factory">
-<span class="sig-name descname"><span class="pre">gnn_data_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">gnn_data_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.graph_attr_dict_factory">
-<span class="sig-name descname"><span class="pre">graph_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.graph_attr_dict_factory" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">graph_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.graph_attr_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.has_edge">
-<span class="sig-name descname"><span class="pre">has_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.has_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.has_edge" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">has_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.has_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.has_edge" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns whether an edge exists</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -857,7 +1292,7 @@ are stored.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.has_node">
-<span class="sig-name descname"><span class="pre">has_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.has_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.has_node" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">has_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.has_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.has_node" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns whether a node exists</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -874,25 +1309,25 @@ are stored.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.index2node">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index2node</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.index2node" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index2node</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.index2node" title="Permalink to this definition">#</a></dt>
 <dd><p>Assign an integer index for each node (start from 0)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.is_directed">
-<span class="sig-name descname"><span class="pre">is_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.is_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.is_directed" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.is_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.is_directed" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns True if graph is a directed_graph, False otherwise.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.is_multigraph">
-<span class="sig-name descname"><span class="pre">is_multigraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.is_multigraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.is_multigraph" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_multigraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.is_multigraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.is_multigraph" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns True if graph is a multigraph, False otherwise.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.name">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.name" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.name" title="Permalink to this definition">#</a></dt>
 <dd><p>String identifier of the graph.</p>
 <p>This graph attribute appears in the attribute dict G.graph
 keyed by the string <cite>“name”</cite>. as well as an attribute (technically
@@ -901,7 +1336,7 @@ a property) <cite>G.name</cite>. This is entirely user controlled.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nbr_v">
-<span class="sig-name descname"><span class="pre">nbr_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nbr_v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nbr_v" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nbr_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nbr_v"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nbr_v" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a vertex list of the neighbors of the vertex <code class="docutils literal notranslate"><span class="pre">v_idx</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -912,7 +1347,7 @@ a property) <cite>G.name</cite>. This is entirely user controlled.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nbunch_iter">
-<span class="sig-name descname"><span class="pre">nbunch_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbunch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nbunch_iter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nbunch_iter" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nbunch_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbunch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nbunch_iter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nbunch_iter" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an iterator over nodes contained in nbunch that are
 also in the graph.</p>
 <p>The nodes in nbunch are checked for membership in the graph
@@ -949,12 +1384,12 @@ nbunch is not hashable, a <code class="xref py py-exc docutils literal notransla
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.ndata">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndata</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.ndata" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndata</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.ndata" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.neighbors">
-<span class="sig-name descname"><span class="pre">neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.neighbors" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.neighbors" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an iterator of a node’s neighbors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -978,37 +1413,37 @@ nbunch is not hashable, a <code class="xref py py-exc docutils literal notransla
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_attr_dict_factory">
-<span class="sig-name descname"><span class="pre">node_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_attr_dict_factory" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">node_attr_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_attr_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_dict_factory">
-<span class="sig-name descname"><span class="pre">node_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_dict_factory" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">node_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_index">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_index</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_index</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index" title="Permalink to this definition">#</a></dt>
 <dd><p>Assign an integer index for each node (start from 0)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.node_index_dict">
-<span class="sig-name descname"><span class="pre">node_index_dict</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index_dict" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">node_index_dict</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.node_index_dict" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nodes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.nodes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.nodes" title="Permalink to this definition">#</a></dt>
 <dd><p>return [node for node in self._node]</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.nodes_subgraph">
-<span class="sig-name descname"><span class="pre">nodes_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nodes_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nodes_subgraph" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nodes_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.nodes_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.nodes_subgraph" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns a subgraph of some nodes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1031,7 +1466,7 @@ nbunch is not hashable, a <code class="xref py py-exc docutils literal notransla
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.number_of_edges">
-<span class="sig-name descname"><span class="pre">number_of_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.number_of_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.number_of_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_of_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.number_of_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.number_of_edges" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the number of edges between two nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1083,7 +1518,7 @@ directed edges from <cite>u</cite> to <cite>v</cite>:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.number_of_nodes">
-<span class="sig-name descname"><span class="pre">number_of_nodes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.number_of_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.number_of_nodes" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_of_nodes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.number_of_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.number_of_nodes" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the number of nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1097,7 +1532,7 @@ directed edges from <cite>u</cite> to <cite>v</cite>:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.order">
-<span class="sig-name descname"><span class="pre">order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.order" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.order" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the number of nodes in the graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1126,13 +1561,13 @@ directed edges from <cite>u</cite> to <cite>v</cite>:</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.raw_selfloop_dict">
-<span class="sig-name descname"><span class="pre">raw_selfloop_dict</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.raw_selfloop_dict" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">raw_selfloop_dict</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.raw_selfloop_dict" title="Permalink to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_edge">
-<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_edge" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_edge" title="Permalink to this definition">#</a></dt>
 <dd><p>Remove one edge from your graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1155,7 +1590,7 @@ directed edges from <cite>u</cite> to <cite>v</cite>:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_edges">
-<span class="sig-name descname"><span class="pre">remove_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">edges_to_remove:</span> <span class="pre">[&lt;class</span> <span class="pre">'tuple'&gt;]</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">edges_to_remove:</span> <span class="pre">[&lt;class</span> <span class="pre">'tuple'&gt;]</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_edges" title="Permalink to this definition">#</a></dt>
 <dd><p>Remove a list of edges from your graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1179,13 +1614,13 @@ Each element is (u, v) tuple, which denote the two ends of the edge.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_extra_selfloop">
-<span class="sig-name descname"><span class="pre">remove_extra_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_extra_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_extra_selfloop" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_extra_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_extra_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_extra_selfloop" title="Permalink to this definition">#</a></dt>
 <dd><p>Remove extra selfloops from the graph.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_node">
-<span class="sig-name descname"><span class="pre">remove_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_to_remove</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_node" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_to_remove</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_node" title="Permalink to this definition">#</a></dt>
 <dd><p>Remove one node from your graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1205,7 +1640,7 @@ Each element is (u, v) tuple, which denote the two ends of the edge.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_nodes">
-<span class="sig-name descname"><span class="pre">remove_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_to_remove</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_nodes" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes_to_remove</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_nodes" title="Permalink to this definition">#</a></dt>
 <dd><p>Remove nodes from your graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1225,7 +1660,7 @@ Each element is (u, v) tuple, which denote the two ends of the edge.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_nodes_from">
-<span class="sig-name descname"><span class="pre">remove_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_nodes_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_nodes_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_nodes_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_nodes_from" title="Permalink to this definition">#</a></dt>
 <dd><p>Remove multiple nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1252,13 +1687,13 @@ ignored.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.remove_selfloop">
-<span class="sig-name descname"><span class="pre">remove_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_selfloop" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_selfloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.remove_selfloop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.remove_selfloop" title="Permalink to this definition">#</a></dt>
 <dd><p>Remove all selfloops from the graph.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.size">
-<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.size" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.size" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the number of edges or total of all edge weights.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1285,7 +1720,7 @@ edges, instead of total of all edge weights.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.smoothing_with_GCN">
-<span class="sig-name descname"><span class="pre">smoothing_with_GCN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.smoothing_with_GCN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.smoothing_with_GCN" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">smoothing_with_GCN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.smoothing_with_GCN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.smoothing_with_GCN" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1299,7 +1734,7 @@ edges, instead of total of all edge weights.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.to_directed">
-<span class="sig-name descname"><span class="pre">to_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_directed" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_directed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_directed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_directed" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates and returns a directed graph from self.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1343,7 +1778,7 @@ will not be preserved in the <cite>DiGraph</cite> created by this function.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.to_directed_class">
-<span class="sig-name descname"><span class="pre">to_directed_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_directed_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_directed_class" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_directed_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_directed_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_directed_class" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the class to use for empty directed copies.</p>
 <p>If you subclass the base classes, use this to designate
 what directed class to use for <cite>to_directed()</cite> copies.</p>
@@ -1351,7 +1786,7 @@ what directed class to use for <cite>to_directed()</cite> copies.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.to_index_node_graph">
-<span class="sig-name descname"><span class="pre">to_index_node_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">begin_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_index_node_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_index_node_graph" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_index_node_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">begin_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.to_index_node_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.to_index_node_graph" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns a deep copy of graph, with each node switched to its index.</p>
 <p>Considering that the nodes of your graph may be any possible hashable Python object,
 you can get an isomorphic graph of the original one, with each node switched to its index.</p>
@@ -1386,7 +1821,7 @@ as well as node-to-index dictionary.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="easygraph.classes.graph.GraphC">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">GraphC</span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#GraphC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.GraphC" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">GraphC</span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#GraphC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.GraphC" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
@@ -1401,7 +1836,7 @@ as well as node-to-index dictionary.</p>
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code>(*args, **kwargs)</p></td>
 <td><p></p></td>
@@ -1494,7 +1929,7 @@ as well as node-to-index dictionary.</p>
 </table>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.GraphC.cflag">
-<span class="sig-name descname"><span class="pre">cflag</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#easygraph.classes.graph.GraphC.cflag" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">cflag</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#easygraph.classes.graph.GraphC.cflag" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1502,34 +1937,184 @@ as well as node-to-index dictionary.</p>
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="easygraph.classes.directed_multigraph.html" class="btn btn-neutral float-left" title="easygraph.classes.directed_multigraph module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="easygraph.classes.graphviews.html" class="btn btn-neutral float-right" title="easygraph.classes.graphviews module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2020-2025, DataNET Group, Fudan University.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="easygraph.classes.directed_multigraph.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">easygraph.classes.directed_multigraph module</p>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    </a>
+    <a class="right-next"
+       href="easygraph.classes.graphviews.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">easygraph.classes.graphviews module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-</body>
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.A"><code class="docutils literal notranslate"><span class="pre">Graph.A</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.D_v"><code class="docutils literal notranslate"><span class="pre">Graph.D_v</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.D_v_neg_1_2"><code class="docutils literal notranslate"><span class="pre">Graph.D_v_neg_1_2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.L_GCN"><code class="docutils literal notranslate"><span class="pre">Graph.L_GCN</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.N_v"><code class="docutils literal notranslate"><span class="pre">Graph.N_v()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_edges"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges_from()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_edges_from_file"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges_from_file()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_extra_selfloop"><code class="docutils literal notranslate"><span class="pre">Graph.add_extra_selfloop()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_node"><code class="docutils literal notranslate"><span class="pre">Graph.add_node()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.add_nodes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_nodes_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_nodes_from()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_weighted_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_weighted_edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.add_weighted_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_weighted_edges_from()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.adj"><code class="docutils literal notranslate"><span class="pre">Graph.adj</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.adjlist_inner_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.adjlist_inner_dict_factory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.adjlist_outer_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.adjlist_outer_dict_factory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.all_neighbors"><code class="docutils literal notranslate"><span class="pre">Graph.all_neighbors()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.clone"><code class="docutils literal notranslate"><span class="pre">Graph.clone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.copy"><code class="docutils literal notranslate"><span class="pre">Graph.copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.cpp"><code class="docutils literal notranslate"><span class="pre">Graph.cpp()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.degree"><code class="docutils literal notranslate"><span class="pre">Graph.degree()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.e"><code class="docutils literal notranslate"><span class="pre">Graph.e</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.e_both_side"><code class="docutils literal notranslate"><span class="pre">Graph.e_both_side</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.edge_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.edge_attr_dict_factory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.edges"><code class="docutils literal notranslate"><span class="pre">Graph.edges</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.ego_subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.ego_subgraph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.gnn_data_dict_factory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.graph_attr_dict_factory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.has_edge"><code class="docutils literal notranslate"><span class="pre">Graph.has_edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.has_node"><code class="docutils literal notranslate"><span class="pre">Graph.has_node()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.index2node"><code class="docutils literal notranslate"><span class="pre">Graph.index2node</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.is_directed"><code class="docutils literal notranslate"><span class="pre">Graph.is_directed()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.is_multigraph"><code class="docutils literal notranslate"><span class="pre">Graph.is_multigraph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.name"><code class="docutils literal notranslate"><span class="pre">Graph.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.nbr_v"><code class="docutils literal notranslate"><span class="pre">Graph.nbr_v()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.nbunch_iter"><code class="docutils literal notranslate"><span class="pre">Graph.nbunch_iter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.ndata"><code class="docutils literal notranslate"><span class="pre">Graph.ndata</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.neighbors"><code class="docutils literal notranslate"><span class="pre">Graph.neighbors()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.node_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.node_attr_dict_factory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.node_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.node_dict_factory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.node_index"><code class="docutils literal notranslate"><span class="pre">Graph.node_index</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.node_index_dict"><code class="docutils literal notranslate"><span class="pre">Graph.node_index_dict</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.nodes"><code class="docutils literal notranslate"><span class="pre">Graph.nodes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.nodes_subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.nodes_subgraph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.number_of_edges"><code class="docutils literal notranslate"><span class="pre">Graph.number_of_edges()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.number_of_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.number_of_nodes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.order"><code class="docutils literal notranslate"><span class="pre">Graph.order()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.raw_selfloop_dict"><code class="docutils literal notranslate"><span class="pre">Graph.raw_selfloop_dict</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.remove_edge"><code class="docutils literal notranslate"><span class="pre">Graph.remove_edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.remove_edges"><code class="docutils literal notranslate"><span class="pre">Graph.remove_edges()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.remove_extra_selfloop"><code class="docutils literal notranslate"><span class="pre">Graph.remove_extra_selfloop()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.remove_node"><code class="docutils literal notranslate"><span class="pre">Graph.remove_node()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.remove_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.remove_nodes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.remove_nodes_from"><code class="docutils literal notranslate"><span class="pre">Graph.remove_nodes_from()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.remove_selfloop"><code class="docutils literal notranslate"><span class="pre">Graph.remove_selfloop()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.size"><code class="docutils literal notranslate"><span class="pre">Graph.size()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.smoothing_with_GCN"><code class="docutils literal notranslate"><span class="pre">Graph.smoothing_with_GCN()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.to_directed"><code class="docutils literal notranslate"><span class="pre">Graph.to_directed()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.to_directed_class"><code class="docutils literal notranslate"><span class="pre">Graph.to_directed_class()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.to_index_node_graph"><code class="docutils literal notranslate"><span class="pre">Graph.to_index_node_graph()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.GraphC"><code class="docutils literal notranslate"><span class="pre">GraphC</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.GraphC.cflag"><code class="docutils literal notranslate"><span class="pre">GraphC.cflag</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/reference/easygraph.classes.graph.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2025, DataNET Group, Fudan University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>
