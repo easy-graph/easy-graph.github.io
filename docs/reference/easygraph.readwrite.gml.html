@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,33 +14,34 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=17704a4c"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/documentation_options.js?v=350a9c04"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/copybutton.js?v=e333d19b"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/easygraph.readwrite.gml';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -49,6 +50,7 @@
     <link rel="prev" title="easygraph.readwrite.gexf module" href="easygraph.readwrite.gexf.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -56,32 +58,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -89,7 +75,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -97,20 +82,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -125,7 +117,7 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="EasyGraph 1.4.1 - Home"/>
   
   
 </a></div>
@@ -137,96 +129,92 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
+
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../license.html">
+    License
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -241,19 +229,15 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -266,7 +250,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -278,31 +262,31 @@
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -311,102 +295,91 @@
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
-                </ul>
-            </li>
-            
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -414,7 +387,7 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -427,7 +400,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -441,21 +414,9 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.html">easygraph.classes package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.datapipe.html">easygraph.datapipe package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.datasets.html">easygraph.datasets package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.experiments.html">easygraph.experiments package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.html">easygraph.functions package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.ml_metrics.html">easygraph.ml_metrics package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.model.html">easygraph.model package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.html">easygraph.nn package</a></li>
-<li class="toctree-l1 current active"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.utils.html">easygraph.utils package</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="easygraph.convert.html">easygraph.convert module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.exception.html">easygraph.exception module</a></li>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="reference internal" href="modules.html">Documentation</a></li>
 </ul>
 </div>
 </nav></div>
@@ -463,31 +424,32 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -499,12 +461,15 @@
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">easygraph</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="easygraph.html" class="nav-link">easygraph package</a></li>
     
     
     <li class="breadcrumb-item"><a href="easygraph.readwrite.html" class="nav-link">easygraph.readwrite package</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">easygraph.re...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">easygraph.readwrite.gml module</span></li>
   </ul>
 </nav>
 </div>
@@ -519,244 +484,10 @@
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section id="module-easygraph.readwrite.gml">
-<span id="easygraph-readwrite-gml-module"></span><span id="module-easygraph-readwrite-gml"></span><h1>easygraph.readwrite.gml module<a class="headerlink" href="#module-easygraph.readwrite.gml" title="Permalink to this heading">#</a></h1>
-<p>Read graphs in GML format.</p>
-<p>“GML, the Graph Modelling Language, is our proposal for a portable
-file format for graphs. GML’s key features are portability, simple
-syntax, extensibility and flexibility. A GML file consists of a
-hierarchical key-value lists. Graphs can be annotated with arbitrary
-data structures. The idea for a common file format was born at the
-GD’95; this proposal is the outcome of many discussions. GML is the
-standard file format in the Graphlet graph editor system. It has been
-overtaken and adapted by several other systems for drawing graphs.”</p>
-<p>GML files are stored using a 7-bit ASCII encoding with any extended
-ASCII characters (iso8859-1) appearing as HTML character entities.
-You will need to give some thought into how the exported data should
-interact with different languages and even different Python versions.
-Re-importing from gml is also a concern.</p>
-<p>Without specifying a <cite>stringizer</cite>/<cite>destringizer</cite>, the code is capable of
-writing <cite>int</cite>/<cite>float</cite>/<cite>str</cite>/<cite>dict</cite>/<cite>list</cite> data as required by the GML
-specification.  For writing other data types, and for reading data other
-than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<cite>destringizer</cite>.</p>
-<p>For additional documentation on the GML file format, please see the
-<a class="reference external" href="https://web.archive.org/web/20190207140002/http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">GML website</a>.</p>
-<p>Several example graphs in GML format may be found on Mark Newman’s
-<a class="reference external" href="http://www-personal.umich.edu/~mejn/netdata/">Network data page</a>.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.readwrite.gml.generate_gml">
-<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.gml.</span></span><span class="sig-name descname"><span class="pre">generate_gml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stringizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/gml.html#generate_gml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.gml.generate_gml" title="Permalink to this definition">#</a></dt>
-<dd><p>Generate a single entry of the graph <cite>G</cite> in GML format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>EasyGraph graph</em>) – The graph to be converted to GML.</p></li>
-<li><p><strong>stringizer</strong> (<em>callable</em><em>, </em><em>optional</em>) – A <cite>stringizer</cite> which converts non-int/non-float/non-dict values into
-strings. If it cannot convert a value into a string, it should raise a
-<cite>ValueError</cite> to indicate that. Default value: None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>lines</strong> – Lines of GML data. Newlines are not appended.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>generator of strings</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphError" title="easygraph.exception.EasyGraphError"><strong>EasyGraphError</strong></a> – If <cite>stringizer</cite> cannot convert a value into a string, or the value to
-convert is not a string while <cite>stringizer</cite> is None.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_stringizer</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>Graph attributes named ‘directed’, ‘multigraph’, ‘node’ or
-‘edge’, node attributes named ‘id’ or ‘label’, edge attributes
-named ‘source’ or ‘target’ (or ‘key’ if <cite>G</cite> is a multigraph)
-are ignored because these attribute names are used to encode the graph
-structure.</p>
-<p>GML files are stored using a 7-bit ASCII encoding with any extended
-ASCII characters (iso8859-1) appearing as HTML character entities.
-Without specifying a <cite>stringizer</cite>/<cite>destringizer</cite>, the code is capable of
-writing <cite>int</cite>/<cite>float</cite>/<cite>str</cite>/<cite>dict</cite>/<cite>list</cite> data as required by the GML
-specification.  For writing other data types, and for reading data other
-than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<cite>destringizer</cite>.</p>
-<p>For additional documentation on the GML file format, please see the
-<a class="reference external" href="https://web.archive.org/web/20190207140002/http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">GML url</a>.</p>
-<p>See the module docstring <a class="reference internal" href="#module-easygraph.readwrite.gml" title="easygraph.readwrite.gml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">easygraph.readwrite.gml</span></code></a> for more details.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">generate_gml</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
-<span class="go">graph [</span>
-<span class="go">  node [</span>
-<span class="go">    id 0</span>
-<span class="go">    label &quot;1&quot;</span>
-<span class="go">  ]</span>
-<span class="go">]</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.readwrite.gml.parse_gml">
-<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.gml.</span></span><span class="sig-name descname"><span class="pre">parse_gml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destringizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/gml.html#parse_gml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.gml.parse_gml" title="Permalink to this definition">#</a></dt>
-<dd><p>Parse GML graph from a string or iterable.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lines</strong> (<em>string</em><em> or </em><em>iterable</em><em> of </em><em>strings</em>) – Data in GML format.</p></li>
-<li><p><strong>label</strong> (<em>string</em><em>, </em><em>optional</em>) – If not None, the parsed nodes will be renamed according to node
-attributes indicated by <cite>label</cite>. Default value: ‘label’.</p></li>
-<li><p><strong>destringizer</strong> (<em>callable</em><em>, </em><em>optional</em>) – A <cite>destringizer</cite> that recovers values stored as strings in GML. If it
-cannot convert a string to a value, a <cite>ValueError</cite> is raised. Default
-value : None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>G</strong> – The parsed graph.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>EasyGraph graph</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphError" title="easygraph.exception.EasyGraphError"><strong>EasyGraphError</strong></a> – If the input cannot be parsed.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#easygraph.readwrite.gml.write_gml" title="easygraph.readwrite.gml.write_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_gml</span></code></a>, <a class="reference internal" href="#easygraph.readwrite.gml.read_gml" title="easygraph.readwrite.gml.read_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_gml</span></code></a></p>
-</div>
-<p class="rubric">Notes</p>
-<p>This stores nested GML attributes as dictionaries in the EasyGraph graph,
-node, and edge attribute structures.</p>
-<p>GML files are stored using a 7-bit ASCII encoding with any extended
-ASCII characters (iso8859-1) appearing as HTML character entities.
-Without specifying a <cite>stringizer</cite>/<cite>destringizer</cite>, the code is capable of
-writing <cite>int</cite>/<cite>float</cite>/<cite>str</cite>/<cite>dict</cite>/<cite>list</cite> data as required by the GML
-specification.  For writing other data types, and for reading data other
-than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<cite>destringizer</cite>.</p>
-<p>For additional documentation on the GML file format, please see the
-<a class="reference external" href="https://web.archive.org/web/20190207140002/http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">GML url</a>.</p>
-<p>See the module docstring <a class="reference internal" href="#module-easygraph.readwrite.gml" title="easygraph.readwrite.gml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">easygraph.readwrite.gml</span></code></a> for more details.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.readwrite.gml.read_gml">
-<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.gml.</span></span><span class="sig-name descname"><span class="pre">read_gml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destringizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/gml.html#read_gml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.gml.read_gml" title="Permalink to this definition">#</a></dt>
-<dd><p>Read graph in GML format from <cite>path</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>filename</em><em> or </em><em>filehandle</em>) – The filename or filehandle to read from.</p></li>
-<li><p><strong>label</strong> (<em>string</em><em>, </em><em>optional</em>) – If not None, the parsed nodes will be renamed according to node
-attributes indicated by <cite>label</cite>. Default value: ‘label’.</p></li>
-<li><p><strong>destringizer</strong> (<em>callable</em><em>, </em><em>optional</em>) – A <cite>destringizer</cite> that recovers values stored as strings in GML. If it
-cannot convert a string to a value, a <cite>ValueError</cite> is raised. Default
-value : None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>G</strong> – The parsed graph.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>EasyGraph graph</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphError" title="easygraph.exception.EasyGraphError"><strong>EasyGraphError</strong></a> – If the input cannot be parsed.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#easygraph.readwrite.gml.write_gml" title="easygraph.readwrite.gml.write_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_gml</span></code></a>, <a class="reference internal" href="#easygraph.readwrite.gml.parse_gml" title="easygraph.readwrite.gml.parse_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_gml</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_destringizer</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>GML files are stored using a 7-bit ASCII encoding with any extended
-ASCII characters (iso8859-1) appearing as HTML character entities.
-Without specifying a <cite>stringizer</cite>/<cite>destringizer</cite>, the code is capable of
-writing <cite>int</cite>/<cite>float</cite>/<cite>str</cite>/<cite>dict</cite>/<cite>list</cite> data as required by the GML
-specification.  For writing other data types, and for reading data other
-than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<cite>destringizer</cite>.</p>
-<p>For additional documentation on the GML file format, please see the
-<a class="reference external" href="https://web.archive.org/web/20190207140002/http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">GML url</a>.</p>
-<p>See the module docstring <a class="reference internal" href="#module-easygraph.readwrite.gml" title="easygraph.readwrite.gml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">easygraph.readwrite.gml</span></code></a> for more details.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_gml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;test.gml&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>GML values are interpreted as strings by default:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="s2">&quot;test.gml&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span>
-<span class="go">NodeView((&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;))</span>
-</pre></div>
-</div>
-<p>When a <cite>destringizer</cite> is provided, GML values are converted to the provided type.
-For example, integer nodes can be recovered as shown below:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">J</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="s2">&quot;test.gml&quot;</span><span class="p">,</span> <span class="n">destringizer</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span><span class="o">.</span><span class="n">nodes</span>
-<span class="go">NodeView((0, 1, 2, 3))</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="easygraph.readwrite.gml.write_gml">
-<span class="sig-prename descclassname"><span class="pre">easygraph.readwrite.gml.</span></span><span class="sig-name descname"><span class="pre">write_gml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stringizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/readwrite/gml.html#write_gml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.readwrite.gml.write_gml" title="Permalink to this definition">#</a></dt>
-<dd><p>Write a graph <cite>G</cite> in GML format to the file or file handle <cite>path</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>G</strong> (<em>EasyGraph graph</em>) – The graph to be converted to GML.</p></li>
-<li><p><strong>path</strong> (<em>filename</em><em> or </em><em>filehandle</em>) – The filename or filehandle to write. Files whose names end with .gz or
-.bz2 will be compressed.</p></li>
-<li><p><strong>stringizer</strong> (<em>callable</em><em>, </em><em>optional</em>) – A <cite>stringizer</cite> which converts non-int/non-float/non-dict values into
-strings. If it cannot convert a value into a string, it should raise a
-<cite>ValueError</cite> to indicate that. Default value: None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphError" title="easygraph.exception.EasyGraphError"><strong>EasyGraphError</strong></a> – If <cite>stringizer</cite> cannot convert a value into a string, or the value to
-convert is not a string while <cite>stringizer</cite> is None.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#easygraph.readwrite.gml.read_gml" title="easygraph.readwrite.gml.read_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_gml</span></code></a>, <a class="reference internal" href="#easygraph.readwrite.gml.generate_gml" title="easygraph.readwrite.gml.generate_gml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_gml</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_stringizer</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>Graph attributes named ‘directed’, ‘multigraph’, ‘node’ or
-‘edge’, node attributes named ‘id’ or ‘label’, edge attributes
-named ‘source’ or ‘target’ (or ‘key’ if <cite>G</cite> is a multigraph)
-are ignored because these attribute names are used to encode the graph
-structure.</p>
-<p>GML files are stored using a 7-bit ASCII encoding with any extended
-ASCII characters (iso8859-1) appearing as HTML character entities.
-Without specifying a <cite>stringizer</cite>/<cite>destringizer</cite>, the code is capable of
-writing <cite>int</cite>/<cite>float</cite>/<cite>str</cite>/<cite>dict</cite>/<cite>list</cite> data as required by the GML
-specification.  For writing other data types, and for reading data other
-than <cite>str</cite> you need to explicitly supply a <cite>stringizer</cite>/<cite>destringizer</cite>.</p>
-<p>Note that while we allow non-standard GML to be read from a file, we make
-sure to write GML format. In particular, underscores are not allowed in
-attribute names.
-For additional documentation on the GML file format, please see the
-<a class="reference external" href="https://web.archive.org/web/20190207140002/http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">GML url</a>.</p>
-<p>See the module docstring <a class="reference internal" href="#module-easygraph.readwrite.gml" title="easygraph.readwrite.gml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">easygraph.readwrite.gml</span></code></a> for more details.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_gml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;test.gml&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Filenames ending in .gz or .bz2 will be compressed.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eg</span><span class="o">.</span><span class="n">write_gml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;test.gml.gz&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
+  <section id="easygraph-readwrite-gml-module">
+<span id="module-easygraph-readwrite-gml"></span><h1>easygraph.readwrite.gml module<a class="headerlink" href="#easygraph-readwrite-gml-module" title="Link to this heading">#</a></h1>
 </section>
 
 
@@ -766,7 +497,7 @@ For additional documentation on the GML file format, please see the
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -794,30 +525,18 @@ For additional documentation on the GML file format, please see the
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.readwrite.gml.generate_gml"><code class="docutils literal notranslate"><span class="pre">generate_gml()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.readwrite.gml.parse_gml"><code class="docutils literal notranslate"><span class="pre">parse_gml()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.readwrite.gml.read_gml"><code class="docutils literal notranslate"><span class="pre">read_gml()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.readwrite.gml.write_gml"><code class="docutils literal notranslate"><span class="pre">write_gml()</span></code></a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/reference/easygraph.readwrite.gml.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/easygraph.readwrite.gml.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -832,8 +551,8 @@ For additional documentation on the GML file format, please see the
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -853,7 +572,7 @@ For additional documentation on the GML file format, please see the
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
@@ -866,7 +585,8 @@ For additional documentation on the GML file format, please see the
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

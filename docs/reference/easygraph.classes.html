@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,33 +14,34 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=17704a4c"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/documentation_options.js?v=350a9c04"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/copybutton.js?v=e333d19b"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/easygraph.classes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -49,6 +50,7 @@
     <link rel="prev" title="easygraph package" href="easygraph.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -56,32 +58,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -89,7 +75,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -97,20 +82,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -125,7 +117,7 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="EasyGraph 1.4.1 - Home"/>
   
   
 </a></div>
@@ -137,96 +129,92 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
+
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../license.html">
+    License
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -241,19 +229,15 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -266,7 +250,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -278,31 +262,31 @@
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -311,102 +295,91 @@
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
-                </ul>
-            </li>
-            
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -414,7 +387,7 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -427,7 +400,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -441,21 +414,9 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">easygraph.classes package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.datapipe.html">easygraph.datapipe package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.datasets.html">easygraph.datasets package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.experiments.html">easygraph.experiments package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.functions.html">easygraph.functions package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.ml_metrics.html">easygraph.ml_metrics package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.model.html">easygraph.model package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.nn.html">easygraph.nn package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.readwrite.html">easygraph.readwrite package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.utils.html">easygraph.utils package</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="easygraph.convert.html">easygraph.convert module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.exception.html">easygraph.exception module</a></li>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="reference internal" href="modules.html">Documentation</a></li>
 </ul>
 </div>
 </nav></div>
@@ -463,29 +424,32 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -497,9 +461,12 @@
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
     
     
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">easygraph</a></li>
+    
+    
     <li class="breadcrumb-item"><a href="easygraph.html" class="nav-link">easygraph package</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">easygraph.cl...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">easygraph.classes package</span></li>
   </ul>
 </nav>
 </div>
@@ -514,384 +481,27 @@
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="easygraph-classes-package">
-<span id="module-easygraph-classes"></span><h1>easygraph.classes package<a class="headerlink" href="#easygraph-classes-package" title="Permalink to this heading">#</a></h1>
+<span id="module-easygraph-classes"></span><h1>easygraph.classes package<a class="headerlink" href="#easygraph-classes-package" title="Link to this heading">#</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.base.html">easygraph.classes.base module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.H"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.H</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.H_e2v"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.H_e2v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.H_e2v_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.H_e2v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.H_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.H_of_group</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.H_v2e"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.H_v2e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.H_v2e_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.H_v2e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.R_e2v"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.R_e2v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.R_e2v_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.R_e2v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.R_v2e"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.R_v2e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.R_v2e_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.R_v2e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.W_e"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.W_e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.W_e_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.W_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.W_v"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.W_v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.add_hyperedges"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.add_hyperedges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.clear"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.clear()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.clone"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.clone()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.draw"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.draw()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.drop_hyperedges"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.drop_hyperedges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.drop_hyperedges_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.drop_hyperedges_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e2v"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e2v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e2v_aggregation"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e2v_aggregation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e2v_aggregation_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e2v_aggregation_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e2v_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e2v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e2v_update"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e2v_update()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e2v_update_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e2v_update_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.e_property"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.e_property</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.from_state_dict"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.from_state_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.group_names"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.group_names</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.load"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.load()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.num_e"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.num_e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.num_e_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.num_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.num_groups"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.num_groups</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.num_v"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.num_v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.remove_hyperedges"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.remove_hyperedges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.save"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.save()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.smoothing"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.smoothing()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.state_dict"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.state_dict</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.to"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.to()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2e"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2e()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2e_aggregation"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2e_aggregation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2e_aggregation_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2e_aggregation_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2e_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2e_update"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2e_update()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2e_update_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2e_update_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2v"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v2v_of_group"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v2v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v_property"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v_property</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.v_weight"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.v_weight</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.vars_for_DL"><code class="docutils literal notranslate"><span class="pre">BaseHypergraph.vars_for_DL</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.load_structure"><code class="docutils literal notranslate"><span class="pre">load_structure()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.directed_graph.html">easygraph.classes.directed_graph module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph"><code class="docutils literal notranslate"><span class="pre">DiGraph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_edge"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_edges"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_edges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_edges_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_edges_from_file"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_edges_from_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_node"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_node()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_nodes"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_nodes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_nodes_from"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_nodes_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_weighted_edge"><code class="docutils literal notranslate"><span class="pre">DiGraph.add_weighted_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.adj"><code class="docutils literal notranslate"><span class="pre">DiGraph.adj</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.adjlist_inner_dict_factory"><code class="docutils literal notranslate"><span class="pre">DiGraph.adjlist_inner_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.adjlist_outer_dict_factory"><code class="docutils literal notranslate"><span class="pre">DiGraph.adjlist_outer_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.all_neighbors"><code class="docutils literal notranslate"><span class="pre">DiGraph.all_neighbors()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.copy"><code class="docutils literal notranslate"><span class="pre">DiGraph.copy()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.cpp"><code class="docutils literal notranslate"><span class="pre">DiGraph.cpp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.degree"><code class="docutils literal notranslate"><span class="pre">DiGraph.degree()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.edge_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">DiGraph.edge_attr_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.edges"><code class="docutils literal notranslate"><span class="pre">DiGraph.edges</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.ego_subgraph"><code class="docutils literal notranslate"><span class="pre">DiGraph.ego_subgraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.gnn_data_dict_factory"><code class="docutils literal notranslate"><span class="pre">DiGraph.gnn_data_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">DiGraph.graph_attr_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.has_edge"><code class="docutils literal notranslate"><span class="pre">DiGraph.has_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.has_node"><code class="docutils literal notranslate"><span class="pre">DiGraph.has_node()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.in_degree"><code class="docutils literal notranslate"><span class="pre">DiGraph.in_degree()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.index2node"><code class="docutils literal notranslate"><span class="pre">DiGraph.index2node</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.is_directed"><code class="docutils literal notranslate"><span class="pre">DiGraph.is_directed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.is_multigraph"><code class="docutils literal notranslate"><span class="pre">DiGraph.is_multigraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.name"><code class="docutils literal notranslate"><span class="pre">DiGraph.name</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.nbunch_iter"><code class="docutils literal notranslate"><span class="pre">DiGraph.nbunch_iter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.ndata"><code class="docutils literal notranslate"><span class="pre">DiGraph.ndata</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.neighbors"><code class="docutils literal notranslate"><span class="pre">DiGraph.neighbors()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.node_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">DiGraph.node_attr_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.node_dict_factory"><code class="docutils literal notranslate"><span class="pre">DiGraph.node_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.node_index"><code class="docutils literal notranslate"><span class="pre">DiGraph.node_index</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.node_index_dict"><code class="docutils literal notranslate"><span class="pre">DiGraph.node_index_dict</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.nodes"><code class="docutils literal notranslate"><span class="pre">DiGraph.nodes</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.nodes_subgraph"><code class="docutils literal notranslate"><span class="pre">DiGraph.nodes_subgraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.number_of_edges"><code class="docutils literal notranslate"><span class="pre">DiGraph.number_of_edges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.number_of_nodes"><code class="docutils literal notranslate"><span class="pre">DiGraph.number_of_nodes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.out_degree"><code class="docutils literal notranslate"><span class="pre">DiGraph.out_degree()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.pred"><code class="docutils literal notranslate"><span class="pre">DiGraph.pred</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.predecessors"><code class="docutils literal notranslate"><span class="pre">DiGraph.predecessors()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.remove_edge"><code class="docutils literal notranslate"><span class="pre">DiGraph.remove_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.remove_edges"><code class="docutils literal notranslate"><span class="pre">DiGraph.remove_edges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.remove_edges_from"><code class="docutils literal notranslate"><span class="pre">DiGraph.remove_edges_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.remove_node"><code class="docutils literal notranslate"><span class="pre">DiGraph.remove_node()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.remove_nodes"><code class="docutils literal notranslate"><span class="pre">DiGraph.remove_nodes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.size"><code class="docutils literal notranslate"><span class="pre">DiGraph.size()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.successors"><code class="docutils literal notranslate"><span class="pre">DiGraph.successors()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.to_index_node_graph"><code class="docutils literal notranslate"><span class="pre">DiGraph.to_index_node_graph()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraphC"><code class="docutils literal notranslate"><span class="pre">DiGraphC</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraphC.cflag"><code class="docutils literal notranslate"><span class="pre">DiGraphC.cflag</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.directed_multigraph.html">easygraph.classes.directed_multigraph module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.add_edge"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.add_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.degree"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.degree</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.edge_key_dict_factory"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.edge_key_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.edges"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.edges</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.in_degree"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.in_degree</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.in_edges"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.in_edges</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.is_directed"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.is_directed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.is_multigraph"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.is_multigraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.out_degree"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.out_degree</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.out_edges"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.out_edges</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.remove_edge"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.remove_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.reverse"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.reverse()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected"><code class="docutils literal notranslate"><span class="pre">MultiDiGraph.to_undirected()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.graph.html">easygraph.classes.graph module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.A"><code class="docutils literal notranslate"><span class="pre">Graph.A</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.D_v"><code class="docutils literal notranslate"><span class="pre">Graph.D_v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.D_v_neg_1_2"><code class="docutils literal notranslate"><span class="pre">Graph.D_v_neg_1_2</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.L_GCN"><code class="docutils literal notranslate"><span class="pre">Graph.L_GCN</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.N_v"><code class="docutils literal notranslate"><span class="pre">Graph.N_v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_edges"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_edges_from_file"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges_from_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_extra_selfloop"><code class="docutils literal notranslate"><span class="pre">Graph.add_extra_selfloop()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_node"><code class="docutils literal notranslate"><span class="pre">Graph.add_node()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.add_nodes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_nodes_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_nodes_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_weighted_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_weighted_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.add_weighted_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_weighted_edges_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.adj"><code class="docutils literal notranslate"><span class="pre">Graph.adj</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.adjlist_inner_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.adjlist_inner_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.adjlist_outer_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.adjlist_outer_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.all_neighbors"><code class="docutils literal notranslate"><span class="pre">Graph.all_neighbors()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.clone"><code class="docutils literal notranslate"><span class="pre">Graph.clone()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.copy"><code class="docutils literal notranslate"><span class="pre">Graph.copy()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.cpp"><code class="docutils literal notranslate"><span class="pre">Graph.cpp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.degree"><code class="docutils literal notranslate"><span class="pre">Graph.degree()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.e"><code class="docutils literal notranslate"><span class="pre">Graph.e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.e_both_side"><code class="docutils literal notranslate"><span class="pre">Graph.e_both_side</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.edge_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.edge_attr_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.edges"><code class="docutils literal notranslate"><span class="pre">Graph.edges</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.ego_subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.ego_subgraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.gnn_data_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.gnn_data_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.graph_attr_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.has_edge"><code class="docutils literal notranslate"><span class="pre">Graph.has_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.has_node"><code class="docutils literal notranslate"><span class="pre">Graph.has_node()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.index2node"><code class="docutils literal notranslate"><span class="pre">Graph.index2node</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.is_directed"><code class="docutils literal notranslate"><span class="pre">Graph.is_directed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.is_multigraph"><code class="docutils literal notranslate"><span class="pre">Graph.is_multigraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.name"><code class="docutils literal notranslate"><span class="pre">Graph.name</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.nbr_v"><code class="docutils literal notranslate"><span class="pre">Graph.nbr_v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.nbunch_iter"><code class="docutils literal notranslate"><span class="pre">Graph.nbunch_iter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.ndata"><code class="docutils literal notranslate"><span class="pre">Graph.ndata</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.neighbors"><code class="docutils literal notranslate"><span class="pre">Graph.neighbors()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.node_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.node_attr_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.node_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.node_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.node_index"><code class="docutils literal notranslate"><span class="pre">Graph.node_index</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.node_index_dict"><code class="docutils literal notranslate"><span class="pre">Graph.node_index_dict</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.nodes"><code class="docutils literal notranslate"><span class="pre">Graph.nodes</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.nodes_subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.nodes_subgraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.number_of_edges"><code class="docutils literal notranslate"><span class="pre">Graph.number_of_edges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.number_of_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.number_of_nodes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.order"><code class="docutils literal notranslate"><span class="pre">Graph.order()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.raw_selfloop_dict"><code class="docutils literal notranslate"><span class="pre">Graph.raw_selfloop_dict</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_edge"><code class="docutils literal notranslate"><span class="pre">Graph.remove_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_edges"><code class="docutils literal notranslate"><span class="pre">Graph.remove_edges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_extra_selfloop"><code class="docutils literal notranslate"><span class="pre">Graph.remove_extra_selfloop()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_node"><code class="docutils literal notranslate"><span class="pre">Graph.remove_node()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.remove_nodes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_nodes_from"><code class="docutils literal notranslate"><span class="pre">Graph.remove_nodes_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_selfloop"><code class="docutils literal notranslate"><span class="pre">Graph.remove_selfloop()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.size"><code class="docutils literal notranslate"><span class="pre">Graph.size()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.smoothing_with_GCN"><code class="docutils literal notranslate"><span class="pre">Graph.smoothing_with_GCN()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.to_directed"><code class="docutils literal notranslate"><span class="pre">Graph.to_directed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.to_directed_class"><code class="docutils literal notranslate"><span class="pre">Graph.to_directed_class()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.Graph.to_index_node_graph"><code class="docutils literal notranslate"><span class="pre">Graph.to_index_node_graph()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.GraphC"><code class="docutils literal notranslate"><span class="pre">GraphC</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.graph.html#easygraph.classes.graph.GraphC.cflag"><code class="docutils literal notranslate"><span class="pre">GraphC.cflag</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.graphviews.html">easygraph.classes.graphviews module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.graphviews.html#easygraph.classes.graphviews.reverse_view"><code class="docutils literal notranslate"><span class="pre">reverse_view()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.hypergraph.html">easygraph.classes.hypergraph module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph"><code class="docutils literal notranslate"><span class="pre">Hypergraph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_e_neg_1"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_e_neg_1</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_e_neg_1_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_e_neg_1_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_v_neg_1</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_2"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_v_neg_1_2</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_2_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_v_neg_1_2_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_v_neg_1_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_v_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.H"><code class="docutils literal notranslate"><span class="pre">Hypergraph.H</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.H_T"><code class="docutils literal notranslate"><span class="pre">Hypergraph.H_T</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.H_T_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.H_T_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.H_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.H_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.L_HGNN"><code class="docutils literal notranslate"><span class="pre">Hypergraph.L_HGNN</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.L_HGNN_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.L_HGNN_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.L_rw"><code class="docutils literal notranslate"><span class="pre">Hypergraph.L_rw</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.L_rw_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.L_rw_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.L_sym"><code class="docutils literal notranslate"><span class="pre">Hypergraph.L_sym</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.L_sym_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.L_sym_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.N_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.N_e()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.N_e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.N_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.N_v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.N_v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.N_v_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.N_v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.W_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.W_e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.W_e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.W_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.add_hyperedges"><code class="docutils literal notranslate"><span class="pre">Hypergraph.add_hyperedges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_feature_kNN"><code class="docutils literal notranslate"><span class="pre">Hypergraph.add_hyperedges_from_feature_kNN()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph"><code class="docutils literal notranslate"><span class="pre">Hypergraph.add_hyperedges_from_graph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph_kHop"><code class="docutils literal notranslate"><span class="pre">Hypergraph.add_hyperedges_from_graph_kHop()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.adjacency_matrix"><code class="docutils literal notranslate"><span class="pre">Hypergraph.adjacency_matrix()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.clear"><code class="docutils literal notranslate"><span class="pre">Hypergraph.clear()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.clone"><code class="docutils literal notranslate"><span class="pre">Hypergraph.clone()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.cluster_coefficient"><code class="docutils literal notranslate"><span class="pre">Hypergraph.cluster_coefficient()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.deg_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.deg_e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.deg_e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.deg_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.deg_v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.deg_v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.deg_v_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.deg_v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.degree_data_dict"><code class="docutils literal notranslate"><span class="pre">Hypergraph.degree_data_dict</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.degree_node"><code class="docutils literal notranslate"><span class="pre">Hypergraph.degree_node</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.diameter"><code class="docutils literal notranslate"><span class="pre">Hypergraph.diameter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.distance"><code class="docutils literal notranslate"><span class="pre">Hypergraph.distance()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.draw"><code class="docutils literal notranslate"><span class="pre">Hypergraph.draw()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.drop_hyperedges"><code class="docutils literal notranslate"><span class="pre">Hypergraph.drop_hyperedges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.drop_hyperedges_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.drop_hyperedges_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_aggregation"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_aggregation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_aggregation_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_aggregation_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_dst"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_dst</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_dst_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_dst_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_src"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_src</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_src_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_src_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_update"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_update()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_update_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_update_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_weight"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_weight</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e2v_weight_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e2v_weight_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.e_set"><code class="docutils literal notranslate"><span class="pre">Hypergraph.e_set</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.edge_adjacency_matrix"><code class="docutils literal notranslate"><span class="pre">Hypergraph.edge_adjacency_matrix()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.edge_diameter"><code class="docutils literal notranslate"><span class="pre">Hypergraph.edge_diameter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.edge_distance"><code class="docutils literal notranslate"><span class="pre">Hypergraph.edge_distance()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.from_feature_kNN"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_feature_kNN()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.from_graph"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_graph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.from_graph_kHop"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_graph_kHop()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.from_hypergraph_hypergcn"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_hypergraph_hypergcn()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.from_state_dict"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_state_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.get_clique_expansion"><code class="docutils literal notranslate"><span class="pre">Hypergraph.get_clique_expansion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.get_linegraph"><code class="docutils literal notranslate"><span class="pre">Hypergraph.get_linegraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.get_star_expansion"><code class="docutils literal notranslate"><span class="pre">Hypergraph.get_star_expansion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.gnn_data_dict_factory"><code class="docutils literal notranslate"><span class="pre">Hypergraph.gnn_data_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.group_names"><code class="docutils literal notranslate"><span class="pre">Hypergraph.group_names</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.incidence_matrix"><code class="docutils literal notranslate"><span class="pre">Hypergraph.incidence_matrix</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.isOutRange"><code class="docutils literal notranslate"><span class="pre">Hypergraph.isOutRange()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.is_uniform"><code class="docutils literal notranslate"><span class="pre">Hypergraph.is_uniform()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.load"><code class="docutils literal notranslate"><span class="pre">Hypergraph.load()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.nbr_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.nbr_e()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.nbr_e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.nbr_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.nbr_v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.nbr_v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.nbr_v_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.nbr_v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.ndata"><code class="docutils literal notranslate"><span class="pre">Hypergraph.ndata</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.neighbor_of_node"><code class="docutils literal notranslate"><span class="pre">Hypergraph.neighbor_of_node()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.num_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.num_e</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.num_e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.num_e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.num_groups"><code class="docutils literal notranslate"><span class="pre">Hypergraph.num_groups</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.num_v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.num_v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.remove_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.remove_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.remove_hyperedges"><code class="docutils literal notranslate"><span class="pre">Hypergraph.remove_hyperedges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.s_connected_components"><code class="docutils literal notranslate"><span class="pre">Hypergraph.s_connected_components()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.save"><code class="docutils literal notranslate"><span class="pre">Hypergraph.save()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HGNN()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HGNN_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_approx"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HWNN_approx()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_wavelet"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HWNN_wavelet()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.state_dict"><code class="docutils literal notranslate"><span class="pre">Hypergraph.state_dict</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.to"><code class="docutils literal notranslate"><span class="pre">Hypergraph.to()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.unique_edge_sizes"><code class="docutils literal notranslate"><span class="pre">Hypergraph.unique_edge_sizes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_aggregation"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_aggregation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_aggregation_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_aggregation_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_dst"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_dst</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_dst_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_dst_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_src"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_src</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_src_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_src_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_update"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_update()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_update_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_update_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_weight"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_weight</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2e_weight_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2e_weight_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2v()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.v2v_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.v2v_of_group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.vars_for_DL"><code class="docutils literal notranslate"><span class="pre">Hypergraph.vars_for_DL</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.multigraph.html">easygraph.classes.multigraph module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph"><code class="docutils literal notranslate"><span class="pre">MultiGraph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.add_edge"><code class="docutils literal notranslate"><span class="pre">MultiGraph.add_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">MultiGraph.add_edges_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.copy"><code class="docutils literal notranslate"><span class="pre">MultiGraph.copy()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.degree"><code class="docutils literal notranslate"><span class="pre">MultiGraph.degree</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.edge_key_dict_factory"><code class="docutils literal notranslate"><span class="pre">MultiGraph.edge_key_dict_factory</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.edges"><code class="docutils literal notranslate"><span class="pre">MultiGraph.edges</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.get_edge_data"><code class="docutils literal notranslate"><span class="pre">MultiGraph.get_edge_data()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.has_edge"><code class="docutils literal notranslate"><span class="pre">MultiGraph.has_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.is_directed"><code class="docutils literal notranslate"><span class="pre">MultiGraph.is_directed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.is_multigraph"><code class="docutils literal notranslate"><span class="pre">MultiGraph.is_multigraph()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.new_edge_key"><code class="docutils literal notranslate"><span class="pre">MultiGraph.new_edge_key()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.number_of_edges"><code class="docutils literal notranslate"><span class="pre">MultiGraph.number_of_edges()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.remove_edge"><code class="docutils literal notranslate"><span class="pre">MultiGraph.remove_edge()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.remove_edges_from"><code class="docutils literal notranslate"><span class="pre">MultiGraph.remove_edges_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.to_directed"><code class="docutils literal notranslate"><span class="pre">MultiGraph.to_directed()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.operation.html">easygraph.classes.operation module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.operation.html#easygraph.classes.operation.add_path"><code class="docutils literal notranslate"><span class="pre">add_path()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.operation.html#easygraph.classes.operation.density"><code class="docutils literal notranslate"><span class="pre">density()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.operation.html#easygraph.classes.operation.number_of_selfloops"><code class="docutils literal notranslate"><span class="pre">number_of_selfloops()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.operation.html#easygraph.classes.operation.selfloop_edges"><code class="docutils literal notranslate"><span class="pre">selfloop_edges()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.operation.html#easygraph.classes.operation.set_edge_attributes"><code class="docutils literal notranslate"><span class="pre">set_edge_attributes()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.operation.html#easygraph.classes.operation.set_node_attributes"><code class="docutils literal notranslate"><span class="pre">set_node_attributes()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="easygraph.classes.operation.html#easygraph.classes.operation.topological_sort"><code class="docutils literal notranslate"><span class="pre">topological_sort()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.base.html">easygraph.classes.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.directed_graph.html">easygraph.classes.directed_graph module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.directed_multigraph.html">easygraph.classes.directed_multigraph module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.graph.html">easygraph.classes.graph module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.graphviews.html">easygraph.classes.graphviews module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.hypergraph.html">easygraph.classes.hypergraph module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.multigraph.html">easygraph.classes.multigraph module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easygraph.classes.operation.html">easygraph.classes.operation module</a></li>
 </ul>
 </div>
 </section>
-<section id="module-easygraph.classes">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-easygraph.classes" title="Permalink to this heading">#</a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -902,7 +512,7 @@
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -930,28 +540,31 @@
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-easygraph.classes">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/reference/easygraph.classes.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/easygraph.classes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -966,8 +579,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -987,7 +600,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
@@ -1000,7 +613,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>
