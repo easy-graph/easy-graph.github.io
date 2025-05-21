@@ -1,0 +1,1004 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>easygraph.classes.operation &#8212; EasyGraph 1.4.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css?v=538c3502" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=17704a4c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/copybutton.js?v=e333d19b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/classes/operation';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">easygraph.cl...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for easygraph.classes.operation</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+
+<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;set_edge_attributes&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;add_path&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;set_node_attributes&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;selfloop_edges&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;topological_sort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;number_of_selfloops&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;density&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="set_edge_attributes"><a class="viewcode-back" href="../../../reference/easygraph.classes.operation.html#easygraph.classes.operation.set_edge_attributes">[docs]</a><span class="k">def</span> <span class="nf">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets edge attributes from a given value or dictionary of values.</span>
+
+<span class="sd">    .. Warning:: The call order of arguments `values` and `name`</span>
+<span class="sd">        switched between v1.x &amp; v2.x.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : EasyGraph Graph</span>
+
+<span class="sd">    values : scalar value, dict-like</span>
+<span class="sd">        What the edge attribute should be set to.  If `values` is</span>
+<span class="sd">        not a dictionary, then it is treated as a single attribute value</span>
+<span class="sd">        that is then applied to every edge in `G`.  This means that if</span>
+<span class="sd">        you provide a mutable object, like a list, updates to that object</span>
+<span class="sd">        will be reflected in the edge attribute for each edge.  The attribute</span>
+<span class="sd">        name will be `name`.</span>
+
+<span class="sd">        If `values` is a dict or a dict of dict, it should be keyed</span>
+<span class="sd">        by edge tuple to either an attribute value or a dict of attribute</span>
+<span class="sd">        key/value pairs used to update the edge&#39;s attributes.</span>
+<span class="sd">        For multigraphs, the edge tuples must be of the form ``(u, v, key)``,</span>
+<span class="sd">        where `u` and `v` are nodes and `key` is the edge key.</span>
+<span class="sd">        For non-multigraphs, the keys must be tuples of the form ``(u, v)``.</span>
+
+<span class="sd">    name : string (optional, default=None)</span>
+<span class="sd">        Name of the edge attribute to set if values is a scalar.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    After computing some property of the edges of a graph, you may want</span>
+<span class="sd">    to assign a edge attribute to store the value of that property for</span>
+<span class="sd">    each edge::</span>
+
+<span class="sd">        &gt;&gt;&gt; G = eg.path_graph(3)</span>
+<span class="sd">        &gt;&gt;&gt; bb = eg.edge_betweenness_centrality(G, normalized=False)</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_edge_attributes(G, bb, &quot;betweenness&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; G.edges[1, 2][&quot;betweenness&quot;]</span>
+<span class="sd">        2.0</span>
+
+<span class="sd">    If you provide a list as the second argument, updates to the list</span>
+<span class="sd">    will be reflected in the edge attribute for each edge::</span>
+
+<span class="sd">        &gt;&gt;&gt; labels = []</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_edge_attributes(G, labels, &quot;labels&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; labels.append(&quot;foo&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; G.edges[0, 1][&quot;labels&quot;]</span>
+<span class="sd">        [&#39;foo&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; G.edges[1, 2][&quot;labels&quot;]</span>
+<span class="sd">        [&#39;foo&#39;]</span>
+
+<span class="sd">    If you provide a dictionary of dictionaries as the second argument,</span>
+<span class="sd">    the entire dictionary will be used to update edge attributes::</span>
+
+<span class="sd">        &gt;&gt;&gt; G = eg.path_graph(3)</span>
+<span class="sd">        &gt;&gt;&gt; attrs = {(0, 1): {&quot;attr1&quot;: 20, &quot;attr2&quot;: &quot;nothing&quot;}, (1, 2): {&quot;attr2&quot;: 3}}</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_edge_attributes(G, attrs)</span>
+<span class="sd">        &gt;&gt;&gt; G[0][1][&quot;attr1&quot;]</span>
+<span class="sd">        20</span>
+<span class="sd">        &gt;&gt;&gt; G[0][1][&quot;attr2&quot;]</span>
+<span class="sd">        &#39;nothing&#39;</span>
+<span class="sd">        &gt;&gt;&gt; G[1][2][&quot;attr2&quot;]</span>
+<span class="sd">        3</span>
+
+<span class="sd">    Note that if the dict contains edges that are not in `G`, they are</span>
+<span class="sd">    silently ignored::</span>
+
+<span class="sd">        &gt;&gt;&gt; G = eg.Graph([(0, 1)])</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_edge_attributes(G, {(1, 2): {&quot;weight&quot;: 2.0}})</span>
+<span class="sd">        &gt;&gt;&gt; (1, 2) in G.edges()</span>
+<span class="sd">        False</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># `values` does not contain attribute names</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># if `values` is a dict using `.items()` =&gt; {edge: value}</span>
+            <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">),</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">key</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                        <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                        <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="c1"># treat `values` as a constant</span>
+            <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># `values` consists of doct-of-dict {edge: {attr: value}} shape</span>
+        <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">),</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="add_path"><a class="viewcode-back" href="../../../reference/easygraph.classes.operation.html#easygraph.classes.operation.add_path">[docs]</a><span class="k">def</span> <span class="nf">add_path</span><span class="p">(</span><span class="n">G_to_add_to</span><span class="p">,</span> <span class="n">nodes_for_path</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a path to the Graph G_to_add_to.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G_to_add_to : graph</span>
+<span class="sd">        A EasyGraph graph</span>
+<span class="sd">    nodes_for_path : iterable container</span>
+<span class="sd">        A container of nodes.  A path will be constructed from</span>
+<span class="sd">        the nodes (in order) and added to the graph.</span>
+<span class="sd">    attr : keyword arguments, optional (default= no attributes)</span>
+<span class="sd">        Attributes to add to every edge in path.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    add_star, add_cycle</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = eg.Graph()</span>
+<span class="sd">    &gt;&gt;&gt; eg.add_path(G, [0, 1, 2, 3])</span>
+<span class="sd">    &gt;&gt;&gt; eg.add_path(G, [10, 11, 12], weight=7)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nlist</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">nodes_for_path</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">first_node</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">nlist</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">G_to_add_to</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">first_node</span><span class="p">)</span>
+    <span class="n">G_to_add_to</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">pairwise</span><span class="p">(</span><span class="n">chain</span><span class="p">((</span><span class="n">first_node</span><span class="p">,),</span> <span class="n">nlist</span><span class="p">)),</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="set_node_attributes"><a class="viewcode-back" href="../../../reference/easygraph.classes.operation.html#easygraph.classes.operation.set_node_attributes">[docs]</a><span class="k">def</span> <span class="nf">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets node attributes from a given value or dictionary of values.</span>
+
+<span class="sd">    .. Warning:: The call order of arguments `values` and `name`</span>
+<span class="sd">        switched between v1.x &amp; v2.x.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : EasyGraph Graph</span>
+
+<span class="sd">    values : scalar value, dict-like</span>
+<span class="sd">        What the node attribute should be set to.  If `values` is</span>
+<span class="sd">        not a dictionary, then it is treated as a single attribute value</span>
+<span class="sd">        that is then applied to every node in `G`.  This means that if</span>
+<span class="sd">        you provide a mutable object, like a list, updates to that object</span>
+<span class="sd">        will be reflected in the node attribute for every node.</span>
+<span class="sd">        The attribute name will be `name`.</span>
+
+<span class="sd">        If `values` is a dict or a dict of dict, it should be keyed</span>
+<span class="sd">        by node to either an attribute value or a dict of attribute key/value</span>
+<span class="sd">        pairs used to update the node&#39;s attributes.</span>
+
+<span class="sd">    name : string (optional, default=None)</span>
+<span class="sd">        Name of the node attribute to set if values is a scalar.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    After computing some property of the nodes of a graph, you may want</span>
+<span class="sd">    to assign a node attribute to store the value of that property for</span>
+<span class="sd">    each node::</span>
+
+<span class="sd">        &gt;&gt;&gt; G = eg.path_graph(3)</span>
+<span class="sd">        &gt;&gt;&gt; bb = eg.betweenness_centrality(G)</span>
+<span class="sd">        &gt;&gt;&gt; isinstance(bb, dict)</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_node_attributes(G, bb, &quot;betweenness&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[1][&quot;betweenness&quot;]</span>
+<span class="sd">        1.0</span>
+
+<span class="sd">    If you provide a list as the second argument, updates to the list</span>
+<span class="sd">    will be reflected in the node attribute for each node::</span>
+
+<span class="sd">        &gt;&gt;&gt; G = eg.path_graph(3)</span>
+<span class="sd">        &gt;&gt;&gt; labels = []</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_node_attributes(G, labels, &quot;labels&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; labels.append(&quot;foo&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[0][&quot;labels&quot;]</span>
+<span class="sd">        [&#39;foo&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[1][&quot;labels&quot;]</span>
+<span class="sd">        [&#39;foo&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[2][&quot;labels&quot;]</span>
+<span class="sd">        [&#39;foo&#39;]</span>
+
+<span class="sd">    If you provide a dictionary of dictionaries as the second argument,</span>
+<span class="sd">    the outer dictionary is assumed to be keyed by node to an inner</span>
+<span class="sd">    dictionary of node attributes for that node::</span>
+
+<span class="sd">        &gt;&gt;&gt; G = eg.path_graph(3)</span>
+<span class="sd">        &gt;&gt;&gt; attrs = {0: {&quot;attr1&quot;: 20, &quot;attr2&quot;: &quot;nothing&quot;}, 1: {&quot;attr2&quot;: 3}}</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_node_attributes(G, attrs)</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[0][&quot;attr1&quot;]</span>
+<span class="sd">        20</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[0][&quot;attr2&quot;]</span>
+<span class="sd">        &#39;nothing&#39;</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[1][&quot;attr2&quot;]</span>
+<span class="sd">        3</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[2]</span>
+<span class="sd">        {}</span>
+
+<span class="sd">    Note that if the dictionary contains nodes that are not in `G`, the</span>
+<span class="sd">    values are silently ignored::</span>
+
+<span class="sd">        &gt;&gt;&gt; G = eg.Graph()</span>
+<span class="sd">        &gt;&gt;&gt; G.add_node(0)</span>
+<span class="sd">        &gt;&gt;&gt; eg.set_node_attributes(G, {0: &quot;red&quot;, 1: &quot;blue&quot;}, name=&quot;color&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; G.nodes[0][&quot;color&quot;]</span>
+<span class="sd">        &#39;red&#39;</span>
+<span class="sd">        &gt;&gt;&gt; 1 in G.nodes</span>
+<span class="sd">        False</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Set node attributes based on type of `values`</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># `values` must not be a dict of dict</span>
+        <span class="k">try</span><span class="p">:</span>  <span class="c1"># `values` is a dict</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># `values` is a constant</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># `values` must be dict of dict</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">pass</span></div>
+
+
+<span class="k">def</span> <span class="nf">topological_generations</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Topological sort not defined on undirected graphs.&quot;</span><span class="p">)</span>
+    <span class="n">indegree_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">d</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">in_degree</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="n">zero_indegree</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">in_degree</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">zero_indegree</span><span class="p">:</span>
+        <span class="n">this_generation</span> <span class="o">=</span> <span class="n">zero_indegree</span>
+        <span class="n">zero_indegree</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">this_generation</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Graph changed during iteration&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">indegree_map</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Graph changed during iteration&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+                <span class="k">if</span> <span class="n">indegree_map</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">zero_indegree</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+                    <span class="k">del</span> <span class="n">indegree_map</span><span class="p">[</span><span class="n">child</span><span class="p">]</span>
+        <span class="k">yield</span> <span class="n">this_generation</span>
+
+    <span class="k">if</span> <span class="n">indegree_map</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Graph contains a cycle or graph changed during iteration&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="topological_sort"><a class="viewcode-back" href="../../../reference/easygraph.classes.operation.html#easygraph.classes.operation.topological_sort">[docs]</a><span class="k">def</span> <span class="nf">topological_sort</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">generation</span> <span class="ow">in</span> <span class="n">eg</span><span class="o">.</span><span class="n">topological_generations</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+        <span class="k">yield from</span> <span class="n">generation</span></div>
+
+
+<div class="viewcode-block" id="number_of_selfloops"><a class="viewcode-back" href="../../../reference/easygraph.classes.operation.html#easygraph.classes.operation.number_of_selfloops">[docs]</a><span class="k">def</span> <span class="nf">number_of_selfloops</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the number of selfloop edges.</span>
+
+<span class="sd">    A selfloop edge has the same node at both ends.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    nloops : int</span>
+<span class="sd">        The number of selfloops.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    nodes_with_selfloops, selfloop_edges</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = eg.Graph()  # or DiGraph, MultiGraph, MultiDiGraph, etc</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(1, 1)</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(1, 2)</span>
+<span class="sd">    &gt;&gt;&gt; eg.number_of_selfloops(G)</span>
+<span class="sd">    1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">eg</span><span class="o">.</span><span class="n">selfloop_edges</span><span class="p">(</span><span class="n">G</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="selfloop_edges"><a class="viewcode-back" href="../../../reference/easygraph.classes.operation.html#easygraph.classes.operation.selfloop_edges">[docs]</a><span class="k">def</span> <span class="nf">selfloop_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns an iterator over selfloop edges.</span>
+
+<span class="sd">    A selfloop edge has the same node at both ends.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A EasyGraph graph.</span>
+<span class="sd">    data : string or bool, optional (default=False)</span>
+<span class="sd">        Return selfloop edges as two tuples (u, v) (data=False)</span>
+<span class="sd">        or three-tuples (u, v, datadict) (data=True)</span>
+<span class="sd">        or three-tuples (u, v, datavalue) (data=&#39;attrname&#39;)</span>
+<span class="sd">    keys : bool, optional (default=False)</span>
+<span class="sd">        If True, return edge keys with each edge.</span>
+<span class="sd">    default : value, optional (default=None)</span>
+<span class="sd">        Value used for edges that don&#39;t have the requested attribute.</span>
+<span class="sd">        Only relevant if data is not True or False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    edgeiter : iterator over edge tuples</span>
+<span class="sd">        An iterator over all selfloop edges.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    nodes_with_selfloops, number_of_selfloops</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = eg.MultiGraph()  # or Graph, DiGraph, MultiDiGraph, etc</span>
+<span class="sd">    &gt;&gt;&gt; ekey = G.add_edge(1, 1)</span>
+<span class="sd">    &gt;&gt;&gt; ekey = G.add_edge(1, 2)</span>
+<span class="sd">    &gt;&gt;&gt; list(eg.selfloop_edges(G))</span>
+<span class="sd">    [(1, 1)]</span>
+<span class="sd">    &gt;&gt;&gt; list(eg.selfloop_edges(G, data=True))</span>
+<span class="sd">    [(1, 1, {})]</span>
+<span class="sd">    &gt;&gt;&gt; list(eg.selfloop_edges(G, keys=True))</span>
+<span class="sd">    [(1, 1, 0)]</span>
+<span class="sd">    &gt;&gt;&gt; list(eg.selfloop_edges(G, keys=True, data=True))</span>
+<span class="sd">    [(1, 1, 0, {})]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span>
+                    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">))</span>
+                    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">))</span>
+                    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span>
+                    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span>
+            <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>  <span class="c1"># for easy edge removal (#4068)</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="density"><a class="viewcode-back" href="../../../reference/easygraph.classes.operation.html#easygraph.classes.operation.density">[docs]</a><span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_density&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">density</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the density of a graph.</span>
+
+<span class="sd">    The density for undirected graphs is</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       d = \frac{2m}{n(n-1)},</span>
+
+<span class="sd">    and for directed graphs is</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       d = \frac{m}{n(n-1)},</span>
+
+<span class="sd">    where `n` is the number of nodes and `m`  is the number of edges in `G`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The density is 0 for a graph without edges and 1 for a complete graph.</span>
+<span class="sd">    The density of multigraphs can be higher than 1.</span>
+
+<span class="sd">    Self loops are counted in the total number of edges so graphs with self</span>
+<span class="sd">    loops can have density higher than 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="n">d</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">d</span></div>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2025, DataNET Group, Fudan University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

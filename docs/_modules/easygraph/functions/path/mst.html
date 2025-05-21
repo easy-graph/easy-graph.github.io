@@ -1,0 +1,1242 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>easygraph.functions.path.mst &#8212; EasyGraph 1.4.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=538c3502" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=17704a4c"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/functions/path/mst';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">easygraph.fu...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for easygraph.functions.path.mst</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heappop</span>
+<span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heappush</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isnan</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
+
+<span class="kn">from</span> <span class="nn">easygraph.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;minimum_spanning_edges&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;maximum_spanning_edges&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;minimum_spanning_tree&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;maximum_spanning_tree&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">boruvka_mst_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over edges of a Borůvka&#39;s algorithm min/max spanning tree.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : EasyGraph Graph</span>
+<span class="sd">        The edges of `G` must have distinct weights,</span>
+<span class="sd">        otherwise the edges may not form a tree.</span>
+
+<span class="sd">    minimum : bool (default: True)</span>
+<span class="sd">        Find the minimum (True) or maximum (False) spanning tree.</span>
+
+<span class="sd">    weight : string (default: &#39;weight&#39;)</span>
+<span class="sd">        The name of the edge attribute holding the edge weights.</span>
+
+<span class="sd">    data : bool (default: True)</span>
+<span class="sd">        Flag for whether to yield edge attribute dicts.</span>
+<span class="sd">        If True, yield edges `(u, v, d)`, where `d` is the attribute dict.</span>
+<span class="sd">        If False, yield edges `(u, v)`.</span>
+
+<span class="sd">    ignore_nan : bool (default: False)</span>
+<span class="sd">        If a NaN is found as an edge weight normally an exception is raised.</span>
+<span class="sd">        If `ignore_nan is True` then that edge is ignored instead.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Initialize a forest, assuming initially that it is the discrete</span>
+    <span class="c1"># partition of the nodes of the graph.</span>
+    <span class="n">forest</span> <span class="o">=</span> <span class="n">UnionFind</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">best_edge</span><span class="p">(</span><span class="n">component</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the optimum (minimum or maximum) edge on the edge</span>
+<span class="sd">        boundary of the given set of nodes.</span>
+
+<span class="sd">        A return value of ``None`` indicates an empty boundary.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">minimum</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">minwt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+        <span class="n">boundary</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edge_boundary</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">wt</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sign</span>
+            <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">wt</span> <span class="o">&lt;</span> <span class="n">minwt</span><span class="p">:</span>
+                <span class="n">minwt</span> <span class="o">=</span> <span class="n">wt</span>
+                <span class="n">boundary</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="k">return</span> <span class="n">boundary</span>
+
+    <span class="c1"># Determine the optimum edge in the edge boundary of each component</span>
+    <span class="c1"># in the forest.</span>
+    <span class="n">best_edges</span> <span class="o">=</span> <span class="p">(</span><span class="n">best_edge</span><span class="p">(</span><span class="n">component</span><span class="p">)</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">forest</span><span class="o">.</span><span class="n">to_sets</span><span class="p">())</span>
+    <span class="n">best_edges</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">best_edges</span> <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="c1"># If each entry was ``None``, that means the graph was disconnected,</span>
+    <span class="c1"># so we are done generating the forest.</span>
+    <span class="k">while</span> <span class="n">best_edges</span><span class="p">:</span>
+        <span class="c1"># Determine the optimum edge in the edge boundary of each</span>
+        <span class="c1"># component in the forest.</span>
+        <span class="c1">#</span>
+        <span class="c1"># This must be a sequence, not an iterator. In this list, the</span>
+        <span class="c1"># same edge may appear twice, in different orientations (but</span>
+        <span class="c1"># that&#39;s okay, since a union operation will be called on the</span>
+        <span class="c1"># endpoints the first time it is seen, but not the second time).</span>
+        <span class="c1">#</span>
+        <span class="c1"># Any ``None`` indicates that the edge boundary for that</span>
+        <span class="c1"># component was empty, so that part of the forest has been</span>
+        <span class="c1"># completed.</span>
+        <span class="c1">#</span>
+        <span class="c1"># TODO This can be parallelized, both in the outer loop over</span>
+        <span class="c1"># each component in the forest and in the computation of the</span>
+        <span class="c1"># minimum. (Same goes for the identical lines outside the loop.)</span>
+        <span class="n">best_edges</span> <span class="o">=</span> <span class="p">(</span><span class="n">best_edge</span><span class="p">(</span><span class="n">component</span><span class="p">)</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">forest</span><span class="o">.</span><span class="n">to_sets</span><span class="p">())</span>
+        <span class="n">best_edges</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">best_edges</span> <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="c1"># Join trees in the forest using the best edges, and yield that</span>
+        <span class="c1"># edge, since it is part of the spanning tree.</span>
+        <span class="c1">#</span>
+        <span class="c1"># TODO This loop can be parallelized, to an extent (the union</span>
+        <span class="c1"># operation must be atomic).</span>
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">best_edges</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">forest</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="n">forest</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span>
+                <span class="n">forest</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+
+<span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_kruskal_mst_edges&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">kruskal_mst_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over edges of a Kruskal&#39;s algorithm min/max spanning tree.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : EasyGraph Graph</span>
+<span class="sd">        The graph holding the tree of interest.</span>
+
+<span class="sd">    minimum : bool (default: True)</span>
+<span class="sd">        Find the minimum (True) or maximum (False) spanning tree.</span>
+
+<span class="sd">    weight : string (default: &#39;weight&#39;)</span>
+<span class="sd">        The name of the edge attribute holding the edge weights.</span>
+
+<span class="sd">    data : bool (default: True)</span>
+<span class="sd">        Flag for whether to yield edge attribute dicts.</span>
+<span class="sd">        If True, yield edges `(u, v, d)`, where `d` is the attribute dict.</span>
+<span class="sd">        If False, yield edges `(u, v)`.</span>
+
+<span class="sd">    ignore_nan : bool (default: False)</span>
+<span class="sd">        If a NaN is found as an edge weight normally an exception is raised.</span>
+<span class="sd">        If `ignore_nan is True` then that edge is ignored instead.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">subtrees</span> <span class="o">=</span> <span class="n">UnionFind</span><span class="p">()</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+        <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">filter_nan_edges</span><span class="p">(</span><span class="n">edges</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">):</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">minimum</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+            <span class="n">wt</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sign</span>
+            <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">wt</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span>
+
+    <span class="n">edges</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filter_nan_edges</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">wt</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">subtrees</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="n">subtrees</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="n">subtrees</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+
+<span class="nd">@hybrid</span><span class="p">(</span><span class="s2">&quot;cpp_prim_mst_edges&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">prim_mst_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over edges of Prim&#39;s algorithm min/max spanning tree.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : EasyGraph Graph</span>
+<span class="sd">        The graph holding the tree of interest.</span>
+
+<span class="sd">    minimum : bool (default: True)</span>
+<span class="sd">        Find the minimum (True) or maximum (False) spanning tree.</span>
+
+<span class="sd">    weight : string (default: &#39;weight&#39;)</span>
+<span class="sd">        The name of the edge attribute holding the edge weights.</span>
+
+<span class="sd">    data : bool (default: True)</span>
+<span class="sd">        Flag for whether to yield edge attribute dicts.</span>
+<span class="sd">        If True, yield edges `(u, v, d)`, where `d` is the attribute dict.</span>
+<span class="sd">        If False, yield edges `(u, v)`.</span>
+
+<span class="sd">    ignore_nan : bool (default: False)</span>
+<span class="sd">        If a NaN is found as an edge weight normally an exception is raised.</span>
+<span class="sd">        If `ignore_nan is True` then that edge is ignored instead.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">push</span> <span class="o">=</span> <span class="n">heappush</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">heappop</span>
+
+    <span class="n">nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
+
+    <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">minimum</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">frontier</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">wt</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sign</span>
+            <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="n">push</span><span class="p">(</span><span class="n">frontier</span><span class="p">,</span> <span class="p">(</span><span class="n">wt</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+        <span class="k">while</span> <span class="n">frontier</span><span class="p">:</span>
+            <span class="n">W</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pop</span><span class="p">(</span><span class="n">frontier</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">visited</span> <span class="ow">or</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span>
+            <span class="c1"># update frontier</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">d2</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">new_weight</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sign</span>
+                <span class="n">push</span><span class="p">(</span><span class="n">frontier</span><span class="p">,</span> <span class="p">(</span><span class="n">new_weight</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d2</span><span class="p">))</span>
+
+
+<span class="n">ALGORITHMS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;boruvka&quot;</span><span class="p">:</span> <span class="n">boruvka_mst_edges</span><span class="p">,</span>
+    <span class="s2">&quot;borůvka&quot;</span><span class="p">:</span> <span class="n">boruvka_mst_edges</span><span class="p">,</span>
+    <span class="s2">&quot;kruskal&quot;</span><span class="p">:</span> <span class="n">kruskal_mst_edges</span><span class="p">,</span>
+    <span class="s2">&quot;prim&quot;</span><span class="p">:</span> <span class="n">prim_mst_edges</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="minimum_spanning_edges"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.mst.html#easygraph.functions.path.mst.minimum_spanning_edges">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@only_implemented_for_UnDirected_graph</span>
+<span class="k">def</span> <span class="nf">minimum_spanning_edges</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate edges in a minimum spanning forest of an undirected</span>
+<span class="sd">    weighted graph.</span>
+
+<span class="sd">    A minimum spanning tree is a subgraph of the graph (a tree)</span>
+<span class="sd">    with the minimum sum of edge weights.  A spanning forest is a</span>
+<span class="sd">    union of the spanning trees for each connected component of the graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : undirected Graph</span>
+<span class="sd">       An undirected graph. If `G` is connected, then the algorithm finds a</span>
+<span class="sd">       spanning tree. Otherwise, a spanning forest is found.</span>
+
+<span class="sd">    algorithm : string</span>
+<span class="sd">       The algorithm to use when finding a minimum spanning tree. Valid</span>
+<span class="sd">       choices are &#39;kruskal&#39;, &#39;prim&#39;, or &#39;boruvka&#39;. The default is &#39;kruskal&#39;.</span>
+
+<span class="sd">    weight : string</span>
+<span class="sd">       Edge data key to use for weight (default &#39;weight&#39;).</span>
+
+<span class="sd">    data : bool, optional</span>
+<span class="sd">       If True yield the edge data along with the edge.</span>
+
+<span class="sd">    ignore_nan : bool (default: False)</span>
+<span class="sd">        If a NaN is found as an edge weight normally an exception is raised.</span>
+<span class="sd">        If `ignore_nan is True` then that edge is ignored instead.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    edges : iterator</span>
+<span class="sd">       An iterator over edges in a maximum spanning tree of `G`.</span>
+<span class="sd">       Edges connecting nodes `u` and `v` are represented as tuples:</span>
+<span class="sd">       `(u, v, k, d)` or `(u, v, k)` or `(u, v, d)` or `(u, v)`</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from easygraph.functions.basic import mst</span>
+
+<span class="sd">    Find minimum spanning edges by Kruskal&#39;s algorithm</span>
+
+<span class="sd">    &gt;&gt;&gt; G.add_edge(0, 3, weight=2)</span>
+<span class="sd">    &gt;&gt;&gt; mst = mst.minimum_spanning_edges(G, algorithm=&quot;kruskal&quot;, data=False)</span>
+<span class="sd">    &gt;&gt;&gt; edgelist = list(mst)</span>
+<span class="sd">    &gt;&gt;&gt; sorted(sorted(e) for e in edgelist)</span>
+<span class="sd">    [[0, 1], [1, 2], [2, 3]]</span>
+
+<span class="sd">    Find minimum spanning edges by Prim&#39;s algorithm</span>
+
+<span class="sd">    &gt;&gt;&gt; G.add_edge(0, 3, weight=2)</span>
+<span class="sd">    &gt;&gt;&gt; mst = mst.minimum_spanning_edges(G, algorithm=&quot;prim&quot;, data=False)</span>
+<span class="sd">    &gt;&gt;&gt; edgelist = list(mst)</span>
+<span class="sd">    &gt;&gt;&gt; sorted(sorted(e) for e in edgelist)</span>
+<span class="sd">    [[0, 1], [1, 2], [2, 3]]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For Borůvka&#39;s algorithm, each edge must have a weight attribute, and</span>
+<span class="sd">    each edge weight must be distinct.</span>
+
+<span class="sd">    For the other algorithms, if the graph edges do not have a weight</span>
+<span class="sd">    attribute a default weight of 1 will be used.</span>
+
+<span class="sd">    Modified code from David Eppstein, April 2006</span>
+<span class="sd">    http://www.ics.uci.edu/~eppstein/PADS/</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">algo</span> <span class="o">=</span> <span class="n">ALGORITHMS</span><span class="p">[</span><span class="n">algorithm</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s2"> is not a valid choice for an algorithm.&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="k">return</span> <span class="n">algo</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="n">ignore_nan</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="maximum_spanning_edges"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.mst.html#easygraph.functions.path.mst.maximum_spanning_edges">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="nd">@only_implemented_for_UnDirected_graph</span>
+<span class="k">def</span> <span class="nf">maximum_spanning_edges</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate edges in a maximum spanning forest of an undirected</span>
+<span class="sd">    weighted graph.</span>
+
+<span class="sd">    A maximum spanning tree is a subgraph of the graph (a tree)</span>
+<span class="sd">    with the maximum possible sum of edge weights.  A spanning forest is a</span>
+<span class="sd">    union of the spanning trees for each connected component of the graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : undirected Graph</span>
+<span class="sd">       An undirected graph. If `G` is connected, then the algorithm finds a</span>
+<span class="sd">       spanning tree. Otherwise, a spanning forest is found.</span>
+
+<span class="sd">    algorithm : string</span>
+<span class="sd">       The algorithm to use when finding a maximum spanning tree. Valid</span>
+<span class="sd">       choices are &#39;kruskal&#39;, &#39;prim&#39;, or &#39;boruvka&#39;. The default is &#39;kruskal&#39;.</span>
+
+<span class="sd">    weight : string</span>
+<span class="sd">       Edge data key to use for weight (default &#39;weight&#39;).</span>
+
+<span class="sd">    data : bool, optional</span>
+<span class="sd">       If True yield the edge data along with the edge.</span>
+
+<span class="sd">    ignore_nan : bool (default: False)</span>
+<span class="sd">        If a NaN is found as an edge weight normally an exception is raised.</span>
+<span class="sd">        If `ignore_nan is True` then that edge is ignored instead.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    edges : iterator</span>
+<span class="sd">       An iterator over edges in a maximum spanning tree of `G`.</span>
+<span class="sd">       Edges connecting nodes `u` and `v` are represented as tuples:</span>
+<span class="sd">       `(u, v, k, d)` or `(u, v, k)` or `(u, v, d)` or `(u, v)`</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from easygraph.functions.basic import mst</span>
+
+<span class="sd">    Find maximum spanning edges by Kruskal&#39;s algorithm</span>
+
+<span class="sd">    &gt;&gt;&gt; G.add_edge(0, 3, weight=2)</span>
+<span class="sd">    &gt;&gt;&gt; mst = mst.maximum_spanning_edges(G, algorithm=&quot;kruskal&quot;, data=False)</span>
+<span class="sd">    &gt;&gt;&gt; edgelist = list(mst)</span>
+<span class="sd">    &gt;&gt;&gt; sorted(sorted(e) for e in edgelist)</span>
+<span class="sd">    [[0, 1], [0, 3], [1, 2]]</span>
+
+<span class="sd">    Find maximum spanning edges by Prim&#39;s algorithm</span>
+
+<span class="sd">    &gt;&gt;&gt; G.add_edge(0, 3, weight=2)  # assign weight 2 to edge 0-3</span>
+<span class="sd">    &gt;&gt;&gt; mst = mst.maximum_spanning_edges(G, algorithm=&quot;prim&quot;, data=False)</span>
+<span class="sd">    &gt;&gt;&gt; edgelist = list(mst)</span>
+<span class="sd">    &gt;&gt;&gt; sorted(sorted(e) for e in edgelist)</span>
+<span class="sd">    [[0, 1], [0, 3], [2, 3]]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For Borůvka&#39;s algorithm, each edge must have a weight attribute, and</span>
+<span class="sd">    each edge weight must be distinct.</span>
+
+<span class="sd">    For the other algorithms, if the graph edges do not have a weight</span>
+<span class="sd">    attribute a default weight of 1 will be used.</span>
+
+<span class="sd">    Modified code from David Eppstein, April 2006</span>
+<span class="sd">    http://www.ics.uci.edu/~eppstein/PADS/</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">algo</span> <span class="o">=</span> <span class="n">ALGORITHMS</span><span class="p">[</span><span class="n">algorithm</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s2"> is not a valid choice for an algorithm.&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="k">return</span> <span class="n">algo</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="n">ignore_nan</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="minimum_spanning_tree"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.mst.html#easygraph.functions.path.mst.minimum_spanning_tree">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">minimum_spanning_tree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a minimum spanning tree or forest on an undirected graph `G`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : undirected graph</span>
+<span class="sd">        An undirected graph. If `G` is connected, then the algorithm finds a</span>
+<span class="sd">        spanning tree. Otherwise, a spanning forest is found.</span>
+
+<span class="sd">    weight : str</span>
+<span class="sd">       Data key to use for edge weights.</span>
+
+<span class="sd">    algorithm : string</span>
+<span class="sd">       The algorithm to use when finding a minimum spanning tree. Valid</span>
+<span class="sd">       choices are &#39;kruskal&#39;, &#39;prim&#39;, or &#39;boruvka&#39;. The default is</span>
+<span class="sd">       &#39;kruskal&#39;.</span>
+
+<span class="sd">    ignore_nan : bool (default: False)</span>
+<span class="sd">        If a NaN is found as an edge weight normally an exception is raised.</span>
+<span class="sd">        If `ignore_nan is True` then that edge is ignored instead.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    G : EasyGraph Graph</span>
+<span class="sd">       A minimum spanning tree or forest.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(0, 3, weight=2)</span>
+<span class="sd">    &gt;&gt;&gt; T = eg.minimum_spanning_tree(G)</span>
+<span class="sd">    &gt;&gt;&gt; sorted(T.edges(data=True))</span>
+<span class="sd">    [(0, 1, {}), (1, 2, {}), (2, 3, {})]</span>
+
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For Borůvka&#39;s algorithm, each edge must have a weight attribute, and</span>
+<span class="sd">    each edge weight must be distinct.</span>
+
+<span class="sd">    For the other algorithms, if the graph edges do not have a weight</span>
+<span class="sd">    attribute a default weight of 1 will be used.</span>
+
+<span class="sd">    Isolated nodes with self-loops are in the tree as edgeless isolated nodes.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">minimum_spanning_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="n">ignore_nan</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>  <span class="c1"># Same graph class as G</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="n">T</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">T</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">T</span></div>
+
+
+<div class="viewcode-block" id="maximum_spanning_tree"><a class="viewcode-back" href="../../../../reference/easygraph.functions.path.mst.html#easygraph.functions.path.mst.maximum_spanning_tree">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">maximum_spanning_tree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;kruskal&quot;</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a maximum spanning tree or forest on an undirected graph `G`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : undirected graph</span>
+<span class="sd">        An undirected graph. If `G` is connected, then the algorithm finds a</span>
+<span class="sd">        spanning tree. Otherwise, a spanning forest is found.</span>
+
+<span class="sd">    weight : str</span>
+<span class="sd">       Data key to use for edge weights.</span>
+
+<span class="sd">    algorithm : string</span>
+<span class="sd">       The algorithm to use when finding a maximum spanning tree. Valid</span>
+<span class="sd">       choices are &#39;kruskal&#39;, &#39;prim&#39;, or &#39;boruvka&#39;. The default is</span>
+<span class="sd">       &#39;kruskal&#39;.</span>
+
+<span class="sd">    ignore_nan : bool (default: False)</span>
+<span class="sd">        If a NaN is found as an edge weight normally an exception is raised.</span>
+<span class="sd">        If `ignore_nan is True` then that edge is ignored instead.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    G : EasyGraph Graph</span>
+<span class="sd">       A maximum spanning tree or forest.</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(0, 3, weight=2)</span>
+<span class="sd">    &gt;&gt;&gt; T = eg.maximum_spanning_tree(G)</span>
+<span class="sd">    &gt;&gt;&gt; sorted(T.edges(data=True))</span>
+<span class="sd">    [(0, 1, {}), (0, 3, {&#39;weight&#39;: 2}), (1, 2, {})]</span>
+
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For Borůvka&#39;s algorithm, each edge must have a weight attribute, and</span>
+<span class="sd">    each edge weight must be distinct.</span>
+
+<span class="sd">    For the other algorithms, if the graph edges do not have a weight</span>
+<span class="sd">    attribute a default weight of 1 will be used.</span>
+
+<span class="sd">    There may be more than one tree with the same minimum or maximum weight.</span>
+<span class="sd">    See :mod:`easygraph.tree.recognition` for more detailed definitions.</span>
+
+<span class="sd">    Isolated nodes with self-loops are in the tree as edgeless isolated nodes.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">maximum_spanning_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_nan</span><span class="o">=</span><span class="n">ignore_nan</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>  <span class="c1"># Same graph class as G</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="n">T</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">T</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">T</span></div>
+
+
+<span class="k">def</span> <span class="nf">edge_boundary</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nbunch1</span><span class="p">,</span> <span class="n">nbunch2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the edge boundary of `nbunch1`.</span>
+
+<span class="sd">    The *edge boundary* of a set *S* with respect to a set *T* is the</span>
+<span class="sd">    set of edges (*u*, *v*) such that *u* is in *S* and *v* is in *T*.</span>
+<span class="sd">    If *T* is not specified, it is assumed to be the set of all nodes</span>
+<span class="sd">    not in *S*.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : EasyGraph graph</span>
+
+<span class="sd">    nbunch1 : iterable</span>
+<span class="sd">        Iterable of nodes in the graph representing the set of nodes</span>
+<span class="sd">        whose edge boundary will be returned. (This is the set *S* from</span>
+<span class="sd">        the definition above.)</span>
+
+<span class="sd">    nbunch2 : iterable</span>
+<span class="sd">        Iterable of nodes representing the target (or &quot;exterior&quot;) set of</span>
+<span class="sd">        nodes. (This is the set *T* from the definition above.) If not</span>
+<span class="sd">        specified, this is assumed to be the set of all nodes in `G`</span>
+<span class="sd">        not in `nbunch1`.</span>
+
+<span class="sd">    data : bool or object</span>
+<span class="sd">        This parameter has the same meaning as in</span>
+<span class="sd">        :meth:`MultiGraph.edges`.</span>
+
+<span class="sd">    default : object</span>
+<span class="sd">        This parameter has the same meaning as in</span>
+<span class="sd">        :meth:`MultiGraph.edges`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    iterator</span>
+<span class="sd">        An iterator over the edges in the boundary of `nbunch1` with</span>
+<span class="sd">        respect to `nbunch2`. If `keys`, `data`, or `default`</span>
+<span class="sd">        are specified and `G` is a multigraph, then edges are returned</span>
+<span class="sd">        with keys and/or data, as in :meth:`MultiGraph.edges`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Any element of `nbunch` that is not in the graph `G` will be</span>
+<span class="sd">    ignored.</span>
+
+<span class="sd">    `nbunch1` and `nbunch2` are usually meant to be disjoint, but in</span>
+<span class="sd">    the interest of speed and generality, that is not required here.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nset1</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nbunch1</span><span class="p">}</span>
+    <span class="c1"># Here we create an iterator over edges incident to nodes in the set</span>
+    <span class="c1"># `nset1`. The `Graph.edges()` method does not provide a guarantee</span>
+    <span class="c1"># on the orientation of the edges, so our algorithm below must</span>
+    <span class="c1"># handle the case in which exactly one orientation, either (u, v) or</span>
+    <span class="c1"># (v, u), appears in this iterable.</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">nset1</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">)</span>
+    <span class="c1"># If `nbunch2` is not provided, then it is assumed to be the set</span>
+    <span class="c1"># complement of `nbunch1`. For the sake of efficiency, this is</span>
+    <span class="c1"># implemented by using the `not in` operator, instead of by creating</span>
+    <span class="c1"># an additional set and using the `in` operator.</span>
+    <span class="k">if</span> <span class="n">nbunch2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edges</span> <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nset1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nset1</span><span class="p">))</span>
+    <span class="n">nset2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nbunch2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">e</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edges</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nset1</span> <span class="ow">and</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nset2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nset1</span> <span class="ow">and</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nset2</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Union-find data structure.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">UnionFind</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Union-find data structure.</span>
+
+<span class="sd">    Each unionFind instance X maintains a family of disjoint sets of</span>
+<span class="sd">    hashable objects, supporting the following two methods:</span>
+
+<span class="sd">    - X[item] returns a name for the set containing the given item.</span>
+<span class="sd">      Each set is named by an arbitrarily-chosen one of its members; as</span>
+<span class="sd">      long as the set remains unchanged it will keep the same name. If</span>
+<span class="sd">      the item is not yet part of a set in X, a new singleton set is</span>
+<span class="sd">      created for it.</span>
+
+<span class="sd">    - X.union(item1, item2, ...) merges the sets containing each item</span>
+<span class="sd">      into a single larger set.  If any item is not yet part of a set</span>
+<span class="sd">      in X, it is added to X as one of the members of the merged set.</span>
+
+<span class="sd">      Union-find data structure. Based on Josiah Carlson&#39;s code,</span>
+<span class="sd">      http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/215912</span>
+<span class="sd">      with significant additional changes by D. Eppstein.</span>
+<span class="sd">      http://www.ics.uci.edu/~eppstein/PADS/UnionFind.py</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new empty union-find structure.</span>
+
+<span class="sd">        If *elements* is an iterable, this structure will be initialized</span>
+<span class="sd">        with the discrete partition on the given set of elements.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">elements</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">elements</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parents</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find and return the name of the set containing the object.&quot;&quot;&quot;</span>
+
+        <span class="c1"># check for previously unknown object</span>
+        <span class="k">if</span> <span class="nb">object</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="nb">object</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="nb">object</span>
+
+        <span class="c1"># find basic of objects leading to the root</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="nb">object</span><span class="p">]</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="nb">object</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">root</span> <span class="o">!=</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="n">root</span><span class="p">]</span>
+
+        <span class="c1"># compress the basic and return</span>
+        <span class="k">for</span> <span class="n">ancestor</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="n">ancestor</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="k">return</span> <span class="n">root</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate through all items ever found or unioned by this structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">to_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterates over the sets stored in this structure.</span>
+
+<span class="sd">        For example::</span>
+
+<span class="sd">            &gt;&gt;&gt; partition = UnionFind(&quot;xyz&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; sorted(map(sorted, partition.to_sets()))</span>
+<span class="sd">            [[&#39;x&#39;], [&#39;y&#39;], [&#39;z&#39;]]</span>
+<span class="sd">            &gt;&gt;&gt; partition.union(&quot;x&quot;, &quot;y&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; sorted(map(sorted, partition.to_sets()))</span>
+<span class="sd">            [[&#39;x&#39;, &#39;y&#39;], [&#39;z&#39;]]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Ensure fully pruned paths</span>
+
+        <span class="k">def</span> <span class="nf">groups</span><span class="p">(</span><span class="n">parents</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">sets</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">parents</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">:</span>
+                    <span class="n">sets</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+                <span class="n">sets</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">sets</span>
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>  <span class="c1"># Evaluated for side-effect only</span>
+
+        <span class="k">yield from</span> <span class="n">groups</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">objects</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the sets containing the objects and merge them all.&quot;&quot;&quot;</span>
+        <span class="c1"># Find the heaviest root according to its weight.</span>
+        <span class="n">roots</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="bp">self</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">},</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">r</span><span class="p">]))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">roots</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2025, DataNET Group, Fudan University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

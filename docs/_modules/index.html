@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overview: module code &#8212; EasyGraph 1.4.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=17704a4c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/copybutton.js?v=e333d19b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Overview:...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="builtins.html">builtins</a></li>
+<li><a href="easygraph/classes/base.html">easygraph.classes.base</a></li>
+<li><a href="easygraph/classes/directed_graph.html">easygraph.classes.directed_graph</a></li>
+<li><a href="easygraph/classes/directed_multigraph.html">easygraph.classes.directed_multigraph</a></li>
+<li><a href="easygraph/classes/graph.html">easygraph.classes.graph</a></li>
+<li><a href="easygraph/classes/graphviews.html">easygraph.classes.graphviews</a></li>
+<li><a href="easygraph/classes/hypergraph.html">easygraph.classes.hypergraph</a></li>
+<li><a href="easygraph/classes/multigraph.html">easygraph.classes.multigraph</a></li>
+<li><a href="easygraph/classes/operation.html">easygraph.classes.operation</a></li>
+<li><a href="easygraph/convert.html">easygraph.convert</a></li>
+<li><a href="easygraph/datapipe/common.html">easygraph.datapipe.common</a></li>
+<li><a href="easygraph/datapipe/loader.html">easygraph.datapipe.loader</a></li>
+<li><a href="easygraph/datapipe/normalize.html">easygraph.datapipe.normalize</a></li>
+<li><a href="easygraph/datasets/citation_graph.html">easygraph.datasets.citation_graph</a></li>
+<li><a href="easygraph/datasets/dynamic/email_enron.html">easygraph.datasets.dynamic.email_enron</a></li>
+<li><a href="easygraph/datasets/dynamic/email_eu.html">easygraph.datasets.dynamic.email_eu</a></li>
+<li><a href="easygraph/datasets/dynamic/hospital_lyon.html">easygraph.datasets.dynamic.hospital_lyon</a></li>
+<li><a href="easygraph/datasets/dynamic/load_dataset.html">easygraph.datasets.dynamic.load_dataset</a></li>
+<li><a href="easygraph/datasets/get_sample_graph.html">easygraph.datasets.get_sample_graph</a></li>
+<li><a href="easygraph/datasets/gnn_benchmark.html">easygraph.datasets.gnn_benchmark</a></li>
+<li><a href="easygraph/datasets/graph_dataset_base.html">easygraph.datasets.graph_dataset_base</a></li>
+<li><a href="easygraph/datasets/hypergraph/House_Committees.html">easygraph.datasets.hypergraph.House_Committees</a></li>
+<li><a href="easygraph/datasets/hypergraph/Yelp.html">easygraph.datasets.hypergraph.Yelp</a></li>
+<li><a href="easygraph/datasets/hypergraph/cat_edge_Cooking.html">easygraph.datasets.hypergraph.cat_edge_Cooking</a></li>
+<li><a href="easygraph/datasets/hypergraph/coauthorship.html">easygraph.datasets.hypergraph.coauthorship</a></li>
+<li><a href="easygraph/datasets/hypergraph/cocitation.html">easygraph.datasets.hypergraph.cocitation</a></li>
+<li><a href="easygraph/datasets/hypergraph/contact_primary_school.html">easygraph.datasets.hypergraph.contact_primary_school</a></li>
+<li><a href="easygraph/datasets/hypergraph/cooking_200.html">easygraph.datasets.hypergraph.cooking_200</a></li>
+<li><a href="easygraph/datasets/hypergraph/hypergraph_dataset_base.html">easygraph.datasets.hypergraph.hypergraph_dataset_base</a></li>
+<li><a href="easygraph/datasets/hypergraph/mathoverflow_answers.html">easygraph.datasets.hypergraph.mathoverflow_answers</a></li>
+<li><a href="easygraph/datasets/hypergraph/senate_committees.html">easygraph.datasets.hypergraph.senate_committees</a></li>
+<li><a href="easygraph/datasets/hypergraph/trivago_clicks.html">easygraph.datasets.hypergraph.trivago_clicks</a></li>
+<li><a href="easygraph/datasets/hypergraph/walmart_trips.html">easygraph.datasets.hypergraph.walmart_trips</a></li>
+<li><a href="easygraph/datasets/karate.html">easygraph.datasets.karate</a></li>
+<li><a href="easygraph/datasets/ppi.html">easygraph.datasets.ppi</a></li>
+<li><a href="easygraph/datasets/utils.html">easygraph.datasets.utils</a></li>
+<li><a href="easygraph/exception.html">easygraph.exception</a></li>
+<li><a href="easygraph/experiments/base.html">easygraph.experiments.base</a></li>
+<li><a href="easygraph/experiments/hypergraphs/hypergraph.html">easygraph.experiments.hypergraphs.hypergraph</a></li>
+<li><a href="easygraph/experiments/vertex_classification.html">easygraph.experiments.vertex_classification</a></li>
+<li><a href="easygraph/functions/basic/avg_degree.html">easygraph.functions.basic.avg_degree</a></li>
+<li><a href="easygraph/functions/basic/cluster.html">easygraph.functions.basic.cluster</a></li>
+<li><a href="easygraph/functions/basic/localassort.html">easygraph.functions.basic.localassort</a></li>
+<li><a href="easygraph/functions/basic/predecessor_path_based.html">easygraph.functions.basic.predecessor_path_based</a></li>
+<li><a href="easygraph/functions/centrality/betweenness.html">easygraph.functions.centrality.betweenness</a></li>
+<li><a href="easygraph/functions/centrality/closeness.html">easygraph.functions.centrality.closeness</a></li>
+<li><a href="easygraph/functions/centrality/degree.html">easygraph.functions.centrality.degree</a></li>
+<li><a href="easygraph/functions/centrality/ego_betweenness.html">easygraph.functions.centrality.ego_betweenness</a></li>
+<li><a href="easygraph/functions/centrality/flowbetweenness.html">easygraph.functions.centrality.flowbetweenness</a></li>
+<li><a href="easygraph/functions/centrality/laplacian.html">easygraph.functions.centrality.laplacian</a></li>
+<li><a href="easygraph/functions/centrality/pagerank.html">easygraph.functions.centrality.pagerank</a></li>
+<li><a href="easygraph/functions/community/LPA.html">easygraph.functions.community.LPA</a></li>
+<li><a href="easygraph/functions/community/ego_graph.html">easygraph.functions.community.ego_graph</a></li>
+<li><a href="easygraph/functions/community/louvain.html">easygraph.functions.community.louvain</a></li>
+<li><a href="easygraph/functions/community/modularity.html">easygraph.functions.community.modularity</a></li>
+<li><a href="easygraph/functions/community/modularity_max_detection.html">easygraph.functions.community.modularity_max_detection</a></li>
+<li><a href="easygraph/functions/community/motif.html">easygraph.functions.community.motif</a></li>
+<li><a href="easygraph/functions/components/biconnected.html">easygraph.functions.components.biconnected</a></li>
+<li><a href="easygraph/functions/components/connected.html">easygraph.functions.components.connected</a></li>
+<li><a href="easygraph/functions/components/strongly_connected.html">easygraph.functions.components.strongly_connected</a></li>
+<li><a href="easygraph/functions/components/weakly_connected.html">easygraph.functions.components.weakly_connected</a></li>
+<li><a href="easygraph/functions/core/k_core.html">easygraph.functions.core.k_core</a></li>
+<li><a href="easygraph/functions/drawing/defaults.html">easygraph.functions.drawing.defaults</a></li>
+<li><a href="easygraph/functions/drawing/drawing.html">easygraph.functions.drawing.drawing</a></li>
+<li><a href="easygraph/functions/drawing/geometry.html">easygraph.functions.drawing.geometry</a></li>
+<li><a href="easygraph/functions/drawing/layout.html">easygraph.functions.drawing.layout</a></li>
+<li><a href="easygraph/functions/drawing/plot.html">easygraph.functions.drawing.plot</a></li>
+<li><a href="easygraph/functions/drawing/positioning.html">easygraph.functions.drawing.positioning</a></li>
+<li><a href="easygraph/functions/drawing/simulator.html">easygraph.functions.drawing.simulator</a></li>
+<li><a href="easygraph/functions/drawing/utils.html">easygraph.functions.drawing.utils</a></li>
+<li><a href="easygraph/functions/graph_embedding/NOBE.html">easygraph.functions.graph_embedding.NOBE</a></li>
+<li><a href="easygraph/functions/graph_embedding/deepwalk.html">easygraph.functions.graph_embedding.deepwalk</a></li>
+<li><a href="easygraph/functions/graph_embedding/line.html">easygraph.functions.graph_embedding.line</a></li>
+<li><a href="easygraph/functions/graph_embedding/node2vec.html">easygraph.functions.graph_embedding.node2vec</a></li>
+<li><a href="easygraph/functions/graph_embedding/sdne.html">easygraph.functions.graph_embedding.sdne</a></li>
+<li><a href="easygraph/functions/graph_generator/RandomNetwork.html">easygraph.functions.graph_generator.RandomNetwork</a></li>
+<li><a href="easygraph/functions/graph_generator/classic.html">easygraph.functions.graph_generator.classic</a></li>
+<li><a href="easygraph/functions/hypergraph/assortativity.html">easygraph.functions.hypergraph.assortativity</a></li>
+<li><a href="easygraph/functions/hypergraph/centrality/cycle_ratio.html">easygraph.functions.hypergraph.centrality.cycle_ratio</a></li>
+<li><a href="easygraph/functions/hypergraph/centrality/degree.html">easygraph.functions.hypergraph.centrality.degree</a></li>
+<li><a href="easygraph/functions/hypergraph/centrality/hypercoreness.html">easygraph.functions.hypergraph.centrality.hypercoreness</a></li>
+<li><a href="easygraph/functions/hypergraph/centrality/s_centrality.html">easygraph.functions.hypergraph.centrality.s_centrality</a></li>
+<li><a href="easygraph/functions/hypergraph/centrality/vector_centrality.html">easygraph.functions.hypergraph.centrality.vector_centrality</a></li>
+<li><a href="easygraph/functions/hypergraph/hypergraph_clustering.html">easygraph.functions.hypergraph.hypergraph_clustering</a></li>
+<li><a href="easygraph/functions/hypergraph/hypergraph_operation.html">easygraph.functions.hypergraph.hypergraph_operation</a></li>
+<li><a href="easygraph/functions/hypergraph/null_model/hypergraph_classic.html">easygraph.functions.hypergraph.null_model.hypergraph_classic</a></li>
+<li><a href="easygraph/functions/hypergraph/null_model/lattice.html">easygraph.functions.hypergraph.null_model.lattice</a></li>
+<li><a href="easygraph/functions/hypergraph/null_model/random.html">easygraph.functions.hypergraph.null_model.random</a></li>
+<li><a href="easygraph/functions/hypergraph/null_model/simple.html">easygraph.functions.hypergraph.null_model.simple</a></li>
+<li><a href="easygraph/functions/hypergraph/null_model/uniform.html">easygraph.functions.hypergraph.null_model.uniform</a></li>
+<li><a href="easygraph/functions/isolate.html">easygraph.functions.isolate</a></li>
+<li><a href="easygraph/functions/path/average_shortest_path_length.html">easygraph.functions.path.average_shortest_path_length</a></li>
+<li><a href="easygraph/functions/path/bridges.html">easygraph.functions.path.bridges</a></li>
+<li><a href="easygraph/functions/path/diameter.html">easygraph.functions.path.diameter</a></li>
+<li><a href="easygraph/functions/path/mst.html">easygraph.functions.path.mst</a></li>
+<li><a href="easygraph/functions/path/path.html">easygraph.functions.path.path</a></li>
+<li><a href="easygraph/functions/structural_holes/AP_Greedy.html">easygraph.functions.structural_holes.AP_Greedy</a></li>
+<li><a href="easygraph/functions/structural_holes/HAM.html">easygraph.functions.structural_holes.HAM</a></li>
+<li><a href="easygraph/functions/structural_holes/HIS.html">easygraph.functions.structural_holes.HIS</a></li>
+<li><a href="easygraph/functions/structural_holes/ICC.html">easygraph.functions.structural_holes.ICC</a></li>
+<li><a href="easygraph/functions/structural_holes/MaxD.html">easygraph.functions.structural_holes.MaxD</a></li>
+<li><a href="easygraph/functions/structural_holes/NOBE.html">easygraph.functions.structural_holes.NOBE</a></li>
+<li><a href="easygraph/functions/structural_holes/SHII_metric.html">easygraph.functions.structural_holes.SHII_metric</a></li>
+<li><a href="easygraph/functions/structural_holes/evaluation.html">easygraph.functions.structural_holes.evaluation</a></li>
+<li><a href="easygraph/functions/structural_holes/maxBlock.html">easygraph.functions.structural_holes.maxBlock</a></li>
+<li><a href="easygraph/functions/structural_holes/metrics.html">easygraph.functions.structural_holes.metrics</a></li>
+<li><a href="easygraph/functions/structural_holes/weakTie.html">easygraph.functions.structural_holes.weakTie</a></li>
+<li><a href="easygraph/ml_metrics.html">easygraph.ml_metrics</a></li>
+<ul><li><a href="easygraph/ml_metrics/base.html">easygraph.ml_metrics.base</a></li>
+<li><a href="easygraph/ml_metrics/classification.html">easygraph.ml_metrics.classification</a></li>
+<li><a href="easygraph/ml_metrics/hypergraphs/hypergraph.html">easygraph.ml_metrics.hypergraphs.hypergraph</a></li>
+</ul><li><a href="easygraph/model/hypergraphs/dhcf.html">easygraph.model.hypergraphs.dhcf</a></li>
+<li><a href="easygraph/model/hypergraphs/dhne.html">easygraph.model.hypergraphs.dhne</a></li>
+<li><a href="easygraph/model/hypergraphs/hgnn.html">easygraph.model.hypergraphs.hgnn</a></li>
+<li><a href="easygraph/model/hypergraphs/hgnnp.html">easygraph.model.hypergraphs.hgnnp</a></li>
+<li><a href="easygraph/model/hypergraphs/hnhn.html">easygraph.model.hypergraphs.hnhn</a></li>
+<li><a href="easygraph/model/hypergraphs/hypergcn.html">easygraph.model.hypergraphs.hypergcn</a></li>
+<li><a href="easygraph/model/hypergraphs/setgnn.html">easygraph.model.hypergraphs.setgnn</a></li>
+<li><a href="easygraph/model/hypergraphs/unignn.html">easygraph.model.hypergraphs.unignn</a></li>
+<li><a href="easygraph/nn/convs/common.html">easygraph.nn.convs.common</a></li>
+<li><a href="easygraph/nn/convs/hypergraphs/dhcf_conv.html">easygraph.nn.convs.hypergraphs.dhcf_conv</a></li>
+<li><a href="easygraph/nn/convs/hypergraphs/halfnlh_conv.html">easygraph.nn.convs.hypergraphs.halfnlh_conv</a></li>
+<li><a href="easygraph/nn/convs/hypergraphs/hgnn_conv.html">easygraph.nn.convs.hypergraphs.hgnn_conv</a></li>
+<li><a href="easygraph/nn/convs/hypergraphs/hgnnp_conv.html">easygraph.nn.convs.hypergraphs.hgnnp_conv</a></li>
+<li><a href="easygraph/nn/convs/hypergraphs/hnhn_conv.html">easygraph.nn.convs.hypergraphs.hnhn_conv</a></li>
+<li><a href="easygraph/nn/convs/hypergraphs/hypergcn_conv.html">easygraph.nn.convs.hypergraphs.hypergcn_conv</a></li>
+<li><a href="easygraph/nn/convs/hypergraphs/unignn_conv.html">easygraph.nn.convs.hypergraphs.unignn_conv</a></li>
+<li><a href="easygraph/nn/convs/pma.html">easygraph.nn.convs.pma</a></li>
+<li><a href="easygraph/nn/loss.html">easygraph.nn.loss</a></li>
+<li><a href="easygraph/nn/regularization.html">easygraph.nn.regularization</a></li>
+<li><a href="easygraph/readwrite/edgelist.html">easygraph.readwrite.edgelist</a></li>
+<li><a href="easygraph/readwrite/gexf.html">easygraph.readwrite.gexf</a></li>
+<li><a href="easygraph/readwrite/gml.html">easygraph.readwrite.gml</a></li>
+<li><a href="easygraph/readwrite/graphml.html">easygraph.readwrite.graphml</a></li>
+<li><a href="easygraph/readwrite/graphviz.html">easygraph.readwrite.graphviz</a></li>
+<li><a href="easygraph/readwrite/json_graph/node_link.html">easygraph.readwrite.json_graph.node_link</a></li>
+<li><a href="easygraph/readwrite/pajek.html">easygraph.readwrite.pajek</a></li>
+<li><a href="easygraph/readwrite/pickle.html">easygraph.readwrite.pickle</a></li>
+<li><a href="easygraph/readwrite/ucinet.html">easygraph.readwrite.ucinet</a></li>
+<li><a href="easygraph/utils/alias.html">easygraph.utils.alias</a></li>
+<li><a href="easygraph/utils/convert_class.html">easygraph.utils.convert_class</a></li>
+<li><a href="easygraph/utils/convert_to_matrix.html">easygraph.utils.convert_to_matrix</a></li>
+<li><a href="easygraph/utils/decorators.html">easygraph.utils.decorators</a></li>
+<li><a href="easygraph/utils/download.html">easygraph.utils.download</a></li>
+<li><a href="easygraph/utils/exception.html">easygraph.utils.exception</a></li>
+<li><a href="easygraph/utils/index_of_node.html">easygraph.utils.index_of_node</a></li>
+<li><a href="easygraph/utils/logging.html">easygraph.utils.logging</a></li>
+<li><a href="easygraph/utils/mapped_queue.html">easygraph.utils.mapped_queue</a></li>
+<li><a href="easygraph/utils/misc.html">easygraph.utils.misc</a></li>
+<li><a href="easygraph/utils/relabel.html">easygraph.utils.relabel</a></li>
+<li><a href="easygraph/utils/sparse.html">easygraph.utils.sparse</a></li>
+<li><a href="easygraph/utils/type_change.html">easygraph.utils.type_change</a></li>
+</ul>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2025, DataNET Group, Fudan University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

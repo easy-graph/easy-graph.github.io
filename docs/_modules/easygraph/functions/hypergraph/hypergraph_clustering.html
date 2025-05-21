@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>easygraph.functions.hypergraph.hypergraph_clustering &#8212; EasyGraph 1.4.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=538c3502" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=17704a4c"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/functions/hypergraph/hypergraph_clustering';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">easygraph.fu...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for easygraph.functions.hypergraph.hypergraph_clustering</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Algorithms for computing nodal clustering coefficients.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">easygraph.utils.exception</span> <span class="kn">import</span> <span class="n">EasyGraphError</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;hypergraph_clustering_coefficient&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hypergraph_local_clustering_coefficient&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hypergraph_two_node_clustering_coefficient&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="hypergraph_clustering_coefficient"><a class="viewcode-back" href="../../../../reference/easygraph.functions.hypergraph.hypergraph_clustering.html#easygraph.functions.hypergraph.hypergraph_clustering.hypergraph_clustering_coefficient">[docs]</a><span class="k">def</span> <span class="nf">hypergraph_clustering_coefficient</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the clustering coefficients for</span>
+<span class="sd">    each node in a Hypergraph.</span>
+
+<span class="sd">    This clustering coefficient is defined as the</span>
+<span class="sd">    clustering coefficient of the unweighted pairwise</span>
+<span class="sd">    projection of the hypergraph, i.e.,</span>
+<span class="sd">    :math:`c = A^3_{i,i}/\binom{k}{2},`</span>
+<span class="sd">    where :math:`A` is the adjacency matrix of the network</span>
+<span class="sd">    and :math:`k` is the pairwise degree of :math:`i`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    H : Hypergraph</span>
+<span class="sd">        Hypergraph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        nodes are keys, clustering coefficients are values.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The clustering coefficient is undefined when the number of</span>
+<span class="sd">    neighbors is 0 or 1, but we set the clustering coefficient</span>
+<span class="sd">    to 0 in these cases. For more discussion, see</span>
+<span class="sd">    https://arxiv.org/abs/0802.2512</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    local_clustering_coefficient</span>
+<span class="sd">    two_node_clustering_coefficient</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    &quot;Clustering Coefficients in Protein Interaction Hypernetworks&quot;</span>
+<span class="sd">    by Suzanne Gallagher and Debra Goldberg.</span>
+<span class="sd">    DOI: 10.1145/2506583.2506635</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; import easygraph as eg</span>
+<span class="sd">    &gt;&gt;&gt; H = eg.random_hypergraph(3, [1, 1])</span>
+<span class="sd">    &gt;&gt;&gt; cc = eg.clustering_coefficient(H)</span>
+<span class="sd">    &gt;&gt;&gt; cc</span>
+<span class="sd">    {0: 1.0, 1: 1.0, 2: 1.0}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">()</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+    <span class="n">denom</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">mat</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()</span> <span class="o">/</span> <span class="n">denom</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">v</span><span class="p">)):</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">r</span></div>
+
+
+<div class="viewcode-block" id="hypergraph_local_clustering_coefficient"><a class="viewcode-back" href="../../../../reference/easygraph.functions.hypergraph.hypergraph_clustering.html#easygraph.functions.hypergraph.hypergraph_clustering.hypergraph_local_clustering_coefficient">[docs]</a><span class="k">def</span> <span class="nf">hypergraph_local_clustering_coefficient</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the local clustering coefficient.</span>
+
+<span class="sd">    This clustering coefficient is based on the</span>
+<span class="sd">    overlap of the edges connected to a given node,</span>
+<span class="sd">    normalized by the size of the node&#39;s neighborhood.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    H : Hypergraph</span>
+<span class="sd">        Hypergraph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        keys are node IDs and values are the</span>
+<span class="sd">        clustering coefficients.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The clustering coefficient is undefined when the number of</span>
+<span class="sd">    neighbors is 0 or 1, but we set the clustering coefficient</span>
+<span class="sd">    to 0 in these cases. For more discussion, see</span>
+<span class="sd">    https://arxiv.org/abs/0802.2512</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    clustering_coefficient</span>
+<span class="sd">    two_node_clustering_coefficient</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    &quot;Properties of metabolic graphs: biological organization or representation</span>
+<span class="sd">    artifacts?&quot;  by Wanding Zhou and Luay Nakhleh.</span>
+<span class="sd">    https://doi.org/10.1186/1471-2105-12-132</span>
+
+<span class="sd">    &quot;Hypergraphs for predicting essential genes using multiprotein complex data&quot;</span>
+<span class="sd">    by Florian Klimm, Charlotte M. Deane, and Gesine Reinert.</span>
+<span class="sd">    https://doi.org/10.1093/comnet/cnaa028</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; import easygraph as eg</span>
+<span class="sd">    &gt;&gt;&gt; H = eg.random_hypergraph(3, [1, 1])</span>
+<span class="sd">    &gt;&gt;&gt; cc = eg.local_clustering_coefficient(H)</span>
+<span class="sd">    &gt;&gt;&gt; cc</span>
+<span class="sd">    {0: 1.0, 1: 1.0, 2: 1.0}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># 节点属于哪些边</span>
+    <span class="n">memberships</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">v</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">memberships</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+    <span class="c1"># 每条边包含哪些节点</span>
+    <span class="n">members</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">v</span><span class="p">:</span>
+        <span class="n">ev</span> <span class="o">=</span> <span class="n">memberships</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">dv</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dv</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">total_eo</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># go over all pairs of edges pairwise</span>
+            <span class="k">for</span> <span class="n">e1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dv</span><span class="p">):</span>
+                <span class="n">edge1</span> <span class="o">=</span> <span class="n">members</span><span class="p">[</span><span class="n">e1</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">e2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">e1</span><span class="p">):</span>
+                    <span class="n">edge2</span> <span class="o">=</span> <span class="n">members</span><span class="p">[</span><span class="n">e2</span><span class="p">]</span>
+                    <span class="c1"># set differences for the hyperedges</span>
+                    <span class="n">D1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">edge1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">edge2</span><span class="p">)</span>
+                    <span class="n">D2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">edge2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">edge1</span><span class="p">)</span>
+                    <span class="c1"># if edges are the same by definition the extra overlap is zero</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">D1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">D2</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">eo</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># otherwise we have to look at their neighbors</span>
+                        <span class="c1"># the neighbors of D1 and D2, respectively.</span>
+                        <span class="n">neighD1</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">D1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">neighbor_of_node</span><span class="p">(</span><span class="n">d</span><span class="p">)}</span>
+                        <span class="n">neighD2</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">D2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">neighbor_of_node</span><span class="p">(</span><span class="n">d</span><span class="p">)}</span>
+                        <span class="c1"># compute extra overlap [len() is used for cardinality of edges]</span>
+                        <span class="n">eo</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="nb">len</span><span class="p">(</span><span class="n">neighD1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">D2</span><span class="p">))</span>
+                            <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighD2</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">D1</span><span class="p">))</span>
+                        <span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span>
+                            <span class="n">D1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">D2</span><span class="p">)</span>
+                        <span class="p">)</span>  <span class="c1"># add it up</span>
+                    <span class="c1"># add it up</span>
+                    <span class="n">total_eo</span> <span class="o">=</span> <span class="n">total_eo</span> <span class="o">+</span> <span class="n">eo</span>
+
+            <span class="c1"># include normalization by degree k*(k-1)/2</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">total_eo</span> <span class="o">/</span> <span class="p">(</span><span class="n">dv</span> <span class="o">*</span> <span class="p">(</span><span class="n">dv</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="hypergraph_two_node_clustering_coefficient"><a class="viewcode-back" href="../../../../reference/easygraph.functions.hypergraph.hypergraph_clustering.html#easygraph.functions.hypergraph.hypergraph_clustering.hypergraph_two_node_clustering_coefficient">[docs]</a><span class="k">def</span> <span class="nf">hypergraph_two_node_clustering_coefficient</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;union&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the clustering coefficients for</span>
+<span class="sd">    each node in a Hypergraph.</span>
+
+<span class="sd">    This definition averages over all of the</span>
+<span class="sd">    two-node clustering coefficients involving the node.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    H : Hypergraph</span>
+<span class="sd">        Hypergraph</span>
+<span class="sd">    kind : string, optional</span>
+<span class="sd">        The type of two node clustering coefficient. Options</span>
+<span class="sd">        are &quot;union&quot;, &quot;max&quot;, and &quot;min&quot;. By default, &quot;union&quot;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        nodes are keys, clustering coefficients are values.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The clustering coefficient is undefined when the number of</span>
+<span class="sd">    neighbors is 0 or 1, but we set the clustering coefficient</span>
+<span class="sd">    to 0 in these cases. For more discussion, see</span>
+<span class="sd">    https://arxiv.org/abs/0802.2512</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    clustering_coefficient</span>
+<span class="sd">    local_clustering_coefficient</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    &quot;Clustering Coefficients in Protein Interaction Hypernetworks&quot;</span>
+<span class="sd">    by Suzanne Gallagher and Debra Goldberg.</span>
+<span class="sd">    DOI: 10.1145/2506583.2506635</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; import easygraph as eg</span>
+<span class="sd">    &gt;&gt;&gt; H = eg.random_hypergraph(3, [1, 1])</span>
+<span class="sd">    &gt;&gt;&gt; cc = eg.two_node_clustering_coefficient(H, kind=&quot;union&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; cc</span>
+<span class="sd">    {0: 0.5, 1: 0.5, 2: 0.5}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">memberships</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">v</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">memberships</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">v</span><span class="p">:</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">neighbor_of_node</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_uv_cc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">memberships</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<span class="k">def</span> <span class="nf">_uv_cc</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">memberships</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;union&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function to compute the two-node</span>
+<span class="sd">    clustering coefficient.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    u : hashable</span>
+<span class="sd">        First node</span>
+<span class="sd">    v : hashable</span>
+<span class="sd">        Second node</span>
+<span class="sd">    memberships : dict</span>
+<span class="sd">        node IDs are keys, edge IDs to which they belong</span>
+<span class="sd">        are values.</span>
+<span class="sd">    kind : str, optional</span>
+<span class="sd">        Type of clustering coefficient to compute, by default &quot;union&quot;.</span>
+<span class="sd">        Options:</span>
+
+<span class="sd">        - &quot;union&quot;</span>
+<span class="sd">        - &quot;max&quot;</span>
+<span class="sd">        - &quot;min&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The clustering coefficient</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    EasyGraphError</span>
+<span class="sd">        If an invalid clustering coefficient kind</span>
+<span class="sd">        is specified.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    &quot;Clustering Coefficients in Protein Interaction Hypernetworks&quot;</span>
+<span class="sd">    by Suzanne Gallagher and Debra Goldberg.</span>
+<span class="sd">    DOI: 10.1145/2506583.2506635</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m_u</span> <span class="o">=</span> <span class="n">memberships</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+    <span class="n">m_v</span> <span class="o">=</span> <span class="n">memberships</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m_u</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">m_v</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;union&quot;</span><span class="p">:</span>
+        <span class="n">denom</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m_u</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">m_v</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
+        <span class="n">denom</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m_u</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">m_v</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
+        <span class="n">denom</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m_u</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">m_v</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">EasyGraphError</span><span class="p">(</span><span class="s2">&quot;Invalid kind of clustering.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">denom</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">return</span> <span class="n">num</span> <span class="o">/</span> <span class="n">denom</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2025, DataNET Group, Fudan University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

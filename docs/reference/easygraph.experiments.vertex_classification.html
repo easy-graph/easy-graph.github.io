@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 
 
@@ -7,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>easygraph.experiments.vertex_classification module &#8212; EasyGraph 1.4.1</title>
   
@@ -15,35 +14,34 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=17704a4c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/copybutton.js?v=e333d19b"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/easygraph.experiments.vertex_classification';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -51,7 +49,6 @@
     <link rel="prev" title="easygraph.experiments.base module" href="easygraph.experiments.base.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -59,16 +56,32 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -76,6 +89,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -83,27 +97,20 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
+</form></div>
+  </div>
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
     <span class="fa-solid fa-bars"></span>
-  </button>
+  </label>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -118,7 +125,7 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="EasyGraph 1.4.1 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
   
   
 </a></div>
@@ -130,92 +137,96 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav>
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../install.html">
-    Installation
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../example.html">
-    Examples of Graph Analysis
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../hypergraph.html">
-    EasyHypergraph
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../eggpu.html">
-    EGGPU
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../reference.html">
-    Reference
-  </a>
-</li>
-
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-    Tutorial
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
 
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-    Contributor Guide
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
+                        License
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
 
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../license.html">
-    License
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
 
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-    Source Code
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-    Honors
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-    Developer Documentation
-  </a>
-</li>
-
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
                 </ul>
             </li>
             
@@ -230,15 +241,19 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button>
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
-        <div class="navbar-item"><ul class="navbar-icon-links"
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -251,7 +266,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -263,31 +278,31 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button>
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
       <span class="fa-solid fa-outdent"></span>
-    </button>
+    </label>
   
 </div>
 
-    </header>
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -296,91 +311,102 @@
     
       <div class="sidebar-header-items__center">
         
-          
-          
-            <div class="navbar-item">
-<nav>
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../install.html">
-    Installation
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../example.html">
-    Examples of Graph Analysis
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../hypergraph.html">
-    EasyHypergraph
-  </a>
-</li>
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../eggpu.html">
-    EGGPU
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
+                        License
+                      </a>
+                    </li>
+                
 
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../reference.html">
-    Reference
-  </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../tutorial.html">
-    Tutorial
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../contributorGuide.html">
-    Contributor Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../license.html">
-    License
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../sourcecode.html">
-    Source Code
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../honors.html">
-    Honors
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../dev.html">
-    Developer Documentation
-  </a>
-</li>
-
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
-          
         
       </div>
     
@@ -388,7 +414,7 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item"><ul class="navbar-icon-links"
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -401,7 +427,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -425,32 +451,31 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-<nav aria-label="Breadcrumb" class="d-print-none">
+
+
+
+
+<nav aria-label="Breadcrumb">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -462,15 +487,12 @@
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">easygraph</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="easygraph.html" class="nav-link">easygraph package</a></li>
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
     
     
     <li class="breadcrumb-item"><a href="easygraph.experiments.html" class="nav-link">easygraph.experiments package</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">easygraph.experiments.vertex_classification module</span></li>
+    <li class="breadcrumb-item active" aria-current="page">easygraph.ex...</li>
   </ul>
 </nav>
 </div>
@@ -485,10 +507,148 @@
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section id="easygraph-experiments-vertex-classification-module">
-<span id="module-easygraph-experiments-vertex-classification"></span><h1>easygraph.experiments.vertex_classification module<a class="headerlink" href="#easygraph-experiments-vertex-classification-module" title="Permalink to this heading">#</a></h1>
+  <section id="module-easygraph.experiments.vertex_classification">
+<span id="easygraph-experiments-vertex-classification-module"></span><span id="module-easygraph-experiments-vertex-classification"></span><h1>easygraph.experiments.vertex_classification module<a class="headerlink" href="#module-easygraph.experiments.vertex_classification" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.experiments.vertex_classification.</span></span><span class="sig-name descname"><span class="pre">VertexClassificationTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="easygraph.ml_metrics.base.html#easygraph.ml_metrics.base.BaseEvaluator" title="easygraph.ml_metrics.base.BaseEvaluator"><span class="pre">BaseEvaluator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structure_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">study_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/experiments/vertex_classification.html#VertexClassificationTask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="easygraph.experiments.base.html#easygraph.experiments.base.BaseTask" title="easygraph.experiments.base.BaseTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTask</span></code></a></p>
+<p>The auto-experiment class for the vertex classification task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>work_root</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[Union[str,</span> <span class="pre">Path]]</span></code>) – User’s work root to store all studies.</p></li>
+<li><p><strong>data</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) – The dictionary to store input data that used in the experiment.</p></li>
+<li><p><strong>model_builder</strong> (<code class="docutils literal notranslate"><span class="pre">Callable</span></code>) – The function to build a model with a fixed parameter <code class="docutils literal notranslate"><span class="pre">trial</span></code>.</p></li>
+<li><p><strong>train_builder</strong> (<code class="docutils literal notranslate"><span class="pre">Callable</span></code>) – The function to build a training configuration with two fixed parameters <code class="docutils literal notranslate"><span class="pre">trial</span></code> and <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p></li>
+<li><p><strong>evaluator</strong> (<code class="docutils literal notranslate"><span class="pre">eg.ml_metrics.BaseEvaluator</span></code>) – The DHG evaluator object to evaluate performance of the model in the experiment.</p></li>
+<li><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>) – The target device to run the experiment.</p></li>
+<li><p><strong>structure_builder</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[Callable]</span></code>) – The function to build a structure with a fixed parameter <code class="docutils literal notranslate"><span class="pre">trial</span></code>. The structure can be <code class="docutils literal notranslate"><span class="pre">eg.Hypergraph</span></code>.</p></li>
+<li><p><strong>study_name</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[str]</span></code>) – The name of this study. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the study name will be generated automatically according to current time. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>overwrite</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – The flag that whether to overwrite the existing study. Different studies are identified by the <code class="docutils literal notranslate"><span class="pre">study_name</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.vars_for_DL" title="easygraph.experiments.vertex_classification.VertexClassificationTask.vars_for_DL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vars_for_DL</span></code></a></dt><dd><p>Return a name list for available variables for deep learning in the vertex classification task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.experiment" title="easygraph.experiments.vertex_classification.VertexClassificationTask.experiment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">experiment</span></code></a>(trial)</p></td>
+<td><p>Run the experiment for a given trial.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.run" title="easygraph.experiments.vertex_classification.VertexClassificationTask.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(max_epoch[, num_trials, direction])</p></td>
+<td><p>Run experiments with automatically hyper-parameter tuning.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.test" title="easygraph.experiments.vertex_classification.VertexClassificationTask.test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test</span></code></a>([data, model])</p></td>
+<td><p>Test the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.to" title="easygraph.experiments.vertex_classification.VertexClassificationTask.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></a>(device)</p></td>
+<td><p>Move the input data to the target device.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.train" title="easygraph.experiments.vertex_classification.VertexClassificationTask.train"><code class="xref py py-obj docutils literal notranslate"><span class="pre">train</span></code></a>(data, model, optimizer, criterion)</p></td>
+<td><p>Train model for one epoch.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.validate" title="easygraph.experiments.vertex_classification.VertexClassificationTask.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a>(data, model)</p></td>
+<td><p>Validate the model.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask.experiment">
+<span class="sig-name descname"><span class="pre">experiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Trial</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/experiments/vertex_classification.html#VertexClassificationTask.experiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.experiment" title="Permalink to this definition">#</a></dt>
+<dd><p>Run the experiment for a given trial.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>trial</strong> (<code class="docutils literal notranslate"><span class="pre">optuna.Trial</span></code>) – The <code class="docutils literal notranslate"><span class="pre">optuna.Trial</span></code> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_epoch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_trials</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'maximize'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/experiments/vertex_classification.html#VertexClassificationTask.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.run" title="Permalink to this definition">#</a></dt>
+<dd><p>Run experiments with automatically hyper-parameter tuning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_epoch</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The maximum number of epochs to train for each experiment.</p></li>
+<li><p><strong>num_trials</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The number of trials to run. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p><strong>direction</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The direction to optimize. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;maximize&quot;</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask.test">
+<span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/experiments/vertex_classification.html#VertexClassificationTask.test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.test" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>, optional) – The input data if set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the specified <code class="docutils literal notranslate"><span class="pre">data</span></code> in the initialization of the experiments will be used. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>model</strong> (<code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>, optional) – The model if set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the trained best model will be used. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/experiments/vertex_classification.html#VertexClassificationTask.to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.to" title="Permalink to this definition">#</a></dt>
+<dd><p>Move the input data to the target device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>) – The specified target device to store the input data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/experiments/vertex_classification.html#VertexClassificationTask.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.train" title="Permalink to this definition">#</a></dt>
+<dd><p>Train model for one epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) – The input data.</p></li>
+<li><p><strong>model</strong> (<code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>) – The model.</p></li>
+<li><p><strong>optimizer</strong> (<code class="docutils literal notranslate"><span class="pre">torch.optim.Optimizer</span></code>) – The model optimizer.</p></li>
+<li><p><strong>criterion</strong> (<code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>) – The loss function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/experiments/vertex_classification.html#VertexClassificationTask.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.validate" title="Permalink to this definition">#</a></dt>
+<dd><p>Validate the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) – The input data.</p></li>
+<li><p><strong>model</strong> (<code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>) – The model.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="easygraph.experiments.vertex_classification.VertexClassificationTask.vars_for_DL">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vars_for_DL</span></span><a class="headerlink" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.vars_for_DL" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a name list for available variables for deep learning in the vertex classification task. The name list includes <code class="docutils literal notranslate"><span class="pre">features</span></code>, <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">labels</span></code>, <code class="docutils literal notranslate"><span class="pre">train_mask</span></code>, <code class="docutils literal notranslate"><span class="pre">val_mask</span></code>, and <code class="docutils literal notranslate"><span class="pre">test_mask</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -498,7 +658,7 @@
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -526,18 +686,36 @@
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/reference/easygraph.experiments.vertex_classification.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.experiment"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask.experiment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.run"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.test"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask.test()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.to"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask.to()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.train"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask.train()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.validate"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask.validate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.experiments.vertex_classification.VertexClassificationTask.vars_for_DL"><code class="docutils literal notranslate"><span class="pre">VertexClassificationTask.vars_for_DL</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/reference/easygraph.experiments.vertex_classification.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
 
 </div></div>
               
@@ -552,8 +730,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -573,7 +751,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     <br/>
   </p>
 </div>
@@ -586,8 +764,7 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
 </p></div>
       
     </div>

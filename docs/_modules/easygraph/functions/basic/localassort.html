@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>easygraph.functions.basic.localassort &#8212; EasyGraph 1.4.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=538c3502" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=17704a4c"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/functions/basic/localassort';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../example.html">
+                        Examples of Graph Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../hypergraph.html">
+                        EasyHypergraph
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../eggpu.html">
+                        EGGPU
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../tutorial.html">
+                        Tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../contributorGuide.html">
+                        Contributor Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../license.html">
+                        License
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../sourcecode.html">
+                        Source Code
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../honors.html">
+                        Honors
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../dev.html">
+                        Developer Documentation
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">easygraph.fu...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for easygraph.functions.basic.localassort</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sparse</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;localAssort&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="localAssort"><a class="viewcode-back" href="../../../../reference/easygraph.functions.basic.localassort.html#easygraph.functions.basic.localassort.localAssort">[docs]</a><span class="k">def</span> <span class="nf">localAssort</span><span class="p">(</span>
+    <span class="n">edgelist</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">undir</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">missingValue</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the multiscale assortativity.</span>
+<span class="sd">    You must ensure that the node index and node attribute index start from 0</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    edgelist : array_like</span>
+<span class="sd">        the network represented as an edge list,</span>
+<span class="sd">        i.e., a E x 2 array of node pairs</span>
+<span class="sd">    node_attr : array_like</span>
+<span class="sd">        n length array of node attribute values</span>
+<span class="sd">    pr : array, optional</span>
+<span class="sd">        array of one minus restart probabilities for the random walk in</span>
+<span class="sd">        calculating the personalised pagerank. The largest of these values</span>
+<span class="sd">        determines the accuracy of the TotalRank vector max(pr) -&gt; 1 is more</span>
+<span class="sd">        accurate (default: [0, .1, .2, .3, .4, .5, .6, .7, .8, .9])</span>
+<span class="sd">    undir : bool, optional</span>
+<span class="sd">        indicate if network is undirected (default: True)</span>
+<span class="sd">    missingValue : int, optional</span>
+<span class="sd">        token to indicate missing attribute values (default: -1)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    assortM : array_like</span>
+<span class="sd">        n x len(pr) array of local assortativities, each column corresponds to</span>
+<span class="sd">        a value of the input restart probabilities, pr. Note if only number of</span>
+<span class="sd">        restart probabilties is greater than one (i.e., len(pr) &gt; 1).</span>
+<span class="sd">    assortT : array_like</span>
+<span class="sd">        n length array of multiscale assortativities</span>
+<span class="sd">    Z : array_like</span>
+<span class="sd">        N length array of per-node confidence scores</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    For full details see [1]_</span>
+<span class="sd">    .. [1] Peel, L., Delvenne, J. C., &amp; Lambiotte, R. (2018). &quot;Multiscale</span>
+<span class="sd">        mixing patterns in networks.&#39; PNAS, 115(16), 4057-4062.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># number of nodes</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_attr</span><span class="p">)</span>
+
+    <span class="c1"># number of nodes with complete attribute</span>
+    <span class="n">ncomp</span> <span class="o">=</span> <span class="p">(</span><span class="n">node_attr</span> <span class="o">!=</span> <span class="n">missingValue</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="c1"># number of edges</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">edgelist</span><span class="p">)</span>
+    <span class="c1"># construct adjacency matrix and calculate degree sequence</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">degree</span> <span class="o">=</span> <span class="n">createA</span><span class="p">(</span><span class="n">edgelist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">undir</span><span class="p">)</span>
+
+    <span class="c1"># construct diagonal inverse degree matrix</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">diags</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">degree</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;csc&quot;</span><span class="p">)</span>
+
+    <span class="c1"># construct transition matrix (row normalised adjacency matrix)</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">D</span> <span class="o">@</span> <span class="n">A</span>
+
+    <span class="c1"># number of distinct node categories</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">node_attr</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">ncomp</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="c1"># calculate node weights for how &quot;complete&quot; the</span>
+    <span class="c1"># metadata is around the node</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">Z</span><span class="p">[</span><span class="n">node_attr</span> <span class="o">==</span> <span class="n">missingValue</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="n">Z</span> <span class="o">=</span> <span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">Z</span><span class="p">)</span> <span class="o">/</span> <span class="n">degree</span>
+
+    <span class="c1"># indicator array if node has attribute data (or missing)</span>
+    <span class="n">hasAttribute</span> <span class="o">=</span> <span class="n">node_attr</span> <span class="o">!=</span> <span class="n">missingValue</span>
+
+    <span class="c1"># calculate global expected values</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">ncomp</span><span class="p">)</span>
+
+    <span class="n">yi</span> <span class="o">=</span> <span class="p">(</span><span class="n">hasAttribute</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">yj</span> <span class="o">=</span> <span class="n">node_attr</span><span class="p">[</span><span class="n">hasAttribute</span><span class="p">]</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">((</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="n">yi</span><span class="p">,</span> <span class="n">yj</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+    <span class="n">eij_glob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">Y</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+
+    <span class="n">eij_glob</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eij_glob</span><span class="p">)</span>
+
+    <span class="n">ab_glob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eij_glob</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">eij_glob</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="c1"># initialise outputs</span>
+    <span class="n">assortM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pr</span><span class="p">)))</span>
+    <span class="n">assortT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">WY</span> <span class="o">=</span> <span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">Y</span><span class="p">)</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">pis</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">it</span> <span class="o">=</span> <span class="n">calculateRWRrange</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">pri</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pr</span><span class="p">):</span>
+                <span class="n">pi</span> <span class="o">=</span> <span class="n">pis</span><span class="p">[:,</span> <span class="n">ii</span><span class="p">]</span>
+
+                <span class="n">YPI</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="n">pi</span><span class="p">[</span><span class="n">hasAttribute</span><span class="p">],</span>
+                        <span class="p">(</span><span class="n">node_attr</span><span class="p">[</span><span class="n">hasAttribute</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="n">hasAttribute</span><span class="p">]),</span>
+                    <span class="p">),</span>
+                    <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+                <span class="n">trace_e</span> <span class="o">=</span> <span class="p">(</span><span class="n">YPI</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">WY</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+                <span class="n">assortM</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">trace_e</span>
+        <span class="n">YPI</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">ti</span><span class="p">[</span><span class="n">hasAttribute</span><span class="p">],</span> <span class="p">(</span><span class="n">node_attr</span><span class="p">[</span><span class="n">hasAttribute</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="n">hasAttribute</span><span class="p">])),</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+        <span class="n">e_gh</span> <span class="o">=</span> <span class="p">(</span><span class="n">YPI</span> <span class="o">@</span> <span class="n">WY</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+        <span class="n">e_gh_sum</span> <span class="o">=</span> <span class="n">e_gh</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_gh_sum</span>
+        <span class="n">e_gh</span> <span class="o">/=</span> <span class="n">e_gh_sum</span>
+        <span class="n">trace_e</span> <span class="o">=</span> <span class="n">e_gh</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+        <span class="n">assortT</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">trace_e</span>
+
+    <span class="n">assortT</span> <span class="o">-=</span> <span class="n">ab_glob</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">assortT</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">ab_glob</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">assortT</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">ab_glob</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">assortM</span> <span class="o">-=</span> <span class="n">ab_glob</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">assortM</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">ab_glob</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">assortM</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">ab_glob</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">assortM</span><span class="p">,</span> <span class="n">assortT</span><span class="p">,</span> <span class="n">Z</span>
+    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="n">assortT</span><span class="p">,</span> <span class="n">Z</span></div>
+
+
+<span class="k">def</span> <span class="nf">createA</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">undir</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create adjacency matrix and degree sequence.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">undir</span><span class="p">:</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">E</span><span class="p">:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">A</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="n">degree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">degree</span>
+
+
+<span class="k">def</span> <span class="nf">calculateRWRrange</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">alphas</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the personalised TotalRank and personalised PageRank vectors.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    W : array_like</span>
+<span class="sd">        transition matrix (row normalised adjacency matrix)</span>
+<span class="sd">    i : int</span>
+<span class="sd">        index of the personalisation node</span>
+<span class="sd">    alphas : array_like</span>
+<span class="sd">        array of (1 - restart probabilties)</span>
+<span class="sd">    n : int</span>
+<span class="sd">        number of nodes in the network</span>
+<span class="sd">    maxIter : int, optional</span>
+<span class="sd">        maximum number of interations (default: 1000)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pPageRank_all : array_like</span>
+<span class="sd">        personalised PageRank for all input alpha values (only calculated if</span>
+<span class="sd">        more than one alpha given as input, i.e., len(alphas) &gt; 1)</span>
+<span class="sd">    pTotalRank : array_like</span>
+<span class="sd">        personalised TotalRank (personalised PageRank with alpha integrated</span>
+<span class="sd">        out)</span>
+
+<span class="sd">    it : int</span>
+<span class="sd">        number of iterations</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    See [2]_ and [3]_ for further details.</span>
+<span class="sd">    .. [2] Boldi, P. (2005). &quot;TotalRank: Ranking without damping.&quot; In Special</span>
+<span class="sd">        interest tracks and posters of the 14th international conference on</span>
+<span class="sd">        World Wide Web (pp. 898-899).</span>
+<span class="sd">    .. [3] Boldi, P., Santini, M., &amp; Vigna, S. (2007). &quot;A deeper investigation</span>
+<span class="sd">        of PageRank as a function of the damping factor.&quot; In Dagstuhl Seminar</span>
+<span class="sd">        Proceedings. Schloss Dagstuhl-Leibniz-Zentrum für Informatik.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">alpha0</span> <span class="o">=</span> <span class="n">alphas</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">WT</span> <span class="o">=</span> <span class="n">alpha0</span> <span class="o">*</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># initialise PageRank vectors</span>
+    <span class="n">pPageRank</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">pPageRank_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)))</span>
+    <span class="n">pPageRank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">pPageRank_all</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">pPageRank_old</span> <span class="o">=</span> <span class="n">pPageRank</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">pTotalRank</span> <span class="o">=</span> <span class="n">pPageRank</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">oneminusalpha0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">alpha0</span>
+
+    <span class="k">while</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mf">1e-9</span><span class="p">:</span>
+        <span class="c1"># calculate personalised PageRank via power iteration</span>
+        <span class="n">pPageRank</span> <span class="o">=</span> <span class="n">WT</span> <span class="o">@</span> <span class="n">pPageRank</span>
+        <span class="n">pPageRank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">oneminusalpha0</span>
+        <span class="c1"># calculate difference in pPageRank from previous iteration</span>
+        <span class="n">delta_pPageRank</span> <span class="o">=</span> <span class="n">pPageRank</span> <span class="o">-</span> <span class="n">pPageRank_old</span>
+        <span class="c1"># Eq. [S23] Ref. [1]</span>
+        <span class="n">pTotalRank</span> <span class="o">+=</span> <span class="p">(</span><span class="n">delta_pPageRank</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">alpha0</span><span class="o">**</span><span class="n">it</span><span class="p">))</span>
+        <span class="c1"># only calculate personalised pageranks if more than one alpha</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">pPageRank_all</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">((</span><span class="n">delta_pPageRank</span><span class="p">),</span> <span class="p">(</span><span class="n">alphas</span> <span class="o">/</span> <span class="n">alpha0</span><span class="p">)</span> <span class="o">**</span> <span class="n">it</span><span class="p">)</span>
+
+        <span class="c1"># calculate convergence criteria</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">delta_pPageRank</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+        <span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">it</span> <span class="o">&gt;</span> <span class="n">maxIter</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;max iterations exceeded&quot;</span><span class="p">)</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pPageRank_old</span> <span class="o">=</span> <span class="n">pPageRank</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">pPageRank_all</span><span class="p">,</span> <span class="n">pTotalRank</span><span class="p">,</span> <span class="n">it</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2025, DataNET Group, Fudan University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
