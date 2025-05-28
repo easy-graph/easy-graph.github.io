@@ -37,14 +37,13 @@ parallel computing and Python/C++ hybrid programming techniques to achieve high 
    eggpu.rst
    reference.rst
    tutorial.rst
-   videos.rst
+   colabs_videos.rst
    contributorGuide.rst
    license.rst
    sourcecode.rst
    honors.rst
-
-
    dev.rst
+
 ..    :maxdepth: 1
 ..    egeps.rst
    aboutus.rst
