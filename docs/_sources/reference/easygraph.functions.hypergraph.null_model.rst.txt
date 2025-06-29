@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.hypergraph.null_model:
-
 easygraph.functions.hypergraph.null\_model package
 ==================================================
 

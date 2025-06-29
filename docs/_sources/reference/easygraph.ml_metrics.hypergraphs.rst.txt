@@ -1,5 +1,3 @@
-.. _module_easygraph.ml_metrics.hypergraphs:
-
 easygraph.ml\_metrics.hypergraphs package
 =========================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.hypergraph.centrality.degree:
-
 easygraph.functions.hypergraph.centrality.degree module
 =======================================================
 

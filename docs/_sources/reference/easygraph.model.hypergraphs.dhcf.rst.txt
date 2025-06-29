@@ -1,5 +1,3 @@
-.. _module_easygraph.model.hypergraphs.dhcf:
-
 easygraph.model.hypergraphs.dhcf module
 =======================================
 

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -6,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>easygraph.classes.graph module &#8212; EasyGraph 1.4.1</title>
   
@@ -14,34 +15,35 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=17704a4c"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/easygraph.classes.graph';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -50,6 +52,7 @@
     <link rel="prev" title="easygraph.classes.directed_multigraph module" href="easygraph.classes.directed_multigraph.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -57,32 +60,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -90,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -98,20 +84,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -126,7 +119,7 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="EasyGraph 1.4.1 - Home"/>
   
   
 </a></div>
@@ -138,96 +131,99 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
+
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -242,19 +238,15 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -267,7 +259,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -279,31 +271,31 @@
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -312,102 +304,98 @@
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
-                </ul>
-            </li>
-            
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -415,7 +403,7 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -428,7 +416,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -452,31 +440,32 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -488,12 +477,15 @@
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">easygraph</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="easygraph.html" class="nav-link">easygraph package</a></li>
     
     
     <li class="breadcrumb-item"><a href="easygraph.classes.html" class="nav-link">easygraph.classes package</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">easygraph.cl...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">easygraph.classes.graph module</span></li>
   </ul>
 </nav>
 </div>
@@ -508,10 +500,10 @@
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="module-easygraph.classes.graph">
-<span id="easygraph-classes-graph-module"></span><span id="module-easygraph-classes-graph"></span><h1>easygraph.classes.graph module<a class="headerlink" href="#module-easygraph.classes.graph" title="Permalink to this heading">#</a></h1>
+<span id="easygraph-classes-graph-module"></span><h1>easygraph.classes.graph module<a class="headerlink" href="#module-easygraph.classes.graph" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_selfloop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">graph_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph" title="Permalink to this definition">#</a></dt>
@@ -556,196 +548,6 @@ Edges are stored as Python dict type, with optional key/value attributes.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.A" title="easygraph.classes.graph.Graph.A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">A</span></code></a></dt><dd><p>Return the adjacency matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> of the sample graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.D_v" title="easygraph.classes.graph.Graph.D_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v</span></code></a></dt><dd><p>Return the diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.D_v_neg_1_2" title="easygraph.classes.graph.Graph.D_v_neg_1_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v_neg_1_2</span></code></a></dt><dd><p>Return the normalized diagonal matrix of vertex degree <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-\frac{1}{2}}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.L_GCN" title="easygraph.classes.graph.Graph.L_GCN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_GCN</span></code></a></dt><dd><p>Return the GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span> of the graph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.adj" title="easygraph.classes.graph.Graph.adj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adj</span></code></a></dt><dd><p>Return the adjacency matrix</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.e" title="easygraph.classes.graph.Graph.e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e</span></code></a></dt><dd><p>Return the edge list, weight list and property list in the graph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.e_both_side" title="easygraph.classes.graph.Graph.e_both_side"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_both_side</span></code></a></dt><dd><p>Return the list of edges including both directions.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.edges" title="easygraph.classes.graph.Graph.edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code></a></dt><dd><p>Return an edge list</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.index2node" title="easygraph.classes.graph.Graph.index2node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index2node</span></code></a></dt><dd><p>Assign an integer index for each node (start from 0)</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.name" title="easygraph.classes.graph.Graph.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></dt><dd><p>String identifier of the graph.</p>
-</dd>
-<dt><strong>ndata</strong></dt><dd></dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.node_index" title="easygraph.classes.graph.Graph.node_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index</span></code></a></dt><dd><p>Assign an integer index for each node (start from 0)</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.graph.Graph.nodes" title="easygraph.classes.graph.Graph.nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes</span></code></a></dt><dd><p>return [node for node in self._node]</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edge" title="easygraph.classes.graph.Graph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(u_of_edge, v_of_edge, **edge_attr)</p></td>
-<td><p>Add one edge.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges" title="easygraph.classes.graph.Graph.add_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges</span></code></a>(edges_for_adding[, edges_attr])</p></td>
-<td><p>Add a list of edges.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges_from" title="easygraph.classes.graph.Graph.add_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from</span></code></a>(ebunch_to_add, **attr)</p></td>
-<td><p>Add all the edges in ebunch_to_add.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_edges_from_file" title="easygraph.classes.graph.Graph.add_edges_from_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from_file</span></code></a>(file[, weighted])</p></td>
-<td><p>Added edges from file For example, txt files,</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_extra_selfloop" title="easygraph.classes.graph.Graph.add_extra_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_extra_selfloop</span></code></a>()</p></td>
-<td><p>Add extra selfloops to the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_node" title="easygraph.classes.graph.Graph.add_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code></a>(node_for_adding, **node_attr)</p></td>
-<td><p>Add one node</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_nodes" title="easygraph.classes.graph.Graph.add_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code></a>(nodes_for_adding[, nodes_attr])</p></td>
-<td><p>Add nodes with a list of nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_nodes_from" title="easygraph.classes.graph.Graph.add_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_from</span></code></a>(nodes_for_adding, **attr)</p></td>
-<td><p>Add multiple nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_weighted_edge" title="easygraph.classes.graph.Graph.add_weighted_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edge</span></code></a>(u_of_edge, v_of_edge, weight)</p></td>
-<td><p>Add a weighted edge</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.add_weighted_edges_from" title="easygraph.classes.graph.Graph.add_weighted_edges_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edges_from</span></code></a>(ebunch_to_add[, weight])</p></td>
-<td><p>Add weighted edges in <cite>ebunch_to_add</cite> with specified weight attr</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.adjlist_inner_dict_factory" title="easygraph.classes.graph.Graph.adjlist_inner_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjlist_inner_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.adjlist_outer_dict_factory" title="easygraph.classes.graph.Graph.adjlist_outer_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjlist_outer_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.all_neighbors" title="easygraph.classes.graph.Graph.all_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_neighbors</span></code></a>(node)</p></td>
-<td><p>Returns an iterator of a node's neighbors.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.clone" title="easygraph.classes.graph.Graph.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
-<td><p>Clone the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.copy" title="easygraph.classes.graph.Graph.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
-<td><p>Return a deep copy of the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.degree" title="easygraph.classes.graph.Graph.degree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degree</span></code></a>([weight])</p></td>
-<td><p>Returns the weighted degree of of each node.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.edge_attr_dict_factory" title="easygraph.classes.graph.Graph.edge_attr_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_attr_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.ego_subgraph" title="easygraph.classes.graph.Graph.ego_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ego_subgraph</span></code></a>(center)</p></td>
-<td><p>Returns an ego network graph of a node.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory" title="easygraph.classes.graph.Graph.gnn_data_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gnn_data_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.graph_attr_dict_factory" title="easygraph.classes.graph.Graph.graph_attr_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_attr_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.has_edge" title="easygraph.classes.graph.Graph.has_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code></a>(u, v)</p></td>
-<td><p>Returns whether an edge exists</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.has_node" title="easygraph.classes.graph.Graph.has_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code></a>(node)</p></td>
-<td><p>Returns whether a node exists</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.is_directed" title="easygraph.classes.graph.Graph.is_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code></a>()</p></td>
-<td><p>Returns True if graph is a directed_graph, False otherwise.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.is_multigraph" title="easygraph.classes.graph.Graph.is_multigraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code></a>()</p></td>
-<td><p>Returns True if graph is a multigraph, False otherwise.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nbr_v" title="easygraph.classes.graph.Graph.nbr_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbr_v</span></code></a>(v_idx)</p></td>
-<td><p>Return a vertex list of the neighbors of the vertex <code class="docutils literal notranslate"><span class="pre">v_idx</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nbunch_iter" title="easygraph.classes.graph.Graph.nbunch_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code></a>([nbunch])</p></td>
-<td><p>Returns an iterator over nodes contained in nbunch that are also in the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.neighbors" title="easygraph.classes.graph.Graph.neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code></a>(node)</p></td>
-<td><p>Returns an iterator of a node's neighbors.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_attr_dict_factory" title="easygraph.classes.graph.Graph.node_attr_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_attr_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_dict_factory" title="easygraph.classes.graph.Graph.node_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.node_index_dict" title="easygraph.classes.graph.Graph.node_index_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_index_dict</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.nodes_subgraph" title="easygraph.classes.graph.Graph.nodes_subgraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code></a>(from_nodes)</p></td>
-<td><p>Returns a subgraph of some nodes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_edges" title="easygraph.classes.graph.Graph.number_of_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code></a>([u, v])</p></td>
-<td><p>Returns the number of edges between two nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.number_of_nodes" title="easygraph.classes.graph.Graph.number_of_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code></a>()</p></td>
-<td><p>Returns the number of nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.order" title="easygraph.classes.graph.Graph.order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code></a>()</p></td>
-<td><p>Returns the number of nodes in the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.raw_selfloop_dict" title="easygraph.classes.graph.Graph.raw_selfloop_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_selfloop_dict</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edge" title="easygraph.classes.graph.Graph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(u, v)</p></td>
-<td><p>Remove one edge from your graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_edges" title="easygraph.classes.graph.Graph.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code></a>(edges_to_remove)</p></td>
-<td><p>Remove a list of edges from your graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_extra_selfloop" title="easygraph.classes.graph.Graph.remove_extra_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_extra_selfloop</span></code></a>()</p></td>
-<td><p>Remove extra selfloops from the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_node" title="easygraph.classes.graph.Graph.remove_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code></a>(node_to_remove)</p></td>
-<td><p>Remove one node from your graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes" title="easygraph.classes.graph.Graph.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code></a>(nodes_to_remove)</p></td>
-<td><p>Remove nodes from your graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_nodes_from" title="easygraph.classes.graph.Graph.remove_nodes_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code></a>(nodes)</p></td>
-<td><p>Remove multiple nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.remove_selfloop" title="easygraph.classes.graph.Graph.remove_selfloop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_selfloop</span></code></a>()</p></td>
-<td><p>Remove all selfloops from the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.size" title="easygraph.classes.graph.Graph.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a>([weight])</p></td>
-<td><p>Returns the number of edges or total of all edge weights.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.smoothing_with_GCN" title="easygraph.classes.graph.Graph.smoothing_with_GCN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_GCN</span></code></a>(X[, drop_rate])</p></td>
-<td><p>Return the smoothed feature matrix with GCN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{GCN}\)</span>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed" title="easygraph.classes.graph.Graph.to_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code></a>()</p></td>
-<td><p>Creates and returns a directed graph from self.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_directed_class" title="easygraph.classes.graph.Graph.to_directed_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code></a>()</p></td>
-<td><p>Returns the class to use for empty directed copies.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.graph.Graph.to_index_node_graph" title="easygraph.classes.graph.Graph.to_index_node_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code></a>([begin_index])</p></td>
-<td><p>Returns a deep copy of graph, with each node switched to its index.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>N_v</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>cpp</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>from_hypergraph_hypergcn</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.A">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.A" title="Permalink to this definition">#</a></dt>
@@ -1249,11 +1051,6 @@ are stored.</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="easygraph.classes.graph.Graph.from_hypergraph_hypergcn">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_hypergraph_hypergcn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hypergraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_mediator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_selfloop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#Graph.from_hypergraph_hypergcn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.Graph.from_hypergraph_hypergcn" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.Graph.gnn_data_dict_factory">
 <span class="sig-name descname"><span class="pre">gnn_data_dict_factory</span></span><a class="headerlink" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory" title="Permalink to this definition">#</a></dt>
@@ -1361,7 +1158,7 @@ If nbunch is None, iterate over all nodes in the graph.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="easygraph.exception.html#easygraph.exception.EasyGraphError" title="easygraph.exception.EasyGraphError"><strong>EasyGraphError</strong></a> – If nbunch is not a node or sequence of nodes.
-If a node in nbunch is not hashable.</p>
+    If a node in nbunch is not hashable.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1819,110 +1616,6 @@ as well as node-to-index dictionary.</p>
 <dt class="sig sig-object py" id="easygraph.classes.graph.GraphC">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.graph.</span></span><span class="sig-name descname"><span class="pre">GraphC</span></span><a class="reference internal" href="../_modules/easygraph/classes/graph.html#GraphC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.graph.GraphC" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>adj</strong></dt><dd></dd>
-<dt><strong>edges</strong></dt><dd></dd>
-<dt><strong>graph</strong></dt><dd></dd>
-<dt><strong>name</strong></dt><dd></dd>
-<dt><strong>node_index</strong></dt><dd></dd>
-<dt><strong>nodes</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code>(*args, **kwargs)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges</span></code>(self, edges_for_adding[, edges_attr])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from</span></code>(*args, **kwargs)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from_file</span></code>(self, file[, weighted, ...])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code>(*args, **kwargs)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code>(self, nodes_for_adding[, nodes_attr])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_from</span></code>(*args, **kwargs)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edge</span></code>(self, u_of_edge, ...)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_neighbors</span></code>(self, node)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">degree</span></code>(self[, weight])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ego_subgraph</span></code>(self, center)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_linkgraph</span></code>(self[, weight])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code>(self, u, y)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code>(self, node)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code>(self[, nbunch])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code>(self, node)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_subgraph</span></code>(self, from_nodes)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>(self[, u, v])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">py</span></code>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code>(self, u, v)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges</span></code>(self, edges_to_remove)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(self, node_to_remove)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes</span></code>(self, nodes_to_remove)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>(self[, weight])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_index_node_graph</span></code>(self[, begin_index])</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="easygraph.classes.graph.GraphC.cflag">
 <span class="sig-name descname"><span class="pre">cflag</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#easygraph.classes.graph.GraphC.cflag" title="Permalink to this definition">#</a></dt>
@@ -1939,7 +1632,7 @@ as well as node-to-index dictionary.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1967,14 +1660,17 @@ as well as node-to-index dictionary.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.A"><code class="docutils literal notranslate"><span class="pre">Graph.A</span></code></a></li>
@@ -2005,7 +1701,6 @@ as well as node-to-index dictionary.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.edge_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.edge_attr_dict_factory</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.edges"><code class="docutils literal notranslate"><span class="pre">Graph.edges</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.ego_subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.ego_subgraph()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.from_hypergraph_hypergcn"><code class="docutils literal notranslate"><span class="pre">Graph.from_hypergraph_hypergcn()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.gnn_data_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.gnn_data_dict_factory</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.graph_attr_dict_factory</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.graph.Graph.has_edge"><code class="docutils literal notranslate"><span class="pre">Graph.has_edge()</span></code></a></li>
@@ -2050,13 +1745,13 @@ as well as node-to-index dictionary.</p>
   </nav></div>
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/reference/easygraph.classes.graph.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/easygraph.classes.graph.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -2071,8 +1766,8 @@ as well as node-to-index dictionary.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2092,7 +1787,7 @@ as well as node-to-index dictionary.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>
@@ -2105,7 +1800,8 @@ as well as node-to-index dictionary.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

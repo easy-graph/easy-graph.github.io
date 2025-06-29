@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.graph_generator.classic:
-
 easygraph.functions.graph\_generator.classic module
 ===================================================
 

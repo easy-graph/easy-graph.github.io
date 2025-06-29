@@ -1,5 +1,3 @@
-.. _module_easygraph.nn.convs:
-
 easygraph.nn.convs package
 ==========================
 

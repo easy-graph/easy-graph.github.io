@@ -1,5 +1,3 @@
-.. _module_easygraph.model.hypergraphs.setgnn:
-
 easygraph.model.hypergraphs.setgnn module
 =========================================
 

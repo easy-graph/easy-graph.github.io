@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.hypergraph.assortativity:
-
 easygraph.functions.hypergraph.assortativity module
 ===================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality.closeness:
-
 easygraph.functions.centrality.closeness module
 ===============================================
 

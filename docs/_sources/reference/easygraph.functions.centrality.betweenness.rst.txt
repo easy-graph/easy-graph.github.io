@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality.betweenness:
-
 easygraph.functions.centrality.betweenness module
 =================================================
 

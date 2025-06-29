@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.community.LPA:
-
 easygraph.functions.community.LPA module
 ========================================
 

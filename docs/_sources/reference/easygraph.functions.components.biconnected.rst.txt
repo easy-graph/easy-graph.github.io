@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.components.biconnected:
-
 easygraph.functions.components.biconnected module
 =================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.drawing.defaults:
-
 easygraph.functions.drawing.defaults module
 ===========================================
 

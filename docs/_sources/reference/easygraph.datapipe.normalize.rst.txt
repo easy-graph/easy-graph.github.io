@@ -1,5 +1,3 @@
-.. _module_easygraph.datapipe.normalize:
-
 easygraph.datapipe.normalize module
 ===================================
 

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -6,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>easygraph.classes.hypergraph module &#8212; EasyGraph 1.4.1</title>
   
@@ -14,34 +15,35 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=17704a4c"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/easygraph.classes.hypergraph';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -50,6 +52,7 @@
     <link rel="prev" title="easygraph.classes.graphviews module" href="easygraph.classes.graphviews.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -57,32 +60,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -90,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -98,20 +84,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -126,7 +119,7 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="EasyGraph 1.4.1 - Home"/>
   
   
 </a></div>
@@ -138,96 +131,99 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
+
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -242,19 +238,15 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -267,7 +259,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -279,31 +271,31 @@
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -312,102 +304,98 @@
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../eggpu.html">
+    EGGPU
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
-                </ul>
-            </li>
-            
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -415,7 +403,7 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -428,7 +416,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -452,31 +440,32 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -488,12 +477,15 @@
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">easygraph</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="easygraph.html" class="nav-link">easygraph package</a></li>
     
     
     <li class="breadcrumb-item"><a href="easygraph.classes.html" class="nav-link">easygraph.classes package</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">easygraph.cl...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">easygraph.classes.hypergraph module</span></li>
   </ul>
 </nav>
 </div>
@@ -508,13 +500,13 @@
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="module-easygraph.classes.hypergraph">
-<span id="easygraph-classes-hypergraph-module"></span><span id="module-easygraph-classes-hypergraph"></span><h1>easygraph.classes.hypergraph module<a class="headerlink" href="#module-easygraph.classes.hypergraph" title="Permalink to this heading">#</a></h1>
+<span id="easygraph-classes-hypergraph-module"></span><h1>easygraph.classes.hypergraph module<a class="headerlink" href="#module-easygraph.classes.hypergraph" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.hypergraph.</span></span><span class="sig-name descname"><span class="pre">Hypergraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_property</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_property</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">device(type='cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">easygraph.classes.hypergraph.</span></span><span class="sig-name descname"><span class="pre">Hypergraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_property</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_property</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">device(type='cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph" title="easygraph.classes.base.BaseHypergraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHypergraph</span></code></a></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Hypergraph</span></code> class is developed for hypergraph structures.
 Please notice that node id in hypergraph is in [0, num_v)</p>
@@ -523,357 +515,14 @@ Please notice that node id in hypergraph is in [0, num_v)</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>num_v</strong> (<em>(</em><em>int</em><em>) </em><em>The number</em><em> of </em><em>vertices in the hypergraph</em>) – </p></li>
 <li><p><strong>e_list</strong> ((Union[List[int], List[List[int]]], optional) A list of hyperedges describes how the vertices point to the hyperedges. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>) – </p></li>
+<li><p><strong>v_property</strong> (Optional[List[Dict]], A list of node properties. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>) – </p></li>
+<li><p><strong>e_property</strong> (Optional[List[Dict]], A list of hyperedges properties. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>) – </p></li>
 <li><p><strong>e_weight</strong> ((Union[float, List[float]], optional)  A list of weights for hyperedges. If set to None, the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is used for all hyperedges. Defaults to None) – </p></li>
 <li><p><strong>merge_op</strong> ((str) The operation to merge those conflicting hyperedges in the same hyperedge group, which can be <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> or <code class="docutils literal notranslate"><span class="pre">'max'</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>) – </p></li>
 <li><p><strong>device</strong> (<em>(</em><em>torch.device</em><em>, </em><em>optional</em><em>) </em><em>The device to store the hypergraph. Defaults to torch.device</em><em>(</em><em>'cpu'</em><em>)</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Attributes<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_e" title="easygraph.classes.hypergraph.Hypergraph.D_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_e</span></code></a></dt><dd><p>Return the hyperedge degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_e\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_e_neg_1" title="easygraph.classes.hypergraph.Hypergraph.D_e_neg_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_e_neg_1</span></code></a></dt><dd><p>Return the hyperedge degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_e^{-1}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_v" title="easygraph.classes.hypergraph.Hypergraph.D_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v</span></code></a></dt><dd><p>Return the vertex degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_v\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1" title="easygraph.classes.hypergraph.Hypergraph.D_v_neg_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v_neg_1</span></code></a></dt><dd><p>Return the vertex degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-1}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_2" title="easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v_neg_1_2</span></code></a></dt><dd><p>Return the vertex degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-\frac{1}{2}}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.H" title="easygraph.classes.hypergraph.Hypergraph.H"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H</span></code></a></dt><dd><p>Return the hypergraph incidence matrix <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.H_T" title="easygraph.classes.hypergraph.Hypergraph.H_T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_T</span></code></a></dt><dd><p>Return the transpose of the hypergraph incidence matrix <span class="math notranslate nohighlight">\(\mathbf{H}^\top\)</span> with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_e2v</span></code></dt><dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_v2e</span></code></dt><dd><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.L_HGNN" title="easygraph.classes.hypergraph.Hypergraph.L_HGNN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_HGNN</span></code></a></dt><dd><p>Return the HGNN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{HGNN}\)</span> of the hypergraph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.L_rw" title="easygraph.classes.hypergraph.Hypergraph.L_rw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_rw</span></code></a></dt><dd><p>Return the random walk Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{rw}\)</span> of the hypergraph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.L_sym" title="easygraph.classes.hypergraph.Hypergraph.L_sym"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_sym</span></code></a></dt><dd><p>Return the symmetric Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{sym}\)</span> of the hypergraph with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_e2v</span></code></dt><dd><p>Return the weight matrix of connections (hyperedges point to vertices) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_v2e</span></code></dt><dd><p>Return the weight matrix of connections (vertices point to hyperedges) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.W_e" title="easygraph.classes.hypergraph.Hypergraph.W_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W_e</span></code></a></dt><dd><p>Return the weight matrix <span class="math notranslate nohighlight">\(\mathbf{W}_e\)</span> of hyperedges with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">W_v</span></code></dt><dd><p>Return the vertex weight matrix of the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.deg_e" title="easygraph.classes.hypergraph.Hypergraph.deg_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deg_e</span></code></a></dt><dd><p>Return the degree list of each hyperedge.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.deg_v" title="easygraph.classes.hypergraph.Hypergraph.deg_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deg_v</span></code></a></dt><dd><p>Return the degree list of each vertex.</p>
-</dd>
-<dt><strong>degree_node</strong></dt><dd></dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e" title="easygraph.classes.hypergraph.Hypergraph.e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e</span></code></a></dt><dd><p>Return all hyperedges and weights in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_dst" title="easygraph.classes.hypergraph.Hypergraph.e2v_dst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_dst</span></code></a></dt><dd><p>Return the destination vertex index vector <span class="math notranslate nohighlight">\(\overrightarrow{e2v}_{dst}\)</span> of the connections (hyperedges point to vertices) in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_src" title="easygraph.classes.hypergraph.Hypergraph.e2v_src"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_src</span></code></a></dt><dd><p>Return the source hyperedge index vector <span class="math notranslate nohighlight">\(\overrightarrow{e2v}_{src}\)</span> of the connections (hyperedges point to vertices) in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_weight" title="easygraph.classes.hypergraph.Hypergraph.e2v_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_weight</span></code></a></dt><dd><p>Return the weight vector <span class="math notranslate nohighlight">\(\overrightarrow{e2v}_{weight}\)</span> of the connections (hyperedges point to vertices) in the hypergraph.</p>
-</dd>
-<dt><strong>e_property</strong></dt><dd></dd>
-<dt><strong>e_set</strong></dt><dd></dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.group_names" title="easygraph.classes.hypergraph.Hypergraph.group_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_names</span></code></a></dt><dd><p>Return the names of all hyperedge groups in the hypergraph.</p>
-</dd>
-<dt><strong>incidence_matrix</strong></dt><dd></dd>
-<dt><strong>ndata</strong></dt><dd></dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.num_e" title="easygraph.classes.hypergraph.Hypergraph.num_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_e</span></code></a></dt><dd><p>Return the number of hyperedges in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.num_groups" title="easygraph.classes.hypergraph.Hypergraph.num_groups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_groups</span></code></a></dt><dd><p>Return the number of hyperedge groups in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.num_v" title="easygraph.classes.hypergraph.Hypergraph.num_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_v</span></code></a></dt><dd><p>Return the number of vertices in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.state_dict" title="easygraph.classes.hypergraph.Hypergraph.state_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_dict</span></code></a></dt><dd><p>Get the state dict of the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v" title="easygraph.classes.hypergraph.Hypergraph.v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code></a></dt><dd><p>Return the list of vertices.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_dst" title="easygraph.classes.hypergraph.Hypergraph.v2e_dst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_dst</span></code></a></dt><dd><p>Return the destination hyperedge index vector <span class="math notranslate nohighlight">\(\overrightarrow{v2e}_{dst}\)</span> of the connections (vertices point to hyperedges) in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_src" title="easygraph.classes.hypergraph.Hypergraph.v2e_src"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_src</span></code></a></dt><dd><p>Return the source vertex index vector <span class="math notranslate nohighlight">\(\overrightarrow{v2e}_{src}\)</span> of the connections (vertices point to hyperedges) in the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_weight" title="easygraph.classes.hypergraph.Hypergraph.v2e_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_weight</span></code></a></dt><dd><p>Return the weight vector <span class="math notranslate nohighlight">\(\overrightarrow{v2e}_{weight}\)</span> of the connections (vertices point to hyperedges) in the hypergraph.</p>
-</dd>
-<dt><strong>v_property</strong></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_weight</span></code></dt><dd><p>Return the vertex weights of the hypergraph.</p>
-</dd>
-<dt><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.vars_for_DL" title="easygraph.classes.hypergraph.Hypergraph.vars_for_DL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vars_for_DL</span></code></a></dt><dd><p>Return a name list of available variables for deep learning in the hypergraph including</p>
-</dd>
 </dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_e_neg_1_of_group" title="easygraph.classes.hypergraph.Hypergraph.D_e_neg_1_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_e_neg_1_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the hyperedge degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_e^{-1}\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_e_of_group" title="easygraph.classes.hypergraph.Hypergraph.D_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_e_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the hyperedge degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_e\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_2_of_group" title="easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_2_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v_neg_1_2_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the vertex degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-\frac{1}{2}}\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_of_group" title="easygraph.classes.hypergraph.Hypergraph.D_v_neg_1_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v_neg_1_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the vertex degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_v^{-1}\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.D_v_of_group" title="easygraph.classes.hypergraph.Hypergraph.D_v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D_v_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the vertex degree matrix <span class="math notranslate nohighlight">\(\mathbf{D}_v\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.H_T_of_group" title="easygraph.classes.hypergraph.Hypergraph.H_T_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_T_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the transpose of the hypergraph incidence matrix <span class="math notranslate nohighlight">\(\mathbf{H}^\top\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_e2v_of_group</span></code>(group_name)</p></td>
-<td><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.H_of_group" title="easygraph.classes.hypergraph.Hypergraph.H_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the hypergraph incidence matrix <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">H_v2e_of_group</span></code>(group_name)</p></td>
-<td><p>Return the hypergraph incidence matrix with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.L_HGNN_of_group" title="easygraph.classes.hypergraph.Hypergraph.L_HGNN_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_HGNN_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the HGNN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{HGNN}\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.L_rw_of_group" title="easygraph.classes.hypergraph.Hypergraph.L_rw_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_rw_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the random walk Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{rw}\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.L_sym_of_group" title="easygraph.classes.hypergraph.Hypergraph.L_sym_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">L_sym_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the symmetric Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{sym}\)</span> of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.sparse_coo_tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.N_e" title="easygraph.classes.hypergraph.Hypergraph.N_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">N_e</span></code></a>(v_idx)</p></td>
-<td><p>Return the neighbor hyperedges of the specified vertex with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.N_e_of_group" title="easygraph.classes.hypergraph.Hypergraph.N_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">N_e_of_group</span></code></a>(v_idx, group_name)</p></td>
-<td><p>Return the neighbor hyperedges of the specified vertex of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.N_v" title="easygraph.classes.hypergraph.Hypergraph.N_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">N_v</span></code></a>(e_idx)</p></td>
-<td><p>Return the neighbor vertices of the specified hyperedge with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.N_v_of_group" title="easygraph.classes.hypergraph.Hypergraph.N_v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">N_v_of_group</span></code></a>(e_idx, group_name)</p></td>
-<td><p>Return the neighbor vertices of the specified hyperedge of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_e2v_of_group</span></code>(group_name)</p></td>
-<td><p>Return the weight matrix of connections (hyperedges point to vertices) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_v2e_of_group</span></code>(group_name)</p></td>
-<td><p>Return the weight matrix of connections (vertices point to hyperedges) with <code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">matrix</span></code> format in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.W_e_of_group" title="easygraph.classes.hypergraph.Hypergraph.W_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W_e_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the weight matrix <span class="math notranslate nohighlight">\(\mathbf{W}_e\)</span> of hyperedges of the specified hyperedge group with <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.add_hyperedges" title="easygraph.classes.hypergraph.Hypergraph.add_hyperedges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_hyperedges</span></code></a>(e_list[, e_weight, ...])</p></td>
-<td><p>Add hyperedges to the hypergraph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_feature_kNN" title="easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_feature_kNN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_hyperedges_from_feature_kNN</span></code></a>(feature, k)</p></td>
-<td><p>Add hyperedges from the feature matrix by k-NN.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph" title="easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_hyperedges_from_graph</span></code></a>(graph[, group_name])</p></td>
-<td><p>Add hyperedges from edges in the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph_kHop" title="easygraph.classes.hypergraph.Hypergraph.add_hyperedges_from_graph_kHop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_hyperedges_from_graph_kHop</span></code></a>(graph, k[, ...])</p></td>
-<td><p>Add hyperedges from vertices and its k-Hop neighbors in the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.adjacency_matrix" title="easygraph.classes.hypergraph.Hypergraph.adjacency_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjacency_matrix</span></code></a>([s, weight])</p></td>
-<td><p>The <span class="xref std std-term">s-adjacency matrix</span> for the dual hypergraph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.clear" title="easygraph.classes.hypergraph.Hypergraph.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
-<td><p>Clear all hyperedges and caches from the hypergraph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.clone" title="easygraph.classes.hypergraph.Hypergraph.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
-<td><p>Return a copy of the hypergraph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.deg_e_of_group" title="easygraph.classes.hypergraph.Hypergraph.deg_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deg_e_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the degree list of each hyperedge of the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.deg_v_of_group" title="easygraph.classes.hypergraph.Hypergraph.deg_v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deg_v_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the degree list of each vertex of the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.degree_data_dict" title="easygraph.classes.hypergraph.Hypergraph.degree_data_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degree_data_dict</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.diameter" title="easygraph.classes.hypergraph.Hypergraph.diameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diameter</span></code></a>([s])</p></td>
-<td><p>Returns the length of the longest shortest s-walk between nodes in hypergraph</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.distance" title="easygraph.classes.hypergraph.Hypergraph.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(source[, target, s])</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param source<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.draw" title="easygraph.classes.hypergraph.Hypergraph.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>([e_style, v_label, v_size, v_color, ...])</p></td>
-<td><p>Draw the hypergraph structure.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.drop_hyperedges" title="easygraph.classes.hypergraph.Hypergraph.drop_hyperedges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_hyperedges</span></code></a>(drop_rate[, ord])</p></td>
-<td><p>Randomly drop hyperedges from the hypergraph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.drop_hyperedges_of_group" title="easygraph.classes.hypergraph.Hypergraph.drop_hyperedges_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_hyperedges_of_group</span></code></a>(group_name, drop_rate)</p></td>
-<td><p>Randomly drop hyperedges from the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v" title="easygraph.classes.hypergraph.Hypergraph.e2v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v</span></code></a>(X[, aggr, e2v_weight, drop_rate])</p></td>
-<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_aggregation" title="easygraph.classes.hypergraph.Hypergraph.e2v_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_aggregation</span></code></a>(X[, aggr, e2v_weight, drop_rate])</p></td>
-<td><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_aggregation_of_group" title="easygraph.classes.hypergraph.Hypergraph.e2v_aggregation_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_aggregation_of_group</span></code></a>(group_name, X[, ...])</p></td>
-<td><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_dst_of_group" title="easygraph.classes.hypergraph.Hypergraph.e2v_dst_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_dst_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the destination vertex index vector <span class="math notranslate nohighlight">\(\overrightarrow{e2v}_{dst}\)</span> of the connections (hyperedges point to vertices) in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_of_group" title="easygraph.classes.hypergraph.Hypergraph.e2v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_of_group</span></code></a>(group_name, X[, aggr, ...])</p></td>
-<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_src_of_group" title="easygraph.classes.hypergraph.Hypergraph.e2v_src_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_src_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the source hyperedge index vector <span class="math notranslate nohighlight">\(\overrightarrow{e2v}_{src}\)</span> of the connections (hyperedges point to vertices) in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_update" title="easygraph.classes.hypergraph.Hypergraph.e2v_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_update</span></code></a>(X)</p></td>
-<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_update_of_group" title="easygraph.classes.hypergraph.Hypergraph.e2v_update_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_update_of_group</span></code></a>(group_name, X)</p></td>
-<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">hyperedges</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e2v_weight_of_group" title="easygraph.classes.hypergraph.Hypergraph.e2v_weight_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e2v_weight_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the weight vector <span class="math notranslate nohighlight">\(\overrightarrow{e2v}_{weight}\)</span> of the connections (hyperedges point to vertices) in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.e_of_group" title="easygraph.classes.hypergraph.Hypergraph.e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return all hyperedges and weights of the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.edge_adjacency_matrix" title="easygraph.classes.hypergraph.Hypergraph.edge_adjacency_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_adjacency_matrix</span></code></a>([s, weight])</p></td>
-<td><p>The <span class="xref std std-term">s-adjacency matrix</span> for the dual hypergraph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.edge_diameter" title="easygraph.classes.hypergraph.Hypergraph.edge_diameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_diameter</span></code></a>([s])</p></td>
-<td><p>Returns the length of the longest shortest s-walk between edges in hypergraph</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.edge_distance" title="easygraph.classes.hypergraph.Hypergraph.edge_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_distance</span></code></a>(source, target[, s])</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param source<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.from_feature_kNN" title="easygraph.classes.hypergraph.Hypergraph.from_feature_kNN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_feature_kNN</span></code></a>(features, k[, device])</p></td>
-<td><p>Construct the hypergraph from the feature matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.from_graph" title="easygraph.classes.hypergraph.Hypergraph.from_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_graph</span></code></a>(graph[, device])</p></td>
-<td><p>Construct the hypergraph from the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.from_graph_kHop" title="easygraph.classes.hypergraph.Hypergraph.from_graph_kHop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_graph_kHop</span></code></a>(graph, k[, only_kHop, device])</p></td>
-<td><p>Construct the hypergraph from the graph by k-Hop neighbors.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.from_state_dict" title="easygraph.classes.hypergraph.Hypergraph.from_state_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_state_dict</span></code></a>(state_dict)</p></td>
-<td><p>Load the hypergraph from the state dict.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.get_clique_expansion" title="easygraph.classes.hypergraph.Hypergraph.get_clique_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_clique_expansion</span></code></a>([s, weight])</p></td>
-<td><p>Get the linegraph of the hypergraph based on the clique expansion.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.get_linegraph" title="easygraph.classes.hypergraph.Hypergraph.get_linegraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_linegraph</span></code></a>([s, weight])</p></td>
-<td><p>Get the linegraph of the hypergraph based on the clique expansion.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.get_star_expansion" title="easygraph.classes.hypergraph.Hypergraph.get_star_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_star_expansion</span></code></a>()</p></td>
-<td><p>The star expansion algorithm creates a graph  G*(V*, E*) for every hypergraph G(V, E).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.gnn_data_dict_factory" title="easygraph.classes.hypergraph.Hypergraph.gnn_data_dict_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gnn_data_dict_factory</span></code></a></p></td>
-<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.is_uniform" title="easygraph.classes.hypergraph.Hypergraph.is_uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_uniform</span></code></a>()</p></td>
-<td><p>Order of uniformity if the hypergraph is uniform, or False.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.load" title="easygraph.classes.hypergraph.Hypergraph.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(file_path)</p></td>
-<td><p>Load the EasyGraph's hypergraph structure from a file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.nbr_e" title="easygraph.classes.hypergraph.Hypergraph.nbr_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbr_e</span></code></a>(v_idx)</p></td>
-<td><p>Return the neighbor hyperedge list of the specified vertex.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.nbr_e_of_group" title="easygraph.classes.hypergraph.Hypergraph.nbr_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbr_e_of_group</span></code></a>(v_idx, group_name)</p></td>
-<td><p>Return the neighbor hyperedge list of the specified vertex of the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.nbr_v" title="easygraph.classes.hypergraph.Hypergraph.nbr_v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbr_v</span></code></a>(e_idx)</p></td>
-<td><p>Return the neighbor vertex list of the specified hyperedge.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.nbr_v_of_group" title="easygraph.classes.hypergraph.Hypergraph.nbr_v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbr_v_of_group</span></code></a>(e_idx, group_name)</p></td>
-<td><p>Return the neighbor vertex list of the specified hyperedge of the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.num_e_of_group" title="easygraph.classes.hypergraph.Hypergraph.num_e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_e_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the number of hyperedges of the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.remove_group" title="easygraph.classes.hypergraph.Hypergraph.remove_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_group</span></code></a>(group_name)</p></td>
-<td><p>Remove the specified hyperedge group from the hypergraph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.remove_hyperedges" title="easygraph.classes.hypergraph.Hypergraph.remove_hyperedges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_hyperedges</span></code></a>(e_list[, group_name])</p></td>
-<td><p>Remove the specified hyperedges from the hypergraph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.s_connected_components" title="easygraph.classes.hypergraph.Hypergraph.s_connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s_connected_components</span></code></a>([s, edges, ...])</p></td>
-<td><p>Returns a generator for the <span class="xref std std-term">s-edge-connected components</span> or the <span class="xref std std-term">s-node-connected components</span> of the hypergraph.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.save" title="easygraph.classes.hypergraph.Hypergraph.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(file_path)</p></td>
-<td><p>Save the EasyGraph's hypergraph structure a file.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.smoothing" title="easygraph.classes.hypergraph.Hypergraph.smoothing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing</span></code></a>(X, L, lamb)</p></td>
-<td><p>Spectral-based smoothing.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN" title="easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_HGNN</span></code></a>(X[, drop_rate])</p></td>
-<td><p>Return the smoothed feature matrix with the HGNN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{HGNN}\)</span>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN_of_group" title="easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smoothing_with_HGNN_of_group</span></code></a>(group_name, X)</p></td>
-<td><p>Return the smoothed feature matrix with the HGNN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{HGNN}\)</span>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.to" title="easygraph.classes.hypergraph.Hypergraph.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></a>(device)</p></td>
-<td><p>Move the hypergraph to the specified device.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.unique_edge_sizes" title="easygraph.classes.hypergraph.Hypergraph.unique_edge_sizes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_edge_sizes</span></code></a>()</p></td>
-<td><p>A function that returns the unique edge sizes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e" title="easygraph.classes.hypergraph.Hypergraph.v2e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e</span></code></a>(X[, aggr, v2e_weight, e_weight, drop_rate])</p></td>
-<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_aggregation" title="easygraph.classes.hypergraph.Hypergraph.v2e_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_aggregation</span></code></a>(X[, aggr, v2e_weight, drop_rate])</p></td>
-<td><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_aggregation_of_group" title="easygraph.classes.hypergraph.Hypergraph.v2e_aggregation_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_aggregation_of_group</span></code></a>(group_name, X[, ...])</p></td>
-<td><p>Message aggregation step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_dst_of_group" title="easygraph.classes.hypergraph.Hypergraph.v2e_dst_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_dst_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the destination hyperedge index vector <span class="math notranslate nohighlight">\(\overrightarrow{v2e}_{dst}\)</span> of the connections (vertices point to hyperedges) in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_of_group" title="easygraph.classes.hypergraph.Hypergraph.v2e_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_of_group</span></code></a>(group_name, X[, aggr, ...])</p></td>
-<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_src_of_group" title="easygraph.classes.hypergraph.Hypergraph.v2e_src_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_src_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the source vertex index vector <span class="math notranslate nohighlight">\(\overrightarrow{v2e}_{src}\)</span> of the connections (vertices point to hyperedges) in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_update" title="easygraph.classes.hypergraph.Hypergraph.v2e_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_update</span></code></a>(X[, e_weight])</p></td>
-<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_update_of_group" title="easygraph.classes.hypergraph.Hypergraph.v2e_update_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_update_of_group</span></code></a>(group_name, X[, e_weight])</p></td>
-<td><p>Message update step of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">hyperedges</span></code> in specified hyperedge group.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2e_weight_of_group" title="easygraph.classes.hypergraph.Hypergraph.v2e_weight_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2e_weight_of_group</span></code></a>(group_name)</p></td>
-<td><p>Return the weight vector <span class="math notranslate nohighlight">\(\overrightarrow{v2e}_{weight}\)</span> of the connections (vertices point to hyperedges) in the specified hyperedge group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2v" title="easygraph.classes.hypergraph.Hypergraph.v2v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2v</span></code></a>(X[, aggr, drop_rate, v2e_aggr, ...])</p></td>
-<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">vertices</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph.v2v_of_group" title="easygraph.classes.hypergraph.Hypergraph.v2v_of_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2v_of_group</span></code></a>(group_name, X[, aggr, ...])</p></td>
-<td><p>Message passing of <code class="docutils literal notranslate"><span class="pre">vertices</span> <span class="pre">to</span> <span class="pre">vertices</span></code> in specified hyperedge group.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>isOutRange</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>neighbor_of_node</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph.D_e">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D_e</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph.D_e" title="Permalink to this definition">#</a></dt>
@@ -1232,6 +881,11 @@ Please notice that node id in hypergraph is in [0, num_v)</p>
 <span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#easygraph.classes.hypergraph.Hypergraph" title="easygraph.classes.hypergraph.Hypergraph"><span class="pre">Hypergraph</span></a></span></span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph.clone" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a copy of the hypergraph.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph.cluster_coefficient">
+<span class="sig-name descname"><span class="pre">cluster_coefficient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph.cluster_coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph.cluster_coefficient" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph.deg_e">
@@ -1681,6 +1335,23 @@ in the path sequence.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph.from_hypergraph_hypergcn">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_hypergraph_hypergcn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hypergraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_mediator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_selfloop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph.from_hypergraph_hypergcn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph.from_hypergraph_hypergcn" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct a graph from a hypergraph with methods proposed in <a class="reference external" href="https://arxiv.org/pdf/1809.02589.pdf">HyperGCN: A New Method of Training Graph Convolutional Networks on Hypergraphs</a> paper .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hypergraph</strong> (<code class="docutils literal notranslate"><span class="pre">Hypergraph</span></code>) – The source hypergraph.</p></li>
+<li><p><strong>feature</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – The feature of the vertices.</p></li>
+<li><p><strong>with_mediator</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Whether to use mediator to transform the hyperedges to edges in the graph. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>remove_selfloop</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to remove self-loop. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>device</strong> (<code class="docutils literal notranslate"><span class="pre">torch.device</span></code>) – The device to store the graph. Defaults to <code class="docutils literal notranslate"><span class="pre">torch.device(&quot;cpu&quot;)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph.from_state_dict">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_state_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph.from_state_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph.from_state_dict" title="Permalink to this definition">#</a></dt>
 <dd><p>Load the hypergraph from the state dict.</p>
@@ -1804,7 +1475,7 @@ Returns False if not uniform.</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>This function can be used as a boolean check:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="n">v_num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">e_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">is_uniform</span><span class="p">()</span>
 <span class="go">2</span>
@@ -2045,6 +1716,50 @@ s-edge(node) components of hypergraph.</p>
 <li><p><strong>group_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – The name of the specified hyperedge group.</p></li>
 <li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – The feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
 <li><p><strong>drop_rate</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – Dropout rate. Randomly dropout the connections in incidence matrix with probability <code class="docutils literal notranslate"><span class="pre">drop_rate</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_approx">
+<span class="sig-name descname"><span class="pre">smoothing_with_HWNN_approx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Parameter</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph.smoothing_with_HWNN_approx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_approx" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the smoothed feature matrix with the approximated HWNN Laplacian matrix <span class="math notranslate nohighlight">\(\mathcal{L}_{HGNN}\)</span>.</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathbf{X} = \mathbf{theta}_{sum} \mathbf{Lambda}_{beta} \mathbf{theta'}_{sum}\]</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – The feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>par</strong> (<code class="docutils literal notranslate"><span class="pre">torch.nn.Parameter</span></code>) – A learnable parameter used in the HWNN approximation.</p></li>
+<li><p><strong>W_d</strong> (<code class="docutils literal notranslate"><span class="pre">torch.nn.Parameter</span></code>) – A trainable weight matrix for feature transformation.</p></li>
+<li><p><strong>K1</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The order of approximation for the first transformation step.</p></li>
+<li><p><strong>K2</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The order of approximation for the second transformation step.</p></li>
+<li><p><strong>W</strong> (<code class="docutils literal notranslate"><span class="pre">torch.nn.Parameter</span></code>) – A learnable weight matrix applied in the feature transformation step.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_wavelet">
+<span class="sig-name descname"><span class="pre">smoothing_with_HWNN_wavelet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Parameter</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="../_modules/easygraph/classes/hypergraph.html#Hypergraph.smoothing_with_HWNN_wavelet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_wavelet" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the smoothed feature matrix with original HWNN Laplacian matrix :</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\mathbf{X} = \mathbf{Psi}_{s} \mathbf{Lambda}_{beta} \mathbf{Psi}_{s}^{-1}\]</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>) – The feature matrix. Size <span class="math notranslate nohighlight">\((|\mathcal{V}|, C)\)</span>.</p></li>
+<li><p><strong>par</strong> (<code class="docutils literal notranslate"><span class="pre">torch.nn.Parameter</span></code>) – A learnable parameter used in the HWNN approximation.</p></li>
+<li><p><strong>W_d</strong> (<code class="docutils literal notranslate"><span class="pre">torch.nn.Parameter</span></code>) – A trainable weight matrix for feature transformation.</p></li>
+<li><p><strong>K1</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The order of approximation for the first transformation step.</p></li>
+<li><p><strong>K2</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The order of approximation for the second transformation step.</p></li>
+<li><p><strong>W</strong> (<code class="docutils literal notranslate"><span class="pre">torch.nn.Parameter</span></code>) – A learnable weight matrix applied in the feature transformation step.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2307,7 +2022,7 @@ s-edge(node) components of hypergraph.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2335,14 +2050,17 @@ s-edge(node) components of hypergraph.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph"><code class="docutils literal notranslate"><span class="pre">Hypergraph</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.D_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.D_e</span></code></a></li>
@@ -2378,6 +2096,7 @@ s-edge(node) components of hypergraph.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.adjacency_matrix"><code class="docutils literal notranslate"><span class="pre">Hypergraph.adjacency_matrix()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.clear"><code class="docutils literal notranslate"><span class="pre">Hypergraph.clear()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.clone"><code class="docutils literal notranslate"><span class="pre">Hypergraph.clone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.cluster_coefficient"><code class="docutils literal notranslate"><span class="pre">Hypergraph.cluster_coefficient()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.deg_e"><code class="docutils literal notranslate"><span class="pre">Hypergraph.deg_e</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.deg_e_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.deg_e_of_group()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.deg_v"><code class="docutils literal notranslate"><span class="pre">Hypergraph.deg_v</span></code></a></li>
@@ -2410,6 +2129,7 @@ s-edge(node) components of hypergraph.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.from_feature_kNN"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_feature_kNN()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.from_graph"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_graph()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.from_graph_kHop"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_graph_kHop()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.from_hypergraph_hypergcn"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_hypergraph_hypergcn()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.from_state_dict"><code class="docutils literal notranslate"><span class="pre">Hypergraph.from_state_dict()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.get_clique_expansion"><code class="docutils literal notranslate"><span class="pre">Hypergraph.get_clique_expansion()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.get_linegraph"><code class="docutils literal notranslate"><span class="pre">Hypergraph.get_linegraph()</span></code></a></li>
@@ -2437,6 +2157,8 @@ s-edge(node) components of hypergraph.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.smoothing"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HGNN()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN_of_group"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HGNN_of_group()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_approx"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HWNN_approx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_wavelet"><code class="docutils literal notranslate"><span class="pre">Hypergraph.smoothing_with_HWNN_wavelet()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.state_dict"><code class="docutils literal notranslate"><span class="pre">Hypergraph.state_dict</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.to"><code class="docutils literal notranslate"><span class="pre">Hypergraph.to()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easygraph.classes.hypergraph.Hypergraph.unique_edge_sizes"><code class="docutils literal notranslate"><span class="pre">Hypergraph.unique_edge_sizes()</span></code></a></li>
@@ -2462,13 +2184,13 @@ s-edge(node) components of hypergraph.</p>
   </nav></div>
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/reference/easygraph.classes.hypergraph.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/easygraph.classes.hypergraph.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -2483,8 +2205,8 @@ s-edge(node) components of hypergraph.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2504,7 +2226,7 @@ s-edge(node) components of hypergraph.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>
@@ -2517,7 +2239,8 @@ s-edge(node) components of hypergraph.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

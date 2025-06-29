@@ -1,5 +1,3 @@
-.. _module_easygraph.ml_metrics.classification:
-
 easygraph.ml\_metrics.classification module
 ===========================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.nn.convs.hypergraphs.hypergcn_conv:
-
 easygraph.nn.convs.hypergraphs.hypergcn\_conv module
 ====================================================
 

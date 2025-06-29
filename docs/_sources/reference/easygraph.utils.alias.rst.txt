@@ -1,5 +1,3 @@
-.. _module_easygraph.utils.alias:
-
 easygraph.utils.alias module
 ============================
 

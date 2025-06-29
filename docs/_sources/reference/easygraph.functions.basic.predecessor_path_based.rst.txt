@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.basic.predecessor_path_based:
-
 easygraph.functions.basic.predecessor\_path\_based module
 =========================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.utils.misc:
-
 easygraph.utils.misc module
 ===========================
 

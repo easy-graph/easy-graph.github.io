@@ -1,5 +1,3 @@
-.. _module_easygraph.classes.base:
-
 easygraph.classes.base module
 =============================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.model.hypergraphs.hnhn:
-
 easygraph.model.hypergraphs.hnhn module
 =======================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes.SHII_metric:
-
 easygraph.functions.structural\_holes.SHII\_metric module
 =========================================================
 

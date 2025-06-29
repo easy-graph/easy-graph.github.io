@@ -1,5 +1,3 @@
-.. _module_easygraph.nn.convs.hypergraphs:
-
 easygraph.nn.convs.hypergraphs package
 ======================================
 

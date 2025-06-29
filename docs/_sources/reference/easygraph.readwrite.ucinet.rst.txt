@@ -1,5 +1,3 @@
-.. _module_easygraph.readwrite.ucinet:
-
 easygraph.readwrite.ucinet module
 =================================
 

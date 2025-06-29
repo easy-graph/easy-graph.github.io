@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes.metrics:
-
 easygraph.functions.structural\_holes.metrics module
 ====================================================
 

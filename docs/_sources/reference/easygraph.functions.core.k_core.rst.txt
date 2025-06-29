@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.core.k_core:
-
 easygraph.functions.core.k\_core module
 =======================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.experiments.base:
-
 easygraph.experiments.base module
 =================================
 

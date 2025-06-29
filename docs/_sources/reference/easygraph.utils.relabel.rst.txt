@@ -1,5 +1,3 @@
-.. _module_easygraph.utils.relabel:
-
 easygraph.utils.relabel module
 ==============================
 

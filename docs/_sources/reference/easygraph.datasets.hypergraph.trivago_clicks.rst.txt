@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.trivago_clicks:
-
 easygraph.datasets.hypergraph.trivago\_clicks module
 ====================================================
 

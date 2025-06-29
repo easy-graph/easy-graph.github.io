@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality.degree:
-
 easygraph.functions.centrality.degree module
 ============================================
 

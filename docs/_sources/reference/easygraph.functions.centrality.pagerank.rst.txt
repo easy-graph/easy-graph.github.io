@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality.pagerank:
-
 easygraph.functions.centrality.pagerank module
 ==============================================
 

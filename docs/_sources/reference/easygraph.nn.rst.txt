@@ -1,5 +1,3 @@
-.. _module_easygraph.nn:
-
 easygraph.nn package
 ====================
 

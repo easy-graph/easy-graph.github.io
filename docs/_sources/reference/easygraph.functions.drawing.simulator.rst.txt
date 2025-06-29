@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.drawing.simulator:
-
 easygraph.functions.drawing.simulator module
 ============================================
 

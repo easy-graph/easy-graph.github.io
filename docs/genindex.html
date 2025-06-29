@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -13,39 +14,41 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/my_theme.css" />
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=538c3502" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/jquery.js?v=5d32c60e"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=17704a4c"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -53,32 +56,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -86,7 +73,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -94,20 +80,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="index.html">
@@ -122,7 +115,7 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="EasyGraph 1.4.1 - Home"/>
   
   
 </a></div>
@@ -134,103 +127,99 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="eggpu.html">
+    EGGPU
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="reference.html">
+    Reference
+  </a>
+</li>
+
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="tutorial.html">
+    Tutorial
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="videos.html">
-                        Colab Notebooks and Videos Tutorials
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="license.html">
-                        License
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="dev.html">
+    Developer Documentation
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -245,19 +234,15 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -270,7 +255,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -282,27 +267,29 @@
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -311,109 +298,98 @@
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="videos.html">
-                        Colab Notebooks and Videos Tutorials
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="eggpu.html">
+    EGGPU
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="license.html">
-                        License
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="reference.html">
+    Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
-                </ul>
-            </li>
-            
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="dev.html">
+    Developer Documentation
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -421,7 +397,7 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -434,7 +410,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -445,32 +421,38 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article"></div>
+              <div class="bd-header-article d-print-none"></div>
               
               
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
 
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#A"><strong>A</strong></a>
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
@@ -493,9 +475,56 @@
  | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  | <a href="#Y"><strong>Y</strong></a>
- | <a href="#Z"><strong>Z</strong></a>
  
 </div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school._content">_content (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees._content">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips._content">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school._hyperedges">_hyperedges (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees._hyperedges">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips._hyperedges">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school._label_names">_label_names (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees._label_names">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips._label_names">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school._node_labels">_node_labels (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees._node_labels">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips._node_labels">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school._node_names">_node_names (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees._node_names">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips._node_names">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -569,6 +598,8 @@
         <li><a href="reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.add_node">(easygraph.readwrite.graphml.GraphMLReader method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_nodes">add_nodes() (easygraph.classes.directed_graph.DiGraph method)</a>
 
       <ul>
@@ -577,8 +608,6 @@
         <li><a href="reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_nodes">(easygraph.readwrite.graphml.GraphMLWriter method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.add_nodes_from">add_nodes_from() (easygraph.classes.directed_graph.DiGraph method)</a>
 
       <ul>
@@ -613,12 +642,6 @@
 
       <ul>
         <li><a href="reference/easygraph.classes.graph.html#easygraph.classes.graph.Graph.adjlist_outer_dict_factory">(easygraph.classes.graph.Graph attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/easygraph.nn.convs.hypergraphs.halfnlh_conv.html#easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv.aggregate">aggregate() (easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv method)</a>
-
-      <ul>
-        <li><a href="reference/easygraph.nn.convs.pma.html#easygraph.nn.convs.pma.PMA.aggregate">(easygraph.nn.convs.pma.PMA method)</a>
 </li>
       </ul></li>
       <li><a href="reference/easygraph.utils.alias.html#easygraph.utils.alias.alias_draw">alias_draw() (in module easygraph.utils.alias)</a>
@@ -725,6 +748,8 @@
       </ul></li>
       <li><a href="reference/easygraph.functions.centrality.closeness.html#easygraph.functions.centrality.closeness.closeness_centrality">closeness_centrality() (in module easygraph.functions.centrality.closeness)</a>
 </li>
+      <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.cluster_coefficient">cluster_coefficient() (easygraph.classes.hypergraph.Hypergraph method)</a>
+</li>
       <li><a href="reference/easygraph.functions.basic.cluster.html#easygraph.functions.basic.cluster.clustering">clustering() (in module easygraph.functions.basic.cluster)</a>
 </li>
       <li><a href="reference/easygraph.datasets.hypergraph.coauthorship.html#easygraph.datasets.hypergraph.coauthorship.CoauthorshipCora">CoauthorshipCora (class in easygraph.datasets.hypergraph.coauthorship)</a>
@@ -739,10 +764,10 @@
 </li>
       <li><a href="reference/easygraph.functions.structural_holes.AP_Greedy.html#easygraph.functions.structural_holes.AP_Greedy.common_greedy">common_greedy() (in module easygraph.functions.structural_holes.AP_Greedy)</a>
 </li>
-      <li><a href="reference/easygraph.functions.drawing.geometry.html#easygraph.functions.drawing.geometry.common_tangent_radian">common_tangent_radian() (in module easygraph.functions.drawing.geometry)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/easygraph.functions.drawing.geometry.html#easygraph.functions.drawing.geometry.common_tangent_radian">common_tangent_radian() (in module easygraph.functions.drawing.geometry)</a>
+</li>
       <li><a href="reference/easygraph.functions.graph_generator.classic.html#easygraph.functions.graph_generator.classic.complete_graph">complete_graph() (in module easygraph.functions.graph_generator.classic)</a>
 </li>
       <li><a href="reference/easygraph.functions.hypergraph.null_model.hypergraph_classic.html#easygraph.functions.hypergraph.null_model.hypergraph_classic.complete_hypergraph">complete_hypergraph() (in module easygraph.functions.hypergraph.null_model.hypergraph_classic)</a>
@@ -827,6 +852,14 @@
 </li>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.D_v_of_group">D_v_of_group() (easygraph.classes.hypergraph.Hypergraph method)</a>
 </li>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school.data_root">data_root (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees.data_root">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips.data_root">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
       <li><a href="reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.Dataload">Dataload (class in easygraph.functions.graph_embedding.sdne)</a>
 </li>
       <li><a href="reference/easygraph.functions.hypergraph.null_model.random.html#easygraph.functions.hypergraph.null_model.random.dcsbm_hypergraph">dcsbm_hypergraph() (in module easygraph.functions.hypergraph.null_model.random)</a>
@@ -879,15 +912,13 @@
 </li>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.degree_data_dict">degree_data_dict (easygraph.classes.hypergraph.Hypergraph attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.degree_node">degree_node (easygraph.classes.hypergraph.Hypergraph property)</a>
 </li>
       <li><a href="reference/easygraph.classes.operation.html#easygraph.classes.operation.density">density() (in module easygraph.classes.operation)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.model.hypergraphs.dhcf.html#easygraph.model.hypergraphs.dhcf.DHCF">DHCF (class in easygraph.model.hypergraphs.dhcf)</a>
-</li>
-      <li><a href="reference/easygraph.model.hypergraphs.dhne.html#easygraph.model.hypergraphs.dhne.DHNE">DHNE (class in easygraph.model.hypergraphs.dhne)</a>
 </li>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.diameter">diameter() (easygraph.classes.hypergraph.Hypergraph method)</a>
 
@@ -1051,7 +1082,7 @@
     easygraph
 
       <ul>
-        <li><a href="reference/easygraph.html#module-0">module</a>
+        <li><a href="reference/easygraph.html#module-easygraph">module</a>
 </li>
       </ul></li>
       <li>
@@ -1657,13 +1688,6 @@
 </li>
       </ul></li>
       <li>
-    easygraph.functions.graph_embedding.net_emb_example_citeseer
-
-      <ul>
-        <li><a href="reference/easygraph.functions.graph_embedding.net_emb_example_citeseer.html#module-easygraph.functions.graph_embedding.net_emb_example_citeseer">module</a>
-</li>
-      </ul></li>
-      <li>
     easygraph.functions.graph_embedding.NOBE
 
       <ul>
@@ -1712,6 +1736,8 @@
         <li><a href="reference/easygraph.functions.hypergraph.html#module-easygraph.functions.hypergraph">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     easygraph.functions.hypergraph.assortativity
 
@@ -1719,8 +1745,6 @@
         <li><a href="reference/easygraph.functions.hypergraph.assortativity.html#module-easygraph.functions.hypergraph.assortativity">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     easygraph.functions.hypergraph.centrality
 
@@ -1995,24 +2019,10 @@
 </li>
       </ul></li>
       <li>
-    easygraph.model.hypergraphs
-
-      <ul>
-        <li><a href="reference/easygraph.model.hypergraphs.html#module-easygraph.model.hypergraphs">module</a>
-</li>
-      </ul></li>
-      <li>
     easygraph.model.hypergraphs.dhcf
 
       <ul>
         <li><a href="reference/easygraph.model.hypergraphs.dhcf.html#module-easygraph.model.hypergraphs.dhcf">module</a>
-</li>
-      </ul></li>
-      <li>
-    easygraph.model.hypergraphs.dhne
-
-      <ul>
-        <li><a href="reference/easygraph.model.hypergraphs.dhne.html#module-easygraph.model.hypergraphs.dhne">module</a>
 </li>
       </ul></li>
       <li>
@@ -2037,24 +2047,17 @@
 </li>
       </ul></li>
       <li>
+    easygraph.model.hypergraphs.hwnn
+
+      <ul>
+        <li><a href="reference/easygraph.model.hypergraphs.hwnn.html#module-easygraph.model.hypergraphs.hwnn">module</a>
+</li>
+      </ul></li>
+      <li>
     easygraph.model.hypergraphs.hypergcn
 
       <ul>
         <li><a href="reference/easygraph.model.hypergraphs.hypergcn.html#module-easygraph.model.hypergraphs.hypergcn">module</a>
-</li>
-      </ul></li>
-      <li>
-    easygraph.model.hypergraphs.setgnn
-
-      <ul>
-        <li><a href="reference/easygraph.model.hypergraphs.setgnn.html#module-easygraph.model.hypergraphs.setgnn">module</a>
-</li>
-      </ul></li>
-      <li>
-    easygraph.model.hypergraphs.unignn
-
-      <ul>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#module-easygraph.model.hypergraphs.unignn">module</a>
 </li>
       </ul></li>
       <li>
@@ -2093,13 +2096,6 @@
 </li>
       </ul></li>
       <li>
-    easygraph.nn.convs.hypergraphs.halfnlh_conv
-
-      <ul>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.halfnlh_conv.html#module-easygraph.nn.convs.hypergraphs.halfnlh_conv">module</a>
-</li>
-      </ul></li>
-      <li>
     easygraph.nn.convs.hypergraphs.hgnn_conv
 
       <ul>
@@ -2121,6 +2117,13 @@
 </li>
       </ul></li>
       <li>
+    easygraph.nn.convs.hypergraphs.hwnn_conv
+
+      <ul>
+        <li><a href="reference/easygraph.nn.convs.hypergraphs.hwnn_conv.html#module-easygraph.nn.convs.hypergraphs.hwnn_conv">module</a>
+</li>
+      </ul></li>
+      <li>
     easygraph.nn.convs.hypergraphs.hypergcn_conv
 
       <ul>
@@ -2132,13 +2135,6 @@
 
       <ul>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#module-easygraph.nn.convs.hypergraphs.unignn_conv">module</a>
-</li>
-      </ul></li>
-      <li>
-    easygraph.nn.convs.pma
-
-      <ul>
-        <li><a href="reference/easygraph.nn.convs.pma.html#module-easygraph.nn.convs.pma">module</a>
 </li>
       </ul></li>
       <li>
@@ -2467,25 +2463,15 @@
 </li>
         <li><a href="reference/easygraph.model.hypergraphs.dhcf.html#easygraph.model.hypergraphs.dhcf.DHCF.forward">(easygraph.model.hypergraphs.dhcf.DHCF method)</a>
 </li>
-        <li><a href="reference/easygraph.model.hypergraphs.dhne.html#easygraph.model.hypergraphs.dhne.DHNE.forward">(easygraph.model.hypergraphs.dhne.DHNE method)</a>
-</li>
         <li><a href="reference/easygraph.model.hypergraphs.hgnn.html#easygraph.model.hypergraphs.hgnn.HGNN.forward">(easygraph.model.hypergraphs.hgnn.HGNN method)</a>
 </li>
         <li><a href="reference/easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP.forward">(easygraph.model.hypergraphs.hgnnp.HGNNP method)</a>
 </li>
         <li><a href="reference/easygraph.model.hypergraphs.hnhn.html#easygraph.model.hypergraphs.hnhn.HNHN.forward">(easygraph.model.hypergraphs.hnhn.HNHN method)</a>
 </li>
+        <li><a href="reference/easygraph.model.hypergraphs.hwnn.html#easygraph.model.hypergraphs.hwnn.HWNN.forward">(easygraph.model.hypergraphs.hwnn.HWNN method)</a>
+</li>
         <li><a href="reference/easygraph.model.hypergraphs.hypergcn.html#easygraph.model.hypergraphs.hypergcn.HyperGCN.forward">(easygraph.model.hypergraphs.hypergcn.HyperGCN method)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.setgnn.html#easygraph.model.hypergraphs.setgnn.SetGNN.forward">(easygraph.model.hypergraphs.setgnn.SetGNN method)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGAT.forward">(easygraph.model.hypergraphs.unignn.UniGAT method)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGCN.forward">(easygraph.model.hypergraphs.unignn.UniGCN method)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGIN.forward">(easygraph.model.hypergraphs.unignn.UniGIN method)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniSAGE.forward">(easygraph.model.hypergraphs.unignn.UniSAGE method)</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.common.html#easygraph.nn.convs.common.MLP.forward">(easygraph.nn.convs.common.MLP method)</a>
 </li>
@@ -2493,13 +2479,13 @@
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.dhcf_conv.html#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.forward">(easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv method)</a>
 </li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.halfnlh_conv.html#easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv.forward">(easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv method)</a>
-</li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnn_conv.html#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.forward">(easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv method)</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnnp_conv.html#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.forward">(easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv method)</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hnhn_conv.html#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.forward">(easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv method)</a>
+</li>
+        <li><a href="reference/easygraph.nn.convs.hypergraphs.hwnn_conv.html#easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv.forward">(easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv method)</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hypergcn_conv.html#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.forward">(easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv method)</a>
 </li>
@@ -2510,8 +2496,6 @@
         <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.forward">(easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv method)</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.forward">(easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv method)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.pma.html#easygraph.nn.convs.pma.PMA.forward">(easygraph.nn.convs.pma.PMA method)</a>
 </li>
         <li><a href="reference/easygraph.nn.loss.html#easygraph.nn.loss.BPRLoss.forward">(easygraph.nn.loss.BPRLoss method)</a>
 </li>
@@ -2538,7 +2522,7 @@
 </li>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.from_graph_kHop">from_graph_kHop() (easygraph.classes.hypergraph.Hypergraph static method)</a>
 </li>
-      <li><a href="reference/easygraph.classes.graph.html#easygraph.classes.graph.Graph.from_hypergraph_hypergcn">from_hypergraph_hypergcn() (easygraph.classes.graph.Graph static method)</a>
+      <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.from_hypergraph_hypergcn">from_hypergraph_hypergcn() (easygraph.classes.hypergraph.Hypergraph static method)</a>
 </li>
       <li><a href="reference/easygraph.convert.html#easygraph.convert.from_networkx">from_networkx() (in module easygraph.convert)</a>
 </li>
@@ -2566,8 +2550,6 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/easygraph.model.hypergraphs.setgnn.html#easygraph.model.hypergraphs.setgnn.SetGNN.generate_edge_index">generate_edge_index() (easygraph.model.hypergraphs.setgnn.SetGNN method)</a>
-</li>
       <li><a href="reference/easygraph.readwrite.edgelist.html#easygraph.readwrite.edgelist.generate_edgelist">generate_edgelist() (in module easygraph.readwrite.edgelist)</a>
 </li>
       <li><a href="reference/easygraph.readwrite.gexf.html#easygraph.readwrite.gexf.generate_gexf">generate_gexf() (in module easygraph.readwrite.gexf)</a>
@@ -2640,8 +2622,6 @@
 </li>
       <li><a href="reference/easygraph.functions.hypergraph.centrality.cycle_ratio.html#easygraph.functions.hypergraph.centrality.cycle_ratio.getSmallestCycles">getSmallestCycles() (in module easygraph.functions.hypergraph.centrality.cycle_ratio)</a>
 </li>
-      <li><a href="reference/easygraph.nn.convs.pma.html#easygraph.nn.convs.pma.glorot">glorot() (in module easygraph.nn.convs.pma)</a>
-</li>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.gnn_data_dict_factory">gnn_data_dict_factory (easygraph.classes.directed_graph.DiGraph attribute)</a>
 
       <ul>
@@ -2704,8 +2684,6 @@
 </li>
       <li><a href="reference/easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.H_v2e_of_group">H_v2e_of_group() (easygraph.classes.base.BaseHypergraph method)</a>
 </li>
-      <li><a href="reference/easygraph.nn.convs.hypergraphs.halfnlh_conv.html#easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv">HalfNLHconv (class in easygraph.nn.convs.hypergraphs.halfnlh_conv)</a>
-</li>
       <li><a href="reference/easygraph.functions.community.LPA.html#easygraph.functions.community.LPA.HANP">HANP() (in module easygraph.functions.community.LPA)</a>
 </li>
       <li><a href="reference/easygraph.functions.path.bridges.html#easygraph.functions.path.bridges.has_bridges">has_bridges() (in module easygraph.functions.path.bridges)</a>
@@ -2744,14 +2722,14 @@
 </li>
       <li><a href="reference/easygraph.datasets.graph_dataset_base.html#easygraph.datasets.graph_dataset_base.EasyGraphDataset.hash">hash (easygraph.datasets.graph_dataset_base.EasyGraphDataset property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.model.hypergraphs.hgnn.html#easygraph.model.hypergraphs.hgnn.HGNN">HGNN (class in easygraph.model.hypergraphs.hgnn)</a>
 </li>
       <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnn_conv.html#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv">HGNNConv (class in easygraph.nn.convs.hypergraphs.hgnn_conv)</a>
 </li>
       <li><a href="reference/easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP">HGNNP (class in easygraph.model.hypergraphs.hgnnp)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnnp_conv.html#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv">HGNNPConv (class in easygraph.nn.convs.hypergraphs.hgnnp_conv)</a>
 </li>
       <li><a href="reference/easygraph.functions.structural_holes.evaluation.html#easygraph.functions.structural_holes.evaluation.hierarchy">hierarchy() (in module easygraph.functions.structural_holes.evaluation)</a>
@@ -2765,6 +2743,10 @@
       <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees">House_Committees (class in easygraph.datasets.hypergraph.House_Committees)</a>
 </li>
       <li><a href="reference/easygraph.functions.drawing.utils.html#easygraph.functions.drawing.utils.hull_layout">hull_layout() (in module easygraph.functions.drawing.utils)</a>
+</li>
+      <li><a href="reference/easygraph.model.hypergraphs.hwnn.html#easygraph.model.hypergraphs.hwnn.HWNN">HWNN (class in easygraph.model.hypergraphs.hwnn)</a>
+</li>
+      <li><a href="reference/easygraph.nn.convs.hypergraphs.hwnn_conv.html#easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv">HWNNConv (class in easygraph.nn.convs.hypergraphs.hwnn_conv)</a>
 </li>
       <li><a href="reference/easygraph.utils.decorators.html#easygraph.utils.decorators.hybrid">hybrid() (in module easygraph.utils.decorators)</a>
 </li>
@@ -2784,6 +2766,14 @@
         <li><a href="reference/easygraph.datasets.hypergraph.trivago_clicks.html#easygraph.datasets.hypergraph.trivago_clicks.trivago_clicks.hyperedges">(easygraph.datasets.hypergraph.trivago_clicks.trivago_clicks property)</a>
 </li>
         <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips.hyperedges">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips property)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school.hyperedges_path">hyperedges_path (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees.hyperedges_path">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips.hyperedges_path">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
 </li>
       </ul></li>
       <li><a href="reference/easygraph.model.hypergraphs.hypergcn.html#easygraph.model.hypergraphs.hypergcn.HyperGCN">HyperGCN (class in easygraph.model.hypergraphs.hypergcn)</a>
@@ -2830,12 +2820,16 @@
         <li><a href="reference/easygraph.classes.graph.html#easygraph.classes.graph.Graph.index2node">(easygraph.classes.graph.Graph property)</a>
 </li>
       </ul></li>
+      <li><a href="reference/easygraph.nn.convs.hypergraphs.hwnn_conv.html#easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv.init_parameters">init_parameters() (easygraph.nn.convs.hypergraphs.hwnn_conv.HWNNConv method)</a>
+</li>
       <li><a href="reference/easygraph.functions.drawing.utils.html#easygraph.functions.drawing.utils.init_pos">init_pos() (in module easygraph.functions.drawing.utils)</a>
 </li>
       <li><a href="reference/easygraph.functions.components.biconnected.html#easygraph.functions.components.biconnected.is_biconnected">is_biconnected() (in module easygraph.functions.components.biconnected)</a>
 </li>
       <li><a href="reference/easygraph.functions.components.connected.html#easygraph.functions.components.connected.is_connected">is_connected() (in module easygraph.functions.components.connected)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.is_directed">is_directed() (easygraph.classes.directed_graph.DiGraph method)</a>
 
       <ul>
@@ -2846,8 +2840,6 @@
         <li><a href="reference/easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.is_directed">(easygraph.classes.multigraph.MultiGraph method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.functions.isolate.html#easygraph.functions.isolate.is_isolate">is_isolate() (in module easygraph.functions.isolate)</a>
 </li>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.is_multigraph">is_multigraph() (easygraph.classes.directed_graph.DiGraph method)</a>
@@ -2930,16 +2922,24 @@
         <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips.label_names">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips property)</a>
 </li>
       </ul></li>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school.label_names_path">label_names_path (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees.label_names_path">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips.label_names_path">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
       <li><a href="reference/easygraph.datasets.ppi.html#easygraph.datasets.ppi.PPIDataset.labels">labels (easygraph.datasets.ppi.PPIDataset attribute)</a>
 </li>
       <li><a href="reference/easygraph.functions.centrality.laplacian.html#easygraph.functions.centrality.laplacian.laplacian">laplacian() (in module easygraph.functions.centrality.laplacian)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.datasets.ppi.html#easygraph.datasets.ppi.LegacyPPIDataset">LegacyPPIDataset (class in easygraph.datasets.ppi)</a>
 </li>
       <li><a href="reference/easygraph.functions.graph_embedding.line.html#easygraph.functions.graph_embedding.line.LINE">LINE (class in easygraph.functions.graph_embedding.line)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.base.html#easygraph.classes.base.BaseHypergraph.load">load() (easygraph.classes.base.BaseHypergraph static method)</a>
 
       <ul>
@@ -3000,12 +3000,6 @@
 </li>
       <li><a href="reference/easygraph.functions.path.mst.html#easygraph.functions.path.mst.maximum_spanning_tree">maximum_spanning_tree() (in module easygraph.functions.path.mst)</a>
 </li>
-      <li><a href="reference/easygraph.nn.convs.hypergraphs.halfnlh_conv.html#easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv.message">message() (easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv method)</a>
-
-      <ul>
-        <li><a href="reference/easygraph.nn.convs.pma.html#easygraph.nn.convs.pma.PMA.message">(easygraph.nn.convs.pma.PMA method)</a>
-</li>
-      </ul></li>
       <li><a href="reference/easygraph.datapipe.normalize.html#easygraph.datapipe.normalize.min_max_scaler">min_max_scaler() (in module easygraph.datapipe.normalize)</a>
 </li>
       <li><a href="reference/easygraph.functions.path.mst.html#easygraph.functions.path.mst.minimum_spanning_edges">minimum_spanning_edges() (in module easygraph.functions.path.mst)</a>
@@ -3020,7 +3014,7 @@
     module
 
       <ul>
-        <li><a href="reference/easygraph.html#module-0">easygraph</a>
+        <li><a href="reference/easygraph.html#module-easygraph">easygraph</a>
 </li>
         <li><a href="reference/easygraph.classes.html#module-easygraph.classes">easygraph.classes</a>
 </li>
@@ -3194,8 +3188,6 @@
 </li>
         <li><a href="reference/easygraph.functions.graph_embedding.line.html#module-easygraph.functions.graph_embedding.line">easygraph.functions.graph_embedding.line</a>
 </li>
-        <li><a href="reference/easygraph.functions.graph_embedding.net_emb_example_citeseer.html#module-easygraph.functions.graph_embedding.net_emb_example_citeseer">easygraph.functions.graph_embedding.net_emb_example_citeseer</a>
-</li>
         <li><a href="reference/easygraph.functions.graph_embedding.NOBE.html#module-easygraph.functions.graph_embedding.NOBE">easygraph.functions.graph_embedding.NOBE</a>
 </li>
         <li><a href="reference/easygraph.functions.graph_embedding.node2vec.html#module-easygraph.functions.graph_embedding.node2vec">easygraph.functions.graph_embedding.node2vec</a>
@@ -3290,11 +3282,7 @@
 </li>
         <li><a href="reference/easygraph.model.html#module-easygraph.model">easygraph.model</a>
 </li>
-        <li><a href="reference/easygraph.model.hypergraphs.html#module-easygraph.model.hypergraphs">easygraph.model.hypergraphs</a>
-</li>
         <li><a href="reference/easygraph.model.hypergraphs.dhcf.html#module-easygraph.model.hypergraphs.dhcf">easygraph.model.hypergraphs.dhcf</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.dhne.html#module-easygraph.model.hypergraphs.dhne">easygraph.model.hypergraphs.dhne</a>
 </li>
         <li><a href="reference/easygraph.model.hypergraphs.hgnn.html#module-easygraph.model.hypergraphs.hgnn">easygraph.model.hypergraphs.hgnn</a>
 </li>
@@ -3302,11 +3290,9 @@
 </li>
         <li><a href="reference/easygraph.model.hypergraphs.hnhn.html#module-easygraph.model.hypergraphs.hnhn">easygraph.model.hypergraphs.hnhn</a>
 </li>
+        <li><a href="reference/easygraph.model.hypergraphs.hwnn.html#module-easygraph.model.hypergraphs.hwnn">easygraph.model.hypergraphs.hwnn</a>
+</li>
         <li><a href="reference/easygraph.model.hypergraphs.hypergcn.html#module-easygraph.model.hypergraphs.hypergcn">easygraph.model.hypergraphs.hypergcn</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.setgnn.html#module-easygraph.model.hypergraphs.setgnn">easygraph.model.hypergraphs.setgnn</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#module-easygraph.model.hypergraphs.unignn">easygraph.model.hypergraphs.unignn</a>
 </li>
         <li><a href="reference/easygraph.nn.html#module-easygraph.nn">easygraph.nn</a>
 </li>
@@ -3318,19 +3304,17 @@
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.dhcf_conv.html#module-easygraph.nn.convs.hypergraphs.dhcf_conv">easygraph.nn.convs.hypergraphs.dhcf_conv</a>
 </li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.halfnlh_conv.html#module-easygraph.nn.convs.hypergraphs.halfnlh_conv">easygraph.nn.convs.hypergraphs.halfnlh_conv</a>
-</li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnn_conv.html#module-easygraph.nn.convs.hypergraphs.hgnn_conv">easygraph.nn.convs.hypergraphs.hgnn_conv</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnnp_conv.html#module-easygraph.nn.convs.hypergraphs.hgnnp_conv">easygraph.nn.convs.hypergraphs.hgnnp_conv</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hnhn_conv.html#module-easygraph.nn.convs.hypergraphs.hnhn_conv">easygraph.nn.convs.hypergraphs.hnhn_conv</a>
 </li>
+        <li><a href="reference/easygraph.nn.convs.hypergraphs.hwnn_conv.html#module-easygraph.nn.convs.hypergraphs.hwnn_conv">easygraph.nn.convs.hypergraphs.hwnn_conv</a>
+</li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.hypergcn_conv.html#module-easygraph.nn.convs.hypergraphs.hypergcn_conv">easygraph.nn.convs.hypergraphs.hypergcn_conv</a>
 </li>
         <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#module-easygraph.nn.convs.hypergraphs.unignn_conv">easygraph.nn.convs.hypergraphs.unignn_conv</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.pma.html#module-easygraph.nn.convs.pma">easygraph.nn.convs.pma</a>
 </li>
         <li><a href="reference/easygraph.nn.loss.html#module-easygraph.nn.loss">easygraph.nn.loss</a>
 </li>
@@ -3513,10 +3497,18 @@
         <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips.node_labels">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips property)</a>
 </li>
       </ul></li>
-      <li><a href="reference/easygraph.readwrite.json_graph.node_link.html#easygraph.readwrite.json_graph.node_link.node_link_graph">node_link_graph() (in module easygraph.readwrite.json_graph.node_link)</a>
+      <li><a href="reference/easygraph.datasets.hypergraph.contact_primary_school.html#easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school.node_labels_path">node_labels_path (easygraph.datasets.hypergraph.contact_primary_school.contact_primary_school attribute)</a>
+
+      <ul>
+        <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees.node_labels_path">(easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
 </li>
+        <li><a href="reference/easygraph.datasets.hypergraph.walmart_trips.html#easygraph.datasets.hypergraph.walmart_trips.walmart_trips.node_labels_path">(easygraph.datasets.hypergraph.walmart_trips.walmart_trips attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/easygraph.readwrite.json_graph.node_link.html#easygraph.readwrite.json_graph.node_link.node_link_graph">node_link_graph() (in module easygraph.readwrite.json_graph.node_link)</a>
+</li>
       <li><a href="reference/easygraph.datasets.hypergraph.cat_edge_Cooking.html#easygraph.datasets.hypergraph.cat_edge_Cooking.cat_edge_Cooking.node_names">node_names (easygraph.datasets.hypergraph.cat_edge_Cooking.cat_edge_Cooking property)</a>
 
       <ul>
@@ -3525,6 +3517,8 @@
         <li><a href="reference/easygraph.datasets.hypergraph.senate_committees.html#easygraph.datasets.hypergraph.senate_committees.senate_committees.node_names">(easygraph.datasets.hypergraph.senate_committees.senate_committees property)</a>
 </li>
       </ul></li>
+      <li><a href="reference/easygraph.datasets.hypergraph.House_Committees.html#easygraph.datasets.hypergraph.House_Committees.House_Committees.node_names_path">node_names_path (easygraph.datasets.hypergraph.House_Committees.House_Committees attribute)</a>
+</li>
       <li><a href="reference/easygraph.functions.drawing.simulator.html#easygraph.functions.drawing.simulator.Simulator.NODE_REPULSION">NODE_REPULSION (easygraph.functions.drawing.simulator.Simulator attribute)</a>
 </li>
       <li><a href="reference/easygraph.exception.html#easygraph.exception.NodeNotFound">NodeNotFound</a>
@@ -3683,8 +3677,6 @@
 </li>
       <li><a href="reference/easygraph.functions.drawing.plot.html#easygraph.functions.drawing.plot.plot_Neighborhood_Followers">plot_Neighborhood_Followers() (in module easygraph.functions.drawing.plot)</a>
 </li>
-      <li><a href="reference/easygraph.nn.convs.pma.html#easygraph.nn.convs.pma.PMA">PMA (class in easygraph.nn.convs.pma)</a>
-</li>
       <li><a href="reference/easygraph.functions.drawing.geometry.html#easygraph.functions.drawing.geometry.polar_position">polar_position() (in module easygraph.functions.drawing.geometry)</a>
 </li>
       <li><a href="reference/easygraph.utils.mapped_queue.html#easygraph.utils.mapped_queue.MappedQueue.pop">pop() (easygraph.utils.mapped_queue.MappedQueue method)</a>
@@ -3695,10 +3687,10 @@
 </li>
       <li><a href="reference/easygraph.functions.basic.predecessor_path_based.html#easygraph.functions.basic.predecessor_path_based.predecessor">predecessor() (in module easygraph.functions.basic.predecessor_path_based)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.predecessors">predecessors() (easygraph.classes.directed_graph.DiGraph method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.datasets.dynamic.hospital_lyon.html#easygraph.datasets.dynamic.hospital_lyon.Hospital_Lyon.preprocess">preprocess() (easygraph.datasets.dynamic.hospital_lyon.Hospital_Lyon method)</a>
 </li>
       <li><a href="reference/easygraph.functions.path.path.html#easygraph.functions.path.path.Prim">Prim() (in module easygraph.functions.path.path)</a>
@@ -3813,14 +3805,14 @@
         <li><a href="reference/easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_edges">(easygraph.classes.graph.Graph method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.remove_edges_from">remove_edges_from() (easygraph.classes.directed_graph.DiGraph method)</a>
 
       <ul>
         <li><a href="reference/easygraph.classes.multigraph.html#easygraph.classes.multigraph.MultiGraph.remove_edges_from">(easygraph.classes.multigraph.MultiGraph method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.graph.html#easygraph.classes.graph.Graph.remove_extra_selfloop">remove_extra_selfloop() (easygraph.classes.graph.Graph method)</a>
 </li>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.remove_group">remove_group() (easygraph.classes.hypergraph.Hypergraph method)</a>
@@ -3868,13 +3860,7 @@
       <li><a href="reference/easygraph.model.hypergraphs.dhcf.html#easygraph.model.hypergraphs.dhcf.DHCF.reset_parameters">reset_parameters() (easygraph.model.hypergraphs.dhcf.DHCF method)</a>
 
       <ul>
-        <li><a href="reference/easygraph.model.hypergraphs.setgnn.html#easygraph.model.hypergraphs.setgnn.SetGNN.reset_parameters">(easygraph.model.hypergraphs.setgnn.SetGNN method)</a>
-</li>
         <li><a href="reference/easygraph.nn.convs.common.html#easygraph.nn.convs.common.MLP.reset_parameters">(easygraph.nn.convs.common.MLP method)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.halfnlh_conv.html#easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv.reset_parameters">(easygraph.nn.convs.hypergraphs.halfnlh_conv.HalfNLHconv method)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.pma.html#easygraph.nn.convs.pma.PMA.reset_parameters">(easygraph.nn.convs.pma.PMA method)</a>
 </li>
       </ul></li>
       <li><a href="reference/easygraph.datapipe.loader.html#easygraph.datapipe.loader.ret_cast_fun">ret_cast_fun() (in module easygraph.datapipe.loader)</a>
@@ -3951,18 +3937,16 @@
 </li>
       <li><a href="reference/easygraph.classes.operation.html#easygraph.classes.operation.set_node_attributes">set_node_attributes() (in module easygraph.classes.operation)</a>
 </li>
-      <li><a href="reference/easygraph.model.hypergraphs.setgnn.html#easygraph.model.hypergraphs.setgnn.SetGNN">SetGNN (class in easygraph.model.hypergraphs.setgnn)</a>
-</li>
       <li><a href="reference/easygraph.functions.drawing.positioning.html#easygraph.functions.drawing.positioning.shell_position">shell_position() (in module easygraph.functions.drawing.positioning)</a>
 </li>
       <li><a href="reference/easygraph.utils.logging.html#easygraph.utils.logging.simple_stdout2file">simple_stdout2file() (in module easygraph.utils.logging)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.functions.drawing.simulator.html#easygraph.functions.drawing.simulator.Simulator.simulate">simulate() (easygraph.functions.drawing.simulator.Simulator method)</a>
 </li>
       <li><a href="reference/easygraph.functions.drawing.simulator.html#easygraph.functions.drawing.simulator.Simulator">Simulator (class in easygraph.functions.drawing.simulator)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.functions.path.path.html#easygraph.functions.path.path.single_source_bfs">single_source_bfs() (in module easygraph.functions.path.path)</a>
 </li>
       <li><a href="reference/easygraph.functions.path.path.html#easygraph.functions.path.path.single_source_dijkstra">single_source_dijkstra() (in module easygraph.functions.path.path)</a>
@@ -3988,6 +3972,10 @@
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN">smoothing_with_HGNN() (easygraph.classes.hypergraph.Hypergraph method)</a>
 </li>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HGNN_of_group">smoothing_with_HGNN_of_group() (easygraph.classes.hypergraph.Hypergraph method)</a>
+</li>
+      <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_approx">smoothing_with_HWNN_approx() (easygraph.classes.hypergraph.Hypergraph method)</a>
+</li>
+      <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.smoothing_with_HWNN_wavelet">smoothing_with_HWNN_wavelet() (easygraph.classes.hypergraph.Hypergraph method)</a>
 </li>
       <li><a href="reference/easygraph.utils.sparse.html#easygraph.utils.sparse.sparse_dropout">sparse_dropout() (in module easygraph.utils.sparse)</a>
 </li>
@@ -4067,6 +4055,8 @@
       </ul></li>
       <li><a href="reference/easygraph.classes.graph.html#easygraph.classes.graph.Graph.to_directed_class">to_directed_class() (easygraph.classes.graph.Graph method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.convert.html#easygraph.convert.to_easygraph_graph">to_easygraph_graph() (in module easygraph.convert)</a>
 </li>
       <li><a href="reference/easygraph.classes.directed_graph.html#easygraph.classes.directed_graph.DiGraph.to_index_node_graph">to_index_node_graph() (easygraph.classes.directed_graph.DiGraph method)</a>
@@ -4095,8 +4085,6 @@
 </li>
       <li><a href="reference/easygraph.classes.directed_multigraph.html#easygraph.classes.directed_multigraph.MultiDiGraph.to_undirected">to_undirected() (easygraph.classes.directed_multigraph.MultiDiGraph method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/easygraph.classes.operation.html#easygraph.classes.operation.topological_sort">topological_sort() (in module easygraph.classes.operation)</a>
 </li>
       <li><a href="reference/easygraph.experiments.base.html#easygraph.experiments.base.BaseTask.train">train() (easygraph.experiments.base.BaseTask method)</a>
@@ -4107,60 +4095,6 @@
         <li><a href="reference/easygraph.experiments.vertex_classification.html#easygraph.experiments.vertex_classification.VertexClassificationTask.train">(easygraph.experiments.vertex_classification.VertexClassificationTask method)</a>
 </li>
         <li><a href="reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.train">(easygraph.functions.graph_embedding.sdne.SDNE method)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/easygraph.functions.graph_embedding.line.html#easygraph.functions.graph_embedding.line.LINE.training">training (easygraph.functions.graph_embedding.line.LINE attribute)</a>
-
-      <ul>
-        <li><a href="reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.training">(easygraph.functions.graph_embedding.sdne.SDNE attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.dhcf.html#easygraph.model.hypergraphs.dhcf.DHCF.training">(easygraph.model.hypergraphs.dhcf.DHCF attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.dhne.html#easygraph.model.hypergraphs.dhne.DHNE.training">(easygraph.model.hypergraphs.dhne.DHNE attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.hgnn.html#easygraph.model.hypergraphs.hgnn.HGNN.training">(easygraph.model.hypergraphs.hgnn.HGNN attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP.training">(easygraph.model.hypergraphs.hgnnp.HGNNP attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.hnhn.html#easygraph.model.hypergraphs.hnhn.HNHN.training">(easygraph.model.hypergraphs.hnhn.HNHN attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.hypergcn.html#easygraph.model.hypergraphs.hypergcn.HyperGCN.training">(easygraph.model.hypergraphs.hypergcn.HyperGCN attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.setgnn.html#easygraph.model.hypergraphs.setgnn.SetGNN.training">(easygraph.model.hypergraphs.setgnn.SetGNN attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGAT.training">(easygraph.model.hypergraphs.unignn.UniGAT attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGCN.training">(easygraph.model.hypergraphs.unignn.UniGCN attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGIN.training">(easygraph.model.hypergraphs.unignn.UniGIN attribute)</a>
-</li>
-        <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniSAGE.training">(easygraph.model.hypergraphs.unignn.UniSAGE attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.common.html#easygraph.nn.convs.common.MLP.training">(easygraph.nn.convs.common.MLP attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.common.html#easygraph.nn.convs.common.MultiHeadWrapper.training">(easygraph.nn.convs.common.MultiHeadWrapper attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.dhcf_conv.html#easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv.training">(easygraph.nn.convs.hypergraphs.dhcf_conv.JHConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnn_conv.html#easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv.training">(easygraph.nn.convs.hypergraphs.hgnn_conv.HGNNConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.hgnnp_conv.html#easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv.training">(easygraph.nn.convs.hypergraphs.hgnnp_conv.HGNNPConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.hnhn_conv.html#easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv.training">(easygraph.nn.convs.hypergraphs.hnhn_conv.HNHNConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.hypergcn_conv.html#easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv.training">(easygraph.nn.convs.hypergraphs.hypergcn_conv.HyperGCNConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv.training">(easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv.training">(easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv.training">(easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv.training">(easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.loss.html#easygraph.nn.loss.BPRLoss.training">(easygraph.nn.loss.BPRLoss attribute)</a>
-</li>
-        <li><a href="reference/easygraph.nn.regularization.html#easygraph.nn.regularization.EmbeddingRegularization.training">(easygraph.nn.regularization.EmbeddingRegularization attribute)</a>
 </li>
       </ul></li>
       <li><a href="reference/easygraph.datasets.hypergraph.trivago_clicks.html#easygraph.datasets.hypergraph.trivago_clicks.trivago_clicks">trivago_clicks (class in easygraph.datasets.hypergraph.trivago_clicks)</a>
@@ -4183,23 +4117,15 @@
 </li>
       <li><a href="reference/easygraph.functions.hypergraph.null_model.random.html#easygraph.functions.hypergraph.null_model.random.uniform_hypergraph_Gnp">uniform_hypergraph_Gnp() (in module easygraph.functions.hypergraph.null_model.random)</a>
 </li>
-      <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGAT">UniGAT (class in easygraph.model.hypergraphs.unignn)</a>
-</li>
       <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGATConv">UniGATConv (class in easygraph.nn.convs.hypergraphs.unignn_conv)</a>
-</li>
-      <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGCN">UniGCN (class in easygraph.model.hypergraphs.unignn)</a>
 </li>
       <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGCNConv">UniGCNConv (class in easygraph.nn.convs.hypergraphs.unignn_conv)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniGIN">UniGIN (class in easygraph.model.hypergraphs.unignn)</a>
-</li>
       <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniGINConv">UniGINConv (class in easygraph.nn.convs.hypergraphs.unignn_conv)</a>
 </li>
       <li><a href="reference/easygraph.classes.hypergraph.html#easygraph.classes.hypergraph.Hypergraph.unique_edge_sizes">unique_edge_sizes() (easygraph.classes.hypergraph.Hypergraph method)</a>
-</li>
-      <li><a href="reference/easygraph.model.hypergraphs.unignn.html#easygraph.model.hypergraphs.unignn.UniSAGE">UniSAGE (class in easygraph.model.hypergraphs.unignn)</a>
 </li>
       <li><a href="reference/easygraph.nn.convs.hypergraphs.unignn_conv.html#easygraph.nn.convs.hypergraphs.unignn_conv.UniSAGEConv">UniSAGEConv (class in easygraph.nn.convs.hypergraphs.unignn_conv)</a>
 </li>
@@ -4398,14 +4324,6 @@
   </ul></td>
 </tr></table>
 
-<h2 id="Z">Z</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/easygraph.nn.convs.pma.html#easygraph.nn.convs.pma.zeros">zeros() (in module easygraph.nn.convs.pma)</a>
-</li>
-  </ul></td>
-</tr></table>
-
 
 
                 </article>
@@ -4414,7 +4332,7 @@
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -4435,8 +4353,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -4456,7 +4374,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>
@@ -4469,7 +4387,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

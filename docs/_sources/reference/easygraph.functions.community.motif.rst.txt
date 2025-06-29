@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.community.motif:
-
 easygraph.functions.community.motif module
 ==========================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.hypergraph.centrality.cycle_ratio:
-
 easygraph.functions.hypergraph.centrality.cycle\_ratio module
 =============================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.classes.directed_multigraph:
-
 easygraph.classes.directed\_multigraph module
 =============================================
 

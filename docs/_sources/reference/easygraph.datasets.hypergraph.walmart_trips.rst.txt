@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.walmart_trips:
-
 easygraph.datasets.hypergraph.walmart\_trips module
 ===================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.experiments:
-
 easygraph.experiments package
 =============================
 

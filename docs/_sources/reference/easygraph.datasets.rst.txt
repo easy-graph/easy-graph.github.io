@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets:
-
 easygraph.datasets package
 ==========================
 

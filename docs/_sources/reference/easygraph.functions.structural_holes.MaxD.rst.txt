@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes.MaxD:
-
 easygraph.functions.structural\_holes.MaxD module
 =================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.path.diameter:
-
 easygraph.functions.path.diameter module
 ========================================
 

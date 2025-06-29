@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.loadDeepSetDatasets:
-
 easygraph.datasets.hypergraph.loadDeepSetDatasets module
 ========================================================
 

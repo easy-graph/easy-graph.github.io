@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.path.path:
-
 easygraph.functions.path.path module
 ====================================
 

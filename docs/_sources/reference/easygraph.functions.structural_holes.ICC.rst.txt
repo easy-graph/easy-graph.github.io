@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes.ICC:
-
 easygraph.functions.structural\_holes.ICC module
 ================================================
 

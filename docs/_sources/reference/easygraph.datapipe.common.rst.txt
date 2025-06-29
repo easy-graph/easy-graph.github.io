@@ -1,5 +1,3 @@
-.. _module_easygraph.datapipe.common:
-
 easygraph.datapipe.common module
 ================================
 

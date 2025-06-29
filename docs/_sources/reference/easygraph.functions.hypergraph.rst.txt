@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.hypergraph:
-
 easygraph.functions.hypergraph package
 ======================================
 

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -13,39 +14,41 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css" />
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/my_theme.css?v=538c3502" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=17704a4c"></script>
-    <script src="../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/readwrite/graphml';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -53,32 +56,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -86,7 +73,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -94,20 +80,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../../index.html">
@@ -122,7 +115,7 @@
     
     
     <img src="../../../_static/logo.png" class="logo__image only-light" alt="EasyGraph 1.4.1 - Home"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="EasyGraph 1.4.1 - Home"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="EasyGraph 1.4.1 - Home"/>
   
   
 </a></div>
@@ -134,96 +127,99 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../eggpu.html">
+    EGGPU
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../reference.html">
+    Reference
+  </a>
+</li>
+
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorial.html">
+    Tutorial
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -238,19 +234,15 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -263,7 +255,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -275,27 +267,29 @@
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -304,102 +298,98 @@
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../install.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../install.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../example.html">
-                        Examples of Graph Analysis
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../hypergraph.html">
-                        EasyHypergraph
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../example.html">
+    Examples of Graph Analysis
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../eggpu.html">
-                        EGGPU
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../reference.html">
-                        Reference
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../tutorial.html">
-                        Tutorial
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hypergraph.html">
+    EasyHypergraph
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../contributorGuide.html">
-                        Contributor Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../license.html">
-                        License
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../eggpu.html">
+    EGGPU
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../sourcecode.html">
-                        Source Code
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../honors.html">
-                        Honors
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../reference.html">
+    Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../../../dev.html">
-                        Developer Documentation
-                      </a>
-                    </li>
-                
-                </ul>
-            </li>
-            
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../videos.html">
+    Colab Notebooks and Videos Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributorGuide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../sourcecode.html">
+    Source Code
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../honors.html">
+    Honors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../dev.html">
+    Developer Documentation
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -407,7 +397,7 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
             
@@ -420,7 +410,7 @@
           
           
           
-          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/easy-graph/Easy-Graph" title="Source repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -431,29 +421,32 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -464,7 +457,7 @@
     
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">easygraph.re...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">easygraph.readwrite.graphml</span></li>
   </ul>
 </nav>
 </div>
@@ -479,7 +472,7 @@
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <h1>Source code for easygraph.readwrite.graphml</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -525,14 +518,14 @@
 <span class="sd">for examples.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
 
-<span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
 
-<span class="kn">from</span> <span class="nn">easygraph.utils</span> <span class="kn">import</span> <span class="n">open_file</span>
-<span class="kn">from</span> <span class="nn">easygraph.utils.exception</span> <span class="kn">import</span> <span class="n">EasyGraphError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">open_file</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.utils.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">EasyGraphError</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -548,7 +541,7 @@
 
 
 <div class="viewcode-block" id="write_graphml_xml"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.write_graphml_xml">[docs]</a><span class="nd">@open_file</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">write_graphml_xml</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_graphml_xml</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span>
     <span class="n">path</span><span class="p">,</span>
     <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
@@ -603,7 +596,7 @@
 
 
 <div class="viewcode-block" id="write_graphml_lxml"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.write_graphml_lxml">[docs]</a><span class="nd">@open_file</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">write_graphml_lxml</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_graphml_lxml</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span>
     <span class="n">path</span><span class="p">,</span>
     <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
@@ -650,7 +643,7 @@
 <span class="sd">    and unidirected edges together) hyperedges, nested graphs, or ports.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">lxml.etree</span> <span class="k">as</span> <span class="nn">lxmletree</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">lxml.etree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lxmletree</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">write_graphml_xml</span><span class="p">(</span>
             <span class="n">G</span><span class="p">,</span>
@@ -674,7 +667,7 @@
     <span class="n">writer</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="generate_graphml"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.generate_graphml">[docs]</a><span class="k">def</span> <span class="nf">generate_graphml</span><span class="p">(</span>
+<div class="viewcode-block" id="generate_graphml"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.generate_graphml">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">generate_graphml</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span>
     <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
     <span class="n">prettyprint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -722,7 +715,7 @@
 
 
 <div class="viewcode-block" id="read_graphml"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.read_graphml">[docs]</a><span class="nd">@open_file</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">read_graphml</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">edge_key_type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">force_multigraph</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_graphml</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">edge_key_type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">force_multigraph</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read graph in GraphML format from path.</span>
 
 <span class="sd">    Parameters</span>
@@ -794,7 +787,7 @@
     <span class="k">return</span> <span class="n">glist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="parse_graphml"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.parse_graphml">[docs]</a><span class="k">def</span> <span class="nf">parse_graphml</span><span class="p">(</span>
+<div class="viewcode-block" id="parse_graphml"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.parse_graphml">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">parse_graphml</span><span class="p">(</span>
     <span class="n">graphml_string</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">edge_key_type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">force_multigraph</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read graph in GraphML format from string.</span>
@@ -867,7 +860,7 @@
     <span class="k">return</span> <span class="n">glist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
-<span class="k">class</span> <span class="nc">GraphML</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GraphML</span><span class="p">:</span>
     <span class="n">NS_GRAPHML</span> <span class="o">=</span> <span class="s2">&quot;http://graphml.graphdrawing.org/xmlns&quot;</span>
     <span class="n">NS_XSI</span> <span class="o">=</span> <span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
     <span class="c1"># xmlns:y=&quot;http://www.yworks.com/xml/graphml&quot;</span>
@@ -879,7 +872,7 @@
         <span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">construct_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">construct_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
             <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;integer&quot;</span><span class="p">),</span>  <span class="c1"># for Gephi GraphML bug</span>
             <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;yfiles&quot;</span><span class="p">),</span>
@@ -893,7 +886,7 @@
 
         <span class="c1"># These additions to types allow writing numpy types</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
@@ -935,7 +928,7 @@
         <span class="mi">1</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">get_xml_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_xml_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrapper around the xml_type dict that raises a more informative</span>
 <span class="sd">        exception message when a user attempts to use data of a type not</span>
 <span class="sd">        supported by GraphML.&quot;&quot;&quot;</span>
@@ -944,11 +937,11 @@
         <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;GraphML does not support type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="s2"> as data values.&quot;</span>
-            <span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
 
 
-<div class="viewcode-block" id="GraphMLWriter"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter">[docs]</a><span class="k">class</span> <span class="nc">GraphMLWriter</span><span class="p">(</span><span class="n">GraphML</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="GraphMLWriter"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">GraphMLWriter</span><span class="p">(</span><span class="n">GraphML</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">graph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
@@ -958,7 +951,7 @@
         <span class="n">edge_id_from_attribute</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">construct_types</span><span class="p">()</span>
-        <span class="kn">from</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">import</span> <span class="n">Element</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="kn">import</span> <span class="n">Element</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">myElement</span> <span class="o">=</span> <span class="n">Element</span>
 
@@ -982,15 +975,15 @@
         <span class="k">if</span> <span class="n">graph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_graph_element</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">import</span> <span class="n">tostring</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="kn">import</span> <span class="n">tostring</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prettyprint</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">tostring</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">s</span>
 
-<div class="viewcode-block" id="GraphMLWriter.attr_type"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.attr_type">[docs]</a>    <span class="k">def</span> <span class="nf">attr_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.attr_type"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.attr_type">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">attr_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Infer the attribute type of data named name. Currently this only</span>
 <span class="sd">        supports inference of numeric types.</span>
 
@@ -1015,7 +1008,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.get_key"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.get_key">[docs]</a>    <span class="k">def</span> <span class="nf">get_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attr_type</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.get_key"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.get_key">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attr_type</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
         <span class="n">keys_key</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attr_type</span><span class="p">,</span> <span class="n">scope</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">keys_key</span><span class="p">]</span>
@@ -1041,7 +1034,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_element</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_id</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.add_data"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_data">[docs]</a>    <span class="k">def</span> <span class="nf">add_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">element_type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.add_data"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_data">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">element_type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make a data element for an edge or a node. Keep a log of the</span>
 <span class="sd">        type in the keys table.</span>
@@ -1055,7 +1048,7 @@
         <span class="n">data_element</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data_element</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.add_attributes"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_attributes">[docs]</a>    <span class="k">def</span> <span class="nf">add_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">xml_obj</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.add_attributes"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_attributes">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">xml_obj</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Appends attribute data to edges or nodes, and stores type information</span>
 <span class="sd">        to be added later. See add_graph_element.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1063,14 +1056,14 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">attribute_types</span><span class="p">[(</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">scope</span><span class="p">)]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="n">xml_obj</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">default</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)])</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.add_nodes"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">add_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">graph_element</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.add_nodes"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_nodes">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">graph_element</span><span class="p">):</span>
         <span class="n">default</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;node_default&quot;</span><span class="p">,</span> <span class="p">{})</span>
         <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">node_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">myElement</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_attributes</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="n">node_element</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
             <span class="n">graph_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node_element</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.add_edges"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_edges">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">graph_element</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.add_edges"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_edges">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">graph_element</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
                 <span class="n">edge_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">myElement</span><span class="p">(</span>
@@ -1102,7 +1095,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">add_attributes</span><span class="p">(</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="n">edge_element</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
                 <span class="n">graph_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_element</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.add_graph_element"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_graph_element">[docs]</a>    <span class="k">def</span> <span class="nf">add_graph_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.add_graph_element"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_graph_element">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_graph_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Serialize graph G in GraphML to the stream.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1141,20 +1134,20 @@
                 <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">graph_element</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.add_graphs"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_graphs">[docs]</a>    <span class="k">def</span> <span class="nf">add_graphs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_list</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.add_graphs"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.add_graphs">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_graphs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add many graphs to this GraphML document.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">graph_list</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_graph_element</span><span class="p">(</span><span class="n">G</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.dump"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.dump">[docs]</a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">import</span> <span class="n">ElementTree</span>
+<div class="viewcode-block" id="GraphMLWriter.dump"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.dump">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="kn">import</span> <span class="n">ElementTree</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prettyprint</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="p">)</span>
         <span class="n">document</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="p">)</span>
         <span class="n">document</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GraphMLWriter.indent"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.indent">[docs]</a>    <span class="k">def</span> <span class="nf">indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLWriter.indent"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLWriter.indent">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="c1"># in-place prettyprint formatter</span>
         <span class="n">i</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">level</span> <span class="o">*</span> <span class="s2">&quot;  &quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
@@ -1171,23 +1164,23 @@
                 <span class="n">elem</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">i</span></div></div>
 
 
-<span class="k">class</span> <span class="nc">IncrementalElement</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">IncrementalElement</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper for _IncrementalWriter providing an Element like interface.</span>
 
 <span class="sd">    This wrapper does not intend to be a complete implementation but rather to</span>
 <span class="sd">    deal with those calls used in GraphMLWriter.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml</span><span class="p">,</span> <span class="n">prettyprint</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml</span><span class="p">,</span> <span class="n">prettyprint</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xml</span> <span class="o">=</span> <span class="n">xml</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prettyprint</span> <span class="o">=</span> <span class="n">prettyprint</span>
 
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prettyprint</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">GraphMLWriterLxml</span><span class="p">(</span><span class="n">GraphMLWriter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GraphMLWriterLxml</span><span class="p">(</span><span class="n">GraphMLWriter</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">path</span><span class="p">,</span>
         <span class="n">graph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1198,7 +1191,7 @@
         <span class="n">edge_id_from_attribute</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">construct_types</span><span class="p">()</span>
-        <span class="kn">import</span> <span class="nn">lxml.etree</span> <span class="k">as</span> <span class="nn">lxmletree</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">lxml.etree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lxmletree</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">myElement</span> <span class="o">=</span> <span class="n">lxmletree</span><span class="o">.</span><span class="n">Element</span>
 
@@ -1233,7 +1226,7 @@
         <span class="k">if</span> <span class="n">graph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_graph_element</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_graph_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_graph_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Serialize graph G in GraphML to the stream.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1303,7 +1296,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">add_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">incremental_writer</span><span class="p">)</span>  <span class="c1"># adds attributes too</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">incremental_writer</span><span class="p">)</span>  <span class="c1"># adds attributes too</span>
 
-    <span class="k">def</span> <span class="nf">add_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">xml_obj</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">xml_obj</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Appends attribute data.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">data_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span>
@@ -1311,10 +1304,10 @@
             <span class="p">)</span>
             <span class="n">xml_obj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_element</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_graphml</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_xml_base</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
@@ -1323,19 +1316,19 @@
 <span class="n">write_graphml</span> <span class="o">=</span> <span class="n">write_graphml_lxml</span>
 
 
-<div class="viewcode-block" id="GraphMLReader"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader">[docs]</a><span class="k">class</span> <span class="nc">GraphMLReader</span><span class="p">(</span><span class="n">GraphML</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLReader"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">GraphMLReader</span><span class="p">(</span><span class="n">GraphML</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a GraphML document.  Produces EasyGraph graph objects.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">edge_key_type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">force_multigraph</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">edge_key_type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">force_multigraph</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">construct_types</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">node_type</span> <span class="o">=</span> <span class="n">node_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edge_key_type</span> <span class="o">=</span> <span class="n">edge_key_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">multigraph</span> <span class="o">=</span> <span class="n">force_multigraph</span>  <span class="c1"># If False, test for multiedges</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edge_ids</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># dict mapping (u,v) tuples to edge id attributes</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">import</span> <span class="n">ElementTree</span>
-        <span class="kn">from</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">import</span> <span class="n">fromstring</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="kn">import</span> <span class="n">ElementTree</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="kn">import</span> <span class="n">fromstring</span>
 
         <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xml</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
@@ -1347,7 +1340,7 @@
         <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">NS_GRAPHML</span><span class="si">}</span><span class="se">}}</span><span class="s2">graph&quot;</span><span class="p">):</span>
             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">defaults</span><span class="p">)</span>
 
-<div class="viewcode-block" id="GraphMLReader.make_graph"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.make_graph">[docs]</a>    <span class="k">def</span> <span class="nf">make_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_xml</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLReader.make_graph"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.make_graph">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">make_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_xml</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># set default graph type</span>
         <span class="n">edgedefault</span> <span class="o">=</span> <span class="n">graph_xml</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;edgedefault&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">G</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1389,7 +1382,7 @@
         <span class="n">eg</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">edge_ids</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">G</span></div>
 
-<div class="viewcode-block" id="GraphMLReader.add_node"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.add_node">[docs]</a>    <span class="k">def</span> <span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">node_xml</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">,</span> <span class="n">defaults</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLReader.add_node"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.add_node">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">node_xml</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">,</span> <span class="n">defaults</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a node to the graph.&quot;&quot;&quot;</span>
         <span class="c1"># warn on finding unsupported ports tag</span>
         <span class="n">ports</span> <span class="o">=</span> <span class="n">node_xml</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">NS_GRAPHML</span><span class="si">}</span><span class="se">}}</span><span class="s2">port&quot;</span><span class="p">)</span>
@@ -1405,7 +1398,7 @@
             <span class="n">graph_xml</span> <span class="o">=</span> <span class="n">node_xml</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">NS_GRAPHML</span><span class="si">}</span><span class="se">}}</span><span class="s2">graph&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">make_graph</span><span class="p">(</span><span class="n">graph_xml</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GraphMLReader.add_edge"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.add_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">edge_element</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLReader.add_edge"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.add_edge">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">edge_element</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an edge to the graph.&quot;&quot;&quot;</span>
         <span class="c1"># warn on finding unsupported ports tag</span>
         <span class="n">ports</span> <span class="o">=</span> <span class="n">edge_element</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">NS_GRAPHML</span><span class="si">}</span><span class="se">}}</span><span class="s2">port&quot;</span><span class="p">)</span>
@@ -1446,7 +1439,7 @@
         <span class="c1"># Note there is only one edge here...</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">data</span><span class="p">)])</span></div>
 
-<div class="viewcode-block" id="GraphMLReader.decode_data_elements"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.decode_data_elements">[docs]</a>    <span class="k">def</span> <span class="nf">decode_data_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">,</span> <span class="n">obj_xml</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLReader.decode_data_elements"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.decode_data_elements">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">decode_data_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graphml_keys</span><span class="p">,</span> <span class="n">obj_xml</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Use the key information to decode the data XML if present.&quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">data_element</span> <span class="ow">in</span> <span class="n">obj_xml</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">NS_GRAPHML</span><span class="si">}</span><span class="se">}}</span><span class="s2">data&quot;</span><span class="p">):</span>
@@ -1455,7 +1448,7 @@
                 <span class="n">data_name</span> <span class="o">=</span> <span class="n">graphml_keys</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
                 <span class="n">data_type</span> <span class="o">=</span> <span class="n">graphml_keys</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bad GraphML data: no key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+                <span class="k">raise</span> <span class="n">eg</span><span class="o">.</span><span class="n">EasyGraphError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bad GraphML data: no key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
             <span class="n">text</span> <span class="o">=</span> <span class="n">data_element</span><span class="o">.</span><span class="n">text</span>
             <span class="c1"># assume anything with subelements is a yfiles extension</span>
             <span class="k">if</span> <span class="n">text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data_element</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1504,7 +1497,7 @@
                     <span class="n">data</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edge_label</span><span class="o">.</span><span class="n">text</span>
         <span class="k">return</span> <span class="n">data</span></div>
 
-<div class="viewcode-block" id="GraphMLReader.find_graphml_keys"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.find_graphml_keys">[docs]</a>    <span class="k">def</span> <span class="nf">find_graphml_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_element</span><span class="p">):</span>
+<div class="viewcode-block" id="GraphMLReader.find_graphml_keys"><a class="viewcode-back" href="../../../reference/easygraph.readwrite.graphml.html#easygraph.readwrite.graphml.GraphMLReader.find_graphml_keys">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">find_graphml_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_element</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Extracts all the keys and key defaults from the xml.&quot;&quot;&quot;</span>
         <span class="n">graphml_keys</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">graphml_key_defaults</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1546,7 +1539,7 @@
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -1567,8 +1560,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1588,7 +1581,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>
@@ -1601,7 +1594,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

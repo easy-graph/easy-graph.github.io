@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.components.weakly_connected:
-
 easygraph.functions.components.weakly\_connected module
 =======================================================
 

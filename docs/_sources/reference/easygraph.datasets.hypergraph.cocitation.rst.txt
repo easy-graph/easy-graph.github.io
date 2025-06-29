@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.cocitation:
-
 easygraph.datasets.hypergraph.cocitation module
 ===============================================
 

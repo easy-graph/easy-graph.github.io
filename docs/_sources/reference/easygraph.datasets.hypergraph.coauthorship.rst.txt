@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.coauthorship:
-
 easygraph.datasets.hypergraph.coauthorship module
 =================================================
 

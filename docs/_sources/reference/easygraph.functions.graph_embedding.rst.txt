@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.graph_embedding:
-
 easygraph.functions.graph\_embedding package
 ============================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes:
-
 easygraph.functions.structural\_holes package
 =============================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.hypergraph.centrality.s_centrality:
-
 easygraph.functions.hypergraph.centrality.s\_centrality module
 ==============================================================
 

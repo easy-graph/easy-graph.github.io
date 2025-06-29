@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.graph_embedding.deepwalk:
-
 easygraph.functions.graph\_embedding.deepwalk module
 ====================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes.maxBlock:
-
 easygraph.functions.structural\_holes.maxBlock module
 =====================================================
 

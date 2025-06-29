@@ -1,5 +1,3 @@
-.. _module_easygraph.convert:
-
 easygraph.convert module
 ========================
 

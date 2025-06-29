@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality.ego_betweenness:
-
 easygraph.functions.centrality.ego\_betweenness module
 ======================================================
 

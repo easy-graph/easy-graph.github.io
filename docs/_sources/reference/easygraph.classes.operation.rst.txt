@@ -1,5 +1,3 @@
-.. _module_easygraph.classes.operation:
-
 easygraph.classes.operation module
 ==================================
 

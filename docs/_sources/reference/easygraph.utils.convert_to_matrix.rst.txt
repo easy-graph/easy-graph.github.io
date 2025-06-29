@@ -1,5 +1,3 @@
-.. _module_easygraph.utils.convert_to_matrix:
-
 easygraph.utils.convert\_to\_matrix module
 ==========================================
 

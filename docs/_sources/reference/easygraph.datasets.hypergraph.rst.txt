@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph:
-
 easygraph.datasets.hypergraph package
 =====================================
 

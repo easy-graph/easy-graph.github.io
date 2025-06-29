@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.graph_generator.RandomNetwork:
-
 easygraph.functions.graph\_generator.RandomNetwork module
 =========================================================
 

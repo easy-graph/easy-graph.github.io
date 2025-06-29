@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.gnn_benchmark:
-
 easygraph.datasets.gnn\_benchmark module
 ========================================
 

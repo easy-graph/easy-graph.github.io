@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes.HIS:
-
 easygraph.functions.structural\_holes.HIS module
 ================================================
 

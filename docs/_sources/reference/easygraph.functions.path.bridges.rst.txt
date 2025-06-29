@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.path.bridges:
-
 easygraph.functions.path.bridges module
 =======================================
 

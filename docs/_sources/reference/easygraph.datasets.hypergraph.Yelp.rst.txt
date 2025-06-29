@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.Yelp:
-
 easygraph.datasets.hypergraph.Yelp module
 =========================================
 

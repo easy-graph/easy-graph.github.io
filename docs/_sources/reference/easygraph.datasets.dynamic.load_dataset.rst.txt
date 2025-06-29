@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.dynamic.load_dataset:
-
 easygraph.datasets.dynamic.load\_dataset module
 ===============================================
 

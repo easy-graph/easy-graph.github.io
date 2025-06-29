@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.components:
-
 easygraph.functions.components package
 ======================================
 

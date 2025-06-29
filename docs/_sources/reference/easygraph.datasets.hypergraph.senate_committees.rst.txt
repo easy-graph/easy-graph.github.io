@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.senate_committees:
-
 easygraph.datasets.hypergraph.senate\_committees module
 =======================================================
 

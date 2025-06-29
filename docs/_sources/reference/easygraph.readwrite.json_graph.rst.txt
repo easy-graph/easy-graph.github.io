@@ -1,5 +1,3 @@
-.. _module_easygraph.readwrite.json_graph:
-
 easygraph.readwrite.json\_graph package
 =======================================
 

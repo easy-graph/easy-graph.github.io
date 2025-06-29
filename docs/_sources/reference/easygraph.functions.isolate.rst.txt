@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.isolate:
-
 easygraph.functions.isolate module
 ==================================
 

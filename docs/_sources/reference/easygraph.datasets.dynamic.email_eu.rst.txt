@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.dynamic.email_eu:
-
 easygraph.datasets.dynamic.email\_eu module
 ===========================================
 

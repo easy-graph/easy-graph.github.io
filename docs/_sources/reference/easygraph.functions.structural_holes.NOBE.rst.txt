@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.structural_holes.NOBE:
-
 easygraph.functions.structural\_holes.NOBE module
 =================================================
 

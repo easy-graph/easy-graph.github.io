@@ -1,5 +1,3 @@
-.. _module_easygraph.ml_metrics.base:
-
 easygraph.ml\_metrics.base module
 =================================
 

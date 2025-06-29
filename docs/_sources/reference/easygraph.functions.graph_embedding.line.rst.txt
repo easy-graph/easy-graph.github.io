@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.graph_embedding.line:
-
 easygraph.functions.graph\_embedding.line module
 ================================================
 

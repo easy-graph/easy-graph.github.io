@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality:
-
 easygraph.functions.centrality package
 ======================================
 

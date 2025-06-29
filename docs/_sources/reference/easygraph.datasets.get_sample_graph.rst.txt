@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.get_sample_graph:
-
 easygraph.datasets.get\_sample\_graph module
 ============================================
 

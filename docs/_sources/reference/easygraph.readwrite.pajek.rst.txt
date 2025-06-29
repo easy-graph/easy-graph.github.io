@@ -1,5 +1,3 @@
-.. _module_easygraph.readwrite.pajek:
-
 easygraph.readwrite.pajek module
 ================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.hypergraph.hypergraph_clustering:
-
 easygraph.functions.hypergraph.hypergraph\_clustering module
 ============================================================
 

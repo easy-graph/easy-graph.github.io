@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.dynamic.hospital_lyon:
-
 easygraph.datasets.dynamic.hospital\_lyon module
 ================================================
 

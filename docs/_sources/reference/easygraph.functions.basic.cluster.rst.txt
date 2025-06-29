@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.basic.cluster:
-
 easygraph.functions.basic.cluster module
 ========================================
 

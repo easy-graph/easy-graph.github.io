@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.citation_graph:
-
 easygraph.datasets.citation\_graph module
 =========================================
 

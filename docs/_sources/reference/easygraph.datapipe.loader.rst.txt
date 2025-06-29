@@ -1,5 +1,3 @@
-.. _module_easygraph.datapipe.loader:
-
 easygraph.datapipe.loader module
 ================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.utils.download:
-
 easygraph.utils.download module
 ===============================
 

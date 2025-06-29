@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.community.louvain:
-
 easygraph.functions.community.louvain module
 ============================================
 

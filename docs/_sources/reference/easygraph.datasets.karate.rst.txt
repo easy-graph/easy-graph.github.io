@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.karate:
-
 easygraph.datasets.karate module
 ================================
 

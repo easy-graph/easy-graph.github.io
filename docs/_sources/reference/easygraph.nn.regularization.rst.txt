@@ -1,5 +1,3 @@
-.. _module_easygraph.nn.regularization:
-
 easygraph.nn.regularization module
 ==================================
 

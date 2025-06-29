@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.community.modularity:
-
 easygraph.functions.community.modularity module
 ===============================================
 

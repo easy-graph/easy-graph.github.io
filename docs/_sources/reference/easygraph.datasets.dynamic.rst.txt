@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.dynamic:
-
 easygraph.datasets.dynamic package
 ==================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.utils.type_change:
-
 easygraph.utils.type\_change module
 ===================================
 

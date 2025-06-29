@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality.laplacian:
-
 easygraph.functions.centrality.laplacian module
 ===============================================
 

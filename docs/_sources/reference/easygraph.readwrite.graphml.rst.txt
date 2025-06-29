@@ -1,5 +1,3 @@
-.. _module_easygraph.readwrite.graphml:
-
 easygraph.readwrite.graphml module
 ==================================
 

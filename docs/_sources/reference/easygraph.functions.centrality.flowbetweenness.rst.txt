@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.centrality.flowbetweenness:
-
 easygraph.functions.centrality.flowbetweenness module
 =====================================================
 

@@ -1,5 +1,3 @@
-.. _module_easygraph.readwrite.gml:
-
 easygraph.readwrite.gml module
 ==============================
 

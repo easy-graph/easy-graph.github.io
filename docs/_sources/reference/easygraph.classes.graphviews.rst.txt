@@ -1,5 +1,3 @@
-.. _module_easygraph.classes.graphviews:
-
 easygraph.classes.graphviews module
 ===================================
 

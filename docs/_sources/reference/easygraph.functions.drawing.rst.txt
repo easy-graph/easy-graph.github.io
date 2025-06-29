@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.drawing:
-
 easygraph.functions.drawing package
 ===================================
 

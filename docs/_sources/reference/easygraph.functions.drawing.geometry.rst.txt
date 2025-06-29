@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.drawing.geometry:
-
 easygraph.functions.drawing.geometry module
 ===========================================
 

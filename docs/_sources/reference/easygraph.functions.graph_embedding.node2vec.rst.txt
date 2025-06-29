@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.graph_embedding.node2vec:
-
 easygraph.functions.graph\_embedding.node2vec module
 ====================================================
 

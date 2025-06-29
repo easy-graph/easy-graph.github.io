@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.core:
-
 easygraph.functions.core package
 ================================
 

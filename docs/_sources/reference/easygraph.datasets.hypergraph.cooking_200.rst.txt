@@ -1,5 +1,3 @@
-.. _module_easygraph.datasets.hypergraph.cooking_200:
-
 easygraph.datasets.hypergraph.cooking\_200 module
 =================================================
 

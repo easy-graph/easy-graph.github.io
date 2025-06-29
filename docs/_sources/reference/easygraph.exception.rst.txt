@@ -1,5 +1,3 @@
-.. _module_easygraph.exception:
-
 easygraph.exception module
 ==========================
 

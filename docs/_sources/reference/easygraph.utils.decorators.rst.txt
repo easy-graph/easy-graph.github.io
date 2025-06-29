@@ -1,5 +1,3 @@
-.. _module_easygraph.utils.decorators:
-
 easygraph.utils.decorators module
 =================================
 

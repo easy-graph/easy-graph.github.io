@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.community:
-
 easygraph.functions.community package
 =====================================
 

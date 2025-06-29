@@ -1,5 +1,3 @@
-.. _module_easygraph.nn.loss:
-
 easygraph.nn.loss module
 ========================
 

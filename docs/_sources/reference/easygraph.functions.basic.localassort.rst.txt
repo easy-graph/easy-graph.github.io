@@ -1,5 +1,3 @@
-.. _module_easygraph.functions.basic.localassort:
-
 easygraph.functions.basic.localassort module
 ============================================
 
