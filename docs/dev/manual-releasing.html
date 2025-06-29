@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>(Mostly) Manually Building and Releasing python-easygraph &#8212; EasyGraph 1.4.1</title>
   
@@ -31,8 +30,8 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -40,10 +39,12 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=350a9c04"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/copybutton.js?v=e333d19b"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dev/manual-releasing';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -496,7 +497,7 @@
                 <article class="bd-article">
                   
   <section id="mostly-manually-building-and-releasing-python-easygraph">
-<h1>(Mostly) Manually Building and Releasing python-easygraph<a class="headerlink" href="#mostly-manually-building-and-releasing-python-easygraph" title="Permalink to this heading">#</a></h1>
+<h1>(Mostly) Manually Building and Releasing python-easygraph<a class="headerlink" href="#mostly-manually-building-and-releasing-python-easygraph" title="Link to this heading">#</a></h1>
 <!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) --><p>We build Linux wheels on GitHub Actions due to its reliability.
 For other platforms, we manually build on our local machines,
 as we haven’t yet found a way to automate this process on GitHub Actions.</p>
@@ -518,16 +519,16 @@ PyPI</a></p></li>
 </li>
 </ul>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <section id="install-github-cli">
-<h3>Install GitHub CLI<a class="headerlink" href="#install-github-cli" title="Permalink to this heading">#</a></h3>
+<h3>Install GitHub CLI<a class="headerlink" href="#install-github-cli" title="Link to this heading">#</a></h3>
 <p>Please refer to <a class="reference external" href="https://cli.github.com/manual/installation">GitHub CLI
 documentation</a> for
 installation instructions.</p>
 </section>
 </section>
 <section id="build-for-linux-x86-64">
-<h2>Build for Linux x86_64<a class="headerlink" href="#build-for-linux-x86-64" title="Permalink to this heading">#</a></h2>
+<h2>Build for Linux x86_64<a class="headerlink" href="#build-for-linux-x86-64" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">workflow</span> <span class="n">run</span> <span class="n">release</span><span class="o">-</span><span class="n">cibuildwheel</span><span class="o">.</span><span class="n">yaml</span> <span class="o">-</span><span class="n">F</span> <span class="n">upload</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -539,7 +540,7 @@ distribution and <code class="docutils literal notranslate"><span class="pre">.w
 applicable), discarding anything else.</p>
 </section>
 <section id="build-for-other-platforms">
-<h2>Build for other platforms<a class="headerlink" href="#build-for-other-platforms" title="Permalink to this heading">#</a></h2>
+<h2>Build for other platforms<a class="headerlink" href="#build-for-other-platforms" title="Link to this heading">#</a></h2>
 <p>Do it manually on your machines:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3.<span class="o">{</span><span class="m">7</span>..10<span class="o">}</span><span class="w"> </span>setup.py<span class="w"> </span>build_ext<span class="w"> </span><span class="c1"># expand the command yourself, to python3.10 etc</span>
 </pre></div>
@@ -547,7 +548,7 @@ applicable), discarding anything else.</p>
 <p>Locate find the built <code class="docutils literal notranslate"><span class="pre">.whl</span></code> files.</p>
 </section>
 <section id="put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi">
-<h2>Put all the wheel files and source distribution in a directory and upload to PyPI<a class="headerlink" href="#put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi" title="Permalink to this heading">#</a></h2>
+<h2>Put all the wheel files and source distribution in a directory and upload to PyPI<a class="headerlink" href="#put-all-the-wheel-files-and-source-distribution-in-a-directory-and-upload-to-pypi" title="Link to this heading">#</a></h2>
 <p>Place all the wheel files and source distributions generated in the previous two steps
 in one directory <code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;</span></code> and run</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">twine</span> <span class="n">upload</span> <span class="o">&lt;</span><span class="n">your_directory</span><span class="o">&gt;/*</span>
@@ -656,7 +657,7 @@ in one directory <code class="docutils literal notranslate"><span class="pre">&l
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>

@@ -1,9 +1,8 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
@@ -30,8 +29,8 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=538c3502" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -39,10 +38,12 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../../_static/documentation_options.js?v=350a9c04"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/functions/structural_holes/metrics';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -491,7 +492,9 @@
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="sum_of_shortest_paths"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.metrics.html#easygraph.functions.structural_holes.metrics.sum_of_shortest_paths">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="sum_of_shortest_paths">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.metrics.html#easygraph.functions.structural_holes.metrics.sum_of_shortest_paths">[docs]</a>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">sum_of_shortest_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the difference between the sum of lengths of all pairs shortest paths in G and the one in G\S.</span>
 <span class="sd">    The experiment ml_metrics in [1]_</span>
@@ -542,7 +545,10 @@
     <span class="k">return</span> <span class="n">sum_G_S</span> <span class="o">-</span> <span class="n">sum_G</span></div>
 
 
-<div class="viewcode-block" id="nodes_of_max_cc_without_shs"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.metrics.html#easygraph.functions.structural_holes.metrics.nodes_of_max_cc_without_shs">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="nodes_of_max_cc_without_shs">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.metrics.html#easygraph.functions.structural_holes.metrics.nodes_of_max_cc_without_shs">[docs]</a>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">nodes_of_max_cc_without_shs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the number of nodes in the maximum connected component in graph G\S.</span>
 <span class="sd">    The experiment ml_metrics in [1]_</span>
@@ -581,6 +587,7 @@
     <span class="k">return</span> <span class="n">max_num</span></div>
 
 
+
 <span class="k">class</span><span class="w"> </span><span class="nc">NodeParams</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">active</span><span class="p">,</span> <span class="n">inWeight</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">active</span>
@@ -588,7 +595,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
 
 
-<div class="viewcode-block" id="structural_hole_influence_index"><a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.metrics.html#easygraph.functions.structural_holes.metrics.structural_hole_influence_index">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="structural_hole_influence_index">
+<a class="viewcode-back" href="../../../../reference/easygraph.functions.structural_holes.metrics.html#easygraph.functions.structural_holes.metrics.structural_hole_influence_index">[docs]</a>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">structural_hole_influence_index</span><span class="p">(</span>
     <span class="n">G_original</span><span class="p">,</span>
     <span class="n">S</span><span class="p">,</span>
@@ -745,6 +754,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">seed_shii_pair</span><span class="p">[</span><span class="n">seed</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_censor_score_1</span>
     <span class="k">return</span> <span class="n">seed_shii_pair</span></div>
+
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_independent_cascade</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">community_label</span><span class="p">,</span> <span class="n">countIterations</span><span class="p">,</span> <span class="n">node_label_pair</span><span class="p">):</span>
@@ -919,7 +929,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
