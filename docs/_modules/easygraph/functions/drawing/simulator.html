@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,8 +30,8 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=538c3502" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -38,12 +39,10 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=350a9c04"></script>
-    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/functions/drawing/simulator';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -481,9 +480,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">safe_div</span>
 
 
-<div class="viewcode-block" id="Simulator">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.simulator.html#easygraph.functions.drawing.simulator.Simulator">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Simulator</span><span class="p">:</span>
+<div class="viewcode-block" id="Simulator"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.simulator.html#easygraph.functions.drawing.simulator.Simulator">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Simulator</span><span class="p">:</span>
     <span class="n">NODE_ATTRACTION</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">NODE_REPULSION</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">EDGE_REPULSION</span> <span class="o">=</span> <span class="mi">2</span>
@@ -507,9 +504,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">damping_factor</span> <span class="o">=</span> <span class="n">damping_factor</span>
 
-<div class="viewcode-block" id="Simulator.simulate">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.simulator.html#easygraph.functions.drawing.simulator.Simulator.simulate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_position</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Simulator.simulate"><a class="viewcode-back" href="../../../../reference/easygraph.functions.drawing.simulator.html#easygraph.functions.drawing.simulator.Simulator.simulate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_position</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -526,7 +521,6 @@
                 <span class="k">break</span>
             <span class="n">damping</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">damping_factor</span>
         <span class="k">return</span> <span class="n">position</span></div>
-
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">damping</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -676,7 +670,6 @@
 <span class="sd">        Stop condition.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span></div>
-
 </pre></div>
 
                 </article>
@@ -727,7 +720,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>

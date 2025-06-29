@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,8 +30,8 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=538c3502" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -38,12 +39,10 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=350a9c04"></script>
-    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/functions/graph_embedding/sdne';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -489,9 +488,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data.dataloader</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
 
 
-<div class="viewcode-block" id="parse_args">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.parse_args">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">():</span>
+<div class="viewcode-block" id="parse_args"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.parse_args">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">():</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">(</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">ArgumentDefaultsHelpFormatter</span><span class="p">,</span> <span class="n">conflict_handler</span><span class="o">=</span><span class="s2">&quot;resolve&quot;</span>
     <span class="p">)</span>
@@ -544,10 +541,7 @@
     <span class="k">return</span> <span class="n">args</span></div>
 
 
-
-<div class="viewcode-block" id="Dataload">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.Dataload">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Dataload</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+<div class="viewcode-block" id="Dataload"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.Dataload">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Dataload</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Adj</span><span class="p">,</span> <span class="n">Node</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Adj</span> <span class="o">=</span> <span class="n">Adj</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Node</span> <span class="o">=</span> <span class="n">Node</span>
@@ -564,10 +558,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Node</span></div>
 
 
-
-<div class="viewcode-block" id="get_adj">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.get_adj">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_adj</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+<div class="viewcode-block" id="get_adj"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.get_adj">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">get_adj</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
     <span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">))]</span>
     <span class="c1"># print(edges)</span>
@@ -592,10 +583,7 @@
     <span class="k">return</span> <span class="n">Adj</span><span class="p">,</span> <span class="n">Node</span></div>
 
 
-
-<div class="viewcode-block" id="SDNE">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">SDNE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="SDNE"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">SDNE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Graph embedding via SDNE.</span>
 
@@ -664,9 +652,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span>
 
-<div class="viewcode-block" id="SDNE.forward">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.forward">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adj_batch</span><span class="p">,</span> <span class="n">adj_mat</span><span class="p">,</span> <span class="n">b_mat</span><span class="p">):</span>
+<div class="viewcode-block" id="SDNE.forward"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.forward">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adj_batch</span><span class="p">,</span> <span class="n">adj_mat</span><span class="p">,</span> <span class="n">b_mat</span><span class="p">):</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">leaky_relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encode0</span><span class="p">(</span><span class="n">adj_batch</span><span class="p">))</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">leaky_relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encode1</span><span class="p">(</span><span class="n">t0</span><span class="p">))</span>
         <span class="n">embedding</span> <span class="o">=</span> <span class="n">t0</span>
@@ -684,10 +670,7 @@
         <span class="n">L_2nd</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(((</span><span class="n">adj_batch</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">*</span> <span class="n">b_mat</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">adj_batch</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">*</span> <span class="n">b_mat</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">L_1st</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">L_2nd</span><span class="p">,</span> <span class="n">L_1st</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">L_2nd</span></div>
 
-
-<div class="viewcode-block" id="SDNE.train">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.train">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span>
+<div class="viewcode-block" id="SDNE.train"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.train">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -751,15 +734,10 @@
 
         <span class="k">return</span> <span class="n">outVec</span></div>
 
-
-<div class="viewcode-block" id="SDNE.savector">
-<a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.savector">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">savector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+<div class="viewcode-block" id="SDNE.savector"><a class="viewcode-back" href="../../../../reference/easygraph.functions.graph_embedding.sdne.html#easygraph.functions.graph_embedding.sdne.SDNE.savector">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">savector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode0</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode1</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">t0</span></div>
-</div>
-
+        <span class="k">return</span> <span class="n">t0</span></div></div>
 
 
 <span class="c1"># if __name__ == &#39;__main__&#39;:</span>
@@ -827,7 +805,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>

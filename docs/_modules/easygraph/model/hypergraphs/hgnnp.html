@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,8 +30,8 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css?v=538c3502" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/my_theme.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -38,12 +39,10 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=350a9c04"></script>
-    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../../_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/easygraph/model/hypergraphs/hgnnp';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -482,9 +481,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">HGNNPConv</span>
 
 
-<div class="viewcode-block" id="HGNNP">
-<a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">HGNNP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="HGNNP"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">HGNNP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The HGNN :sup:`+` model proposed in `HGNN+: General Hypergraph Neural Networks &lt;https://ieeexplore.ieee.org/document/9795251&gt;`_ paper (IEEE T-PAMI 2022).</span>
 
 <span class="sd">    Parameters:</span>
@@ -512,9 +509,7 @@
             <span class="n">HGNNPConv</span><span class="p">(</span><span class="n">hid_channels</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">,</span> <span class="n">use_bn</span><span class="o">=</span><span class="n">use_bn</span><span class="p">,</span> <span class="n">is_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="p">)</span>
 
-<div class="viewcode-block" id="HGNNP.forward">
-<a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP.forward">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="s2">&quot;eg.Hypergraph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="HGNNP.forward"><a class="viewcode-back" href="../../../../reference/easygraph.model.hypergraphs.hgnnp.html#easygraph.model.hypergraphs.hgnnp.HGNNP.forward">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">hg</span><span class="p">:</span> <span class="s2">&quot;eg.Hypergraph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The forward function.</span>
 
 <span class="sd">        Parameters:</span>
@@ -523,9 +518,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
             <span class="n">X</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">hg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">X</span></div>
-</div>
-
+        <span class="k">return</span> <span class="n">X</span></div></div>
 </pre></div>
 
                 </article>
@@ -576,7 +569,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>

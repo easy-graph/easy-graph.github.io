@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Scripts and guides for generating documentation for EasyGraph &#8212; EasyGraph 1.4.1</title>
   
@@ -30,8 +31,8 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=538c3502" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_theme.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -39,12 +40,10 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=350a9c04"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/copybutton.js?v=e333d19b"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dev/easygraph-doc-source';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -496,7 +495,7 @@
                 <article class="bd-article">
                   
   <section id="scripts-and-guides-for-generating-documentation-for-easygraph">
-<h1>Scripts and guides for generating documentation for EasyGraph<a class="headerlink" href="#scripts-and-guides-for-generating-documentation-for-easygraph" title="Link to this heading">#</a></h1>
+<h1>Scripts and guides for generating documentation for EasyGraph<a class="headerlink" href="#scripts-and-guides-for-generating-documentation-for-easygraph" title="Permalink to this heading">#</a></h1>
 <!-- Author: [Teddy Xinyuan Chen](https://github.com/tddschn) --><p>Repository:
 <a class="reference external" href="https://github.com/easy-graph/easygraph-doc-source">easygraph-doc-source</a></p>
 <ul class="simple">
@@ -524,7 +523,7 @@ website</a></p></li>
 </li>
 </ul>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
 <p>Clone these repositories and put them inside the same directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">REPOS</span><span class="o">=(</span><span class="s1">&#39;Easy-Graph&#39;</span><span class="w"> </span><span class="s1">&#39;easy-graph.github.io&#39;</span><span class="w"> </span><span class="s1">&#39;easygraph-doc-source&#39;</span><span class="o">)</span>
 <span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPOS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
@@ -535,14 +534,14 @@ website</a></p></li>
 </div>
 </section>
 <section id="update-rst-files">
-<h2>Update <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#update-rst-files" title="Link to this heading">#</a></h2>
+<h2>Update <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#update-rst-files" title="Permalink to this heading">#</a></h2>
 <section id="edit-manually-created-rst-files">
-<h3>Edit manually created <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#edit-manually-created-rst-files" title="Link to this heading">#</a></h3>
+<h3>Edit manually created <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#edit-manually-created-rst-files" title="Permalink to this heading">#</a></h3>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">easygraph-doc-source/docs_using_sphinx</span></code>, and hand-edit / remove
 / add any <code class="docutils literal notranslate"><span class="pre">rst</span></code> files outside of <code class="docutils literal notranslate"><span class="pre">reference</span></code>.</p>
 </section>
 <section id="generate-rst-files-from-docstrings-as-references">
-<h3>Generate <code class="docutils literal notranslate"><span class="pre">rst</span></code> files from docstrings as references<a class="headerlink" href="#generate-rst-files-from-docstrings-as-references" title="Link to this heading">#</a></h3>
+<h3>Generate <code class="docutils literal notranslate"><span class="pre">rst</span></code> files from docstrings as references<a class="headerlink" href="#generate-rst-files-from-docstrings-as-references" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>easygraph-doc-source/docs_using_sphinx
 make<span class="w"> </span>gen-rst
 <span class="c1"># generated rst files in reference dir</span>
@@ -551,7 +550,7 @@ make<span class="w"> </span>gen-rst
 </section>
 </section>
 <section id="build-html-from-rst-files">
-<h2>Build HTML from <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#build-html-from-rst-files" title="Link to this heading">#</a></h2>
+<h2>Build HTML from <code class="docutils literal notranslate"><span class="pre">rst</span></code> files<a class="headerlink" href="#build-html-from-rst-files" title="Permalink to this heading">#</a></h2>
 <!-- 1. Update the `.rst` file in `docs_using_sphinx`
 2. Run terminal, changing work directory to `docs_using_sphinx`
 3. run `python3 -m venv .env` for the virtual environment
@@ -562,7 +561,7 @@ make<span class="w"> </span>gen-rst
 </ul>
 </section>
 <section id="deploy-to-easy-graph-github-io">
-<h2>Deploy to easy-graph.github.io<a class="headerlink" href="#deploy-to-easy-graph-github-io" title="Link to this heading">#</a></h2>
+<h2>Deploy to easy-graph.github.io<a class="headerlink" href="#deploy-to-easy-graph-github-io" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Sync all the files under <code class="docutils literal notranslate"><span class="pre">./_build/html</span></code> to repository
 <code class="docutils literal notranslate"><span class="pre">easy-graph.github.io</span></code>:</p></li>
@@ -576,9 +575,9 @@ make<span class="w"> </span>sync-doc-pub-repo
 </ul>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
 <section id="reference-built-but-not-correctly-displayed-on-the-website">
-<h3>Reference built but not correctly displayed on the website<a class="headerlink" href="#reference-built-but-not-correctly-displayed-on-the-website" title="Link to this heading">#</a></h3>
+<h3>Reference built but not correctly displayed on the website<a class="headerlink" href="#reference-built-but-not-correctly-displayed-on-the-website" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Check the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> of <code class="docutils literal notranslate"><span class="pre">reference.rst</span></code>, you may need to manually
 update the section to reflect the built references.</p></li>
@@ -683,7 +682,7 @@ update the section to reflect the built references.</p></li>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>
