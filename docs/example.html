@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Examples of Graph Analysis &#8212; EasyGraph 1.4.1</title>
   
@@ -31,8 +30,8 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/my_theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=538c3502" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -40,10 +39,12 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=350a9c04"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/copybutton.js?v=e333d19b"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'example';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -486,12 +487,12 @@
                 <article class="bd-article">
                   
   <section id="examples-of-graph-analysis">
-<h1>Examples of Graph Analysis<a class="headerlink" href="#examples-of-graph-analysis" title="Permalink to this heading">#</a></h1>
+<h1>Examples of Graph Analysis<a class="headerlink" href="#examples-of-graph-analysis" title="Link to this heading">#</a></h1>
 <p>This section provides three examples of how to perform graph analysis with <strong>EasyGraph</strong>.</p>
 <section id="to-analyze-and-draw-structural-hole-spanners-on-the-karate-club-dataset-with-easygraph">
-<h2>To analyze and draw Structural Hole Spanners on the karate club dataset with EasyGraph<a class="headerlink" href="#to-analyze-and-draw-structural-hole-spanners-on-the-karate-club-dataset-with-easygraph" title="Permalink to this heading">#</a></h2>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">easygraph.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_graph_karateclub</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<h2>To analyze and draw Structural Hole Spanners on the karate club dataset with EasyGraph<a class="headerlink" href="#to-analyze-and-draw-structural-hole-spanners-on-the-karate-club-dataset-with-easygraph" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easygraph.datasets</span> <span class="kn">import</span> <span class="n">get_graph_karateclub</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">get_graph_karateclub</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate five shs(Structural Hole Spanners) in G</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shs</span> <span class="o">=</span> <span class="n">eg</span><span class="o">.</span><span class="n">common_greedy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -503,9 +504,9 @@
 </div>
 </section>
 <section id="fundamentals-of-graph-properties-and-operations">
-<h2>Fundamentals of Graph Properties and Operations<a class="headerlink" href="#fundamentals-of-graph-properties-and-operations" title="Permalink to this heading">#</a></h2>
+<h2>Fundamentals of Graph Properties and Operations<a class="headerlink" href="#fundamentals-of-graph-properties-and-operations" title="Link to this heading">#</a></h2>
 <p>Import <strong>EasyGraph</strong>, and start with an undirected graph <cite>G</cite>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -644,7 +645,7 @@
 </div>
 </section>
 <section id="detection-of-structural-hole-spanners">
-<h2>Detection of Structural Hole Spanners<a class="headerlink" href="#detection-of-structural-hole-spanners" title="Permalink to this heading">#</a></h2>
+<h2>Detection of Structural Hole Spanners<a class="headerlink" href="#detection-of-structural-hole-spanners" title="Link to this heading">#</a></h2>
 <p>Use MaxD for structural hole spanners detection:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">M</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">get_structural_holes_MaxD</span><span class="p">(</span><span class="n">G</span><span class="p">,</span>
 <span class="gp">... </span>                          <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="c1"># To find the top five structural holes spanners.</span>
@@ -720,7 +721,7 @@
 </div>
 </section>
 <section id="optimizing-performance-with-c">
-<h2>Optimizing performance with C++<a class="headerlink" href="#optimizing-performance-with-c" title="Permalink to this heading">#</a></h2>
+<h2>Optimizing performance with C++<a class="headerlink" href="#optimizing-performance-with-c" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The GraphC class contains most key operations included in the Graph class. e.g. <cite>add_node()</cite>, <cite>add_edges()</cite></p></li>
 <li><p>EasyGraph also provides three crucial network analysis functions implemented in C++
@@ -731,9 +732,9 @@
 </ul>
 </section>
 <section id="basics-of-graphc">
-<h2>Basics of GraphC<a class="headerlink" href="#basics-of-graphc" title="Permalink to this heading">#</a></h2>
+<h2>Basics of GraphC<a class="headerlink" href="#basics-of-graphc" title="Link to this heading">#</a></h2>
 <p>Import <strong>EasyGraph</strong> and initialize a directed graph <cite>G_c</cite> :</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">easygraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eg</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">easygraph</span> <span class="k">as</span> <span class="nn">eg</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G_c</span><span class="o">=</span><span class="n">eg</span><span class="o">.</span><span class="n">DiGraphC</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -877,7 +878,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     <br/>
   </p>
 </div>

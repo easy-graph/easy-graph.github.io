@@ -12,17 +12,19 @@ Please feel free to email us at mgao21@m.fudan.edu.cn.
 **Developers**
 
 * `Min Gao <https://mgao.mystrikingly.com/>`_ (Lead)
-* `Bodian Ye <https://bdye.mysxl.cn/>`_
-* Jiawei Tang
+* Susu Zhang (Lead)
 * Haoran Du
 * Wen Wen
-* `Kun Cheng <https://www.linkedin.com/in/kun-cheng-080084291/>`_
+
 
 **Former Developers**
 
 * `Zheng Li <https://icypole.github.io/>`_ (Former Lead)
 * `Xinlei He <https://willingnesshxl.github.io/xlhe/>`_
 * `Teddy Xinyuan Chen <https://github.com/tddschn>`_
+* `Bodian Ye <https://bdye.mysxl.cn/>`_
+* `Kun Cheng <https://www.linkedin.com/in/kun-cheng-080084291/>`_
+* Jiawei Tang
 * Yi Sun
 * Yuting Shao
 * Zihang Lin
